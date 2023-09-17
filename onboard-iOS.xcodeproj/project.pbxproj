@@ -28,6 +28,7 @@
 		61AC7FDD2AB6E5B900B0B6B5 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 61AC7FDC2AB6E5B900B0B6B5 /* SwiftKeychainWrapper */; };
 		61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FE62AB6EEB700B0B6B5 /* APIConstants.swift */; };
 		61AC7FEA2AB7309400B0B6B5 /* APIEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FE92AB7309400B0B6B5 /* APIEventLogger.swift */; };
+		61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		61AC7FD02AB6DFBF00B0B6B5 /* TestEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEntity.swift; sourceTree = "<group>"; };
 		61AC7FE62AB6EEB700B0B6B5 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		61AC7FE92AB7309400B0B6B5 /* APIEventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventLogger.swift; sourceTree = "<group>"; };
+		61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		61AC7F9D2AB6D4A300B0B6B5 /* onboard-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				61AC80032AB73A0F00B0B6B5 /* Extensions */,
 				61AC7FE82AB72E5100B0B6B5 /* Enum */,
 				61AC7FDE2AB6E6C800B0B6B5 /* Utils */,
 				61AC7FB52AB6D69D00B0B6B5 /* Presentation */,
@@ -211,6 +214,14 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
+		61AC80032AB73A0F00B0B6B5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -306,6 +317,7 @@
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
+				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,

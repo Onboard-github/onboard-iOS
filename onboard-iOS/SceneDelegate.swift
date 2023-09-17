@@ -21,11 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.windowScene = scene
 
-        let navigationController = UINavigationController()
-        self.window?.rootViewController = navigationController
+        let testUseCase = TestUseCaseImpl(repository: TestRepositoryImpl())
+        let testReactor = TestReactor(useCase: testUseCase)
+        let testViewController = TestViewController(reactor: testReactor)
 
-        let testViewController = TestViewController()
-
+        self.window?.rootViewController = testViewController
+        
         self.window?.makeKeyAndVisible()
     }
 

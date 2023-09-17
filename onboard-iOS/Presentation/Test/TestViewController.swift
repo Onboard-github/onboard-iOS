@@ -25,6 +25,15 @@ final class TestViewController: UIViewController, View {
         self.view = testView
     }
 
+    init(reactor: TestReactor) {
+        super.init(nibName: nil, bundle: nil)
+        self.reactor = reactor
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Bind
 
     func bind(reactor: TestReactor) {
@@ -33,11 +42,19 @@ final class TestViewController: UIViewController, View {
     }
 
     private func bindAction(reactor: TestReactor) {
-
+        self.rx.rxViewDidLoad
+            .map { Reactor.Action.testAPI }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
     }
 
     private func bindState(reactor: TestReactor) {
-
+        reactor.state
+            .map { $0.result }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] result in
+                self?.testView.bind(text: result)
+            })
+            .disposed(by: self.disposeBag)
     }
-
 }
