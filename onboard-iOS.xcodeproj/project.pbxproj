@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */; };
 		61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */; };
-		61AC7FA32AB6D4A300B0B6B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA22AB6D4A300B0B6B5 /* ViewController.swift */; };
 		61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */; };
 		61AC7FA82AB6D4A500B0B6B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA72AB6D4A500B0B6B5 /* Assets.xcassets */; };
 		61AC7FAB2AB6D4A500B0B6B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA92AB6D4A500B0B6B5 /* LaunchScreen.storyboard */; };
@@ -35,7 +34,6 @@
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		61AC7FA22AB6D4A300B0B6B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		61AC7FA52AB6D4A300B0B6B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		61AC7FA72AB6D4A500B0B6B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61AC7FAA2AB6D4A500B0B6B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				61AC7FB22AB6D67B00B0B6B5 /* Network */,
 				61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */,
 				61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */,
-				61AC7FA22AB6D4A300B0B6B5 /* ViewController.swift */,
 				61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */,
 				61AC7FA72AB6D4A500B0B6B5 /* Assets.xcassets */,
 				61AC7FA92AB6D4A500B0B6B5 /* LaunchScreen.storyboard */,
@@ -304,7 +301,6 @@
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
-				61AC7FA32AB6D4A300B0B6B5 /* ViewController.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				61AC7FC02AB6D74A00B0B6B5 /* TestUseCase.swift in Sources */,
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
