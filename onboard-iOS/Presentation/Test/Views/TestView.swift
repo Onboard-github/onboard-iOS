@@ -41,6 +41,7 @@ final class TestView: UIView {
     // MARK: - Configure
 
     private func configure() {
+        self.backgroundColor = .white
         self.makeConstraints()
     }
 
