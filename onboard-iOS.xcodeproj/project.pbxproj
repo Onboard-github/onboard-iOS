@@ -29,6 +29,7 @@
 		61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FE62AB6EEB700B0B6B5 /* APIConstants.swift */; };
 		61AC7FEA2AB7309400B0B6B5 /* APIEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FE92AB7309400B0B6B5 /* APIEventLogger.swift */; };
 		61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */; };
+		61AC80072AB744A300B0B6B5 /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC80062AB744A300B0B6B5 /* AppleLoginManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		61AC7FE62AB6EEB700B0B6B5 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		61AC7FE92AB7309400B0B6B5 /* APIEventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventLogger.swift; sourceTree = "<group>"; };
 		61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
+		61AC80062AB744A300B0B6B5 /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 		61AC7FE12AB6E89400B0B6B5 /* SocialLogin */ = {
 			isa = PBXGroup;
 			children = (
+				61AC80062AB744A300B0B6B5 /* AppleLoginManager.swift */,
 			);
 			path = SocialLogin;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
+				61AC80072AB744A300B0B6B5 /* AppleLoginManager.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
