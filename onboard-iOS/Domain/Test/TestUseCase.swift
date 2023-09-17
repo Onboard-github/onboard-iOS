@@ -11,7 +11,7 @@ protocol TestUseCase {
     func fetchTestAPi() async throws -> TestEntity
 }
 
-final class TestUseCaseImpl {
+final class TestUseCaseImpl: TestUseCase {
 
     private let repository: TestRepository
 
