@@ -17,10 +17,12 @@ final class TestViewController: UIViewController, View {
 
     var disposeBag = DisposeBag()
 
+    private let testView = TestView()
+
     // MARK: - Life Cycles
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
+        self.view = testView
     }
 
     // MARK: - Bind
@@ -31,7 +33,7 @@ final class TestViewController: UIViewController, View {
     }
 
     private func bindAction(reactor: TestReactor) {
-        
+
     }
 
     private func bindState(reactor: TestReactor) {
