@@ -28,10 +28,16 @@ final class TestReactor: Reactor {
         var result: String = ""
     }
 
+    private let useCase: TestUseCase
+
+    init(useCase: TestUseCase) {
+        self.useCase = useCase
+    }
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .testAPI:
-            return .empty()
+            return self.fetchTestResult()
 
         case .apple:
             // TODO: Apple Login
@@ -56,5 +62,27 @@ final class TestReactor: Reactor {
         }
 
         return state
+    }
+}
+
+extension TestReactor {
+
+    private func fetchTestResult() -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self else { return Disposables.create() }
+
+            Task {
+                do {
+                    let result = try await self.useCase.fetchTestAPi()
+
+                    observer.onNext(.setLoginResult(token: result.text))
+                    observer.onCompleted()
+
+                } catch {
+                    throw error
+                }
+            }
+            return Disposables.create()
+        }
     }
 }
