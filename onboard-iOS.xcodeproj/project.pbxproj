@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */; };
+		1CDF4D2F2AB8A53900CFDFBA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1CDF4D2E2AB8A53900CFDFBA /* GoogleSignIn */; };
 		61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */; };
 		61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */; };
 		61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */; };
@@ -32,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleLoginManager.swift; path = "onboard-iOS/Repository/GoogleLoginManager.swift"; sourceTree = SOURCE_ROOT; };
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 				61AC7FDD2AB6E5B900B0B6B5 /* SwiftKeychainWrapper in Frameworks */,
 				61AC7FDA2AB6E56600B0B6B5 /* RxCocoa in Frameworks */,
 				61AC7FC72AB6DA4E00B0B6B5 /* Alamofire in Frameworks */,
+				1CDF4D2F2AB8A53900CFDFBA /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +207,7 @@
 		61AC7FE12AB6E89400B0B6B5 /* SocialLogin */ = {
 			isa = PBXGroup;
 			children = (
+				1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */,
 			);
 			path = SocialLogin;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 				61AC7FD62AB6E50200B0B6B5 /* SnapKit */,
 				61AC7FD92AB6E56600B0B6B5 /* RxCocoa */,
 				61AC7FDC2AB6E5B900B0B6B5 /* SwiftKeychainWrapper */,
+				1CDF4D2E2AB8A53900CFDFBA /* GoogleSignIn */,
 			);
 			productName = "onboard-iOS";
 			productReference = 61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */;
@@ -279,6 +285,7 @@
 				61AC7FD52AB6E50200B0B6B5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				61AC7FD82AB6E56600B0B6B5 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				61AC7FDB2AB6E5B900B0B6B5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				1CDF4D2D2AB8A53900CFDFBA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 61AC7F9C2AB6D4A300B0B6B5 /* Products */;
 			projectDirPath = "";
@@ -321,6 +328,7 @@
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
+				1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +475,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7YWVGV44MR;
+				DEVELOPMENT_TEAM = XBK9RNRMN8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -495,7 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7YWVGV44MR;
+				DEVELOPMENT_TEAM = XBK9RNRMN8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -540,6 +548,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1CDF4D2D2AB8A53900CFDFBA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		61AC7FC52AB6DA4E00B0B6B5 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -583,6 +599,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1CDF4D2E2AB8A53900CFDFBA /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1CDF4D2D2AB8A53900CFDFBA /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
 		61AC7FC62AB6DA4E00B0B6B5 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 61AC7FC52AB6DA4E00B0B6B5 /* XCRemoteSwiftPackageReference "Alamofire" */;
