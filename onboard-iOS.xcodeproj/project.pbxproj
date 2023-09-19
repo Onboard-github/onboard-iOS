@@ -34,7 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleLoginManager.swift; path = "onboard-iOS/Repository/GoogleLoginManager.swift"; sourceTree = SOURCE_ROOT; };
+		1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleLoginManager.swift; path = "onboard-iOS/Repository/SocialLogin/GoogleLoginManager.swift"; sourceTree = SOURCE_ROOT; };
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CDF4D312AB95FA300CFDFBA /* SocialLogin */ = {
+			isa = PBXGroup;
+			children = (
+				1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */,
+			);
+			path = SocialLogin;
+			sourceTree = "<group>";
+		};
 		61AC7F922AB6D4A300B0B6B5 = {
 			isa = PBXGroup;
 			children = (
@@ -123,7 +131,7 @@
 		61AC7FB32AB6D68400B0B6B5 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				61AC7FE12AB6E89400B0B6B5 /* SocialLogin */,
+				1CDF4D312AB95FA300CFDFBA /* SocialLogin */,
 				61AC7FCC2AB6DDD900B0B6B5 /* DTO */,
 				61AC7FCB2AB6DD2B00B0B6B5 /* Test */,
 			);
@@ -202,14 +210,6 @@
 			children = (
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		61AC7FE12AB6E89400B0B6B5 /* SocialLogin */ = {
-			isa = PBXGroup;
-			children = (
-				1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */,
-			);
-			path = SocialLogin;
 			sourceTree = "<group>";
 		};
 		61AC7FE82AB72E5100B0B6B5 /* Enum */ = {
@@ -475,7 +475,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XBK9RNRMN8;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -503,7 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XBK9RNRMN8;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
