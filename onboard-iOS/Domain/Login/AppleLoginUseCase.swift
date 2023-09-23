@@ -9,7 +9,7 @@ import Foundation
 
 protocol AppleLoginUseCase {
     // 로그인
-    func signIn() async -> Bool
+    func signIn() async
 }
 
 protocol AppleLoginDelegate: AnyObject {
@@ -17,31 +17,26 @@ protocol AppleLoginDelegate: AnyObject {
     func success(token: String)
 }
 
-protocol AppleResultDelegate: AnyObject {
-}
-
-protocol LoginRepository {
+protocol AuthRepository {
     // api 호출 및 토큰 가져오기
-    func login(accessToken: String) async throws -> AuthEntity
+    func signIn(req: AuthEntity.Req) async throws -> AuthEntity.Res
 }
 
 final class AppleLoginUseCaseImpl: AppleLoginUseCase {
 
     private let appleLoginManager: AppleLoginManager
-    private let loginRepository: LoginRepository?
+    private let authRepository: AuthRepository
 
     init(
         appleLoginManager: AppleLoginManager,
-        loginRepository: LoginRepository? = nil
+        authRepository: AuthRepository
     ) {
         self.appleLoginManager = appleLoginManager
-        self.loginRepository = loginRepository
+        self.authRepository = authRepository
     }
 
-    func signIn() async -> Bool {
+    func signIn() async {
         self.appleLoginManager.excute(delegate: self)
-        
-        return true
     }
 }
 
@@ -50,10 +45,12 @@ final class AppleLoginUseCaseImpl: AppleLoginUseCase {
 extension AppleLoginUseCaseImpl: AppleLoginDelegate {
 
     func success(token: String) {
+        Task {
+            let result = try await self.authRepository.signIn(
+                req: AuthEntity.Req(type: .apple, token: token)
+            )
 
-        print(token)
-//        Task {
-//            let token = try await self.loginRepository.login(accessToken: token)
-//        }
+            print(result)
+        }
     }
 }

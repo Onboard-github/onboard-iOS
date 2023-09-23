@@ -77,13 +77,8 @@ extension TestReactor {
 
             Task {
                 do {
-                    let result = await self.appleUseCase.signIn()
-
-                    if result {
-                        observer.onNext(.setLoginResult(token: "success"))
-                        observer.onCompleted()
-                    }
-                } 
+                    await self.appleUseCase.signIn()
+                }
             }
             return Disposables.create()
         }

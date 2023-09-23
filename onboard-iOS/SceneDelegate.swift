@@ -23,7 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let testUseCase = TestUseCaseImpl(repository: TestRepositoryImpl())
         let testReactor = TestReactor(
-            useCase: testUseCase, appleUseCase: AppleLoginUseCaseImpl(appleLoginManager: AppleLoginManagerImpl()))
+            useCase: testUseCase,
+            appleUseCase: AppleLoginUseCaseImpl(
+                appleLoginManager: AppleLoginManagerImpl(),
+                authRepository: AuthRepositoryImpl()
+            ))
         let testViewController = TestViewController(reactor: testReactor)
 
         self.window?.rootViewController = testViewController

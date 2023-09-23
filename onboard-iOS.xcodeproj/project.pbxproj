@@ -10,6 +10,9 @@
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
 		611D8CA42AB8874D0074A55A /* AuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA32AB8874D0074A55A /* AuthEntity.swift */; };
+		611D8CA82ABECFFC0074A55A /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA72ABECFFC0074A55A /* AuthRepository.swift */; };
+		611D8CAA2ABED03D0074A55A /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA92ABED03D0074A55A /* AuthDTO.swift */; };
+		611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CAC2ABED29F0074A55A /* Encodable+Ext.swift */; };
 		61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */; };
 		61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */; };
 		61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */; };
@@ -39,6 +42,9 @@
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
 		611D8CA32AB8874D0074A55A /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
 		611D8CA52ABECB910074A55A /* onboard-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "onboard-iOS.entitlements"; sourceTree = "<group>"; };
+		611D8CA72ABECFFC0074A55A /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		611D8CA92ABED03D0074A55A /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
+		611D8CAC2ABED29F0074A55A /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +88,22 @@
 				611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		611D8CA62ABECFB10074A55A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				611D8CA72ABECFFC0074A55A /* AuthRepository.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		611D8CAB2ABED2910074A55A /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				611D8CAC2ABED29F0074A55A /* Encodable+Ext.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		61AC7F922AB6D4A300B0B6B5 = {
@@ -135,6 +157,7 @@
 		61AC7FB32AB6D68400B0B6B5 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				611D8CA62ABECFB10074A55A /* Auth */,
 				61AC7FCC2AB6DDD900B0B6B5 /* DTO */,
 				61AC7FCB2AB6DD2B00B0B6B5 /* Test */,
 			);
@@ -197,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				61AC7FCD2AB6DDE300B0B6B5 /* TestDTO.swift */,
+				611D8CA92ABED03D0074A55A /* AuthDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -228,6 +252,7 @@
 		61AC80032AB73A0F00B0B6B5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				611D8CAB2ABED2910074A55A /* Foundation */,
 				61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */,
 			);
 			path = Extensions;
@@ -325,8 +350,10 @@
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
+				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
 				61AC7FC02AB6D74A00B0B6B5 /* TestUseCase.swift in Sources */,
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
+				611D8CAA2ABED03D0074A55A /* AuthDTO.swift in Sources */,
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
@@ -335,6 +362,7 @@
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
 				611D8CA42AB8874D0074A55A /* AuthEntity.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
+				611D8CA82ABECFFC0074A55A /* AuthRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
