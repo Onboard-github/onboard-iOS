@@ -21,7 +21,7 @@ final class TestReactor: Reactor {
     }
 
     enum Mutation {
-        case setLoginResult(token: String)
+        case setLoginResult(result: String)
     }
 
     struct State {
@@ -67,9 +67,28 @@ final class TestReactor: Reactor {
 
         return state
     }
+
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+
+        let loginMutation = self.mutation(
+            result: self.appleUseCase.result
+        )
+
+        return Observable.merge(mutation, loginMutation)
+    }
+
 }
 
 extension TestReactor {
+
+    private func mutation(result: Observable<Bool>) -> Observable<Mutation> {
+        return result.flatMap { response -> Observable<Mutation> in
+            if response {
+                return .just(.setLoginResult(result: "success"))
+            }
+            return .just(.setLoginResult(result: "fail"))
+        }
+    }
 
     private func excuteAppleLogin() -> Observable<Mutation> {
         return Observable.create { [weak self] observer in

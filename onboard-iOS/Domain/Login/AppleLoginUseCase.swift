@@ -7,8 +7,10 @@
 
 import Foundation
 
+import RxSwift
+
 protocol AppleLoginUseCase {
-    // 로그인
+    var result: Observable<Bool> { get }
     func signIn() async
 }
 
@@ -27,12 +29,16 @@ final class AppleLoginUseCaseImpl: AppleLoginUseCase {
     private let appleLoginManager: AppleLoginManager
     private let authRepository: AuthRepository
 
+    var result: Observable<Bool>
+    private let _result: PublishSubject<Bool> = .init()
+
     init(
         appleLoginManager: AppleLoginManager,
         authRepository: AuthRepository
     ) {
         self.appleLoginManager = appleLoginManager
         self.authRepository = authRepository
+        self.result = self._result
     }
 
     func signIn() async {
@@ -49,8 +55,9 @@ extension AppleLoginUseCaseImpl: AppleLoginDelegate {
             let result = try await self.authRepository.signIn(
                 req: AuthEntity.Req(type: .apple, token: token)
             )
+            let isExisted = result.accessToken != nil
 
-            print(result)
+            self._result.onNext(isExisted)
         }
     }
 }
