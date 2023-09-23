@@ -10,14 +10,21 @@ import Foundation
 import AuthenticationServices
 
 protocol AppleLoginManager {
-    func excute()
+    func excute(delegate: AppleLoginDelegate)
 }
 
 final class AppleLoginManagerImpl: NSObject, AppleLoginManager {
 
-    private var token: String = ""
+    private var token: String = "" {
+        didSet {
+            self.delegate?.success(token: self.token)
+        }
+    }
 
-    func excute() {
+    weak var delegate: AppleLoginDelegate?
+
+    func excute(delegate: AppleLoginDelegate) {
+        self.delegate = delegate
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
