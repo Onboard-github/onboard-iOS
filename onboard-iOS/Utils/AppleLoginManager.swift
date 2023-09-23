@@ -31,7 +31,7 @@ final class AppleLoginManagerImpl: NSObject, AppleLoginManager {
 
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self as?       ASAuthorizationControllerPresentationContextProviding
+        authorizationController.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
         authorizationController.performRequests()
     }
 }
