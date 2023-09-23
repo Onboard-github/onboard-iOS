@@ -111,7 +111,7 @@ extension TestReactor {
                 do {
                     let result = try await self.useCase.fetchTestAPi()
 
-                    observer.onNext(.setLoginResult(token: result.text))
+                    observer.onNext(.setLoginResult(result: result.text))
                     observer.onCompleted()
 
                 } catch {
