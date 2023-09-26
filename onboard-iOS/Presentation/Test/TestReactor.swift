@@ -5,19 +5,32 @@
 //  Created by Daye on 2023/09/17.
 //
 
+import UIKit
 import Foundation
 
 import ReactorKit
 
+
 final class TestReactor: Reactor {
 
     var initialState: State = .init()
+    
+    struct Action {
+        
+        let action: ActionType
+        let uiViewController: UIViewController
+        
+        init(action: ActionType, uiViewController: UIViewController) {
+            self.action = action
+            self.uiViewController = uiViewController
+        }
+    }
 
-    enum Action {
+    enum ActionType {
         case testAPI
-        case kakao
-        case google
         case apple
+        case google
+        case kakao
     }
 
     enum Mutation {
@@ -35,7 +48,7 @@ final class TestReactor: Reactor {
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
-        switch action {
+        switch action.action {
         case .testAPI:
             return self.fetchTestResult()
 
@@ -44,8 +57,7 @@ final class TestReactor: Reactor {
             return .empty()
 
         case .google:
-            // TODO: Google Login
-            return .empty()
+            return self.googleLoginResult(uiViewController: action.uiViewController)
 
         case .kakao:
             // TODO: Kakao Login
@@ -82,6 +94,16 @@ extension TestReactor {
                     throw error
                 }
             }
+            return Disposables.create()
+        }
+    }
+    
+    private func googleLoginResult(uiViewController: UIViewController) -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self else { return Disposables.create() }
+            
+            GoogleLoginManager.shared.signIn(withPresenting: uiViewController)
+            
             return Disposables.create()
         }
     }

@@ -33,14 +33,6 @@ final class TestViewController: UIViewController, View {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        testView.button.addTarget(self,
-                                  action: #selector(buttonAction),
-                                  for: .touchUpInside)
-    }
 
     // MARK: - Bind
 
@@ -51,9 +43,15 @@ final class TestViewController: UIViewController, View {
 
     private func bindAction(reactor: TestReactor) {
         self.rx.rxViewDidLoad
-            .map { Reactor.Action.testAPI }
+            .map { Reactor.Action(action: Reactor.ActionType.testAPI,
+                                  uiViewController: self) }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        
+        self.testView.googleLoginButtonAction = {
+            reactor.action.onNext(Reactor.Action(action: Reactor.ActionType.google,
+                                                 uiViewController: self))
+        }
     }
 
     private func bindState(reactor: TestReactor) {

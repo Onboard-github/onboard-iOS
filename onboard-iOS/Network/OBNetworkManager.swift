@@ -27,4 +27,34 @@ final class OBNetworkManager {
 
         return response
     }
+    
+    func googleLoginRequest(token: String) {
+        let url = "\(API.BASE_URL)v1/auth/login"
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)",
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        let parameters: Parameters = [
+            "type": "GOOGLE_ID_TOKEN",
+            "token": token
+        ]
+        
+        AF.request(url,
+                   method: .post,
+                   parameters: parameters,
+                   encoding: JSONEncoding.default,
+                   headers: headers)
+        .validate(statusCode: 200..<501)
+        .responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                print("Response: \(value)")
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+    }
 }
