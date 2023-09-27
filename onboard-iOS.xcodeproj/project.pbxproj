@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		611D8CEC2AC44D230074A55A /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CEB2AC44D230074A55A /* TermsView.swift */; };
 		611D8CEE2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */; };
+		611D8CF72AC45B8F0074A55A /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 611D8CF22AC45B8D0074A55A /* SpoqaHanSansNeo-Light.ttf */; };
+		611D8CF82AC45B8F0074A55A /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 611D8CF32AC45B8D0074A55A /* SpoqaHanSansNeo-Medium.ttf */; };
+		611D8CF92AC45B8F0074A55A /* SpoqaHanSansNeo-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 611D8CF42AC45B8E0074A55A /* SpoqaHanSansNeo-Thin.ttf */; };
+		611D8CFA2AC45B8F0074A55A /* SpoqaHanSansNeo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 611D8CF52AC45B8E0074A55A /* SpoqaHanSansNeo-Regular.ttf */; };
+		611D8CFB2AC45B8F0074A55A /* SpoqaHanSansNeo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 611D8CF62AC45B8F0074A55A /* SpoqaHanSansNeo-Bold.ttf */; };
 		61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */; };
 		61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */; };
 		61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */; };
@@ -36,6 +41,11 @@
 /* Begin PBXFileReference section */
 		611D8CEB2AC44D230074A55A /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SwiftUI+Extension.swift"; sourceTree = "<group>"; };
+		611D8CF22AC45B8D0074A55A /* SpoqaHanSansNeo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.ttf"; sourceTree = "<group>"; };
+		611D8CF32AC45B8D0074A55A /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
+		611D8CF42AC45B8E0074A55A /* SpoqaHanSansNeo-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Thin.ttf"; sourceTree = "<group>"; };
+		611D8CF52AC45B8E0074A55A /* SpoqaHanSansNeo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.ttf"; sourceTree = "<group>"; };
+		611D8CF62AC45B8F0074A55A /* SpoqaHanSansNeo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.ttf"; sourceTree = "<group>"; };
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +99,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		611D8CF12AC45B7C0074A55A /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				611D8CF62AC45B8F0074A55A /* SpoqaHanSansNeo-Bold.ttf */,
+				611D8CF22AC45B8D0074A55A /* SpoqaHanSansNeo-Light.ttf */,
+				611D8CF32AC45B8D0074A55A /* SpoqaHanSansNeo-Medium.ttf */,
+				611D8CF52AC45B8E0074A55A /* SpoqaHanSansNeo-Regular.ttf */,
+				611D8CF42AC45B8E0074A55A /* SpoqaHanSansNeo-Thin.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		61AC7F922AB6D4A300B0B6B5 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +130,7 @@
 		61AC7F9D2AB6D4A300B0B6B5 /* onboard-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				611D8CF12AC45B7C0074A55A /* Font */,
 				61AC80032AB73A0F00B0B6B5 /* Extensions */,
 				61AC7FE82AB72E5100B0B6B5 /* Enum */,
 				61AC7FDE2AB6E6C800B0B6B5 /* Utils */,
@@ -316,8 +339,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				611D8CF92AC45B8F0074A55A /* SpoqaHanSansNeo-Thin.ttf in Resources */,
+				611D8CFA2AC45B8F0074A55A /* SpoqaHanSansNeo-Regular.ttf in Resources */,
+				611D8CF72AC45B8F0074A55A /* SpoqaHanSansNeo-Light.ttf in Resources */,
 				61AC7FAB2AB6D4A500B0B6B5 /* LaunchScreen.storyboard in Resources */,
+				611D8CFB2AC45B8F0074A55A /* SpoqaHanSansNeo-Bold.ttf in Resources */,
 				61AC7FA82AB6D4A500B0B6B5 /* Assets.xcassets in Resources */,
+				611D8CF82AC45B8F0074A55A /* SpoqaHanSansNeo-Medium.ttf in Resources */,
 				61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
