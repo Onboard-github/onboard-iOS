@@ -15,6 +15,6 @@ enum AuthRequest {
 }
 
 struct AuthDTO: Decodable {
-    let accessToken: String?
-    let refreshToken: String?
+    let accessToken: String
+    let refreshToken: String
 }

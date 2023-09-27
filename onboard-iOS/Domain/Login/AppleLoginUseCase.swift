@@ -55,7 +55,10 @@ extension AppleLoginUseCaseImpl: AppleLoginDelegate {
             let result = try await self.authRepository.signIn(
                 req: AuthEntity.Req(type: .apple, token: token)
             )
-            let isExisted = result.accessToken != nil
+
+            // TODO: 온보딩 진행정보 받아오기 호출 구현
+            // 임시로 false 처리
+            let isExisted = false
 
             self._result.onNext(isExisted)
         }

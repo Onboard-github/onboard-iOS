@@ -9,8 +9,8 @@ import Foundation
 
 enum AuthEntity {
     struct Res {
-        let accessToken: String?
-        let refreshToken: String?
+        let accessToken: String
+        let refreshToken: String
     }
 
     struct Req {
