@@ -38,7 +38,11 @@ final class TermsView: UIView {
     // MARK: - Bind
 
     func bind(text: String) {
-        self.contentLabel.text = text
+        self.contentLabel.setAttributed(
+            lineHeight: 20,
+            letterSpacing: -0.4,
+            text: text
+        )
     }
 
     // MARK: - Configure
@@ -50,6 +54,8 @@ final class TermsView: UIView {
         self.stackView.alignment = .center
         
         self.contentLabel.numberOfLines = 0
+        self.contentLabel.font = UIFont(name: "SpoqaHanSansNeo-Normal", size: 14)
+        self.contentLabel.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
 
         self.makeConstraints()
     }
