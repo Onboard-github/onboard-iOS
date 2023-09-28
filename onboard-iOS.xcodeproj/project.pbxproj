@@ -14,6 +14,7 @@
 		611D8CF92AC45B8F0074A55A /* SpoqaHanSansNeo-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 611D8CF42AC45B8E0074A55A /* SpoqaHanSansNeo-Thin.ttf */; };
 		611D8CFA2AC45B8F0074A55A /* SpoqaHanSansNeo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 611D8CF52AC45B8E0074A55A /* SpoqaHanSansNeo-Regular.ttf */; };
 		611D8CFB2AC45B8F0074A55A /* SpoqaHanSansNeo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 611D8CF62AC45B8F0074A55A /* SpoqaHanSansNeo-Bold.ttf */; };
+		618175F52AC5722500B5E2A0 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */; };
 		61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */; };
 		61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */; };
 		61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		611D8CF42AC45B8E0074A55A /* SpoqaHanSansNeo-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Thin.ttf"; sourceTree = "<group>"; };
 		611D8CF52AC45B8E0074A55A /* SpoqaHanSansNeo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.ttf"; sourceTree = "<group>"; };
 		611D8CF62AC45B8F0074A55A /* SpoqaHanSansNeo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.ttf"; sourceTree = "<group>"; };
+		618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 			children = (
 				61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */,
 				611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */,
+				618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				618175F52AC5722500B5E2A0 /* UILabel+Extension.swift in Sources */,
 				611D8CEE2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift in Sources */,
 				611D8CEC2AC44D230074A55A /* TermsView.swift in Sources */,
 				61AC7FCE2AB6DDE300B0B6B5 /* TestDTO.swift in Sources */,
