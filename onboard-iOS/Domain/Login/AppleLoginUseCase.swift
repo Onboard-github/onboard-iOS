@@ -59,6 +59,9 @@ extension AppleLoginUseCaseImpl: AppleLoginDelegate {
             // TODO: 온보딩 진행정보 받아오기 호출 구현
             // 임시로 false 처리
             let isExisted = false
+            print(result.accessToken)
+            print("-=-----==========")
+            print(result.refreshToken)
 
             self._result.onNext(isExisted)
         }
