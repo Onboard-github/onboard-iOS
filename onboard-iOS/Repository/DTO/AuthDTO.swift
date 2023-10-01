@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+enum AuthRequest {
+    struct Body: Encodable {
+        let type: String
+        let token: String
+    }
+}
+
+struct AuthDTO: Decodable {
+    let accessToken: String?
+    let refreshToken: String?
+}
+
