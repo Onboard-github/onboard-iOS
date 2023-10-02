@@ -21,7 +21,7 @@ final class TestReactor: Reactor {
     }
 
     enum Mutation {
-        case setLoginResult(token: String)
+        case setLoginResult(result: String)
     }
 
     struct State {
@@ -29,9 +29,14 @@ final class TestReactor: Reactor {
     }
 
     private let useCase: TestUseCase
+    private let appleUseCase: AppleLoginUseCase
 
-    init(useCase: TestUseCase) {
+    init(
+        useCase: TestUseCase,
+        appleUseCase: AppleLoginUseCase
+    ) {
         self.useCase = useCase
+        self.appleUseCase = appleUseCase
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -40,8 +45,7 @@ final class TestReactor: Reactor {
             return self.fetchTestResult()
 
         case .apple:
-            // TODO: Apple Login
-            return .empty()
+            return self.excuteAppleLogin()
 
         case .google:
             // TODO: Google Login
@@ -63,9 +67,41 @@ final class TestReactor: Reactor {
 
         return state
     }
+
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+
+        let loginMutation = self.mutation(
+            result: self.appleUseCase.result
+        )
+
+        return Observable.merge(mutation, loginMutation)
+    }
+
 }
 
 extension TestReactor {
+
+    private func mutation(result: Observable<Bool>) -> Observable<Mutation> {
+        return result.flatMap { response -> Observable<Mutation> in
+            if response {
+                return .just(.setLoginResult(result: "success"))
+            }
+            return .just(.setLoginResult(result: "fail"))
+        }
+    }
+
+    private func excuteAppleLogin() -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self else { return Disposables.create() }
+
+            Task {
+                do {
+                    await self.appleUseCase.signIn()
+                }
+            }
+            return Disposables.create()
+        }
+    }
 
     private func fetchTestResult() -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
@@ -75,7 +111,7 @@ extension TestReactor {
                 do {
                     let result = try await self.useCase.fetchTestAPi()
 
-                    observer.onNext(.setLoginResult(token: result.text))
+                    observer.onNext(.setLoginResult(result: result.text))
                     observer.onCompleted()
 
                 } catch {
