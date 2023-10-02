@@ -46,6 +46,10 @@ final class TestViewController: UIViewController, View {
             .map { Reactor.Action.testAPI }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+
+        self.testView.didTapAppleButton = {
+            reactor.action.onNext(.apple)
+        }
     }
 
     private func bindState(reactor: TestReactor) {
