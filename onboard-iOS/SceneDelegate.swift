@@ -27,7 +27,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             appleUseCase: AppleLoginUseCaseImpl(
                 appleLoginManager: AppleLoginManagerImpl(),
                 authRepository: AuthRepositoryImpl()
-            ))
+            ),
+            kakaoUseCase: KakaoLoginUseCaseImpl(
+                kakaoLoginManager: KakaoLoginManagerImpl(),
+                authRepository: AuthRepositoryImpl()
+            )
+        )
         let testViewController = TestViewController(reactor: testReactor)
 
         self.window?.rootViewController = testViewController

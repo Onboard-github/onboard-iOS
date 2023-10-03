@@ -30,13 +30,16 @@ final class TestReactor: Reactor {
 
     private let useCase: TestUseCase
     private let appleUseCase: AppleLoginUseCase
+    private let kakaoUseCase: KakaoLoginUseCase
 
     init(
         useCase: TestUseCase,
-        appleUseCase: AppleLoginUseCase
+        appleUseCase: AppleLoginUseCase,
+        kakaoUseCase: KakaoLoginUseCase
     ) {
         self.useCase = useCase
         self.appleUseCase = appleUseCase
+        self.kakaoUseCase = kakaoUseCase
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -53,7 +56,7 @@ final class TestReactor: Reactor {
 
         case .kakao:
             // TODO: Kakao Login
-            return .empty()
+            return self.excuteKakaoLogin()
         }
     }
 
@@ -97,6 +100,18 @@ extension TestReactor {
             Task {
                 do {
                     await self.appleUseCase.signIn()
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    private func excuteKakaoLogin() -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self else { return Disposables.create() }
+            Task {
+                do {
+                    await self.kakaoUseCase.signIn()
                 }
             }
             return Disposables.create()
