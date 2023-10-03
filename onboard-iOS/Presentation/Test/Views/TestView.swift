@@ -26,10 +26,17 @@ final class TestView: UIView {
         button.contentMode = .scaleAspectFit
         return button
     }()
+    private let kakaoButton: UIButton = {
+        let button = UIButton() // KOLoginButton()
+        button.setTitle("kako login", for: .normal)
+        button.backgroundColor = .lightGray
+        return button
+    }()
 
     // MARK: - Properties
 
     var didTapAppleButton: (() -> Void)?
+    var didTapKakaoButton: (() -> Void)?
 
     // MARK: - Initialize
 
@@ -60,11 +67,16 @@ final class TestView: UIView {
         self.appleButton.addAction(UIAction(handler: { _ in
             self.didTapAppleButton?()
         }), for: .touchUpInside)
+        
+        self.kakaoButton.addAction(UIAction(handler: { _ in
+            self.didTapKakaoButton?()
+        }), for: .touchUpInside)
     }
 
     private func makeConstraints() {
         self.addSubview(self.label)
         self.addSubview(self.appleButton)
+        self.addSubview(self.kakaoButton)
 
         self.label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -75,6 +87,11 @@ final class TestView: UIView {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(45)
             $0.top.equalTo(self.snp.centerY)
+        }
+        
+        self.kakaoButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(appleButton.snp.bottom).inset(-10)
         }
     }
 }

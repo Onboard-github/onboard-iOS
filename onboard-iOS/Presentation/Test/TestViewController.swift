@@ -50,6 +50,10 @@ final class TestViewController: UIViewController, View {
         self.testView.didTapAppleButton = {
             reactor.action.onNext(.apple)
         }
+        
+        self.testView.didTapKakaoButton = {
+            reactor.action.onNext(.kakao)
+        }
     }
 
     private func bindState(reactor: TestReactor) {
