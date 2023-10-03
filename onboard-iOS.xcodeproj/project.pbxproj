@@ -35,6 +35,9 @@
 		61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FE62AB6EEB700B0B6B5 /* APIConstants.swift */; };
 		61AC7FEA2AB7309400B0B6B5 /* APIEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FE92AB7309400B0B6B5 /* APIEventLogger.swift */; };
 		61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */; };
+		AA09C27A2ACBE9BC00F51A96 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C2792ACBE9BC00F51A96 /* KakaoSDKAuth */; };
+		AA09C27C2ACBE9BC00F51A96 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27B2ACBE9BC00F51A96 /* KakaoSDKCommon */; };
+		AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,10 +75,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				61AC7FD72AB6E50200B0B6B5 /* SnapKit in Frameworks */,
+				AA09C27C2ACBE9BC00F51A96 /* KakaoSDKCommon in Frameworks */,
 				61AC7FD42AB6E4BC00B0B6B5 /* ReactorKit in Frameworks */,
 				61AC7FDD2AB6E5B900B0B6B5 /* SwiftKeychainWrapper in Frameworks */,
+				AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */,
 				61AC7FDA2AB6E56600B0B6B5 /* RxCocoa in Frameworks */,
 				61AC7FC72AB6DA4E00B0B6B5 /* Alamofire in Frameworks */,
+				AA09C27A2ACBE9BC00F51A96 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +286,9 @@
 				61AC7FD62AB6E50200B0B6B5 /* SnapKit */,
 				61AC7FD92AB6E56600B0B6B5 /* RxCocoa */,
 				61AC7FDC2AB6E5B900B0B6B5 /* SwiftKeychainWrapper */,
+				AA09C2792ACBE9BC00F51A96 /* KakaoSDKAuth */,
+				AA09C27B2ACBE9BC00F51A96 /* KakaoSDKCommon */,
+				AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */,
 			);
 			productName = "onboard-iOS";
 			productReference = 61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */;
@@ -315,6 +324,7 @@
 				61AC7FD52AB6E50200B0B6B5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				61AC7FD82AB6E56600B0B6B5 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				61AC7FDB2AB6E5B900B0B6B5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 61AC7F9C2AB6D4A300B0B6B5 /* Products */;
 			projectDirPath = "";
@@ -624,6 +634,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -651,6 +669,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 61AC7FDB2AB6E5B900B0B6B5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
+		};
+		AA09C2792ACBE9BC00F51A96 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		AA09C27B2ACBE9BC00F51A96 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
