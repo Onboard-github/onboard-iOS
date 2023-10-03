@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKAuth
+import KakaoSDKCommon
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -21,6 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.windowScene = scene
+        
+        self.initKakaoSDK()
 
         let testUseCase = TestUseCaseImpl(repository: TestRepositoryImpl())
         let testReactor = TestReactor(
@@ -60,3 +63,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+extension SceneDelegate {
+    private func initKakaoSDK() {
+        KakaoSDK.initSDK(appKey: "0fc9af67a72e49041aa31ec49dcd8bc0")
+    }
+}
