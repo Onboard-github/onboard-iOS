@@ -43,7 +43,7 @@ extension KakaoLoginManagerImpl {
                 return
             }
             
-            self.token = self.oAuthToJWT(accessToken: oauthToken.accessToken)
+            self.token = oauthToken.accessToken
         }
     }
     
@@ -57,20 +57,7 @@ extension KakaoLoginManagerImpl {
                 return
             }
             
-            self.token = self.oAuthToJWT(accessToken: oauthToken.accessToken)
+            self.token = oauthToken.accessToken
         }
-    }
-    
-    private func oAuthToJWT(accessToken: String) -> String {
-        let header = "{\"alg\":\"HS256\",\"typ\":\"JWT\"}"
-        let payload = "{\"access_token\":\"\(accessToken)\"}"
-
-        // 헤더와 페이로드를 base64 인코딩합니다.
-        let headerData = header.data(using: .utf8)!.base64EncodedString()
-        let payloadData = payload.data(using: .utf8)!.base64EncodedString()
-
-        // 헤더와 페이로드를 JWT 형식으로 연결하여 JWT 문자열을 생성합니다.
-        let jwt = "\(headerData).\(payloadData)"
-        return jwt
     }
 }
