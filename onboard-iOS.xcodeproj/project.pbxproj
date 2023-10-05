@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
 		611D8CA42AB8874D0074A55A /* AuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA32AB8874D0074A55A /* AuthEntity.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
 		611D8CA32AB8874D0074A55A /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
@@ -92,6 +94,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CFD50D72ACE78E80031269C /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				1CFD50D82ACE790D0031269C /* Values */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		1CFD50D82ACE790D0031269C /* Values */ = {
+			isa = PBXGroup;
+			children = (
+				1CFD50D92ACE79190031269C /* Colors.swift */,
+			);
+			path = Values;
+			sourceTree = "<group>";
+		};
 		611D8C9E2AB884AB0074A55A /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +162,7 @@
 				61AC7FB42AB6D68B00B0B6B5 /* Domain */,
 				61AC7FB32AB6D68400B0B6B5 /* Repository */,
 				61AC7FB22AB6D67B00B0B6B5 /* Network */,
+				1CFD50D72ACE78E80031269C /* DesignSystem */,
 				61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */,
 				61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */,
 				61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */,
@@ -372,6 +391,7 @@
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
 				611D8CAA2ABED03D0074A55A /* AuthDTO.swift in Sources */,
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
+				1CFD50DA2ACE79190031269C /* Colors.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
@@ -528,7 +548,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7YWVGV44MR;
+				DEVELOPMENT_TEAM = XBK9RNRMN8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -557,7 +577,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7YWVGV44MR;
+				DEVELOPMENT_TEAM = XBK9RNRMN8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
