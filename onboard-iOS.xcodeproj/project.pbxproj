@@ -17,6 +17,7 @@
 		618176182AD2C22A00B5E2A0 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176172AD2C22A00B5E2A0 /* AuthDTO.swift */; };
 		6181761E2AD2C66500B5E2A0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */; };
 		618176202AD2C6EE00B5E2A0 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */; };
+		618176232AD2C87C00B5E2A0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176222AD2C87C00B5E2A0 /* LoginView.swift */; };
 		61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */; };
 		61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */; };
 		61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		618176172AD2C22A00B5E2A0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
+		618176222AD2C87C00B5E2A0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,10 +130,19 @@
 		6181761C2AD2C65600B5E2A0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				618176212AD2C86D00B5E2A0 /* Views */,
 				6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */,
 				6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		618176212AD2C86D00B5E2A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				618176222AD2C87C00B5E2A0 /* LoginView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		61AC7F922AB6D4A300B0B6B5 = {
@@ -391,6 +402,7 @@
 				618176202AD2C6EE00B5E2A0 /* LoginReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
+				618176232AD2C87C00B5E2A0 /* LoginView.swift in Sources */,
 				618176162AD2C21000B5E2A0 /* AuthEntity.swift in Sources */,
 				61AC7FC02AB6D74A00B0B6B5 /* TestUseCase.swift in Sources */,
 				AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */,
