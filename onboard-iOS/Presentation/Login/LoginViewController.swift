@@ -64,8 +64,4 @@ final class LoginViewController: UIViewController, View {
             })
             .disposed(by: self.disposeBag)
     }
-
-    @objc private func buttonAction() {
-        GoogleLoginManager.shared.signIn(withPresenting: self)
-    }
 }
