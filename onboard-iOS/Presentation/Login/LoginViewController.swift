@@ -11,7 +11,7 @@ import ReactorKit
 
 final class LoginViewController: UIViewController, View {
 
-    typealias Reactor = TestReactor
+    typealias Reactor = LoginReactor
 
     // MARK: - Properties
 
@@ -25,7 +25,7 @@ final class LoginViewController: UIViewController, View {
         self.view = testView
     }
 
-    init(reactor: TestReactor) {
+    init(reactor: LoginReactor) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
     }
@@ -36,12 +36,12 @@ final class LoginViewController: UIViewController, View {
 
     // MARK: - Bind
 
-    func bind(reactor: TestReactor) {
+    func bind(reactor: LoginReactor) {
         self.bindAction(reactor: reactor)
         self.bindState(reactor: reactor)
     }
 
-    private func bindAction(reactor: TestReactor) {
+    private func bindAction(reactor: LoginReactor) {
         self.testView.googleLoginButtonAction = {
             reactor.action.onNext(.google)
         }
@@ -55,7 +55,7 @@ final class LoginViewController: UIViewController, View {
         }
     }
 
-    private func bindState(reactor: TestReactor) {
+    private func bindState(reactor: LoginReactor) {
         reactor.state
             .map { $0.result }
             .observe(on: MainScheduler.instance)
