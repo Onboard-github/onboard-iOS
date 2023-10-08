@@ -14,32 +14,34 @@ final class LoginView: UIView {
     // MARK: - Metric
 
     private enum Metric {
-        static let labelBottomMargin: CGFloat = 100
+        static let loginButtonHMargin: CGFloat = 18
+        static let loginButtonHeight: CGFloat = 18
+        static let loginButtonVMargin: CGFloat = 8
+        static let bottomMargin: CGFloat = 40
     }
 
     // MARK: - UI
 
     private let label = UILabel()
 
-    private let googleLoginButton: UIButton = {
+    private let googleButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Login", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .darkGray
+        button.setImage(UIImage(named: "btn_Google"), for: .normal)
+        button.contentMode = .scaleAspectFit
         return button
     }()
 
     private let appleButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "ic_apple_login"), for: .normal)
+        button.setImage(UIImage(named: "btn_Apple"), for: .normal)
         button.contentMode = .scaleAspectFit
         return button
     }()
 
     private let kakaoButton: UIButton = {
         let button = UIButton()
-        button.setTitle("kakao login", for: .normal)
-        button.backgroundColor = .lightGray
+        button.setImage(UIImage(named: "btn_Kakao"), for: .normal)
+        button.contentMode = .scaleAspectFit
         return button
     }()
 
@@ -75,44 +77,46 @@ final class LoginView: UIView {
     }
 
     private func addConfigure() {
-        self.appleButton.addAction(UIAction(handler: { _ in
-            self.didTapAppleButton?()
-        }), for: .touchUpInside)
+        self.appleButton.addAction(UIAction(
+            handler: { _ in
+                self.didTapAppleButton?()
+            }), for: .touchUpInside
+        )
 
-        self.kakaoButton.addAction(UIAction(handler: { _ in
-            self.didTapKakaoButton?()
-        }), for: .touchUpInside)
-
-        self.googleLoginButton.addAction(UIAction(handler: { _ in
-            self.didTapGoogleButton?()
-        }), for: .touchUpInside)
+        self.kakaoButton.addAction(UIAction(
+            handler: { _ in
+                self.didTapKakaoButton?()
+            }), for: .touchUpInside
+        )
+        
+        self.googleButton.addAction(UIAction(
+            handler: { _ in
+                self.didTapGoogleButton?()
+            }), for: .touchUpInside
+        )
     }
 
     private func makeConstraints() {
-        self.addSubview(self.label)
-        self.addSubview(self.googleLoginButton)
+        self.addSubview(self.googleButton)
         self.addSubview(self.appleButton)
         self.addSubview(self.kakaoButton)
 
-        self.label.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.snp.centerY).offset(-Metric.labelBottomMargin)
-        }
-
         self.appleButton.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(45)
-            $0.top.equalTo(self.snp.centerY)
+            $0.leading.trailing.equalToSuperview().inset(Metric.loginButtonHMargin)
+            $0.height.equalTo(Metric.loginButtonHeight)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-Metric.bottomMargin)
         }
 
         self.kakaoButton.snp.makeConstraints {
-            $0.leading.trailing.height.equalTo(appleButton)
-            $0.top.equalTo(appleButton.snp.bottom).inset(-10)
+            $0.leading.trailing.equalToSuperview().inset(Metric.loginButtonHMargin)
+            $0.height.equalTo(Metric.loginButtonHeight)
+            $0.bottom.equalTo(self.googleButton.snp.top).offset(-Metric.loginButtonVMargin)
         }
 
-        self.googleLoginButton.snp.makeConstraints {
-            $0.leading.trailing.height.equalTo(appleButton)
-            $0.top.equalTo(kakaoButton.snp.bottom).inset(-10)
+        self.googleButton.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(Metric.loginButtonHMargin)
+            $0.height.equalTo(Metric.loginButtonHeight)
+            $0.bottom.equalTo(self.appleButton.snp.top).offset(-Metric.loginButtonVMargin)
         }
     }
 }

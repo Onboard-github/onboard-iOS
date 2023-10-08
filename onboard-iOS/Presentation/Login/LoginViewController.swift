@@ -17,12 +17,12 @@ final class LoginViewController: UIViewController, View {
 
     var disposeBag = DisposeBag()
 
-    private let testView = TestView()
+    private let loginView = LoginView()
 
     // MARK: - Life Cycles
 
     override func loadView() {
-        self.view = testView
+        self.view = loginView
     }
 
     init(reactor: LoginReactor) {
@@ -42,15 +42,15 @@ final class LoginViewController: UIViewController, View {
     }
 
     private func bindAction(reactor: LoginReactor) {
-        self.testView.googleLoginButtonAction = {
+        self.loginView.didTapGoogleButton = {
             reactor.action.onNext(.google)
         }
 
-        self.testView.didTapAppleButton = {
+        self.loginView.didTapAppleButton = {
             reactor.action.onNext(.apple)
         }
 
-        self.testView.didTapKakaoButton = {
+        self.loginView.didTapKakaoButton = {
             reactor.action.onNext(.kakao)
         }
     }
@@ -60,7 +60,7 @@ final class LoginViewController: UIViewController, View {
             .map { $0.result }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] result in
-                self?.testView.bind(text: result)
+                self?.loginView.bind(text: result)
             })
             .disposed(by: self.disposeBag)
     }
