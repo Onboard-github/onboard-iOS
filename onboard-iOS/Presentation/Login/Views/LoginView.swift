@@ -25,6 +25,18 @@ final class LoginView: UIView {
 
     // MARK: - UI
 
+    private let diceLeftImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "img_dice_left")
+        return imageView
+    }()
+
+    private let diceRightImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "img_dice_right")
+        return imageView
+    }()
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "보드게임 랭킹 서비스"
@@ -116,6 +128,9 @@ final class LoginView: UIView {
     }
 
     private func makeConstraints() {
+        self.addSubview(self.diceLeftImageView)
+        self.addSubview(self.diceRightImageView)
+
         self.addSubview(self.titleLabel)
         self.addSubview(self.logoImageView)
         self.addSubview(self.subtitleLabel)
@@ -155,6 +170,16 @@ final class LoginView: UIView {
             $0.leading.trailing.equalToSuperview().inset(Metric.loginButtonHMargin)
             $0.height.equalTo(Metric.loginButtonHeight)
             $0.bottom.equalTo(self.appleButton.snp.top).offset(-Metric.loginButtonVMargin)
+        }
+
+        self.diceLeftImageView.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.bottom.equalTo(self.kakaoButton.snp.top).offset(-11)
+        }
+
+        self.diceRightImageView.snp.makeConstraints {
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalTo(self.titleLabel.snp.top).offset(-18)
         }
     }
 }
