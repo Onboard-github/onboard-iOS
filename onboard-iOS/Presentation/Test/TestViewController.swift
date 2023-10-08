@@ -43,9 +43,13 @@ final class TestViewController: UIViewController, View {
 
     private func bindAction(reactor: TestReactor) {
         self.rx.rxViewDidLoad
-            .map { Reactor.Action.testAPI }
+            .map { Reactor.Action.testAPI}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+
+        self.testView.googleLoginButtonAction = {
+            reactor.action.onNext(.google)
+        }
 
         self.testView.didTapAppleButton = {
             reactor.action.onNext(.apple)
@@ -64,5 +68,9 @@ final class TestViewController: UIViewController, View {
                 self?.testView.bind(text: result)
             })
             .disposed(by: self.disposeBag)
+    }
+    
+    @objc private func buttonAction() {
+        GoogleLoginManager.shared.signIn(withPresenting: self)
     }
 }
