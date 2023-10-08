@@ -2,13 +2,14 @@
 //  Encodable+Ext.swift
 //  onboard-iOS
 //
-//  Created by 혜리 on 2023/09/30.
+//  Created by Daye on 2023/09/23.
 //
 
 import Foundation
 
 extension Encodable {
 
+    /// Encodable -> Dictionary([String: Any])로 변환
     func encode() throws -> [String: Any] {
 
         let data = try JSONEncoder().encode(self)
@@ -23,3 +24,4 @@ extension Encodable {
         return dictionary
     }
 }
+

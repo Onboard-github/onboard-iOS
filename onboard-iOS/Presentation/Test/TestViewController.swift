@@ -43,14 +43,20 @@ final class TestViewController: UIViewController, View {
 
     private func bindAction(reactor: TestReactor) {
         self.rx.rxViewDidLoad
-            .map { Reactor.Action(action: Reactor.ActionType.testAPI,
-                                  uiViewController: self) }
+            .map { Reactor.Action.testAPI}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        
+
         self.testView.googleLoginButtonAction = {
-            reactor.action.onNext(Reactor.Action(action: Reactor.ActionType.google,
-                                                 uiViewController: self))
+            reactor.action.onNext(.google)
+        }
+
+        self.testView.didTapAppleButton = {
+            reactor.action.onNext(.apple)
+        }
+        
+        self.testView.didTapKakaoButton = {
+            reactor.action.onNext(.kakao)
         }
     }
 

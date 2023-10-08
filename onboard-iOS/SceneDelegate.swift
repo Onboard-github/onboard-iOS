@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import KakaoSDKCommon
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -20,9 +22,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.windowScene = scene
+        
+        self.initKakaoSDK()
 
         let testUseCase = TestUseCaseImpl(repository: TestRepositoryImpl())
-        let testReactor = TestReactor(useCase: testUseCase)
+        let testReactor = TestReactor(
+            useCase: testUseCase,
+            appleUseCase: AppleLoginUseCaseImpl(
+                appleLoginManager: AppleLoginManagerImpl(),
+                authRepository: AuthRepositoryImpl()
+            ),
+            kakaoUseCase: KakaoLoginUseCaseImpl(
+                kakaoLoginManager: KakaoLoginManagerImpl(),
+                authRepository: AuthRepositoryImpl()
+            )
+        )
         let testViewController = TestViewController(reactor: testReactor)
 
         self.window?.rootViewController = testViewController
@@ -40,5 +54,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) { }
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                _ = AuthController.handleOpenUrl(url: url)
+            }
+        }
+    }
 }
 
+extension SceneDelegate {
+    private func initKakaoSDK() {
+        KakaoSDK.initSDK(appKey: "0fc9af67a72e49041aa31ec49dcd8bc0")
+    }
+}

@@ -2,7 +2,7 @@
 //  AuthDTO.swift
 //  onboard-iOS
 //
-//  Created by 혜리 on 2023/09/29.
+//  Created by Daye on 2023/09/23.
 //
 
 import Foundation
@@ -15,7 +15,6 @@ enum AuthRequest {
 }
 
 struct AuthDTO: Decodable {
-    let accessToken: String?
-    let refreshToken: String?
+    let accessToken: String
+    let refreshToken: String
 }
-

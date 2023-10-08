@@ -2,15 +2,15 @@
 //  AuthEntity.swift
 //  onboard-iOS
 //
-//  Created by 혜리 on 2023/09/29.
+//  Created by Daye on 2023/09/18.
 //
 
 import Foundation
 
 enum AuthEntity {
     struct Res {
-        let accessToken: String?
-        let refreshToken: String?
+        let accessToken: String
+        let refreshToken: String
     }
 
     struct Req {
