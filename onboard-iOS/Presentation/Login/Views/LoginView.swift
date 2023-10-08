@@ -14,15 +14,34 @@ final class LoginView: UIView {
     // MARK: - Metric
 
     private enum Metric {
+        static let titleTopMargin: CGFloat = 215
+        static let logoTopMarign: CGFloat = 14
+        static let subtitleTopMargin: CGFloat = 19
         static let loginButtonHMargin: CGFloat = 18
-        static let loginButtonHeight: CGFloat = 18
+        static let loginButtonHeight: CGFloat = 48
         static let loginButtonVMargin: CGFloat = 8
         static let bottomMargin: CGFloat = 40
     }
 
     // MARK: - UI
 
-    private let label = UILabel()
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "보드게임 랭킹 서비스"
+        return label
+    }()
+
+    private let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "보드게임을 더 즐겁게"
+        return label
+    }()
+
+    private let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "img_onboardLogo")
+        return imageView
+    }()
 
     private let googleButton: UIButton = {
         let button = UIButton()
@@ -64,8 +83,8 @@ final class LoginView: UIView {
 
     // MARK: - Bind
 
-    func bind(text: String) {
-        self.label.text = "Hi!! \(text)"
+    func bind() {
+        // bind
     }
 
     // MARK: - Configure
@@ -97,9 +116,28 @@ final class LoginView: UIView {
     }
 
     private func makeConstraints() {
+        self.addSubview(self.titleLabel)
+        self.addSubview(self.logoImageView)
+        self.addSubview(self.subtitleLabel)
+
         self.addSubview(self.googleButton)
         self.addSubview(self.appleButton)
         self.addSubview(self.kakaoButton)
+
+        self.titleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(Metric.titleTopMargin)
+        }
+
+        self.logoImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(Metric.logoTopMarign)
+        }
+
+        self.subtitleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(self.logoImageView.snp.bottom).offset(Metric.subtitleTopMargin)
+        }
 
         self.appleButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(Metric.loginButtonHMargin)

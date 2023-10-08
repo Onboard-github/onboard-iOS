@@ -56,12 +56,6 @@ final class LoginViewController: UIViewController, View {
     }
 
     private func bindState(reactor: LoginReactor) {
-        reactor.state
-            .map { $0.result }
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] result in
-                self?.loginView.bind(text: result)
-            })
-            .disposed(by: self.disposeBag)
+  
     }
 }
