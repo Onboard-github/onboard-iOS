@@ -9,4 +9,18 @@ import UIKit
 
 final class TermsAgreementCell: BaseTableViewCell<String> {
 
+    // MARK: - UIs
+
+    private let itemView = TermsAgreementItemView()
+
+    // MARK: - Layout
+
+    override func setupConstraints() {
+        self.contentView.addSubview(self.itemView)
+
+        self.itemView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(7)
+            $0.top.bottom.equalToSuperview()
+        }
+    }
 }
