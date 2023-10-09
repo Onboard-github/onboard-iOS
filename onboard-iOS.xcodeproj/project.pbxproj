@@ -19,6 +19,9 @@
 		618176282AD3C7E500B5E2A0 /* TermsAgreementItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */; };
 		6181762A2AD3D56B00B5E2A0 /* TermsAgreementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */; };
 		6181762D2AD3D66D00B5E2A0 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181762C2AD3D66D00B5E2A0 /* BaseTableViewCell.swift */; };
+		6181762F2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181762E2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift */; };
+		618176312AD3D89200B5E2A0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176302AD3D89200B5E2A0 /* UITableView+Extension.swift */; };
+		618176332AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176322AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift */; };
 		61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */; };
 		61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */; };
 		61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */; };
@@ -56,6 +59,9 @@
 		618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementItemView.swift; sourceTree = "<group>"; };
 		618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementCell.swift; sourceTree = "<group>"; };
 		6181762C2AD3D66D00B5E2A0 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		6181762E2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		618176302AD3D89200B5E2A0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		618176322AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -286,6 +292,9 @@
 				61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */,
 				611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */,
 				618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */,
+				6181762E2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift */,
+				618176302AD3D89200B5E2A0 /* UITableView+Extension.swift */,
+				618176322AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -391,11 +400,14 @@
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
+				6181762F2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift in Sources */,
 				61AC7FC02AB6D74A00B0B6B5 /* TestUseCase.swift in Sources */,
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
+				618176332AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
+				618176312AD3D89200B5E2A0 /* UITableView+Extension.swift in Sources */,
 				618176282AD3C7E500B5E2A0 /* TermsAgreementItemView.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
