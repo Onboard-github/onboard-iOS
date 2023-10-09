@@ -9,11 +9,18 @@ import UIKit
 
 final class TermsAgreementItemView: UIView {
 
+    // MARK: - Metric
+
+    private enum Metric {
+        static let titleTrailing: CGFloat = 80
+        static let detailTop: CGFloat = 6
+        static let buttonSize: CGFloat = 18
+    }
+
     // MARK: - UIs
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "(필수) 서비스 이용약관"
         return label
     }()
 
@@ -42,6 +49,12 @@ final class TermsAgreementItemView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Bind
+
+    func bind(title: String) {
+        self.titleLabel.text = title
+    }
+
     // MARK: - Configure
 
     private func configure() {
@@ -56,18 +69,18 @@ final class TermsAgreementItemView: UIView {
 
         self.titleLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
-            $0.trailing.equalToSuperview().offset(-80)
+            $0.trailing.equalToSuperview().offset(-Metric.titleTrailing)
         }
 
         self.detailButton.snp.makeConstraints {
-            $0.top.equalTo(self.titleLabel.snp.bottom).offset(6)
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(Metric.detailTop)
             $0.leading.equalToSuperview()
         }
 
         self.checkButton.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.size.equalTo(18)
+            $0.size.equalTo(Metric.buttonSize)
         }
     }
 }
@@ -79,6 +92,7 @@ struct TermsAgreementItemViewPreview: PreviewProvider {
     static var previews: some View {
         UIViewPreview {
             let view = TermsAgreementItemView()
+            view.bind(title: "(필수) 서비스 이용약관")
             return view
 
         }.previewLayout(.sizeThatFits)
