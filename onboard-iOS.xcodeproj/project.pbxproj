@@ -13,6 +13,7 @@
 		1CA1BBB62ACF109B000C5F7E /* SpoqaHanSansNeo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBB12ACF109B000C5F7E /* SpoqaHanSansNeo-Bold.ttf */; };
 		1CA1BBB72ACF109B000C5F7E /* SpoqaHanSansNeo-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBB22ACF109B000C5F7E /* SpoqaHanSansNeo-Thin.ttf */; };
 		1CA1BBB92ACF123D000C5F7E /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBB82ACF123D000C5F7E /* Typography.swift */; };
+		1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
@@ -56,6 +57,7 @@
 		1CA1BBB12ACF109B000C5F7E /* SpoqaHanSansNeo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.ttf"; sourceTree = "<group>"; };
 		1CA1BBB22ACF109B000C5F7E /* SpoqaHanSansNeo-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Thin.ttf"; sourceTree = "<group>"; };
 		1CA1BBB82ACF123D000C5F7E /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImage.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				1CFD50D92ACE79190031269C /* Colors.swift */,
 				1CA1BBB82ACF123D000C5F7E /* Typography.swift */,
+				1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */,
 			);
 			path = Values;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
+				1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */,
 				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
 				61AC7FC02AB6D74A00B0B6B5 /* TestUseCase.swift in Sources */,
 				AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */,
