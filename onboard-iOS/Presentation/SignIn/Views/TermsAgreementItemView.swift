@@ -75,6 +75,7 @@ final class TermsAgreementItemView: UIView {
         self.detailButton.snp.makeConstraints {
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(Metric.detailTop)
             $0.leading.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-20)
         }
 
         self.checkButton.snp.makeConstraints {

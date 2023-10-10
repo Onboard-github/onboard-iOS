@@ -13,6 +13,10 @@ final class TermsAgreementCell: BaseTableViewCell<String> {
 
     private let itemView = TermsAgreementItemView()
 
+    override func bind(_ model: String?) {
+        self.itemView.bind(title: model ?? "")
+    }
+
     // MARK: - Layout
 
     override func setupConstraints() {

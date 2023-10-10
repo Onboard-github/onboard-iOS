@@ -19,7 +19,22 @@ final class TermsAgreementModalView: UIView {
     private let separatorView = UIView()
     private let allAgreementButton = UIButton()
 
-    private let registerButton = UIButton()
+    private let registerButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("가입하기", for: .normal)
+        button.backgroundColor = .orange
+        button.layer.cornerRadius = 8
+        button.clipsToBounds = true
+        return button
+    }()
+
+    // MARK: - Properties
+
+    private var termsList: [String] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
 
     // MARK: - Initialize
 
@@ -34,14 +49,18 @@ final class TermsAgreementModalView: UIView {
 
     // MARK: - Bind
 
-    func bind() {
-
+    func bind(termsList: [String]) {
+        self.termsList = termsList
     }
 
     // MARK: - Configure
 
     private func configure() {
         self.backgroundColor = .white
+        self.tableView.registCell(type: TermsAgreementCell.self)
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.dataSource = self
+        self.tableView.separatorStyle = .none
 
         self.titleLabel.font = UIFont(name: "SpoqaHanSansNeo-Bold", size: 14)
         self.titleLabel.setAttributed(
@@ -64,6 +83,8 @@ final class TermsAgreementModalView: UIView {
     private func makeConstraints() {
         self.addSubview(self.titleLabel)
         self.addSubview(self.subTitleLabel)
+        self.addSubview(self.tableView)
+        self.addSubview(self.registerButton)
 
         self.titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(40)
@@ -74,6 +95,31 @@ final class TermsAgreementModalView: UIView {
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(4)
             $0.leading.trailing.equalToSuperview().inset(24)
         }
+
+        self.tableView.snp.makeConstraints {
+            $0.top.equalTo(self.subTitleLabel).offset(40)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalTo(self.registerButton.snp.top).offset(-40)
+        }
+
+        self.registerButton.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+            $0.height.equalTo(48)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
+    }
+}
+
+extension TermsAgreementModalView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.termsList.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(withType: TermsAgreementCell.self, for: indexPath)
+        cell.bind(self.termsList[indexPath.row])
+
+        return cell
     }
 }
 
@@ -85,7 +131,7 @@ struct TermsAgreementModalViewPreview: PreviewProvider {
         UIViewPreview {
 
             let view = TermsAgreementModalView()
-
+            view.bind(termsList: ["서비스 이용약관", "개인정보 처리방침"])
             return view
 
         }.previewLayout(.sizeThatFits)
