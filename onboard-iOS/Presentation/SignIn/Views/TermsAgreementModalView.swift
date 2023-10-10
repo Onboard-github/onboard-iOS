@@ -16,8 +16,21 @@ final class TermsAgreementModalView: UIView {
 
     private let tableView = UITableView()
 
-    private let separatorView = UIView()
-    private let allAgreementButton = UIButton()
+    private let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        return view
+    }()
+
+    private let allAgreementButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("약관 전체 동의  ", for: .normal)
+        button.setImage(UIImage(named: "img_select_off"), for: .normal)
+        button.setImage(UIImage(named: "img_select_on"), for: .selected)
+        button.setTitleColor(.black, for: .normal)
+        button.semanticContentAttribute = .forceRightToLeft
+        return button
+    }()
 
     private let registerButton: UIButton = {
         let button = UIButton()
@@ -84,6 +97,8 @@ final class TermsAgreementModalView: UIView {
         self.addSubview(self.titleLabel)
         self.addSubview(self.subTitleLabel)
         self.addSubview(self.tableView)
+        self.addSubview(self.separatorView)
+        self.addSubview(self.allAgreementButton)
         self.addSubview(self.registerButton)
 
         self.titleLabel.snp.makeConstraints {
@@ -99,7 +114,20 @@ final class TermsAgreementModalView: UIView {
         self.tableView.snp.makeConstraints {
             $0.top.equalTo(self.subTitleLabel).offset(40)
             $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalTo(self.separatorView.snp.top).offset(-20)
+        }
+
+        self.separatorView.snp.makeConstraints {
+            $0.bottom.equalTo(self.allAgreementButton.snp.top).offset(-20)
+            $0.height.equalTo(1)
+            $0.leading.equalToSuperview().inset(37)
+            $0.trailing.equalToSuperview().inset(27)
+        }
+
+        self.allAgreementButton.snp.makeConstraints {
             $0.bottom.equalTo(self.registerButton.snp.top).offset(-40)
+            $0.height.equalTo(22)
+            $0.trailing.equalToSuperview().inset(27)
         }
 
         self.registerButton.snp.makeConstraints {
