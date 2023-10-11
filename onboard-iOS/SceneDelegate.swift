@@ -26,8 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.initKakaoSDK()
 
         let testUseCase = TestUseCaseImpl(repository: TestRepositoryImpl())
-        let testReactor = TestReactor(
-            useCase: testUseCase,
+        let loginReactor = LoginReactor(
             appleUseCase: AppleLoginUseCaseImpl(
                 appleLoginManager: AppleLoginManagerImpl(),
                 authRepository: AuthRepositoryImpl()
@@ -37,9 +36,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 authRepository: AuthRepositoryImpl()
             )
         )
-        let testViewController = TestViewController(reactor: testReactor)
+        let loginViewController = LoginViewController(reactor: loginReactor)
 
-        self.window?.rootViewController = testViewController
+        self.window?.rootViewController = loginViewController
         
         self.window?.makeKeyAndVisible()
     }
