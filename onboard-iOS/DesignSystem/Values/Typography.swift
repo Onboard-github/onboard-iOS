@@ -30,11 +30,11 @@ enum Font: String {
         static let title5 = setFont(font: .bold, fontSize: 13)
         
         // Body
-        static let body1_M = setFont(font: .medium, fontSize: 26)
-        static let body1_R = setFont(font: .regular, fontSize: 26)
+        static let body1_M = setFont(font: .medium, fontSize: 18)
+        static let body1_R = setFont(font: .regular, fontSize: 18)
         
-        static let body2_M = setFont(font: .medium, fontSize: 24)
-        static let body2_R = setFont(font: .regular, fontSize: 24)
+        static let body2_M = setFont(font: .medium, fontSize: 16)
+        static let body2_R = setFont(font: .regular, fontSize: 16)
         
         static let body3_M = setFont(font: .medium, fontSize: 14)
         static let body3_R = setFont(font: .regular, fontSize: 14)
