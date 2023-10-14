@@ -18,6 +18,7 @@ final class TestViewController: UIViewController, View {
     var disposeBag = DisposeBag()
 
     private let testView = TestView()
+    private let alertView = PopupView()
 
     // MARK: - Life Cycles
 
@@ -53,6 +54,26 @@ final class TestViewController: UIViewController, View {
         
         self.testView.didTapKakaoButton = {
             reactor.action.onNext(.kakao)
+        }
+        
+        self.testView.didTapProfileButton = { [self] in
+            view.addSubview(alertView)
+            
+            let popupState = PopupState(titleLabel: "프로필 설정",
+                                        subTitleLabel: "모임에서 사용할 닉네임을 10자 이하로 입력해주세요.",
+                                        textFieldPlaceholder: "닉네임을 입력해주세요.",
+                                        textFieldSubTitleLabel: "한글, 영문, 숫자를 조합하여 사용 가능합니다.",
+                                        countLabel: "0/10",
+                                        buttonLabel: "모임 등록하기",
+                                        linkButtonState: LinkButtonState(isLink: true))
+            
+            alertView.setState(popupState: popupState, onClickLink: { })
+            alertView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
+            alertView.contentView.snp.makeConstraints {
+                $0.height.equalTo(228)
+            }
         }
     }
 

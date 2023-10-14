@@ -16,7 +16,7 @@ class PopupView: UIView {
         return view
     }()
     
-    private let contentView: UIView = {
+    let contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 12
