@@ -11,8 +11,13 @@ import SnapKit
 final class GroupSearchView: UIView {
     // MARK: - Metric
     private enum Metric {
-        static let topMargin = 20
-        static let sideMargin: CGFloat = 18
+        static let titleTop = 20
+        static let side: CGFloat = 18
+        
+        enum Controls {
+            static let stackTop = 26
+            static let stackBottom = 24
+        }
     }
     
     // MARK: - UI
@@ -22,6 +27,26 @@ final class GroupSearchView: UIView {
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         return titleLabel
+    }()
+    
+    private let searchBar: UISearchBar = {
+        let bar = UISearchBar()
+        return bar
+    }()
+    
+    private let addGroupButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("우리 모임 새로 등록하기 +", for: .normal)
+        button.setTitleColor(.label, for: .normal)
+        return button
+    }()
+    
+    private lazy var controlsStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.addArrangedSubview(self.searchBar)
+        stackView.addArrangedSubview(self.addGroupButton)
+        return stackView
     }()
     
     private let button = UIButton()
@@ -36,7 +61,7 @@ final class GroupSearchView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
 
     // MARK: - Bind
@@ -61,12 +86,17 @@ final class GroupSearchView: UIView {
     private func makeConstraints() {
         self.addSubview(self.titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).inset(Metric.topMargin)
-            make.centerX.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(Metric.sideMargin)
+            make.top.equalTo(safeAreaLayoutGuide).inset(Metric.titleTop)
+            make.leading.trailing.equalToSuperview().inset(Metric.side)
         }
+        
+        self.addSubview(self.controlsStack)
+        controlsStack.snp.makeConstraints { make in
+            make.top.equalTo(self.titleLabel.snp.bottom).offset(Metric.Controls.stackTop)
+            make.leading.trailing.equalToSuperview().inset(Metric.side)
+        }
+        
         self.addSubview(self.button)
-
         self.button.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(self.snp.centerY)
