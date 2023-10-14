@@ -46,13 +46,6 @@ class PopupView: UIView {
         return label
     }()
     
-    private let textFieldTitleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = Colors.Gray_13
-        label.font = Font.Typography.body4_R
-        return label
-    }()
-    
     private let textField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
@@ -138,7 +131,7 @@ class PopupView: UIView {
     private func makeConstraints() {
         self.addSubview(self.backgroundView)
         self.addSubview(self.contentView)
-        self.contentView.addSubview(self.headerStackView)
+        self.contentView.addSubview(self.titleStackView)
         self.contentView.addSubview(self.textFieldStackView)
         self.contentView.addSubview(self.registerButton)
         
@@ -154,7 +147,7 @@ class PopupView: UIView {
             $0.centerY.equalToSuperview()
         }
         
-        self.headerStackView.snp.makeConstraints {
+        self.titleStackView.snp.makeConstraints {
             $0.top.equalTo(26)
             $0.leading.equalTo(24)
             $0.trailing.equalTo(-24)
@@ -165,7 +158,7 @@ class PopupView: UIView {
         }
         
         self.textFieldStackView.snp.makeConstraints {
-            $0.top.equalTo(headerStackView.snp.bottom).offset(15)
+            $0.top.equalTo(titleStackView.snp.bottom).offset(15)
             $0.leading.equalTo(24)
             $0.trailing.equalTo(-24)
         }
