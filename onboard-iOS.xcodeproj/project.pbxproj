@@ -15,6 +15,7 @@
 		1CA1BBB92ACF123D000C5F7E /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBB82ACF123D000C5F7E /* Typography.swift */; };
 		1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */; };
 		1CA1BBC42ADABEBD000C5F7E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBC32ADABEBD000C5F7E /* TextField.swift */; };
+		1CA1BBC72ADABFA3000C5F7E /* LinkButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBC62ADABFA3000C5F7E /* LinkButtonState.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
@@ -60,6 +61,7 @@
 		1CA1BBB82ACF123D000C5F7E /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
 		1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImage.swift; sourceTree = "<group>"; };
 		1CA1BBC32ADABEBD000C5F7E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		1CA1BBC62ADABFA3000C5F7E /* LinkButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButtonState.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 				1CA1BBC32ADABEBD000C5F7E /* TextField.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		1CA1BBC52ADABF7A000C5F7E /* State */ = {
+			isa = PBXGroup;
+			children = (
+				1CA1BBC62ADABFA3000C5F7E /* LinkButtonState.swift */,
+			);
+			path = State;
 			sourceTree = "<group>";
 		};
 		1CFD50D72ACE78E80031269C /* DesignSystem */ = {
@@ -202,6 +212,7 @@
 				61AC7FB42AB6D68B00B0B6B5 /* Domain */,
 				61AC7FB32AB6D68400B0B6B5 /* Repository */,
 				61AC7FB22AB6D67B00B0B6B5 /* Network */,
+				1CA1BBC52ADABF7A000C5F7E /* State */,
 				1CFD50D72ACE78E80031269C /* DesignSystem */,
 				61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */,
 				61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */,
@@ -441,6 +452,7 @@
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
 				1CFD50DA2ACE79190031269C /* Colors.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
+				1CA1BBC72ADABFA3000C5F7E /* LinkButtonState.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
