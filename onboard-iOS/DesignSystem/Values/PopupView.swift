@@ -173,4 +173,28 @@ class PopupView: UIView {
             $0.height.equalTo(52)
         }
     }
+    
+    func setState(popupState: PopupState,
+                  onClickLink: @escaping (() -> Void)) {
+        
+        titleLabel.text = popupState.titleLabel
+        subTitleLabel.text = popupState.subTitleLabel
+        textFieldSubTitleLabel.text = popupState.textFieldSubTitleLabel
+        countLabel.text = popupState.countLabel
+        registerButton.setTitle(popupState.buttonLabel, for: .normal)
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Font.Typography.body2_R as Any,
+            .foregroundColor: Colors.Gray_7]
+        textField.attributedPlaceholder = NSAttributedString(string: popupState.textFieldPlaceholder,
+                                                             attributes: attributes)
+        
+        let buttonAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+            NSAttributedString.Key.foregroundColor: Colors.Gray_9,
+            NSAttributedString.Key.baselineOffset: 2
+        ]
+        linkButton.setAttributedTitle(NSAttributedString(string: popupState.linkButtonState?.string ?? "",
+                                                         attributes: buttonAttributes), for: .normal)
+    }
 }
