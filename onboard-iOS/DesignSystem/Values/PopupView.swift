@@ -205,4 +205,22 @@ class PopupView: UIView {
 }
 
 extension PopupView: UITextFieldDelegate {
+    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String) -> Bool {
+            
+            let maxLength = 10
+            
+            let currentText = textField.text ?? ""
+            let newLength = currentText.count + string.count - range.length
+            
+            if newLength <= maxLength {
+                self.countLabel.text = "\(newLength)/\(maxLength)"
+                return true
+            } else {
+                return false
+            }
+        }
 }
