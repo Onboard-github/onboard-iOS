@@ -16,6 +16,7 @@
 		1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */; };
 		1CA1BBC42ADABEBD000C5F7E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBC32ADABEBD000C5F7E /* TextField.swift */; };
 		1CA1BBC72ADABFA3000C5F7E /* LinkButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBC62ADABFA3000C5F7E /* LinkButtonState.swift */; };
+		1CA1BBCA2ADABFF9000C5F7E /* PopupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBC92ADABFF9000C5F7E /* PopupState.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
@@ -62,6 +63,7 @@
 		1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImage.swift; sourceTree = "<group>"; };
 		1CA1BBC32ADABEBD000C5F7E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1CA1BBC62ADABFA3000C5F7E /* LinkButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkButtonState.swift; sourceTree = "<group>"; };
+		1CA1BBC92ADABFF9000C5F7E /* PopupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupState.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
@@ -140,9 +142,18 @@
 			path = State;
 			sourceTree = "<group>";
 		};
+		1CA1BBC82ADABFED000C5F7E /* State */ = {
+			isa = PBXGroup;
+			children = (
+				1CA1BBC92ADABFF9000C5F7E /* PopupState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		1CFD50D72ACE78E80031269C /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				1CA1BBC82ADABFED000C5F7E /* State */,
 				1CA1BBC22ADABE7F000C5F7E /* Components */,
 				1CA1BBAD2ACF1084000C5F7E /* Font */,
 				1CFD50D82ACE790D0031269C /* Values */,
@@ -434,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CA1BBCA2ADABFF9000C5F7E /* PopupState.swift in Sources */,
 				61AC7FCE2AB6DDE300B0B6B5 /* TestDTO.swift in Sources */,
 				61AC7FEA2AB7309400B0B6B5 /* APIEventLogger.swift in Sources */,
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
