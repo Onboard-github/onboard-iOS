@@ -123,11 +123,16 @@ class PopupView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        configureTextField()
         makeConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureTextField() {
+        textField.delegate = self
     }
     
     private func makeConstraints() {
@@ -197,4 +202,7 @@ class PopupView: UIView {
         linkButton.setAttributedTitle(NSAttributedString(string: popupState.linkButtonState?.string ?? "",
                                                          attributes: buttonAttributes), for: .normal)
     }
+}
+
+extension PopupView: UITextFieldDelegate {
 }
