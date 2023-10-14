@@ -37,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 authRepository: AuthRepositoryImpl()
             )
         )
+        //let testViewController = GroupSearchViewController(reactor: GroupSearchReactor(useCase: testUseCase))
         let testViewController = TestViewController(reactor: testReactor)
 
         self.window?.rootViewController = testViewController
