@@ -32,11 +32,20 @@ final class TestView: UIView {
         button.backgroundColor = .lightGray
         return button
     }()
+    
+    private let profileButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("프로필 설정", for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
+        button.titleLabel?.font = Font.Typography.body5_R
+        return button
+    }()
 
     // MARK: - Properties
 
     var didTapAppleButton: (() -> Void)?
     var didTapKakaoButton: (() -> Void)?
+    var didTapProfileButton: (() -> Void)?
 
     // MARK: - Initialize
 
@@ -71,12 +80,17 @@ final class TestView: UIView {
         self.kakaoButton.addAction(UIAction(handler: { _ in
             self.didTapKakaoButton?()
         }), for: .touchUpInside)
+        
+        self.profileButton.addAction(UIAction(handler: { _ in
+            self.didTapProfileButton?()
+        }), for: .touchUpInside)
     }
 
     private func makeConstraints() {
         self.addSubview(self.label)
         self.addSubview(self.appleButton)
         self.addSubview(self.kakaoButton)
+        self.addSubview(self.profileButton)
 
         self.label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -92,6 +106,11 @@ final class TestView: UIView {
         self.kakaoButton.snp.makeConstraints {
             $0.leading.trailing.height.equalTo(appleButton)
             $0.top.equalTo(appleButton.snp.bottom).inset(-10)
+        }
+        
+        self.profileButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(kakaoButton.snp.bottom).inset(-10)
         }
     }
 }
