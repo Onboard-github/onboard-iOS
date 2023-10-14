@@ -9,7 +9,21 @@ import UIKit
 import SnapKit
 
 final class GroupSearchView: UIView {
+    // MARK: - Metric
+    private enum Metric {
+        static let topMargin = 20
+        static let sideMargin: CGFloat = 18
+    }
+    
     // MARK: - UI
+    private let titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.text = "활동하고 계신\n보드게임 모임을 찾아주세요."
+        titleLabel.numberOfLines = 0
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        return titleLabel
+    }()
+    
     private let button = UIButton()
     
     // MARK: - Properties
@@ -32,12 +46,12 @@ final class GroupSearchView: UIView {
 
     // MARK: - Configure
     private func configure() {
-        self.backgroundColor = .white
-        self.addConfigure()
+        self.addActionConfigure()
         self.makeConstraints()
     }
 
-    private func addConfigure() {
+    private func addActionConfigure() {
+        self.backgroundColor = .systemBackground
         button.backgroundColor = .lightGray
         self.button.addAction(UIAction(handler: { _ in
             self.didTapButton?()
@@ -45,6 +59,12 @@ final class GroupSearchView: UIView {
     }
 
     private func makeConstraints() {
+        self.addSubview(self.titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide).inset(Metric.topMargin)
+            make.centerX.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(Metric.sideMargin)
+        }
         self.addSubview(self.button)
 
         self.button.snp.makeConstraints {
