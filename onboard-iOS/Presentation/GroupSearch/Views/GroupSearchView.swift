@@ -89,6 +89,7 @@ final class GroupSearchView: UIView {
         self.backgroundColor = .systemBackground
         button.backgroundColor = .lightGray
         
+        tableView.register(GroupSearchCell.self, forCellReuseIdentifier: "GroupSearchCell")
         self.addActionConfigure()
         self.makeConstraints()
     }
