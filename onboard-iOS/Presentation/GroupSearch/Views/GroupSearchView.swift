@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import Kingfisher
 
 final class GroupSearchView: UIView {
     var disposeBag = DisposeBag()
@@ -76,10 +77,16 @@ final class GroupSearchView: UIView {
     // MARK: - Bind
     func bind(groupList: [GroupEntity.Res.Group]) {
         let groupsObservable = Observable.just(groupList)
+        tableView.delegate = nil
+        tableView.dataSource = nil
         
         groupsObservable
             .bind(to: tableView.rx.items(cellIdentifier: "GroupSearchCell", cellType: GroupSearchCell.self)) { (row, group, cell) in
                 cell.titleLabel.text = group.name
+                cell.subTitleLabel.text = group.description
+                if let imageUrl = URL(string: group.profileImageUrl) {
+                    cell.thumbnailView.kf.setImage(with: imageUrl)
+                }
             }
             .disposed(by: disposeBag)
     }

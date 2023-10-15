@@ -44,6 +44,7 @@
 		AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */; };
 		AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */; };
 		AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7036012ADB8A1400B26537 /* GroupDTO.swift */; };
+		AA7036052ADBAC3F00B26537 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA7036042ADBAC3F00B26537 /* Kingfisher */; };
 		AA9105622AD9A6BA00DA2E96 /* GroupSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105612AD9A6BA00DA2E96 /* GroupSearchView.swift */; };
 		AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */; };
 		AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */; };
@@ -97,6 +98,7 @@
 				61AC7FD72AB6E50200B0B6B5 /* SnapKit in Frameworks */,
 				AA09C27C2ACBE9BC00F51A96 /* KakaoSDKCommon in Frameworks */,
 				61AC7FD42AB6E4BC00B0B6B5 /* ReactorKit in Frameworks */,
+				AA7036052ADBAC3F00B26537 /* Kingfisher in Frameworks */,
 				61AC7FDD2AB6E5B900B0B6B5 /* SwiftKeychainWrapper in Frameworks */,
 				AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */,
 				61AC7FDA2AB6E56600B0B6B5 /* RxCocoa in Frameworks */,
@@ -367,6 +369,7 @@
 				AA09C2792ACBE9BC00F51A96 /* KakaoSDKAuth */,
 				AA09C27B2ACBE9BC00F51A96 /* KakaoSDKCommon */,
 				AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */,
+				AA7036042ADBAC3F00B26537 /* Kingfisher */,
 			);
 			productName = "onboard-iOS";
 			productReference = 61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */;
@@ -403,6 +406,7 @@
 				61AC7FD82AB6E56600B0B6B5 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				61AC7FDB2AB6E5B900B0B6B5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				AA7036032ADBAC3F00B26537 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 61AC7F9C2AB6D4A300B0B6B5 /* Products */;
 			projectDirPath = "";
@@ -730,6 +734,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		AA7036032ADBAC3F00B26537 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -772,6 +784,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		AA7036042ADBAC3F00B26537 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA7036032ADBAC3F00B26537 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
