@@ -8,7 +8,7 @@
 import Foundation
 
 struct GroupDTO: Decodable {
-    let contents: [Group]
+    let content: [Group]
 
     struct Group: Codable {
         let id: Int

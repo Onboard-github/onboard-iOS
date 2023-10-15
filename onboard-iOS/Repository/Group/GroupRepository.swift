@@ -33,7 +33,7 @@ final class GroupRepositoryImpl: GroupRepository {
 
 extension GroupDTO {
     var toDomain: GroupEntity.Res {
-        let groupList = self.contents.map({GroupEntity.Res.Group(id: $0.id, name: $0.name, description: $0.description, organization: $0.organization, profileImageUrl: $0.profileImageUrl)})
+        let groupList = self.content.map({GroupEntity.Res.Group(id: $0.id, name: $0.name, description: $0.description, organization: $0.organization, profileImageUrl: $0.profileImageUrl)})
         return GroupEntity.Res(contents: groupList)
     }
 }
