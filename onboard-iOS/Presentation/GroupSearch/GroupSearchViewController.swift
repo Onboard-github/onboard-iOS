@@ -35,6 +35,25 @@ final class GroupSearchViewController: UIViewController, View {
     // MARK: - Bind
     
     func bind(reactor: GroupSearchReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    private func bindAction(reactor: GroupSearchReactor) {
+        self.rx.rxViewDidLoad
+            .map { Reactor.Action.groupListAllFetch }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+    }
+
+    private func bindState(reactor: GroupSearchReactor) {
+        reactor.state
+            .map { $0.groupList }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] result in
+                self?.groupSearchView.bind(groupList: result)
+            })
+            .disposed(by: self.disposeBag)
     }
 }
 

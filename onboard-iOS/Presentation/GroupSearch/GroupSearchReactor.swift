@@ -9,20 +9,23 @@ import Foundation
 import ReactorKit
 
 final class GroupSearchReactor: Reactor {
-    var initialState: State = .init()
+    var initialState: State = .init(groupList: [])
     
     enum Action {
+        case groupListAllFetch
     }
     
     enum Mutation {
+        case setGroupList([GroupEntity.Res.Group])
     }
 
     struct State {
+        var groupList: [GroupEntity.Res.Group]
     }
 
-    private let useCase: TestUseCase
+    private let useCase: GroupSearchUseCase
 
-    init(useCase: TestUseCase) {
+    init(useCase: GroupSearchUseCase) {
         self.useCase = useCase
     }
 }

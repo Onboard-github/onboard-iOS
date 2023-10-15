@@ -7,8 +7,11 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class GroupSearchView: UIView {
+    var disposeBag = DisposeBag()
+    
     // MARK: - Metric
     private enum Metric {
         static let titleTop = 20
@@ -71,8 +74,14 @@ final class GroupSearchView: UIView {
     }
 
     // MARK: - Bind
-    func bind(text: String) {
-        self.button.setTitle("\(text)", for: .normal)
+    func bind(groupList: [GroupEntity.Res.Group]) {
+        let groupsObservable = Observable.just(groupList)
+        
+        groupsObservable
+            .bind(to: tableView.rx.items(cellIdentifier: "GroupSearchCell", cellType: GroupSearchCell.self)) { (row, group, cell) in
+                cell.titleLabel.text = group.name
+            }
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Configure
@@ -82,7 +91,6 @@ final class GroupSearchView: UIView {
         
         self.addActionConfigure()
         self.makeConstraints()
-        self.tmpSetup()
     }
 
     private func addActionConfigure() {
@@ -110,24 +118,5 @@ final class GroupSearchView: UIView {
             make.leading.trailing.equalToSuperview().inset(Metric.side)
             make.bottom.equalToSuperview()
         }
-    }
-}
-
-//임시 적용
-extension GroupSearchView: UITableViewDelegate, UITableViewDataSource {
-    func tmpSetup() {
-        tableView.register(GroupSearchCell.self, forCellReuseIdentifier: "GroupSearchCell")
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 // 항상 1개의 셀을 반환
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupSearchCell", for: indexPath)
-        cell.textLabel?.text = "정적 셀의 내용"
-        return cell
     }
 }
