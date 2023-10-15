@@ -28,4 +28,51 @@ final class GroupSearchReactor: Reactor {
     init(useCase: GroupSearchUseCase) {
         self.useCase = useCase
     }
+    
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .groupListAllFetch:
+            return self.excuteGroupAllList()
+        }
+    }
+
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+
+        switch mutation {
+        case let .setGroupList(newGroupList):
+            state.groupList = newGroupList
+        }
+
+        return state
+    }
+
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+
+        let loginMutation = self.mutation(
+            result: self.useCase.groupList
+        )
+
+        return Observable.merge(mutation, loginMutation)
+    }
+}
+
+extension GroupSearchReactor {
+    private func mutation(result: Observable<[GroupEntity.Res.Group]>) -> Observable<Mutation> {
+        return result.flatMap { response -> Observable<Mutation> in
+            return .just(.setGroupList(response))
+        }
+    }
+    
+    private func excuteGroupAllList() -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self else { return Disposables.create() }
+            Task {
+                do {
+                    await self.useCase.list()
+                }
+            }
+            return Disposables.create()
+        }
+    }
 }

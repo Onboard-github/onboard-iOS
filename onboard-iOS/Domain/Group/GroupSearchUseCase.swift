@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 
 protocol GroupSearchUseCase {
+    var groupList: Observable<[GroupEntity.Res.Group]> { get }
     func list() async
 }
 
