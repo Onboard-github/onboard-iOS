@@ -40,6 +40,9 @@
 		AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */; };
 		AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */; };
 		AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */; };
+		AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FA2ADB81C700B26537 /* GroupRepository.swift */; };
+		AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */; };
+		AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */; };
 		AA9105622AD9A6BA00DA2E96 /* GroupSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105612AD9A6BA00DA2E96 /* GroupSearchView.swift */; };
 		AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */; };
 		AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */; };
@@ -75,6 +78,9 @@
 		61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		AA7035FA2ADB81C700B26537 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
+		AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchUseCase.swift; sourceTree = "<group>"; };
+		AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListEntity.swift; sourceTree = "<group>"; };
 		AA9105612AD9A6BA00DA2E96 /* GroupSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchView.swift; sourceTree = "<group>"; };
 		AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchReactor.swift; sourceTree = "<group>"; };
 		AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +182,7 @@
 		61AC7FB32AB6D68400B0B6B5 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				AA7035F92ADB81B600B26537 /* Group */,
 				611D8CA62ABECFB10074A55A /* Auth */,
 				61AC7FCC2AB6DDD900B0B6B5 /* DTO */,
 				61AC7FCB2AB6DD2B00B0B6B5 /* Test */,
@@ -186,6 +193,7 @@
 		61AC7FB42AB6D68B00B0B6B5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				AA7035FC2ADB81E800B26537 /* Group */,
 				611D8C9E2AB884AB0074A55A /* Login */,
 				61AC7FCF2AB6DF6300B0B6B5 /* Entity */,
 				61AC7FCA2AB6DD2400B0B6B5 /* Test */,
@@ -251,6 +259,7 @@
 			children = (
 				61AC7FD02AB6DFBF00B0B6B5 /* TestEntity.swift */,
 				611D8CA32AB8874D0074A55A /* AuthEntity.swift */,
+				AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -278,6 +287,22 @@
 				61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AA7035F92ADB81B600B26537 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				AA7035FA2ADB81C700B26537 /* GroupRepository.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		AA7035FC2ADB81E800B26537 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 		AA9105602AD9A69300DA2E96 /* GroupSearch */ = {
@@ -409,6 +434,8 @@
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
+				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
+				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
@@ -421,6 +448,7 @@
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
+				AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
 				611D8CA42AB8874D0074A55A /* AuthEntity.swift in Sources */,
