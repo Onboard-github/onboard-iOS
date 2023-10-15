@@ -22,6 +22,8 @@
 		6181762F2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181762E2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift */; };
 		618176312AD3D89200B5E2A0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176302AD3D89200B5E2A0 /* UITableView+Extension.swift */; };
 		618176332AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176322AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift */; };
+		618176352AD5902300B5E2A0 /* TermsAgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176342AD5902300B5E2A0 /* TermsAgreementView.swift */; };
+		6181764F2ADBF4A500B5E2A0 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181764E2ADBF4A500B5E2A0 /* UIDevice+Extension.swift */; };
 		61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */; };
 		61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */; };
 		61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */; };
@@ -62,6 +64,8 @@
 		6181762E2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		618176302AD3D89200B5E2A0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		618176322AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		618176342AD5902300B5E2A0 /* TermsAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementView.swift; sourceTree = "<group>"; };
+		6181764E2ADBF4A500B5E2A0 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 				618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */,
 				618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */,
 				618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */,
+				618176342AD5902300B5E2A0 /* TermsAgreementView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				6181762E2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift */,
 				618176302AD3D89200B5E2A0 /* UITableView+Extension.swift */,
 				618176322AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift */,
+				6181764E2ADBF4A500B5E2A0 /* UIDevice+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				618176352AD5902300B5E2A0 /* TermsAgreementView.swift in Sources */,
 				618175F52AC5722500B5E2A0 /* UILabel+Extension.swift in Sources */,
 				611D8CEE2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift in Sources */,
 				611D8CEC2AC44D230074A55A /* TermsView.swift in Sources */,
@@ -401,6 +408,7 @@
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				6181762F2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift in Sources */,
+				6181764F2ADBF4A500B5E2A0 /* UIDevice+Extension.swift in Sources */,
 				61AC7FC02AB6D74A00B0B6B5 /* TestUseCase.swift in Sources */,
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
