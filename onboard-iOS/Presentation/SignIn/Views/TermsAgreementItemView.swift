@@ -15,6 +15,7 @@ final class TermsAgreementItemView: UIView {
         static let titleTrailing: CGFloat = 80
         static let detailTop: CGFloat = 6
         static let buttonSize: CGFloat = 18
+        static let detailBottom: CGFloat = 20
     }
 
     // MARK: - UIs
@@ -75,7 +76,7 @@ final class TermsAgreementItemView: UIView {
         self.detailButton.snp.makeConstraints {
             $0.top.equalTo(self.titleLabel.snp.bottom).offset(Metric.detailTop)
             $0.leading.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-20)
+            $0.bottom.equalToSuperview().offset(-Metric.detailBottom)
         }
 
         self.checkButton.snp.makeConstraints {
