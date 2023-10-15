@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class TermsAgreementView: UIView {
+final class TermsAgreementViewController: UIViewController {
 
     // MARK: - Metric
 
@@ -32,99 +32,88 @@ final class TermsAgreementView: UIView {
 
     private var modalHeight = Metric.screenHeight - Metric.modalTop
 
-    // MARK: - Initialize
+    // MARK: - Life Cycle
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func viewDidLoad() {
         self.configure()
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: - Bind
-
-    func bind(termsList: [String]) {
-        self.modalView.bind(termsList: termsList)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.showBottomSheet()
     }
 
     // MARK: - Configure
 
     private func configure() {
-        self.backgroundColor = .white
+        self.view.backgroundColor = .clear
+        self.dimmedView.alpha = 0.0
 
         self.modalView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.modalView.layer.cornerRadius = 16
         self.modalView.clipsToBounds = true
 
         self.makeConstraints()
+        self.setupGestureRecognizer()
     }
 
     private func makeConstraints() {
-        self.addSubview(self.dimmedView)
-        self.addSubview(self.modalView)
+        self.view.addSubview(self.dimmedView)
+        self.view.addSubview(self.modalView)
 
         self.dimmedView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
 
         self.modalView.snp.makeConstraints {
-            $0.top.equalTo(self.snp.centerY)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(self.modalHeight)
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(self.view.snp.bottom)
         }
     }
 
-    func showBottomSheet() {
-
-      self.modalView.snp.updateConstraints {
-          $0.top.equalToSuperview().offset(self.modalHeight)
-      }
-
+    private func showBottomSheet() {
         UIView.animate(
             withDuration: 0.2,
             delay: 0,
             options: .curveEaseIn,
             animations: {
-                self.dimmedView.alpha = 0.5
-                self.layoutIfNeeded()
+                self.dimmedView.alpha = 0.6
+                self.modalView.transform = CGAffineTransform(translationX: 0, y: -self.modalHeight)
+                self.view.layoutIfNeeded()
             }, completion: nil
         )
     }
 
-    func hideBottomSheet(view: UIViewController) {
-        self.modalView.snp.updateConstraints {
-            $0.top.equalToSuperview().offset(Metric.screenHeight)
-        }
-
+    private func hideBottomSheet() {
         UIView.animate(
             withDuration: 0.2,
             delay: 0,
             options: .curveEaseIn,
             animations: {
                 self.dimmedView.alpha = 0.0
-                self.layoutIfNeeded()
+                self.modalView.transform = CGAffineTransform(translationX: 0, y: 0)
+                self.view.layoutIfNeeded()
             }) { _ in
-                if view.presentingViewController != nil {
-                    view.dismiss(animated: false, completion: nil)
+                if self.presentingViewController != nil {
+                    self.dismiss(animated: false, completion: nil)
                 }
             }
     }
-}
 
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
+    // MARK: - Gesture
 
-struct TermsAgreementViewPreview: PreviewProvider {
-    static var previews: some View {
-        UIViewPreview {
+    private func setupGestureRecognizer() {
+        let dimmedTap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dimmedViewTapped(_:))
+        )
+        self.dimmedView.addGestureRecognizer(dimmedTap)
+        self.dimmedView.isUserInteractionEnabled = true
+    }
 
-            let view = TermsAgreementView()
-            view.bind(termsList: ["서비스 이용약관", "개인정보 처리방침"])
-
-            return view
-
-        }.previewLayout(.sizeThatFits)
+    @objc
+    private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
+        self.hideBottomSheet()
     }
 }
-#endif
