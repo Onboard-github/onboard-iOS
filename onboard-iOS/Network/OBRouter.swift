@@ -47,7 +47,7 @@ enum OBRouter: URLRequestConvertible {
         case .auth:
             return "v1/auth/login"
         case .groupList, .addGroup:
-            return "/v1/group"
+            return "v1/group"
         }
     }
 
