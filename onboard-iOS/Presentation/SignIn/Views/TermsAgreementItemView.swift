@@ -102,7 +102,7 @@ struct TermsAgreementItemViewPreview: PreviewProvider {
     static var previews: some View {
         UIViewPreview {
             let view = TermsAgreementItemView()
-            view.bind(title: "(필수) 서비스 이용약관")
+            view.bind(state: .init(title: "개인정보 처리방침", required: true))
             return view
 
         }.previewLayout(.sizeThatFits)

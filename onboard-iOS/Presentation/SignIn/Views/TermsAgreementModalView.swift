@@ -71,7 +71,7 @@ final class TermsAgreementModalView: UIView {
 
     // MARK: - Properties
 
-    private var termsList: [String] = [] {
+    private var termsList: [TermsAgreementItemView.State] = [] {
         didSet {
             self.tableView.reloadData()
         }
@@ -90,7 +90,7 @@ final class TermsAgreementModalView: UIView {
 
     // MARK: - Bind
 
-    func bind(termsList: [String]) {
+    func bind(termsList: [TermsAgreementItemView.State]) {
         self.termsList = termsList
     }
 
@@ -187,7 +187,10 @@ struct TermsAgreementModalViewPreview: PreviewProvider {
         UIViewPreview {
 
             let view = TermsAgreementModalView()
-            view.bind(termsList: ["서비스 이용약관", "개인정보 처리방침"])
+            view.bind(termsList: [
+                .init(title: "개인정보 처리방침", required: true),
+                .init(title: "서비스 이용약관", required: true)
+            ])
             return view
 
         }.previewLayout(.sizeThatFits)
