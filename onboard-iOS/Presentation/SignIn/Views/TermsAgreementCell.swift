@@ -7,14 +7,15 @@
 
 import UIKit
 
-final class TermsAgreementCell: BaseTableViewCell<String> {
+final class TermsAgreementCell: BaseTableViewCell<TermsAgreementItemView.State> {
 
     // MARK: - UIs
 
     private let itemView = TermsAgreementItemView()
 
-    override func bind(_ model: String?) {
-        self.itemView.bind(title: model ?? "")
+    override func bind(_ model: TermsAgreementItemView.State?) {
+        guard let model else { return }
+        self.itemView.bind(state: model)
     }
 
     // MARK: - Layout

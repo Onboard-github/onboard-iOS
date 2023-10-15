@@ -9,6 +9,13 @@ import UIKit
 
 final class TermsAgreementItemView: UIView {
 
+    // MARK: - State
+
+    struct State {
+        let title: String
+        let required: Bool
+    }
+
     // MARK: - Metric
 
     private enum Metric {
@@ -52,8 +59,9 @@ final class TermsAgreementItemView: UIView {
 
     // MARK: - Bind
 
-    func bind(title: String) {
-        self.titleLabel.text = title
+    func bind(state: State) {
+        let prefix = state.required ? "(필수)" : "(선택)"
+        self.titleLabel.text = "\(prefix) \(state.title)"
     }
 
     // MARK: - Configure
