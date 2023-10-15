@@ -9,6 +9,34 @@ import UIKit
 
 final class TermsAgreementModalView: UIView {
 
+    // MARK: - Metric
+
+    private enum Metric {
+        static let registerButtonRadius: CGFloat = 8
+
+        static let titleTop: CGFloat = 40
+        static let titleHMargin: CGFloat = 24
+
+        static let subTitleTop: CGFloat = 4
+        static let subTitleHMargin: CGFloat = 24
+
+        static let tableViewTop: CGFloat = 40
+        static let tableViewHMargin: CGFloat = 20
+        static let tableViewBottom: CGFloat = 20
+
+        static let separatorBottom: CGFloat = 20
+        static let separatorHeight: CGFloat = 1
+        static let separatorLeading: CGFloat = 37
+        static let separatorTrailing: CGFloat = 27
+
+        static let allAgreementButtonBottom: CGFloat = 40
+        static let allAgreementButtonHeight: CGFloat = 22
+        static let allAgreementButtonTrailing: CGFloat = 27
+
+        static let registerButtonHeight: CGFloat = 48
+        static let registerButtonHMargin: CGFloat = 20
+    }
+
     // MARK: - UI
 
     private let titleLabel = UILabel()
@@ -36,7 +64,7 @@ final class TermsAgreementModalView: UIView {
         let button = UIButton()
         button.setTitle("가입하기", for: .normal)
         button.backgroundColor = .orange
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = Metric.registerButtonRadius
         button.clipsToBounds = true
         return button
     }()
@@ -102,38 +130,38 @@ final class TermsAgreementModalView: UIView {
         self.addSubview(self.registerButton)
 
         self.titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(40)
-            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.top.equalToSuperview().offset(Metric.titleTop)
+            $0.leading.trailing.equalToSuperview().inset(Metric.titleHMargin)
         }
 
         self.subTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(self.titleLabel.snp.bottom).offset(4)
-            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(Metric.subTitleTop)
+            $0.leading.trailing.equalToSuperview().inset(Metric.subTitleHMargin)
         }
 
         self.tableView.snp.makeConstraints {
-            $0.top.equalTo(self.subTitleLabel).offset(40)
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalTo(self.separatorView.snp.top).offset(-20)
+            $0.top.equalTo(self.subTitleLabel).offset(Metric.tableViewTop)
+            $0.leading.trailing.equalToSuperview().inset(Metric.tableViewHMargin)
+            $0.bottom.equalTo(self.separatorView.snp.top).offset(-Metric.tableViewBottom)
         }
 
         self.separatorView.snp.makeConstraints {
-            $0.bottom.equalTo(self.allAgreementButton.snp.top).offset(-20)
-            $0.height.equalTo(1)
-            $0.leading.equalToSuperview().inset(37)
-            $0.trailing.equalToSuperview().inset(27)
+            $0.bottom.equalTo(self.allAgreementButton.snp.top).offset(-Metric.separatorBottom)
+            $0.height.equalTo(Metric.separatorHeight)
+            $0.leading.equalToSuperview().inset(Metric.separatorLeading)
+            $0.trailing.equalToSuperview().inset(Metric.separatorTrailing)
         }
 
         self.allAgreementButton.snp.makeConstraints {
-            $0.bottom.equalTo(self.registerButton.snp.top).offset(-40)
-            $0.height.equalTo(22)
-            $0.trailing.equalToSuperview().inset(27)
+            $0.bottom.equalTo(self.registerButton.snp.top).offset(-Metric.allAgreementButtonBottom)
+            $0.height.equalTo(Metric.allAgreementButtonHeight)
+            $0.trailing.equalToSuperview().inset(Metric.allAgreementButtonTrailing)
         }
 
         self.registerButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
-            $0.height.equalTo(48)
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(Metric.registerButtonHeight)
+            $0.leading.trailing.equalToSuperview().inset(Metric.registerButtonHMargin)
         }
     }
 }
