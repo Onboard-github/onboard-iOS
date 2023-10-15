@@ -11,7 +11,7 @@ enum GroupEntity {
     struct Res {
         let contents: [Group]
 
-        class Group: Codable {
+        struct Group: Codable {
             let id: Int
             let name: String
             let description: String

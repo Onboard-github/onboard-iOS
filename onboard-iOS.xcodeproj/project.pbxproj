@@ -43,6 +43,7 @@
 		AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FA2ADB81C700B26537 /* GroupRepository.swift */; };
 		AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */; };
 		AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */; };
+		AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7036012ADB8A1400B26537 /* GroupDTO.swift */; };
 		AA9105622AD9A6BA00DA2E96 /* GroupSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105612AD9A6BA00DA2E96 /* GroupSearchView.swift */; };
 		AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */; };
 		AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */; };
@@ -81,6 +82,7 @@
 		AA7035FA2ADB81C700B26537 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
 		AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchUseCase.swift; sourceTree = "<group>"; };
 		AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListEntity.swift; sourceTree = "<group>"; };
+		AA7036012ADB8A1400B26537 /* GroupDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDTO.swift; sourceTree = "<group>"; };
 		AA9105612AD9A6BA00DA2E96 /* GroupSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchView.swift; sourceTree = "<group>"; };
 		AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchReactor.swift; sourceTree = "<group>"; };
 		AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			children = (
 				61AC7FCD2AB6DDE300B0B6B5 /* TestDTO.swift */,
 				611D8CA92ABED03D0074A55A /* AuthDTO.swift */,
+				AA7036012ADB8A1400B26537 /* GroupDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
+				AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
 				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
