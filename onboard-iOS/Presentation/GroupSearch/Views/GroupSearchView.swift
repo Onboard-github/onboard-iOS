@@ -10,9 +10,9 @@ import SnapKit
 import RxSwift
 import Kingfisher
 
+
 final class GroupSearchView: UIView {
-    var disposeBag = DisposeBag()
-    
+
     // MARK: - Metric
     private enum Metric {
         static let titleTop = 20
@@ -62,6 +62,21 @@ final class GroupSearchView: UIView {
     private let button = UIButton()
     
     // MARK: - Properties
+    lazy var dataSource: UITableViewDiffableDataSource<Int, Group> = {
+        UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, group in
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "GroupSearchCell", for: indexPath) as? GroupSearchCell {
+                cell.titleLabel.text = group.name
+                cell.subTitleLabel.text = group.description
+                if let imageUrl = URL(string: group.profileImageUrl) {
+                    cell.thumbnailView.kf.setImage(with: imageUrl)
+                }
+                return cell
+            } else {
+                return UITableViewCell()
+            }
+        })
+    }()
+    
     var didTapButton: (() -> Void)?
 
     // MARK: - Initialize
@@ -75,20 +90,11 @@ final class GroupSearchView: UIView {
     }
 
     // MARK: - Bind
-    func bind(groupList: [GroupEntity.Res.Group]) {
-        let groupsObservable = Observable.just(groupList)
-        tableView.delegate = nil
-        tableView.dataSource = nil
-        
-        groupsObservable
-            .bind(to: tableView.rx.items(cellIdentifier: "GroupSearchCell", cellType: GroupSearchCell.self)) { (row, group, cell) in
-                cell.titleLabel.text = group.name
-                cell.subTitleLabel.text = group.description
-                if let imageUrl = URL(string: group.profileImageUrl) {
-                    cell.thumbnailView.kf.setImage(with: imageUrl)
-                }
-            }
-            .disposed(by: disposeBag)
+    func bind(groupList: [Group]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Group>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(groupList)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 
     // MARK: - Configure
@@ -126,5 +132,15 @@ final class GroupSearchView: UIView {
             make.leading.trailing.equalToSuperview().inset(Metric.side)
             make.bottom.equalToSuperview()
         }
+    }
+}
+
+extension GroupSearchView {
+    struct Group: Codable, Hashable {
+        let id: Int
+        let name: String
+        let description: String
+        let organization: String
+        let profileImageUrl: String
     }
 }
