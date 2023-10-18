@@ -46,6 +46,13 @@ class PopupView: UIView {
         return label
     }()
     
+    private let textFieldTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Colors.Gray_13
+        label.font = Font.Typography.body4_R
+        return label
+    }()
+    
     private let textField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
@@ -96,7 +103,7 @@ class PopupView: UIView {
     }()
     
     private lazy var textFieldStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [textField, bottomStackView])
+        let view = UIStackView(arrangedSubviews: [textFieldTitleLabel, textField, bottomStackView])
         view.spacing = 2
         view.axis = .vertical
         view.distribution = .fill
@@ -136,21 +143,16 @@ class PopupView: UIView {
         self.contentView.addSubview(self.registerButton)
         
         self.backgroundView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.bottom.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         
         self.contentView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview()
+            $0.centerX.centerY.equalToSuperview()
         }
         
         self.titleStackView.snp.makeConstraints {
-            $0.top.equalTo(26)
-            $0.leading.equalTo(24)
-            $0.trailing.equalTo(-24)
+            $0.top.equalToSuperview().inset(26)
+            $0.leading.trailing.equalToSuperview().inset(24)
         }
         
         self.textField.snp.makeConstraints {
@@ -159,15 +161,12 @@ class PopupView: UIView {
         
         self.textFieldStackView.snp.makeConstraints {
             $0.top.equalTo(titleStackView.snp.bottom).offset(15)
-            $0.leading.equalTo(24)
-            $0.trailing.equalTo(-24)
+            $0.leading.trailing.equalToSuperview().inset(24)
         }
         
         self.registerButton.snp.makeConstraints {
             $0.top.equalTo(textFieldStackView.snp.bottom).offset(20)
-            $0.bottom.equalTo(0)
-            $0.leading.equalTo(0)
-            $0.trailing.equalTo(0)
+            $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(52)
         }
     }
@@ -177,6 +176,7 @@ class PopupView: UIView {
         
         titleLabel.text = popupState.titleLabel
         subTitleLabel.text = popupState.subTitleLabel
+        textFieldTitleLabel.text = popupState.textFieldLabelState?.string ?? ""
         textFieldSubTitleLabel.text = popupState.textFieldSubTitleLabel
         countLabel.text = popupState.countLabel
         registerButton.setTitle(popupState.buttonLabel, for: .normal)
