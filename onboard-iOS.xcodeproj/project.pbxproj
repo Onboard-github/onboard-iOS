@@ -19,6 +19,7 @@
 		1CA1BBCA2ADABFF9000C5F7E /* PopupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBC92ADABFF9000C5F7E /* PopupState.swift */; };
 		1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */; };
 		1CA1BBD02AE00704000C5F7E /* TextFieldLabelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */; };
+		1CA1BBD82AE0337E000C5F7E /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBD72AE0337E000C5F7E /* Buttons.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
@@ -68,6 +69,7 @@
 		1CA1BBC92ADABFF9000C5F7E /* PopupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupState.swift; sourceTree = "<group>"; };
 		1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLabelState.swift; sourceTree = "<group>"; };
+		1CA1BBD72AE0337E000C5F7E /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				1CA1BBB82ACF123D000C5F7E /* Typography.swift */,
 				1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */,
 				1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */,
+				1CA1BBD72AE0337E000C5F7E /* Buttons.swift */,
 			);
 			path = Values;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				1CA1BBC42ADABEBD000C5F7E /* TextField.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
+				1CA1BBD82AE0337E000C5F7E /* Buttons.swift in Sources */,
 				1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */,
 				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
 				61AC7FC02AB6D74A00B0B6B5 /* TestUseCase.swift in Sources */,
