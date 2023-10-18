@@ -15,4 +15,5 @@ struct PopupState {
     let countLabel: String
     let buttonLabel: String
     var linkButtonState: LinkButtonState?
+    var textFieldLabelState: TextFieldLabelState?
 }
