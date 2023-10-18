@@ -40,12 +40,21 @@ final class TestView: UIView {
         button.titleLabel?.font = Font.Typography.body5_R
         return button
     }()
+    
+    private let memberButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("임시 멤버 추가", for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
+        button.titleLabel?.font = Font.Typography.body5_R
+        return button
+    }()
 
     // MARK: - Properties
 
     var didTapAppleButton: (() -> Void)?
     var didTapKakaoButton: (() -> Void)?
     var didTapProfileButton: (() -> Void)?
+    var didTapMemberButton: (() -> Void)?
 
     // MARK: - Initialize
 
@@ -84,6 +93,10 @@ final class TestView: UIView {
         self.profileButton.addAction(UIAction(handler: { _ in
             self.didTapProfileButton?()
         }), for: .touchUpInside)
+        
+        self.memberButton.addAction(UIAction(handler: { _ in
+            self.didTapMemberButton?()
+        }), for: .touchUpInside)
     }
 
     private func makeConstraints() {
@@ -91,6 +104,7 @@ final class TestView: UIView {
         self.addSubview(self.appleButton)
         self.addSubview(self.kakaoButton)
         self.addSubview(self.profileButton)
+        self.addSubview(self.memberButton)
 
         self.label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -111,6 +125,11 @@ final class TestView: UIView {
         self.profileButton.snp.makeConstraints {
             $0.leading.trailing.height.equalTo(appleButton)
             $0.top.equalTo(kakaoButton.snp.bottom).inset(-10)
+        }
+        
+        self.memberButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(profileButton.snp.bottom).inset(-10)
         }
     }
 }
