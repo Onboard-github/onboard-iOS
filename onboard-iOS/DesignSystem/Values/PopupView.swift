@@ -10,6 +10,8 @@ import SnapKit
 
 class PopupView: UIView {
     
+    private let buttons = Buttons()
+    
     private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .darkGray.withAlphaComponent(0.7)
@@ -74,15 +76,7 @@ class PopupView: UIView {
         return label
     }()
     
-    private let registerButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitleColor(Colors.Gray_1, for: .normal)
-        button.titleLabel?.font = Font.Typography.label3_B
-        button.backgroundColor = Colors.Orange_10
-        button.layer.cornerRadius = 12
-        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        return button
-    }()
+    private lazy var registerButton = buttons.defaultButton
     
     private lazy var headerStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [titleLabel, linkButton])
