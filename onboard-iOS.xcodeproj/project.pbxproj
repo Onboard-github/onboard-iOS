@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */; };
+		1C1F51AF2AE16B600020AA71 /* ImagePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AE2AE16B600020AA71 /* ImagePopupView.swift */; };
 		1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */; };
 		1CA1BBB42ACF109B000C5F7E /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAF2ACF109A000C5F7E /* SpoqaHanSansNeo-Light.ttf */; };
 		1CA1BBB52ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBB02ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopupView.swift; sourceTree = "<group>"; };
+		1C1F51AE2AE16B600020AA71 /* ImagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupView.swift; sourceTree = "<group>"; };
 		1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
 		1CA1BBAF2ACF109A000C5F7E /* SpoqaHanSansNeo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.ttf"; sourceTree = "<group>"; };
 		1CA1BBB02ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.ttf"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */,
 				1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */,
+				1C1F51AE2AE16B600020AA71 /* ImagePopupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
+				1C1F51AF2AE16B600020AA71 /* ImagePopupView.swift in Sources */,
 				611D8CA42AB8874D0074A55A /* AuthEntity.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */,
