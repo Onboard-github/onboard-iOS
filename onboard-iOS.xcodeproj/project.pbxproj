@@ -120,6 +120,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C1F51A92AE12DF50020AA71 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		1CA1BBAD2ACF1084000C5F7E /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +168,7 @@
 		1CFD50D72ACE78E80031269C /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				1C1F51A92AE12DF50020AA71 /* Views */,
 				1CA1BBC82ADABFED000C5F7E /* State */,
 				1CA1BBC22ADABE7F000C5F7E /* Components */,
 				1CA1BBAD2ACF1084000C5F7E /* Font */,
@@ -174,7 +183,6 @@
 				1CFD50D92ACE79190031269C /* Colors.swift */,
 				1CA1BBB82ACF123D000C5F7E /* Typography.swift */,
 				1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */,
-				1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */,
 				1CA1BBD72AE0337E000C5F7E /* Buttons.swift */,
 			);
 			path = Values;
