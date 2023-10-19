@@ -51,9 +51,14 @@ final class GroupSearchViewController: UIViewController, View {
             .map { $0.groupList }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] result in
-                self?.groupSearchView.bind(groupList: result)
+                self?.groupSearchView.bind(groupList: result.map({$0.toPresentation()}))
             })
             .disposed(by: self.disposeBag)
     }
 }
 
+extension GroupEntity.Res.Group {
+    func toPresentation() -> GroupSearchView.Group {
+        return GroupSearchView.Group(id: self.id, name: self.name, description: self.description, organization: self.organization, profileImageUrl: self.profileImageUrl)
+    }
+}
