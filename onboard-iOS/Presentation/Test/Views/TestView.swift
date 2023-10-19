@@ -48,6 +48,14 @@ final class TestView: UIView {
         button.titleLabel?.font = Font.Typography.body5_R
         return button
     }()
+    
+    private let codeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("참여 코드 입력", for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
+        button.titleLabel?.font = Font.Typography.body5_R
+        return button
+    }()
 
     // MARK: - Properties
 
@@ -55,12 +63,22 @@ final class TestView: UIView {
     var didTapKakaoButton: (() -> Void)?
     var didTapProfileButton: (() -> Void)?
     var didTapMemberButton: (() -> Void)?
+    private let joinPopupView = JoinPopupView()
 
     // MARK: - Initialize
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configure()
+        
+        self.codeButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.addSubview(self.joinPopupView)
+            self.joinPopupView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
+        }), for: .touchUpInside)
+
     }
 
     required init?(coder: NSCoder) {
@@ -105,6 +123,7 @@ final class TestView: UIView {
         self.addSubview(self.kakaoButton)
         self.addSubview(self.profileButton)
         self.addSubview(self.memberButton)
+        self.addSubview(self.codeButton)
 
         self.label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -130,6 +149,11 @@ final class TestView: UIView {
         self.memberButton.snp.makeConstraints {
             $0.leading.trailing.height.equalTo(appleButton)
             $0.top.equalTo(profileButton.snp.bottom).inset(-10)
+        }
+        
+        self.codeButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(memberButton.snp.bottom).inset(-10)
         }
     }
 }
