@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class GroupSearchCell: UITableViewCell {
     // MARK: - Metric
@@ -57,7 +58,12 @@ final class GroupSearchCell: UITableViewCell {
     
     let thumbnailView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemBlue
+        imageView.backgroundColor = .lightGray
+        imageView.kf.indicatorType = .activity
+        imageView.layer.cornerRadius = 8
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = CGColor(red: 246/255.0, green: 246/255.0, blue: 246/255.0, alpha: 1)
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
