@@ -33,8 +33,12 @@ final class GroupSearchView: UIView {
         return titleLabel
     }()
     
-    private let searchBar: UISearchBar = {
-        let bar = UISearchBar()
+    private let searchBar: GroupSearchBar = {
+        let bar = GroupSearchBar()
+        bar.placeholder = "모임 이름 검색"
+        bar.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
         return bar
     }()
     
