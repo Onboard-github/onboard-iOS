@@ -56,6 +56,14 @@ final class TestView: UIView {
         button.titleLabel?.font = Font.Typography.body5_R
         return button
     }()
+    
+    private let imageButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("모임 대표 이미지", for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
+        button.titleLabel?.font = Font.Typography.body5_R
+        return button
+    }()
 
     // MARK: - Properties
 
@@ -64,21 +72,14 @@ final class TestView: UIView {
     var didTapProfileButton: (() -> Void)?
     var didTapMemberButton: (() -> Void)?
     private let joinPopupView = JoinPopupView()
+    private let imagePopupView = ImagePopupView()
 
     // MARK: - Initialize
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configure()
-        
-        self.codeButton.addAction(UIAction(handler: { [weak self] _ in
-            guard let self = self else { return }
-            self.addSubview(self.joinPopupView)
-            self.joinPopupView.snp.makeConstraints {
-                $0.edges.equalToSuperview()
-            }
-        }), for: .touchUpInside)
-
+        self.addAction()
     }
 
     required init?(coder: NSCoder) {
@@ -97,6 +98,24 @@ final class TestView: UIView {
         self.backgroundColor = .white
         self.addConfigure()
         self.makeConstraints()
+    }
+    
+    private func addAction() {
+        self.codeButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.addSubview(self.joinPopupView)
+            self.joinPopupView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
+        }), for: .touchUpInside)
+        
+        self.imageButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.addSubview(self.imagePopupView)
+            self.imagePopupView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
+        }), for: .touchUpInside)
     }
 
     private func addConfigure() {
@@ -124,6 +143,7 @@ final class TestView: UIView {
         self.addSubview(self.profileButton)
         self.addSubview(self.memberButton)
         self.addSubview(self.codeButton)
+        self.addSubview(self.imageButton)
 
         self.label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -154,6 +174,11 @@ final class TestView: UIView {
         self.codeButton.snp.makeConstraints {
             $0.leading.trailing.height.equalTo(appleButton)
             $0.top.equalTo(memberButton.snp.bottom).inset(-10)
+        }
+        
+        self.imageButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(codeButton.snp.bottom).inset(-10)
         }
     }
 }
