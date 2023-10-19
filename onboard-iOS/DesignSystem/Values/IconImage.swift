@@ -80,11 +80,11 @@ enum IconImage {
             return UIImage(named: "icon_plus")
             
         case .manager:
-            return UIImage(named: "icon_circleCrown")
+            return UIImage(named: "icon_manager")
         case .code:
-            return UIImage(named: "icon_circleLock")
+            return UIImage(named: "icon_code")
         case .member:
-            return UIImage(named: "icon_circleMy")
+            return UIImage(named: "icon_member")
             
         case .gold:
             return UIImage(named: "icon_gold")
