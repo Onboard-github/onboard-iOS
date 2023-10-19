@@ -7,8 +7,12 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import Kingfisher
+
 
 final class GroupSearchView: UIView {
+
     // MARK: - Metric
     private enum Metric {
         static let titleTop = 20
@@ -58,6 +62,21 @@ final class GroupSearchView: UIView {
     private let button = UIButton()
     
     // MARK: - Properties
+    lazy var dataSource: UITableViewDiffableDataSource<Int, Group> = {
+        UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, group in
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "GroupSearchCell", for: indexPath) as? GroupSearchCell {
+                cell.titleLabel.text = group.name
+                cell.subTitleLabel.text = group.description
+                if let imageUrl = URL(string: group.profileImageUrl) {
+                    cell.thumbnailView.kf.setImage(with: imageUrl)
+                }
+                return cell
+            } else {
+                return UITableViewCell()
+            }
+        })
+    }()
+    
     var didTapButton: (() -> Void)?
 
     // MARK: - Initialize
@@ -71,8 +90,11 @@ final class GroupSearchView: UIView {
     }
 
     // MARK: - Bind
-    func bind(text: String) {
-        self.button.setTitle("\(text)", for: .normal)
+    func bind(groupList: [Group]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Group>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(groupList)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 
     // MARK: - Configure
@@ -80,9 +102,9 @@ final class GroupSearchView: UIView {
         self.backgroundColor = .systemBackground
         button.backgroundColor = .lightGray
         
+        tableView.register(GroupSearchCell.self, forCellReuseIdentifier: "GroupSearchCell")
         self.addActionConfigure()
         self.makeConstraints()
-        self.tmpSetup()
     }
 
     private func addActionConfigure() {
@@ -113,21 +135,12 @@ final class GroupSearchView: UIView {
     }
 }
 
-//임시 적용
-extension GroupSearchView: UITableViewDelegate, UITableViewDataSource {
-    func tmpSetup() {
-        tableView.register(GroupSearchCell.self, forCellReuseIdentifier: "GroupSearchCell")
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 // 항상 1개의 셀을 반환
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupSearchCell", for: indexPath)
-        cell.textLabel?.text = "정적 셀의 내용"
-        return cell
+extension GroupSearchView {
+    struct Group: Codable, Hashable {
+        let id: Int
+        let name: String
+        let description: String
+        let organization: String
+        let profileImageUrl: String
     }
 }

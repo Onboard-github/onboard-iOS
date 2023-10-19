@@ -82,14 +82,14 @@ final class GroupSearchCell: UITableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).inset(Metric.titleTop)
             make.leading.equalToSuperview().inset(Metric.labelLeading)
-            make.trailing.equalTo(thumbnailView.snp.leading).inset(Metric.lableTrailing)
+            make.trailing.equalTo(thumbnailView.snp.leading).offset(-Metric.lableTrailing)
         }
         
         self.addSubview(self.subTitleLabel)
         subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(Metric.titleBottom)
             make.leading.equalToSuperview().inset(Metric.labelLeading)
-            make.trailing.equalTo(thumbnailView.snp.leading).inset(Metric.lableTrailing)
+            make.trailing.equalTo(thumbnailView.snp.leading).offset(-Metric.lableTrailing)
         }
 
         self.addSubview(self.infoLabel)

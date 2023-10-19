@@ -40,6 +40,11 @@
 		AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */; };
 		AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */; };
 		AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */; };
+		AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FA2ADB81C700B26537 /* GroupRepository.swift */; };
+		AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */; };
+		AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */; };
+		AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7036012ADB8A1400B26537 /* GroupDTO.swift */; };
+		AA7036052ADBAC3F00B26537 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA7036042ADBAC3F00B26537 /* Kingfisher */; };
 		AA9105622AD9A6BA00DA2E96 /* GroupSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105612AD9A6BA00DA2E96 /* GroupSearchView.swift */; };
 		AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */; };
 		AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */; };
@@ -75,6 +80,10 @@
 		61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		AA7035FA2ADB81C700B26537 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
+		AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchUseCase.swift; sourceTree = "<group>"; };
+		AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListEntity.swift; sourceTree = "<group>"; };
+		AA7036012ADB8A1400B26537 /* GroupDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDTO.swift; sourceTree = "<group>"; };
 		AA9105612AD9A6BA00DA2E96 /* GroupSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchView.swift; sourceTree = "<group>"; };
 		AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchReactor.swift; sourceTree = "<group>"; };
 		AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +98,7 @@
 				61AC7FD72AB6E50200B0B6B5 /* SnapKit in Frameworks */,
 				AA09C27C2ACBE9BC00F51A96 /* KakaoSDKCommon in Frameworks */,
 				61AC7FD42AB6E4BC00B0B6B5 /* ReactorKit in Frameworks */,
+				AA7036052ADBAC3F00B26537 /* Kingfisher in Frameworks */,
 				61AC7FDD2AB6E5B900B0B6B5 /* SwiftKeychainWrapper in Frameworks */,
 				AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */,
 				61AC7FDA2AB6E56600B0B6B5 /* RxCocoa in Frameworks */,
@@ -176,6 +186,7 @@
 		61AC7FB32AB6D68400B0B6B5 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				AA7035F92ADB81B600B26537 /* Group */,
 				611D8CA62ABECFB10074A55A /* Auth */,
 				61AC7FCC2AB6DDD900B0B6B5 /* DTO */,
 				61AC7FCB2AB6DD2B00B0B6B5 /* Test */,
@@ -186,6 +197,7 @@
 		61AC7FB42AB6D68B00B0B6B5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				AA7035FC2ADB81E800B26537 /* Group */,
 				611D8C9E2AB884AB0074A55A /* Login */,
 				61AC7FCF2AB6DF6300B0B6B5 /* Entity */,
 				61AC7FCA2AB6DD2400B0B6B5 /* Test */,
@@ -242,6 +254,7 @@
 			children = (
 				61AC7FCD2AB6DDE300B0B6B5 /* TestDTO.swift */,
 				611D8CA92ABED03D0074A55A /* AuthDTO.swift */,
+				AA7036012ADB8A1400B26537 /* GroupDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -251,6 +264,7 @@
 			children = (
 				61AC7FD02AB6DFBF00B0B6B5 /* TestEntity.swift */,
 				611D8CA32AB8874D0074A55A /* AuthEntity.swift */,
+				AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -278,6 +292,22 @@
 				61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AA7035F92ADB81B600B26537 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				AA7035FA2ADB81C700B26537 /* GroupRepository.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		AA7035FC2ADB81E800B26537 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 		AA9105602AD9A69300DA2E96 /* GroupSearch */ = {
@@ -339,6 +369,7 @@
 				AA09C2792ACBE9BC00F51A96 /* KakaoSDKAuth */,
 				AA09C27B2ACBE9BC00F51A96 /* KakaoSDKCommon */,
 				AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */,
+				AA7036042ADBAC3F00B26537 /* Kingfisher */,
 			);
 			productName = "onboard-iOS";
 			productReference = 61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */;
@@ -375,6 +406,7 @@
 				61AC7FD82AB6E56600B0B6B5 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				61AC7FDB2AB6E5B900B0B6B5 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				AA7036032ADBAC3F00B26537 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 61AC7F9C2AB6D4A300B0B6B5 /* Products */;
 			projectDirPath = "";
@@ -408,7 +440,10 @@
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
+				AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
+				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
+				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
@@ -421,6 +456,7 @@
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
+				AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
 				611D8CA42AB8874D0074A55A /* AuthEntity.swift in Sources */,
@@ -698,6 +734,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		AA7036032ADBAC3F00B26537 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -740,6 +784,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		AA7036042ADBAC3F00B26537 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA7036032ADBAC3F00B26537 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
