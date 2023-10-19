@@ -119,6 +119,7 @@ class PopupView: UIView {
         
         configureTextField()
         makeConstraints()
+        setupGestureRecognizer()
     }
     
     required init?(coder: NSCoder) {
@@ -165,6 +166,14 @@ class PopupView: UIView {
         }
     }
     
+    private func setupGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(backgroundTapped)
+        )
+        self.backgroundView.addGestureRecognizer(tapGesture)
+    }
+    
     func setState(popupState: PopupState,
                   onClickLink: @escaping (() -> Void)) {
         
@@ -188,6 +197,11 @@ class PopupView: UIView {
         ]
         linkButton.setAttributedTitle(NSAttributedString(string: popupState.linkButtonState?.string ?? "",
                                                          attributes: buttonAttributes), for: .normal)
+    }
+    
+    @objc
+    private func backgroundTapped() {
+        removeFromSuperview()
     }
 }
 
