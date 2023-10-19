@@ -38,9 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             )
         )
         //let testViewController = GroupSearchViewController(reactor: GroupSearchReactor(useCase: testUseCase))
-        let groupSearchUseCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
-        let testViewController = GroupSearchViewController(reactor: GroupSearchReactor(useCase: groupSearchUseCase))
-//        let testViewController = TestViewController(reactor: testReactor)
+        let testViewController = TestViewController(reactor: testReactor)
 
         self.window?.rootViewController = testViewController
         

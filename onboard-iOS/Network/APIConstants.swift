@@ -9,5 +9,5 @@ import Foundation
 
 
 enum API {
-    static let BASE_URL = "http://api.onboardgame.co.kr/"
+    static let BASE_URL = "http://sandbox-api.onboardgame.co.kr/"
 }
