@@ -15,7 +15,7 @@ class JoinPopupView: UIView {
         static let contentViewWidth: CGFloat = 324
         static let contentViewHeight: CGFloat = 176
         static let topMargin: CGFloat = 26
-        static let leftRigntMargin: CGFloat = 24
+        static let leftRightMargin: CGFloat = 24
         static let iconSize: CGFloat = 20
         static let textFieldHeight: CGFloat = 52
     }
@@ -132,12 +132,12 @@ class JoinPopupView: UIView {
         
         self.titleStackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(Metric.topMargin)
-            $0.leading.trailing.equalToSuperview().inset(Metric.leftRigntMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
         self.subTitleLabel.snp.makeConstraints {
             $0.top.equalTo(titleStackView.snp.bottom).offset(5)
-            $0.leading.trailing.equalToSuperview().inset(Metric.leftRigntMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
         self.textField.snp.makeConstraints {
@@ -146,7 +146,7 @@ class JoinPopupView: UIView {
         
         self.textFieldStackView.snp.makeConstraints {
             $0.top.equalTo(subTitleLabel.snp.bottom).offset(20)
-            $0.leading.trailing.equalToSuperview().inset(Metric.leftRigntMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
     }
     

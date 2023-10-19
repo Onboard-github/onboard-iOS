@@ -16,7 +16,7 @@ class ImagePopupView: UIView {
         static let contentViewHeight: CGFloat = 200
         static let topMargin: CGFloat = 26
         static let bottomMargin: CGFloat = 20
-        static let leftRigntMargin: CGFloat = 24
+        static let leftRightMargin: CGFloat = 24
         static let iconSize: CGFloat = 20
         static let textFieldHeight: CGFloat = 52
     }
@@ -125,12 +125,12 @@ class ImagePopupView: UIView {
         
         self.titleStackView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(Metric.topMargin)
-            $0.leading.trailing.equalToSuperview().inset(Metric.leftRigntMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
         self.buttonStackView.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(Metric.bottomMargin)
-            $0.leading.trailing.equalToSuperview().inset(Metric.leftRigntMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
     }
     
