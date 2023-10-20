@@ -74,20 +74,6 @@ final class GroupSearchView: UIView {
     private let button = UIButton()
     
     // MARK: - Properties
-    lazy var dataSource: UITableViewDiffableDataSource<Int, Group> = {
-        UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, group in
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "GroupSearchCell", for: indexPath) as? GroupSearchCell {
-                cell.titleLabel.text = group.name
-                cell.subTitleLabel.text = group.description
-                if let imageUrl = URL(string: group.profileImageUrl) {
-                    cell.thumbnailView.kf.setImage(with: imageUrl)
-                }
-                return cell
-            } else {
-                return UITableViewCell()
-            }
-        })
-    }()
     
     var didTapButton: (() -> Void)?
 
@@ -109,6 +95,22 @@ final class GroupSearchView: UIView {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 
+    
+    lazy var dataSource: UITableViewDiffableDataSource<Int, Group> = {
+        UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, group in
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "GroupSearchCell", for: indexPath) as? GroupSearchCell {
+                cell.titleLabel.text = group.name
+                cell.subTitleLabel.text = group.description
+                if let imageUrl = URL(string: group.profileImageUrl) {
+                    cell.thumbnailView.kf.setImage(with: imageUrl)
+                }
+                return cell
+            } else {
+                return UITableViewCell()
+            }
+        })
+    }()
+    
     // MARK: - Configure
     private func configure() {
         self.backgroundColor = .systemBackground
