@@ -44,6 +44,10 @@ final class GroupSearchViewController: UIViewController, View {
             .map { Reactor.Action.groupListAllFetch }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        
+        self.groupSearchView.searchBarValueChanged = { text in
+            print(text)
+        }
     }
 
     private func bindState(reactor: GroupSearchReactor) {
