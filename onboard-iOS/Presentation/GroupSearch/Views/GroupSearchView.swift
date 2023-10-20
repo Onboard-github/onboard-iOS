@@ -92,14 +92,6 @@ final class GroupSearchView: UIView {
         snapshot.appendSections([0])
         snapshot.appendItems(groupList)
         dataSource.apply(snapshot, animatingDifferences: false)
-        
-        searchBar.rx.text
-            .distinctUntilChanged() // 이전 값과 같은 경우 무시
-            .debounce(.milliseconds(500), scheduler: MainScheduler.instance) // 입력 후 0.5초 대기
-            .subscribe(onNext: { [weak self] text in
-                self?.searchBarValueChanged?(text ?? "")
-            })
-            .disposed(by: disposeBag)
     }
     
     lazy var dataSource: UITableViewDiffableDataSource<Int, Group> = {
@@ -130,6 +122,14 @@ final class GroupSearchView: UIView {
         self.addGroupButton.addAction(UIAction(handler: { _ in
             self.didTapAddGroupButton?()
         }), for: .touchUpInside)
+        
+        searchBar.rx.text
+            .distinctUntilChanged() // 이전 값과 같은 경우 무시
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance) // 입력 후 0.5초 대기
+            .subscribe(onNext: { [weak self] text in
+                self?.searchBarValueChanged?(text ?? "")
+            })
+            .disposed(by: disposeBag)
     }
 
     private func makeConstraints() {
