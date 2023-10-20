@@ -46,7 +46,7 @@ final class GroupSearchViewController: UIViewController, View {
             .disposed(by: self.disposeBag)
         
         self.groupSearchView.searchBarValueChanged = { text in
-            print(text)
+            reactor.action.onNext(.searchBarTextChanged(keyword: text))
         }
     }
 
