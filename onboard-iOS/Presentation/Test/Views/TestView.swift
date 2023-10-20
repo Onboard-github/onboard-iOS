@@ -64,6 +64,14 @@ final class TestView: UIView {
         button.titleLabel?.font = Font.Typography.body5_R
         return button
     }()
+    
+    private let bottomSheetMemberButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("임시 멤버 추가", for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
+        button.titleLabel?.font = Font.Typography.body5_R
+        return button
+    }()
 
     // MARK: - Properties
 
@@ -71,6 +79,7 @@ final class TestView: UIView {
     var didTapKakaoButton: (() -> Void)?
     var didTapProfileButton: (() -> Void)?
     var didTapMemberButton: (() -> Void)?
+    var didTapbottomSheetMemberButton: (() -> Void)?
     private let joinPopupView = JoinPopupView()
     private let imagePopupView = ImagePopupView()
 
@@ -134,6 +143,10 @@ final class TestView: UIView {
         self.memberButton.addAction(UIAction(handler: { _ in
             self.didTapMemberButton?()
         }), for: .touchUpInside)
+        
+        self.bottomSheetMemberButton.addAction(UIAction(handler: { _ in
+            self.didTapbottomSheetMemberButton?()
+        }), for: .touchUpInside)
     }
 
     private func makeConstraints() {
@@ -144,6 +157,7 @@ final class TestView: UIView {
         self.addSubview(self.memberButton)
         self.addSubview(self.codeButton)
         self.addSubview(self.imageButton)
+        self.addSubview(self.bottomSheetMemberButton)
 
         self.label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -179,6 +193,11 @@ final class TestView: UIView {
         self.imageButton.snp.makeConstraints {
             $0.leading.trailing.height.equalTo(appleButton)
             $0.top.equalTo(codeButton.snp.bottom).inset(-10)
+        }
+        
+        self.bottomSheetMemberButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(imageButton.snp.bottom).inset(-10)
         }
     }
 }
