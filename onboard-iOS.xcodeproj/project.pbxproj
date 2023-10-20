@@ -35,6 +35,9 @@
 		61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FE62AB6EEB700B0B6B5 /* APIConstants.swift */; };
 		61AC7FEA2AB7309400B0B6B5 /* APIEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FE92AB7309400B0B6B5 /* APIEventLogger.swift */; };
 		61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */; };
+		AA05918E2AE2B1D00063C377 /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA05918D2AE2B1D00063C377 /* GroupDetailViewController.swift */; };
+		AA0591902AE2B1D70063C377 /* GroupDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA05918F2AE2B1D70063C377 /* GroupDetailReactor.swift */; };
+		AA0591932AE2B1E30063C377 /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0591922AE2B1E30063C377 /* GroupDetailView.swift */; };
 		AA09C27A2ACBE9BC00F51A96 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C2792ACBE9BC00F51A96 /* KakaoSDKAuth */; };
 		AA09C27C2ACBE9BC00F51A96 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27B2ACBE9BC00F51A96 /* KakaoSDKCommon */; };
 		AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */; };
@@ -80,6 +83,9 @@
 		61AC7FE62AB6EEB700B0B6B5 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		61AC7FE92AB7309400B0B6B5 /* APIEventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEventLogger.swift; sourceTree = "<group>"; };
 		61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
+		AA05918D2AE2B1D00063C377 /* GroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
+		AA05918F2AE2B1D70063C377 /* GroupDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailReactor.swift; sourceTree = "<group>"; };
+		AA0591922AE2B1E30063C377 /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		AA7035FA2ADB81C700B26537 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
@@ -215,6 +221,7 @@
 			children = (
 				61AC7FB62AB6D6C300B0B6B5 /* Test */,
 				AA9105602AD9A69300DA2E96 /* GroupSearch */,
+				AA05918C2AE2B1A30063C377 /* GroupDetail */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -296,6 +303,24 @@
 				61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AA05918C2AE2B1A30063C377 /* GroupDetail */ = {
+			isa = PBXGroup;
+			children = (
+				AA05918D2AE2B1D00063C377 /* GroupDetailViewController.swift */,
+				AA05918F2AE2B1D70063C377 /* GroupDetailReactor.swift */,
+				AA0591912AE2B1DA0063C377 /* Views */,
+			);
+			path = GroupDetail;
+			sourceTree = "<group>";
+		};
+		AA0591912AE2B1DA0063C377 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA0591922AE2B1E30063C377 /* GroupDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AA7035F92ADB81B600B26537 /* Group */ = {
@@ -458,8 +483,10 @@
 				AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */,
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
 				611D8CAA2ABED03D0074A55A /* AuthDTO.swift in Sources */,
+				AA0591932AE2B1E30063C377 /* GroupDetailView.swift in Sources */,
 				AA9105622AD9A6BA00DA2E96 /* GroupSearchView.swift in Sources */,
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
+				AA0591902AE2B1D70063C377 /* GroupDetailReactor.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
@@ -471,6 +498,7 @@
 				AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				AA91058B2ADA4B9C00DA2E96 /* GroupSearchCell.swift in Sources */,
+				AA05918E2AE2B1D00063C377 /* GroupDetailViewController.swift in Sources */,
 				AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */,
 				611D8CA82ABECFFC0074A55A /* AuthRepository.swift in Sources */,
 			);
