@@ -23,7 +23,7 @@ class BottomSheetView: UIView {
     
     // MARK: - UI
     
-    private let buttons = Buttons()
+    private let buttons = Button()
     
     private let backgroundView: UIView = {
         let view = UIView()
@@ -89,7 +89,7 @@ class BottomSheetView: UIView {
         return label
     }()
     
-    private lazy var registerButton = buttons.bottomDefaultButton
+    private lazy var registerButton = buttons.bottomDefault
     
     private lazy var titleStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])

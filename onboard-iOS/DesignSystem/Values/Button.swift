@@ -1,5 +1,5 @@
 //
-//  Buttons.swift
+//  Button.swift
 //  onboard-iOS
 //
 //  Created by 혜리 on 2023/10/19.
@@ -7,17 +7,17 @@
 
 import UIKit
 
-struct Buttons {
-    var defaultButton: UIButton
-    var disabledButton: UIButton
-    var pressedButton: UIButton
+struct Button {
+    var `default`: UIButton
+    var disabled: UIButton
+    var pressed: UIButton
     
-    var bottomDefaultButton: UIButton
-    var bottomDisabledButton: UIButton
-    var bottomPressedButton: UIButton
+    var bottomDefault: UIButton
+    var bottomDisabled: UIButton
+    var bottomPressed: UIButton
 
     init() {
-        self.defaultButton = {
+        self.default = {
             let button = UIButton(type: .custom)
             button.setTitleColor(Colors.Gray_1, for: .normal)
             button.titleLabel?.font = Font.Typography.label3_B
@@ -25,7 +25,7 @@ struct Buttons {
             return button
         }()
 
-        self.disabledButton = {
+        self.disabled = {
             let button = UIButton(type: .custom)
             button.setTitleColor(Colors.Gray_7, for: .normal)
             button.titleLabel?.font = Font.Typography.label3_M
@@ -33,7 +33,7 @@ struct Buttons {
             return button
         }()
 
-        self.pressedButton = {
+        self.pressed = {
             let button = UIButton(type: .custom)
             button.setTitleColor(Colors.Gray_1, for: .normal)
             button.titleLabel?.font = Font.Typography.label3_B
@@ -41,7 +41,7 @@ struct Buttons {
             return button
         }()
         
-        self.bottomDefaultButton = {
+        self.bottomDefault = {
             let button = UIButton(type: .custom)
             button.setTitleColor(Colors.Gray_1, for: .normal)
             button.titleLabel?.font = Font.Typography.label3_B
@@ -49,7 +49,7 @@ struct Buttons {
             return button
         }()
 
-        self.bottomDisabledButton = {
+        self.bottomDisabled = {
             let button = UIButton(type: .custom)
             button.setTitleColor(Colors.Gray_7, for: .normal)
             button.titleLabel?.font = Font.Typography.label3_M
@@ -57,7 +57,7 @@ struct Buttons {
             return button
         }()
 
-        self.bottomPressedButton = {
+        self.bottomPressed = {
             let button = UIButton(type: .custom)
             button.setTitleColor(Colors.Gray_1, for: .normal)
             button.titleLabel?.font = Font.Typography.label3_B
