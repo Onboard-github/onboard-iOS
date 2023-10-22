@@ -33,4 +33,23 @@ final class OBNetworkManager {
 
         return response
     }
+    
+    func googleLoginRequest(token: String) throws {
+        let googleLoginAPI = try OBRouter.auth(
+            body: AuthRequest.Body(
+                type: AuthEntity.Req.AuthType.google.rawValue,
+                token: token
+            ).encode()
+        )
+
+        APISession.session.request(googleLoginAPI)
+            .responseDecodable { (response: AFDataResponse<Data>) in
+                switch response.result {
+                case .success(let data):
+                    print("Response Data: \(data)")
+                case .failure(let error):
+                    print("Response Error: \(error)")
+                }
+            }
+    }
 }
