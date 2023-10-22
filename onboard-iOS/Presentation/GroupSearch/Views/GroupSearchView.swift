@@ -33,13 +33,17 @@ final class GroupSearchView: UIView {
         return titleLabel
     }()
     
-    private let searchBar: UISearchBar = {
-        let bar = UISearchBar()
+    private let searchBar: GroupSearchBar = {
+        let bar = GroupSearchBar()
+        bar.placeholder = "모임 이름 검색"
+        bar.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
         return bar
     }()
     
-    private let addGroupButton: UIButton = {
-        let button = UIButton()
+    private let addGroupButton: NewGroupButton = {
+        let button = NewGroupButton()
         button.setTitle("우리 모임 새로 등록하기 +", for: .normal)
         button.setTitleColor(.label, for: .normal)
         return button
@@ -47,15 +51,23 @@ final class GroupSearchView: UIView {
     
     private lazy var controlsStack: UIStackView = {
         let stackView = UIStackView()
+        stackView.spacing = 12
         stackView.axis = .vertical
         stackView.addArrangedSubview(self.searchBar)
-        stackView.addArrangedSubview(self.addGroupButton)
+        let buttonBackgroundView = UIView()
+        buttonBackgroundView.snp.makeConstraints { make in
+            make.height.equalTo(32)
+        }
+        buttonBackgroundView.addSubview(self.addGroupButton)
+        addGroupButton.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
+        }
+        stackView.addArrangedSubview(buttonBackgroundView)
         return stackView
     }()
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .systemRed
         return tableView
     }()
     
@@ -128,8 +140,8 @@ final class GroupSearchView: UIView {
         
         self.addSubview(self.tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(self.controlsStack.snp.bottom)
-            make.leading.trailing.equalToSuperview().inset(Metric.side)
+            make.top.equalTo(self.controlsStack.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
     }

@@ -49,6 +49,8 @@
 		AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */; };
 		AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */; };
 		AA91058B2ADA4B9C00DA2E96 /* GroupSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91058A2ADA4B9C00DA2E96 /* GroupSearchCell.swift */; };
+		AACCA9192AE193D3000A4CDA /* GroupSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCA9182AE193D3000A4CDA /* GroupSearchBar.swift */; };
+		AACCA91B2AE19A09000A4CDA /* NewGroupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCA91A2AE19A09000A4CDA /* NewGroupButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchReactor.swift; sourceTree = "<group>"; };
 		AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchViewController.swift; sourceTree = "<group>"; };
 		AA91058A2ADA4B9C00DA2E96 /* GroupSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchCell.swift; sourceTree = "<group>"; };
+		AACCA9182AE193D3000A4CDA /* GroupSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchBar.swift; sourceTree = "<group>"; };
+		AACCA91A2AE19A09000A4CDA /* NewGroupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +334,8 @@
 		AA9105672ADA32DC00DA2E96 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AACCA91A2AE19A09000A4CDA /* NewGroupButton.swift */,
+				AACCA9182AE193D3000A4CDA /* GroupSearchBar.swift */,
 				AA9105612AD9A6BA00DA2E96 /* GroupSearchView.swift */,
 				AA91058C2ADA4BA600DA2E96 /* Cells */,
 			);
@@ -437,6 +443,7 @@
 			files = (
 				61AC7FCE2AB6DDE300B0B6B5 /* TestDTO.swift in Sources */,
 				61AC7FEA2AB7309400B0B6B5 /* APIEventLogger.swift in Sources */,
+				AACCA91B2AE19A09000A4CDA /* NewGroupButton.swift in Sources */,
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
@@ -456,6 +463,7 @@
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
+				AACCA9192AE193D3000A4CDA /* GroupSearchBar.swift in Sources */,
 				AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
