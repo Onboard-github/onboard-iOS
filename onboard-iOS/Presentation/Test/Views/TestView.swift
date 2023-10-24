@@ -32,17 +32,63 @@ final class TestView: UIView {
         button.backgroundColor = .lightGray
         return button
     }()
+    
+    private let profileButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("프로필 설정", for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
+        button.titleLabel?.font = Font.Typography.body5_R
+        return button
+    }()
+    
+    private let memberButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("임시 멤버 추가", for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
+        button.titleLabel?.font = Font.Typography.body5_R
+        return button
+    }()
+    
+    private let codeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("참여 코드 입력", for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
+        button.titleLabel?.font = Font.Typography.body5_R
+        return button
+    }()
+    
+    private let imageButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("모임 대표 이미지", for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
+        button.titleLabel?.font = Font.Typography.body5_R
+        return button
+    }()
+    
+    private let bottomSheetMemberButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("임시 멤버 추가", for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
+        button.titleLabel?.font = Font.Typography.body5_R
+        return button
+    }()
 
     // MARK: - Properties
 
     var didTapAppleButton: (() -> Void)?
     var didTapKakaoButton: (() -> Void)?
+    var didTapProfileButton: (() -> Void)?
+    var didTapMemberButton: (() -> Void)?
+    var didTapbottomSheetMemberButton: (() -> Void)?
+    private let joinPopupView = JoinPopupView()
+    private let imagePopupView = ImagePopupView()
 
     // MARK: - Initialize
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configure()
+        self.addAction()
     }
 
     required init?(coder: NSCoder) {
@@ -62,6 +108,24 @@ final class TestView: UIView {
         self.addConfigure()
         self.makeConstraints()
     }
+    
+    private func addAction() {
+        self.codeButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.addSubview(self.joinPopupView)
+            self.joinPopupView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
+        }), for: .touchUpInside)
+        
+        self.imageButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.addSubview(self.imagePopupView)
+            self.imagePopupView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
+        }), for: .touchUpInside)
+    }
 
     private func addConfigure() {
         self.appleButton.addAction(UIAction(handler: { _ in
@@ -71,12 +135,29 @@ final class TestView: UIView {
         self.kakaoButton.addAction(UIAction(handler: { _ in
             self.didTapKakaoButton?()
         }), for: .touchUpInside)
+        
+        self.profileButton.addAction(UIAction(handler: { _ in
+            self.didTapProfileButton?()
+        }), for: .touchUpInside)
+        
+        self.memberButton.addAction(UIAction(handler: { _ in
+            self.didTapMemberButton?()
+        }), for: .touchUpInside)
+        
+        self.bottomSheetMemberButton.addAction(UIAction(handler: { _ in
+            self.didTapbottomSheetMemberButton?()
+        }), for: .touchUpInside)
     }
 
     private func makeConstraints() {
         self.addSubview(self.label)
         self.addSubview(self.appleButton)
         self.addSubview(self.kakaoButton)
+        self.addSubview(self.profileButton)
+        self.addSubview(self.memberButton)
+        self.addSubview(self.codeButton)
+        self.addSubview(self.imageButton)
+        self.addSubview(self.bottomSheetMemberButton)
 
         self.label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -92,6 +173,31 @@ final class TestView: UIView {
         self.kakaoButton.snp.makeConstraints {
             $0.leading.trailing.height.equalTo(appleButton)
             $0.top.equalTo(appleButton.snp.bottom).inset(-10)
+        }
+        
+        self.profileButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(kakaoButton.snp.bottom).inset(-10)
+        }
+        
+        self.memberButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(profileButton.snp.bottom).inset(-10)
+        }
+        
+        self.codeButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(memberButton.snp.bottom).inset(-10)
+        }
+        
+        self.imageButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(codeButton.snp.bottom).inset(-10)
+        }
+        
+        self.bottomSheetMemberButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(imageButton.snp.bottom).inset(-10)
         }
     }
 }

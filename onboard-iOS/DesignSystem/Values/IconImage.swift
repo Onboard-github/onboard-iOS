@@ -70,6 +70,8 @@ enum IconImage {
     
     case iconHome
     
+    case dice
+    
     var image: UIImage? {
         switch self {
         case .search:
@@ -80,11 +82,11 @@ enum IconImage {
             return UIImage(named: "icon_plus")
             
         case .manager:
-            return UIImage(named: "icon_circleCrown")
+            return UIImage(named: "icon_manager")
         case .code:
-            return UIImage(named: "icon_circleLock")
+            return UIImage(named: "icon_code")
         case .member:
-            return UIImage(named: "icon_circleMy")
+            return UIImage(named: "icon_member")
             
         case .gold:
             return UIImage(named: "icon_gold")
@@ -177,6 +179,9 @@ enum IconImage {
             
         case .iconHome:
             return UIImage(named: "icon_home")
+            
+        case .dice:
+            return UIImage(named: "icon_dice")
         }
     }
 }
