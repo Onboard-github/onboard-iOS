@@ -20,6 +20,17 @@ final class TestView: UIView {
     // MARK: - UI
 
     private let label = UILabel()
+
+    private let googleLoginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .darkGray
+        return button
+    }()
+    
+    var googleLoginButtonAction: (() -> Void)?
+
     private let appleButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "ic_apple_login"), for: .normal)
@@ -107,6 +118,9 @@ final class TestView: UIView {
         self.backgroundColor = .white
         self.addConfigure()
         self.makeConstraints()
+        self.googleLoginButton.addAction(UIAction(handler: { _ in
+            self.googleLoginButtonAction?()
+        }), for: .touchUpInside)
     }
     
     private func addAction() {
@@ -151,6 +165,7 @@ final class TestView: UIView {
 
     private func makeConstraints() {
         self.addSubview(self.label)
+        self.addSubview(self.googleLoginButton)
         self.addSubview(self.appleButton)
         self.addSubview(self.kakaoButton)
         self.addSubview(self.profileButton)
@@ -198,6 +213,11 @@ final class TestView: UIView {
         self.bottomSheetMemberButton.snp.makeConstraints {
             $0.leading.trailing.height.equalTo(appleButton)
             $0.top.equalTo(imageButton.snp.bottom).inset(-10)
+        }
+
+        self.googleLoginButton.snp.makeConstraints {
+            $0.leading.trailing.height.equalTo(appleButton)
+            $0.top.equalTo(kakaoButton.snp.bottom).inset(-10)
         }
     }
 }
