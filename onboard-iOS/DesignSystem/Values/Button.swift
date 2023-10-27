@@ -22,6 +22,8 @@ struct Button {
             button.setTitleColor(Colors.Gray_1, for: .normal)
             button.titleLabel?.font = Font.Typography.label3_B
             button.backgroundColor = Colors.Orange_10
+            button.layer.cornerRadius = 8
+            button.clipsToBounds = true
             return button
         }()
 
@@ -30,6 +32,8 @@ struct Button {
             button.setTitleColor(Colors.Gray_7, for: .normal)
             button.titleLabel?.font = Font.Typography.label3_M
             button.backgroundColor = Colors.Gray_4
+            button.layer.cornerRadius = 8
+            button.clipsToBounds = true
             return button
         }()
 
@@ -38,6 +42,8 @@ struct Button {
             button.setTitleColor(Colors.Gray_1, for: .normal)
             button.titleLabel?.font = Font.Typography.label3_B
             button.backgroundColor = Colors.Gray_15
+            button.layer.cornerRadius = 8
+            button.clipsToBounds = true
             return button
         }()
         
