@@ -23,13 +23,18 @@ enum OBRouter: URLRequestConvertible {
     // MARK: - APIs
 
     case testAPI
+    case auth(body: Body)
+    case groupList
+    case addGroup(body: Body)
 
     // MARK: - HTTP Method
 
     var method: HTTPMethod {
         switch self {
-        case .testAPI:
+        case .testAPI, .groupList:
             return .get
+        case .auth, .addGroup:
+            return .post
         }
     }
 
@@ -39,6 +44,10 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI:
             return "v1/test"
+        case .auth:
+            return "v1/auth/login"
+        case .groupList, .addGroup:
+            return "v1/group"
         }
     }
 
@@ -46,7 +55,7 @@ enum OBRouter: URLRequestConvertible {
 
     var header: Header? {
         switch self {
-        case .testAPI:
+        case .testAPI, .auth, .groupList, .addGroup:
             return nil
         }
     }
@@ -55,8 +64,11 @@ enum OBRouter: URLRequestConvertible {
 
     var body: Body? {
         switch self {
-        case .testAPI:
+        case .testAPI, .groupList:
             return nil
+
+        case let .auth(body), let .addGroup(body):
+            return body
         }
     }
 
