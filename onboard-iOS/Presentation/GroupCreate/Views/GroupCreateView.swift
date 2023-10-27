@@ -207,6 +207,7 @@ final class GroupCreateView: UIView {
         super.init(frame: frame)
         
         configure()
+        textFieldPlaceHolder()
         makeConstraints()
     }
     
@@ -221,6 +222,20 @@ final class GroupCreateView: UIView {
         
         nameTextField.delegate = self
         affiliationTextField.delegate = self
+    }
+    
+    private func textFieldPlaceHolder() {
+        let nameAttributes: [NSAttributedString.Key: Any] = [
+            .font: Font.Typography.body3_R as Any,
+            .foregroundColor: Colors.Gray_7]
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "모임 이름을 입력해주세요.",
+                                                                 attributes: nameAttributes)
+        
+        let affAttributes: [NSAttributedString.Key: Any] = [
+            .font: Font.Typography.body3_R as Any,
+            .foregroundColor: Colors.Gray_7]
+        affiliationTextField.attributedPlaceholder = NSAttributedString(string: "Ex) 홍익대학교",
+                                                                        attributes: affAttributes)
     }
     
     private func makeConstraints() {
