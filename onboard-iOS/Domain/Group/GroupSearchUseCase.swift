@@ -10,11 +10,11 @@ import RxSwift
 
 protocol GroupSearchUseCase {
     var groupList: Observable<[GroupEntity.Res.Group]> { get }
-    func list() async
+    func list(keyword: String?, pageNumber: Int, pageSize: Int) async
 }
 
 protocol GroupRepository {
-    func list() async throws -> GroupEntity.Res
+    func list(keyword: String?, pageNumber: Int, pageSize: Int) async throws -> GroupEntity.Res
 }
 
 final class GroupSearchUseCaseImpl: GroupSearchUseCase {
@@ -31,9 +31,9 @@ final class GroupSearchUseCaseImpl: GroupSearchUseCase {
         self.groupList = self._groupList
     }
 
-    func list() async {
+    func list(keyword: String?, pageNumber: Int, pageSize: Int) async {
         Task {
-            let groupList = try await self.groupRepository.list()
+            let groupList = try await self.groupRepository.list(keyword: keyword, pageNumber: pageNumber, pageSize: pageSize)
             self._groupList.onNext(groupList.contents)
         }
     }
