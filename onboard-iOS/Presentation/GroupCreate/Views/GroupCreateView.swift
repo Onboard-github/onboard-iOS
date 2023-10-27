@@ -217,6 +217,9 @@ final class GroupCreateView: UIView {
     
     private func configure() {
         self.backgroundColor = Colors.Gray_2
+        
+        nameTextField.delegate = self
+        affiliationTextField.delegate = self
     }
     
     private func makeConstraints() {
@@ -302,4 +305,8 @@ final class GroupCreateView: UIView {
             $0.height.equalTo(Metric.buttonHeight)
         }
     }
+}
+
+extension GroupCreateView: UITextFieldDelegate {
+    
 }
