@@ -306,6 +306,10 @@ final class GroupCreateView: UIView {
             $0.height.equalTo(Metric.buttonHeight)
         }
     }
+    
+    private func updateCountLabel(characterCount: Int) {
+        self.introductionCountLabel.text = "\(characterCount)/72"
+    }
 }
 
 extension GroupCreateView: UITextFieldDelegate {
@@ -333,5 +337,41 @@ extension GroupCreateView: UITextFieldDelegate {
 }
 
 extension GroupCreateView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "모임을 소개해주세요." {
+            textView.text = nil
+            textView.textColor = Colors.Gray_15
+        }
+    }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            textView.text = "모임을 소개해주세요."
+            textView.textColor = Colors.Gray_7
+            updateCountLabel(characterCount: 0)
+        }
+    }
+    
+    func textView(
+        _ textView: UITextView,
+        shouldChangeTextIn range: NSRange,
+        replacementText text: String) -> Bool {
+            
+            if text == "\n" {
+                textView.resignFirstResponder()
+                return false
+            }
+            
+            let newString = (textView.text as NSString).replacingCharacters(in: range, with: text).trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let characterCount = newString.count
+            let maxLength = 72
+            
+            guard characterCount <= maxLength else {
+                return false
+            }
+            
+            updateCountLabel(characterCount: characterCount)
+            return true
+        }
 }
