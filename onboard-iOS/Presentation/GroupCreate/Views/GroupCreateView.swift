@@ -12,6 +12,25 @@ final class GroupCreateView: UIView {
     
     private let button = Button()
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let topMargin: CGFloat = 120
+        static let imageViewWidth: CGFloat = 138
+        static let imageViewHeight: CGFloat = 182
+        static let imageViewButtonLayout: CGFloat = 10
+        static let imageViewButtonSize: CGFloat = 28
+        static let essentialImageSize: CGFloat = 8
+        static let fieldTopMargin: CGFloat = 40
+        static let leftRightMargin: CGFloat = 24
+        static let textFieldHeight: CGFloat = 48
+        static let countLabelTopMargin: CGFloat = 5
+        static let spacingField: CGFloat = 15
+        static let textViewHeight: CGFloat = 88
+        static let buttonTopMargin: CGFloat = 20
+        static let buttonHeight: CGFloat = 48
+    }
+    
     // MARK: - UI
     
     private let titleImageView: UIImageView = {
@@ -180,4 +199,107 @@ final class GroupCreateView: UIView {
         view.alignment = .fill
         return view
     }()
+    
+    // MARK: - Initialize
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        configure()
+        makeConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.backgroundColor = Colors.Gray_2
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.titleImageView)
+        self.titleImageView.addSubview(self.titleImageViewButton)
+        
+        self.addSubview(self.nameCountLabel)
+        self.addSubview(self.nameStackView)
+        
+        self.addSubview(self.introductionCountLabel)
+        self.addSubview(self.introductionStackView)
+        
+        self.addSubview(self.affiliationCountLabel)
+        self.addSubview(self.affiliationStackView)
+        
+        self.addSubview(self.registerButton)
+        
+        self.titleImageView.snp.makeConstraints {
+            $0.top.equalTo(Metric.topMargin)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(Metric.imageViewWidth)
+            $0.height.equalTo(Metric.imageViewHeight)
+        }
+        
+        self.titleImageViewButton.snp.makeConstraints {
+            $0.bottom.trailing.equalTo(-Metric.imageViewButtonLayout)
+            $0.width.height.equalTo(Metric.imageViewButtonSize)
+        }
+        
+        self.nameEssentialImage.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.essentialImageSize)
+        }
+        
+        self.nameStackView.snp.makeConstraints {
+            $0.top.equalTo(titleImageView.snp.bottom).offset(Metric.fieldTopMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.nameTextField.snp.makeConstraints {
+            $0.height.equalTo(Metric.textFieldHeight)
+        }
+        
+        self.nameCountLabel.snp.makeConstraints {
+            $0.top.equalTo(nameStackView.snp.bottom).offset(Metric.countLabelTopMargin)
+            $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.introdutionEssentialImage.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.essentialImageSize)
+        }
+        
+        self.introductionStackView.snp.makeConstraints {
+            $0.top.equalTo(nameCountLabel.snp.bottom).offset(Metric.spacingField)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.introductionTextView.snp.makeConstraints {
+            $0.height.equalTo(Metric.textViewHeight)
+        }
+        
+        self.introductionCountLabel.snp.makeConstraints {
+            $0.top.equalTo(introductionStackView.snp.bottom).offset(Metric.countLabelTopMargin)
+            $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.affiliationStackView.snp.makeConstraints {
+            $0.top.equalTo(introductionCountLabel.snp.bottom).offset(Metric.spacingField)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.affiliationTextField.snp.makeConstraints {
+            $0.height.equalTo(Metric.textFieldHeight)
+        }
+        
+        self.affiliationCountLabel.snp.makeConstraints {
+            $0.top.equalTo(affiliationStackView.snp.bottom).offset(Metric.countLabelTopMargin)
+            $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.registerButton.snp.makeConstraints {
+            $0.top.equalTo(affiliationCountLabel.snp.bottom).offset(Metric.buttonTopMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.height.equalTo(Metric.buttonHeight)
+        }
+    }
 }
