@@ -39,36 +39,42 @@ final class TermsAgreementModalView: UIView {
 
     // MARK: - UI
 
-    private let titleLabel = UILabel()
-    private let subTitleLabel = UILabel()
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.Typography.title1
+        label.textColor = Colors.Gray_15
+        label.text = "서비스 이용 동의"
+        return label
+    }()
+    private let subTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.Typography.body3_R
+        label.textColor = Colors.Gray_8
+        label.text = "온보드를 사용하기 위해 약관에 동의해주세요"
+        return label
+    }()
 
     private let tableView = UITableView()
 
     private let separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = Colors.Gray_2
         return view
     }()
-
+ 
     private let allAgreementButton: UIButton = {
         let button = UIButton()
         button.setTitle("약관 전체 동의  ", for: .normal)
+        button.titleLabel?.font = Font.Typography.title3
         button.setImage(UIImage(named: "img_select_off"), for: .normal)
         button.setImage(UIImage(named: "img_select_on"), for: .selected)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(Colors.Gray_15, for: .normal)
         button.semanticContentAttribute = .forceRightToLeft
         return button
     }()
 
-    private let registerButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("가입하기", for: .normal)
-        button.backgroundColor = .orange
-        button.layer.cornerRadius = Metric.registerButtonRadius
-        button.clipsToBounds = true
-        return button
-    }()
-
+    private let registerButton = Button().default
+    
     // MARK: - Properties
 
     private var termsList: [TermsAgreementItemView.State] = [] {
@@ -103,20 +109,7 @@ final class TermsAgreementModalView: UIView {
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
 
-        self.titleLabel.font = UIFont(name: "SpoqaHanSansNeo-Bold", size: 14)
-        self.titleLabel.setAttributed(
-            lineHeight: 28,
-            letterSpacing: -0.4,
-            text: "서비스 이용 동의"
-        )
-
-        self.subTitleLabel.font = UIFont(name: "SpoqaHanSansNeo-Regular", size: 14)
-        self.subTitleLabel.textColor = UIColor(red: 165/255, green: 165/255, blue: 165/255, alpha: 1)
-        self.subTitleLabel.setAttributed(
-            lineHeight: 20,
-            letterSpacing: -0.4,
-            text: "온보드를 사용하기 위해 약관에 동의해주세요"
-        )
+        self.registerButton.setTitle("가입하기", for: .normal)
 
         self.makeConstraints()
     }

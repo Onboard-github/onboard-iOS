@@ -29,13 +29,16 @@ final class TermsAgreementItemView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
+        label.font = Font.Typography.body3_M
+        label.textColor = Colors.Gray_13
         return label
     }()
 
     private let detailButton: UIButton = {
         let button = UIButton()
         button.setTitle("상세보기", for: .normal)
-        button.setTitleColor(.lightGray, for: .normal)
+        button.setTitleColor(Colors.Gray_9, for: .normal)
+        button.titleLabel?.font = Font.Typography.body4_R
         return button
     }()
 
