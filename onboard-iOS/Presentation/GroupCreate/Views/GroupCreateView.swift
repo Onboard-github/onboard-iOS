@@ -308,5 +308,25 @@ final class GroupCreateView: UIView {
 }
 
 extension GroupCreateView: UITextFieldDelegate {
-    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String) -> Bool {
+            
+            if textField == nameTextField || textField == affiliationTextField {
+                let currentText = textField.text ?? ""
+                let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
+                
+                let maxLength = (textField == nameTextField) ? 14 : 15
+                let countLabel = (textField == nameTextField) ? nameCountLabel : affiliationCountLabel
+                
+                if updatedText.count <= maxLength {
+                    countLabel.text = "\(updatedText.count)/\(maxLength)"
+                    return true
+                } else {
+                    return false
+                }
+            }
+            return true
+        }
 }
