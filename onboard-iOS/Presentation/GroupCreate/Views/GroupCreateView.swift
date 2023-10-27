@@ -110,6 +110,7 @@ final class GroupCreateView: UIView {
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 1.0
         view.layer.borderColor = Colors.Gray_5.cgColor
+        view.delegate = self
         return view
     }()
     
@@ -329,4 +330,8 @@ extension GroupCreateView: UITextFieldDelegate {
             }
             return true
         }
+}
+
+extension GroupCreateView: UITextViewDelegate {
+    
 }
