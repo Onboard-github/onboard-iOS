@@ -17,6 +17,7 @@ final class TermsAgreementReactor: Reactor {
         case viewDidLoad
         case selectDetail(IndexPath)
         case selectCheck(indexPath: IndexPath)
+        case selectAllAgreement
         case confirm
     }
     
@@ -24,7 +25,7 @@ final class TermsAgreementReactor: Reactor {
         case setTerms([State.Term])
         case goDetail(url: String)
         case updateCheckStatus(indexPath: IndexPath)
-        case updateAllAgreement(isChecked: Bool)
+        case updateAllAgreement
     }
     
     struct State {
@@ -51,6 +52,9 @@ final class TermsAgreementReactor: Reactor {
         case let .selectCheck(indexPath):
             return .just(.updateCheckStatus(indexPath: indexPath))
             
+        case .selectAllAgreement:
+            return .just(.updateAllAgreement)
+            
         case .confirm:
             return .empty()
             
@@ -69,6 +73,9 @@ final class TermsAgreementReactor: Reactor {
                 terms: state.terms,
                 indexPath: indexPath
             )
+            
+        case .updateAllAgreement:
+            state = self.updateAllAgreementStatus(state: state)
             
         default:
             print("no reduce yet")
@@ -124,5 +131,21 @@ extension TermsAgreementReactor {
         )
         
         return terms
+    }
+    
+    private func updateAllAgreementStatus(state: State) -> State {
+        var terms = state.terms
+        
+        return State(
+            terms: terms.map {
+                State.Term(
+                    title: $0.title,
+                    isRequired: $0.isRequired,
+                    url: $0.url,
+                    isChecked: !state.isAllAgreemented
+                )
+            },
+            isAllAgreemented: !state.isAllAgreemented
+        )
     }
 }

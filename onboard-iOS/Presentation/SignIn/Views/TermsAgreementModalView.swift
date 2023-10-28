@@ -36,6 +36,13 @@ final class TermsAgreementModalView: UIView {
         static let registerButtonHeight: CGFloat = 48
         static let registerButtonHMargin: CGFloat = 20
     }
+    
+    // MARK: - State
+    
+    struct State {
+        let terms: [TermsAgreementItemView.State]
+        let isAllAgreement: Bool
+    }
 
     // MARK: - UI
 
@@ -100,8 +107,9 @@ final class TermsAgreementModalView: UIView {
 
     // MARK: - Bind
 
-    func bind(termsList: [TermsAgreementItemView.State]) {
-        self.termsList = termsList
+    func bind(state: State) {
+        self.termsList = state.terms
+        self.allAgreementButton.isSelected = state.isAllAgreement
     }
 
     // MARK: - Configure
@@ -193,12 +201,15 @@ import SwiftUI
 struct TermsAgreementModalViewPreview: PreviewProvider {
     static var previews: some View {
         UIViewPreview {
-
+            
             let view = TermsAgreementModalView()
-            view.bind(termsList: [
-                .init(title: "개인정보 처리방침", isRequired: true, isChecked: false),
-                .init(title: "서비스 이용약관", isRequired: true, isChecked: false)
-            ])
+            view.bind(state: .init(
+                terms: [
+                    .init(title: "개인정보 처리방침", isRequired: true, isChecked: false),
+                    .init(title: "서비스 이용약관", isRequired: true, isChecked: false)
+                ],
+                isAllAgreement: false
+            ))
             return view
 
         }.previewLayout(.sizeThatFits)

@@ -129,16 +129,19 @@ final class TermsAgreementViewController: UIViewController, View {
         self.modalView.selectCheck = { indexPath in
             self.reactor?.action.onNext(.selectCheck(indexPath: indexPath))
         }
+        
+        self.modalView.selectAllCheck = { 
+            self.reactor?.action.onNext(.selectAllAgreement)
+        }
     }
     
     private func bindState(reactor: Reactor) {
         reactor.state
-            .map { $0.terms }
+            .map { $0 }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] result in
                 guard let self else { return }
-                self.modalView.bind(termsList: self.toState(terms: result))
-                print(result)
+                self.modalView.bind(state: self.toState(state: result))
             })
             .disposed(by: self.disposeBag)
     }
@@ -162,13 +165,16 @@ final class TermsAgreementViewController: UIViewController, View {
 
 extension TermsAgreementViewController {
 
-    func toState(terms: [Reactor.State.Term]) -> [TermsAgreementItemView.State] {
-        return terms.map {
-            .init(
-                title: $0.title,
-                isRequired: $0.isRequired,
-                isChecked: $0.isChecked
-            )
-        }
+    func toState(state: Reactor.State) -> TermsAgreementModalView.State {
+        return .init(
+            terms: state.terms.map {
+                .init(
+                    title: $0.title,
+                    isRequired: $0.isRequired,
+                    isChecked: $0.isChecked
+                )
+            },
+            isAllAgreement: state.isAllAgreemented
+        )
     }
 }
