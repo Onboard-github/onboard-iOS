@@ -16,14 +16,14 @@ final class TermsAgreementReactor: Reactor {
     enum Action {
         case viewDidLoad
         case selectDetail(IndexPath)
-        case selectCheck(IndexPath)
+        case selectCheck(indexPath: IndexPath)
         case confirm
     }
     
     enum Mutation {
         case setTerms([State.Term])
         case goDetail(url: String)
-        case updateCheckStatus(index: IndexPath, isChecked: Bool)
+        case updateCheckStatus(indexPath: IndexPath)
         case updateAllAgreement(isChecked: Bool)
     }
     
@@ -49,7 +49,7 @@ final class TermsAgreementReactor: Reactor {
             return .empty()
             
         case let .selectCheck(indexPath):
-            return .empty()
+            return .just(.updateCheckStatus(indexPath: indexPath))
             
         case .confirm:
             return .empty()
@@ -63,6 +63,12 @@ final class TermsAgreementReactor: Reactor {
         switch mutation {
         case let .setTerms(terms):
             state.terms = terms
+            
+        case let .updateCheckStatus(indexPath):
+            state.terms = self.updateAgreementStatus(
+                terms: state.terms,
+                indexPath: indexPath
+            )
             
         default:
             print("no reduce yet")
@@ -100,5 +106,23 @@ extension TermsAgreementReactor {
             
             return Disposables.create()
         }
+    }
+    
+    private func updateAgreementStatus(
+        terms: [State.Term],
+        indexPath: IndexPath
+    ) -> [State.Term] {
+        var terms = terms
+        
+        let term = terms[indexPath.item]
+        
+        terms[indexPath.item] = State.Term(
+            title: term.title,
+            isRequired: term.isRequired,
+            url: term.url,
+            isChecked: !term.isChecked
+        )
+        
+        return terms
     }
 }

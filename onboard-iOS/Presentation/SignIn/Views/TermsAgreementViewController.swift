@@ -125,6 +125,10 @@ final class TermsAgreementViewController: UIViewController, View {
             .map { Reactor.Action.viewDidLoad }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        
+        self.modalView.selectCheck = { indexPath in
+            self.reactor?.action.onNext(.selectCheck(indexPath: indexPath))
+        }
     }
     
     private func bindState(reactor: Reactor) {
