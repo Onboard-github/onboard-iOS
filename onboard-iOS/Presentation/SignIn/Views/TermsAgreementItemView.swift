@@ -13,7 +13,8 @@ final class TermsAgreementItemView: UIView {
 
     struct State {
         let title: String
-        let required: Bool
+        let isRequired: Bool
+        let isChecked: Bool
     }
 
     // MARK: - Metric
@@ -68,8 +69,9 @@ final class TermsAgreementItemView: UIView {
     // MARK: - Bind
 
     func bind(state: State) {
-        let prefix = state.required ? "(필수)" : "(선택)"
+        let prefix = state.isRequired ? "(필수)" : "(선택)"
         self.titleLabel.text = "\(prefix) \(state.title)"
+        self.checkButton.isSelected = state.isChecked
     }
 
     // MARK: - Configure
@@ -127,7 +129,12 @@ struct TermsAgreementItemViewPreview: PreviewProvider {
     static var previews: some View {
         UIViewPreview {
             let view = TermsAgreementItemView()
-            view.bind(state: .init(title: "개인정보 처리방침", required: true))
+            
+            view.bind(state: .init(
+                title: "개인정보 처리방침",
+                isRequired: true,
+                isChecked: false
+            ))
             return view
 
         }.previewLayout(.sizeThatFits)

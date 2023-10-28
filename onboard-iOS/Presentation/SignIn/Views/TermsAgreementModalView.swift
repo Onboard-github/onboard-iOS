@@ -196,8 +196,8 @@ struct TermsAgreementModalViewPreview: PreviewProvider {
 
             let view = TermsAgreementModalView()
             view.bind(termsList: [
-                .init(title: "개인정보 처리방침", required: true),
-                .init(title: "서비스 이용약관", required: true)
+                .init(title: "개인정보 처리방침", isRequired: true, isChecked: false),
+                .init(title: "서비스 이용약관", isRequired: true, isChecked: false)
             ])
             return view
 

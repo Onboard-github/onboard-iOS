@@ -23,16 +23,19 @@ final class TermsAgreementReactor: Reactor {
     enum Mutation {
         case setTerms([State.Term])
         case goDetail(url: String)
-        case updateCheckStatus
+        case updateCheckStatus(index: IndexPath, isChecked: Bool)
+        case updateAllAgreement(isChecked: Bool)
     }
     
     struct State {
         var terms: [Term] = []
+        var isAllAgreemented: Bool = false
         
         struct Term {
             let title: String
             let isRequired: Bool
             let url: String
+            let isChecked: Bool
         }
     }
     
@@ -80,8 +83,18 @@ extension TermsAgreementReactor {
             // TODO: - Mock data, domain + repo layer 작업 이후 변경
             
             observer.onNext(.setTerms([
-                .init(title: "서비스 이용약관", isRequired: true, url: "https://www.naver.com"),
-                .init(title: "개인정보 처리방침", isRequired: true, url: "https://www.google.com")
+                .init(
+                    title: "서비스 이용약관",
+                    isRequired: true,
+                    url: "https://www.naver.com",
+                    isChecked: false
+                ),
+                .init(
+                    title: "개인정보 처리방침",
+                    isRequired: true,
+                    url: "https://www.google.com",
+                    isChecked: false
+                )
             ]))
             observer.onCompleted()
             

@@ -160,7 +160,11 @@ extension TermsAgreementViewController {
 
     func toState(terms: [Reactor.State.Term]) -> [TermsAgreementItemView.State] {
         return terms.map {
-            .init(title: $0.title, required: $0.isRequired)
+            .init(
+                title: $0.title,
+                isRequired: $0.isRequired,
+                isChecked: $0.isChecked
+            )
         }
     }
 }
