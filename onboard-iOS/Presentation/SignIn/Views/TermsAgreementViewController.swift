@@ -8,9 +8,14 @@
 import UIKit
 
 import SnapKit
+import ReactorKit
 
-final class TermsAgreementViewController: UIViewController {
+final class TermsAgreementViewController: UIViewController, View {
+    
+    internal var disposeBag = DisposeBag()
 
+    typealias Reactor = TermsAgreementReactor
+    
     // MARK: - Metric
 
     private enum Metric {
@@ -33,7 +38,16 @@ final class TermsAgreementViewController: UIViewController {
     private var modalHeight = Metric.screenHeight - Metric.modalTop
 
     // MARK: - Life Cycle
-
+    
+    init(reactor: Reactor) {
+        super.init(nibName: nil, bundle: nil)
+        self.reactor = reactor
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         self.configure()
     }
@@ -100,6 +114,30 @@ final class TermsAgreementViewController: UIViewController {
                 }
             }
     }
+    
+    func bind(reactor: Reactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    private func bindAction(reactor: Reactor) {
+        self.rx.rxViewDidLoad
+            .map { Reactor.Action.viewDidLoad }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+    }
+    
+    private func bindState(reactor: Reactor) {
+        reactor.state
+            .map { $0.terms }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] result in
+                guard let self else { return }
+                self.modalView.bind(termsList: self.toState(terms: result))
+                print(result)
+            })
+            .disposed(by: self.disposeBag)
+    }
 
     // MARK: - Gesture
 
@@ -115,5 +153,14 @@ final class TermsAgreementViewController: UIViewController {
     @objc
     private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
         self.hideBottomSheet()
+    }
+}
+
+extension TermsAgreementViewController {
+
+    func toState(terms: [Reactor.State.Term]) -> [TermsAgreementItemView.State] {
+        return terms.map {
+            .init(title: $0.title, required: $0.isRequired)
+        }
     }
 }

@@ -846,7 +846,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 76NN62PZ54;
+				DEVELOPMENT_TEAM = 7YWVGV44MR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -875,7 +875,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 76NN62PZ54;
+				DEVELOPMENT_TEAM = 7YWVGV44MR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
