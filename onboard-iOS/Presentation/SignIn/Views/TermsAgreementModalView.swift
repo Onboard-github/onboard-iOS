@@ -85,6 +85,7 @@ final class TermsAgreementModalView: UIView {
     
     var selectDetail: ((IndexPath) -> Void)?
     var selectCheck: ((IndexPath) -> Void)?
+    var selectAllCheck: (() -> Void)?
 
     // MARK: - Initialize
 
@@ -115,6 +116,14 @@ final class TermsAgreementModalView: UIView {
         self.registerButton.setTitle("가입하기", for: .normal)
 
         self.makeConstraints()
+        self.setAllAgreementButtonAction()
+    }
+    
+    private func setAllAgreementButtonAction() {
+        let action = UIAction(handler: { _ in
+            self.selectAllCheck?()
+        })
+        self.allAgreementButton.addAction(action, for: .touchUpInside)
     }
 
     private func makeConstraints() {
