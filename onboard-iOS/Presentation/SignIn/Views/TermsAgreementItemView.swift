@@ -49,6 +49,11 @@ final class TermsAgreementItemView: UIView {
         return button
     }()
 
+    // MARK: - Properties
+    
+    var selectDetail: (() -> Void)?
+    var selectCheck: (() -> Void)?
+    
     // MARK: - Initialize
 
     override init(frame: CGRect) {
@@ -72,8 +77,25 @@ final class TermsAgreementItemView: UIView {
     private func configure() {
         self.backgroundColor = .white
         self.makeConstraints()
+        
+        self.setDetailButtonAction()
+        self.setCheckButtonAction()
     }
 
+    private func setDetailButtonAction() {
+        let action = UIAction(handler: { _ in
+            self.selectDetail?()
+        })
+        self.detailButton.addAction(action, for: .touchUpInside)
+    }
+    
+    private func setCheckButtonAction() {
+        let action = UIAction(handler: { _ in
+            self.selectCheck?()
+        })
+        self.checkButton.addAction(action, for: .touchUpInside)
+    }
+    
     private func makeConstraints() {
         self.addSubview(self.titleLabel)
         self.addSubview(self.detailButton)

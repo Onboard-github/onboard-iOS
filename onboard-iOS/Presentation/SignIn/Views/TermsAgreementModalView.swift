@@ -82,6 +82,9 @@ final class TermsAgreementModalView: UIView {
             self.tableView.reloadData()
         }
     }
+    
+    var selectDetail: ((IndexPath) -> Void)?
+    var selectCheck: ((IndexPath) -> Void)?
 
     // MARK: - Initialize
 
@@ -167,7 +170,10 @@ extension TermsAgreementModalView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(withType: TermsAgreementCell.self, for: indexPath)
         cell.bind(self.termsList[indexPath.row])
-
+        
+        cell.selectDetail = { self.selectDetail?(indexPath) }
+        cell.selectCheck = { self.selectCheck?(indexPath) }
+        
         return cell
     }
 }
