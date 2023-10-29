@@ -40,12 +40,14 @@ final class LoginView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "보드게임 랭킹 서비스"
+        label.font = Font.Typography.title2
         return label
     }()
 
     private let subtitleLabel: UILabel = {
         let label = UILabel()
         label.text = "보드게임을 더 즐겁게"
+        label.font = Font.Typography.body3_R
         return label
     }()
 
