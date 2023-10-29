@@ -24,6 +24,12 @@ final class OBNetworkManager {
             .validate(statusCode: 200..<300)
             .serializingDecodable(object)
             .response
+        
+        //        if let afError = response.error as? AFError {
+        //            if let data = response.data, let dataString = String(data: data, encoding: .utf8) {
+        //                print(dataString)
+        //            }
+        //        }
 
         return response
     }
