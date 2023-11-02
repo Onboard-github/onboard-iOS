@@ -12,7 +12,20 @@ final class TermsAgreementCell: BaseTableViewCell<TermsAgreementItemView.State> 
     // MARK: - UIs
 
     private let itemView = TermsAgreementItemView()
-
+    
+    // MARK: - Properties
+    
+    var selectDetail: (() -> Void)? {
+        didSet {
+            self.itemView.selectDetail = self.selectDetail
+        }
+    }
+    var selectCheck: (() -> Void)? {
+        didSet {
+            self.itemView.selectCheck = self.selectCheck
+        }
+    }
+    
     override func bind(_ model: TermsAgreementItemView.State?) {
         guard let model else { return }
         self.itemView.bind(state: model)

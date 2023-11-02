@@ -13,7 +13,8 @@ final class TermsAgreementItemView: UIView {
 
     struct State {
         let title: String
-        let required: Bool
+        let isRequired: Bool
+        let isChecked: Bool
     }
 
     // MARK: - Metric
@@ -49,6 +50,11 @@ final class TermsAgreementItemView: UIView {
         return button
     }()
 
+    // MARK: - Properties
+    
+    var selectDetail: (() -> Void)?
+    var selectCheck: (() -> Void)?
+    
     // MARK: - Initialize
 
     override init(frame: CGRect) {
@@ -63,8 +69,9 @@ final class TermsAgreementItemView: UIView {
     // MARK: - Bind
 
     func bind(state: State) {
-        let prefix = state.required ? "(필수)" : "(선택)"
+        let prefix = state.isRequired ? "(필수)" : "(선택)"
         self.titleLabel.text = "\(prefix) \(state.title)"
+        self.checkButton.isSelected = state.isChecked
     }
 
     // MARK: - Configure
@@ -72,8 +79,25 @@ final class TermsAgreementItemView: UIView {
     private func configure() {
         self.backgroundColor = .white
         self.makeConstraints()
+        
+        self.setDetailButtonAction()
+        self.setCheckButtonAction()
     }
 
+    private func setDetailButtonAction() {
+        let action = UIAction(handler: { _ in
+            self.selectDetail?()
+        })
+        self.detailButton.addAction(action, for: .touchUpInside)
+    }
+    
+    private func setCheckButtonAction() {
+        let action = UIAction(handler: { _ in
+            self.selectCheck?()
+        })
+        self.checkButton.addAction(action, for: .touchUpInside)
+    }
+    
     private func makeConstraints() {
         self.addSubview(self.titleLabel)
         self.addSubview(self.detailButton)
@@ -105,7 +129,12 @@ struct TermsAgreementItemViewPreview: PreviewProvider {
     static var previews: some View {
         UIViewPreview {
             let view = TermsAgreementItemView()
-            view.bind(state: .init(title: "개인정보 처리방침", required: true))
+            
+            view.bind(state: .init(
+                title: "개인정보 처리방침",
+                isRequired: true,
+                isChecked: false
+            ))
             return view
 
         }.previewLayout(.sizeThatFits)

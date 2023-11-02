@@ -8,9 +8,14 @@
 import UIKit
 
 import SnapKit
+import ReactorKit
 
-final class TermsAgreementViewController: UIViewController {
+final class TermsAgreementViewController: UIViewController, View {
+    
+    internal var disposeBag = DisposeBag()
 
+    typealias Reactor = TermsAgreementReactor
+    
     // MARK: - Metric
 
     private enum Metric {
@@ -33,7 +38,16 @@ final class TermsAgreementViewController: UIViewController {
     private var modalHeight = Metric.screenHeight - Metric.modalTop
 
     // MARK: - Life Cycle
-
+    
+    init(reactor: Reactor) {
+        super.init(nibName: nil, bundle: nil)
+        self.reactor = reactor
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         self.configure()
     }
@@ -100,6 +114,37 @@ final class TermsAgreementViewController: UIViewController {
                 }
             }
     }
+    
+    func bind(reactor: Reactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    private func bindAction(reactor: Reactor) {
+        self.rx.rxViewDidLoad
+            .map { Reactor.Action.viewDidLoad }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        
+        self.modalView.selectCheck = { indexPath in
+            self.reactor?.action.onNext(.selectCheck(indexPath: indexPath))
+        }
+        
+        self.modalView.selectAllCheck = { 
+            self.reactor?.action.onNext(.selectAllAgreement)
+        }
+    }
+    
+    private func bindState(reactor: Reactor) {
+        reactor.state
+            .map { $0 }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] result in
+                guard let self else { return }
+                self.modalView.bind(state: self.toState(state: result))
+            })
+            .disposed(by: self.disposeBag)
+    }
 
     // MARK: - Gesture
 
@@ -115,5 +160,21 @@ final class TermsAgreementViewController: UIViewController {
     @objc
     private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
         self.hideBottomSheet()
+    }
+}
+
+extension TermsAgreementViewController {
+
+    func toState(state: Reactor.State) -> TermsAgreementModalView.State {
+        return .init(
+            terms: state.terms.map {
+                .init(
+                    title: $0.title,
+                    isRequired: $0.isRequired,
+                    isChecked: $0.isChecked
+                )
+            },
+            isAllAgreement: state.isAllAgreemented
+        )
     }
 }

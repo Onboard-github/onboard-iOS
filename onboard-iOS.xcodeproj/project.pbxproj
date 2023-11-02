@@ -33,6 +33,7 @@
 		611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CAC2ABED29F0074A55A /* Encodable+Ext.swift */; };
 		611D8CEC2AC44D230074A55A /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CEB2AC44D230074A55A /* TermsView.swift */; };
 		611D8CEE2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */; };
+		6151A06F2AECFE92001D74AB /* TermsAgreementReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */; };
 		618175F52AC5722500B5E2A0 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */; };
 		618175F92AC5961500B5E2A0 /* TermsAgreementModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */; };
 		618176282AD3C7E500B5E2A0 /* TermsAgreementItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */; };
@@ -113,6 +114,7 @@
 		611D8CAC2ABED29F0074A55A /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		611D8CEB2AC44D230074A55A /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SwiftUI+Extension.swift"; sourceTree = "<group>"; };
+		6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementReactor.swift; sourceTree = "<group>"; };
 		618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementModalView.swift; sourceTree = "<group>"; };
 		618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementItemView.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				611D8CEA2AC44D190074A55A /* Views */,
+				6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				6181764F2ADBF4A500B5E2A0 /* UIDevice+Extension.swift in Sources */,
 				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
 				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
+				6151A06F2AECFE92001D74AB /* TermsAgreementReactor.swift in Sources */,
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* Button.swift in Sources */,
@@ -842,7 +846,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 76NN62PZ54;
+				DEVELOPMENT_TEAM = 7YWVGV44MR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -871,7 +875,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 76NN62PZ54;
+				DEVELOPMENT_TEAM = 7YWVGV44MR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
