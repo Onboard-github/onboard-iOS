@@ -29,7 +29,8 @@ class TextField: UITextField {
     private func setupDefaults() {
         self.font = Font.Typography.body2_R
         self.borderStyle = .roundedRect
-        self.layer.cornerRadius = 12
+        self.layer.cornerRadius = 8
+        self.clipsToBounds = true
         self.keyboardType = .default
     }
     

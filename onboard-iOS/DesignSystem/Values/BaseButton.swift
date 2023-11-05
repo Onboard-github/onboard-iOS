@@ -28,7 +28,7 @@ class BaseButton: UIButton {
                            style: self.style)
         }
     }
-   
+    
     private var bgColor: UIColor?
     private var typo: UIFont?
     private var textColor: UIColor?
@@ -68,7 +68,7 @@ class BaseButton: UIButton {
             break
         case .bottom:
             self.layer.cornerRadius = 8
-            self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            self.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             self.clipsToBounds = true
         case .rounded:
             self.layer.cornerRadius = 8
