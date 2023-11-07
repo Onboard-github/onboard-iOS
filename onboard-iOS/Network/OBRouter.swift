@@ -15,6 +15,7 @@ enum OBRouter: URLRequestConvertible {
 
     typealias Header = [String: Any]
     typealias Body = [String: Any]
+    typealias Params = [String: Any]
 
     var baseURL: URL {
         return URL(string: API.BASE_URL)!
@@ -24,7 +25,7 @@ enum OBRouter: URLRequestConvertible {
 
     case testAPI
     case auth(body: Body)
-    case groupList
+    case groupList(params: Params)
     case addGroup(body: Body)
 
     // MARK: - HTTP Method
@@ -55,7 +56,7 @@ enum OBRouter: URLRequestConvertible {
 
     var header: Header? {
         switch self {
-        case .testAPI, .auth, .groupList, .addGroup:
+        case .testAPI, .auth, .addGroup, .groupList:
             return nil
         }
     }
@@ -71,6 +72,17 @@ enum OBRouter: URLRequestConvertible {
             return body
         }
     }
+    
+    // MARK: - Request Params
+    
+    var params: Params? {
+        switch self {
+        case .testAPI, .auth, .addGroup:
+            return nil
+        case let .groupList(params):
+            return params
+        }
+    }
 
     // MARK: - URL Request
 
@@ -79,6 +91,15 @@ enum OBRouter: URLRequestConvertible {
 
         var request = URLRequest(url: url)
         request.method = method
+        
+        header?.forEach({ element in
+            request.setValue("\(element.value)", forHTTPHeaderField: element.key)
+        })
+        
+        params?.forEach({ element in
+            request.url?.append(queryItems: [URLQueryItem(name: element.key, value: "\(element.value)")])
+        })
+        
         request = try JSONEncoding.default.encode(
             request,
             with: body

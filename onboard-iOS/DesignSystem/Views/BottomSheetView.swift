@@ -23,8 +23,6 @@ class BottomSheetView: UIView {
     
     // MARK: - UI
     
-    private let buttons = Button()
-    
     private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .darkGray.withAlphaComponent(0.7)
@@ -89,7 +87,7 @@ class BottomSheetView: UIView {
         return label
     }()
     
-    private lazy var registerButton = buttons.bottomDefault
+    private var registerButton = BaseButton(status: .disabled, style: .normal)
     
     private lazy var titleStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])

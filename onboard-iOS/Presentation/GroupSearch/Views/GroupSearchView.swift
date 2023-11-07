@@ -71,26 +71,11 @@ final class GroupSearchView: UIView {
         return tableView
     }()
     
-    private let button = UIButton()
-    
     // MARK: - Properties
-    lazy var dataSource: UITableViewDiffableDataSource<Int, Group> = {
-        UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, group in
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "GroupSearchCell", for: indexPath) as? GroupSearchCell {
-                cell.titleLabel.text = group.name
-                cell.subTitleLabel.text = group.description
-                if let imageUrl = URL(string: group.profileImageUrl) {
-                    cell.thumbnailView.kf.setImage(with: imageUrl)
-                }
-                return cell
-            } else {
-                return UITableViewCell()
-            }
-        })
-    }()
+    var disposeBag = DisposeBag()
+    var didTapAddGroupButton: (() -> Void)?
+    var searchBarValueChanged: ((String) -> Void)?
     
-    var didTapButton: (() -> Void)?
-
     // MARK: - Initialize
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -108,11 +93,25 @@ final class GroupSearchView: UIView {
         snapshot.appendItems(groupList)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-
+    
+    lazy var dataSource: UITableViewDiffableDataSource<Int, Group> = {
+        UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, group in
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "GroupSearchCell", for: indexPath) as? GroupSearchCell {
+                cell.titleLabel.text = group.name
+                cell.subTitleLabel.text = group.description
+                if let imageUrl = URL(string: group.profileImageUrl) {
+                    cell.thumbnailView.kf.setImage(with: imageUrl)
+                }
+                return cell
+            } else {
+                return UITableViewCell()
+            }
+        })
+    }()
+    
     // MARK: - Configure
     private func configure() {
         self.backgroundColor = .systemBackground
-        button.backgroundColor = .lightGray
         
         tableView.register(GroupSearchCell.self, forCellReuseIdentifier: "GroupSearchCell")
         self.addActionConfigure()
@@ -120,9 +119,17 @@ final class GroupSearchView: UIView {
     }
 
     private func addActionConfigure() {
-        self.button.addAction(UIAction(handler: { _ in
-            self.didTapButton?()
+        self.addGroupButton.addAction(UIAction(handler: { _ in
+            self.didTapAddGroupButton?()
         }), for: .touchUpInside)
+        
+        searchBar.rx.text
+            .distinctUntilChanged() // 이전 값과 같은 경우 무시
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance) // 입력 후 0.5초 대기
+            .subscribe(onNext: { [weak self] text in
+                self?.searchBarValueChanged?(text ?? "")
+            })
+            .disposed(by: disposeBag)
     }
 
     private func makeConstraints() {
