@@ -10,8 +10,6 @@ import SnapKit
 
 class PopupView: UIView {
     
-    private let buttons = Button()
-    
     private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .darkGray.withAlphaComponent(0.7)
@@ -76,7 +74,7 @@ class PopupView: UIView {
         return label
     }()
     
-    private lazy var registerButton = buttons.default
+    private var registerButton = BaseButton(status: .disabled, style: .bottom)
     
     private lazy var headerStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [titleLabel, linkButton])

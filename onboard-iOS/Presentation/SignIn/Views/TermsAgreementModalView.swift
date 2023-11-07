@@ -80,7 +80,7 @@ final class TermsAgreementModalView: UIView {
         return button
     }()
 
-    private let registerButton = Button().default
+    private let registerButton = BaseButton(status: .disabled, style: .normal)
     
     // MARK: - Properties
 

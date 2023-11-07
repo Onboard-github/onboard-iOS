@@ -13,6 +13,7 @@ final class GroupSearchReactor: Reactor {
     
     enum Action {
         case groupListAllFetch
+        case searchBarTextChanged(keyword: String)
     }
     
     enum Mutation {
@@ -32,7 +33,9 @@ final class GroupSearchReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .groupListAllFetch:
-            return self.excuteGroupAllList()
+            return self.excuteGroupList(keyword: "")
+        case let .searchBarTextChanged(keyword):
+            return self.excuteGroupList(keyword: keyword)
         }
     }
 
@@ -64,12 +67,12 @@ extension GroupSearchReactor {
         }
     }
     
-    private func excuteGroupAllList() -> Observable<Mutation> {
+    private func excuteGroupList(keyword: String) -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
             guard let self else { return Disposables.create() }
             Task {
                 do {
-                    await self.useCase.list()
+                    await self.useCase.list(keyword: keyword, pageNumber: 0, pageSize: 10)
                 }
             }
             return Disposables.create()

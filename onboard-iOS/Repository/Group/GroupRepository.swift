@@ -8,13 +8,13 @@
 import Foundation
 
 final class GroupRepositoryImpl: GroupRepository {
-    func list() async throws -> GroupEntity.Res {
+    func list(keyword: String? = nil, pageNumber: Int = 0, pageSize: Int = 10) async throws -> GroupEntity.Res {
         do {
             let result = try await OBNetworkManager
                 .shared
                 .asyncRequest(
                     object: GroupDTO.self,
-                    router: OBRouter.groupList
+                    router: OBRouter.groupList(params: ["keyword": keyword ?? "", "pageNumber": "\(pageNumber)", "pageSize": "\(pageSize)"])
                 )
 
             guard let data = result.value else {
