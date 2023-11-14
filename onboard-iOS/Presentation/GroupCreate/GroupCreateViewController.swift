@@ -41,7 +41,7 @@ final class GroupCreateViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: image, style: .done,
             target: self, action: #selector(showPrevious))
-        navigationItem.title = "모임 등록"
+        navigationItem.title = "그룹 등록"
     }
     
     @objc
