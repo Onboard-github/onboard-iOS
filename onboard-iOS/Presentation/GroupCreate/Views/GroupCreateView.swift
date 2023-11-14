@@ -61,22 +61,17 @@ final class GroupCreateView: UIView {
         return image
     }()
     
-    private let nameTextField: UITextField = {
-        let text = UITextField()
+    private let nameTextField: TextField = {
+        let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
-        text.tintColor = Colors.Orange_8
-        text.backgroundColor = Colors.Gray_2
-        text.borderStyle = .roundedRect
-        text.layer.cornerRadius = 8
-        text.layer.borderWidth = 1.0
         text.layer.borderColor = Colors.Gray_5.cgColor
         return text
     }()
     
     private let nameCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "0/14"
+        label.text = "00/14"
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
@@ -114,7 +109,7 @@ final class GroupCreateView: UIView {
     
     private let introductionCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "0/72"
+        label.text = "00/72"
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
@@ -128,15 +123,10 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private let affiliationTextField: UITextField = {
-        let text = UITextField()
+    private let affiliationTextField: TextField = {
+        let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
-        text.tintColor = Colors.Orange_8
-        text.backgroundColor = Colors.Gray_2
-        text.borderStyle = .roundedRect
-        text.layer.cornerRadius = 8
-        text.layer.borderWidth = 1.0
         text.layer.borderColor = Colors.Gray_5.cgColor
         return text
     }()
