@@ -25,6 +25,7 @@
 		1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */; };
 		1CA1BBD02AE00704000C5F7E /* TextFieldLabelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */; };
 		1CA1BBD82AE0337E000C5F7E /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBD72AE0337E000C5F7E /* Button.swift */; };
+		1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */; };
 		1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */; };
 		1CDF4D2F2AB8A53900CFDFBA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1CDF4D2E2AB8A53900CFDFBA /* GoogleSignIn */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
@@ -248,7 +249,7 @@
 				1CFD50D92ACE79190031269C /* Colors.swift */,
 				1CA1BBB82ACF123D000C5F7E /* Typography.swift */,
 				1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */,
-				1CA1BBD72AE0337E000C5F7E /* Button.swift */,
+				1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */,
 			);
 			path = Values;
 			sourceTree = "<group>";
@@ -613,7 +614,7 @@
 				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
-				1CA1BBD82AE0337E000C5F7E /* Button.swift in Sources */,
+				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
 				1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */,
 				1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */,
 				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
