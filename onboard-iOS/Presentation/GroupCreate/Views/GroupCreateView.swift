@@ -33,7 +33,7 @@ final class GroupCreateView: UIView {
     
     private let titleImageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "img_diceBgGreen")
+        image.image = UIImage(named: "img_diceBgSkyblue")
         image.layer.cornerRadius = 8
         image.clipsToBounds = true
         return image
@@ -47,7 +47,7 @@ final class GroupCreateView: UIView {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "보드게임 모임 이름"
+        label.text = "그룹 이름"
         label.textColor = Colors.Gray_14
         label.font = Font.Typography.body3_M
         label.numberOfLines = 0
@@ -84,7 +84,7 @@ final class GroupCreateView: UIView {
     
     private let introdutionLabel: UILabel = {
         let label = UILabel()
-        label.text = "모임 소개"
+        label.text = "그룹 소개"
         label.textColor = Colors.Gray_14
         label.font = Font.Typography.body3_M
         label.numberOfLines = 0
@@ -101,7 +101,7 @@ final class GroupCreateView: UIView {
     
     private lazy var introductionTextView: UITextView = {
         let view = UITextView()
-        view.text = "모임을 소개해주세요."
+        view.text = "그룹을 소개해주세요."
         view.textColor = Colors.Gray_7
         view.font = Font.Typography.body3_R
         view.backgroundColor = Colors.Gray_2
@@ -215,13 +215,15 @@ final class GroupCreateView: UIView {
         
         nameTextField.delegate = self
         affiliationTextField.delegate = self
+        
+        registerButton.setTitle("그룹 등록하기", for: .normal)
     }
     
     private func textFieldPlaceHolder() {
         let nameAttributes: [NSAttributedString.Key: Any] = [
             .font: Font.Typography.body3_R as Any,
             .foregroundColor: Colors.Gray_7]
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "모임 이름을 입력해주세요.",
+        nameTextField.attributedPlaceholder = NSAttributedString(string: "그룹 이름을 입력해주세요.",
                                                                  attributes: nameAttributes)
         
         let affAttributes: [NSAttributedString.Key: Any] = [
