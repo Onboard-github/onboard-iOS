@@ -108,6 +108,7 @@ final class GroupCreateView: UIView {
         view.layer.cornerRadius = 8
         view.layer.borderWidth = 1.0
         view.layer.borderColor = Colors.Gray_5.cgColor
+        view.tintColor = Colors.Orange_8
         view.delegate = self
         return view
     }()
