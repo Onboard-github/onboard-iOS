@@ -390,7 +390,9 @@ extension GroupCreateView: UITextViewDelegate {
                 return false
             }
             
-            let newString = (textView.text as NSString).replacingCharacters(in: range, with: text).trimmingCharacters(in: .whitespacesAndNewlines)
+            let newString = (textView.text as NSString)
+                .replacingCharacters(in: range, with: text)
+                .trimmingCharacters(in: .whitespacesAndNewlines)
             
             let characterCount = newString.count
             let maxLength = 72
