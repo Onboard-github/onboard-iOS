@@ -182,9 +182,7 @@ final class GroupCreateView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configure()
-        textFieldPlaceHolder()
-        makeConstraints()
+        self.configure()
     }
     
     required init?(coder: NSCoder) {
@@ -196,7 +194,14 @@ final class GroupCreateView: UIView {
     private func configure() {
         self.backgroundColor = Colors.Gray_2
         
+        self.setButtons()
+        self.textFieldPlaceHolder()
+        self.makeConstraints()
+    }
+    
+    private func setButtons() {
         registerButton.setTitle("그룹 등록하기", for: .normal)
+        registerButton.isEnabled = false
     }
     
     private func textFieldPlaceHolder() {
