@@ -82,7 +82,7 @@ final class GroupCreateView: UIView {
     
     /* 그룹 소개 */
     
-    private let introdutionLabel: UILabel = {
+    private let introductionLabel: UILabel = {
         let label = UILabel()
         label.text = "그룹 소개"
         label.textColor = Colors.Gray_14
@@ -166,7 +166,7 @@ final class GroupCreateView: UIView {
     }()
     
     private lazy var introductionTitleStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [introdutionLabel, introdutionEssentialImage])
+        let view = UIStackView(arrangedSubviews: [introductionLabel, introdutionEssentialImage])
         view.spacing = 1
         view.axis = .horizontal
         view.alignment = .center
