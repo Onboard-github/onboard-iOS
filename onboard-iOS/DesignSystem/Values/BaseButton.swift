@@ -50,7 +50,7 @@ class BaseButton: UIButton {
         
         switch status {
         case .default:
-            self.bgColor = Colors.Orange_5
+            self.bgColor = Colors.Orange_10
             self.textColor = Colors.Gray_2
             self.typo = Font.Typography.label3_B
         case .disabled:
