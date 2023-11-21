@@ -320,6 +320,8 @@ final class GroupCreateView: UIView {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension GroupCreateView: UITextFieldDelegate {
     func textField(
         _ textField: UITextField,
@@ -343,6 +345,8 @@ extension GroupCreateView: UITextFieldDelegate {
             return true
         }
 }
+
+// MARK: - UITextViewDelegate
 
 extension GroupCreateView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
