@@ -36,6 +36,7 @@ final class GroupCreateView: UIView {
         image.image = UIImage(named: "img_diceBgSkyblue")
         image.layer.cornerRadius = 8
         image.clipsToBounds = true
+        image.isUserInteractionEnabled = true
         return image
     }()
     
