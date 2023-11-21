@@ -205,17 +205,13 @@ final class GroupCreateView: UIView {
     }
     
     private func textFieldPlaceHolder() {
-        let nameAttributes: [NSAttributedString.Key: Any] = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .font: Font.Typography.body3_R as Any,
             .foregroundColor: Colors.Gray_7]
         nameTextField.attributedPlaceholder = NSAttributedString(string: "그룹 이름을 입력해주세요.",
-                                                                 attributes: nameAttributes)
-        
-        let affAttributes: [NSAttributedString.Key: Any] = [
-            .font: Font.Typography.body3_R as Any,
-            .foregroundColor: Colors.Gray_7]
+                                                                 attributes: attributes)
         affiliationTextField.attributedPlaceholder = NSAttributedString(string: "Ex) 홍익대학교",
-                                                                        attributes: affAttributes)
+                                                                        attributes: attributes)
     }
     
     private func makeConstraints() {
