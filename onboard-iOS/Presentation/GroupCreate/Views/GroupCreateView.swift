@@ -177,6 +177,10 @@ final class GroupCreateView: UIView {
         return stackView
     }()
     
+    // MARK: - Properties
+    
+    var didImageViewButton: (() -> Void)?
+    
     // MARK: - Initialize
     
     override init(frame: CGRect) {
@@ -195,6 +199,7 @@ final class GroupCreateView: UIView {
         self.backgroundColor = Colors.Gray_2
         
         self.setButtons()
+        self.addConfigure()
         self.textFieldPlaceHolder()
         self.makeConstraints()
     }
@@ -202,6 +207,12 @@ final class GroupCreateView: UIView {
     private func setButtons() {
         registerButton.setTitle("그룹 등록하기", for: .normal)
         registerButton.isEnabled = false
+    }
+    
+    private func addConfigure() {
+        self.titleImageViewButton.addAction(UIAction(handler: { _ in
+            self.didImageViewButton?()
+        }), for: .touchUpInside)
     }
     
     private func textFieldPlaceHolder() {
