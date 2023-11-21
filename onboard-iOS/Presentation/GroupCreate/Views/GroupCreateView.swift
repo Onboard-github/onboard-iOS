@@ -63,11 +63,12 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private let nameTextField: TextField = {
+    private lazy var nameTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
         text.layer.borderColor = Colors.Gray_5.cgColor
+        text.delegate = self
         return text
     }()
     
@@ -123,11 +124,12 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private let affiliationTextField: TextField = {
+    private lazy var affiliationTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
         text.layer.borderColor = Colors.Gray_5.cgColor
+        text.delegate = self
         return text
     }()
     
@@ -192,9 +194,6 @@ final class GroupCreateView: UIView {
     
     private func configure() {
         self.backgroundColor = Colors.Gray_2
-        
-        nameTextField.delegate = self
-        affiliationTextField.delegate = self
         
         registerButton.setTitle("그룹 등록하기", for: .normal)
     }
