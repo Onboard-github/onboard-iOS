@@ -336,8 +336,9 @@ extension GroupCreateView: UITextFieldDelegate {
 // MARK: - UITextViewDelegate
 
 extension GroupCreateView: UITextViewDelegate {
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "모임을 소개해주세요." {
+        if textView.text == "그룹을 소개해주세요." {
             textView.text = nil
             textView.textColor = Colors.Gray_15
         }
@@ -347,7 +348,7 @@ extension GroupCreateView: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            textView.text = "모임을 소개해주세요."
+            textView.text = "그룹을 소개해주세요."
             textView.textColor = Colors.Gray_7
             updateCountLabel(characterCount: 0)
         }
