@@ -18,7 +18,6 @@ final class GroupCreateView: UIView {
         static let imageViewHeight: CGFloat = 182
         static let imageViewButtonLayout: CGFloat = 10
         static let imageViewButtonSize: CGFloat = 28
-        static let essentialImageSize: CGFloat = 8
         static let fieldTopMargin: CGFloat = 40
         static let leftRightMargin: CGFloat = 24
         static let textFieldHeight: CGFloat = 48
@@ -46,6 +45,13 @@ final class GroupCreateView: UIView {
         return button
     }()
     
+    private let requiredImage: UIImageView = {
+        let image = UIImageView()
+        let iconImage = IconImage.requiredInput
+        image.image = iconImage.image
+        return image
+    }()
+    
     /* 그룹 이름 */
     
     private let nameLabel: UILabel = {
@@ -55,13 +61,6 @@ final class GroupCreateView: UIView {
         label.font = Font.Typography.body3_M
         label.numberOfLines = 0
         return label
-    }()
-    
-    private let nameEssentialImage: UIImageView = {
-        let image = UIImageView()
-        let iconImage = IconImage.requiredInput
-        image.image = iconImage.image
-        return image
     }()
     
     private let nameTextField: TextField = {
@@ -90,13 +89,6 @@ final class GroupCreateView: UIView {
         label.numberOfLines = 0
         label.lineBreakMode = .byTruncatingTail
         return label
-    }()
-    
-    private let introdutionEssentialImage: UIImageView = {
-        let image = UIImageView()
-        let iconImage = IconImage.requiredInput
-        image.image = iconImage.image
-        return image
     }()
     
     private lazy var introductionTextView: UITextView = {
@@ -149,47 +141,37 @@ final class GroupCreateView: UIView {
     
     private var registerButton = BaseButton(status: .disabled, style: .rounded)
     
-    private lazy var nameTitleStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [nameLabel, nameEssentialImage])
-        view.spacing = 1
-        view.axis = .horizontal
-        view.alignment = .center
-        return view
-    }()
-    
     private lazy var nameStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [nameTitleStackView, nameTextField])
-        view.spacing = 5
-        view.axis = .vertical
-        view.distribution = .fill
-        view.alignment = .fill
-        return view
-    }()
-    
-    private lazy var introductionTitleStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [introductionLabel, introdutionEssentialImage])
-        view.spacing = 1
-        view.axis = .horizontal
-        view.alignment = .center
-        return view
+        let stview = UIStackView(arrangedSubviews: [nameLabel, requiredImage.clone()])
+        stview.axis = .horizontal
+        stview.spacing = 2
+        stview.distribution = .equalSpacing
+        stview.alignment = .top
+        
+        let stackView = UIStackView(arrangedSubviews: [stview, nameTextField])
+        stackView.axis = .vertical
+        stackView.spacing = 2
+        return stackView
     }()
     
     private lazy var introductionStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [introductionTitleStackView, introductionTextView])
-        view.spacing = 5
-        view.axis = .vertical
-        view.distribution = .fill
-        view.alignment = .fill
-        return view
+        let stview = UIStackView(arrangedSubviews: [introductionLabel, requiredImage.clone()])
+        stview.axis = .horizontal
+        stview.spacing = 2
+        stview.distribution = .equalCentering
+        stview.alignment = .top
+        
+        let stackView = UIStackView(arrangedSubviews: [stview, introductionTextView])
+        stackView.axis = .vertical
+        stackView.spacing = 2
+        return stackView
     }()
     
     private lazy var affiliationStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [affiliationLabel, affiliationTextField])
-        view.spacing = 5
-        view.axis = .vertical
-        view.distribution = .fill
-        view.alignment = .fill
-        return view
+        let stackView = UIStackView(arrangedSubviews: [affiliationLabel, affiliationTextField])
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        return stackView
     }()
     
     // MARK: - Initialize
@@ -258,10 +240,6 @@ final class GroupCreateView: UIView {
             $0.width.height.equalTo(Metric.imageViewButtonSize)
         }
         
-        self.nameEssentialImage.snp.makeConstraints {
-            $0.width.height.equalTo(Metric.essentialImageSize)
-        }
-        
         self.nameStackView.snp.makeConstraints {
             $0.top.equalTo(titleImageView.snp.bottom).offset(Metric.fieldTopMargin)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
@@ -274,10 +252,6 @@ final class GroupCreateView: UIView {
         self.nameCountLabel.snp.makeConstraints {
             $0.top.equalTo(nameStackView.snp.bottom).offset(Metric.countLabelTopMargin)
             $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
-        }
-        
-        self.introdutionEssentialImage.snp.makeConstraints {
-            $0.width.height.equalTo(Metric.essentialImageSize)
         }
         
         self.introductionStackView.snp.makeConstraints {
@@ -385,11 +359,6 @@ extension GroupCreateView: UITextViewDelegate {
         shouldChangeTextIn range: NSRange,
         replacementText text: String) -> Bool {
             
-            if text == "\n" {
-                textView.resignFirstResponder()
-                return false
-            }
-            
             let newString = (textView.text as NSString)
                 .replacingCharacters(in: range, with: text)
                 .trimmingCharacters(in: .whitespacesAndNewlines)
@@ -404,4 +373,14 @@ extension GroupCreateView: UITextViewDelegate {
             updateCountLabel(characterCount: characterCount)
             return true
         }
+}
+
+// MARK: - UIImageView
+
+extension UIImageView {
+    func clone() -> UIImageView {
+        let cloneImageView = UIImageView(image: self.image)
+        
+        return cloneImageView
+    }
 }
