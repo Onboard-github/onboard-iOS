@@ -366,6 +366,8 @@ extension GroupCreateView: UITextViewDelegate {
             textView.text = nil
             textView.textColor = Colors.Gray_15
         }
+        
+        textView.layer.borderColor = Colors.Gray_7.cgColor
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -374,6 +376,8 @@ extension GroupCreateView: UITextViewDelegate {
             textView.textColor = Colors.Gray_7
             updateCountLabel(characterCount: 0)
         }
+        
+        textView.layer.borderColor = Colors.Gray_5.cgColor
     }
     
     func textView(
