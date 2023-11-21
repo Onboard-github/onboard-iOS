@@ -323,6 +323,7 @@ final class GroupCreateView: UIView {
 // MARK: - UITextFieldDelegate
 
 extension GroupCreateView: UITextFieldDelegate {
+    
     func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
@@ -343,6 +344,17 @@ extension GroupCreateView: UITextFieldDelegate {
                 }
             }
             return true
+        }
+    
+    func textFieldDidBeginEditing(
+        _ textField: UITextField) {
+            textField.layer.borderColor = Colors.Gray_7.cgColor
+        }
+    
+    func textFieldDidEndEditing(
+        _ textField: UITextField,
+        reason: UITextField.DidEndEditingReason) {
+            textField.layer.borderColor = Colors.Gray_5.cgColor
         }
 }
 
