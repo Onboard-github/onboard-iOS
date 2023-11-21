@@ -136,7 +136,7 @@ final class GroupCreateView: UIView {
     
     private let affiliationCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "0/15"
+        label.text = "00/15"
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
