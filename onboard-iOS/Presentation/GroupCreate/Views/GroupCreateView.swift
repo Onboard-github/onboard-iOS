@@ -46,6 +46,8 @@ final class GroupCreateView: UIView {
         return button
     }()
     
+    /* 그룹 이름 */
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "그룹 이름"
@@ -77,6 +79,8 @@ final class GroupCreateView: UIView {
         label.font = Font.Typography.body5_R
         return label
     }()
+    
+    /* 그룹 소개 */
     
     private let introdutionLabel: UILabel = {
         let label = UILabel()
@@ -115,6 +119,8 @@ final class GroupCreateView: UIView {
         label.font = Font.Typography.body5_R
         return label
     }()
+    
+    /* 소속 */
     
     private let affiliationLabel: UILabel = {
         let label = UILabel()
