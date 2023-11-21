@@ -124,7 +124,7 @@ final class GroupCreateView: UIView {
     
     private let affiliationLabel: UILabel = {
         let label = UILabel()
-        label.text = "소속 (선택)"
+        label.text = "소속(선택)"
         label.textColor = Colors.Gray_14
         label.font = Font.Typography.body3_M
         return label
