@@ -18,11 +18,12 @@ final class GroupCreateView: UIView {
         static let imageViewHeight: CGFloat = 182
         static let imageViewButtonLayout: CGFloat = 10
         static let imageViewButtonSize: CGFloat = 28
-        static let fieldTopMargin: CGFloat = 40
+        static let nameTopSpacing: CGFloat = 40
         static let leftRightMargin: CGFloat = 24
         static let textFieldHeight: CGFloat = 48
-        static let countLabelTopMargin: CGFloat = 5
-        static let spacingField: CGFloat = 15
+        static let countLabelTopSpacing: CGFloat = 5
+        static let countLabelRightSpacing: CGFloat = 30
+        static let itemSpacing: CGFloat = 15
         static let textViewHeight: CGFloat = 88
         static let buttonTopMargin: CGFloat = 20
         static let buttonHeight: CGFloat = 48
@@ -216,14 +217,14 @@ final class GroupCreateView: UIView {
         self.addSubview(self.titleImageView)
         self.titleImageView.addSubview(self.titleImageViewButton)
         
-        self.addSubview(self.nameCountLabel)
         self.addSubview(self.nameStackView)
+        self.addSubview(self.nameCountLabel)
         
-        self.addSubview(self.introductionCountLabel)
         self.addSubview(self.introductionStackView)
+        self.addSubview(self.introductionCountLabel)
         
-        self.addSubview(self.affiliationCountLabel)
         self.addSubview(self.affiliationStackView)
+        self.addSubview(self.affiliationCountLabel)
         
         self.addSubview(self.registerButton)
         
@@ -240,7 +241,7 @@ final class GroupCreateView: UIView {
         }
         
         self.nameStackView.snp.makeConstraints {
-            $0.top.equalTo(titleImageView.snp.bottom).offset(Metric.fieldTopMargin)
+            $0.top.equalTo(titleImageView.snp.bottom).offset(Metric.nameTopSpacing)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
@@ -249,12 +250,12 @@ final class GroupCreateView: UIView {
         }
         
         self.nameCountLabel.snp.makeConstraints {
-            $0.top.equalTo(nameStackView.snp.bottom).offset(Metric.countLabelTopMargin)
-            $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.top.equalTo(nameStackView.snp.bottom).offset(Metric.countLabelTopSpacing)
+            $0.trailing.equalToSuperview().inset(Metric.countLabelRightSpacing)
         }
         
         self.introductionStackView.snp.makeConstraints {
-            $0.top.equalTo(nameCountLabel.snp.bottom).offset(Metric.spacingField)
+            $0.top.equalTo(nameCountLabel.snp.bottom).offset(Metric.itemSpacing)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
@@ -263,12 +264,12 @@ final class GroupCreateView: UIView {
         }
         
         self.introductionCountLabel.snp.makeConstraints {
-            $0.top.equalTo(introductionStackView.snp.bottom).offset(Metric.countLabelTopMargin)
-            $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.top.equalTo(introductionStackView.snp.bottom).offset(Metric.countLabelTopSpacing)
+            $0.trailing.equalToSuperview().inset(Metric.countLabelRightSpacing)
         }
         
         self.affiliationStackView.snp.makeConstraints {
-            $0.top.equalTo(introductionCountLabel.snp.bottom).offset(Metric.spacingField)
+            $0.top.equalTo(introductionCountLabel.snp.bottom).offset(Metric.itemSpacing)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
@@ -277,8 +278,8 @@ final class GroupCreateView: UIView {
         }
         
         self.affiliationCountLabel.snp.makeConstraints {
-            $0.top.equalTo(affiliationStackView.snp.bottom).offset(Metric.countLabelTopMargin)
-            $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.top.equalTo(affiliationStackView.snp.bottom).offset(Metric.countLabelTopSpacing)
+            $0.trailing.equalToSuperview().inset(Metric.countLabelRightSpacing)
         }
         
         self.registerButton.snp.makeConstraints {
