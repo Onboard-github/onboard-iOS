@@ -93,18 +93,13 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private lazy var introductionTextView: UITextView = {
-        let view = UITextView()
-        view.text = "그룹을 소개해주세요."
-        view.textColor = Colors.Gray_7
-        view.font = Font.Typography.body3_R
-        view.backgroundColor = Colors.Gray_2
-        view.layer.cornerRadius = 8
-        view.layer.borderWidth = 1.0
-        view.layer.borderColor = Colors.Gray_5.cgColor
-        view.tintColor = Colors.Orange_8
-        view.delegate = self
-        return view
+    private lazy var introductionTextView: TextView = {
+        let textView = TextView()
+        textView.textColor = Colors.Gray_15
+        textView.font = Font.Typography.body3_R
+        textView.placeholder = " 그룹을 소개해주세요."
+        textView.delegate = self
+        return textView
     }()
     
     private let introductionCountLabel: UILabel = {
