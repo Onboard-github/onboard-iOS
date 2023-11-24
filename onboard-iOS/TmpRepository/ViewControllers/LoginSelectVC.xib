@@ -65,6 +65,9 @@
                             <real key="value" value="8"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="appleLogin:" destination="-1" eventType="touchUpInside" id="Kb6-2W-686"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_apple" translatesAutoresizingMaskIntoConstraints="NO" id="gmu-Mu-mmB">
                     <rect key="frame" x="36" y="743" width="22" height="22"/>
@@ -94,6 +97,9 @@
                             <color key="value" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="googleLogin:" destination="-1" eventType="touchUpInside" id="eNi-oT-Bal"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_google" translatesAutoresizingMaskIntoConstraints="NO" id="XfW-au-MXm">
                     <rect key="frame" x="36" y="687" width="22" height="22"/>
@@ -117,6 +123,9 @@
                             <real key="value" value="8"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="kakaoLogin:" destination="-1" eventType="touchUpInside" id="Xaq-vw-PYu"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kakao_login" translatesAutoresizingMaskIntoConstraints="NO" id="gNV-10-xWO">
                     <rect key="frame" x="36" y="631" width="22" height="22"/>

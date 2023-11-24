@@ -8,22 +8,39 @@
 import UIKit
 
 class LoginSelectVC: UIViewController {
+    
+    let kakaoLoginManager = KakaoLoginManagerImpl()
+    let authRepository = AuthRepositoryImpl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func kakaoLogin(_ sender: Any) {
+        kakaoLoginManager.excute(delegate: self)
     }
-    */
+    
+    @IBAction func googleLogin(_ sender: Any) {
+        AlertManager.show(message: "구글 로그인 미구현")
+    }
+    
+    @IBAction func appleLogin(_ sender: Any) {
+        AlertManager.show(message: "애플 로그인 미구현")
+    }
+}
 
+extension LoginSelectVC: KakaoLoginDelegate {
+    func sendOAuthToken(_ token: String) {
+        Task {
+            let result = try await self.authRepository.signIn(
+                req: AuthEntity.Req(type: .kakao, token: token)
+            )
+            
+            if let currentSesison = LoginSessionManager.getLoginSession() {
+                LogManager.log(messaeg: "기존 로그인되어있던 로그인 정보 \(currentSesison) 삭제")
+            }
+            
+            LoginSessionManager.setLoginSession(accessToken: result.accessToken, refreshToken: result.refreshToken, type: .kakao)
+        }
+    }
 }
