@@ -39,7 +39,7 @@ class ImagePopupView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "모임 대표 이미지"
+        label.text = "그룹 대표 이미지"
         label.textColor = Colors.Gray_15
         label.font = Font.Typography.title2
         return label
@@ -47,7 +47,7 @@ class ImagePopupView: UIView {
     
     private let subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "모임을 소개하는 대표 이미지를 넣어보세요!"
+        label.text = "그룹을 소개하는 이미지를 넣어주세요."
         label.textColor = Colors.Gray_9
         label.font = Font.Typography.body4_R
         label.numberOfLines = 0
