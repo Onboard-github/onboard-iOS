@@ -12,7 +12,7 @@ class RotatableView: UIImageView {
 
     @IBInspectable var rotationDegrees: CGFloat = 0 {
         didSet {
-            print("Setting angle to \(rotationDegrees)")
+//            print("Setting angle to \(rotationDegrees)")
             let angle = rotationDegrees / 180.0 * CGFloat.pi
             transform = CGAffineTransform(rotationAngle: angle)
         }
