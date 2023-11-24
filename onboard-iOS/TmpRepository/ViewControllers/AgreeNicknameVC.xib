@@ -22,12 +22,16 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="LLZ-0t-xjt">
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="LLZ-0t-xjt">
                     <rect key="frame" x="20" y="75" width="20" height="20"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="7cJ-dc-llG"/>
                         <constraint firstAttribute="height" constant="20" id="pSb-Dd-5Oj"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="tGC-gs-lUz" appends="YES" id="tLB-im-iGd"/>
+                    </connections>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSa-9v-S2m">
                     <rect key="frame" x="20" y="159" width="353" height="48"/>
@@ -58,7 +62,7 @@
                     <color key="textColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="0.89803921568627454" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ju-KJ-2KF" customClass="BorderedButton" customModule="onboard_iOS" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ju-KJ-2KF" customClass="BorderedButton" customModule="onboard_iOS" customModuleProvider="target">
                     <rect key="frame" x="20" y="744" width="353" height="48"/>
                     <color key="backgroundColor" red="1" green="0.30196078430000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -69,6 +73,14 @@
                     <buttonConfiguration key="configuration" style="plain" title="확인">
                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
                     </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                            <color key="value" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="enableColor">
+                            <color key="value" red="0.92549020049999997" green="0.35686278339999999" blue="0.1764705926" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="confirmButtonAction:" destination="-1" eventType="touchUpInside" id="8pn-Oe-xOx"/>
                     </connections>
@@ -96,6 +108,11 @@
             </constraints>
             <point key="canvasLocation" x="135" y="20"/>
         </view>
+        <tapGestureRecognizer id="tGC-gs-lUz">
+            <connections>
+                <action selector="backButtonAction:" destination="-1" id="iYK-EG-wse"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <designables>
         <designable name="0ju-KJ-2KF">

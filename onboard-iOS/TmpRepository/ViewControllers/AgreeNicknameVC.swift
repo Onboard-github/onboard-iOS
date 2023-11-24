@@ -18,6 +18,11 @@ class AgreeNicknameVC: UIViewController {
     }
     
     @IBAction func confirmButtonAction(_ sender: Any) {
+        print("!@#")
+    }
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -38,5 +43,10 @@ extension AgreeNicknameVC: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         maxLabel.text = "\(textField.text?.count ?? 0)/10"
         //            print("현재 글자 수: \(textField.text?.count ?? 0)")
+        if textField.text?.count == 0 {
+            confirmButton.isEnabled = false
+        } else {
+            confirmButton.isEnabled = true
+        }
     }
 }

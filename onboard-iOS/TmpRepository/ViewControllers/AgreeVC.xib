@@ -134,6 +134,14 @@
                     <buttonConfiguration key="configuration" style="plain" title="가입하기">
                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
                     </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="enableColor">
+                            <color key="value" red="0.92549020049999997" green="0.35686278339999999" blue="0.1764705926" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                            <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="agreeAction:" destination="-1" eventType="touchUpInside" id="jXd-JC-rNb"/>
                     </connections>
@@ -169,6 +177,11 @@
             <point key="canvasLocation" x="-40.458015267175568" y="19.718309859154932"/>
         </view>
     </objects>
+    <designables>
+        <designable name="GFm-6E-pV1">
+            <size key="intrinsicContentSize" width="72.666666666666671" height="31"/>
+        </designable>
+    </designables>
     <resources>
         <image name="check_gray" width="22" height="22"/>
         <systemColor name="systemBackgroundColor">

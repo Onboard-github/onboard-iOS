@@ -45,6 +45,31 @@ class RotatableView: UIImageView {
 @IBDesignable
 class BorderedButton: UIButton {
 
+    @IBInspectable var enableColor: UIColor = UIColor.lightGray {
+        didSet {
+            updateButtonAppearanceForState()
+        }
+    }
+    @IBInspectable var disabledColor: UIColor = UIColor.lightGray {
+        didSet {
+            updateButtonAppearanceForState()
+        }
+    }
+    
+    override var isEnabled: Bool {
+        didSet {
+            updateButtonAppearanceForState()
+        }
+    }
+
+    private func updateButtonAppearanceForState() {
+        if isEnabled {
+            backgroundColor = enableColor
+        } else {
+            backgroundColor = disabledColor
+        }
+    }
+    
     @IBInspectable var cornerRadius: CGFloat = 8 {
         didSet {
             layer.cornerRadius = cornerRadius
