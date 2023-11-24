@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImagePopupView: UIView {
+class ImagePopupView: UIViewController {
     
     // MARK: - Metric
     
@@ -92,24 +92,40 @@ class ImagePopupView: UIView {
         return view
     }()
     
+    // MARK: - Properties
+    
+    var imageCompletion: ((UIImage?) -> Void)?
+    private let imagePickerController = UIImagePickerController()
+    
     // MARK: - Initialize
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(nibName: nil, bundle: nil)
         
-        makeConstraints()
-        setupGestureRecognizer()
+        self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func configure() {
+        self.addConfigure()
+        self.makeConstraints()
+        self.setupGestureRecognizer()
+    }
+    
+    private func addConfigure() {
+        self.imageButton.addAction(UIAction(handler: { [self] _ in
+            openImagePicker()
+        }), for: .touchUpInside)
+    }
+    
     // MARK: - Configure
     
     private func makeConstraints() {
-        self.addSubview(self.backgroundView)
-        self.addSubview(self.contentView)
+        self.view.addSubview(self.backgroundView)
+        self.view.addSubview(self.contentView)
         self.contentView.addSubview(self.titleStackView)
         self.contentView.addSubview(self.buttonStackView)
         
@@ -144,6 +160,34 @@ class ImagePopupView: UIView {
     
     @objc
     private func backgroundTapped() {
-        removeFromSuperview()
+        self.dismiss(animated: false)
     }
+}
+
+extension ImagePopupView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    private func openImagePicker() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.allowsEditing = false
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                imageCompletion?(image)
+            }
+            
+            picker.dismiss(animated: true, completion: nil)
+        }
+    
+    func imagePickerControllerDidCancel(
+        _ picker: UIImagePickerController) {
+            picker.dismiss(animated: true, completion: nil)
+        }
 }

@@ -11,7 +11,10 @@ import ReactorKit
 
 final class GroupCreateViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private let groupCreateView = GroupCreateView()
+    private let imagePopupView = ImagePopupView()
     
     // MARK: - Life Cycles
     
@@ -22,7 +25,25 @@ final class GroupCreateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.configure()
         setNavigationBar()
+    }
+    
+    private func configure() {
+        self.addConfigure()
+    }
+    
+    private func addConfigure() {
+        self.groupCreateView.didImageViewButton = { [self] in
+            imagePopupView.modalPresentationStyle = .overFullScreen
+            
+            imagePopupView.imageCompletion = { [self] selectedImage in
+                groupCreateView.titleImageView.image = selectedImage
+                self.dismiss(animated: false, completion: nil)
+            }
+            
+            self.present(imagePopupView, animated: false, completion: nil)
+        }
     }
     
     private func setNavigationBar() {
