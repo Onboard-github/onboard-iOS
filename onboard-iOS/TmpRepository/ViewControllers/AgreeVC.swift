@@ -8,12 +8,22 @@
 import UIKit
 import PanModal
 
+protocol AgreeDelegate {
+    func agreeComplete()
+}
+
 class AgreeVC: UIViewController {
+    var delegate: AgreeDelegate?
+    
     override func viewDidLoad() {
     }
     
     var shortFormHeight: PanModalHeight {
         return .contentHeight(400)
+    }
+    
+    @IBAction func agreeAction(_ sender: Any) {
+        delegate?.agreeComplete()
     }
 }
 

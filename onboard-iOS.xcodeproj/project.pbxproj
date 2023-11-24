@@ -81,6 +81,8 @@
 		AAF1699C2B10DFFF00EF82A4 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = AAF1699B2B10DFFF00EF82A4 /* PanModal */; };
 		AAF1699F2B10E05200EF82A4 /* AgreeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1699D2B10E05200EF82A4 /* AgreeVC.swift */; };
 		AAF169A02B10E05200EF82A4 /* AgreeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */; };
+		AAF169A32B10EED600EF82A4 /* AgreeNicknameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF169A12B10EED600EF82A4 /* AgreeNicknameVC.swift */; };
+		AAF169A42B10EED600EF82A4 /* AgreeNicknameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF169A22B10EED600EF82A4 /* AgreeNicknameVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +153,8 @@
 		AAF169982B1092F100EF82A4 /* UIView+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Util.swift"; sourceTree = "<group>"; };
 		AAF1699D2B10E05200EF82A4 /* AgreeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeVC.swift; sourceTree = "<group>"; };
 		AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreeVC.xib; sourceTree = "<group>"; };
+		AAF169A12B10EED600EF82A4 /* AgreeNicknameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeNicknameVC.swift; sourceTree = "<group>"; };
+		AAF169A22B10EED600EF82A4 /* AgreeNicknameVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreeNicknameVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -540,6 +544,8 @@
 				AAF169912B10900100EF82A4 /* LoginSelectVC.xib */,
 				AAF1699D2B10E05200EF82A4 /* AgreeVC.swift */,
 				AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */,
+				AAF169A12B10EED600EF82A4 /* AgreeNicknameVC.swift */,
+				AAF169A22B10EED600EF82A4 /* AgreeNicknameVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -654,6 +660,7 @@
 				AAF169932B10900100EF82A4 /* LoginSelectVC.xib in Resources */,
 				1CA1BBB72ACF109B000C5F7E /* SpoqaHanSansNeo-Thin.ttf in Resources */,
 				1CA1BBB62ACF109B000C5F7E /* SpoqaHanSansNeo-Bold.ttf in Resources */,
+				AAF169A42B10EED600EF82A4 /* AgreeNicknameVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +700,7 @@
 				AAF169922B10900100EF82A4 /* LoginSelectVC.swift in Sources */,
 				AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */,
 				1CA1BBB92ACF123D000C5F7E /* Typography.swift in Sources */,
+				AAF169A32B10EED600EF82A4 /* AgreeNicknameVC.swift in Sources */,
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
 				1CA1BBD02AE00704000C5F7E /* TextFieldLabelState.swift in Sources */,
 				611D8CAA2ABED03D0074A55A /* AuthDTO.swift in Sources */,

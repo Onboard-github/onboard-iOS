@@ -9,12 +9,18 @@ import UIKit
 import PanModal
 
 class LoginSelectVC: UIViewController {
+    lazy var agree: AgreeVC = {
+        let vc = AgreeVC()
+        vc.delegate = self
+        return vc
+    }()
     
     let kakaoLoginManager = KakaoLoginManagerImpl()
     let authRepository = AuthRepositoryImpl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
     }
 
     @IBAction func kakaoLogin(_ sender: Any) {
@@ -43,7 +49,16 @@ extension LoginSelectVC: KakaoLoginDelegate {
             
             LoginSessionManager.setLoginSession(accessToken: result.accessToken, refreshToken: result.refreshToken, type: .kakao)
         }
-        let agree = AgreeVC()
+        
         presentPanModal(agree)
+    }
+}
+
+extension LoginSelectVC: AgreeDelegate {
+    func agreeComplete() {
+        agree.dismiss(animated: true) { [weak self] in
+            let nickNameVC = AgreeNicknameVC()
+            self?.navigationController?.pushViewController(nickNameVC, animated: true)
+        }
     }
 }
