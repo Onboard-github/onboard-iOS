@@ -74,6 +74,10 @@
 		AAF169862B10897E00EF82A4 /* LoginSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF169852B10897E00EF82A4 /* LoginSessionManager.swift */; };
 		AAF169892B108B0D00EF82A4 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF169882B108B0D00EF82A4 /* AlertManager.swift */; };
 		AAF1698C2B108E3100EF82A4 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1698B2B108E3100EF82A4 /* LogManager.swift */; };
+		AAF169922B10900100EF82A4 /* LoginSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF169902B10900100EF82A4 /* LoginSelectVC.swift */; };
+		AAF169932B10900100EF82A4 /* LoginSelectVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF169912B10900100EF82A4 /* LoginSelectVC.xib */; };
+		AAF169962B10907200EF82A4 /* imgs.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAF169952B10907200EF82A4 /* imgs.xcassets */; };
+		AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF169982B1092F100EF82A4 /* UIView+Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +142,10 @@
 		AAF169852B10897E00EF82A4 /* LoginSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSessionManager.swift; sourceTree = "<group>"; };
 		AAF169882B108B0D00EF82A4 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		AAF1698B2B108E3100EF82A4 /* LogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		AAF169902B10900100EF82A4 /* LoginSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSelectVC.swift; sourceTree = "<group>"; };
+		AAF169912B10900100EF82A4 /* LoginSelectVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginSelectVC.xib; sourceTree = "<group>"; };
+		AAF169952B10907200EF82A4 /* imgs.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = imgs.xcassets; sourceTree = "<group>"; };
+		AAF169982B1092F100EF82A4 /* UIView+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Util.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +492,8 @@
 		AAF169802B1086DA00EF82A4 /* TmpRepository */ = {
 			isa = PBXGroup;
 			children = (
+				AAF169972B1092E300EF82A4 /* Utils */,
+				AAF169942B10906600EF82A4 /* Resources */,
 				AAF1698D2B108EA900EF82A4 /* ViewControllers */,
 				AAF1698A2B108E2700EF82A4 /* Logger */,
 				AAF169872B108B0000EF82A4 /* Alert */,
@@ -520,8 +530,26 @@
 		AAF1698D2B108EA900EF82A4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AAF169902B10900100EF82A4 /* LoginSelectVC.swift */,
+				AAF169912B10900100EF82A4 /* LoginSelectVC.xib */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AAF169942B10906600EF82A4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AAF169952B10907200EF82A4 /* imgs.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AAF169972B1092E300EF82A4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AAF169982B1092F100EF82A4 /* UIView+Util.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -605,12 +633,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF169962B10907200EF82A4 /* imgs.xcassets in Resources */,
 				1CA1BBB42ACF109B000C5F7E /* SpoqaHanSansNeo-Light.ttf in Resources */,
 				61AC7FAB2AB6D4A500B0B6B5 /* LaunchScreen.storyboard in Resources */,
 				61AC7FA82AB6D4A500B0B6B5 /* Assets.xcassets in Resources */,
 				1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */,
 				1CA1BBB52ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */,
+				AAF169932B10900100EF82A4 /* LoginSelectVC.xib in Resources */,
 				1CA1BBB72ACF109B000C5F7E /* SpoqaHanSansNeo-Thin.ttf in Resources */,
 				1CA1BBB62ACF109B000C5F7E /* SpoqaHanSansNeo-Bold.ttf in Resources */,
 			);
@@ -649,6 +679,7 @@
 				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
 				1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */,
 				61AC7FC02AB6D74A00B0B6B5 /* TestUseCase.swift in Sources */,
+				AAF169922B10900100EF82A4 /* LoginSelectVC.swift in Sources */,
 				AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */,
 				1CA1BBB92ACF123D000C5F7E /* Typography.swift in Sources */,
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
@@ -670,6 +701,7 @@
 				AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */,
 				AAF169892B108B0D00EF82A4 /* AlertManager.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
+				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
 				AA91058B2ADA4B9C00DA2E96 /* GroupSearchCell.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */,
