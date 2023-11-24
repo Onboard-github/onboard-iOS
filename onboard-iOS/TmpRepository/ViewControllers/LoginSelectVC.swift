@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PanModal
 
 class LoginSelectVC: UIViewController {
     
@@ -42,5 +43,7 @@ extension LoginSelectVC: KakaoLoginDelegate {
             
             LoginSessionManager.setLoginSession(accessToken: result.accessToken, refreshToken: result.refreshToken, type: .kakao)
         }
+        let agree = AgreeVC()
+        presentPanModal(agree)
     }
 }

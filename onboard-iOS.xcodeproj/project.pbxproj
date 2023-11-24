@@ -78,6 +78,9 @@
 		AAF169932B10900100EF82A4 /* LoginSelectVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF169912B10900100EF82A4 /* LoginSelectVC.xib */; };
 		AAF169962B10907200EF82A4 /* imgs.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAF169952B10907200EF82A4 /* imgs.xcassets */; };
 		AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF169982B1092F100EF82A4 /* UIView+Util.swift */; };
+		AAF1699C2B10DFFF00EF82A4 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = AAF1699B2B10DFFF00EF82A4 /* PanModal */; };
+		AAF1699F2B10E05200EF82A4 /* AgreeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF1699D2B10E05200EF82A4 /* AgreeVC.swift */; };
+		AAF169A02B10E05200EF82A4 /* AgreeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +149,8 @@
 		AAF169912B10900100EF82A4 /* LoginSelectVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginSelectVC.xib; sourceTree = "<group>"; };
 		AAF169952B10907200EF82A4 /* imgs.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = imgs.xcassets; sourceTree = "<group>"; };
 		AAF169982B1092F100EF82A4 /* UIView+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Util.swift"; sourceTree = "<group>"; };
+		AAF1699D2B10E05200EF82A4 /* AgreeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeVC.swift; sourceTree = "<group>"; };
+		AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreeVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +166,7 @@
 				AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */,
 				61AC7FDA2AB6E56600B0B6B5 /* RxCocoa in Frameworks */,
 				61AC7FC72AB6DA4E00B0B6B5 /* Alamofire in Frameworks */,
+				AAF1699C2B10DFFF00EF82A4 /* PanModal in Frameworks */,
 				1CDF4D2F2AB8A53900CFDFBA /* GoogleSignIn in Frameworks */,
 				AA09C27A2ACBE9BC00F51A96 /* KakaoSDKAuth in Frameworks */,
 			);
@@ -532,6 +538,8 @@
 			children = (
 				AAF169902B10900100EF82A4 /* LoginSelectVC.swift */,
 				AAF169912B10900100EF82A4 /* LoginSelectVC.xib */,
+				AAF1699D2B10E05200EF82A4 /* AgreeVC.swift */,
+				AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -579,6 +587,7 @@
 				AA09C27B2ACBE9BC00F51A96 /* KakaoSDKCommon */,
 				AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */,
 				AA7036042ADBAC3F00B26537 /* Kingfisher */,
+				AAF1699B2B10DFFF00EF82A4 /* PanModal */,
 			);
 			productName = "onboard-iOS";
 			productReference = 61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */;
@@ -618,6 +627,7 @@
 				1C53693E2AC1D30E00AC9AF0 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 				AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				AA7036032ADBAC3F00B26537 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				AAF1699A2B10DFFF00EF82A4 /* XCRemoteSwiftPackageReference "PanModal" */,
 			);
 			productRefGroup = 61AC7F9C2AB6D4A300B0B6B5 /* Products */;
 			projectDirPath = "";
@@ -638,6 +648,7 @@
 				61AC7FAB2AB6D4A500B0B6B5 /* LaunchScreen.storyboard in Resources */,
 				61AC7FA82AB6D4A500B0B6B5 /* Assets.xcassets in Resources */,
 				1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */,
+				AAF169A02B10E05200EF82A4 /* AgreeVC.xib in Resources */,
 				1CA1BBB52ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */,
 				AAF169932B10900100EF82A4 /* LoginSelectVC.xib in Resources */,
@@ -698,6 +709,7 @@
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
 				1C1F51AF2AE16B600020AA71 /* ImagePopupView.swift in Sources */,
+				AAF1699F2B10E05200EF82A4 /* AgreeVC.swift in Sources */,
 				AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */,
 				AAF169892B108B0D00EF82A4 /* AlertManager.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
@@ -1001,6 +1013,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		AAF1699A2B10DFFF00EF82A4 /* XCRemoteSwiftPackageReference "PanModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/slackhq/PanModal";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.7;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1053,6 +1073,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA7036032ADBAC3F00B26537 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		AAF1699B2B10DFFF00EF82A4 /* PanModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAF1699A2B10DFFF00EF82A4 /* XCRemoteSwiftPackageReference "PanModal" */;
+			productName = PanModal;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
