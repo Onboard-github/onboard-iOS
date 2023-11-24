@@ -68,14 +68,6 @@ final class TestView: UIView {
         return button
     }()
     
-    private let imageButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("모임 대표 이미지", for: .normal)
-        button.setTitleColor(Colors.Gray_15, for: .normal)
-        button.titleLabel?.font = Font.Typography.body5_R
-        return button
-    }()
-    
     private let bottomSheetMemberButton: UIButton = {
         let button = UIButton()
         button.setTitle("임시 멤버 추가", for: .normal)
@@ -131,14 +123,6 @@ final class TestView: UIView {
                 $0.edges.equalToSuperview()
             }
         }), for: .touchUpInside)
-        
-        self.imageButton.addAction(UIAction(handler: { [weak self] _ in
-            guard let self = self else { return }
-            self.addSubview(self.imagePopupView)
-            self.imagePopupView.snp.makeConstraints {
-                $0.edges.equalToSuperview()
-            }
-        }), for: .touchUpInside)
     }
 
     private func addConfigure() {
@@ -171,7 +155,6 @@ final class TestView: UIView {
         self.addSubview(self.profileButton)
         self.addSubview(self.memberButton)
         self.addSubview(self.codeButton)
-        self.addSubview(self.imageButton)
         self.addSubview(self.bottomSheetMemberButton)
 
         self.label.snp.makeConstraints {
@@ -205,14 +188,9 @@ final class TestView: UIView {
             $0.top.equalTo(memberButton.snp.bottom).inset(-10)
         }
         
-        self.imageButton.snp.makeConstraints {
-            $0.leading.trailing.height.equalTo(appleButton)
-            $0.top.equalTo(codeButton.snp.bottom).inset(-10)
-        }
-        
         self.bottomSheetMemberButton.snp.makeConstraints {
             $0.leading.trailing.height.equalTo(appleButton)
-            $0.top.equalTo(imageButton.snp.bottom).inset(-10)
+            $0.top.equalTo(codeButton.snp.bottom).inset(-10)
         }
 
         self.googleLoginButton.snp.makeConstraints {
