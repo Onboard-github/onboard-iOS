@@ -17,8 +17,34 @@ class AgreeNicknameVC: UIViewController {
         nickNameField.delegate = self
     }
     
+    class Empty: Codable {}
+    
     @IBAction func confirmButtonAction(_ sender: Any) {
-        print("!@#")
+        Task {
+            do {
+                let result = try await OBNetworkManager
+                    .shared
+                    .asyncRequest(
+                        object: Empty.self,
+                        router: OBRouter.setUser(
+                            body: ["nickname": nickNameField.text ?? ""]
+                        )
+                    )
+                
+                guard let data = result.value else {
+                    throw NetworkError.noExist
+                }
+                
+                if result.response?.statusCode == 200 {
+                    navigationController?.popViewController(animated: true)
+                }
+                
+            } catch {
+                print(error.localizedDescription)
+                
+                throw error
+            }
+        }
     }
     
     @IBAction func backButtonAction(_ sender: Any) {

@@ -27,6 +27,7 @@ enum OBRouter: URLRequestConvertible {
     case auth(body: Body)
     case groupList(params: Params)
     case addGroup(body: Body)
+    case setUser(body: Body)
 
     // MARK: - HTTP Method
 
@@ -36,6 +37,8 @@ enum OBRouter: URLRequestConvertible {
             return .get
         case .auth, .addGroup:
             return .post
+        case .setUser:
+            return .put
         }
     }
 
@@ -49,6 +52,8 @@ enum OBRouter: URLRequestConvertible {
             return "v1/auth/login"
         case .groupList, .addGroup:
             return "v1/group"
+        case .setUser:
+            return "v1/user/me"
         }
     }
 
@@ -58,6 +63,8 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList:
             return nil
+        case .setUser:
+            return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         }
     }
 
@@ -68,7 +75,7 @@ enum OBRouter: URLRequestConvertible {
         case .testAPI, .groupList:
             return nil
 
-        case let .auth(body), let .addGroup(body):
+        case let .auth(body), let .addGroup(body), let .setUser(body):
             return body
         }
     }
@@ -77,7 +84,7 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup:
+        case .testAPI, .auth, .addGroup, .setUser:
             return nil
         case let .groupList(params):
             return params
