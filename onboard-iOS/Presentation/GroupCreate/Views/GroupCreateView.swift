@@ -197,6 +197,7 @@ final class GroupCreateView: UIView {
         self.addConfigure()
         self.textFieldPlaceHolder()
         self.makeConstraints()
+        self.setupGestureRecognizer()
     }
     
     private func setButtons() {
@@ -296,8 +297,21 @@ final class GroupCreateView: UIView {
         }
     }
     
+    private func setupGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(backgroundTapped)
+        )
+        self.addGestureRecognizer(tapGesture)
+    }
+    
     private func updateCountLabel(characterCount: Int) {
         self.introductionCountLabel.text = "\(characterCount)/72"
+    }
+    
+    @objc
+    private func backgroundTapped() {
+        self.endEditing(true)
     }
 }
 
