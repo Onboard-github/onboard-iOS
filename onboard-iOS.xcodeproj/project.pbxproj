@@ -36,6 +36,19 @@
 		6181761E2AD2C66500B5E2A0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */; };
 		618176202AD2C6EE00B5E2A0 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */; };
 		618176232AD2C87C00B5E2A0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176222AD2C87C00B5E2A0 /* LoginView.swift */; };
+		611D8CEC2AC44D230074A55A /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CEB2AC44D230074A55A /* TermsView.swift */; };
+		611D8CEE2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */; };
+		6151A06F2AECFE92001D74AB /* TermsAgreementReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */; };
+		618175F52AC5722500B5E2A0 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */; };
+		618175F92AC5961500B5E2A0 /* TermsAgreementModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */; };
+		618176282AD3C7E500B5E2A0 /* TermsAgreementItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */; };
+		6181762A2AD3D56B00B5E2A0 /* TermsAgreementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */; };
+		6181762D2AD3D66D00B5E2A0 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181762C2AD3D66D00B5E2A0 /* BaseTableViewCell.swift */; };
+		6181762F2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181762E2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift */; };
+		618176312AD3D89200B5E2A0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176302AD3D89200B5E2A0 /* UITableView+Extension.swift */; };
+		618176332AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176322AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift */; };
+		618176352AD5902300B5E2A0 /* TermsAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176342AD5902300B5E2A0 /* TermsAgreementViewController.swift */; };
+		6181764F2ADBF4A500B5E2A0 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181764E2ADBF4A500B5E2A0 /* UIDevice+Extension.swift */; };
 		61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */; };
 		61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */; };
 		61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */; };
@@ -108,6 +121,19 @@
 		6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		618176222AD2C87C00B5E2A0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		611D8CEB2AC44D230074A55A /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
+		611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SwiftUI+Extension.swift"; sourceTree = "<group>"; };
+		6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementReactor.swift; sourceTree = "<group>"; };
+		618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementModalView.swift; sourceTree = "<group>"; };
+		618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementItemView.swift; sourceTree = "<group>"; };
+		618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementCell.swift; sourceTree = "<group>"; };
+		6181762C2AD3D66D00B5E2A0 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		6181762E2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		618176302AD3D89200B5E2A0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		618176322AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		618176342AD5902300B5E2A0 /* TermsAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementViewController.swift; sourceTree = "<group>"; };
+		6181764E2ADBF4A500B5E2A0 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -281,8 +307,38 @@
 			isa = PBXGroup;
 			children = (
 				618176222AD2C87C00B5E2A0 /* LoginView.swift */,
+            );
+            path = Views;
+            sourceTree = "<group>";
+        };
+		611D8CE72AC44CE70074A55A /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				611D8CEA2AC44D190074A55A /* Views */,
+				6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		611D8CEA2AC44D190074A55A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				611D8CEB2AC44D230074A55A /* TermsView.swift */,
+				618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */,
+				618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */,
+				618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */,
+				618176342AD5902300B5E2A0 /* TermsAgreementViewController.swift */,
+
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6181762B2AD3D64F00B5E2A0 /* BaseComponents */ = {
+			isa = PBXGroup;
+			children = (
+				6181762C2AD3D66D00B5E2A0 /* BaseTableViewCell.swift */,
+			);
+			path = BaseComponents;
 			sourceTree = "<group>";
 		};
 		61AC7F922AB6D4A300B0B6B5 = {
@@ -304,6 +360,7 @@
 		61AC7F9D2AB6D4A300B0B6B5 /* onboard-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6181762B2AD3D64F00B5E2A0 /* BaseComponents */,
 				611D8CA52ABECB910074A55A /* onboard-iOS.entitlements */,
 				61AC80032AB73A0F00B0B6B5 /* Extensions */,
 				61AC7FE82AB72E5100B0B6B5 /* Enum */,
@@ -363,6 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				6181761C2AD2C65600B5E2A0 /* Login */,
+				611D8CE72AC44CE70074A55A /* SignIn */,
 				61AC7FB62AB6D6C300B0B6B5 /* Test */,
 				AA9105602AD9A69300DA2E96 /* GroupSearch */,
 			);
@@ -445,6 +503,12 @@
 			children = (
 				611D8CAB2ABED2910074A55A /* Foundation */,
 				61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */,
+				611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */,
+				618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */,
+				6181762E2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift */,
+				618176302AD3D89200B5E2A0 /* UITableView+Extension.swift */,
+				618176322AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift */,
+				6181764E2ADBF4A500B5E2A0 /* UIDevice+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -600,11 +664,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				618176352AD5902300B5E2A0 /* TermsAgreementViewController.swift in Sources */,
+				618175F52AC5722500B5E2A0 /* UILabel+Extension.swift in Sources */,
+				611D8CEE2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift in Sources */,
+				611D8CEC2AC44D230074A55A /* TermsView.swift in Sources */,
 				1CA1BBCA2ADABFF9000C5F7E /* PopupState.swift in Sources */,
 				61AC7FCE2AB6DDE300B0B6B5 /* TestDTO.swift in Sources */,
 				61AC7FEA2AB7309400B0B6B5 /* APIEventLogger.swift in Sources */,
 				1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */,
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
+				6181762A2AD3D56B00B5E2A0 /* TermsAgreementCell.swift in Sources */,
+				618175F92AC5961500B5E2A0 /* TermsAgreementModalView.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				618176182AD2C22A00B5E2A0 /* AuthDTO.swift in Sources */,
@@ -618,8 +688,11 @@
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
+				6181762F2AD3D86100B5E2A0 /* UITableViewCell+Extension.swift in Sources */,
+				6181764F2ADBF4A500B5E2A0 /* UIDevice+Extension.swift in Sources */,
 				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
 				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
+				6151A06F2AECFE92001D74AB /* TermsAgreementReactor.swift in Sources */,
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
@@ -642,6 +715,13 @@
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
 				1CFD50DA2ACE79190031269C /* Colors.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
+				618176332AD3D8DD00B5E2A0 /* UITableViewHeaderFooterView.swift in Sources */,
+				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
+				618176312AD3D89200B5E2A0 /* UITableView+Extension.swift in Sources */,
+				618176282AD3C7E500B5E2A0 /* TermsAgreementItemView.swift in Sources */,
+				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
+				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
+				6181762D2AD3D66D00B5E2A0 /* BaseTableViewCell.swift in Sources */,
 				1CA1BBC72ADABFA3000C5F7E /* LinkButtonState.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
@@ -803,7 +883,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XBK9RNRMN8;
+				DEVELOPMENT_TEAM = 7YWVGV44MR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -832,7 +912,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XBK9RNRMN8;
+				DEVELOPMENT_TEAM = 7YWVGV44MR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
