@@ -12,7 +12,7 @@ protocol Coordinator: AnyObject {
     func start()
 }
 
-class AppCoordinator: Coordinator {
+final class AppCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     private var navigationController: UINavigationController?
     
@@ -25,24 +25,10 @@ class AppCoordinator: Coordinator {
     }
     
     private func showLoginViewController() {
-        let appleLoginManager = AppleLoginManagerImpl()
-        let authRepository = AuthRepositoryImpl()
-        let appleLoginUseCase = AppleLoginUseCaseImpl(
-            appleLoginManager: appleLoginManager,
-            authRepository: authRepository
+        let coordinator = LoginCoordinator(
+            navigationController: self.navigationController
         )
-        
-        let kakaoLoginManager = KakaoLoginManagerImpl()
-        let kakaoLoginUseCase = KakaoLoginUseCaseImpl(
-            kakaoLoginManager: kakaoLoginManager,
-            authRepository: authRepository
-        )
-        let reactor = LoginReactor(
-            appleUseCase: appleLoginUseCase,
-            kakaoUseCase: kakaoLoginUseCase
-        )
-        let viewController = LoginViewController(reactor: reactor)
-        
-        self.navigationController?.viewControllers = [viewController]
+        coordinator.start()
+        self.childCoordinators.append(coordinator)
     }
 }
