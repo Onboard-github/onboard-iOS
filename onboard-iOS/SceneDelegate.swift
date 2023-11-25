@@ -25,20 +25,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.initKakaoSDK()
 
-        let testUseCase = TestUseCaseImpl(repository: TestRepositoryImpl())
-        let loginReactor = LoginReactor(
-            appleUseCase: AppleLoginUseCaseImpl(
-                appleLoginManager: AppleLoginManagerImpl(),
-                authRepository: AuthRepositoryImpl()
-            ),
-            kakaoUseCase: KakaoLoginUseCaseImpl(
-                kakaoLoginManager: KakaoLoginManagerImpl(),
-                authRepository: AuthRepositoryImpl()
-            )
-        )
-        let loginViewController = LoginViewController(reactor: loginReactor)
-        self.window?.rootViewController = loginViewController
+        let navigationController = UINavigationController()
+        self.window?.rootViewController = navigationController
         
+        let coordinator = AppCoordinator(navigationController: navigationController)
+        coordinator.start()
+
         self.window?.makeKeyAndVisible()
     }
 
