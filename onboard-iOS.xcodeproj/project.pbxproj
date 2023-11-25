@@ -22,25 +22,23 @@
 		1CA1BBCA2ADABFF9000C5F7E /* PopupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBC92ADABFF9000C5F7E /* PopupState.swift */; };
 		1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */; };
 		1CA1BBD02AE00704000C5F7E /* TextFieldLabelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */; };
-		1CA1BBD82AE0337E000C5F7E /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBD72AE0337E000C5F7E /* Button.swift */; };
 		1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */; };
-		1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */; };
 		1CDF4D2F2AB8A53900CFDFBA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1CDF4D2E2AB8A53900CFDFBA /* GoogleSignIn */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
 		611D8CA82ABECFFC0074A55A /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA72ABECFFC0074A55A /* AuthRepository.swift */; };
 		611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CAC2ABED29F0074A55A /* Encodable+Ext.swift */; };
-		618176162AD2C21000B5E2A0 /* AuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176152AD2C21000B5E2A0 /* AuthEntity.swift */; };
-		618176182AD2C22A00B5E2A0 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176172AD2C22A00B5E2A0 /* AuthDTO.swift */; };
-		6181761E2AD2C66500B5E2A0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */; };
-		618176202AD2C6EE00B5E2A0 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */; };
-		618176232AD2C87C00B5E2A0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176222AD2C87C00B5E2A0 /* LoginView.swift */; };
 		611D8CEC2AC44D230074A55A /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CEB2AC44D230074A55A /* TermsView.swift */; };
 		611D8CEE2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */; };
 		6151A06F2AECFE92001D74AB /* TermsAgreementReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */; };
 		618175F52AC5722500B5E2A0 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */; };
 		618175F92AC5961500B5E2A0 /* TermsAgreementModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */; };
+		618176162AD2C21000B5E2A0 /* AuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176152AD2C21000B5E2A0 /* AuthEntity.swift */; };
+		618176182AD2C22A00B5E2A0 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176172AD2C22A00B5E2A0 /* AuthDTO.swift */; };
+		6181761E2AD2C66500B5E2A0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */; };
+		618176202AD2C6EE00B5E2A0 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */; };
+		618176232AD2C87C00B5E2A0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176222AD2C87C00B5E2A0 /* LoginView.swift */; };
 		618176282AD3C7E500B5E2A0 /* TermsAgreementItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */; };
 		6181762A2AD3D56B00B5E2A0 /* TermsAgreementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */; };
 		6181762D2AD3D66D00B5E2A0 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181762C2AD3D66D00B5E2A0 /* BaseTableViewCell.swift */; };
@@ -107,7 +105,6 @@
 		1CA1BBC92ADABFF9000C5F7E /* PopupState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupState.swift; sourceTree = "<group>"; };
 		1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLabelState.swift; sourceTree = "<group>"; };
-		1CA1BBD72AE0337E000C5F7E /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleLoginManager.swift; path = "onboard-iOS/Repository/SocialLogin/GoogleLoginManager.swift"; sourceTree = SOURCE_ROOT; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -116,16 +113,16 @@
 		611D8CA52ABECB910074A55A /* onboard-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "onboard-iOS.entitlements"; sourceTree = "<group>"; };
 		611D8CA72ABECFFC0074A55A /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		611D8CAC2ABED29F0074A55A /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
-		618176152AD2C21000B5E2A0 /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
-		618176172AD2C22A00B5E2A0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
-		6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
-		618176222AD2C87C00B5E2A0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		611D8CEB2AC44D230074A55A /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		611D8CED2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SwiftUI+Extension.swift"; sourceTree = "<group>"; };
 		6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementReactor.swift; sourceTree = "<group>"; };
 		618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementModalView.swift; sourceTree = "<group>"; };
+		618176152AD2C21000B5E2A0 /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
+		618176172AD2C22A00B5E2A0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
+		6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
+		618176222AD2C87C00B5E2A0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementItemView.swift; sourceTree = "<group>"; };
 		618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementCell.swift; sourceTree = "<group>"; };
 		6181762C2AD3D66D00B5E2A0 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -293,6 +290,27 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		611D8CE72AC44CE70074A55A /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				611D8CEA2AC44D190074A55A /* Views */,
+				6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		611D8CEA2AC44D190074A55A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				611D8CEB2AC44D230074A55A /* TermsView.swift */,
+				618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */,
+				618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */,
+				618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */,
+				618176342AD5902300B5E2A0 /* TermsAgreementViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		6181761C2AD2C65600B5E2A0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,28 +325,6 @@
 			isa = PBXGroup;
 			children = (
 				618176222AD2C87C00B5E2A0 /* LoginView.swift */,
-            );
-            path = Views;
-            sourceTree = "<group>";
-        };
-		611D8CE72AC44CE70074A55A /* SignIn */ = {
-			isa = PBXGroup;
-			children = (
-				611D8CEA2AC44D190074A55A /* Views */,
-				6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */,
-			);
-			path = SignIn;
-			sourceTree = "<group>";
-		};
-		611D8CEA2AC44D190074A55A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				611D8CEB2AC44D230074A55A /* TermsView.swift */,
-				618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */,
-				618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */,
-				618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */,
-				618176342AD5902300B5E2A0 /* TermsAgreementViewController.swift */,
-
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +342,7 @@
 			children = (
 				61AC7F9D2AB6D4A300B0B6B5 /* onboard-iOS */,
 				61AC7F9C2AB6D4A300B0B6B5 /* Products */,
+				61D15BC22B1215AC0060D089 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -420,7 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				6181761C2AD2C65600B5E2A0 /* Login */,
-				611D8CE72AC44CE70074A55A /* SignIn */,
+				611D8CE72AC44CE70074A55A /* SignUp */,
 				61AC7FB62AB6D6C300B0B6B5 /* Test */,
 				AA9105602AD9A69300DA2E96 /* GroupSearch */,
 			);
@@ -511,6 +508,14 @@
 				6181764E2ADBF4A500B5E2A0 /* UIDevice+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		61D15BC22B1215AC0060D089 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				61CC3C232AEE876500AE8599 /* GoogleLoginManager.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		AA7035F92ADB81B600B26537 /* Group */ = {
