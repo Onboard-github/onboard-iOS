@@ -12,7 +12,7 @@
         <!--랭킹-->
         <scene sceneID="Ij6-f0-z2y">
             <objects>
-                <viewController id="5Ii-rq-oiY" sceneMemberID="viewController">
+                <viewController id="5Ii-rq-oiY" customClass="RankVC" customModule="onboard_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="68D-9X-egN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

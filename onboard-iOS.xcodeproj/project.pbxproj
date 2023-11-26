@@ -58,6 +58,8 @@
 		AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */; };
 		AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */; };
 		AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */; };
+		AA69E3BC2B1332AB00F74A36 /* RankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69E3BB2B1332AB00F74A36 /* RankVC.swift */; };
+		AA69E3BF2B1333D300F74A36 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69E3BE2B1333D300F74A36 /* GameList.swift */; };
 		AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FA2ADB81C700B26537 /* GroupRepository.swift */; };
 		AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */; };
 		AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */; };
@@ -134,6 +136,8 @@
 		61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		AA69E3BB2B1332AB00F74A36 /* RankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankVC.swift; sourceTree = "<group>"; };
+		AA69E3BE2B1333D300F74A36 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
 		AA7035FA2ADB81C700B26537 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
 		AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchUseCase.swift; sourceTree = "<group>"; };
 		AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListEntity.swift; sourceTree = "<group>"; };
@@ -448,6 +452,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		AA69E3BD2B1333B000F74A36 /* Rank */ = {
+			isa = PBXGroup;
+			children = (
+				AA69E3C02B1333DB00F74A36 /* Data */,
+				AA69E3BB2B1332AB00F74A36 /* RankVC.swift */,
+			);
+			path = Rank;
+			sourceTree = "<group>";
+		};
+		AA69E3C02B1333DB00F74A36 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AA69E3BE2B1333D300F74A36 /* GameList.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		AA7035F92ADB81B600B26537 /* Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,7 +526,7 @@
 			children = (
 				AAF169972B1092E300EF82A4 /* Utils */,
 				AAF169942B10906600EF82A4 /* Resources */,
-				AAF1698D2B108EA900EF82A4 /* ViewControllers */,
+				AAF1698D2B108EA900EF82A4 /* Views */,
 				AAF1698A2B108E2700EF82A4 /* Logger */,
 				AAF169872B108B0000EF82A4 /* Alert */,
 				AAF169842B10896600EF82A4 /* LoginSession */,
@@ -538,9 +559,10 @@
 			path = Logger;
 			sourceTree = "<group>";
 		};
-		AAF1698D2B108EA900EF82A4 /* ViewControllers */ = {
+		AAF1698D2B108EA900EF82A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA69E3BD2B1333B000F74A36 /* Rank */,
 				AAF169902B10900100EF82A4 /* LoginSelectVC.swift */,
 				AAF169912B10900100EF82A4 /* LoginSelectVC.xib */,
 				AAF1699D2B10E05200EF82A4 /* AgreeVC.swift */,
@@ -550,7 +572,7 @@
 				61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */,
 				AAF169A92B12D3AE00EF82A4 /* DevelopVC.swift */,
 			);
-			path = ViewControllers;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AAF169942B10906600EF82A4 /* Resources */ = {
@@ -681,6 +703,7 @@
 				1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */,
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
 				AAF169862B10897E00EF82A4 /* LoginSessionManager.swift in Sources */,
+				AA69E3BF2B1333D300F74A36 /* GameList.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				1CA1BBC42ADABEBD000C5F7E /* TextField.swift in Sources */,
@@ -717,6 +740,7 @@
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
 				AAF1698C2B108E3100EF82A4 /* LogManager.swift in Sources */,
 				AACCA9192AE193D3000A4CDA /* GroupSearchBar.swift in Sources */,
+				AA69E3BC2B1332AB00F74A36 /* RankVC.swift in Sources */,
 				AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
