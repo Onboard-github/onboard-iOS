@@ -315,7 +315,6 @@
 				1CFD50D72ACE78E80031269C /* DesignSystem */,
 				61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */,
 				61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */,
-				61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */,
 				61AC7FA72AB6D4A500B0B6B5 /* Assets.xcassets */,
 				61AC7FA92AB6D4A500B0B6B5 /* LaunchScreen.storyboard */,
 				61AC7FAC2AB6D4A500B0B6B5 /* Info.plist */,
@@ -546,6 +545,7 @@
 				AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */,
 				AAF169A12B10EED600EF82A4 /* AgreeNicknameVC.swift */,
 				AAF169A22B10EED600EF82A4 /* AgreeNicknameVC.xib */,
+				61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

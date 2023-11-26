@@ -27,4 +27,12 @@ class LoginSessionManager {
         }
         return UserLoginSessionData(type: type, accessToken: accessToken, refreshToken: refreshToken)
     }
+    
+    static func setNickname(nickname: String) {
+        KeychainWrapper.standard.set(nickname, forKey: "nickname")
+    }
+    
+    static func getNickname() -> String? {
+        return KeychainWrapper.standard.string(forKey: "nickname")
+    }
 }

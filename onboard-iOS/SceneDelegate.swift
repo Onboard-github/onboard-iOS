@@ -40,7 +40,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //let testViewController = GroupSearchViewController(reactor: GroupSearchReactor(useCase: testUseCase))
         let testViewController = TestViewController(reactor: testReactor)
 
-        self.window?.rootViewController = UINavigationController(rootViewController: LoginSelectVC()) 
+        if let _ = LoginSessionManager.getLoginSession(), let _ = LoginSessionManager.getNickname() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+            self.window?.rootViewController = homeTabController
+        } else {
+            self.window?.rootViewController = UINavigationController(rootViewController: LoginSelectVC())
+        }
+        
         
         self.window?.makeKeyAndVisible()
     }

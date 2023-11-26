@@ -37,11 +37,18 @@ class AgreeNicknameVC: UIViewController {
                 
                 if result.response?.statusCode == 200 {
                     navigationController?.popViewController(animated: true)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                    homeTabController.modalPresentationStyle = .fullScreen
+                    navigationController?.present(homeTabController, animated: true) { [weak self] in
+                        LoginSessionManager.setNickname(nickname: self?.nickNameField.text ?? "")
+                    }
+                } else {
+                    AlertManager.show(message: "응답이 200이 아님 \(result.response?.statusCode)")
                 }
                 
             } catch {
-                print(error.localizedDescription)
-                
+                AlertManager.show(message: error.localizedDescription)
                 throw error
             }
         }
