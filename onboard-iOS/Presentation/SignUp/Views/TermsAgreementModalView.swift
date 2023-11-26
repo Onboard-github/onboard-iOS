@@ -80,7 +80,7 @@ final class TermsAgreementModalView: UIView {
         return button
     }()
 
-    private let registerButton = BaseButton(status: .disabled, style: .normal)
+    private let registerButton = BaseButton(status: .disabled, style: .rounded)
     
     // MARK: - Properties
 
@@ -110,6 +110,13 @@ final class TermsAgreementModalView: UIView {
     func bind(state: State) {
         self.termsList = state.terms
         self.allAgreementButton.isSelected = state.isAllAgreement
+        
+        self.registerButton.setButton(
+            status: state.isAllAgreement
+            ? .default
+            : .disabled,
+            style: .rounded
+        )
     }
 
     // MARK: - Configure
