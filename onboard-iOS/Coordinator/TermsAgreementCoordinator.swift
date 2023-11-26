@@ -20,7 +20,8 @@ final class TermsAgreementCoordinator: Coordinator {
     func start() {
         let reactor = TermsAgreementReactor()
         let viewController = TermsAgreementViewController(reactor: reactor)
+        viewController.modalPresentationStyle = .overFullScreen
         
-        self.navigationController?.viewControllers = [viewController]
+        self.navigationController?.present(viewController, animated: false)
     }
 }

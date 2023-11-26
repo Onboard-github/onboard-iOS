@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginCoordinatorNavigateDelegate: AnyObject {
+    func showTermsAgreementView()
+}
+
 final class LoginCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
@@ -32,10 +36,21 @@ final class LoginCoordinator: Coordinator {
         )
         let reactor = LoginReactor(
             appleUseCase: appleLoginUseCase,
-            kakaoUseCase: kakaoLoginUseCase
+            kakaoUseCase: kakaoLoginUseCase,
+            coordinator: self
         )
         let viewController = LoginViewController(reactor: reactor)
         
-        self.navigationController?.viewControllers = [viewController]
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension LoginCoordinator: LoginCoordinatorNavigateDelegate {
+    
+    func showTermsAgreementView() {
+        let coordinator = TermsAgreementCoordinator(
+            navigationController: self.navigationController
+        )
+        coordinator.start()
     }
 }
