@@ -73,6 +73,8 @@
 		61D15BC52B12161F0060D089 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D15BC42B12161F0060D089 /* Coordinator.swift */; };
 		61D15BC72B1217E70060D089 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D15BC62B1217E70060D089 /* LoginCoordinator.swift */; };
 		61D15BC92B1218F80060D089 /* TermsAgreementCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D15BC82B1218F80060D089 /* TermsAgreementCoordinator.swift */; };
+		61D15BCB2B12EE390060D089 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D15BCA2B12EE390060D089 /* TermsViewController.swift */; };
+		61D15BCD2B1301BB0060D089 /* TermsReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D15BCC2B1301BB0060D089 /* TermsReactor.swift */; };
 		AA09C27A2ACBE9BC00F51A96 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C2792ACBE9BC00F51A96 /* KakaoSDKAuth */; };
 		AA09C27C2ACBE9BC00F51A96 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27B2ACBE9BC00F51A96 /* KakaoSDKCommon */; };
 		AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */; };
@@ -157,6 +159,8 @@
 		61D15BC42B12161F0060D089 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		61D15BC62B1217E70060D089 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		61D15BC82B1218F80060D089 /* TermsAgreementCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementCoordinator.swift; sourceTree = "<group>"; };
+		61D15BCA2B12EE390060D089 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		61D15BCC2B1301BB0060D089 /* TermsReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsReactor.swift; sourceTree = "<group>"; };
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		AA7035FA2ADB81C700B26537 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 			children = (
 				611D8CEA2AC44D190074A55A /* Views */,
 				6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */,
+				61D15BCC2B1301BB0060D089 /* TermsReactor.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				618176272AD3C7E500B5E2A0 /* TermsAgreementItemView.swift */,
 				618176292AD3D56B00B5E2A0 /* TermsAgreementCell.swift */,
 				618176342AD5902300B5E2A0 /* TermsAgreementViewController.swift */,
+				61D15BCA2B12EE390060D089 /* TermsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -696,7 +702,9 @@
 				1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */,
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
 				6181762A2AD3D56B00B5E2A0 /* TermsAgreementCell.swift in Sources */,
+				61D15BCB2B12EE390060D089 /* TermsViewController.swift in Sources */,
 				618175F92AC5961500B5E2A0 /* TermsAgreementModalView.swift in Sources */,
+				61D15BCD2B1301BB0060D089 /* TermsReactor.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				618176182AD2C22A00B5E2A0 /* AuthDTO.swift in Sources */,

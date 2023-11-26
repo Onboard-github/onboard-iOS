@@ -18,10 +18,18 @@ final class TermsAgreementCoordinator: Coordinator {
     }
     
     func start() {
-        let reactor = TermsAgreementReactor()
+        let reactor = TermsAgreementReactor(coordinator: self)
         let viewController = TermsAgreementViewController(reactor: reactor)
         viewController.modalPresentationStyle = .overFullScreen
         
         self.navigationController?.present(viewController, animated: false)
+    }
+    
+    func showTerms(url: String) {
+        let reactor = TermsReactor(url: url)
+        let viewController = TermsViewController(reactor: reactor)
+        
+        self.navigationController?.dismiss(animated: true)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
