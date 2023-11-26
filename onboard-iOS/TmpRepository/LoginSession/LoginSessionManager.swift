@@ -9,6 +9,13 @@ import Foundation
 import SwiftKeychainWrapper
 
 class LoginSessionManager {
+    static func logout() {
+        KeychainWrapper.standard.remove(forKey: "accessToken")
+        KeychainWrapper.standard.remove(forKey: "refreshToken")
+        KeychainWrapper.standard.remove(forKey: "sessionType")
+        KeychainWrapper.standard.remove(forKey: "nickname")
+    }
+    
     static func setLoginSession(accessToken: String, refreshToken: String, type: UserLoginSessionType) {
         KeychainWrapper.standard.set(accessToken, forKey: "accessToken")
         KeychainWrapper.standard.set(refreshToken, forKey: "refreshToken")

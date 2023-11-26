@@ -83,6 +83,7 @@
 		AAF169A02B10E05200EF82A4 /* AgreeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */; };
 		AAF169A32B10EED600EF82A4 /* AgreeNicknameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF169A12B10EED600EF82A4 /* AgreeNicknameVC.swift */; };
 		AAF169A42B10EED600EF82A4 /* AgreeNicknameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF169A22B10EED600EF82A4 /* AgreeNicknameVC.xib */; };
+		AAF169AA2B12D3AE00EF82A4 /* DevelopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF169A92B12D3AE00EF82A4 /* DevelopVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +156,7 @@
 		AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreeVC.xib; sourceTree = "<group>"; };
 		AAF169A12B10EED600EF82A4 /* AgreeNicknameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreeNicknameVC.swift; sourceTree = "<group>"; };
 		AAF169A22B10EED600EF82A4 /* AgreeNicknameVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreeNicknameVC.xib; sourceTree = "<group>"; };
+		AAF169A92B12D3AE00EF82A4 /* DevelopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -546,6 +548,7 @@
 				AAF169A12B10EED600EF82A4 /* AgreeNicknameVC.swift */,
 				AAF169A22B10EED600EF82A4 /* AgreeNicknameVC.xib */,
 				61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */,
+				AAF169A92B12D3AE00EF82A4 /* DevelopVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF169AA2B12D3AE00EF82A4 /* DevelopVC.swift in Sources */,
 				1CA1BBCA2ADABFF9000C5F7E /* PopupState.swift in Sources */,
 				61AC7FCE2AB6DDE300B0B6B5 /* TestDTO.swift in Sources */,
 				61AC7FEA2AB7309400B0B6B5 /* APIEventLogger.swift in Sources */,

@@ -25,17 +25,32 @@
             </objects>
             <point key="canvasLocation" x="1735" y="295"/>
         </scene>
-        <!--Item 1-->
+        <!--개발 메뉴-->
         <scene sceneID="75J-rg-ykS">
             <objects>
-                <viewController id="QfE-LN-TcP" sceneMemberID="viewController">
+                <viewController id="QfE-LN-TcP" customClass="DevelopVC" customModule="onboard_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mh1-yG-d5f">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOY-2h-irV">
+                                <rect key="frame" x="20" y="79" width="353" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="로그아웃"/>
+                                <connections>
+                                    <action selector="logoutButtonAction:" destination="QfE-LN-TcP" eventType="touchUpInside" id="yHU-br-bMa"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="qEW-pf-mWH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hOY-2h-irV" firstAttribute="leading" secondItem="qEW-pf-mWH" secondAttribute="leading" constant="20" id="M6C-za-ish"/>
+                            <constraint firstItem="hOY-2h-irV" firstAttribute="top" secondItem="qEW-pf-mWH" secondAttribute="top" constant="20" id="TCD-HL-9XE"/>
+                            <constraint firstItem="qEW-pf-mWH" firstAttribute="trailing" secondItem="hOY-2h-irV" secondAttribute="trailing" constant="20" id="m9a-5Z-8iw"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="moj-5t-84m"/>
+                    <tabBarItem key="tabBarItem" title="개발 메뉴" id="moj-5t-84m"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5o-1I-4sL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
