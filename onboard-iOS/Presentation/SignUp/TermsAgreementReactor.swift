@@ -78,16 +78,13 @@ final class TermsAgreementReactor: Reactor {
             state.terms = terms
             
         case let .updateCheckStatus(indexPath):
-            state.terms = self.updateAgreementStatus(
+            state = self.updateAgreementStatus(
                 terms: state.terms,
                 indexPath: indexPath
             )
             
         case .updateAllAgreement:
             state = self.updateAllAgreementStatus(state: state)
-            
-        default:
-            print("no reduce yet")
         }
         
         return state
@@ -127,7 +124,7 @@ extension TermsAgreementReactor {
     private func updateAgreementStatus(
         terms: [State.Term],
         indexPath: IndexPath
-    ) -> [State.Term] {
+    ) -> State {
         var terms = terms
         
         let term = terms[indexPath.item]
@@ -139,7 +136,9 @@ extension TermsAgreementReactor {
             isChecked: !term.isChecked
         )
         
-        return terms
+        let isAllAgreement = !terms.contains(where: { $0.isChecked == false })
+        
+        return State(terms: terms, isAllAgreemented: isAllAgreement)
     }
     
     private func updateAllAgreementStatus(state: State) -> State {
