@@ -130,8 +130,12 @@ final class TermsAgreementViewController: UIViewController, View {
             self.reactor?.action.onNext(.selectCheck(indexPath: indexPath))
         }
         
-        self.modalView.selectAllCheck = { 
+        self.modalView.selectAllCheck = {
             self.reactor?.action.onNext(.selectAllAgreement)
+        }
+        
+        self.modalView.selectDetail = { indexPath in
+            self.reactor?.action.onNext(.selectDetail(indexPath))
         }
     }
     
@@ -144,6 +148,7 @@ final class TermsAgreementViewController: UIViewController, View {
                 self.modalView.bind(state: self.toState(state: result))
             })
             .disposed(by: self.disposeBag)
+        
     }
 
     // MARK: - Gesture

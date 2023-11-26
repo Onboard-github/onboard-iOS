@@ -23,7 +23,6 @@ final class TermsAgreementReactor: Reactor {
     
     enum Mutation {
         case setTerms([State.Term])
-        case goDetail(url: String)
         case updateCheckStatus(indexPath: IndexPath)
         case updateAllAgreement
     }
@@ -40,6 +39,12 @@ final class TermsAgreementReactor: Reactor {
         }
     }
     
+    private let coordinator: TermsAgreementCoordinator
+    
+    init(coordinator: TermsAgreementCoordinator) {
+        self.coordinator = coordinator
+    }
+    
     func mutate(action: Action) -> Observable<Mutation> {
         
         switch action {
@@ -47,6 +52,10 @@ final class TermsAgreementReactor: Reactor {
             return self.fetch()
             
         case let .selectDetail(indexPath):
+            let url = self.currentState.terms[indexPath.row].url
+            
+            self.coordinator.showTerms(url: url)
+            
             return .empty()
             
         case let .selectCheck(indexPath):
