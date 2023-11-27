@@ -47,14 +47,22 @@
                                             <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                         </accessibility>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GkZ-5x-wAb">
+                                        <rect key="frame" x="0.0" y="54.666666666666679" width="393" height="113.33333333333331"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="168" id="4Fb-fy-q26"/>
+                                    <constraint firstItem="GkZ-5x-wAb" firstAttribute="top" secondItem="Acn-eA-rWq" secondAttribute="bottom" constant="10" id="6in-gs-Wn5"/>
+                                    <constraint firstItem="GkZ-5x-wAb" firstAttribute="leading" secondItem="LP4-cH-Di0" secondAttribute="leading" id="B9M-VR-mbt"/>
                                     <constraint firstAttribute="trailing" secondItem="yLq-ke-kdr" secondAttribute="trailing" constant="16" id="Lyt-92-HgH"/>
                                     <constraint firstItem="45h-Yc-3tA" firstAttribute="centerY" secondItem="Acn-eA-rWq" secondAttribute="centerY" id="P7W-wl-7vT"/>
                                     <constraint firstItem="Acn-eA-rWq" firstAttribute="centerX" secondItem="LP4-cH-Di0" secondAttribute="centerX" id="h4G-zb-Yqg"/>
                                     <constraint firstItem="yLq-ke-kdr" firstAttribute="top" secondItem="LP4-cH-Di0" secondAttribute="top" constant="10" id="mco-4C-w69"/>
+                                    <constraint firstAttribute="trailing" secondItem="GkZ-5x-wAb" secondAttribute="trailing" id="sT5-Xj-NVu"/>
+                                    <constraint firstAttribute="bottom" secondItem="GkZ-5x-wAb" secondAttribute="bottom" id="t62-ZM-SJe"/>
                                     <constraint firstItem="45h-Yc-3tA" firstAttribute="leading" secondItem="Acn-eA-rWq" secondAttribute="trailing" constant="-8" id="tZu-Cu-IT3"/>
                                     <constraint firstItem="Acn-eA-rWq" firstAttribute="top" secondItem="LP4-cH-Di0" secondAttribute="top" constant="9" id="wMj-0U-kc1"/>
                                 </constraints>
@@ -81,6 +89,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="랭킹" image="icon_rank1_default" id="btD-de-rfY"/>
                     <navigationItem key="navigationItem" id="rJ1-wi-qgJ"/>
+                    <connections>
+                        <outlet property="pagingBackground" destination="GkZ-5x-wAb" id="itj-I6-3kZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o1u-QT-eT7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
