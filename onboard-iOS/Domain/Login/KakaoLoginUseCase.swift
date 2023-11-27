@@ -55,6 +55,13 @@ extension KakaoLoginUseCaseImpl: KakaoLoginDelegate {
             print(result.accessToken)
             print(result.refreshToken)
             
+            if let currentSesison = LoginSessionManager.getLoginSession() {
+                AlertManager.show(message: "기존 \(currentSesison.type) 로그인 정보를 삭제하고 로그인합니다.")
+                LogManager.log(messaeg: "기존 로그인되어있던 로그인 정보 \(currentSesison)")
+            }
+            
+            LoginSessionManager.setLoginSession(accessToken: result.accessToken, refreshToken: result.refreshToken, type: .kakao)
+            
             self._result.onNext(isExisted)
         }
     }
