@@ -84,7 +84,6 @@ final class TestView: UIView {
     var didTapMemberButton: (() -> Void)?
     var didTapbottomSheetMemberButton: (() -> Void)?
     private let joinPopupView = JoinPopupView()
-    private let imagePopupView = ImagePopupView()
 
     // MARK: - Initialize
 
