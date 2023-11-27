@@ -58,6 +58,9 @@
 		AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */; };
 		AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */; };
 		AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */; };
+		AA69E3BC2B1332AB00F74A36 /* RankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69E3BB2B1332AB00F74A36 /* RankVC.swift */; };
+		AA69E3BF2B1333D300F74A36 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69E3BE2B1333D300F74A36 /* GameList.swift */; };
+		AA69E3C32B1334D100F74A36 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = AA69E3C22B1334D100F74A36 /* Parchment */; };
 		AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FA2ADB81C700B26537 /* GroupRepository.swift */; };
 		AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */; };
 		AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */; };
@@ -68,6 +71,7 @@
 		AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */; };
 		AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */; };
 		AA91058B2ADA4B9C00DA2E96 /* GroupSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA91058A2ADA4B9C00DA2E96 /* GroupSearchCell.swift */; };
+		AAC4663C2B15107300A2126E /* UIColor+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC4663B2B15107300A2126E /* UIColor+Util.swift */; };
 		AACCA9192AE193D3000A4CDA /* GroupSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCA9182AE193D3000A4CDA /* GroupSearchBar.swift */; };
 		AACCA91B2AE19A09000A4CDA /* NewGroupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCA91A2AE19A09000A4CDA /* NewGroupButton.swift */; };
 		AAF169832B1086FB00EF82A4 /* UserLoginSessionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF169822B1086FB00EF82A4 /* UserLoginSessionData.swift */; };
@@ -134,6 +138,8 @@
 		61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		AA69E3BB2B1332AB00F74A36 /* RankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankVC.swift; sourceTree = "<group>"; };
+		AA69E3BE2B1333D300F74A36 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
 		AA7035FA2ADB81C700B26537 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
 		AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchUseCase.swift; sourceTree = "<group>"; };
 		AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListEntity.swift; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 		AA9105632ADA242800DA2E96 /* GroupSearchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchReactor.swift; sourceTree = "<group>"; };
 		AA9105682ADA32F300DA2E96 /* GroupSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchViewController.swift; sourceTree = "<group>"; };
 		AA91058A2ADA4B9C00DA2E96 /* GroupSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchCell.swift; sourceTree = "<group>"; };
+		AAC4663B2B15107300A2126E /* UIColor+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Util.swift"; sourceTree = "<group>"; };
 		AACCA9182AE193D3000A4CDA /* GroupSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchBar.swift; sourceTree = "<group>"; };
 		AACCA91A2AE19A09000A4CDA /* NewGroupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupButton.swift; sourceTree = "<group>"; };
 		AAF169822B1086FB00EF82A4 /* UserLoginSessionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginSessionData.swift; sourceTree = "<group>"; };
@@ -167,6 +174,7 @@
 				61AC7FD72AB6E50200B0B6B5 /* SnapKit in Frameworks */,
 				AA09C27C2ACBE9BC00F51A96 /* KakaoSDKCommon in Frameworks */,
 				61AC7FD42AB6E4BC00B0B6B5 /* ReactorKit in Frameworks */,
+				AA69E3C32B1334D100F74A36 /* Parchment in Frameworks */,
 				AA7036052ADBAC3F00B26537 /* Kingfisher in Frameworks */,
 				61AC7FDD2AB6E5B900B0B6B5 /* SwiftKeychainWrapper in Frameworks */,
 				AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */,
@@ -448,6 +456,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		AA69E3BD2B1333B000F74A36 /* Rank */ = {
+			isa = PBXGroup;
+			children = (
+				AA69E3C02B1333DB00F74A36 /* Data */,
+				AA69E3BB2B1332AB00F74A36 /* RankVC.swift */,
+			);
+			path = Rank;
+			sourceTree = "<group>";
+		};
+		AA69E3C02B1333DB00F74A36 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AA69E3BE2B1333D300F74A36 /* GameList.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		AA7035F92ADB81B600B26537 /* Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,7 +530,7 @@
 			children = (
 				AAF169972B1092E300EF82A4 /* Utils */,
 				AAF169942B10906600EF82A4 /* Resources */,
-				AAF1698D2B108EA900EF82A4 /* ViewControllers */,
+				AAF1698D2B108EA900EF82A4 /* Views */,
 				AAF1698A2B108E2700EF82A4 /* Logger */,
 				AAF169872B108B0000EF82A4 /* Alert */,
 				AAF169842B10896600EF82A4 /* LoginSession */,
@@ -538,9 +563,10 @@
 			path = Logger;
 			sourceTree = "<group>";
 		};
-		AAF1698D2B108EA900EF82A4 /* ViewControllers */ = {
+		AAF1698D2B108EA900EF82A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA69E3BD2B1333B000F74A36 /* Rank */,
 				AAF169902B10900100EF82A4 /* LoginSelectVC.swift */,
 				AAF169912B10900100EF82A4 /* LoginSelectVC.xib */,
 				AAF1699D2B10E05200EF82A4 /* AgreeVC.swift */,
@@ -550,7 +576,7 @@
 				61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */,
 				AAF169A92B12D3AE00EF82A4 /* DevelopVC.swift */,
 			);
-			path = ViewControllers;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AAF169942B10906600EF82A4 /* Resources */ = {
@@ -565,6 +591,7 @@
 			isa = PBXGroup;
 			children = (
 				AAF169982B1092F100EF82A4 /* UIView+Util.swift */,
+				AAC4663B2B15107300A2126E /* UIColor+Util.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -597,6 +624,7 @@
 				AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */,
 				AA7036042ADBAC3F00B26537 /* Kingfisher */,
 				AAF1699B2B10DFFF00EF82A4 /* PanModal */,
+				AA69E3C22B1334D100F74A36 /* Parchment */,
 			);
 			productName = "onboard-iOS";
 			productReference = 61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */;
@@ -637,6 +665,7 @@
 				AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				AA7036032ADBAC3F00B26537 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AAF1699A2B10DFFF00EF82A4 /* XCRemoteSwiftPackageReference "PanModal" */,
+				AA69E3C12B1334D100F74A36 /* XCRemoteSwiftPackageReference "Parchment" */,
 			);
 			productRefGroup = 61AC7F9C2AB6D4A300B0B6B5 /* Products */;
 			projectDirPath = "";
@@ -681,6 +710,7 @@
 				1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */,
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
 				AAF169862B10897E00EF82A4 /* LoginSessionManager.swift in Sources */,
+				AA69E3BF2B1333D300F74A36 /* GameList.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				1CA1BBC42ADABEBD000C5F7E /* TextField.swift in Sources */,
@@ -709,6 +739,7 @@
 				1CA1BBD02AE00704000C5F7E /* TextFieldLabelState.swift in Sources */,
 				611D8CAA2ABED03D0074A55A /* AuthDTO.swift in Sources */,
 				AA9105622AD9A6BA00DA2E96 /* GroupSearchView.swift in Sources */,
+				AAC4663C2B15107300A2126E /* UIColor+Util.swift in Sources */,
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
 				1CFD50DA2ACE79190031269C /* Colors.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
@@ -717,6 +748,7 @@
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
 				AAF1698C2B108E3100EF82A4 /* LogManager.swift in Sources */,
 				AACCA9192AE193D3000A4CDA /* GroupSearchBar.swift in Sources */,
+				AA69E3BC2B1332AB00F74A36 /* RankVC.swift in Sources */,
 				AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
@@ -1017,6 +1049,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		AA69E3C12B1334D100F74A36 /* XCRemoteSwiftPackageReference "Parchment" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rechsteiner/Parchment#getting-started";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		AA7036032ADBAC3F00B26537 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1080,6 +1120,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA09C2782ACBE9BC00F51A96 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		AA69E3C22B1334D100F74A36 /* Parchment */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA69E3C12B1334D100F74A36 /* XCRemoteSwiftPackageReference "Parchment" */;
+			productName = Parchment;
 		};
 		AA7036042ADBAC3F00B26537 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
