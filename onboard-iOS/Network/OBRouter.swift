@@ -27,12 +27,13 @@ enum OBRouter: URLRequestConvertible {
     case auth(body: Body)
     case groupList(params: Params)
     case addGroup(body: Body)
+    case randomImage
 
     // MARK: - HTTP Method
 
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList:
+        case .testAPI, .groupList, .randomImage:
             return .get
         case .auth, .addGroup:
             return .post
@@ -49,6 +50,8 @@ enum OBRouter: URLRequestConvertible {
             return "v1/auth/login"
         case .groupList, .addGroup:
             return "v1/group"
+        case .randomImage:
+            return "api/v1/group/default-image"
         }
     }
 
@@ -56,7 +59,7 @@ enum OBRouter: URLRequestConvertible {
 
     var header: Header? {
         switch self {
-        case .testAPI, .auth, .addGroup, .groupList:
+        case .testAPI, .auth, .addGroup, .groupList, .randomImage:
             return nil
         }
     }
@@ -65,7 +68,7 @@ enum OBRouter: URLRequestConvertible {
 
     var body: Body? {
         switch self {
-        case .testAPI, .groupList:
+        case .testAPI, .groupList, .randomImage:
             return nil
 
         case let .auth(body), let .addGroup(body):
@@ -77,7 +80,7 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup:
+        case .testAPI, .auth, .addGroup, .randomImage:
             return nil
         case let .groupList(params):
             return params
