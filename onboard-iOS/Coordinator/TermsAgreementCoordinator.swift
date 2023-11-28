@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TermsAgreementCoordinatorNavigateDelegate: AnyObject {
+    func showNicknameSetting()
+}
+
 final class TermsAgreementCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
@@ -31,5 +35,16 @@ final class TermsAgreementCoordinator: Coordinator {
         
         self.navigationController?.dismiss(animated: true)
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension TermsAgreementCoordinator: TermsAgreementCoordinatorNavigateDelegate {
+    
+    func showNicknameSetting() {
+        let coordinator = NicknameCoordinator(
+            navigationController: self.navigationController
+        )
+        self.navigationController?.dismiss(animated: true)
+        coordinator.start()
     }
 }

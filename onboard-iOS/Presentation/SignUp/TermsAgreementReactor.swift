@@ -64,7 +64,9 @@ final class TermsAgreementReactor: Reactor {
         case .selectAllAgreement:
             return .just(.updateAllAgreement)
             
-        case .confirm:
+        case .selectRegister:
+            self.coordinator.showNicknameSetting()
+            
             return .empty()
             
         }
