@@ -18,7 +18,7 @@ final class TermsAgreementReactor: Reactor {
         case selectDetail(IndexPath)
         case selectCheck(indexPath: IndexPath)
         case selectAllAgreement
-        case confirm
+        case selectRegister
     }
     
     enum Mutation {

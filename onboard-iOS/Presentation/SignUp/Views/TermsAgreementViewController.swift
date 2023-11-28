@@ -137,6 +137,10 @@ final class TermsAgreementViewController: UIViewController, View {
         self.modalView.selectDetail = { indexPath in
             self.reactor?.action.onNext(.selectDetail(indexPath))
         }
+        
+        self.modalView.selectRegister = {
+            self.reactor?.action.onNext(.selectRegister)
+        }
     }
     
     private func bindState(reactor: Reactor) {

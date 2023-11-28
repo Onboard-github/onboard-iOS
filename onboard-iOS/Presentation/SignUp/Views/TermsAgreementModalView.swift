@@ -93,6 +93,7 @@ final class TermsAgreementModalView: UIView {
     var selectDetail: ((IndexPath) -> Void)?
     var selectCheck: ((IndexPath) -> Void)?
     var selectAllCheck: (() -> Void)?
+    var selectRegister: (() -> Void)?
 
     // MARK: - Initialize
 
@@ -129,9 +130,17 @@ final class TermsAgreementModalView: UIView {
         self.tableView.separatorStyle = .none
 
         self.registerButton.setTitle("가입하기", for: .normal)
+        self.setRegisterButtonAction()
 
         self.makeConstraints()
         self.setAllAgreementButtonAction()
+    }
+    
+    private func setRegisterButtonAction() {
+        let action = UIAction(handler: { _ in
+            self.selectRegister?()
+        })
+        self.registerButton.addAction(action, for: .touchUpInside)
     }
     
     private func setAllAgreementButtonAction() {
