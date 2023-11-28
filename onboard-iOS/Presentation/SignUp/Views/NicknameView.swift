@@ -97,7 +97,7 @@ final class NicknameView: UIView {
         }
         
         self.confirmButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
             $0.height.equalTo(48)
             $0.leading.trailing.equalToSuperview().inset(20)
         }
