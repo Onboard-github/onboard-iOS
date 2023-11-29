@@ -1,5 +1,5 @@
 //
-//  ImagePopupView.swift
+//  ImagePopupViewController.swift
 //  onboard-iOS
 //
 //  Created by 혜리 on 2023/10/19.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImagePopupView: UIViewController {
+class ImagePopupViewController: UIViewController {
     
     // MARK: - Metric
     
@@ -164,7 +164,7 @@ class ImagePopupView: UIViewController {
     }
 }
 
-extension ImagePopupView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ImagePopupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private func openImagePicker() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
