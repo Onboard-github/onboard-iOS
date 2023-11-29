@@ -26,11 +26,11 @@ final class GroupCreateViewController: UIViewController {
         super.viewDidLoad()
         
         self.configure()
-        setNavigationBar()
     }
     
     private func configure() {
         self.addConfigure()
+        self.setNavigationBar()
     }
     
     private func addConfigure() {
