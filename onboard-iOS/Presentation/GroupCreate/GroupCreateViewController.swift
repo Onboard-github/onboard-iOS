@@ -14,7 +14,7 @@ final class GroupCreateViewController: UIViewController {
     // MARK: - Properties
     
     private let groupCreateView = GroupCreateView()
-    private let imagePopupView = ImagePopupView()
+    private let imagePopupVC = ImagePopupViewController()
     
     // MARK: - Life Cycles
     
@@ -35,14 +35,14 @@ final class GroupCreateViewController: UIViewController {
     
     private func addConfigure() {
         self.groupCreateView.didImageViewButton = { [self] in
-            imagePopupView.modalPresentationStyle = .overFullScreen
+            imagePopupVC.modalPresentationStyle = .overFullScreen
             
-            imagePopupView.imageCompletion = { [self] selectedImage in
+            imagePopupVC.imageCompletion = { [self] selectedImage in
                 groupCreateView.titleImageView.image = selectedImage
                 self.dismiss(animated: false, completion: nil)
             }
             
-            self.present(imagePopupView, animated: false, completion: nil)
+            self.present(imagePopupVC, animated: false, completion: nil)
         }
     }
     
