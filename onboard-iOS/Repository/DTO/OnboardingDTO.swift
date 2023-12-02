@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct OnboardingDTO: Decodable {
+    let onboarding: [String]
+    let mainGroupId: Int?
+}

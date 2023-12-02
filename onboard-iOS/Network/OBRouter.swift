@@ -26,6 +26,7 @@ enum OBRouter: URLRequestConvertible {
     case testAPI
     case auth(body: Body)
     case terms
+    case onboarding
     case groupList(params: Params)
     case addGroup(body: Body)
 
@@ -33,7 +34,7 @@ enum OBRouter: URLRequestConvertible {
 
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList, .terms:
+        case .testAPI, .groupList, .terms, .onboarding:
             return .get
         case .auth, .addGroup:
             return .post
@@ -50,6 +51,8 @@ enum OBRouter: URLRequestConvertible {
             return "v1/auth/login"
         case .terms:
             return "api/v1/terms"
+        case .onboarding:
+            return "api/v1/user/me/onboarding"
         case .groupList, .addGroup:
             return "v1/group"
         }
@@ -59,7 +62,7 @@ enum OBRouter: URLRequestConvertible {
 
     var header: Header? {
         switch self {
-        case .testAPI, .auth, .addGroup, .groupList, .terms:
+        case .testAPI, .auth, .addGroup, .groupList, .terms, .onboarding:
             return nil
         }
     }
@@ -68,7 +71,7 @@ enum OBRouter: URLRequestConvertible {
 
     var body: Body? {
         switch self {
-        case .testAPI, .groupList, .terms:
+        case .testAPI, .groupList, .terms, .onboarding:
             return nil
 
         case let .auth(body), let .addGroup(body):
@@ -80,7 +83,7 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup, .terms:
+        case .testAPI, .auth, .addGroup, .terms, .onboarding:
             return nil
         case let .groupList(params):
             return params

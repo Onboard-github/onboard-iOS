@@ -46,3 +46,12 @@ extension AuthDTO {
         )
     }
 }
+
+extension OnboardingDTO {
+    var toDomain: OnboardingEntity {
+        return OnboardingEntity(
+            stages: self.onboarding,
+            groupId: self.mainGroupId
+        )
+    }
+}
