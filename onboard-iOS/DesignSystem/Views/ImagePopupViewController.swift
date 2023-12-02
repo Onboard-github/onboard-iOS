@@ -17,8 +17,6 @@ class ImagePopupViewController: UIViewController {
         static let topMargin: CGFloat = 26
         static let bottomMargin: CGFloat = 20
         static let leftRightMargin: CGFloat = 24
-        static let iconSize: CGFloat = 20
-        static let textFieldHeight: CGFloat = 52
     }
     
     // MARK: - UI
