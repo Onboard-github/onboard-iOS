@@ -10,20 +10,11 @@ import Foundation
 enum GroupCreateEntity {
     
     struct Res {
-        let randomImage: [RandomImage]
-        
-        struct RandomImage: Codable {
-            let uuid: String
-            let url: String
-        }
+        let uuid: String
+        let url: String
     }
     
     struct Req {
-        let randomImage: [RandomImage]
         
-        struct RandomImage {
-            let file: String
-            let purpose: ImageFilePurpose
-        }
     }
 }
