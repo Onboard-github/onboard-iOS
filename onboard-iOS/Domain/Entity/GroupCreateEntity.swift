@@ -7,14 +7,7 @@
 
 import Foundation
 
-enum GroupCreateEntity {
-    
-    struct Res {
-        let uuid: String
-        let url: String
-    }
-    
-    struct Req {
-        
-    }
+struct GroupCreateEntity {
+    let uuid: String
+    let url: String
 }
