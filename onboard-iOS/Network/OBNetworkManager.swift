@@ -15,7 +15,9 @@ final class OBNetworkManager {
     
     private var session: Session
     
-    private let interceptor = OBRequestInterceptor()
+    private let interceptor = OBRequestInterceptor(
+        keychainService: KeychainServiceImpl()
+    )
     private let apiLogger = APIEventLogger()
     
     private init() {
@@ -37,12 +39,6 @@ final class OBNetworkManager {
             .validate(statusCode: 200..<300)
             .serializingDecodable(object)
             .response
-        
-        //        if let afError = response.error as? AFError {
-        //            if let data = response.data, let dataString = String(data: data, encoding: .utf8) {
-        //                print(dataString)
-        //            }
-        //        }
 
         return response
     }
