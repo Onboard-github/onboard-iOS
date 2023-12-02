@@ -52,3 +52,24 @@ final class GroupCreateReactor: Reactor {
         return state
     }
 }
+
+extension GroupCreateReactor {
+    
+    private func randomImageResult() -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self else { return Disposables.create() }
+            
+            Task {
+                do {
+                    let result = try await self.useCase.fetchRandomImage()
+                    
+                    observer.onNext(.setRandomImage(result: result.url))
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+}
