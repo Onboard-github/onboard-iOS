@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct TermsAgreementDTO: Decodable {
+    let contents: [Term]
+    
+    struct Term: Decodable {
+        let code: String
+        let title: String
+        let url: String
+        let isRequired: Bool
+    }
+}

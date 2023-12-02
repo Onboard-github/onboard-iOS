@@ -40,9 +40,14 @@ final class TermsAgreementReactor: Reactor {
     }
     
     private let coordinator: TermsAgreementCoordinator
+    private let useCase: TermsAgreementUseCase
     
-    init(coordinator: TermsAgreementCoordinator) {
+    init(
+        coordinator: TermsAgreementCoordinator,
+        useCase: TermsAgreementUseCase
+    ) {
         self.coordinator = coordinator
+        self.useCase = useCase
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
@@ -93,34 +98,48 @@ final class TermsAgreementReactor: Reactor {
         
     }
     
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+
+        let loginMutation = self.mutation(
+            result: self.useCase.result
+        )
+
+        return Observable.merge(mutation, loginMutation)
+    }
+    
 }
 
 extension TermsAgreementReactor {
     
+    private func mutation(
+        result: Observable<[TermsAgreementEntity.Term]>
+    ) -> Observable<Mutation> {
+        return result.flatMap { response -> Observable<Mutation> in
+            return .just(.setTerms(self.toState(response)))
+        }
+    }
+    
     private func fetch() -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
             guard let self else { return Disposables.create() }
-            
-            // TODO: - Mock data, domain + repo layer 작업 이후 변경
-            
-            observer.onNext(.setTerms([
-                .init(
-                    title: "서비스 이용약관",
-                    isRequired: true,
-                    url: "https://www.naver.com",
-                    isChecked: false
-                ),
-                .init(
-                    title: "개인정보 처리방침",
-                    isRequired: true,
-                    url: "https://www.google.com",
-                    isChecked: false
-                )
-            ]))
-            observer.onCompleted()
-            
+            Task {
+                do {
+                    await self.useCase.fetch()
+                }
+            }
             return Disposables.create()
         }
+    }
+    
+    private func toState(
+        _ terms: [TermsAgreementEntity.Term]
+    ) -> [TermsAgreementReactor.State.Term] {
+        return terms.map { TermsAgreementReactor.State.Term(
+            title: $0.title,
+            isRequired: $0.isReuired,
+            url: $0.url,
+            isChecked: false
+        )}
     }
     
     private func updateAgreementStatus(

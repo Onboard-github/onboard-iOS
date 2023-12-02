@@ -22,7 +22,9 @@ final class TermsAgreementCoordinator: Coordinator {
     }
     
     func start() {
-        let reactor = TermsAgreementReactor(coordinator: self)
+        let repository = TermsAgreementRepositoryImpl()
+        let useCase = TermsAgreementUseCaseImpl(repository: repository)
+        let reactor = TermsAgreementReactor(coordinator: self, useCase: useCase)
         let viewController = TermsAgreementViewController(reactor: reactor)
         viewController.modalPresentationStyle = .overFullScreen
         

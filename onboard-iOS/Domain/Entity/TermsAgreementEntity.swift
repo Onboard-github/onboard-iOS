@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct TermsAgreementEntity {
+    let terms: [Term]
+    
+    struct Term {
+        let code: String
+        let title: String
+        let url: String
+        let isReuired: Bool
+    }
+}
