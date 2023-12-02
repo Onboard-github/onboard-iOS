@@ -11,6 +11,28 @@ protocol GroupCreateRepository {
     func requestRandomImage() async throws -> GroupCreateEntity
 }
 
+final class GroupCreateRepositoryImpl: GroupCreateRepository {
+    
+    func requestRandomImage() async throws -> GroupCreateEntity {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: GroupCreateDTO.self,
+                    router: OBRouter.randomImage
+                )
+            
+            guard let data = result.value else {
+                throw NetworkError.noExist
+            }
+            
+            return data.toDomain()
+        } catch {
+            throw error
+        }
+    }
+}
+
 extension GroupCreateDTO {
     func toDomain() -> GroupCreateEntity {
         return GroupCreateEntity(uuid: self.uuid,
