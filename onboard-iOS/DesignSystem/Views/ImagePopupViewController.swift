@@ -110,15 +110,8 @@ class ImagePopupViewController: UIViewController {
     }
     
     private func configure() {
-        self.addConfigure()
         self.makeConstraints()
         self.setupGestureRecognizer()
-    }
-    
-    private func addConfigure() {
-        self.imageButton.addAction(UIAction(handler: { [self] _ in
-            openImagePicker()
-        }), for: .touchUpInside)
     }
     
     // MARK: - Configure
