@@ -24,9 +24,11 @@ final class LoginCoordinator: Coordinator {
     func start() {
         let appleLoginManager = AppleLoginManagerImpl()
         let authRepository = AuthRepositoryImpl()
+        let keychainService = KeychainServiceImpl()
         let appleLoginUseCase = AppleLoginUseCaseImpl(
             appleLoginManager: appleLoginManager,
-            authRepository: authRepository
+            authRepository: authRepository,
+            keychainService: keychainService
         )
         
         let kakaoLoginManager = KakaoLoginManagerImpl()
@@ -49,6 +51,13 @@ extension LoginCoordinator: LoginCoordinatorNavigateDelegate {
     
     func showTermsAgreementView() {
         let coordinator = TermsAgreementCoordinator(
+            navigationController: self.navigationController
+        )
+        coordinator.start()
+    }
+    
+    func showNicknameSetting() {
+        let coordinator = NicknameCoordinator(
             navigationController: self.navigationController
         )
         coordinator.start()

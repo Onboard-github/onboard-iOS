@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol KakaoLoginUseCase {
-    var result: Observable<Bool> { get }
+    var result: Observable<OnboardingEntity> { get }
     func signIn() async
 }
 
@@ -22,9 +22,10 @@ final class KakaoLoginUseCaseImpl: KakaoLoginUseCase {
 
     private let kakaoLoginManager: KakaoLoginManager
     private let authRepository: AuthRepository
+    private let keychainService = KeychainServiceImpl()
 
-    var result: Observable<Bool>
-    private let _result: PublishSubject<Bool> = .init()
+    var result: Observable<OnboardingEntity>
+    private let _result: PublishSubject<OnboardingEntity> = .init()
 
     init(
         kakaoLoginManager: KakaoLoginManager,
@@ -45,17 +46,16 @@ final class KakaoLoginUseCaseImpl: KakaoLoginUseCase {
 extension KakaoLoginUseCaseImpl: KakaoLoginDelegate {
     func sendOAuthToken(_ token: String) {
         Task {
-            let result = try await self.authRepository.signIn(
+            let authResult = try await self.authRepository.signIn(
                 req: AuthEntity.Req(type: .kakao, token: token)
             )
             
-            // TODO: 온보딩 진행정보 받아오기 호출 구현
-            // 임시로 false 처리
-            let isExisted = false
-            print(result.accessToken)
-            print(result.refreshToken)
+            self.keychainService.set(authResult.accessToken, forKey: .accessToken)
+            self.keychainService.set(authResult.refreshToken, forKey: .refreshToken)
             
-            self._result.onNext(isExisted)
+            let onboardingResult = try await self.authRepository.onboarding()
+            
+            self._result.onNext(onboardingResult)
         }
     }
 }

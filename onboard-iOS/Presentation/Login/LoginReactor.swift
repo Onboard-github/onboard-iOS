@@ -19,12 +19,9 @@ final class LoginReactor: Reactor {
         case kakao
     }
 
-    enum Mutation {
-        case setLoginResult(result: String)
-    }
-
     struct State {
         var result: String = ""
+        var stage: [OnboardingStage] = []
     }
     
     private let coordinator: LoginCoordinator
@@ -50,41 +47,41 @@ final class LoginReactor: Reactor {
             return self.googleLoginResult()
 
         case .kakao:
-            // TODO: Kakao Login
             return self.excuteKakaoLogin()
         }
     }
-
-    func reduce(state: State, mutation: Mutation) -> State {
-        var state = state
-
-        switch mutation {
-        case let .setLoginResult(token):
-            state.result = token
-        }
-
-        return state
-    }
-
-    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-
-        let loginMutation = self.mutation(
-            result: self.appleUseCase.result
-        )
-
-        return Observable.merge(mutation, loginMutation)
-    }
-
 }
 
 extension LoginReactor {
 
-    private func mutation(result: Observable<Bool>) -> Observable<Mutation> {
+    private func mutation(result: Observable<OnboardingEntity>) -> Observable<Mutation> {
         return result.flatMap { response -> Observable<Mutation> in
-            if response {
-                return .just(.setLoginResult(result: "success"))
+            
+            guard let firstStage = response.stages.first,
+                  let stage = OnboardingStage(rawValue: firstStage) else {
+                
+                // TODO: - 온보딩 남은 스테이지 없음 -> home으로 이동
+//                if response.stages.isEmpty {
+//                    return self.coordinator.showHome()
+//                }
+                return .empty()
             }
-            return .just(.setLoginResult(result: "fail"))
+            
+            switch stage {
+            case .terms, .updateTerms:
+                DispatchQueue.main.async {
+                    self.coordinator.showTermsAgreementView()
+                }
+            case .nickname:
+                DispatchQueue.main.async {
+                    self.coordinator.showNicknameSetting()
+                }
+            case .joinGroup:
+                // TODO: - group 설정 페이지 이동
+                break
+            }
+            
+            return .empty()
         }
     }
 

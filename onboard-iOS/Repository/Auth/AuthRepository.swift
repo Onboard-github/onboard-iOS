@@ -36,6 +36,28 @@ final class AuthRepositoryImpl: AuthRepository {
             throw error
         }
     }
+    
+    func onboarding() async throws -> OnboardingEntity {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: OnboardingDTO.self,
+                    router: OBRouter.onboarding
+                )
+
+            guard let data = result.value else {
+                throw NetworkError.noExist
+            }
+
+            return data.toDomain
+
+        } catch {
+            print(error.localizedDescription)
+
+            throw error
+        }
+    }
 }
 
 extension AuthDTO {

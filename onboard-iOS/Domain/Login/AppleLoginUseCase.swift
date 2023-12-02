@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol AppleLoginUseCase {
-    var result: Observable<Bool> { get }
+    var result: Observable<OnboardingEntity> { get }
     func signIn() async
 }
 
@@ -22,22 +22,26 @@ protocol AppleLoginDelegate: AnyObject {
 protocol AuthRepository {
     // api 호출 및 토큰 가져오기
     func signIn(req: AuthEntity.Req) async throws -> AuthEntity.Res
+    func onboarding() async throws -> OnboardingEntity
 }
 
 final class AppleLoginUseCaseImpl: AppleLoginUseCase {
 
     private let appleLoginManager: AppleLoginManager
     private let authRepository: AuthRepository
+    private let keychainService: KeychainService
 
-    var result: Observable<Bool>
-    private let _result: PublishSubject<Bool> = .init()
+    var result: Observable<OnboardingEntity>
+    private let _result: PublishSubject<OnboardingEntity> = .init()
 
     init(
         appleLoginManager: AppleLoginManager,
-        authRepository: AuthRepository
+        authRepository: AuthRepository,
+        keychainService: KeychainService
     ) {
         self.appleLoginManager = appleLoginManager
         self.authRepository = authRepository
+        self.keychainService = keychainService
         self.result = self._result
     }
 
@@ -52,18 +56,15 @@ extension AppleLoginUseCaseImpl: AppleLoginDelegate {
 
     func success(token: String) {
         Task {
-            let result = try await self.authRepository.signIn(
+            let authResult = try await self.authRepository.signIn(
                 req: AuthEntity.Req(type: .apple, token: token)
             )
-
-            // TODO: 온보딩 진행정보 받아오기 호출 구현
-            // 임시로 false 처리
-            let isExisted = false
-            print(result.accessToken)
-            print("-=-----==========")
-            print(result.refreshToken)
-
-            self._result.onNext(isExisted)
+            self.keychainService.set(authResult.accessToken, forKey: .accessToken)
+            self.keychainService.set(authResult.refreshToken, forKey: .refreshToken)
+            
+            let onboardingResult = try await self.authRepository.onboarding()
+            
+            self._result.onNext(onboardingResult)
         }
     }
 }
