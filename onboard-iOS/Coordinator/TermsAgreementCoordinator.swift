@@ -25,17 +25,19 @@ final class TermsAgreementCoordinator: Coordinator {
         let repository = TermsAgreementRepositoryImpl()
         let useCase = TermsAgreementUseCaseImpl(repository: repository)
         let reactor = TermsAgreementReactor(coordinator: self, useCase: useCase)
-        let viewController = TermsAgreementViewController(reactor: reactor)
+        let viewController = UINavigationController(
+            rootViewController: TermsAgreementViewController(reactor: reactor)
+        )
         viewController.modalPresentationStyle = .overFullScreen
         
         self.navigationController?.present(viewController, animated: false)
+        self.navigationController = viewController
     }
     
     func showTerms(url: String) {
         let reactor = TermsReactor(url: url)
         let viewController = TermsViewController(reactor: reactor)
         
-        self.navigationController?.dismiss(animated: true)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -46,7 +48,6 @@ extension TermsAgreementCoordinator: TermsAgreementCoordinatorNavigateDelegate {
         let coordinator = NicknameCoordinator(
             navigationController: self.navigationController
         )
-        self.navigationController?.dismiss(animated: true)
         coordinator.start()
     }
 }
