@@ -38,7 +38,7 @@ class ImagePopupViewController: UIViewController, View {
         return view
     }()
     
-    let contentView: UIView = {
+    private let contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 12
