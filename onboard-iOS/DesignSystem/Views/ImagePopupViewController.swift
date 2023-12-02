@@ -136,7 +136,12 @@ class ImagePopupViewController: UIViewController, View {
         reactor.state
             .map { $0.imageURL }
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { data in
+            .subscribe(onNext: { [weak self] data in
+                guard let self = self else { return }
+                
+                ImageLoader.loadImage(from: data) { image in
+                    self.imageCompletion?(image)
+                }
             })
             .disposed(by: disposeBag)
     }
