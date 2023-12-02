@@ -23,6 +23,7 @@ class ImagePopupViewController: UIViewController, View {
     // MARK: - Metric
     
     private enum Metric {
+        static let contentViewLRMargin: CGFloat = 20
         static let contentViewWidth: CGFloat = 324
         static let contentViewHeight: CGFloat = 200
         static let topMargin: CGFloat = 26
@@ -164,8 +165,8 @@ class ImagePopupViewController: UIViewController, View {
         }
         
         self.contentView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(Metric.contentViewLRMargin)
             $0.centerX.centerY.equalToSuperview()
-            $0.width.equalTo(Metric.contentViewWidth)
             $0.height.equalTo(Metric.contentViewHeight)
         }
         
