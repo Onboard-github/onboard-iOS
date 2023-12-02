@@ -14,7 +14,9 @@ final class GroupCreateViewController: UIViewController {
     // MARK: - Properties
     
     private let groupCreateView = GroupCreateView()
-    private let imagePopupVC = ImagePopupViewController()
+    let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
+    lazy var reactors = GroupCreateReactor(useCase: useCase)
+    lazy var imagePopupVC = ImagePopupViewController(reactor: reactors)
     
     // MARK: - Life Cycles
     
