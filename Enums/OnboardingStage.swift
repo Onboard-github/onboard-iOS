@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum OnboardingStage: String {
+    case terms = "TERMS"
+    case updateTerms = "UPDATE_TERMS"
+    case nickname = "NICKNAME"
+    case joinGroup = "JOIN_GROUP"
+}
