@@ -14,19 +14,30 @@ enum KeychainKey: String {
     case refreshToken
 }
 
-final class KeychainService {
+protocol KeychainService {
+    func set(_ value: String, forKey keychainKey: KeychainKey)
+    func value(forKey keychainKey: KeychainKey) -> String?
+    func remove(forKey keychainKey: KeychainKey)
+}
+
+final class KeychainServiceImpl: KeychainService {
     
     private var keychain: KeychainWrapper {
         return KeychainWrapper.standard
     }
     
-    func setKeychain(_ value: String, forKey keychainKey: KeychainKey) {
+    /// 저장
+    func set(_ value: String, forKey keychainKey: KeychainKey) {
         self.keychain.set(value, forKey: keychainKey.rawValue)
     }
-    func getKeychainValue(forKey keychainKey: KeychainKey) -> String? {
+    
+    /// 불러오기
+    func value(forKey keychainKey: KeychainKey) -> String? {
         return self.keychain.string(forKey: keychainKey.rawValue)
     }
-    func removeKeychain(forKey keychainKey: KeychainKey) {
+    
+    /// 삭제
+    func remove(forKey keychainKey: KeychainKey) {
         self.keychain.removeObject(forKey: keychainKey.rawValue)
     }
 

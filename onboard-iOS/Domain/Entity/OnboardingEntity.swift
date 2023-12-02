@@ -1,5 +1,5 @@
 //
-//  AuthDTO.swift
+//  OnboardingEntity.swift
 //  onboard-iOS
 //
 //  Created by 윤다예 on 12/2/23.
