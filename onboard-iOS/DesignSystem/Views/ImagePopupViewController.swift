@@ -7,7 +7,15 @@
 
 import UIKit
 
-class ImagePopupViewController: UIViewController {
+import ReactorKit
+
+class ImagePopupViewController: UIViewController, View {
+    
+    typealias Reactor = GroupCreateReactor
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -97,8 +105,10 @@ class ImagePopupViewController: UIViewController {
     
     // MARK: - Initialize
     
-    init() {
+    init(reactor: GroupCreateReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
@@ -107,12 +117,38 @@ class ImagePopupViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Bind
+    
+    func bind(reactor: GroupCreateReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupCreateReactor) {
+        self.imageButton.addAction(UIAction(handler: { [self] _ in
+            openImagePicker()
+        }), for: .touchUpInside)
+        
+        self.randomImageButton.addAction(UIAction(handler: { _ in
+            reactor.action.onNext(.randomImage)
+        }), for: .touchUpInside)
+    }
+    
+    func bindState(reactor: GroupCreateReactor) {
+        reactor.state
+            .map { $0.imageURL }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { data in
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Configure
+    
     private func configure() {
         self.makeConstraints()
         self.setupGestureRecognizer()
     }
-    
-    // MARK: - Configure
     
     private func makeConstraints() {
         self.view.addSubview(self.backgroundView)
