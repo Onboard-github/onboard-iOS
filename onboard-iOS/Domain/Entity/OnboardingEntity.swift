@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct OnboardingEntity {
+    let stages: [String]
+    let groupId: Int?
+}
