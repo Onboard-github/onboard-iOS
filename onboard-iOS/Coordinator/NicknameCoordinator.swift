@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol NicknameCoordinatorNavigateDelegate: AnyObject {
+    func showGroupSearch()
+}
+
 final class NicknameCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
@@ -22,5 +26,14 @@ final class NicknameCoordinator: Coordinator {
         let viewController = NicknameViewController(reactor: reactor)
         
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+extension NicknameCoordinator: NicknameCoordinatorNavigateDelegate {
+    func showGroupSearch() {
+        let coordinator = GroupSearchCoordinator(
+            navigationController: self.navigationController
+        )
+        coordinator.start()
     }
 }

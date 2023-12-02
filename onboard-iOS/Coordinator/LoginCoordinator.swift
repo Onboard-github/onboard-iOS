@@ -9,6 +9,8 @@ import UIKit
 
 protocol LoginCoordinatorNavigateDelegate: AnyObject {
     func showTermsAgreementView()
+    func showNicknameSetting()
+    func showGroupSearch()
 }
 
 final class LoginCoordinator: Coordinator {
@@ -58,6 +60,13 @@ extension LoginCoordinator: LoginCoordinatorNavigateDelegate {
     
     func showNicknameSetting() {
         let coordinator = NicknameCoordinator(
+            navigationController: self.navigationController
+        )
+        coordinator.start()
+    }
+    
+    func showGroupSearch() {
+        let coordinator = GroupSearchCoordinator(
             navigationController: self.navigationController
         )
         coordinator.start()

@@ -18,6 +18,8 @@ final class LoginReactor: Reactor {
         case google
         case kakao
     }
+    
+    enum Mutation { }
 
     struct State {
         var result: String = ""
@@ -77,7 +79,9 @@ extension LoginReactor {
                     self.coordinator.showNicknameSetting()
                 }
             case .joinGroup:
-                // TODO: - group 설정 페이지 이동
+                DispatchQueue.main.async {
+                    self.coordinator.showGroupSearch()
+                }
                 break
             }
             
