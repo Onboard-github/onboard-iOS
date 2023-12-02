@@ -17,6 +17,9 @@ class ImagePopupViewController: UIViewController, View {
     
     var disposeBag = DisposeBag()
     
+    var imageCompletion: ((UIImage?) -> Void)?
+    private let imagePickerController = UIImagePickerController()
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -97,11 +100,6 @@ class ImagePopupViewController: UIViewController, View {
         view.alignment = .fill
         return view
     }()
-    
-    // MARK: - Properties
-    
-    var imageCompletion: ((UIImage?) -> Void)?
-    private let imagePickerController = UIImagePickerController()
     
     // MARK: - Initialize
     
