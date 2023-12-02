@@ -1,5 +1,5 @@
 //
-//  TermsAgreementEntity.swift
+//  TermsEntity.swift
 //  onboard-iOS
 //
 //  Created by 윤다예 on 11/28/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TermsAgreementEntity {
+struct TermsEntity {
     let terms: [Term]
     
     struct Term {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TermsAgreementDTO: Decodable {
+struct TermsDTO: Decodable {
     let contents: [Term]
     
     struct Term: Decodable {
@@ -17,3 +17,5 @@ struct TermsAgreementDTO: Decodable {
         let isRequired: Bool
     }
 }
+
+struct
