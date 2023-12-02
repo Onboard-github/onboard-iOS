@@ -20,7 +20,7 @@ final class OBRequestInterceptor: RequestInterceptor {
         var request = urlRequest
         
         // TODO: - 키체인, 소셜로그인 구현 후 삭제할 것
-        let sugarToken = "8G1aBcBmMeuJYA2CE0Mpsz1NZLWoS/1Mdc0Hqqxm"
+        let sugarToken = "77+9bVoF77+9ZjHvv71gDe+/vRNDKe+/vT1NZO+/"
         
         guard urlRequest.url?.absoluteString.hasPrefix(API.BASE_URL) == true else {
             completion(.success(urlRequest))
