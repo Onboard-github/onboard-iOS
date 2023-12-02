@@ -189,6 +189,8 @@ class ImagePopupViewController: UIViewController, View {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
 extension ImagePopupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private func openImagePicker() {
