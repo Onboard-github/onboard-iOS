@@ -72,15 +72,6 @@ final class TestReactor: Reactor {
         return state
     }
 
-    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-
-        let loginMutation = self.mutation(
-            result: self.appleUseCase.result
-        )
-
-        return Observable.merge(mutation, loginMutation)
-    }
-
 }
 
 extension TestReactor {
