@@ -46,7 +46,13 @@ final class AppleLoginUseCaseImpl: AppleLoginUseCase {
     }
 
     func signIn() async {
+        self.removeKeychainData()
         self.appleLoginManager.excute(delegate: self)
+    }
+    
+    private func removeKeychainData() {
+        self.keychainService.remove(forKey: .accessToken)
+        self.keychainService.remove(forKey: .refreshToken)
     }
 }
 

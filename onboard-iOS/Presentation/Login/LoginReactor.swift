@@ -52,6 +52,23 @@ final class LoginReactor: Reactor {
             return self.excuteKakaoLogin()
         }
     }
+    
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+
+        let appleMutation = self.mutation(
+            result: self.appleUseCase.result
+        )
+        
+        let kakaoMutation = self.mutation(
+            result: self.kakaoUseCase.result
+        )
+
+        return Observable.merge([
+            mutation,
+            appleMutation,
+            kakaoMutation
+        ])
+    }
 }
 
 extension LoginReactor {
@@ -71,18 +88,13 @@ extension LoginReactor {
             
             switch stage {
             case .terms, .updateTerms:
-                DispatchQueue.main.async {
-                    self.coordinator.showTermsAgreementView()
-                }
+                self.coordinator.showTermsAgreementView()
+                
             case .nickname:
-                DispatchQueue.main.async {
-                    self.coordinator.showNicknameSetting()
-                }
+                self.coordinator.showNicknameSetting()
+                
             case .joinGroup:
-                DispatchQueue.main.async {
-                    self.coordinator.showGroupSearch()
-                }
-                break
+                self.coordinator.showGroupSearch()
             }
             
             return .empty()

@@ -37,7 +37,13 @@ final class KakaoLoginUseCaseImpl: KakaoLoginUseCase {
     }
 
     func signIn() async {
+        self.removeKeychainData()
         self.kakaoLoginManager.excute(delegate: self)
+    }
+    
+    private func removeKeychainData() {
+        self.keychainService.remove(forKey: .accessToken)
+        self.keychainService.remove(forKey: .refreshToken)
     }
 }
 

@@ -18,4 +18,13 @@ struct TermsDTO: Decodable {
     }
 }
 
-struct
+enum TermsAgreementRequest {
+    struct Body: Encodable {
+        let agree: [String]
+        let disagree: [String]
+    }
+}
+
+struct TermsAgreementDTO: Decodable {
+    let result: Bool?
+}

@@ -17,3 +17,10 @@ struct TermsEntity {
         let isReuired: Bool
     }
 }
+
+enum TermsAgreementEntity {
+    struct Req {
+        let agreeList: [String]
+        let disagreeList: [String]
+    }
+}

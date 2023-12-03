@@ -29,9 +29,10 @@ final class TermsAgreementCoordinator: Coordinator {
             rootViewController: TermsAgreementViewController(reactor: reactor)
         )
         viewController.modalPresentationStyle = .overFullScreen
-        
-        self.navigationController?.present(viewController, animated: false)
-        self.navigationController = viewController
+        DispatchQueue.main.async {
+            self.navigationController?.present(viewController, animated: false)
+            self.navigationController = viewController
+        }
     }
     
     func showTerms(url: String) {
