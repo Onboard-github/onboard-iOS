@@ -25,7 +25,9 @@ final class NicknameCoordinator: Coordinator {
         let reactor = NicknameReactor(coordinator: self)
         let viewController = NicknameViewController(reactor: reactor)
         
-        self.navigationController?.pushViewController(viewController, animated: true)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 
@@ -34,6 +36,7 @@ extension NicknameCoordinator: NicknameCoordinatorNavigateDelegate {
         let coordinator = GroupSearchCoordinator(
             navigationController: self.navigationController
         )
+        
         coordinator.start()
     }
 }

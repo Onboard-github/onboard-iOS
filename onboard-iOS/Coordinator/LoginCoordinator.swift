@@ -45,7 +45,9 @@ final class LoginCoordinator: Coordinator {
         )
         let viewController = LoginViewController(reactor: reactor)
         
-        self.navigationController?.pushViewController(viewController, animated: true)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
 

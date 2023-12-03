@@ -23,6 +23,8 @@ final class GroupSearchCoordinator: Coordinator {
         let reactor = GroupSearchReactor(useCase: useCase)
         let viewController = GroupSearchViewController(reactor: reactor)
         
-        self.navigationController?.pushViewController(viewController, animated: true)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }
