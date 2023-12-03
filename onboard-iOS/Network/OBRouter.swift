@@ -26,6 +26,7 @@ enum OBRouter: URLRequestConvertible {
     case testAPI
     case auth(body: Body)
     case terms
+    case agreementTerms(body: Body)
     case onboarding
     case groupList(params: Params)
     case addGroup(body: Body)
@@ -34,10 +35,37 @@ enum OBRouter: URLRequestConvertible {
 
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList, .terms, .onboarding:
+        // Group
+        case .groupList, .addGroup:
             return .get
-        case .auth, .addGroup:
+            
+        // Match
+            
+        // Terms
+        case .terms:
+            return .get
+            
+        case .agreementTerms:
             return .post
+            
+        // Auth
+        case .auth:
+            return .post
+            
+        // Setting
+            
+        // User
+        case .onboarding:
+            return .get
+            
+        // Game
+            
+        // Member
+        
+        // Etc
+        case .testAPI:
+            return .get
+            
         }
     }
 
@@ -45,16 +73,34 @@ enum OBRouter: URLRequestConvertible {
 
     var path: String {
         switch self {
-        case .testAPI:
-            return "v1/test"
-        case .auth:
-            return "v1/auth/login"
-        case .terms:
-            return "api/v1/terms"
-        case .onboarding:
-            return "api/v1/user/me/onboarding"
-        case .groupList, .addGroup:
-            return "v1/group"
+            // Group
+            case .groupList, .addGroup:
+                return "v1/group"
+                
+            // Match
+                
+            // Terms
+            case .terms, .agreementTerms:
+                return "v1/terms"
+                
+            // Auth
+            case .auth:
+                return "v1/auth/login"
+                
+            // Setting
+                
+            // User
+            case .onboarding:
+                return "v1/user/me/onboarding"
+                
+            // Game
+                
+            // Member
+            
+            // Etc
+            case .testAPI:
+                return "v1/test"
+            
         }
     }
 
@@ -62,7 +108,7 @@ enum OBRouter: URLRequestConvertible {
 
     var header: Header? {
         switch self {
-        case .testAPI, .auth, .addGroup, .groupList, .terms, .onboarding:
+        default:
             return nil
         }
     }
@@ -71,11 +117,13 @@ enum OBRouter: URLRequestConvertible {
 
     var body: Body? {
         switch self {
-        case .testAPI, .groupList, .terms, .onboarding:
-            return nil
-
-        case let .auth(body), let .addGroup(body):
+        case let .auth(body), 
+             let .agreementTerms(body),
+             let .addGroup(body):
             return body
+            
+        default:
+            return nil
         }
     }
     
@@ -83,10 +131,10 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup, .terms, .onboarding:
-            return nil
         case let .groupList(params):
             return params
+        default:
+            return nil
         }
     }
 
