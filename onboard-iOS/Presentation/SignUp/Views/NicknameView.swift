@@ -48,6 +48,8 @@ final class NicknameView: UIView {
         button.setTitle("확인", for: .normal)
         return button
     }()
+    
+    var selectConfirm: (() -> Void)?
 
     // MARK: - Initialize
 
@@ -68,6 +70,14 @@ final class NicknameView: UIView {
         self.stackView.axis = .vertical
         self.stackView.spacing = 4
         self.makeConstraints()
+        self.setConfirmButtonAction()
+    }
+    
+    private func setConfirmButtonAction() {
+        let action = UIAction(handler: { _ in
+            self.selectConfirm?()
+        })
+        self.confirmButton.addAction(action, for: .touchUpInside)
     }
 
     private func makeConstraints() {

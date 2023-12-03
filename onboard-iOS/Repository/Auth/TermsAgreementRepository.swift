@@ -46,11 +46,11 @@ final class TermsAgreementRepositoryImpl: TermsAgreementRepository {
                     )
                 )
 
-            guard let data = result.value else {
+            guard let data = result.value?.result else {
                 throw NetworkError.noExist
             }
 
-            return true
+            return data
 
         } catch {
             print(error.localizedDescription)

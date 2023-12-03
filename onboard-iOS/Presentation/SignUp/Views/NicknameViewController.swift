@@ -36,6 +36,9 @@ final class NicknameViewController: UIViewController, View {
     }
     
     private func bindAction(reactor: Reactor) {
+        self.nicknameView.selectConfirm = {
+            self.reactor?.action.onNext(.confirm)
+        }
     }
     
     private func bindState(reactor: Reactor) {
