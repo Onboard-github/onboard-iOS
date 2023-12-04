@@ -12,6 +12,18 @@ import Alamofire
 final class OBNetworkManager {
 
     static let shared = OBNetworkManager()
+    
+    private var session: Session
+    
+    private let interceptor = OBRequestInterceptor()
+    private let apiLogger = APIEventLogger()
+    
+    private init() {
+        self.session = Session(
+            interceptor: self.interceptor,
+            eventMonitors: [apiLogger]
+        )
+    }
 
     // MARK: - Request
 
@@ -20,7 +32,8 @@ final class OBNetworkManager {
         router: OBRouter
     ) async throws -> DataResponse<T, AFError> {
 
-        let response = await AF.request(router)
+        let response = await session
+            .request(router)
             .validate(statusCode: 200..<300)
             .serializingDecodable(object)
             .response

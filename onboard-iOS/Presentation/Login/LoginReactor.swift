@@ -27,15 +27,18 @@ final class LoginReactor: Reactor {
         var result: String = ""
     }
     
+    private let coordinator: LoginCoordinator
     private let appleUseCase: AppleLoginUseCase
     private let kakaoUseCase: KakaoLoginUseCase
 
     init(
         appleUseCase: AppleLoginUseCase,
-        kakaoUseCase: KakaoLoginUseCase
+        kakaoUseCase: KakaoLoginUseCase,
+        coordinator: LoginCoordinator
     ) {
         self.appleUseCase = appleUseCase
         self.kakaoUseCase = kakaoUseCase
+        self.coordinator = coordinator
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -114,7 +117,7 @@ extension LoginReactor {
         return Observable.create { [weak self] observer in
             guard let self else { return Disposables.create() }
 
-//            GoogleLoginManager.shared.signIn(withPresenting: uiViewController)
+            self.coordinator.showTermsAgreementView()
 
             return Disposables.create()
         }
