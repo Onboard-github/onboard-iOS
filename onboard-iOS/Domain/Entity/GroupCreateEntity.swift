@@ -8,6 +8,13 @@
 import Foundation
 
 struct GroupCreateEntity {
-    let uuid: String
-    let url: String
+    
+    struct Req {
+        
+    }
+    
+    struct Res {
+        let uuid: String
+        let url: String
+    }
 }
