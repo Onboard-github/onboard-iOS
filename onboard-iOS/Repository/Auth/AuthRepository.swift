@@ -36,6 +36,28 @@ final class AuthRepositoryImpl: AuthRepository {
             throw error
         }
     }
+    
+    func onboarding() async throws -> OnboardingEntity {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: OnboardingDTO.self,
+                    router: OBRouter.onboarding
+                )
+
+            guard let data = result.value else {
+                throw NetworkError.noExist
+            }
+
+            return data.toDomain
+
+        } catch {
+            print(error.localizedDescription)
+
+            throw error
+        }
+    }
 }
 
 extension AuthDTO {
@@ -43,6 +65,15 @@ extension AuthDTO {
         return AuthEntity.Res(
             accessToken: self.accessToken,
             refreshToken: self.refreshToken
+        )
+    }
+}
+
+extension OnboardingDTO {
+    var toDomain: OnboardingEntity {
+        return OnboardingEntity(
+            stages: self.onboarding,
+            groupId: self.mainGroupId
         )
     }
 }

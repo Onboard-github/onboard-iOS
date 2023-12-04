@@ -18,26 +18,28 @@ final class LoginReactor: Reactor {
         case google
         case kakao
     }
-
-    enum Mutation {
-        case setLoginResult(result: String)
-    }
+    
+    enum Mutation { }
 
     struct State {
         var result: String = ""
+        var stage: [OnboardingStage] = []
     }
     
     private let coordinator: LoginCoordinator
     private let appleUseCase: AppleLoginUseCase
     private let kakaoUseCase: KakaoLoginUseCase
+    private let googleUseCase: GoogleLoginUseCase
 
     init(
         appleUseCase: AppleLoginUseCase,
         kakaoUseCase: KakaoLoginUseCase,
+        googleUseCase: GoogleLoginUseCase,
         coordinator: LoginCoordinator
     ) {
         self.appleUseCase = appleUseCase
         self.kakaoUseCase = kakaoUseCase
+        self.googleUseCase = googleUseCase
         self.coordinator = coordinator
     }
 
@@ -47,44 +49,63 @@ final class LoginReactor: Reactor {
             return self.excuteAppleLogin()
 
         case .google:
-            return self.googleLoginResult()
+            return .empty()
 
         case .kakao:
-            // TODO: Kakao Login
             return self.excuteKakaoLogin()
         }
     }
-
-    func reduce(state: State, mutation: Mutation) -> State {
-        var state = state
-
-        switch mutation {
-        case let .setLoginResult(token):
-            state.result = token
-        }
-
-        return state
-    }
-
+    
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
 
-        let loginMutation = self.mutation(
+        let appleMutation = self.mutation(
             result: self.appleUseCase.result
         )
+        
+        let kakaoMutation = self.mutation(
+            result: self.kakaoUseCase.result
+        )
+        
+        let googleMutation = self.mutation(
+            result: self.googleUseCase.result
+        )
 
-        return Observable.merge(mutation, loginMutation)
+        return Observable.merge([
+            mutation,
+            appleMutation,
+            kakaoMutation,
+            googleMutation
+        ])
     }
-
 }
 
 extension LoginReactor {
 
-    private func mutation(result: Observable<Bool>) -> Observable<Mutation> {
+    private func mutation(result: Observable<OnboardingEntity>) -> Observable<Mutation> {
         return result.flatMap { response -> Observable<Mutation> in
-            if response {
-                return .just(.setLoginResult(result: "success"))
+            
+            guard let firstStage = response.stages.first,
+                  let stage = OnboardingStage(rawValue: firstStage) else {
+                
+                // TODO: - 온보딩 남은 스테이지 없음 -> home으로 이동
+//                if response.stages.isEmpty {
+//                    return self.coordinator.showHome()
+//                }
+                return .empty()
             }
-            return .just(.setLoginResult(result: "fail"))
+            
+            switch stage {
+            case .terms, .updateTerms:
+                self.coordinator.showTermsAgreementView()
+                
+            case .nickname:
+                self.coordinator.showNicknameSetting()
+                
+            case .joinGroup:
+                self.coordinator.showGroupSearch()
+            }
+            
+            return .empty()
         }
     }
 
@@ -104,6 +125,7 @@ extension LoginReactor {
     private func excuteKakaoLogin() -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
             guard let self else { return Disposables.create() }
+            
             Task {
                 do {
                     await self.kakaoUseCase.signIn()
@@ -113,13 +135,30 @@ extension LoginReactor {
         }
     }
 
-    private func googleLoginResult() -> Observable<Mutation> {
+    private func googleLoginResult(token: String) -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
             guard let self else { return Disposables.create() }
-
-            self.coordinator.showTermsAgreementView()
-
+            
+//            Task {
+//                do {
+//                    try await self.googleUseCase.signIn(token: token)
+//                }
+//            }
             return Disposables.create()
         }
     }
 }
+
+// MARK: - Google login delegate
+
+extension LoginReactor: GoogleLoginDelegate {
+
+    func success(token: String) {
+        Task {
+            do {
+                try await self.googleUseCase.signIn(token: token)
+            }
+        }
+    }
+}
+

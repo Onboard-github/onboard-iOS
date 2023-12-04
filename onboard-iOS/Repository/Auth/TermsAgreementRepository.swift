@@ -9,13 +9,13 @@ import Foundation
 
 final class TermsAgreementRepositoryImpl: TermsAgreementRepository {
 
-    func fetch() async throws -> [TermsAgreementEntity.Term] {
+    func fetch() async throws -> [TermsEntity.Term] {
 
         do {
             let result = try await OBNetworkManager
                 .shared
                 .asyncRequest(
-                    object: TermsAgreementDTO.self,
+                    object: TermsDTO.self,
                     router: OBRouter.terms
                 )
 
@@ -31,12 +31,39 @@ final class TermsAgreementRepositoryImpl: TermsAgreementRepository {
             throw error
         }
     }
+    
+    func agreeTerms(req: TermsAgreementEntity.Req) async throws -> Bool {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: TermsAgreementDTO.self,
+                    router: OBRouter.agreementTerms(
+                        body: TermsAgreementRequest.Body(
+                            agree: req.agreeList,
+                            disagree: req.disagreeList
+                        ).encode()
+                    )
+                )
+
+            guard let data = result.value?.result else {
+                throw NetworkError.noExist
+            }
+
+            return data
+
+        } catch {
+            print(error.localizedDescription)
+
+            throw error
+        }
+    }
 }
 
-extension TermsAgreementDTO {
-    var toDomain: [TermsAgreementEntity.Term] {
+extension TermsDTO {
+    var toDomain: [TermsEntity.Term] {
         return self.contents.map {
-            TermsAgreementEntity.Term(
+            TermsEntity.Term(
                 code: $0.code,
                 title: $0.title,
                 url: $0.url,

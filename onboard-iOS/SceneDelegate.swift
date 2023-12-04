@@ -8,6 +8,7 @@
 import UIKit
 import KakaoSDKAuth
 import KakaoSDKCommon
+import GoogleSignIn
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -50,6 +51,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 _ = AuthController.handleOpenUrl(url: url)
             }
         }
+        
+        guard let url = URLContexts.first?.url,
+              let scheme = url.scheme,
+              scheme.contains("com.googleusercontent.apps") else { return }
+        
+        GIDSignIn.sharedInstance.handle(url)
     }
 }
 

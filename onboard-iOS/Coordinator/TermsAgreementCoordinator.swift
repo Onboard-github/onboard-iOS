@@ -22,16 +22,17 @@ final class TermsAgreementCoordinator: Coordinator {
     }
     
     func start() {
-        let repository = TermsAgreementRepositoryImpl()
-        let useCase = TermsAgreementUseCaseImpl(repository: repository)
-        let reactor = TermsAgreementReactor(coordinator: self, useCase: useCase)
-        let viewController = UINavigationController(
-            rootViewController: TermsAgreementViewController(reactor: reactor)
-        )
-        viewController.modalPresentationStyle = .overFullScreen
-        
-        self.navigationController?.present(viewController, animated: false)
-        self.navigationController = viewController
+        DispatchQueue.main.async {
+            let repository = TermsAgreementRepositoryImpl()
+            let useCase = TermsAgreementUseCaseImpl(repository: repository)
+            let reactor = TermsAgreementReactor(coordinator: self, useCase: useCase)
+            let viewController = UINavigationController(
+                rootViewController: TermsAgreementViewController(reactor: reactor)
+            )
+            viewController.modalPresentationStyle = .overFullScreen
+            self.navigationController?.present(viewController, animated: false)
+            self.navigationController = viewController
+        }
     }
     
     func showTerms(url: String) {

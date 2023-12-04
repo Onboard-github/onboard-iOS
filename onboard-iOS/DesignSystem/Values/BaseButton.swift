@@ -53,10 +53,14 @@ class BaseButton: UIButton {
             self.bgColor = Colors.Orange_10
             self.textColor = Colors.Gray_2
             self.typo = Font.Typography.label3_B
+            self.isEnabled = true
+            
         case .disabled:
             self.bgColor = Colors.Gray_4
             self.textColor = Colors.Gray_7
             self.typo = Font.Typography.label3_M
+            self.isEnabled = false
+            
         case .pressed:
             self.bgColor = Colors.Gray_15
             self.textColor = Colors.Gray_1

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TermsAgreementDTO: Decodable {
+struct TermsDTO: Decodable {
     let contents: [Term]
     
     struct Term: Decodable {
@@ -16,4 +16,15 @@ struct TermsAgreementDTO: Decodable {
         let url: String
         let isRequired: Bool
     }
+}
+
+enum TermsAgreementRequest {
+    struct Body: Encodable {
+        let agree: [String]
+        let disagree: [String]
+    }
+}
+
+struct TermsAgreementDTO: Decodable {
+    let result: Bool?
 }

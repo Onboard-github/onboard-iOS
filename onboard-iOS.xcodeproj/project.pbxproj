@@ -37,14 +37,13 @@
 		61342DAC2B1612AA00AE0268 /* NicknameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61342DAB2B1612AA00AE0268 /* NicknameCoordinator.swift */; };
 		61342DAE2B16170E00AE0268 /* OBRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61342DAD2B16170E00AE0268 /* OBRequestInterceptor.swift */; };
 		61342DB02B1618EB00AE0268 /* TermsAgreementUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61342DAF2B1618EB00AE0268 /* TermsAgreementUseCase.swift */; };
-		61342DB22B1619BE00AE0268 /* TermsAgreementEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61342DB12B1619BE00AE0268 /* TermsAgreementEntity.swift */; };
-		61342DB42B1619DD00AE0268 /* TermsAgreementDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61342DB32B1619DD00AE0268 /* TermsAgreementDTO.swift */; };
+		61342DB22B1619BE00AE0268 /* TermsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61342DB12B1619BE00AE0268 /* TermsEntity.swift */; };
+		61342DB42B1619DD00AE0268 /* TermsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61342DB32B1619DD00AE0268 /* TermsDTO.swift */; };
 		61342DB62B161A5900AE0268 /* TermsAgreementRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61342DB52B161A5900AE0268 /* TermsAgreementRepository.swift */; };
 		6151A06F2AECFE92001D74AB /* TermsAgreementReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */; };
 		618175F52AC5722500B5E2A0 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */; };
 		618175F92AC5961500B5E2A0 /* TermsAgreementModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */; };
 		618176162AD2C21000B5E2A0 /* AuthEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176152AD2C21000B5E2A0 /* AuthEntity.swift */; };
-		618176182AD2C22A00B5E2A0 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176172AD2C22A00B5E2A0 /* AuthDTO.swift */; };
 		6181761E2AD2C66500B5E2A0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */; };
 		618176202AD2C6EE00B5E2A0 /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */; };
 		618176232AD2C87C00B5E2A0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618176222AD2C87C00B5E2A0 /* LoginView.swift */; };
@@ -84,6 +83,13 @@
 		61D15BC92B1218F80060D089 /* TermsAgreementCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D15BC82B1218F80060D089 /* TermsAgreementCoordinator.swift */; };
 		61D15BCB2B12EE390060D089 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D15BCA2B12EE390060D089 /* TermsViewController.swift */; };
 		61D15BCD2B1301BB0060D089 /* TermsReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D15BCC2B1301BB0060D089 /* TermsReactor.swift */; };
+		61D95E272B1AE82D007F93D7 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D95E262B1AE82D007F93D7 /* KeychainService.swift */; };
+		61D95E292B1B062B007F93D7 /* OnboardingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D95E282B1B062B007F93D7 /* OnboardingEntity.swift */; };
+		61D95E2B2B1B06A5007F93D7 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D95E2A2B1B06A5007F93D7 /* AuthDTO.swift */; };
+		61D95E2D2B1B06BB007F93D7 /* OnboardingDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D95E2C2B1B06BB007F93D7 /* OnboardingDTO.swift */; };
+		61D95E322B1B0B5C007F93D7 /* OnboardingStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D95E312B1B0B5C007F93D7 /* OnboardingStage.swift */; };
+		61D95E342B1B1417007F93D7 /* GroupSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D95E332B1B1417007F93D7 /* GroupSearchCoordinator.swift */; };
+		61D95E602B1C2B2A007F93D7 /* GoogleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D95E5F2B1C2B2A007F93D7 /* GoogleLoginUseCase.swift */; };
 		AA09C27A2ACBE9BC00F51A96 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C2792ACBE9BC00F51A96 /* KakaoSDKAuth */; };
 		AA09C27C2ACBE9BC00F51A96 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27B2ACBE9BC00F51A96 /* KakaoSDKCommon */; };
 		AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */; };
@@ -106,7 +112,6 @@
 		1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopupView.swift; sourceTree = "<group>"; };
 		1C1F51AE2AE16B600020AA71 /* ImagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupView.swift; sourceTree = "<group>"; };
 		1C1F51B42AE2B7960020AA71 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
-		1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
 		1CA1BBAF2ACF109A000C5F7E /* SpoqaHanSansNeo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.ttf"; sourceTree = "<group>"; };
 		1CA1BBB02ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.ttf"; sourceTree = "<group>"; };
@@ -135,14 +140,13 @@
 		61342DAB2B1612AA00AE0268 /* NicknameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCoordinator.swift; sourceTree = "<group>"; };
 		61342DAD2B16170E00AE0268 /* OBRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBRequestInterceptor.swift; sourceTree = "<group>"; };
 		61342DAF2B1618EB00AE0268 /* TermsAgreementUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementUseCase.swift; sourceTree = "<group>"; };
-		61342DB12B1619BE00AE0268 /* TermsAgreementEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementEntity.swift; sourceTree = "<group>"; };
-		61342DB32B1619DD00AE0268 /* TermsAgreementDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementDTO.swift; sourceTree = "<group>"; };
+		61342DB12B1619BE00AE0268 /* TermsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsEntity.swift; sourceTree = "<group>"; };
+		61342DB32B1619DD00AE0268 /* TermsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsDTO.swift; sourceTree = "<group>"; };
 		61342DB52B161A5900AE0268 /* TermsAgreementRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementRepository.swift; sourceTree = "<group>"; };
 		6151A06E2AECFE92001D74AB /* TermsAgreementReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementReactor.swift; sourceTree = "<group>"; };
 		618175F42AC5722500B5E2A0 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		618175F82AC5961500B5E2A0 /* TermsAgreementModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementModalView.swift; sourceTree = "<group>"; };
 		618176152AD2C21000B5E2A0 /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
-		618176172AD2C22A00B5E2A0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		6181761D2AD2C66500B5E2A0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6181761F2AD2C6EE00B5E2A0 /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		618176222AD2C87C00B5E2A0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -179,6 +183,13 @@
 		61D15BC82B1218F80060D089 /* TermsAgreementCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAgreementCoordinator.swift; sourceTree = "<group>"; };
 		61D15BCA2B12EE390060D089 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		61D15BCC2B1301BB0060D089 /* TermsReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsReactor.swift; sourceTree = "<group>"; };
+		61D95E262B1AE82D007F93D7 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		61D95E282B1B062B007F93D7 /* OnboardingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEntity.swift; sourceTree = "<group>"; };
+		61D95E2A2B1B06A5007F93D7 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
+		61D95E2C2B1B06BB007F93D7 /* OnboardingDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDTO.swift; sourceTree = "<group>"; };
+		61D95E312B1B0B5C007F93D7 /* OnboardingStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStage.swift; sourceTree = "<group>"; };
+		61D95E332B1B1417007F93D7 /* GroupSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSearchCoordinator.swift; sourceTree = "<group>"; };
+		61D95E5F2B1C2B2A007F93D7 /* GoogleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		AA7035FA2ADB81C700B26537 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
@@ -299,6 +310,7 @@
 				611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */,
 				AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */,
 				61342DAF2B1618EB00AE0268 /* TermsAgreementUseCase.swift */,
+				61D95E5F2B1C2B2A007F93D7 /* GoogleLoginUseCase.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -375,6 +387,7 @@
 		61AC7F922AB6D4A300B0B6B5 = {
 			isa = PBXGroup;
 			children = (
+				61D95E302B1B0B4E007F93D7 /* Enums */,
 				61AC7F9D2AB6D4A300B0B6B5 /* onboard-iOS */,
 				61AC7F9C2AB6D4A300B0B6B5 /* Products */,
 				61D15BC22B1215AC0060D089 /* Recovered References */,
@@ -396,7 +409,6 @@
 				6181762B2AD3D64F00B5E2A0 /* BaseComponents */,
 				611D8CA52ABECB910074A55A /* onboard-iOS.entitlements */,
 				61AC80032AB73A0F00B0B6B5 /* Extensions */,
-				61AC7FE82AB72E5100B0B6B5 /* Enum */,
 				61AC7FDE2AB6E6C800B0B6B5 /* Utils */,
 				61AC7FB52AB6D69D00B0B6B5 /* Presentation */,
 				61AC7FB42AB6D68B00B0B6B5 /* Domain */,
@@ -499,10 +511,10 @@
 			isa = PBXGroup;
 			children = (
 				61AC7FCD2AB6DDE300B0B6B5 /* TestDTO.swift */,
-				618176172AD2C22A00B5E2A0 /* AuthDTO.swift */,
-				1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */,
 				AA7036012ADB8A1400B26537 /* GroupDTO.swift */,
-				61342DB32B1619DD00AE0268 /* TermsAgreementDTO.swift */,
+				61342DB32B1619DD00AE0268 /* TermsDTO.swift */,
+				61D95E2A2B1B06A5007F93D7 /* AuthDTO.swift */,
+				61D95E2C2B1B06BB007F93D7 /* OnboardingDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -513,7 +525,8 @@
 				61AC7FD02AB6DFBF00B0B6B5 /* TestEntity.swift */,
 				618176152AD2C21000B5E2A0 /* AuthEntity.swift */,
 				AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */,
-				61342DB12B1619BE00AE0268 /* TermsAgreementEntity.swift */,
+				61342DB12B1619BE00AE0268 /* TermsEntity.swift */,
+				61D95E282B1B062B007F93D7 /* OnboardingEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -523,15 +536,9 @@
 			children = (
 				611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */,
 				AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */,
+				61D95E262B1AE82D007F93D7 /* KeychainService.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		61AC7FE82AB72E5100B0B6B5 /* Enum */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Enum;
 			sourceTree = "<group>";
 		};
 		61AC80032AB73A0F00B0B6B5 /* Extensions */ = {
@@ -564,8 +571,17 @@
 				61D15BC62B1217E70060D089 /* LoginCoordinator.swift */,
 				61D15BC82B1218F80060D089 /* TermsAgreementCoordinator.swift */,
 				61342DAB2B1612AA00AE0268 /* NicknameCoordinator.swift */,
+				61D95E332B1B1417007F93D7 /* GroupSearchCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		61D95E302B1B0B4E007F93D7 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				61D95E312B1B0B5C007F93D7 /* OnboardingStage.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		AA7035F92ADB81B600B26537 /* Group */ = {
@@ -721,12 +737,15 @@
 			files = (
 				618176352AD5902300B5E2A0 /* TermsAgreementViewController.swift in Sources */,
 				61342DAC2B1612AA00AE0268 /* NicknameCoordinator.swift in Sources */,
-				61342DB42B1619DD00AE0268 /* TermsAgreementDTO.swift in Sources */,
+				61D95E342B1B1417007F93D7 /* GroupSearchCoordinator.swift in Sources */,
+				61342DB42B1619DD00AE0268 /* TermsDTO.swift in Sources */,
 				618175F52AC5722500B5E2A0 /* UILabel+Extension.swift in Sources */,
 				611D8CEE2AC44EEA0074A55A /* UIView+SwiftUI+Extension.swift in Sources */,
 				611D8CEC2AC44D230074A55A /* TermsView.swift in Sources */,
 				1CA1BBCA2ADABFF9000C5F7E /* PopupState.swift in Sources */,
 				61AC7FCE2AB6DDE300B0B6B5 /* TestDTO.swift in Sources */,
+				61D95E272B1AE82D007F93D7 /* KeychainService.swift in Sources */,
+				61D95E292B1B062B007F93D7 /* OnboardingEntity.swift in Sources */,
 				61342DAA2B1611FF00AE0268 /* NicknameReactor.swift in Sources */,
 				61AC7FEA2AB7309400B0B6B5 /* APIEventLogger.swift in Sources */,
 				1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */,
@@ -737,14 +756,14 @@
 				61D15BCD2B1301BB0060D089 /* TermsReactor.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
-				618176182AD2C22A00B5E2A0 /* AuthDTO.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				618176202AD2C6EE00B5E2A0 /* LoginReactor.swift in Sources */,
 				1CA1BBC42ADABEBD000C5F7E /* TextField.swift in Sources */,
-				61342DB22B1619BE00AE0268 /* TermsAgreementEntity.swift in Sources */,
+				61342DB22B1619BE00AE0268 /* TermsEntity.swift in Sources */,
 				AACCA91B2AE19A09000A4CDA /* NewGroupButton.swift in Sources */,
 				61CC3C242AEE876500AE8599 /* GoogleLoginManager.swift in Sources */,
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
+				61D95E2D2B1B06BB007F93D7 /* OnboardingDTO.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				61342DAE2B16170E00AE0268 /* OBRequestInterceptor.swift in Sources */,
@@ -759,6 +778,7 @@
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
+				61D95E2B2B1B06A5007F93D7 /* AuthDTO.swift in Sources */,
 				61D15BC72B1217E70060D089 /* LoginCoordinator.swift in Sources */,
 				1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */,
 				1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */,
@@ -787,11 +807,13 @@
 				618176312AD3D89200B5E2A0 /* UITableView+Extension.swift in Sources */,
 				618176282AD3C7E500B5E2A0 /* TermsAgreementItemView.swift in Sources */,
 				61342DA62B160D6400AE0268 /* NicknameView.swift in Sources */,
+				61D95E322B1B0B5C007F93D7 /* OnboardingStage.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
 				6181762D2AD3D66D00B5E2A0 /* BaseTableViewCell.swift in Sources */,
 				1CA1BBC72ADABFA3000C5F7E /* LinkButtonState.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
+				61D95E602B1C2B2A007F93D7 /* GoogleLoginUseCase.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
 				AACCA9192AE193D3000A4CDA /* GroupSearchBar.swift in Sources */,
 				AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */,

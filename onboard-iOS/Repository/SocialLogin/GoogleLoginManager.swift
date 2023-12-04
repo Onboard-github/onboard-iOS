@@ -8,31 +8,39 @@
 import Foundation
 import GoogleSignIn
 
-class GoogleLoginManager {
+protocol GoogleLoginManager {
+    func signIn(
+        presentingViewController: UIViewController,
+        delegate: GoogleLoginDelegate?
+    )
+}
+
+class GoogleLoginManagerImpl: GoogleLoginManager {
     
-    static let shared = GoogleLoginManager()
+    private var token: String = "" {
+        didSet {
+            self.delegate?.success(token: self.token)
+        }
+    }
     
-    func signIn(withPresenting presentingViewController: UIViewController) {
-        GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { signInResult, error in
+    weak var delegate: GoogleLoginDelegate?
+    
+    func signIn(
+        presentingViewController: UIViewController,
+        delegate: GoogleLoginDelegate?
+    ) {
+        
+        self.delegate = delegate
+        
+        GIDSignIn.sharedInstance.signIn(
+            withPresenting: presentingViewController
+        ) { signInResult, error in
             
-            if error == nil {
-                guard let signInResult = signInResult else { return }
-                let user = signInResult.user
-                
-                let idTokenString: GIDToken? = user.idToken
-                
-                if let idToken = idTokenString {
-                    let networkManager = OBNetworkManager.shared
-                    
-                    do {
-                        try networkManager.googleLoginRequest(token: idToken.tokenString)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
-            } else {
-                print("Google 로그인 실패: \(error?.localizedDescription ?? "Unknown error")")
-            }
+            guard error == nil,
+                  let result = signInResult,
+                  let idToken = result.user.idToken?.tokenString else { return }
+            
+            self.token = idToken
         }
     }
 }

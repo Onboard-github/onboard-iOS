@@ -21,7 +21,9 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        self.showLoginViewController()
+        DispatchQueue.main.async {
+            self.showLoginViewController()
+        }
     }
     
     private func showLoginViewController() {

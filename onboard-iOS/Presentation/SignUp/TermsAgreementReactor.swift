@@ -36,6 +36,7 @@ final class TermsAgreementReactor: Reactor {
             let isRequired: Bool
             let url: String
             let isChecked: Bool
+            let code: String
         }
     }
     
@@ -70,9 +71,7 @@ final class TermsAgreementReactor: Reactor {
             return .just(.updateAllAgreement)
             
         case .selectRegister:
-            self.coordinator.showNicknameSetting()
-            
-            return .empty()
+            return self.agreeTerms()
             
         }
     }
@@ -100,11 +99,19 @@ final class TermsAgreementReactor: Reactor {
     
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
 
-        let loginMutation = self.mutation(
-            result: self.useCase.result
+        let termsListMutation = self.mutation(
+            termsList: self.useCase.termsList
+        )
+        
+        let termsAgreementMutation = self.mutation(
+            agreeResult: self.useCase.agreeResult
         )
 
-        return Observable.merge(mutation, loginMutation)
+        return Observable.merge([
+            mutation,
+            termsListMutation,
+            termsAgreementMutation
+        ])
     }
     
 }
@@ -112,10 +119,20 @@ final class TermsAgreementReactor: Reactor {
 extension TermsAgreementReactor {
     
     private func mutation(
-        result: Observable<[TermsAgreementEntity.Term]>
+        termsList: Observable<[TermsEntity.Term]>
     ) -> Observable<Mutation> {
-        return result.flatMap { response -> Observable<Mutation> in
+        return termsList.flatMap { response -> Observable<Mutation> in
             return .just(.setTerms(self.toState(response)))
+        }
+    }
+    
+    private func mutation(
+        agreeResult: Observable<Bool>
+    ) -> Observable<Mutation> {
+        return agreeResult.flatMap { response -> Observable<Mutation> in
+            self.coordinator.showNicknameSetting()
+            
+            return .empty()
         }
     }
     
@@ -131,14 +148,42 @@ extension TermsAgreementReactor {
         }
     }
     
+    private func agreeTerms() -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self else { return Disposables.create() }
+            Task {
+                do {
+                    
+                    let agreeList = self.currentState.terms
+                        .filter { $0.isChecked }
+                        .map { $0.code }
+                    
+                    let disagreeList = self.currentState.terms
+                        .filter { !$0.isChecked }
+                        .map { $0.code }
+                    
+                    await self.useCase.agreeTerms(
+                        req: TermsAgreementEntity.Req(
+                            agreeList: agreeList,
+                            disagreeList: disagreeList
+                        )
+                    )
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    
     private func toState(
-        _ terms: [TermsAgreementEntity.Term]
+        _ terms: [TermsEntity.Term]
     ) -> [TermsAgreementReactor.State.Term] {
         return terms.map { TermsAgreementReactor.State.Term(
             title: $0.title,
             isRequired: $0.isReuired,
             url: $0.url,
-            isChecked: false
+            isChecked: false,
+            code: $0.code
         )}
     }
     
@@ -154,7 +199,8 @@ extension TermsAgreementReactor {
             title: term.title,
             isRequired: term.isRequired,
             url: term.url,
-            isChecked: !term.isChecked
+            isChecked: !term.isChecked,
+            code: term.code
         )
         
         let isAllAgreement = !terms.contains(where: { $0.isChecked == false })
@@ -171,7 +217,8 @@ extension TermsAgreementReactor {
                     title: $0.title,
                     isRequired: $0.isRequired,
                     url: $0.url,
-                    isChecked: !state.isAllAgreemented
+                    isChecked: !state.isAllAgreemented,
+                    code: $0.code
                 )
             },
             isAllAgreemented: !state.isAllAgreemented

@@ -35,6 +35,7 @@ final class NicknameReactor: Reactor {
         
         switch action {
         case .confirm:
+            self.coordinator.showGroupSearch()
             return .empty()
         }
     }

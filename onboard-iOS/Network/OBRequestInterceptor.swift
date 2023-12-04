@@ -11,6 +11,12 @@ import Alamofire
 
 final class OBRequestInterceptor: RequestInterceptor {
     
+    private var keychainService: KeychainService
+    
+    init(keychainService: KeychainService) {
+        self.keychainService = keychainService
+    }
+    
     func adapt(
         _ urlRequest: URLRequest,
         for session: Session,
@@ -19,15 +25,13 @@ final class OBRequestInterceptor: RequestInterceptor {
         
         var request = urlRequest
         
-        // TODO: - 키체인, 소셜로그인 구현 후 삭제할 것
-        let sugarToken = "77+9bVoF77+9ZjHvv71gDe+/vRNDKe+/vT1NZO+/"
-        
-        guard urlRequest.url?.absoluteString.hasPrefix(API.BASE_URL) == true else {
+        guard urlRequest.url?.absoluteString.hasPrefix(API.BASE_URL) == true,
+              let accessToken = self.keychainService.value(forKey: .accessToken) else {
             completion(.success(urlRequest))
             return
         }
         
-        request.setValue("Bearer " + sugarToken, forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
         completion(.success(request))
     }
     
