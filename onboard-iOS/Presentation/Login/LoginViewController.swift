@@ -43,6 +43,14 @@ final class LoginViewController: UIViewController, View {
 
     private func bindAction(reactor: LoginReactor) {
         self.loginView.didTapGoogleButton = {
+            
+            let googleLoginManager = GoogleLoginManagerImpl()
+            
+            googleLoginManager.signIn(
+                presentingViewController: self,
+                delegate: self.reactor ?? nil
+            )
+            
             reactor.action.onNext(.google)
         }
 

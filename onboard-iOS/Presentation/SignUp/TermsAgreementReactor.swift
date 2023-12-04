@@ -130,11 +130,7 @@ extension TermsAgreementReactor {
         agreeResult: Observable<Bool>
     ) -> Observable<Mutation> {
         return agreeResult.flatMap { response -> Observable<Mutation> in
-            if response {
-                self.coordinator.showNicknameSetting()
-            } else {
-                // error
-            }
+            self.coordinator.showNicknameSetting()
             
             return .empty()
         }

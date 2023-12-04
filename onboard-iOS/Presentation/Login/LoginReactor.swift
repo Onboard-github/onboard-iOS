@@ -29,14 +29,17 @@ final class LoginReactor: Reactor {
     private let coordinator: LoginCoordinator
     private let appleUseCase: AppleLoginUseCase
     private let kakaoUseCase: KakaoLoginUseCase
+    private let googleUseCase: GoogleLoginUseCase
 
     init(
         appleUseCase: AppleLoginUseCase,
         kakaoUseCase: KakaoLoginUseCase,
+        googleUseCase: GoogleLoginUseCase,
         coordinator: LoginCoordinator
     ) {
         self.appleUseCase = appleUseCase
         self.kakaoUseCase = kakaoUseCase
+        self.googleUseCase = googleUseCase
         self.coordinator = coordinator
     }
 
@@ -46,7 +49,7 @@ final class LoginReactor: Reactor {
             return self.excuteAppleLogin()
 
         case .google:
-            return self.googleLoginResult()
+            return .empty()
 
         case .kakao:
             return self.excuteKakaoLogin()
@@ -62,11 +65,16 @@ final class LoginReactor: Reactor {
         let kakaoMutation = self.mutation(
             result: self.kakaoUseCase.result
         )
+        
+        let googleMutation = self.mutation(
+            result: self.googleUseCase.result
+        )
 
         return Observable.merge([
             mutation,
             appleMutation,
-            kakaoMutation
+            kakaoMutation,
+            googleMutation
         ])
     }
 }
@@ -117,6 +125,7 @@ extension LoginReactor {
     private func excuteKakaoLogin() -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
             guard let self else { return Disposables.create() }
+            
             Task {
                 do {
                     await self.kakaoUseCase.signIn()
@@ -126,13 +135,30 @@ extension LoginReactor {
         }
     }
 
-    private func googleLoginResult() -> Observable<Mutation> {
+    private func googleLoginResult(token: String) -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
             guard let self else { return Disposables.create() }
-
-            self.coordinator.showTermsAgreementView()
-
+            
+//            Task {
+//                do {
+//                    try await self.googleUseCase.signIn(token: token)
+//                }
+//            }
             return Disposables.create()
         }
     }
 }
+
+// MARK: - Google login delegate
+
+extension LoginReactor: GoogleLoginDelegate {
+
+    func success(token: String) {
+        Task {
+            do {
+                try await self.googleUseCase.signIn(token: token)
+            }
+        }
+    }
+}
+
