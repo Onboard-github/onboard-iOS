@@ -8,12 +8,12 @@
 import Foundation
 
 protocol GroupCreateRepository {
-    func requestRandomImage() async throws -> GroupCreateEntity
+    func requestRandomImage() async throws -> GroupCreateEntity.Res
 }
 
 final class GroupCreateRepositoryImpl: GroupCreateRepository {
     
-    func requestRandomImage() async throws -> GroupCreateEntity {
+    func requestRandomImage() async throws -> GroupCreateEntity.Res {
         do {
             let result = try await OBNetworkManager
                 .shared
@@ -34,8 +34,8 @@ final class GroupCreateRepositoryImpl: GroupCreateRepository {
 }
 
 extension GroupCreateDTO {
-    func toDomain() -> GroupCreateEntity {
-        return GroupCreateEntity(uuid: self.uuid,
-                                 url: self.url)
+    func toDomain() -> GroupCreateEntity.Res {
+        return GroupCreateEntity.Res(uuid: self.uuid,
+                                     url: self.url)
     }
 }
