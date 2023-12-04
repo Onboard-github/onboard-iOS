@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GroupCreateUseCase {
-    func fetchRandomImage() async throws -> GroupCreateEntity
+    func fetchRandomImage() async throws -> GroupCreateEntity.Res
 }
 
 final class GroupCreateUseCaseImpl: GroupCreateUseCase {
@@ -19,7 +19,7 @@ final class GroupCreateUseCaseImpl: GroupCreateUseCase {
         self.repository = repository
     }
     
-    func fetchRandomImage() async throws -> GroupCreateEntity {
+    func fetchRandomImage() async throws -> GroupCreateEntity.Res {
         do {
             return try await self.repository.requestRandomImage()
         } catch {
