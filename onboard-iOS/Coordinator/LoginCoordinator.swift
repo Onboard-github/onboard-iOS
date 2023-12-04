@@ -24,28 +24,35 @@ final class LoginCoordinator: Coordinator {
     }
     
     func start() {
-        let appleLoginManager = AppleLoginManagerImpl()
-        let authRepository = AuthRepositoryImpl()
-        let keychainService = KeychainServiceImpl()
-        let appleLoginUseCase = AppleLoginUseCaseImpl(
-            appleLoginManager: appleLoginManager,
-            authRepository: authRepository,
-            keychainService: keychainService
-        )
-        
-        let kakaoLoginManager = KakaoLoginManagerImpl()
-        let kakaoLoginUseCase = KakaoLoginUseCaseImpl(
-            kakaoLoginManager: kakaoLoginManager,
-            authRepository: authRepository
-        )
-        let reactor = LoginReactor(
-            appleUseCase: appleLoginUseCase,
-            kakaoUseCase: kakaoLoginUseCase,
-            coordinator: self
-        )
-        let viewController = LoginViewController(reactor: reactor)
-        
         DispatchQueue.main.async {
+            let appleLoginManager = AppleLoginManagerImpl()
+            let authRepository = AuthRepositoryImpl()
+            let keychainService = KeychainServiceImpl()
+            let appleLoginUseCase = AppleLoginUseCaseImpl(
+                appleLoginManager: appleLoginManager,
+                authRepository: authRepository,
+                keychainService: keychainService
+            )
+            
+            let kakaoLoginManager = KakaoLoginManagerImpl()
+            let kakaoLoginUseCase = KakaoLoginUseCaseImpl(
+                kakaoLoginManager: kakaoLoginManager,
+                authRepository: authRepository
+            )
+            
+            let googleLoginUseCase = GoogleLoginUseCaseImpl(
+                authRepository: authRepository,
+                keychainService: keychainService
+            )
+            
+            let reactor = LoginReactor(
+                appleUseCase: appleLoginUseCase,
+                kakaoUseCase: kakaoLoginUseCase,
+                googleUseCase: googleLoginUseCase,
+                coordinator: self
+            )
+            let viewController = LoginViewController(reactor: reactor)
+            
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

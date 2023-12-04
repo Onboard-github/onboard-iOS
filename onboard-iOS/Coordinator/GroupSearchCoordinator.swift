@@ -18,12 +18,13 @@ final class GroupSearchCoordinator: Coordinator {
     }
     
     func start() {
-        let repository = GroupRepositoryImpl()
-        let useCase = GroupSearchUseCaseImpl(groupRepository: repository)
-        let reactor = GroupSearchReactor(useCase: useCase)
-        let viewController = GroupSearchViewController(reactor: reactor)
-        
         DispatchQueue.main.async {
+            let repository = GroupRepositoryImpl()
+            let useCase = GroupSearchUseCaseImpl(groupRepository: repository)
+            let reactor = GroupSearchReactor(useCase: useCase)
+            let viewController = GroupSearchViewController(reactor: reactor)
+            
+            
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }

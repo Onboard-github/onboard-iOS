@@ -22,10 +22,10 @@ final class NicknameCoordinator: Coordinator {
     }
     
     func start() {
-        let reactor = NicknameReactor(coordinator: self)
-        let viewController = NicknameViewController(reactor: reactor)
-        
         DispatchQueue.main.async {
+            let reactor = NicknameReactor(coordinator: self)
+            let viewController = NicknameViewController(reactor: reactor)
+            
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
