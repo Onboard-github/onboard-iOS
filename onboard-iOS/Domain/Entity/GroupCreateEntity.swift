@@ -7,6 +7,17 @@
 
 import Foundation
 
+enum Purpose: String {
+    case GROUP_IMAGE = "GROUP_IMAGE"
+    case MATCH_IMAGE = "MATCH_IMAGE"
+}
+
+struct File {
+    let name: String
+    let data: Data
+    let mimeType: String
+}
+
 struct GroupCreateEntity {
     
     struct Req {
