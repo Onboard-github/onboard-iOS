@@ -15,8 +15,6 @@ final class GroupCreateViewController: UIViewController {
     
     private let groupCreateView = GroupCreateView()
     let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
-    lazy var reactors = GroupCreateReactor(useCase: useCase)
-    lazy var imagePopupVC = ImagePopupViewController(reactor: reactors)
     
     // MARK: - Life Cycles
     
@@ -43,6 +41,8 @@ final class GroupCreateViewController: UIViewController {
     
     private func addConfigure() {
         self.groupCreateView.didImageViewButton = { [self] in
+            let reactor = GroupCreateReactor(useCase: useCase)
+            let imagePopupVC = ImagePopupViewController(reactor: reactor)
             imagePopupVC.modalPresentationStyle = .overFullScreen
             
             imagePopupVC.imageCompletion = { [self] selectedImage in
