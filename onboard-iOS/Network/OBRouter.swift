@@ -9,6 +9,11 @@ import Foundation
 
 import Alamofire
 
+struct AccessToken {
+    // 임시 토큰 (화면 연결 시 제거)
+    static let token = "77+9bVoF77+9ZjHvv71gDe+/vRNDKe+/vT1NZO+/"
+}
+
 enum OBRouter: URLRequestConvertible {
 
     // MARK: - Properties
@@ -27,6 +32,7 @@ enum OBRouter: URLRequestConvertible {
     case auth(body: Body)
     case groupList(params: Params)
     case addGroup(body: Body)
+    case pickerImage(params: Params)
     case randomImage
 
     // MARK: - HTTP Method
@@ -35,7 +41,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .groupList, .randomImage:
             return .get
-        case .auth, .addGroup:
+        case .auth, .addGroup, .pickerImage:
             return .post
         }
     }
@@ -50,6 +56,8 @@ enum OBRouter: URLRequestConvertible {
             return "v1/auth/login"
         case .groupList, .addGroup:
             return "v1/group"
+        case .pickerImage:
+            return "v1/file"
         case .randomImage:
             return "api/v1/group/default-image"
         }
@@ -61,6 +69,9 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage:
             return nil
+        case .pickerImage:
+            return ["Authorization": "Bearer \(AccessToken.token)",
+                    "content-type": "multipart/form-data"]
         }
     }
 
@@ -68,7 +79,7 @@ enum OBRouter: URLRequestConvertible {
 
     var body: Body? {
         switch self {
-        case .testAPI, .groupList, .randomImage:
+        case .testAPI, .groupList, .pickerImage, .randomImage:
             return nil
 
         case let .auth(body), let .addGroup(body):
@@ -83,6 +94,8 @@ enum OBRouter: URLRequestConvertible {
         case .testAPI, .auth, .addGroup, .randomImage:
             return nil
         case let .groupList(params):
+            return params
+        case let .pickerImage(params):
             return params
         }
     }
