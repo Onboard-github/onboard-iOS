@@ -188,6 +188,12 @@ final class ImagePopupViewController: UIViewController, View {
         self.backgroundView.addGestureRecognizer(tapGesture)
     }
     
+    private func createFile(from image: UIImage, withName name: String, mimeType: String) -> File? {
+        guard let imageData = image.pngData() else { return nil }
+        
+        return File(name: name, data: imageData, mimeType: mimeType)
+    }
+    
     @objc
     private func backgroundTapped() {
         self.dismiss(animated: false)
@@ -211,12 +217,15 @@ extension ImagePopupViewController: UIImagePickerControllerDelegate, UINavigatio
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             
-            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                imageCompletion?(image)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            if let file = createFile(from: image, withName: "image.png", mimeType: "image/png") {
+                reactor?.action.onNext(.fileUpload(file: file, purpose: .MATCH_IMAGE))
             }
-            
-            picker.dismiss(animated: true, completion: nil)
+            imageCompletion?(image)
         }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
     
     func imagePickerControllerDidCancel(
         _ picker: UIImagePickerController) {
