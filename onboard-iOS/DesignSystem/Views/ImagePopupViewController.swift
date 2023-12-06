@@ -8,8 +8,9 @@
 import UIKit
 
 import ReactorKit
+import Alamofire
 
-class ImagePopupViewController: UIViewController, View {
+final class ImagePopupViewController: UIViewController, View {
     
     typealias Reactor = GroupCreateReactor
     
@@ -138,10 +139,8 @@ class ImagePopupViewController: UIViewController, View {
             .map { $0.imageURL }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] data in
-                guard let self = self else { return }
-                
                 ImageLoader.loadImage(from: data) { image in
-                    self.imageCompletion?(image)
+                    self?.imageCompletion?(image)
                 }
             })
             .disposed(by: disposeBag)
