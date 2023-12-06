@@ -14,6 +14,7 @@ final class GroupCreateReactor: Reactor {
     var initialState: State = .init(imageURL: "")
     
     enum Action {
+        case fileUpload(file: File, purpose: Purpose)
         case randomImage
     }
     
@@ -35,6 +36,8 @@ final class GroupCreateReactor: Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case let .fileUpload(file, purpose):
+            return self.fileUploadResult(file: file, purpose: purpose)
         case .randomImage:
             return self.randomImageResult()
         }
@@ -54,6 +57,22 @@ final class GroupCreateReactor: Reactor {
 }
 
 extension GroupCreateReactor {
+    
+    private func fileUploadResult(file: File, purpose: Purpose) -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
+            
+            Task {
+                do {
+                    let result = try await self.useCase.fetchFileUpload(file: file, purpose: purpose)
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
     
     private func randomImageResult() -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
