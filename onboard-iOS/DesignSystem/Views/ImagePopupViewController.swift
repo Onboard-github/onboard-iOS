@@ -8,7 +8,6 @@
 import UIKit
 
 import ReactorKit
-import Alamofire
 
 final class ImagePopupViewController: UIViewController, View {
     
