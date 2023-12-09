@@ -31,7 +31,7 @@ final class GroupCreateView: UIView {
     
     // MARK: - UI
     
-    private let titleImageView: UIImageView = {
+    let titleImageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "img_diceBgSkyblue")
         image.layer.cornerRadius = 8
@@ -112,7 +112,7 @@ final class GroupCreateView: UIView {
     
     /* 소속 */
     
-    private let affiliationLabel: UILabel = {
+    private let organizationLabel: UILabel = {
         let label = UILabel()
         label.text = "소속(선택)"
         label.textColor = Colors.Gray_14
@@ -120,7 +120,7 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private lazy var affiliationTextField: TextField = {
+    private lazy var organizationTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
@@ -129,7 +129,7 @@ final class GroupCreateView: UIView {
         return text
     }()
     
-    private let affiliationCountLabel: UILabel = {
+    private let organizationCountLabel: UILabel = {
         let label = UILabel()
         label.text = "00/15"
         label.textColor = Colors.Gray_8
@@ -165,8 +165,8 @@ final class GroupCreateView: UIView {
         return stackView
     }()
     
-    private lazy var affiliationStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [affiliationLabel, affiliationTextField])
+    private lazy var organizationStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [organizationLabel, organizationTextField])
         stackView.axis = .vertical
         stackView.spacing = 5
         return stackView
@@ -217,7 +217,7 @@ final class GroupCreateView: UIView {
             .foregroundColor: Colors.Gray_7]
         nameTextField.attributedPlaceholder = NSAttributedString(string: "그룹 이름을 입력해주세요.",
                                                                  attributes: attributes)
-        affiliationTextField.attributedPlaceholder = NSAttributedString(string: "Ex) 홍익대학교",
+        organizationTextField.attributedPlaceholder = NSAttributedString(string: "Ex) 홍익대학교",
                                                                         attributes: attributes)
     }
     
@@ -231,8 +231,8 @@ final class GroupCreateView: UIView {
         self.addSubview(self.introductionStackView)
         self.addSubview(self.introductionCountLabel)
         
-        self.addSubview(self.affiliationStackView)
-        self.addSubview(self.affiliationCountLabel)
+        self.addSubview(self.organizationStackView)
+        self.addSubview(self.organizationCountLabel)
         
         self.addSubview(self.registerButton)
         
@@ -276,22 +276,22 @@ final class GroupCreateView: UIView {
             $0.trailing.equalToSuperview().inset(Metric.countLabelRightSpacing)
         }
         
-        self.affiliationStackView.snp.makeConstraints {
+        self.organizationStackView.snp.makeConstraints {
             $0.top.equalTo(introductionCountLabel.snp.bottom).offset(Metric.itemSpacing)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
-        self.affiliationTextField.snp.makeConstraints {
+        self.organizationTextField.snp.makeConstraints {
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
-        self.affiliationCountLabel.snp.makeConstraints {
-            $0.top.equalTo(affiliationStackView.snp.bottom).offset(Metric.countLabelTopSpacing)
+        self.organizationCountLabel.snp.makeConstraints {
+            $0.top.equalTo(organizationStackView.snp.bottom).offset(Metric.countLabelTopSpacing)
             $0.trailing.equalToSuperview().inset(Metric.countLabelRightSpacing)
         }
         
         self.registerButton.snp.makeConstraints {
-            $0.top.equalTo(affiliationCountLabel.snp.bottom).offset(Metric.buttonTopMargin)
+            $0.top.equalTo(organizationCountLabel.snp.bottom).offset(Metric.buttonTopMargin)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
             $0.height.equalTo(Metric.buttonHeight)
         }
@@ -324,12 +324,12 @@ extension GroupCreateView: UITextFieldDelegate {
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String) -> Bool {
             
-            if textField == nameTextField || textField == affiliationTextField {
+            if textField == nameTextField || textField == organizationTextField {
                 let currentText = textField.text ?? ""
                 let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
                 
                 let maxLength = (textField == nameTextField) ? 14 : 15
-                let countLabel = (textField == nameTextField) ? nameCountLabel : affiliationCountLabel
+                let countLabel = (textField == nameTextField) ? nameCountLabel : organizationCountLabel
                 
                 if updatedText.count <= maxLength {
                     countLabel.text = "\(updatedText.count)/\(maxLength)"
