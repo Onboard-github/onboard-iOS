@@ -13,6 +13,13 @@ final class NameInputPopupView: UIView {
     
     private enum Metric {
         static let iconSize: CGFloat = 18
+        static let contentViewLeftRightMargin: CGFloat = 20
+        static let contentViewHeight: CGFloat = 228
+        static let topMargin: CGFloat = 26
+        static let leftRightMargin: CGFloat = 24
+        static let textFieldHeight: CGFloat = 52
+        static let itemSpacing: CGFloat = 20
+        static let buttonHeight: CGFloat = 52
     }
     
     // MARK: - UI
@@ -118,9 +125,54 @@ final class NameInputPopupView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.backgroundView)
+        self.addSubview(self.contentView)
+        self.contentView.addSubview(self.titleStackView)
+        self.contentView.addSubview(self.textFieldStackView)
+        self.contentView.addSubview(self.registerButton)
+        
+        self.backgroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        self.contentView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(Metric.contentViewLeftRightMargin)
+            $0.centerX.centerY.equalToSuperview()
+            $0.height.equalTo(Metric.contentViewHeight)
+        }
+        
+        self.titleStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(Metric.topMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.textField.snp.makeConstraints {
+            $0.height.equalTo(Metric.textFieldHeight)
+        }
+        
+        self.textFieldStackView.snp.makeConstraints {
+            $0.top.equalTo(titleStackView.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.registerButton.snp.makeConstraints {
+            $0.top.equalTo(textFieldStackView.snp.bottom).offset(Metric.itemSpacing)
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(Metric.buttonHeight)
+        }
     }
 }
