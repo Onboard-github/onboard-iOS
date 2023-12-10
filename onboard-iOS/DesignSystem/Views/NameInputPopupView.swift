@@ -136,6 +136,7 @@ final class NameInputPopupView: UIView {
     
     private func configure() {
         self.makeConstraints()
+        self.setupGestureRecognizer()
     }
     
     private func makeConstraints() {
@@ -174,5 +175,18 @@ final class NameInputPopupView: UIView {
             $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(Metric.buttonHeight)
         }
+    }
+    
+    private func setupGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(backgroundTapped)
+        )
+        self.backgroundView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func backgroundTapped() {
+        removeFromSuperview()
     }
 }
