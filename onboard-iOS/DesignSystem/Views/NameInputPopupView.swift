@@ -65,6 +65,7 @@ final class NameInputPopupView: UIView {
         leftView.addSubview(textFieldImage)
         textField.leftView = leftView
         textField.leftViewMode = .always
+        textField.delegate = self
         return textField
     }()
     
@@ -189,4 +190,35 @@ final class NameInputPopupView: UIView {
     private func backgroundTapped() {
         removeFromSuperview()
     }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension NameInputPopupView: UITextFieldDelegate {
+    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String) -> Bool {
+            
+            let maxLength = 10
+            
+            let currentText = textField.text ?? ""
+            let newLength = (currentText as NSString).replacingCharacters(in: range, with: string).count
+            
+            if newLength <= maxLength {
+                let formattedText = String(format: "%02d/%02d", newLength, maxLength)
+                self.countLabel.text = formattedText
+                
+                if newLength >= 1 {
+                    registerButton.status = .default
+                } else {
+                    registerButton.status = .disabled
+                }
+                
+                return true
+            } else {
+                return false
+            }
+        }
 }
