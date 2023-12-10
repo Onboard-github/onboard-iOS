@@ -136,8 +136,14 @@ final class NameInputPopupView: UIView {
     // MARK: - Configure
     
     private func configure() {
+        self.addConfigure()
         self.makeConstraints()
         self.setupGestureRecognizer()
+    }
+    
+    private func addConfigure() {
+        self.registerButton.addAction(UIAction(handler: { _ in
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
