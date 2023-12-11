@@ -137,7 +137,11 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private var registerButton = BaseButton(status: .disabled, style: .rounded)
+    private let registerButton: BaseButton = {
+        let button = BaseButton(status: .disabled, style: .bottom)
+        button.setTitle("그룹 등록하기", for: .normal)
+        return button
+    }()
     
     private lazy var nameStackView: UIStackView = {
         let stview = UIStackView(arrangedSubviews: [nameLabel, requiredImage.clone()])
@@ -193,16 +197,10 @@ final class GroupCreateView: UIView {
     private func configure() {
         self.backgroundColor = Colors.Gray_2
         
-        self.setButtons()
         self.addConfigure()
         self.textFieldPlaceHolder()
         self.makeConstraints()
         self.setupGestureRecognizer()
-    }
-    
-    private func setButtons() {
-        registerButton.setTitle("그룹 등록하기", for: .normal)
-        registerButton.isEnabled = false
     }
     
     private func addConfigure() {
