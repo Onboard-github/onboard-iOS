@@ -138,7 +138,7 @@ final class GroupCreateView: UIView {
     }()
     
     private let registerButton: BaseButton = {
-        let button = BaseButton(status: .disabled, style: .bottom)
+        let button = BaseButton(status: .disabled, style: .rounded)
         button.setTitle("그룹 등록하기", for: .normal)
         return button
     }()
@@ -179,6 +179,7 @@ final class GroupCreateView: UIView {
     // MARK: - Properties
     
     var didImageViewButton: (() -> Void)?
+    var didTapRegisterButton: (() -> Void)?
     
     // MARK: - Initialize
     
@@ -206,6 +207,10 @@ final class GroupCreateView: UIView {
     private func addConfigure() {
         self.titleImageViewButton.addAction(UIAction(handler: { _ in
             self.didImageViewButton?()
+        }), for: .touchUpInside)
+        
+        self.registerButton.addAction(UIAction(handler: { _ in
+            self.didTapRegisterButton?()
         }), for: .touchUpInside)
     }
     
