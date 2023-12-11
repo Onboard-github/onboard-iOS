@@ -94,7 +94,7 @@ extension RankVC: PagingViewControllerDelegate {
         if let item = pagingItem as? IconItem {
             self.state = .loading
             if item.iconUrl.isEmpty == false {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
                     self?.state = .loaded
                 })
             }
@@ -126,7 +126,52 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
             }
         case .loaded:
             if indexPath.row == 0 {
-                return tableView.dequeueReusableCell(withIdentifier: "emptyGamePlayCell", for: indexPath)
+                if let podiumCell = tableView.dequeueReusableCell(withIdentifier: "podiumCell", for: indexPath) as? PodiumCell {
+                    var info = PodiumUserInfo()
+                    if Bool.random() {
+                        info.dice = .dice
+                    } else {
+                        info.dice = .empty
+                    }
+                    info.isEmptyUser = Bool.random()
+                    info.isMe = Bool.random()
+                    info.isRedDot = Bool.random()
+                    info.playCount = Int.random(in: 1...999)
+                    info.score = Int.random(in: 0...999)
+                    info.userName = "ASDASDASD"
+                    
+                    var info2 = PodiumUserInfo()
+                    if Bool.random() {
+                        info2.dice = .dice
+                    } else {
+                        info2.dice = .empty
+                    }
+                    info2.isEmptyUser = Bool.random()
+                    info2.isMe = Bool.random()
+                    info2.isRedDot = Bool.random()
+                    info2.playCount = Int.random(in: 1...999)
+                    info2.score = Int.random(in: 0...999)
+                    info2.userName = "ASDASDASD"
+                    
+                    var info3 = PodiumUserInfo()
+                    if Bool.random() {
+                        info3.dice = .dice
+                    } else {
+                        info3.dice = .empty
+                    }
+                    info3.isEmptyUser = Bool.random()
+                    info3.isMe = Bool.random()
+                    info3.isRedDot = Bool.random()
+                    info3.playCount = Int.random(in: 1...999)
+                    info3.score = Int.random(in: 0...999)
+                    info3.userName = "ASDASDASD"
+                    
+                    podiumCell.firstUserInfo = info
+                    podiumCell.secondUserInfo = info2
+                    podiumCell.thirdUserInfo = info3
+                    
+                    return podiumCell
+                }
             } else {
                 if let gameCell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as? GameCell {
                     var info = GameCellInfo(rankNum: indexPath.row)

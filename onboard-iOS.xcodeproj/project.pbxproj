@@ -60,6 +60,7 @@
 		AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */; };
 		AA3E7D5C2B25412D007A6BE9 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = AA3E7D5B2B25412D007A6BE9 /* SkeletonView */; };
 		AA3E7D5F2B254159007A6BE9 /* GameSkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E7D5E2B254159007A6BE9 /* GameSkeletonCell.swift */; };
+		AA5ED43C2B27661400993B63 /* PodiumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5ED43B2B27661400993B63 /* PodiumCell.swift */; };
 		AA69E3BC2B1332AB00F74A36 /* RankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69E3BB2B1332AB00F74A36 /* RankVC.swift */; };
 		AA69E3BF2B1333D300F74A36 /* GameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69E3BE2B1333D300F74A36 /* GameList.swift */; };
 		AA69E3C32B1334D100F74A36 /* Parchment in Frameworks */ = {isa = PBXBuildFile; productRef = AA69E3C22B1334D100F74A36 /* Parchment */; };
@@ -142,6 +143,7 @@
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		AA3E7D5E2B254159007A6BE9 /* GameSkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSkeletonCell.swift; sourceTree = "<group>"; };
+		AA5ED43B2B27661400993B63 /* PodiumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodiumCell.swift; sourceTree = "<group>"; };
 		AA69E3BB2B1332AB00F74A36 /* RankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankVC.swift; sourceTree = "<group>"; };
 		AA69E3BE2B1333D300F74A36 /* GameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameList.swift; sourceTree = "<group>"; };
 		AA7035FA2ADB81C700B26537 /* GroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRepository.swift; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 			children = (
 				AA3E7D5E2B254159007A6BE9 /* GameSkeletonCell.swift */,
 				AA9398192B25534A0022C5ED /* GameCell.swift */,
+				AA5ED43B2B27661400993B63 /* PodiumCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
 				1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */,
+				AA5ED43C2B27661400993B63 /* PodiumCell.swift in Sources */,
 				1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */,
 				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
 				1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */,
