@@ -41,6 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let testViewController = TestViewController(reactor: testReactor)
 
         UITabBar.appearance().tintColor = UIColor.black
+        UITabBar.appearance().backgroundColor = .white
         if let _ = LoginSessionManager.getLoginSession(), let _ = LoginSessionManager.getNickname() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")

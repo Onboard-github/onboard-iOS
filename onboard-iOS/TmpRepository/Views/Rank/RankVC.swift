@@ -11,42 +11,32 @@ import Parchment
 import SnapKit
 import Kingfisher
 
+enum RankVcState {
+    case loading
+    case loaded
+}
+
 class RankVC: UIViewController {
+    var state: RankVcState = .loading {
+        didSet {
+            gameDetailTableView.reloadData()
+        }
+    }
 
     private var gameList: GamgeList? {
         didSet {
             pagingViewController.reloadData()
         }
     }
+    @IBOutlet weak var gameDetailTableView: UITableView!
     
-    fileprivate let icons = [
-        "compass",
-        "cloud",
-        "bonnet",
-        "axe",
-        "earth",
-        "knife",
-        "leave",
-        "light",
-        "map",
-        "moon",
-        "mushroom",
-        "shoes",
-        "snow",
-        "star",
-        "sun",
-        "tipi",
-        "tree",
-        "water",
-        "wind",
-        "wood",
-    ]
     @IBOutlet weak var pagingBackground: UIView!
     let pagingViewController = PagingViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         pagingViewController.register(IconPagingCell.self, for: IconItem.self)
+        pagingViewController.delegate = self
         pagingViewController.menuItemSize = .fixed(width: 80, height: 120)
         pagingViewController.dataSource = self
         pagingViewController.borderColor = .clear
@@ -61,6 +51,10 @@ class RankVC: UIViewController {
             make.edges.equalTo(pagingBackground)
         }
         pagingViewController.didMove(toParent: self)
+        gameDetailTableView.dataSource = self
+        gameDetailTableView.delegate = self
+        gameDetailTableView.bounces = false
+        gameDetailTableView.allowsSelection = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,26 +89,101 @@ class RankVC: UIViewController {
     }
 }
 
+extension RankVC: PagingViewControllerDelegate {
+    func pagingViewController(_ pagingViewController: PagingViewController, didSelectItem pagingItem: PagingItem) {
+        if let item = pagingItem as? IconItem {
+            self.state = .loading
+            if item.iconUrl.isEmpty == false {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
+                    self?.state = .loaded
+                })
+            }
+        }
+    }
+}
+
+extension RankVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch self.state {
+        case .loading:
+            return 5
+        case .loaded:
+            return 10
+        }
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch self.state {
+        case .loading:
+            if indexPath.row == 0 {
+                return tableView.dequeueReusableCell(withIdentifier: "podiumSkeletonCell", for: indexPath)
+            } else {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "gameSkeletonCell", for: indexPath) as? GameSkeletonCell {
+                    cell.showAnimation()
+                    return cell
+                }
+            }
+        case .loaded:
+            if indexPath.row == 0 {
+                return tableView.dequeueReusableCell(withIdentifier: "emptyGamePlayCell", for: indexPath)
+            } else {
+                if let gameCell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as? GameCell {
+                    var info = GameCellInfo(rankNum: indexPath.row)
+                    info.userName = "귤귤사람귤귤귤사람귤"
+                    if Bool.random() {
+                        info.dice = .dice
+                    } else {
+                        info.dice = .empty
+                    }
+                    info.isMe = Bool.random()
+                    info.isRedDot = Bool.random()
+                    info.playCount = Int.random(in: 1...999)
+                    info.rankNum = indexPath.row + 3
+                    info.score = Int.random(in: 0...999)
+                    gameCell.info = info
+                    return gameCell
+                }
+            }
+        }
+        
+        return UITableViewCell()
+    }
+    
+    
+}
+
 extension RankVC: PagingViewControllerDataSource {
     func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
         return UIViewController()
     }
 
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
-        return IconItem(iconUrl: gameList?.list[index].img ?? "", index: index)
+        let calculatedIndex = index - 2
+        if calculatedIndex >= 0 && calculatedIndex < (gameList?.list.count ?? 0) {
+            return IconItem(iconUrl: gameList?.list[calculatedIndex].img ?? "", title: gameList?.list[calculatedIndex].name ?? "", index: index)
+        } else {
+            return IconItem(iconUrl: "", title: "", index: index)
+        }
     }
 
     func numberOfViewControllers(in _: PagingViewController) -> Int {
-        return gameList?.list.count ?? 0
+        if let gameCount = gameList?.list.count {
+            return gameCount + 4
+        } else {
+            return 0
+        }
     }
 }
 
 struct IconItem: PagingItem, Hashable {
     let iconUrl: String
+    let title: String
     let index: Int
 
-    init(iconUrl: String, index: Int) {
+    init(iconUrl: String, title: String, index: Int) {
         self.iconUrl = iconUrl
+        self.title = title
         self.index = index
     }
 
@@ -166,28 +235,29 @@ class IconPagingCell: PagingCell {
             )
 
             imageView.kf.setImage(with: URL(string: item.iconUrl))
-            titleLabel.text = "!@#"
+            
+            titleLabel.text = item.title
 
             if viewModel.selected {
                 imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
                 imageView.alpha = 1
-                titleLabel.font = .boldSystemFont(ofSize: 15)
+                titleLabel.font = .boldSystemFont(ofSize: 13)
                 titleLabel.alpha = 1
             } else {
-                imageView.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-                imageView.alpha = 0.6
-                titleLabel.font = .boldSystemFont(ofSize: 12)
-                titleLabel.alpha = 0.6
+                imageView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+                imageView.alpha = 0.7
+                titleLabel.font = .boldSystemFont(ofSize: 10)
+                titleLabel.alpha = 0.7
             }
 
             self.viewModel = viewModel
         }
     }
-
+    
     open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         guard let viewModel = viewModel else { return }
         if let attributes = layoutAttributes as? PagingCellLayoutAttributes {
-            let scale = (0.4 * attributes.progress) + 0.6
+            let scale = (0.3 * attributes.progress) + 0.7
             imageView.transform = CGAffineTransform(scaleX: scale, y: scale)
             imageView.tintColor = UIColor.interpolate(
                 from: viewModel.tintColor,
@@ -217,7 +287,7 @@ class IconPagingCell: PagingCell {
             toItem: contentView,
             attribute: .bottom,
             multiplier: 1.0,
-            constant: -25
+            constant: -35
         )
 
         let leadingContraint = NSLayoutConstraint(
@@ -227,7 +297,7 @@ class IconPagingCell: PagingCell {
             toItem: contentView,
             attribute: .leading,
             multiplier: 1.0,
-            constant: 0
+            constant: 5
         )
 
         let trailingContraint = NSLayoutConstraint(
@@ -237,7 +307,7 @@ class IconPagingCell: PagingCell {
             toItem: contentView,
             attribute: .trailing,
             multiplier: 1.0,
-            constant: 0
+            constant: -5
         )
 
         contentView.addConstraints([
@@ -249,7 +319,7 @@ class IconPagingCell: PagingCell {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).inset(7)
-            make.leading.trailing.equalToSuperview().inset(6)
+            make.leading.trailing.equalToSuperview().inset(-3)
             make.bottom.equalToSuperview()
         }
     }

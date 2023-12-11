@@ -115,3 +115,51 @@ class BorderedButton: UIButton {
         setupButton()
     }
 }
+
+@IBDesignable
+class RoundedView: UIView {
+    @IBInspectable var cornerRadius: CGFloat = 8 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+            layer.masksToBounds = cornerRadius > 0
+        }
+    }
+
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+
+    @IBInspectable var borderColor: UIColor = UIColor.gray {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
+    }
+
+    // 코드에서 초기화할 때 호출되는 메서드
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupButton()
+    }
+
+    // 스토리보드 또는 인터페이스 빌더에서 초기화할 때 호출되는 메서드
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupButton()
+    }
+
+    // 초기화 코드를 모아둔 메서드
+    private func setupButton() {
+        layer.cornerRadius = cornerRadius
+        layer.masksToBounds = cornerRadius > 0
+        layer.borderWidth = borderWidth
+        layer.borderColor = borderColor.cgColor
+    }
+
+    // 스토리보드에서 디자인 타임에 모양을 미리 확인하기 위한 코드
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setupButton()
+    }
+}
