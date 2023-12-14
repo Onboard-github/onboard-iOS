@@ -52,6 +52,14 @@ final class GroupCreateViewController: UIViewController {
             
             self.present(imagePopupVC, animated: false, completion: nil)
         }
+        
+        self.groupCreateView.didTapRegisterButton = { [self] in
+            let nameInputView = NameInputPopupView()
+            view.addSubview(nameInputView)
+            nameInputView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
+        }
     }
     
     private func setNavigationBar() {
