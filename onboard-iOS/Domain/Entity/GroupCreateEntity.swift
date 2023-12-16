@@ -21,12 +21,16 @@ struct File {
 struct GroupCreateEntity {
     
     struct Req {
-        let name: String
-        let description: String
-        let organization: String
-        let profileImageUrl: String?
-        let profileImageUuid: String
-        let nickname: String
+        let contents: [Group]
+        
+        struct Group: Codable {
+            let name: String
+            let description: String
+            let organization: String
+            let profileImageUrl: String?
+            let profileImageUuid: String
+            let nickname: String
+        }
     }
     
     struct Res {
