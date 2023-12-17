@@ -25,6 +25,12 @@ class GroupJoinVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func joinButtonAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+        homeTabController.modalPresentationStyle = .fullScreen
+        navigationController?.present(homeTabController, animated: true)
+    }
     /*
     // MARK: - Navigation
 
