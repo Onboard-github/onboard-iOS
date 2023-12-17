@@ -12,14 +12,14 @@
 				<string>com.googleusercontent.apps.60961186546-rtf4h136vnreuooj193b19jhsgjsoba9</string>
 			</array>
 		</dict>
-		<string>GIDClientID</string>
-		<string>60961186546-rtf4h136vnreuooj193b19jhsgjsoba9.apps.googleusercontent.com</string>
-		<string>CFBundleTypeRole</string>
-		<string>Editor</string>
-		<string>CFBundleURLSchemes</string>
-		<array>
-			<string>kakao0fc9af67a72e49041aa31ec49dcd8bc0</string>
-		</array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao0fc9af67a72e49041aa31ec49dcd8bc0</string>
+			</array>
+		</dict>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
