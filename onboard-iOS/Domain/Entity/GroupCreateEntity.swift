@@ -19,22 +19,29 @@ struct File {
 }
 
 struct GroupCreateEntity {
-    
-    struct Req {
-        let contents: [Group]
-        
-        struct Group: Codable {
-            let name: String
-            let description: String
-            let organization: String
-            let profileImageUrl: String?
-            let profileImageUuid: String
-            let nickname: String
-        }
-    }
-    
     struct Res {
         let uuid: String
         let url: String
+    }
+}
+
+struct GroupCreateCompleteEntity {
+    struct Res {
+        let id: Int
+        let name: String
+        let description: String
+        let owner: String
+        let organization: String
+        let profileImageUrl: String
+        let accessCode: String
+    }
+    
+    struct Req {
+        let name: String
+        let description: String
+        let organization: String
+        let profileImageUrl: String?
+        let profileImageUuid: String
+        let nickname: String
     }
 }
