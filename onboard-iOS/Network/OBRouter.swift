@@ -34,7 +34,7 @@ enum OBRouter: URLRequestConvertible {
     case addGroup(body: Body)
     case pickerImage(params: Params)
     case randomImage
-    case createGroup
+    case createGroup(body: Body)
 
     // MARK: - HTTP Method
 
@@ -82,10 +82,10 @@ enum OBRouter: URLRequestConvertible {
 
     var body: Body? {
         switch self {
-        case .testAPI, .groupList, .pickerImage, .randomImage, .createGroup:
+        case .testAPI, .groupList, .pickerImage, .randomImage:
             return nil
 
-        case let .auth(body), let .addGroup(body):
+        case let .auth(body), let .addGroup(body), let .createGroup(body):
             return body
         }
     }
