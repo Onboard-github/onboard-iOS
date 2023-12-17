@@ -54,11 +54,11 @@ final class GroupCreateViewController: UIViewController {
         }
         
         self.groupCreateView.didTapRegisterButton = { [self] in
-            let nameInputView = NameInputPopupView()
-            view.addSubview(nameInputView)
-            nameInputView.snp.makeConstraints {
-                $0.edges.equalToSuperview()
-            }
+            let reactor = GroupCreateReactor(useCase: useCase)
+            let nameInputVC = NameInputPopupView(reactor: reactor)
+            nameInputVC.modalPresentationStyle = .overFullScreen
+            
+            self.present(nameInputVC, animated: false, completion: nil)
         }
     }
     
