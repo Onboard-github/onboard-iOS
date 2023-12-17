@@ -10,8 +10,14 @@ import SnapKit
 import RxSwift
 import Kingfisher
 
+protocol GroupSearchDelegate {
+    func select(group: GroupSearchView.Group?)
+}
 
 final class GroupSearchView: UIView {
+    
+    var delegate: GroupSearchDelegate?
+    var groupList: [Group]?
 
     // MARK: - Metric
     private enum Metric {
@@ -91,6 +97,7 @@ final class GroupSearchView: UIView {
         var snapshot = NSDiffableDataSourceSnapshot<Int, Group>()
         snapshot.appendSections([0])
         snapshot.appendItems(groupList)
+        self.groupList = groupList
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
@@ -114,6 +121,7 @@ final class GroupSearchView: UIView {
         self.backgroundColor = .systemBackground
         
         tableView.register(GroupSearchCell.self, forCellReuseIdentifier: "GroupSearchCell")
+        tableView.delegate = self
         self.addActionConfigure()
         self.makeConstraints()
     }
@@ -161,5 +169,11 @@ extension GroupSearchView {
         let description: String
         let organization: String
         let profileImageUrl: String
+    }
+}
+
+extension GroupSearchView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.select(group: groupList?[indexPath.row])
     }
 }

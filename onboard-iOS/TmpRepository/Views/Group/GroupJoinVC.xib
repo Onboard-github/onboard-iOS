@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupJoinVC" customModule="onboard_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="groupName" destination="0Fb-t6-09d" id="V0K-yp-MH0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sj-hr-ict">
+                    <rect key="frame" x="20" y="75" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="cdI-eL-5dk"/>
+                        <constraint firstAttribute="height" constant="20" id="fkF-W2-kO8"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="icon_back"/>
+                    <connections>
+                        <action selector="backButton:" destination="-1" eventType="touchUpInside" id="tCH-bJ-7ib"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ulo-gc-lnk" customClass="BorderedButton" customModule="onboard_iOS" customModuleProvider="target">
+                    <rect key="frame" x="20" y="750" width="353" height="48"/>
+                    <color key="backgroundColor" red="1" green="0.30196078430000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Zeg-W7-wyN"/>
+                    </constraints>
+                    <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="그룹 들어가기">
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="enableColor">
+                            <color key="value" red="0.92549020049999997" green="0.35686278339999999" blue="0.1764705926" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                            <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yzy-Ow-kUG">
+                    <rect key="frame" x="20" y="442" width="353" height="152"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소속소속소속소속소속소속소속소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skC-sP-tfF">
+                            <rect key="frame" x="4" y="0.0" width="345" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동아리이름동아리이름동아리이름동아리이름동아리이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fb-t6-09d">
+                            <rect key="frame" x="4" y="28.999999999999996" width="345" height="33.666666666666657"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동아리소개동아리소개동아리소개동아리소개동아리소개동아리소개동아리소개동아리소개동아리소개동아리소개동아리소개동아리소개동아리소개동아리소개동아" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYi-0u-z4R">
+                            <rect key="frame" x="4" y="70.666666666666629" width="345" height="81.333333333333314"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="skC-sP-tfF" firstAttribute="leading" secondItem="Yzy-Ow-kUG" secondAttribute="leading" constant="4" id="2XT-iP-aI9"/>
+                        <constraint firstItem="0Fb-t6-09d" firstAttribute="leading" secondItem="Yzy-Ow-kUG" secondAttribute="leading" constant="4" id="E6H-b2-PAd"/>
+                        <constraint firstItem="0Fb-t6-09d" firstAttribute="top" secondItem="skC-sP-tfF" secondAttribute="bottom" constant="8" id="ELJ-Pd-8H5"/>
+                        <constraint firstAttribute="trailing" secondItem="0Fb-t6-09d" secondAttribute="trailing" constant="4" id="EzD-AW-SSK"/>
+                        <constraint firstAttribute="trailing" secondItem="aYi-0u-z4R" secondAttribute="trailing" constant="4" id="HaE-Za-g9G"/>
+                        <constraint firstItem="aYi-0u-z4R" firstAttribute="top" secondItem="0Fb-t6-09d" secondAttribute="bottom" constant="8" id="OKl-jT-UWh"/>
+                        <constraint firstAttribute="bottom" secondItem="aYi-0u-z4R" secondAttribute="bottom" id="Orz-hS-c6w"/>
+                        <constraint firstAttribute="trailing" secondItem="skC-sP-tfF" secondAttribute="trailing" constant="4" id="YPO-vD-8U7"/>
+                        <constraint firstItem="skC-sP-tfF" firstAttribute="top" secondItem="Yzy-Ow-kUG" secondAttribute="top" id="fGo-tW-c5p"/>
+                        <constraint firstItem="aYi-0u-z4R" firstAttribute="leading" secondItem="Yzy-Ow-kUG" secondAttribute="leading" constant="4" id="ruh-65-bFZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ulo-gc-lnk" secondAttribute="trailing" constant="20" id="9jh-Ny-u2P"/>
+                <constraint firstItem="5Sj-hr-ict" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="AMW-R5-Fyx"/>
+                <constraint firstItem="5Sj-hr-ict" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="Cae-og-m6o"/>
+                <constraint firstItem="Ulo-gc-lnk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Lbs-ze-59O"/>
+                <constraint firstItem="Yzy-Ow-kUG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="iVp-cJ-Gix"/>
+                <constraint firstItem="Ulo-gc-lnk" firstAttribute="top" secondItem="Yzy-Ow-kUG" secondAttribute="bottom" constant="156" id="jMt-3k-8Mg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ulo-gc-lnk" secondAttribute="bottom" constant="20" id="lHB-0O-L8w"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Yzy-Ow-kUG" secondAttribute="trailing" constant="20" id="sln-G9-3eT"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="20"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="Ulo-gc-lnk">
+            <size key="intrinsicContentSize" width="100.33333333333333" height="31"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="icon_back" width="20" height="20"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

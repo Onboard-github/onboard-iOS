@@ -27,7 +27,7 @@
                     </constraints>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_dice" translatesAutoresizingMaskIntoConstraints="NO" id="ie0-9a-3fi" customClass="RotatableView" customModule="onboard_iOS" customModuleProvider="target">
-                    <rect key="frame" x="288" y="75" width="156" height="156"/>
+                    <rect key="frame" x="259.45001850481378" y="46.450018504813784" width="213.09996299037243" height="213.09996299037243"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="156" id="Iq6-Pz-pXh"/>
                         <constraint firstAttribute="width" constant="156" id="dX4-zy-Ale"/>
@@ -39,7 +39,7 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_dice" translatesAutoresizingMaskIntoConstraints="NO" id="9kD-kV-Dk8" customClass="RotatableView" customModule="onboard_iOS" customModuleProvider="target">
-                    <rect key="frame" x="-36" y="448" width="106" height="106"/>
+                    <rect key="frame" x="-55.399346400575254" y="428.60065359942473" width="144.79869280115048" height="144.79869280115054"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="106" id="cUN-f0-07s"/>
                         <constraint firstAttribute="width" constant="106" id="nRx-8Z-DIX"/>
@@ -165,7 +165,7 @@
     </objects>
     <designables>
         <designable name="9kD-kV-Dk8">
-            <size key="intrinsicContentSize" width="638" height="649"/>
+            <size key="intrinsicContentSize" width="80" height="81.666666666666671"/>
         </designable>
         <designable name="G9u-ND-P0w">
             <size key="intrinsicContentSize" width="151.66666666666666" height="34.333333333333336"/>
@@ -174,7 +174,7 @@
             <size key="intrinsicContentSize" width="151.66666666666666" height="34.333333333333336"/>
         </designable>
         <designable name="ie0-9a-3fi">
-            <size key="intrinsicContentSize" width="638" height="649"/>
+            <size key="intrinsicContentSize" width="80" height="81.666666666666671"/>
         </designable>
         <designable name="yhE-ih-8ZT">
             <size key="intrinsicContentSize" width="142" height="34.333333333333336"/>
@@ -182,7 +182,7 @@
     </designables>
     <resources>
         <image name="big_title" width="235" height="110"/>
-        <image name="img_dice" width="638" height="649"/>
+        <image name="img_dice" width="80" height="81.666664123535156"/>
         <image name="kakao_login" width="22" height="22"/>
         <image name="login_apple" width="22" height="22"/>
         <image name="login_google" width="22" height="22"/>
