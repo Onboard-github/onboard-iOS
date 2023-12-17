@@ -138,7 +138,7 @@ final class GroupCreateView: UIView {
     }()
     
     private let registerButton: BaseButton = {
-        let button = BaseButton(status: .disabled, style: .rounded)
+        let button = BaseButton(status: .default, style: .rounded)
         button.setTitle("그룹 등록하기", for: .normal)
         return button
     }()
