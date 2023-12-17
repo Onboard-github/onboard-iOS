@@ -854,7 +854,7 @@
 				AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
-				1C1F51AF2AE16B600020AA71 /* ImagePopupView.swift in Sources */,
+				1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */,
 				AAF1699F2B10E05200EF82A4 /* AgreeVC.swift in Sources */,
 				1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */,
 				AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */,
@@ -1015,7 +1015,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = XBHLSDCD8G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
@@ -1044,7 +1044,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = XBHLSDCD8G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
