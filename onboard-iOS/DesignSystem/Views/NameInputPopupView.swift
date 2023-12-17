@@ -7,7 +7,16 @@
 
 import UIKit
 
-final class NameInputPopupView: UIView {
+import ReactorKit
+
+final class NameInputPopupView: UIViewController, View {
+    
+    typealias Reactor = GroupCreateReactor
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
+    private let groupCreateView = GroupCreateView()
     
     // MARK: - Metric
     
@@ -86,7 +95,7 @@ final class NameInputPopupView: UIView {
     }()
     
     private let registerButton: BaseButton = {
-        let button = BaseButton(status: .disabled, style: .bottom)
+        let button = BaseButton(status: .default, style: .bottom)
         button.setTitle("그룹 등록하기", for: .normal)
         return button
     }()
@@ -123,8 +132,10 @@ final class NameInputPopupView: UIView {
     
     // MARK: - Initialize
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(reactor: GroupCreateReactor) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
@@ -133,22 +144,38 @@ final class NameInputPopupView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Bind
+    
+    func bind(reactor: GroupCreateReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupCreateReactor) {
+        self.registerButton.addAction(UIAction { _ in
+            
+        }, for: .touchUpInside)
+    }
+    
+    func bindState(reactor: GroupCreateReactor) {
+        reactor.state
+            .map { $0.imageURL }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+            })
+            .disposed(by: disposeBag)
+    }
+    
     // MARK: - Configure
     
     private func configure() {
-        self.addConfigure()
         self.makeConstraints()
         self.setupGestureRecognizer()
     }
     
-    private func addConfigure() {
-        self.registerButton.addAction(UIAction(handler: { _ in
-        }), for: .touchUpInside)
-    }
-    
     private func makeConstraints() {
-        self.addSubview(self.backgroundView)
-        self.addSubview(self.contentView)
+        self.view.addSubview(self.backgroundView)
+        self.view.addSubview(self.contentView)
         self.contentView.addSubview(self.titleStackView)
         self.contentView.addSubview(self.textFieldStackView)
         self.contentView.addSubview(self.registerButton)
@@ -194,7 +221,7 @@ final class NameInputPopupView: UIView {
     
     @objc
     private func backgroundTapped() {
-        removeFromSuperview()
+        self.dismiss(animated: false)
     }
 }
 
@@ -215,12 +242,6 @@ extension NameInputPopupView: UITextFieldDelegate {
             if newLength <= maxLength {
                 let formattedText = String(format: "%02d/%02d", newLength, maxLength)
                 self.countLabel.text = formattedText
-                
-                if newLength >= 1 {
-                    registerButton.status = .default
-                } else {
-                    registerButton.status = .disabled
-                }
                 
                 return true
             } else {
