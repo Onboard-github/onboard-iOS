@@ -19,6 +19,10 @@ class AgreeNicknameVC: UIViewController {
     
     class Empty: Codable {}
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    
     @IBAction func confirmButtonAction(_ sender: Any) {
         Task {
             do {
