@@ -8,6 +8,7 @@
 import UIKit
 import ReactorKit
 
+
 final class GroupSearchViewController: UIViewController, View {
     
     typealias Reactor = GroupSearchReactor
@@ -21,6 +22,7 @@ final class GroupSearchViewController: UIViewController, View {
     
     override func loadView() {
         self.view = groupSearchView
+        groupSearchView.delegate = self
     }
     
     init(reactor: GroupSearchReactor) {
@@ -48,6 +50,12 @@ final class GroupSearchViewController: UIViewController, View {
         self.groupSearchView.searchBarValueChanged = { text in
             reactor.action.onNext(.searchBarTextChanged(keyword: text))
         }
+        
+        self.groupSearchView.didTapAddGroupButton = { [weak self] in
+            let groupCreateVC = GroupCreateViewController()
+            groupCreateVC.modalPresentationStyle = .fullScreen
+            self?.navigationController?.present(groupCreateVC, animated: true)
+        }
     }
 
     private func bindState(reactor: GroupSearchReactor) {
@@ -58,6 +66,16 @@ final class GroupSearchViewController: UIViewController, View {
                 self?.groupSearchView.bind(groupList: result.map({$0.toPresentation()}))
             })
             .disposed(by: self.disposeBag)
+    }
+}
+
+extension GroupSearchViewController: GroupSearchDelegate {
+    func select(group: GroupSearchView.Group?) {
+        let joinVC = GroupJoinVC()
+        navigationController?.pushViewController(joinVC, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            joinVC.group = group
+        })
     }
 }
 

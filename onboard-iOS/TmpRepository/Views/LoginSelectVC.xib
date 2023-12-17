@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginSelectVC" customModule="onboard_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_title" translatesAutoresizingMaskIntoConstraints="NO" id="6RG-V3-cGw">
+                    <rect key="frame" x="79" y="291" width="235" height="110"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="110" id="5cO-fG-Qhc"/>
+                        <constraint firstAttribute="width" constant="235" id="kVN-Jl-KaJ"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_dice" translatesAutoresizingMaskIntoConstraints="NO" id="ie0-9a-3fi" customClass="RotatableView" customModule="onboard_iOS" customModuleProvider="target">
+                    <rect key="frame" x="259.45001850481378" y="46.450018504813784" width="213.09996299037243" height="213.09996299037243"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="156" id="Iq6-Pz-pXh"/>
+                        <constraint firstAttribute="width" constant="156" id="dX4-zy-Ale"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="rotationDegrees">
+                            <real key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_dice" translatesAutoresizingMaskIntoConstraints="NO" id="9kD-kV-Dk8" customClass="RotatableView" customModule="onboard_iOS" customModuleProvider="target">
+                    <rect key="frame" x="-55.399346400575254" y="428.60065359942473" width="144.79869280115048" height="144.79869280115054"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="106" id="cUN-f0-07s"/>
+                        <constraint firstAttribute="width" constant="106" id="nRx-8Z-DIX"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="rotationDegrees">
+                            <real key="value" value="-30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9u-ND-P0w" customClass="BorderedButton" customModule="onboard_iOS" customModuleProvider="target">
+                    <rect key="frame" x="20" y="730" width="353" height="48"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="gIy-Uf-PbN"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Apple ID로 로그인">
+                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="appleLogin:" destination="-1" eventType="touchUpInside" id="Kb6-2W-686"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_apple" translatesAutoresizingMaskIntoConstraints="NO" id="gmu-Mu-mmB">
+                    <rect key="frame" x="36" y="743" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="2Dm-tZ-QvL"/>
+                        <constraint firstAttribute="height" constant="22" id="3mr-hC-ZtL"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhE-ih-8ZT" customClass="BorderedButton" customModule="onboard_iOS" customModuleProvider="target">
+                    <rect key="frame" x="20" y="674" width="353" height="48"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="fna-xG-Eiv"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Google로 로그인">
+                        <color key="baseForegroundColor" red="0.54509803921568623" green="0.54509803921568623" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="googleLogin:" destination="-1" eventType="touchUpInside" id="eNi-oT-Bal"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_google" translatesAutoresizingMaskIntoConstraints="NO" id="XfW-au-MXm">
+                    <rect key="frame" x="36" y="687" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="5bR-at-yX9"/>
+                        <constraint firstAttribute="width" constant="22" id="bHT-Cl-pyb"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7R-9B-qcF" customClass="BorderedButton" customModule="onboard_iOS" customModuleProvider="target">
+                    <rect key="frame" x="20" y="618" width="353" height="48"/>
+                    <color key="backgroundColor" red="0.99607843137254903" green="0.89411764705882346" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="sZN-gP-HhF"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Apple ID로 로그인">
+                        <color key="baseForegroundColor" red="0.14117647058823529" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="kakaoLogin:" destination="-1" eventType="touchUpInside" id="Xaq-vw-PYu"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kakao_login" translatesAutoresizingMaskIntoConstraints="NO" id="gNV-10-xWO">
+                    <rect key="frame" x="36" y="631" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="MSV-me-KcS"/>
+                        <constraint firstAttribute="width" constant="22" id="oXA-4s-0bk"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="XfW-au-MXm" firstAttribute="leading" secondItem="yhE-ih-8ZT" secondAttribute="leading" constant="16" id="1fN-Wy-q7y"/>
+                <constraint firstItem="gNV-10-xWO" firstAttribute="leading" secondItem="h7R-9B-qcF" secondAttribute="leading" constant="16" id="Apl-Va-Msa"/>
+                <constraint firstItem="G9u-ND-P0w" firstAttribute="top" secondItem="yhE-ih-8ZT" secondAttribute="bottom" constant="8" id="DPR-HQ-iI4"/>
+                <constraint firstItem="6RG-V3-cGw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JEE-3J-YCt"/>
+                <constraint firstItem="XfW-au-MXm" firstAttribute="centerY" secondItem="yhE-ih-8ZT" secondAttribute="centerY" id="JEt-Bc-Hev"/>
+                <constraint firstItem="h7R-9B-qcF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Jrz-Ig-x2T"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yhE-ih-8ZT" secondAttribute="trailing" constant="20" id="S93-nN-qrJ"/>
+                <constraint firstItem="ie0-9a-3fi" firstAttribute="trailing" secondItem="6RG-V3-cGw" secondAttribute="trailing" constant="130" id="SZm-X8-SPB"/>
+                <constraint firstItem="yhE-ih-8ZT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="TuE-q6-pt5"/>
+                <constraint firstItem="9kD-kV-Dk8" firstAttribute="top" secondItem="6RG-V3-cGw" secondAttribute="bottom" constant="47" id="Vy2-xm-Fyt"/>
+                <constraint firstItem="yhE-ih-8ZT" firstAttribute="top" secondItem="h7R-9B-qcF" secondAttribute="bottom" constant="8" id="ZUg-HB-sOI"/>
+                <constraint firstItem="gNV-10-xWO" firstAttribute="centerY" secondItem="h7R-9B-qcF" secondAttribute="centerY" id="dgE-to-OHH"/>
+                <constraint firstItem="9kD-kV-Dk8" firstAttribute="leading" secondItem="6RG-V3-cGw" secondAttribute="leading" constant="-115" id="f3y-Ae-PVH"/>
+                <constraint firstItem="gmu-Mu-mmB" firstAttribute="centerY" secondItem="G9u-ND-P0w" secondAttribute="centerY" id="kaE-MW-20d"/>
+                <constraint firstItem="gmu-Mu-mmB" firstAttribute="leading" secondItem="G9u-ND-P0w" secondAttribute="leading" constant="16" id="nBW-zn-O41"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h7R-9B-qcF" secondAttribute="trailing" constant="20" id="okD-he-5pG"/>
+                <constraint firstItem="6RG-V3-cGw" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-80" id="pkJ-ZZ-vTK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="G9u-ND-P0w" secondAttribute="trailing" constant="20" id="q5G-QF-yfH"/>
+                <constraint firstItem="6RG-V3-cGw" firstAttribute="top" secondItem="ie0-9a-3fi" secondAttribute="bottom" constant="60" id="r3s-mk-rXT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="G9u-ND-P0w" secondAttribute="bottom" constant="40" id="sRs-Yl-qCw"/>
+                <constraint firstItem="G9u-ND-P0w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="sRz-aV-ECM"/>
+            </constraints>
+            <point key="canvasLocation" x="100" y="20.422535211267608"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="9kD-kV-Dk8">
+            <size key="intrinsicContentSize" width="80" height="81.666666666666671"/>
+        </designable>
+        <designable name="G9u-ND-P0w">
+            <size key="intrinsicContentSize" width="151.66666666666666" height="34.333333333333336"/>
+        </designable>
+        <designable name="h7R-9B-qcF">
+            <size key="intrinsicContentSize" width="151.66666666666666" height="34.333333333333336"/>
+        </designable>
+        <designable name="ie0-9a-3fi">
+            <size key="intrinsicContentSize" width="80" height="81.666666666666671"/>
+        </designable>
+        <designable name="yhE-ih-8ZT">
+            <size key="intrinsicContentSize" width="142" height="34.333333333333336"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="big_title" width="235" height="110"/>
+        <image name="img_dice" width="80" height="81.666664123535156"/>
+        <image name="kakao_login" width="22" height="22"/>
+        <image name="login_apple" width="22" height="22"/>
+        <image name="login_google" width="22" height="22"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -80,6 +80,7 @@ final class GroupSearchCell: UITableViewCell {
     // MARK: - Configure
     private func configure() {
         self.makeConstraints()
+        selectionStyle = .none
     }
     
     private func makeConstraints() {
