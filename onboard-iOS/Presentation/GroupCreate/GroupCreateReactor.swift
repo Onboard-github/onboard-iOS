@@ -16,14 +16,17 @@ final class GroupCreateReactor: Reactor {
     enum Action {
         case fileUpload(file: File, purpose: Purpose)
         case randomImage
+        case createGroup(req: GroupCreateCompleteEntity.Req)
     }
     
     enum Mutation {
         case setRandomImage(result: String)
+        case setGroupCreation(result: GroupCreateCompleteEntity.Res)
     }
     
     struct State {
         var imageURL: String
+        var createdGroup: GroupCreateCompleteEntity.Res?
     }
     
     private let useCase: GroupCreateUseCase
@@ -40,6 +43,8 @@ final class GroupCreateReactor: Reactor {
             return self.fileUploadResult(file: file, purpose: purpose)
         case .randomImage:
             return self.randomImageResult()
+        case let .createGroup(req):
+            return self.createGroupResult(req: req)
         }
     }
     
@@ -50,6 +55,8 @@ final class GroupCreateReactor: Reactor {
         switch mutation {
         case .setRandomImage(let imageURL):
             state.imageURL = imageURL
+        case .setGroupCreation(let result):
+            state.createdGroup = result
         }
         
         return state
@@ -76,13 +83,30 @@ extension GroupCreateReactor {
     
     private func randomImageResult() -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
-            guard let self else { return Disposables.create() }
+            guard let self = self else { return Disposables.create() }
             
             Task {
                 do {
                     let result = try await self.useCase.fetchRandomImage()
                     
                     observer.onNext(.setRandomImage(result: result.url))
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    private func createGroupResult(req: GroupCreateCompleteEntity.Req) -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
+            
+            Task {
+                do {
+                    let result = try await self.useCase.createGroup(req: req)
+                    observer.onNext(.setGroupCreation(result: result))
                 } catch {
                     observer.onError(error)
                 }
