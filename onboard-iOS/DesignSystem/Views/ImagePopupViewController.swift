@@ -1,5 +1,5 @@
 //
-//  ImagePopupView.swift
+//  ImagePopupViewController.swift
 //  onboard-iOS
 //
 //  Created by 혜리 on 2023/10/19.
@@ -7,18 +7,28 @@
 
 import UIKit
 
-class ImagePopupView: UIView {
+import ReactorKit
+
+final class ImagePopupViewController: UIViewController, View {
+    
+    typealias Reactor = GroupCreateReactor
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
+    
+    var imageCompletion: ((UIImage?) -> Void)?
+    private let imagePickerController = UIImagePickerController()
     
     // MARK: - Metric
     
     private enum Metric {
+        static let contentViewLRMargin: CGFloat = 20
         static let contentViewWidth: CGFloat = 324
         static let contentViewHeight: CGFloat = 200
         static let topMargin: CGFloat = 26
         static let bottomMargin: CGFloat = 20
         static let leftRightMargin: CGFloat = 24
-        static let iconSize: CGFloat = 20
-        static let textFieldHeight: CGFloat = 52
     }
     
     // MARK: - UI
@@ -29,7 +39,7 @@ class ImagePopupView: UIView {
         return view
     }()
     
-    let contentView: UIView = {
+    private let contentView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 12
@@ -39,7 +49,7 @@ class ImagePopupView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "모임 대표 이미지"
+        label.text = "그룹 대표 이미지"
         label.textColor = Colors.Gray_15
         label.font = Font.Typography.title2
         return label
@@ -47,7 +57,7 @@ class ImagePopupView: UIView {
     
     private let subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "모임을 소개하는 대표 이미지를 넣어보세요!"
+        label.text = "그룹을 소개하는 이미지를 넣어주세요."
         label.textColor = Colors.Gray_9
         label.font = Font.Typography.body4_R
         label.numberOfLines = 0
@@ -94,22 +104,62 @@ class ImagePopupView: UIView {
     
     // MARK: - Initialize
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(reactor: GroupCreateReactor) {
+        super.init(nibName: nil, bundle: nil)
         
-        makeConstraints()
-        setupGestureRecognizer()
+        self.reactor = reactor
+        
+        self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Bind
+    
+    func bind(reactor: GroupCreateReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupCreateReactor) {
+        self.imageButton.addAction(UIAction(handler: { [self] _ in
+            openImagePicker()
+        }), for: .touchUpInside)
+        
+        self.randomImageButton.addAction(UIAction { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.reactor?.action.onNext(.randomImage)
+            
+            let generatedUUID = UUID().uuidString
+            UUIDManager.shared.saveUUID(generatedUUID)
+        }, for: .touchUpInside)
+    }
+    
+    func bindState(reactor: GroupCreateReactor) {
+        reactor.state
+            .map { $0.imageURL }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                ImageLoader.loadImage(from: data) { image in
+                    self?.imageCompletion?(image)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
     // MARK: - Configure
     
+    private func configure() {
+        self.makeConstraints()
+        self.setupGestureRecognizer()
+    }
+    
     private func makeConstraints() {
-        self.addSubview(self.backgroundView)
-        self.addSubview(self.contentView)
+        self.view.addSubview(self.backgroundView)
+        self.view.addSubview(self.contentView)
         self.contentView.addSubview(self.titleStackView)
         self.contentView.addSubview(self.buttonStackView)
         
@@ -118,8 +168,8 @@ class ImagePopupView: UIView {
         }
         
         self.contentView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(Metric.contentViewLRMargin)
             $0.centerX.centerY.equalToSuperview()
-            $0.width.equalTo(Metric.contentViewWidth)
             $0.height.equalTo(Metric.contentViewHeight)
         }
         
@@ -142,8 +192,51 @@ class ImagePopupView: UIView {
         self.backgroundView.addGestureRecognizer(tapGesture)
     }
     
+    private func createFile(from image: UIImage, withName name: String, mimeType: String) -> File? {
+        guard let imageData = image.pngData() else { return nil }
+        
+        return File(name: name, data: imageData, mimeType: mimeType)
+    }
+    
     @objc
     private func backgroundTapped() {
-        removeFromSuperview()
+        self.dismiss(animated: false)
     }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension ImagePopupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    private func openImagePicker() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.allowsEditing = false
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+            
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            if let file = createFile(from: image, withName: "image.png", mimeType: "image/png") {
+                let generatedUUID = UUID().uuidString
+                UUIDManager.shared.saveUUID(generatedUUID)
+
+                reactor?.action.onNext(.fileUpload(file: file, purpose: .MATCH_IMAGE))
+            }
+            imageCompletion?(image)
+        }
+
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+
+    func imagePickerControllerDidCancel(
+        _ picker: UIImagePickerController) {
+            picker.dismiss(animated: true, completion: nil)
+        }
 }

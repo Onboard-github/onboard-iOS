@@ -34,6 +34,31 @@ final class OBNetworkManager {
         return response
     }
     
+    func asyncFileUploadRequest<T: Decodable>(
+        object: T.Type,
+        router: OBRouter,
+        file: File
+    ) async throws -> DataResponse<T, AFError> {
+        
+        let response = await AF.upload(multipartFormData: { MultipartFormData in
+            MultipartFormData.append(file.data, 
+                                     withName: "file",
+                                     fileName: file.name,
+                                     mimeType: file.mimeType)
+            for (key, value) in router.params ?? [:] {
+                if let data = "\(value)".data(using: .utf8) {
+                    MultipartFormData.append(data, withName: key)
+                }
+            }
+        }, with: router)
+
+            .validate(statusCode: 200..<300)
+            .serializingDecodable(object)
+            .response
+        
+        return response
+    }
+    
     func googleLoginRequest(token: String) throws {
         let googleLoginAPI = try OBRouter.auth(
             body: AuthRequest.Body(

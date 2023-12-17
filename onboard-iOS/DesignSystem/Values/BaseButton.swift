@@ -21,11 +21,15 @@ enum ButtonStyle {
 
 class BaseButton: UIButton {
     
-    private var status: ButtonStatus
+    var status: ButtonStatus {
+        didSet {
+            self.setButton()
+        }
+    }
+    
     private var style: ButtonStyle {
         didSet {
-            self.setButton(status: self.status,
-                           style: self.style)
+            self.setButton()
         }
     }
     
@@ -39,28 +43,30 @@ class BaseButton: UIButton {
         
         super.init(frame: .zero)
         
-        self.setButton(status: status, style: style)
+        self.setButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setButton(status: ButtonStatus, style: ButtonStyle) {
-        
+    private func setButton() {
         switch status {
         case .default:
-            self.bgColor = Colors.Orange_5
+            self.bgColor = Colors.Orange_10
             self.textColor = Colors.Gray_2
             self.typo = Font.Typography.label3_B
+            self.isEnabled = true
         case .disabled:
             self.bgColor = Colors.Gray_4
             self.textColor = Colors.Gray_7
             self.typo = Font.Typography.label3_M
+            self.isEnabled = false
         case .pressed:
             self.bgColor = Colors.Gray_15
             self.textColor = Colors.Gray_1
             self.typo = Font.Typography.label3_B
+            self.isEnabled = true
         }
         
         switch style {

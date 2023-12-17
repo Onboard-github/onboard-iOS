@@ -50,6 +50,12 @@ final class GroupSearchViewController: UIViewController, View {
         self.groupSearchView.searchBarValueChanged = { text in
             reactor.action.onNext(.searchBarTextChanged(keyword: text))
         }
+        
+        self.groupSearchView.didTapAddGroupButton = { [weak self] in
+            let groupCreateVC = GroupCreateViewController()
+            groupCreateVC.modalPresentationStyle = .fullScreen
+            self?.navigationController?.present(groupCreateVC, animated: true)
+        }
     }
 
     private func bindState(reactor: GroupSearchReactor) {

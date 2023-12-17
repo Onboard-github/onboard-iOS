@@ -9,6 +9,11 @@ import Foundation
 
 import Alamofire
 
+struct AccessToken {
+    // 임시 토큰 (화면 연결 시 제거)
+    static let token = "77+9bVoF77+9ZjHvv71gDe+/vRNDKe+/vT1NZO+/"
+}
+
 enum OBRouter: URLRequestConvertible {
 
     // MARK: - Properties
@@ -29,14 +34,17 @@ enum OBRouter: URLRequestConvertible {
     case addGroup(body: Body)
     case setUser(body: Body)
     case gameList
+    case pickerImage(params: Params)
+    case randomImage
+    case createGroup(body: Body)
 
     // MARK: - HTTP Method
 
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList, .gameList:
+        case .testAPI, .groupList, .gameList, .randomImage:
             return .get
-        case .auth, .addGroup:
+        case .auth, .addGroup, .pickerImage, .createGroup:
             return .post
         case .setUser:
             return .put
@@ -57,6 +65,12 @@ enum OBRouter: URLRequestConvertible {
             return "v1/user/me"
         case .gameList:
             return "v1/group/0/game"
+        case .pickerImage:
+            return "v1/file"
+        case .randomImage:
+            return "api/v1/group/default-image"
+        case .createGroup:
+            return "api/v1/group"
         }
     }
 
@@ -64,10 +78,13 @@ enum OBRouter: URLRequestConvertible {
 
     var header: Header? {
         switch self {
-        case .testAPI, .auth, .addGroup, .groupList:
+        case .testAPI, .auth, .addGroup, .groupList, .randomImage, .createGroup:
             return nil
         case .setUser, .gameList:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
+        case .pickerImage:
+            return ["Authorization": "Bearer \(AccessToken.token)",
+                    "content-type": "multipart/form-data"]
         }
     }
 
@@ -75,10 +92,10 @@ enum OBRouter: URLRequestConvertible {
 
     var body: Body? {
         switch self {
-        case .testAPI, .groupList, .gameList:
+        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage:
             return nil
 
-        case let .auth(body), let .addGroup(body), let .setUser(body):
+        case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body):
             return body
         }
     }
@@ -87,9 +104,11 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup, .setUser, .gameList:
+        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup:
             return nil
         case let .groupList(params):
+            return params
+        case let .pickerImage(params):
             return params
         }
     }
