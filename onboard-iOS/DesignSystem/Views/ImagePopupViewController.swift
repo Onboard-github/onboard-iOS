@@ -128,9 +128,14 @@ final class ImagePopupViewController: UIViewController, View {
             openImagePicker()
         }), for: .touchUpInside)
         
-        self.randomImageButton.addAction(UIAction(handler: { _ in
-            reactor.action.onNext(.randomImage)
-        }), for: .touchUpInside)
+        self.randomImageButton.addAction(UIAction { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.reactor?.action.onNext(.randomImage)
+            
+            let generatedUUID = UUID().uuidString
+            UUIDManager.shared.saveUUID(generatedUUID)
+        }, for: .touchUpInside)
     }
     
     func bindState(reactor: GroupCreateReactor) {
@@ -214,18 +219,22 @@ extension ImagePopupViewController: UIImagePickerControllerDelegate, UINavigatio
     
     func imagePickerController(
         _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if let file = createFile(from: image, withName: "image.png", mimeType: "image/png") {
+                let generatedUUID = UUID().uuidString
+                UUIDManager.shared.saveUUID(generatedUUID)
+
                 reactor?.action.onNext(.fileUpload(file: file, purpose: .MATCH_IMAGE))
             }
             imageCompletion?(image)
         }
-        
+
         picker.dismiss(animated: true, completion: nil)
     }
-    
+
+
     func imagePickerControllerDidCancel(
         _ picker: UIImagePickerController) {
             picker.dismiss(animated: true, completion: nil)
