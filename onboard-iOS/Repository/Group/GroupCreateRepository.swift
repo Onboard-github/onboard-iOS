@@ -11,7 +11,7 @@ protocol GroupCreateRepository {
     func requestFileUpload(file: File, purpose: Purpose) async throws -> GroupCreateEntity.Res
     func requestRandomImage() async throws -> GroupCreateEntity.Res
     
-    func requestCreate() async throws -> GroupCreateEntity.Req
+    func requestCreate(req: GroupCreateCompleteEntity.Req) async throws -> GroupCreateCompleteEntity.Res
 }
 
 final class GroupCreateRepositoryImpl: GroupCreateRepository {
@@ -25,7 +25,7 @@ final class GroupCreateRepositoryImpl: GroupCreateRepository {
                     router: OBRouter.pickerImage(
                         params: ["file": file,
                                  "purpose": purpose]),
-                        file: file
+                    file: file
                 )
             
             guard let data = result.value else {
@@ -57,20 +57,35 @@ final class GroupCreateRepositoryImpl: GroupCreateRepository {
         }
     }
     
-    func requestCreate() async throws -> GroupCreateEntity.Req {
+    func requestCreate(req: GroupCreateCompleteEntity.Req) async throws -> GroupCreateCompleteEntity.Res {
         do {
             let result = try await OBNetworkManager
                 .shared
                 .asyncRequest(
-                    object: GroupCreateDTO.self,
-                    router: OBRouter.createGroup
+                    object: GroupCreateCompleteDTO.self,
+                    router: OBRouter.createGroup(
+                        body: GroupCreateRequest.Body(
+                            name: req.name,
+                            description: req.description,
+                            organization: req.organization,
+                            profileImageUrl: req.profileImageUrl,
+                            profileImageUuid: req.profileImageUuid,
+                            nickname: req.nickname
+                        ).encode()
+                    )
                 )
+            
+            print("result \(result)")
             
             guard let data = result.value else {
                 throw NetworkError.noExist
             }
             
-            return data.domain
+            if let error = result.error {
+                print("API 호출 실패 - error: \(error)")
+            }
+            
+            return data.domain()
         } catch {
             throw error
         }
@@ -82,14 +97,18 @@ extension GroupCreateDTO {
         return GroupCreateEntity.Res(uuid: self.uuid,
                                      url: self.url)
     }
-    
-    var domain: GroupCreateEntity.Req {
-        let group = self.content.map( {GroupCreateEntity.Req.Group(name: $0.name,
-                                                             description: $0.description,
-                                                             organization: $0.organization,
-                                                             profileImageUrl: $0.profileImageUrl,
-                                                             profileImageUuid: $0.profileImageUuid,
-                                                             nickname: $0.nickname)})
-        return GroupCreateEntity.Req(contents: group)
+}
+
+extension GroupCreateCompleteDTO {
+    func domain() ->  GroupCreateCompleteEntity.Res {
+        return GroupCreateCompleteEntity.Res(
+            id: self.id,
+            name: self.name,
+            description: self.description,
+            owner: self.owner,
+            organization: self.organization,
+            profileImageUrl: self.profileImageUrl,
+            accessCode: self.accessCode
+        )
     }
 }
