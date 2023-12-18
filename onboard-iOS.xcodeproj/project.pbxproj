@@ -1016,7 +1016,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XBHLSDCD8G;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1049,7 +1049,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XBHLSDCD8G;
 				GENERATE_INFOPLIST_FILE = YES;
