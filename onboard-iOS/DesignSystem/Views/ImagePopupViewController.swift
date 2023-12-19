@@ -223,8 +223,6 @@ extension ImagePopupViewController: UIImagePickerControllerDelegate, UINavigatio
             
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if let file = createFile(from: image, withName: "image.png", mimeType: "image/png") {
-                let generatedUUID = UUID().uuidString
-                UUIDManager.shared.saveUUID(generatedUUID)
 
                 reactor?.action.onNext(.fileUpload(file: file, purpose: .MATCH_IMAGE))
             }
