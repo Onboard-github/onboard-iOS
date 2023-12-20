@@ -9,11 +9,6 @@ import Foundation
 
 import Alamofire
 
-struct AccessToken {
-    // 임시 토큰 (화면 연결 시 제거)
-    static let token = "77+9bVoF77+9ZjHvv71gDe+/vRNDKe+/vT1NZO+/"
-}
-
 enum OBRouter: URLRequestConvertible {
 
     // MARK: - Properties
