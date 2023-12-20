@@ -78,7 +78,7 @@ enum OBRouter: URLRequestConvertible {
         case .setUser, .gameList:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
-            return ["Authorization": "Bearer \(AccessToken.token)",
+            return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
                     "content-type": "multipart/form-data"]
         }
     }
