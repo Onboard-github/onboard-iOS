@@ -152,16 +152,28 @@ final class NameInputPopupView: UIViewController, View {
     }
     
     func bindAction(reactor: GroupCreateReactor) {
-        self.registerButton.addAction(UIAction { _ in
+        self.registerButton.addAction(UIAction { [weak self] _ in
+            let req = GroupCreateCompleteEntity.Req(
+                name: GroupCreateManager.shared.getName() ?? "",
+                description: GroupCreateManager.shared.getDescription() ?? "",
+                organization: GroupCreateManager.shared.getOrganization() ?? "",
+                profileImageUrl: nil,
+                profileImageUuid: GroupCreateManager.shared.getSavedUUID() ?? "",
+                nickname: LoginSessionManager.getNickname() ?? ""
+            )
             
+            print("req \(req)")
+            
+            self?.reactor?.action.onNext(.createGroups(req: req))
         }, for: .touchUpInside)
     }
     
     func bindState(reactor: GroupCreateReactor) {
         reactor.state
-            .map { $0.imageURL }
+            .map { $0.createdGroup }
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] data in
+            .subscribe(onNext: { data in
+                print("nameInput data: \(String(describing: data))")
             })
             .disposed(by: disposeBag)
     }
