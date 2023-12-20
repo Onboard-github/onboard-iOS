@@ -52,8 +52,13 @@ final class GroupSearchViewController: UIViewController, View {
         }
         
         self.groupSearchView.didTapAddGroupButton = { [weak self] in
-            let navigationController = UINavigationController(rootViewController: GroupCreateViewController())
+            let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
+            let reactor = GroupCreateReactor(useCase: useCase)
+            let groupCreateViewController = GroupCreateViewController(reactor: reactor)
+            
+            let navigationController = UINavigationController(rootViewController: groupCreateViewController)
             navigationController.modalPresentationStyle = .fullScreen
+
             self?.navigationController?.present(navigationController, animated: true)
         }
     }
