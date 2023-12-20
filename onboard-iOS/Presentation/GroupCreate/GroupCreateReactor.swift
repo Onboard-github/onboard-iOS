@@ -16,7 +16,7 @@ final class GroupCreateReactor: Reactor {
     enum Action {
         case fileUpload(file: File, purpose: Purpose)
         case randomImage
-        case createGroup(req: GroupCreateCompleteEntity.Req)
+        case createGroups(req: GroupCreateCompleteEntity.Req)
     }
     
     enum Mutation {
@@ -43,7 +43,7 @@ final class GroupCreateReactor: Reactor {
             return self.fileUploadResult(file: file, purpose: purpose)
         case .randomImage:
             return self.randomImageResult()
-        case let .createGroup(req):
+        case let .createGroups(req):
             return self.createGroupResult(req: req)
         }
     }
@@ -73,7 +73,9 @@ extension GroupCreateReactor {
                 do {
                     let result = try await self.useCase.fetchFileUpload(file: file, purpose: purpose)
                     
-                    let uuid = result.url
+                    let url = result.url
+                    let uuid = result.uuid
+                    GroupCreateManager.shared.saveUrl(url)
                     GroupCreateManager.shared.saveUUID(uuid)
                 } catch {
                     observer.onError(error)
@@ -92,7 +94,9 @@ extension GroupCreateReactor {
                 do {
                     let result = try await self.useCase.fetchRandomImage()
                     
-                    let uuid = result.url
+                    let url = result.url
+                    let uuid = result.uuid
+                    GroupCreateManager.shared.saveUrl(url)
                     GroupCreateManager.shared.saveUUID(uuid)
                     
                     observer.onNext(.setRandomImage(result: result.url))
@@ -113,7 +117,10 @@ extension GroupCreateReactor {
                 do {
                     let result = try await self.useCase.createGroup(req: req)
                     observer.onNext(.setGroupCreation(result: result))
+                    
+                    print("create group success \(result)")
                 } catch {
+                    print("create group error \(error)")
                     observer.onError(error)
                 }
             }
