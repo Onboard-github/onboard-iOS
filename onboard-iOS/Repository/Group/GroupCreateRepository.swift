@@ -102,13 +102,13 @@ extension GroupCreateDTO {
 extension GroupCreateCompleteDTO {
     func domain() ->  GroupCreateCompleteEntity.Res {
         return GroupCreateCompleteEntity.Res(
-            id: self.id,
-            name: self.name,
-            description: self.description,
-            owner: self.owner,
-            organization: self.organization,
-            profileImageUrl: self.profileImageUrl,
-            accessCode: self.accessCode
+            id: self.id ?? 0,
+            name: self.name ?? "",
+            description: self.description ?? "",
+            owner: self.owner ?? "",
+            organization: self.organization ?? "",
+            profileImageUrl: self.profileImageUrl ?? "",
+            accessCode: self.accessCode ?? ""
         )
     }
 }
