@@ -129,12 +129,7 @@ final class ImagePopupViewController: UIViewController, View {
         }), for: .touchUpInside)
         
         self.randomImageButton.addAction(UIAction { [weak self] _ in
-            guard let self = self else { return }
-            
-            self.reactor?.action.onNext(.randomImage)
-            
-            let generatedUUID = UUID().uuidString
-            UUIDManager.shared.saveUUID(generatedUUID)
+            self?.reactor?.action.onNext(.randomImage)
         }, for: .touchUpInside)
     }
     
