@@ -9,9 +9,13 @@ import UIKit
 
 import ReactorKit
 
-final class GroupCreateViewController: UIViewController {
+final class GroupCreateViewController: UIViewController, View {
+    
+    typealias Reactor = GroupCreateReactor
     
     // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     private let groupCreateView = GroupCreateView()
     let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
@@ -24,8 +28,10 @@ final class GroupCreateViewController: UIViewController {
     
     // MARK: - Initialize
 
-    init() {
+    init(reactor: GroupCreateReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
@@ -33,6 +39,23 @@ final class GroupCreateViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: GroupCreateReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupCreateReactor) {
+        
+    }
+    
+    func bindState(reactor: GroupCreateReactor) {
+        
+    }
+    
+    // MARK: - Configure
     
     private func configure() {
         self.addConfigure()
