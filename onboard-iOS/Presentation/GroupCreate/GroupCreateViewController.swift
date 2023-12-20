@@ -18,7 +18,6 @@ final class GroupCreateViewController: UIViewController, View {
     var disposeBag = DisposeBag()
     
     private let groupCreateView = GroupCreateView()
-    let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
     
     // MARK: - Life Cycles
     
@@ -48,11 +47,19 @@ final class GroupCreateViewController: UIViewController, View {
     }
     
     func bindAction(reactor: GroupCreateReactor) {
-        
+        reactor.action.onNext(.randomImage)
     }
     
     func bindState(reactor: GroupCreateReactor) {
-        
+        reactor.state
+            .map { $0.imageURL }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                ImageLoader.loadImage(from: data) { image in
+                    self?.groupCreateView.titleImageView.image = image
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Configure
@@ -64,6 +71,7 @@ final class GroupCreateViewController: UIViewController, View {
     
     private func addConfigure() {
         self.groupCreateView.didImageViewButton = { [self] in
+            let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
             let reactor = GroupCreateReactor(useCase: useCase)
             let imagePopupVC = ImagePopupViewController(reactor: reactor)
             imagePopupVC.modalPresentationStyle = .overFullScreen
@@ -77,6 +85,16 @@ final class GroupCreateViewController: UIViewController, View {
         }
         
         self.groupCreateView.didTapRegisterButton = { [self] in
+            
+            let name = groupCreateView.nameTextField.text ?? ""
+            let description = groupCreateView.introductionTextView.text ?? ""
+            let organization = groupCreateView.organizationTextField.text ?? ""
+            
+            GroupCreateManager.shared.saveName(name)
+            GroupCreateManager.shared.saveDescription(description)
+            GroupCreateManager.shared.saveOrganization(organization)
+            
+            let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
             let reactor = GroupCreateReactor(useCase: useCase)
             let nameInputVC = NameInputPopupView(reactor: reactor)
             nameInputVC.modalPresentationStyle = .overFullScreen
