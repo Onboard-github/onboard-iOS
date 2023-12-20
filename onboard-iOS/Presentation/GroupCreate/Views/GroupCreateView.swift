@@ -63,7 +63,7 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private lazy var nameTextField: TextField = {
+    lazy var nameTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
@@ -92,7 +92,7 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private lazy var introductionTextView: TextView = {
+    lazy var introductionTextView: TextView = {
         let textView = TextView()
         textView.textColor = Colors.Gray_15
         textView.font = Font.Typography.body3_R
@@ -119,7 +119,7 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private lazy var organizationTextField: TextField = {
+    lazy var organizationTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
