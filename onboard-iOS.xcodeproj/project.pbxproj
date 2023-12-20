@@ -29,7 +29,7 @@
 		1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */; };
 		1CA1BBD02AE00704000C5F7E /* TextFieldLabelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */; };
 		1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */; };
-		1CCBDB3D2B2EB9820097DEE6 /* UuidManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCBDB3C2B2EB9820097DEE6 /* UuidManager.swift */; };
+		1CCBDB3D2B2EB9820097DEE6 /* GroupCreateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCBDB3C2B2EB9820097DEE6 /* GroupCreateManager.swift */; };
 		1CD2086A2B1BAB91008E710E /* GroupCreateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD208692B1BAB91008E710E /* GroupCreateRepository.swift */; };
 		1CD2086C2B1BAC28008E710E /* GroupCreateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */; };
 		1CD2086E2B1BADB2008E710E /* GroupCreateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086D2B1BADB2008E710E /* GroupCreateUseCase.swift */; };
@@ -132,7 +132,7 @@
 		1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLabelState.swift; sourceTree = "<group>"; };
 		1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
-		1CCBDB3C2B2EB9820097DEE6 /* UuidManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UuidManager.swift; sourceTree = "<group>"; };
+		1CCBDB3C2B2EB9820097DEE6 /* GroupCreateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateManager.swift; sourceTree = "<group>"; };
 		1CD208692B1BAB91008E710E /* GroupCreateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateRepository.swift; sourceTree = "<group>"; };
 		1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateDTO.swift; sourceTree = "<group>"; };
 		1CD2086D2B1BADB2008E710E /* GroupCreateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateUseCase.swift; sourceTree = "<group>"; };
@@ -497,7 +497,7 @@
 				611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */,
 				AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */,
 				1CD208712B1BB339008E710E /* ImageLoader.swift */,
-				1CCBDB3C2B2EB9820097DEE6 /* UuidManager.swift */,
+				1CCBDB3C2B2EB9820097DEE6 /* GroupCreateManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -861,7 +861,7 @@
 				AAF169892B108B0D00EF82A4 /* AlertManager.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
-				1CCBDB3D2B2EB9820097DEE6 /* UuidManager.swift in Sources */,
+				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateManager.swift in Sources */,
 				1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */,
 				AA91058B2ADA4B9C00DA2E96 /* GroupSearchCell.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
