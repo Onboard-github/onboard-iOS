@@ -9,6 +9,21 @@ import UIKit
 
 final class GroupCreateCompleteView: UIView {
     
+    // MARK: - Metric
+    
+    enum Metric {
+        static let topMargin: CGFloat = 80
+        static let titleTopMarin: CGFloat = 40
+        static let leftRightMargin: CGFloat = 24
+        static let imageSize: CGFloat = 18
+        static let ownerLeadingSpacing: CGFloat = 25
+        static let copyImageSize: CGFloat = 16
+        static let itemSpacing: CGFloat = 15
+        static let inviteBottomSpacing: CGFloat = 130
+        static let buttonBottomMargin: CGFloat = 70
+        static let buttonHeight: CGFloat = 48
+    }
+    
     // MARK: - UI
     
     private let backgroundImage: UIImageView = {
@@ -102,7 +117,7 @@ final class GroupCreateCompleteView: UIView {
     }()
     
     private let inviteLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = TextLabels.group_invite_text
         label.textColor = Colors.Orange_5
         label.font = Font.Typography.body4_R
@@ -143,4 +158,96 @@ final class GroupCreateCompleteView: UIView {
         stview.spacing = 5
         return stview
     }()
+    
+    // MARK: - Initialize
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.backgroundImage)
+        
+        self.backgroundImage.addSubview(self.completeLabel)
+        
+        self.backgroundImage.addSubview(self.titleStackView)
+        
+        self.backgroundImage.addSubview(self.managerStackView)
+        self.backgroundImage.addSubview(self.ownerNameLabel)
+        
+        self.backgroundImage.addSubview(self.codeStackView)
+        self.backgroundImage.addSubview(self.copyStackView)
+        
+        self.backgroundImage.addSubview(self.inviteLabel)
+        self.backgroundImage.addSubview(self.confirmButton)
+        
+        self.backgroundImage.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        self.completeLabel.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(Metric.topMargin)
+            $0.centerX.equalToSuperview()
+        }
+        
+        self.titleStackView.snp.makeConstraints {
+            $0.top.equalTo(completeLabel.snp.bottom).offset(Metric.titleTopMarin)
+            $0.leading.equalTo(Metric.leftRightMargin)
+        }
+        
+        self.ownerImage.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.imageSize)
+        }
+        
+        self.ownerNameLabel.snp.makeConstraints {
+            $0.centerY.equalTo(managerStackView.snp.centerY)
+            $0.leading.equalTo(managerStackView.snp.trailing).offset(Metric.ownerLeadingSpacing)
+        }
+        
+        self.managerStackView.snp.makeConstraints {
+            $0.bottom.equalTo(codeStackView.snp.top).offset(-Metric.itemSpacing)
+            $0.leading.equalTo(Metric.leftRightMargin)
+        }
+        
+        self.codeImage.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.imageSize)
+        }
+        
+        self.copyButton.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.copyImageSize)
+        }
+        
+        self.codeStackView.snp.makeConstraints {
+            $0.bottom.equalTo(inviteLabel.snp.top).offset(-Metric.itemSpacing)
+            $0.leading.equalTo(Metric.leftRightMargin)
+        }
+        
+        self.copyStackView.snp.makeConstraints {
+            $0.centerY.equalTo(codeStackView.snp.centerY)
+            $0.leading.equalTo(ownerNameLabel)
+        }
+        
+        self.inviteLabel.snp.makeConstraints {
+            $0.bottom.equalTo(confirmButton.snp.top).offset(-Metric.inviteBottomSpacing)
+            $0.leading.equalTo(Metric.leftRightMargin)
+        }
+        
+        self.confirmButton.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-Metric.buttonBottomMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.height.equalTo(Metric.buttonHeight)
+        }
+    }
 }
