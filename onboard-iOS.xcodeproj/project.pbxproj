@@ -37,6 +37,7 @@
 		1CD208722B1BB339008E710E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD208712B1BB339008E710E /* ImageLoader.swift */; };
 		1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */; };
 		1CDF4D2F2AB8A53900CFDFBA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1CDF4D2E2AB8A53900CFDFBA /* GoogleSignIn */; };
+		1CEBA1522B333D24007AD07C /* GroupCreateCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
@@ -139,6 +140,7 @@
 		1CD2086F2B1BAEF1008E710E /* GroupCreateReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateReactor.swift; sourceTree = "<group>"; };
 		1CD208712B1BB339008E710E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleLoginManager.swift; path = "onboard-iOS/Repository/SocialLogin/GoogleLoginManager.swift"; sourceTree = SOURCE_ROOT; };
+		1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteView.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */,
+				1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */,
 				AAF1699F2B10E05200EF82A4 /* AgreeVC.swift in Sources */,
 				1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */,
+				1CEBA1522B333D24007AD07C /* GroupCreateCompleteView.swift in Sources */,
 				AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */,
 				AAF169892B108B0D00EF82A4 /* AlertManager.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
