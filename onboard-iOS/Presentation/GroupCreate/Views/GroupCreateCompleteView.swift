@@ -174,7 +174,15 @@ final class GroupCreateCompleteView: UIView {
     // MARK: - Configure
     
     private func configure() {
+        self.addConfigure()
         self.makeConstraints()
+    }
+    
+    private func addConfigure() {
+        self.copyButton.addAction(UIAction(handler: { [weak self] _ in
+            let pasteboard = UIPasteboard.general
+            pasteboard.string = self?.accessCodeLabel.text
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
