@@ -17,6 +17,7 @@ final class NameInputPopupView: UIViewController, View {
     
     var disposeBag = DisposeBag()
     private let groupCreateView = GroupCreateView()
+    private let groupCreateCompleteView = GroupCreateCompleteView()
     
     // MARK: - Metric
     
@@ -165,6 +166,10 @@ final class NameInputPopupView: UIViewController, View {
             print("req \(req)")
             
             self?.reactor?.action.onNext(.createGroups(req: req))
+            
+            let completeVC = GroupCreateCompleteViewController()
+            completeVC.modalPresentationStyle = .overFullScreen
+            self?.present(completeVC, animated: false)
         }, for: .touchUpInside)
     }
     
