@@ -16,7 +16,6 @@ final class NameInputPopupView: UIViewController, View {
     // MARK: - Properties
     
     var disposeBag = DisposeBag()
-    private let groupCreateView = GroupCreateView()
     private let groupCreateCompleteView = GroupCreateCompleteView()
     
     // MARK: - Metric
