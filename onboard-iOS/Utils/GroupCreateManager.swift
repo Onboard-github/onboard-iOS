@@ -6,69 +6,100 @@
 //
 
 import Foundation
+import UIKit
 
 class GroupCreateManager {
     
     static let shared = GroupCreateManager()
     
-    private let userDefaults = UserDefaults.standard
+    static let userDefaults = UserDefaults.standard
     
-    private let nameKey = "nameKey"
-    private let descriptionKey = "descriptionKey"
-    private let organizationKey = "organizationKey"
-    private let ownerKey = "ownerKey"
-    private let urlKey = "urlKey"
-    private let uuidKey = "profileImageUUIDKey"
+    static let imageKey = "imageKey"
+    static let nameKey = "nameKey"
+    static let descriptionKey = "descriptionKey"
+    static let organizationKey = "organizationKey"
+    static let ownerKey = "ownerKey"
+    static let codeKey = "codeKey"
+    static let urlKey = "urlKey"
+    static let uuidKey = "profileImageUUIDKey"
     
     // MARK: - Set
     
-    func saveName(_ name: String) {
+    static func saveImage(_ image: UIImage) {
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            userDefaults.set(imageData, forKey: GroupCreateManager.imageKey)
+        }
+    }
+    
+    static func saveName(_ name: String) {
         userDefaults.set(name, forKey: nameKey)
     }
     
-    func saveDescription(_ description: String) {
+    static func saveDescription(_ description: String) {
         userDefaults.set(description, forKey: descriptionKey)
     }
     
-    func saveOrganization(_ organization: String) {
+    static func saveOrganization(_ organization: String) {
         userDefaults.set(organization, forKey: organizationKey)
     }
     
-    func saveOwner(_ owner: String) {
+    static func saveOwner(_ owner: String) {
         userDefaults.set(owner, forKey: ownerKey)
     }
     
-    func saveUrl(_ url: String) {
+    static func saveCode(_ code: String) {
+        userDefaults.set(code, forKey: codeKey)
+    }
+    
+    static func saveUrl(_ url: String) {
         userDefaults.set(url, forKey: urlKey)
     }
     
-    func saveUUID(_ uuid: String) {
+    static func saveUUID(_ uuid: String) {
         userDefaults.set(uuid, forKey: uuidKey)
     }
     
     // MARK: - Get
     
-    func getName() -> String? {
+    static func getImage() -> UIImage? {
+        if let imageData = userDefaults.data(forKey: imageKey) {
+            return UIImage(data: imageData)
+        }
+        return nil
+    }
+    
+    static func getName() -> String? {
         return userDefaults.string(forKey: nameKey)
     }
     
-    func getDescription() -> String? {
+    static func getDescription() -> String? {
         return userDefaults.string(forKey: descriptionKey)
     }
     
-    func getOrganization() -> String? {
+    static func getOrganization() -> String? {
         return userDefaults.string(forKey: organizationKey)
     }
     
-    func getOwner() -> String? {
+    static func getOwner() -> String? {
         return userDefaults.string(forKey: ownerKey)
     }
     
-    func getUrl() -> String? {
+    static func getCode() -> String? {
+        return userDefaults.string(forKey: codeKey)
+    }
+    
+    static func getUrl() -> String? {
         return userDefaults.string(forKey: urlKey)
     }
     
-    func getSavedUUID() -> String? {
+    static func getSavedUUID() -> String? {
         return userDefaults.string(forKey: uuidKey)
+    }
+    
+    static func logout() {
+        let keys = [imageKey, nameKey, descriptionKey, organizationKey, ownerKey, codeKey]
+        keys.forEach { key in
+            userDefaults.removeObject(forKey: key)
+        }
     }
 }
