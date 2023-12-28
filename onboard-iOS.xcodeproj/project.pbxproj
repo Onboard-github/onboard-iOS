@@ -70,6 +70,7 @@
 		AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */; };
 		AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */; };
 		AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */; };
+		AA31AFB22B3D624A00E91C91 /* TermsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA31AFB12B3D624A00E91C91 /* TermsResponse.swift */; };
 		AA3E7D5C2B25412D007A6BE9 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = AA3E7D5B2B25412D007A6BE9 /* SkeletonView */; };
 		AA3E7D5F2B254159007A6BE9 /* GameSkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E7D5E2B254159007A6BE9 /* GameSkeletonCell.swift */; };
 		AA5E9C772B2E8C3D000E3A30 /* GroupJoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5E9C752B2E8C3D000E3A30 /* GroupJoinVC.swift */; };
@@ -168,6 +169,7 @@
 		61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		AA31AFB12B3D624A00E91C91 /* TermsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsResponse.swift; sourceTree = "<group>"; };
 		AA3E7D5E2B254159007A6BE9 /* GameSkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSkeletonCell.swift; sourceTree = "<group>"; };
 		AA5E9C752B2E8C3D000E3A30 /* GroupJoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupJoinVC.swift; sourceTree = "<group>"; };
 		AA5E9C762B2E8C3D000E3A30 /* GroupJoinVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupJoinVC.xib; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				AA69E3BE2B1333D300F74A36 /* GameList.swift */,
+				AA31AFB12B3D624A00E91C91 /* TermsResponse.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -817,6 +820,7 @@
 				AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
+				AA31AFB22B3D624A00E91C91 /* TermsResponse.swift in Sources */,
 				1CD208722B1BB339008E710E /* ImageLoader.swift in Sources */,
 				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
 				AA93981A2B25534A0022C5ED /* GameCell.swift in Sources */,

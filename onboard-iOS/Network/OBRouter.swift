@@ -32,12 +32,13 @@ enum OBRouter: URLRequestConvertible {
     case pickerImage(params: Params)
     case randomImage
     case createGroup(body: Body)
+    case getTerms
 
     // MARK: - HTTP Method
 
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList, .gameList, .randomImage:
+        case .testAPI, .groupList, .gameList, .randomImage, .getTerms:
             return .get
         case .auth, .addGroup, .pickerImage, .createGroup:
             return .post
@@ -66,6 +67,8 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group/default-image"
         case .createGroup:
             return "api/v1/group"
+        case .getTerms:
+            return "api/v1/terms"
         }
     }
 
@@ -75,7 +78,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage, .createGroup:
             return nil
-        case .setUser, .gameList:
+        case .setUser, .gameList, .getTerms:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
@@ -87,7 +90,7 @@ enum OBRouter: URLRequestConvertible {
 
     var body: Body? {
         switch self {
-        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage:
+        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms:
             return nil
 
         case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body):
@@ -99,7 +102,7 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup:
+        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms:
             return nil
         case let .groupList(params):
             return params

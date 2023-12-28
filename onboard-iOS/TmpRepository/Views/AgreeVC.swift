@@ -7,6 +7,7 @@
 
 import UIKit
 import PanModal
+import Alamofire
 
 protocol AgreeDelegate {
     func agreeComplete()
@@ -16,6 +17,10 @@ class AgreeVC: UIViewController {
     var delegate: AgreeDelegate?
     
     override func viewDidLoad() {
+        Task {
+            let terms = try await OBNetworkManager.shared.asyncRequest(object: TermsResponse.self, router: .getTerms)
+            print("!@#!@# \(terms)")
+        }
     }
     
     var shortFormHeight: PanModalHeight {
