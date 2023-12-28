@@ -61,6 +61,10 @@ final class GroupCreateReactor: Reactor {
         
         return state
     }
+    
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        return self.mutation(result: self.useCase.createGroupResult)
+    }
 }
 
 extension GroupCreateReactor {
@@ -75,8 +79,8 @@ extension GroupCreateReactor {
                     
                     let url = result.url
                     let uuid = result.uuid
-                    GroupCreateManager.shared.saveUrl(url)
-                    GroupCreateManager.shared.saveUUID(uuid)
+                    GroupCreateManager.saveUrl(url)
+                    GroupCreateManager.saveUUID(uuid)
                 } catch {
                     observer.onError(error)
                 }
@@ -96,8 +100,8 @@ extension GroupCreateReactor {
                     
                     let url = result.url
                     let uuid = result.uuid
-                    GroupCreateManager.shared.saveUrl(url)
-                    GroupCreateManager.shared.saveUUID(uuid)
+                    GroupCreateManager.saveUrl(url)
+                    GroupCreateManager.saveUUID(uuid)
                     
                     observer.onNext(.setRandomImage(result: result.url))
                 } catch {
@@ -117,15 +121,18 @@ extension GroupCreateReactor {
                 do {
                     let result = try await self.useCase.createGroup(req: req)
                     observer.onNext(.setGroupCreation(result: result))
-                    
-                    print("create group success \(result)")
                 } catch {
-                    print("create group error \(error)")
                     observer.onError(error)
                 }
             }
             
             return Disposables.create()
+        }
+    }
+    
+    private func mutation(result: Observable<GroupCreateCompleteEntity.Res>) -> Observable<Mutation> {
+        return result.flatMap { response -> Observable<Mutation> in
+            return .just(.setGroupCreation(result: response))
         }
     }
 }
