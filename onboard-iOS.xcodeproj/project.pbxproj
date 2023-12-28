@@ -71,6 +71,8 @@
 		AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */; };
 		AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */; };
 		AA31AFB22B3D624A00E91C91 /* TermsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA31AFB12B3D624A00E91C91 /* TermsResponse.swift */; };
+		AA31AFB52B3D662E00E91C91 /* TermCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA31AFB32B3D662E00E91C91 /* TermCell.swift */; };
+		AA31AFB62B3D662E00E91C91 /* TermCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA31AFB42B3D662E00E91C91 /* TermCell.xib */; };
 		AA3E7D5C2B25412D007A6BE9 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = AA3E7D5B2B25412D007A6BE9 /* SkeletonView */; };
 		AA3E7D5F2B254159007A6BE9 /* GameSkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E7D5E2B254159007A6BE9 /* GameSkeletonCell.swift */; };
 		AA5E9C772B2E8C3D000E3A30 /* GroupJoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5E9C752B2E8C3D000E3A30 /* GroupJoinVC.swift */; };
@@ -170,6 +172,8 @@
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		AA31AFB12B3D624A00E91C91 /* TermsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsResponse.swift; sourceTree = "<group>"; };
+		AA31AFB32B3D662E00E91C91 /* TermCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermCell.swift; sourceTree = "<group>"; };
+		AA31AFB42B3D662E00E91C91 /* TermCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermCell.xib; sourceTree = "<group>"; };
 		AA3E7D5E2B254159007A6BE9 /* GameSkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSkeletonCell.swift; sourceTree = "<group>"; };
 		AA5E9C752B2E8C3D000E3A30 /* GroupJoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupJoinVC.swift; sourceTree = "<group>"; };
 		AA5E9C762B2E8C3D000E3A30 /* GroupJoinVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupJoinVC.xib; sourceTree = "<group>"; };
@@ -659,6 +663,8 @@
 				AAF169912B10900100EF82A4 /* LoginSelectVC.xib */,
 				AAF1699D2B10E05200EF82A4 /* AgreeVC.swift */,
 				AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */,
+				AA31AFB32B3D662E00E91C91 /* TermCell.swift */,
+				AA31AFB42B3D662E00E91C91 /* TermCell.xib */,
 				AAF169A12B10EED600EF82A4 /* AgreeNicknameVC.swift */,
 				AAF169A22B10EED600EF82A4 /* AgreeNicknameVC.xib */,
 				61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */,
@@ -780,6 +786,7 @@
 				1CA1BBB52ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				AA5E9C782B2E8C3D000E3A30 /* GroupJoinVC.xib in Resources */,
 				61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */,
+				AA31AFB62B3D662E00E91C91 /* TermCell.xib in Resources */,
 				AAF169932B10900100EF82A4 /* LoginSelectVC.xib in Resources */,
 				1CA1BBB72ACF109B000C5F7E /* SpoqaHanSansNeo-Thin.ttf in Resources */,
 				1CA1BBB62ACF109B000C5F7E /* SpoqaHanSansNeo-Bold.ttf in Resources */,
@@ -827,6 +834,7 @@
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
+				AA31AFB52B3D662E00E91C91 /* TermCell.swift in Sources */,
 				1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */,
 				AA5ED43C2B27661400993B63 /* PodiumCell.swift in Sources */,
 				1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */,

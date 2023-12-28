@@ -15,11 +15,25 @@ protocol AgreeDelegate {
 
 class AgreeVC: UIViewController {
     var delegate: AgreeDelegate?
+    @IBOutlet weak var tableView: UITableView!
+    
+    var terms: [Term] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
-        Task {
+        tableView.delegate = self
+        tableView.dataSource = self
+        let nib = UINib(nibName: "TermCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "termCell")
+        tableView.separatorStyle = .none
+        Task { [weak self] in
             let terms = try await OBNetworkManager.shared.asyncRequest(object: TermsResponse.self, router: .getTerms)
-            print("!@#!@# \(terms)")
+            if let result = terms.value {
+                self?.terms = result.contents
+            }
         }
     }
     
@@ -36,4 +50,20 @@ extension AgreeVC: PanModalPresentable {
     var panScrollable: UIScrollView? {
         return nil
     }
+}
+
+extension AgreeVC: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return terms.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "termCell", for: indexPath) as? TermCell {
+            cell.selectionStyle = .none
+            cell.term = terms[indexPath.row]
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
 }
