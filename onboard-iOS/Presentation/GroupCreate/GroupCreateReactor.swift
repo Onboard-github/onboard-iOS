@@ -63,11 +63,19 @@ final class GroupCreateReactor: Reactor {
     }
     
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        return self.mutation(result: self.useCase.createGroupResult)
+        let groupMutation = self.mutation(
+            result: self.useCase.createGroupResult)
+        return Observable.merge(mutation, groupMutation)
     }
 }
 
 extension GroupCreateReactor {
+    
+    private func mutation(result: Observable<GroupCreateCompleteEntity.Res>) -> Observable<Mutation> {
+        return result.flatMap { response -> Observable<Mutation> in
+            return .just(.setGroupCreation(result: response))
+        }
+    }
     
     private func fileUploadResult(file: File, purpose: Purpose) -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
@@ -127,12 +135,6 @@ extension GroupCreateReactor {
             }
             
             return Disposables.create()
-        }
-    }
-    
-    private func mutation(result: Observable<GroupCreateCompleteEntity.Res>) -> Observable<Mutation> {
-        return result.flatMap { response -> Observable<Mutation> in
-            return .just(.setGroupCreation(result: response))
         }
     }
 }
