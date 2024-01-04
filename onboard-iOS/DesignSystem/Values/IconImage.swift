@@ -9,6 +9,8 @@ import UIKit
 
 enum IconImage {
     case search
+    case search_gray
+    
     case X
     case plus
     
@@ -71,6 +73,7 @@ enum IconImage {
     case iconHome
     
     case dice
+    case emptyDice
     
     case requiredInput
     
@@ -78,6 +81,9 @@ enum IconImage {
         switch self {
         case .search:
             return UIImage(named: "icon_search")
+        case .search_gray:
+            return UIImage(named: "search_bar_logo")
+            
         case .X:
             return UIImage(named: "icon_X")
         case .plus:
@@ -184,6 +190,8 @@ enum IconImage {
             
         case .dice:
             return UIImage(named: "icon_dice")
+        case .emptyDice:
+            return UIImage(named: "icon_empty_dice")
             
         case .requiredInput:
             return UIImage(named: "icon_requiredInput")
