@@ -29,6 +29,7 @@ class AgreeVC: UIViewController {
         let nib = UINib(nibName: "TermCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "termCell")
         tableView.separatorStyle = .none
+        tableView.bounces = false
         Task { [weak self] in
             let terms = try await OBNetworkManager.shared.asyncRequest(object: TermsResponse.self, router: .getTerms)
             if let result = terms.value {

@@ -28,30 +28,37 @@
                                     <constraint firstAttribute="width" constant="18" id="Epv-6G-ev7"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="(필수) 개인정보 처리방침" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oY-6c-Ms4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" verticalCompressionResistancePriority="752" text="(필수) 개인정보 처리방침" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oY-6c-Ms4">
                                 <rect key="frame" x="0.0" y="0.0" width="272" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상세보기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqo-iQ-re0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDL-em-ftS">
                                 <rect key="frame" x="0.0" y="23" width="272" height="17"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                <color key="textColor" red="0.5450980392" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="tintColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="상세보기" titleAlignment="leading">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="subtitleTapAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bXn-XA-BcM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Qqo-iQ-re0" firstAttribute="leading" secondItem="5il-x8-A3d" secondAttribute="leading" id="2xk-5r-j6L"/>
-                            <constraint firstAttribute="bottom" secondItem="Qqo-iQ-re0" secondAttribute="bottom" constant="20" id="EeK-Gv-a8o"/>
+                            <constraint firstAttribute="trailing" secondItem="cDL-em-ftS" secondAttribute="trailing" id="3HQ-xK-J7K"/>
                             <constraint firstAttribute="trailing" secondItem="3oY-6c-Ms4" secondAttribute="trailing" id="NHe-h3-IZN"/>
                             <constraint firstItem="PFB-Zo-sVB" firstAttribute="top" secondItem="5il-x8-A3d" secondAttribute="top" id="PWg-Eq-CER"/>
+                            <constraint firstItem="cDL-em-ftS" firstAttribute="top" secondItem="3oY-6c-Ms4" secondAttribute="bottom" constant="6" id="THS-bX-leR"/>
                             <constraint firstAttribute="trailing" secondItem="PFB-Zo-sVB" secondAttribute="trailing" id="Xav-Lk-W89"/>
                             <constraint firstItem="3oY-6c-Ms4" firstAttribute="leading" secondItem="5il-x8-A3d" secondAttribute="leading" id="dQN-nB-t2d"/>
-                            <constraint firstAttribute="trailing" secondItem="Qqo-iQ-re0" secondAttribute="trailing" id="jhl-T8-2ae"/>
+                            <constraint firstAttribute="bottom" secondItem="cDL-em-ftS" secondAttribute="bottom" constant="20" id="hVb-88-1w6"/>
                             <constraint firstItem="3oY-6c-Ms4" firstAttribute="top" secondItem="5il-x8-A3d" secondAttribute="top" id="o7z-dV-5yp"/>
-                            <constraint firstItem="Qqo-iQ-re0" firstAttribute="top" secondItem="3oY-6c-Ms4" secondAttribute="bottom" constant="6" id="oCM-fQ-euL"/>
+                            <constraint firstItem="cDL-em-ftS" firstAttribute="leading" secondItem="5il-x8-A3d" secondAttribute="leading" id="ts4-1S-Uig"/>
                         </constraints>
                     </view>
                 </subviews>

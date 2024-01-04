@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class TermCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,6 +28,25 @@ class TermCell: UITableViewCell {
     }
     
     @IBAction func subtitleTapAction(_ sender: Any) {
-        print("subtitle tapped")
+        if let urlString = term?.url, let url = URL(string: urlString) {
+            let safariViewController = SFSafariViewController(url: url)
+            
+            // Present the SafariViewController
+            if let parentViewController = findViewController() {
+                parentViewController.present(safariViewController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    // Helper function to find the parent view controller
+    private func findViewController() -> UIViewController? {
+        var responder: UIResponder? = self
+        while let nextResponder = responder?.next {
+            if let viewController = nextResponder as? UIViewController {
+                return viewController
+            }
+            responder = nextResponder
+        }
+        return nil
     }
 }
