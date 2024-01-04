@@ -82,7 +82,7 @@ enum IconImage {
         case .search:
             return UIImage(named: "icon_search")
         case .search_gray:
-            return UIImage(named: "search_bar_logo")
+            return UIImage(named: "icon_search_gray")
             
         case .X:
             return UIImage(named: "icon_X")
