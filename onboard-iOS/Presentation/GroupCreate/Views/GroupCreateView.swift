@@ -20,6 +20,8 @@ final class GroupCreateView: UIView {
         static let imageViewButtonSize: CGFloat = 28
         static let nameTopSpacing: CGFloat = 40
         static let leftRightMargin: CGFloat = 24
+        static let requiredSpacing: CGFloat = 2
+        static let inputTopSpacing: CGFloat = 5
         static let textFieldHeight: CGFloat = 48
         static let countLabelTopSpacing: CGFloat = 5
         static let countLabelRightSpacing: CGFloat = 30
@@ -45,13 +47,6 @@ final class GroupCreateView: UIView {
         return button
     }()
     
-    private let requiredImage: UIImageView = {
-        let image = UIImageView()
-        let iconImage = IconImage.requiredInput
-        image.image = iconImage.image
-        return image
-    }()
-    
     /* 그룹 이름 */
     
     private let nameLabel: UILabel = {
@@ -61,6 +56,13 @@ final class GroupCreateView: UIView {
         label.font = Font.Typography.body3_M
         label.numberOfLines = 0
         return label
+    }()
+    
+    private let nameRequiredImage: UIImageView = {
+        let image = UIImageView()
+        let iconImage = IconImage.requiredInput
+        image.image = iconImage.image
+        return image
     }()
     
     lazy var nameTextField: TextField = {
@@ -82,7 +84,7 @@ final class GroupCreateView: UIView {
     
     /* 그룹 소개 */
     
-    private let introductionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = TextLabels.group_description
         label.textColor = Colors.Gray_14
@@ -92,7 +94,14 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    lazy var introductionTextView: TextView = {
+    private let descriptionRequiredImage: UIImageView = {
+        let image = UIImageView()
+        let iconImage = IconImage.requiredInput
+        image.image = iconImage.image
+        return image
+    }()
+    
+    lazy var descriptionTextView: TextView = {
         let textView = TextView()
         textView.textColor = Colors.Gray_15
         textView.font = Font.Typography.body3_R
@@ -101,7 +110,7 @@ final class GroupCreateView: UIView {
         return textView
     }()
     
-    private let introductionCountLabel: UILabel = {
+    private let descriptionCountLabel: UILabel = {
         let label = UILabel()
         label.text = TextLabels.group_description_count
         label.textColor = Colors.Gray_8
@@ -140,32 +149,6 @@ final class GroupCreateView: UIView {
         let button = BaseButton(status: .default, style: .rounded)
         button.setTitle(TextLabels.group_register, for: .normal)
         return button
-    }()
-    
-    private lazy var nameStackView: UIStackView = {
-        let stview = UIStackView(arrangedSubviews: [nameLabel, requiredImage.clone()])
-        stview.axis = .horizontal
-        stview.spacing = 2
-        stview.distribution = .equalSpacing
-        stview.alignment = .top
-        
-        let stackView = UIStackView(arrangedSubviews: [stview, nameTextField])
-        stackView.axis = .vertical
-        stackView.spacing = 2
-        return stackView
-    }()
-    
-    private lazy var introductionStackView: UIStackView = {
-        let stview = UIStackView(arrangedSubviews: [introductionLabel, requiredImage.clone()])
-        stview.axis = .horizontal
-        stview.spacing = 2
-        stview.distribution = .equalCentering
-        stview.alignment = .top
-        
-        let stackView = UIStackView(arrangedSubviews: [stview, introductionTextView])
-        stackView.axis = .vertical
-        stackView.spacing = 2
-        return stackView
     }()
     
     private lazy var organizationStackView: UIStackView = {
@@ -220,18 +203,22 @@ final class GroupCreateView: UIView {
         nameTextField.attributedPlaceholder = NSAttributedString(string: TextLabels.group_name_placeholder,
                                                                  attributes: attributes)
         organizationTextField.attributedPlaceholder = NSAttributedString(string: TextLabels.group_organization_placeholder,
-                                                                        attributes: attributes)
+                                                                         attributes: attributes)
     }
     
     private func makeConstraints() {
         self.addSubview(self.titleImageView)
         self.titleImageView.addSubview(self.titleImageViewButton)
         
-        self.addSubview(self.nameStackView)
+        self.addSubview(self.nameLabel)
+        self.addSubview(self.nameRequiredImage)
+        self.addSubview(self.nameTextField)
         self.addSubview(self.nameCountLabel)
         
-        self.addSubview(self.introductionStackView)
-        self.addSubview(self.introductionCountLabel)
+        self.addSubview(self.descriptionLabel)
+        self.addSubview(self.descriptionRequiredImage)
+        self.addSubview(self.descriptionTextView)
+        self.addSubview(self.descriptionCountLabel)
         
         self.addSubview(self.organizationStackView)
         self.addSubview(self.organizationCountLabel)
@@ -250,36 +237,56 @@ final class GroupCreateView: UIView {
             $0.width.height.equalTo(Metric.imageViewButtonSize)
         }
         
-        self.nameStackView.snp.makeConstraints {
+        /* 그룹 이름 */
+        
+        self.nameLabel.snp.makeConstraints {
             $0.top.equalTo(titleImageView.snp.bottom).offset(Metric.nameTopSpacing)
-            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.nameRequiredImage.snp.makeConstraints {
+            $0.top.equalTo(titleImageView.snp.bottom).offset(Metric.nameTopSpacing)
+            $0.leading.equalTo(nameLabel.snp.trailing).offset(Metric.requiredSpacing)
         }
         
         self.nameTextField.snp.makeConstraints {
+            $0.top.equalTo(nameLabel.snp.bottom).offset(Metric.inputTopSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
             $0.height.equalTo(Metric.textFieldHeight)
         }
         
         self.nameCountLabel.snp.makeConstraints {
-            $0.top.equalTo(nameStackView.snp.bottom).offset(Metric.countLabelTopSpacing)
+            $0.top.equalTo(nameTextField.snp.bottom).offset(Metric.countLabelTopSpacing)
             $0.trailing.equalToSuperview().inset(Metric.countLabelRightSpacing)
         }
         
-        self.introductionStackView.snp.makeConstraints {
+        /* 그룹 소개 */
+        
+        self.descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(nameCountLabel.snp.bottom).offset(Metric.itemSpacing)
-            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
-        self.introductionTextView.snp.makeConstraints {
+        self.descriptionRequiredImage.snp.makeConstraints {
+            $0.top.equalTo(nameCountLabel.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.equalTo(descriptionLabel.snp.trailing).offset(Metric.requiredSpacing)
+        }
+        
+        self.descriptionTextView.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(Metric.inputTopSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
             $0.height.equalTo(Metric.textViewHeight)
         }
         
-        self.introductionCountLabel.snp.makeConstraints {
-            $0.top.equalTo(introductionStackView.snp.bottom).offset(Metric.countLabelTopSpacing)
+        self.descriptionCountLabel.snp.makeConstraints {
+            $0.top.equalTo(descriptionTextView.snp.bottom).offset(Metric.countLabelTopSpacing)
             $0.trailing.equalToSuperview().inset(Metric.countLabelRightSpacing)
         }
         
+        /* 소속(선택) */
+        
         self.organizationStackView.snp.makeConstraints {
-            $0.top.equalTo(introductionCountLabel.snp.bottom).offset(Metric.itemSpacing)
+            $0.top.equalTo(descriptionCountLabel.snp.bottom).offset(Metric.itemSpacing)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
@@ -291,6 +298,8 @@ final class GroupCreateView: UIView {
             $0.top.equalTo(organizationStackView.snp.bottom).offset(Metric.countLabelTopSpacing)
             $0.trailing.equalToSuperview().inset(Metric.countLabelRightSpacing)
         }
+        
+        /* 등록하기 */
         
         self.registerButton.snp.makeConstraints {
             $0.top.equalTo(organizationCountLabel.snp.bottom).offset(Metric.buttonTopMargin)
@@ -308,7 +317,7 @@ final class GroupCreateView: UIView {
     }
     
     private func updateCountLabel(characterCount: Int) {
-        self.introductionCountLabel.text = "\(characterCount)/\(TextLabels.group_description_maxCount)"
+        self.descriptionCountLabel.text = "\(characterCount)/\(TextLabels.group_description_maxCount)"
     }
     
     @objc
@@ -397,14 +406,4 @@ extension GroupCreateView: UITextViewDelegate {
             updateCountLabel(characterCount: characterCount)
             return true
         }
-}
-
-// MARK: - UIImageView
-
-extension UIImageView {
-    func clone() -> UIImageView {
-        let cloneImageView = UIImageView(image: self.image)
-        
-        return cloneImageView
-    }
 }
