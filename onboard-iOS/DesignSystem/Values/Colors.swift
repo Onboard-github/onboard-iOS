@@ -43,6 +43,12 @@ enum Colors {
     
     // Yellow
     static let Yellow = UIColor(hex: "#FFBC10")
+    
+    // White
+    static let White = UIColor(hex: "#FFFFFF")
+    
+    // Black
+    static let Black = UIColor(hex: "#000000")
 }
 
 extension UIColor {
