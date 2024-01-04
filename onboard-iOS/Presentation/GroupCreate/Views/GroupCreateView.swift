@@ -343,7 +343,8 @@ extension GroupCreateView: UITextFieldDelegate {
                 let countLabel = (textField == nameTextField) ? nameCountLabel : organizationCountLabel
                 
                 if updatedText.count <= maxLength {
-                    countLabel.text = "\(updatedText.count)/\(maxLength)"
+                    let count = String(format: "%02d", updatedText.count)
+                    countLabel.text = "\(count)/\(maxLength)"
                     return true
                 } else {
                     return false
@@ -403,7 +404,11 @@ extension GroupCreateView: UITextViewDelegate {
                 return false
             }
             
+            let count = String(format: "%02d", characterCount)
             updateCountLabel(characterCount: characterCount)
+            
+            descriptionCountLabel.text = "\(count)/\(maxLength)"
+            
             return true
         }
 }
