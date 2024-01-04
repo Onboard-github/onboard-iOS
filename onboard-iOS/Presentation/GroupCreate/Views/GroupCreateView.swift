@@ -56,7 +56,7 @@ final class GroupCreateView: UIView {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "그룹 이름"
+        label.text = TextLabels.group_name
         label.textColor = Colors.Gray_14
         label.font = Font.Typography.body3_M
         label.numberOfLines = 0
@@ -74,7 +74,7 @@ final class GroupCreateView: UIView {
     
     private let nameCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "00/14"
+        label.text = TextLabels.group_name_count
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
@@ -84,7 +84,7 @@ final class GroupCreateView: UIView {
     
     private let introductionLabel: UILabel = {
         let label = UILabel()
-        label.text = "그룹 소개"
+        label.text = TextLabels.group_description
         label.textColor = Colors.Gray_14
         label.font = Font.Typography.body3_M
         label.numberOfLines = 0
@@ -96,14 +96,14 @@ final class GroupCreateView: UIView {
         let textView = TextView()
         textView.textColor = Colors.Gray_15
         textView.font = Font.Typography.body3_R
-        textView.placeholder = " 그룹을 소개해주세요."
+        textView.placeholder = TextLabels.group_description_placeholder
         textView.delegate = self
         return textView
     }()
     
     private let introductionCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "00/72"
+        label.text = TextLabels.group_description_count
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
@@ -113,7 +113,7 @@ final class GroupCreateView: UIView {
     
     private let organizationLabel: UILabel = {
         let label = UILabel()
-        label.text = "소속(선택)"
+        label.text = TextLabels.group_organization
         label.textColor = Colors.Gray_14
         label.font = Font.Typography.body3_M
         return label
@@ -130,7 +130,7 @@ final class GroupCreateView: UIView {
     
     private let organizationCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "00/15"
+        label.text = TextLabels.group_organization_count
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
@@ -138,7 +138,7 @@ final class GroupCreateView: UIView {
     
     private let registerButton: BaseButton = {
         let button = BaseButton(status: .default, style: .rounded)
-        button.setTitle("그룹 등록하기", for: .normal)
+        button.setTitle(TextLabels.group_register, for: .normal)
         return button
     }()
     
@@ -217,9 +217,9 @@ final class GroupCreateView: UIView {
         let attributes: [NSAttributedString.Key: Any] = [
             .font: Font.Typography.body3_R as Any,
             .foregroundColor: Colors.Gray_7]
-        nameTextField.attributedPlaceholder = NSAttributedString(string: "그룹 이름을 입력해주세요.",
+        nameTextField.attributedPlaceholder = NSAttributedString(string: TextLabels.group_name_placeholder,
                                                                  attributes: attributes)
-        organizationTextField.attributedPlaceholder = NSAttributedString(string: "Ex) 홍익대학교",
+        organizationTextField.attributedPlaceholder = NSAttributedString(string: TextLabels.group_organization_placeholder,
                                                                         attributes: attributes)
     }
     
@@ -308,7 +308,7 @@ final class GroupCreateView: UIView {
     }
     
     private func updateCountLabel(characterCount: Int) {
-        self.introductionCountLabel.text = "\(characterCount)/72"
+        self.introductionCountLabel.text = "\(characterCount)/\(TextLabels.group_description_maxCount)"
     }
     
     @objc
@@ -360,7 +360,7 @@ extension GroupCreateView: UITextFieldDelegate {
 extension GroupCreateView: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "그룹을 소개해주세요." {
+        if textView.text == TextLabels.group_description_placeholder {
             textView.text = nil
             textView.textColor = Colors.Gray_15
         }
@@ -370,7 +370,7 @@ extension GroupCreateView: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            textView.text = "그룹을 소개해주세요."
+            textView.text = TextLabels.group_description_placeholder
             textView.textColor = Colors.Gray_7
             updateCountLabel(characterCount: 0)
         }
