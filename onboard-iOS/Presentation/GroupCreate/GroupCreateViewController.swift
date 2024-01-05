@@ -85,15 +85,6 @@ final class GroupCreateViewController: UIViewController, View {
         }
         
         self.groupCreateView.didTapRegisterButton = { [self] in
-            
-            let name = groupCreateView.nameTextField.text ?? ""
-            let description = groupCreateView.introductionTextView.text ?? ""
-            let organization = groupCreateView.organizationTextField.text ?? ""
-            
-            GroupCreateManager.shared.saveName(name)
-            GroupCreateManager.shared.saveDescription(description)
-            GroupCreateManager.shared.saveOrganization(organization)
-            
             let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
             let reactor = GroupCreateReactor(useCase: useCase)
             let nameInputVC = NameInputPopupView(reactor: reactor)
