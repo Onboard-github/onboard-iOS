@@ -51,6 +51,10 @@ extension AgreeVC: PanModalPresentable {
     var panScrollable: UIScrollView? {
         return nil
     }
+    
+    var dragIndicatorBackgroundColor: UIColor {
+        return .clear
+    }
 }
 
 extension AgreeVC: UITableViewDataSource, UITableViewDelegate {
