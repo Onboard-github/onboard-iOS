@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AgreeVC" customModule="onboard_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="allCheckButton" destination="aIX-xf-pW9" id="vMe-PU-5iK"/>
                 <outlet property="tableView" destination="TcQ-1M-bEN" id="TZc-Xh-rF6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,7 +33,7 @@
                     <color key="textColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_gray" translatesAutoresizingMaskIntoConstraints="NO" id="JPo-LH-W2Q">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPo-LH-W2Q">
                     <rect key="frame" x="340" y="324.66666666666669" width="22" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="CFY-5C-NH7"/>
@@ -46,12 +47,6 @@
                         <constraint firstAttribute="height" constant="0.5" id="zms-Qi-mIM"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약관 전체 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lW7-D0-emX">
-                    <rect key="frame" x="236.33333333333334" y="324.66666666666669" width="91.666666666666657" height="22"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFm-6E-pV1" customClass="BorderedButton" customModule="onboard_iOS" customModuleProvider="target">
                     <rect key="frame" x="20" y="386.66666666666669" width="353" height="48"/>
                     <color key="backgroundColor" red="1" green="0.30196078431372547" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -82,12 +77,22 @@
                         <constraint firstAttribute="height" constant="120" id="gBI-aw-JoM"/>
                     </constraints>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIX-xf-pW9" customClass="CheckButton" customModule="onboard_iOS" customModuleProvider="target">
+                    <rect key="frame" x="223.33333333333337" y="324.66666666666669" width="150.66666666666663" height="22"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="check_gray" imagePlacement="trailing" title="약관 전체 동의" imagePadding="13">
+                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                    </buttonConfiguration>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="JPo-LH-W2Q" firstAttribute="leading" secondItem="lW7-D0-emX" secondAttribute="trailing" constant="12" id="1t8-uL-U3Y"/>
                 <constraint firstItem="hje-SK-ssE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="418-91-8Yq"/>
+                <constraint firstItem="aIX-xf-pW9" firstAttribute="bottom" secondItem="JPo-LH-W2Q" secondAttribute="bottom" id="86Q-xk-weB"/>
+                <constraint firstItem="aIX-xf-pW9" firstAttribute="trailing" secondItem="JPo-LH-W2Q" secondAttribute="trailing" constant="12" id="ETX-Ps-rZM"/>
                 <constraint firstItem="TcQ-1M-bEN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HEf-Ng-pQN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hje-SK-ssE" secondAttribute="trailing" constant="24" id="Hsr-ZE-VgV"/>
                 <constraint firstItem="a5f-1F-GL8" firstAttribute="top" secondItem="TcQ-1M-bEN" secondAttribute="bottom" id="Qgp-Pv-TQo"/>
@@ -95,16 +100,15 @@
                 <constraint firstItem="a5f-1F-GL8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="SSG-vy-UMQ"/>
                 <constraint firstItem="GFm-6E-pV1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Tan-cR-b4L"/>
                 <constraint firstItem="5v8-ds-eQD" firstAttribute="leading" secondItem="hje-SK-ssE" secondAttribute="leading" id="Va9-g4-EtO"/>
+                <constraint firstItem="aIX-xf-pW9" firstAttribute="top" secondItem="JPo-LH-W2Q" secondAttribute="top" id="ZIm-nq-vVe"/>
                 <constraint firstItem="5v8-ds-eQD" firstAttribute="top" secondItem="hje-SK-ssE" secondAttribute="bottom" constant="4" id="cnV-Vg-I60"/>
-                <constraint firstItem="GFm-6E-pV1" firstAttribute="top" secondItem="lW7-D0-emX" secondAttribute="bottom" constant="40" id="iLd-E5-0K5"/>
                 <constraint firstAttribute="trailing" secondItem="a5f-1F-GL8" secondAttribute="trailing" constant="40" id="k6X-3n-q7i"/>
-                <constraint firstItem="lW7-D0-emX" firstAttribute="top" secondItem="JPo-LH-W2Q" secondAttribute="top" id="nLc-1V-Kyu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TcQ-1M-bEN" secondAttribute="trailing" id="nQo-i5-gWd"/>
                 <constraint firstItem="hje-SK-ssE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="qOv-lI-EMY"/>
                 <constraint firstItem="5v8-ds-eQD" firstAttribute="trailing" secondItem="hje-SK-ssE" secondAttribute="trailing" id="seF-9o-ZQc"/>
+                <constraint firstItem="GFm-6E-pV1" firstAttribute="top" secondItem="JPo-LH-W2Q" secondAttribute="bottom" constant="40" id="srj-Pv-zCF"/>
                 <constraint firstItem="TcQ-1M-bEN" firstAttribute="top" secondItem="5v8-ds-eQD" secondAttribute="bottom" constant="40" id="uQq-ay-WR9"/>
                 <constraint firstItem="JPo-LH-W2Q" firstAttribute="trailing" secondItem="5v8-ds-eQD" secondAttribute="trailing" constant="-7" id="wH1-T2-f9Y"/>
-                <constraint firstItem="lW7-D0-emX" firstAttribute="bottom" secondItem="JPo-LH-W2Q" secondAttribute="bottom" id="wc6-tt-CfZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GFm-6E-pV1" secondAttribute="trailing" constant="20" id="xSO-aI-GEp"/>
             </constraints>
             <point key="canvasLocation" x="-40.458015267175568" y="19.718309859154932"/>
@@ -114,9 +118,15 @@
         <designable name="GFm-6E-pV1">
             <size key="intrinsicContentSize" width="72.666666666666671" height="31"/>
         </designable>
+        <designable name="aIX-xf-pW9">
+            <size key="intrinsicContentSize" width="149.66666666666666" height="36"/>
+        </designable>
     </designables>
     <resources>
         <image name="check_gray" width="22" height="22"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

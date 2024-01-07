@@ -15,6 +15,7 @@ protocol AgreeDelegate {
 
 class AgreeVC: UIViewController {
     var delegate: AgreeDelegate?
+    @IBOutlet weak var allCheckButton: CheckButton!
     @IBOutlet weak var tableView: UITableView!
     
     var terms: [Term] = [] {
