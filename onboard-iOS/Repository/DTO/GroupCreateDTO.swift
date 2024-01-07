@@ -19,23 +19,13 @@ enum GroupCreateRequest {
 }
 
 struct GroupCreateCompleteDTO: Decodable {
-    let id: Int?
-    let name: String?
-    let description: String?
-    let owner: String?
-    let organization: String?
-    let profileImageUrl: String?
-    let accessCode: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case name = "name"
-        case description = "description"
-        case owner = "owner"
-        case organization = "organization"
-        case profileImageUrl = "profileImageUrl"
-        case accessCode = "accessCode"
-    }
+    let id: Int
+    let name: String
+    let description: String
+    let owner: String
+    let organization: String
+    let profileImageUrl: String
+    let accessCode: String
 }
 
 struct GroupCreateDTO: Decodable {
