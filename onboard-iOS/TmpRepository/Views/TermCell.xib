@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDL-em-ftS">
-                                <rect key="frame" x="0.0" y="23" width="272" height="17"/>
+                                <rect key="frame" x="0.0" y="23" width="222" height="17"/>
                                 <color key="tintColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="상세보기" titleAlignment="leading">
@@ -50,7 +50,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="cDL-em-ftS" secondAttribute="trailing" id="3HQ-xK-J7K"/>
+                            <constraint firstAttribute="trailing" secondItem="cDL-em-ftS" secondAttribute="trailing" constant="50" id="3HQ-xK-J7K"/>
                             <constraint firstAttribute="trailing" secondItem="3oY-6c-Ms4" secondAttribute="trailing" id="NHe-h3-IZN"/>
                             <constraint firstItem="PFB-Zo-sVB" firstAttribute="top" secondItem="5il-x8-A3d" secondAttribute="top" id="PWg-Eq-CER"/>
                             <constraint firstItem="cDL-em-ftS" firstAttribute="top" secondItem="3oY-6c-Ms4" secondAttribute="bottom" constant="6" id="THS-bX-leR"/>

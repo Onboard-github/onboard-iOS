@@ -17,6 +17,7 @@ class AgreeVC: UIViewController {
     var delegate: AgreeDelegate?
     @IBOutlet weak var allCheckButton: CheckButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var agreeButton: BorderedButton!
     
     var terms: [Term] = [] {
         didSet {
@@ -45,6 +46,24 @@ class AgreeVC: UIViewController {
     
     @IBAction func agreeAction(_ sender: Any) {
         delegate?.agreeComplete()
+    }
+    
+    @IBAction func allCheckButtonAction(_ sender: Any) {
+        if allCheckButton.checked {
+            agreeButton.isEnabled = true
+            tableView.visibleCells.forEach { cell in
+                if let agreeCell = cell as? TermCell {
+                    agreeCell.checked = true
+                }
+            }
+        } else {
+            agreeButton.isEnabled = false
+            tableView.visibleCells.forEach { cell in
+                if let agreeCell = cell as? TermCell {
+                    agreeCell.checked = false
+                }
+            }
+        }
     }
 }
 
