@@ -75,14 +75,8 @@ final class GroupCreateRepositoryImpl: GroupCreateRepository {
                     )
                 )
             
-            print("result \(result)")
-            
             guard let data = result.value else {
                 throw NetworkError.noExist
-            }
-            
-            if let error = result.error {
-                print("API 호출 실패 - error: \(error)")
             }
             
             return data.domain()
