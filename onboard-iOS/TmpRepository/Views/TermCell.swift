@@ -10,6 +10,17 @@ import SafariServices
 
 class TermCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var checkImg: UIImageView!
+    var checked = false {
+        didSet {
+            if checked {
+                checkImg.image = UIImage(named: "check_orange")
+            } else {
+                checkImg.image = UIImage(named: "check_gray")
+            }
+        }
+    }
+    
     var term: Term? {
         didSet {
             titleLabel.text = term?.title

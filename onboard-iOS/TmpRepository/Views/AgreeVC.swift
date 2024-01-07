@@ -72,4 +72,10 @@ extension AgreeVC: UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? TermCell {
+            cell.checked.toggle()
+        }
+    }
+    
 }
