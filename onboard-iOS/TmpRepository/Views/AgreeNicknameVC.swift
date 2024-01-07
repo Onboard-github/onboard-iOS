@@ -50,6 +50,7 @@ class AgreeNicknameVC: UIViewController {
                     let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
                     let groupList = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
                     LoginSessionManager.setNickname(nickname: nickNameField.text ?? "")
+                    LoginSessionManager.setState(state: .needJoinGroup)
                     navigationController?.pushViewController(groupList, animated: true)
                 } else {
                     AlertManager.show(message: "응답이 200이 아님 \(result.response?.statusCode)")
