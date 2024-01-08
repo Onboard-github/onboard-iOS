@@ -62,20 +62,20 @@ final class GroupCreateReactor: Reactor {
         return state
     }
     
-    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
-        let groupMutation = self.mutation(
-            result: self.useCase.createGroupResult)
-        return Observable.merge(mutation, groupMutation)
-    }
+//    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+//        let groupMutation = self.mutation(
+//            result: self.useCase.createGroupResult)
+//        return Observable.merge(mutation, groupMutation)
+//    }
 }
 
 extension GroupCreateReactor {
     
-    private func mutation(result: Observable<GroupCreateCompleteEntity.Res>) -> Observable<Mutation> {
-        return result.flatMap { response -> Observable<Mutation> in
-            return .just(.setGroupCreation(result: response))
-        }
-    }
+//    private func mutation(result: Observable<GroupCreateCompleteEntity.Res>) -> Observable<Mutation> {
+//        return result.flatMap { response -> Observable<Mutation> in
+//            return .just(.setGroupCreation(result: response))
+//        }
+//    }
     
     private func fileUploadResult(file: File, purpose: Purpose) -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
