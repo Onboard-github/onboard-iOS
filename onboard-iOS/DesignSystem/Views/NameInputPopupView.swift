@@ -148,17 +148,16 @@ final class NameInputPopupView: UIViewController, View {
     
     func bind(reactor: GroupCreateReactor) {
         self.bindAction(reactor: reactor)
-        self.bindState(reactor: reactor)
     }
     
     func bindAction(reactor: GroupCreateReactor) {
         self.registerButton.addAction(UIAction { [weak self] _ in
             let req = GroupCreateCompleteEntity.Req(
-                name: GroupCreateManager.shared.getName() ?? "",
-                description: GroupCreateManager.shared.getDescription() ?? "",
-                organization: GroupCreateManager.shared.getOrganization() ?? "",
+                name: GroupCreateManager.getName() ?? "",
+                description: GroupCreateManager.getDescription() ?? "",
+                organization: GroupCreateManager.getOrganization() ?? "",
                 profileImageUrl: nil,
-                profileImageUuid: GroupCreateManager.shared.getSavedUUID() ?? "",
+                profileImageUuid: GroupCreateManager.getSavedUUID() ?? "",
                 nickname: LoginSessionManager.getNickname() ?? ""
             )
             
@@ -166,20 +165,12 @@ final class NameInputPopupView: UIViewController, View {
             
             self?.reactor?.action.onNext(.createGroups(req: req))
             
-            let completeVC = GroupCreateCompleteViewController()
+            let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
+            let reactor = GroupCreateReactor(useCase: useCase)
+            let completeVC = GroupCreateCompleteViewController(reactor: reactor)
             completeVC.modalPresentationStyle = .overFullScreen
             self?.present(completeVC, animated: false)
         }, for: .touchUpInside)
-    }
-    
-    func bindState(reactor: GroupCreateReactor) {
-        reactor.state
-            .map { $0.createdGroup }
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { data in
-                print("nameInput data: \(String(describing: data))")
-            })
-            .disposed(by: disposeBag)
     }
     
     // MARK: - Configure
@@ -262,6 +253,22 @@ extension NameInputPopupView: UITextFieldDelegate {
                 return true
             } else {
                 return false
+            }
+        }
+    
+    func textFieldDidEndEditing(
+        _ textField: UITextField) {
+            guard let text = textField.text,
+                    !text.isEmpty else {
+                return
+            }
+            
+            switch textField {
+            case self.textField:
+                GroupCreateManager.saveOwner(text)
+                print("saveOwner \(text)")
+            default:
+                break
             }
         }
 }
