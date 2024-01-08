@@ -65,7 +65,7 @@ final class GroupCreateView: UIView {
         return image
     }()
     
-    lazy var nameTextField: TextField = {
+    private lazy var nameTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
@@ -101,7 +101,7 @@ final class GroupCreateView: UIView {
         return image
     }()
     
-    lazy var descriptionTextView: TextView = {
+    private lazy var descriptionTextView: TextView = {
         let textView = TextView()
         textView.textColor = Colors.Gray_15
         textView.font = Font.Typography.body3_R
@@ -128,7 +128,7 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    lazy var organizationTextField: TextField = {
+    private lazy var organizationTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
@@ -359,8 +359,23 @@ extension GroupCreateView: UITextFieldDelegate {
         }
     
     func textFieldDidEndEditing(
-        _ textField: UITextField,
-        reason: UITextField.DidEndEditingReason) {
+        _ textField: UITextField) {
+            guard let text = textField.text,
+                  !text.isEmpty else {
+                return
+            }
+            
+            switch textField {
+            case self.nameTextField:
+                GroupCreateManager.saveName(text)
+                print("saveNames \(text)")
+            case self.organizationTextField:
+                GroupCreateManager.saveOrganization(text)
+                print("saveOrgan \(text)")
+            default:
+                break
+            }
+            
             textField.layer.borderColor = Colors.Gray_5.cgColor
         }
 }
@@ -386,6 +401,10 @@ extension GroupCreateView: UITextViewDelegate {
         }
         
         textView.layer.borderColor = Colors.Gray_5.cgColor
+        
+        if let description = textView.text {
+            GroupCreateManager.saveDescription(description)
+        }
     }
     
     func textView(
