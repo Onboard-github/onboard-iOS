@@ -24,6 +24,8 @@ final class GroupSettingViewController: UIViewController {
         view.separatorStyle = .none
         view.isScrollEnabled = false
         
+        view.delegate = self
+        view.dataSource = self
         view.register(GroupSettingTableViewCell.self,
                       forCellReuseIdentifier: "GroupSettingTableViewCell")
         return view
@@ -82,4 +84,53 @@ final class GroupSettingViewController: UIViewController {
     private func showPrevious() {
         self.navigationController?.popViewController(animated: true)
     }
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int) -> Int {
+            return SettingOptions.allCases.count
+        }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupSettingTableViewCell",
+                                                 for: indexPath) as! GroupSettingTableViewCell
+        if let option = SettingOptions(rawValue: indexPath.row) {
+            cell.setOption(option)
+        }
+        cell.separatorView.isHidden = indexPath.row != SettingOptions.allCases.count - 2
+        return cell
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath) {
+            
+            switch indexPath.row {
+            case 0:
+                // TODO: - 모임 정보 수정
+                break
+            case 1:
+                // TODO: - 참여코드 변경
+                break
+            case 2:
+                // TODO: - 멤버 관리
+                break
+            case 3:
+                // TODO: - 관리자 변경
+                break
+            case 4:
+                // TODO: - 모임 삭제
+                break
+            default:
+                break
+            }
+        }
 }

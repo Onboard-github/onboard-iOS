@@ -66,4 +66,9 @@ final class GroupSettingTableViewCell: UITableViewCell {
             $0.height.equalTo(Metric.separatorHeight)
         }
     }
+    
+    func setOption(_ option: SettingOptions) {
+        self.label.text = option.settings
+        self.accessoryType = (option == .delete) ? .none : .disclosureIndicator
+    }
 }
