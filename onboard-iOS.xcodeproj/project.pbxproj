@@ -17,6 +17,7 @@
 		1C6FEAE02B4D467A00CFC647 /* GroupSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */; };
 		1C6FEAE32B4D47B500CFC647 /* SettingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */; };
 		1C6FEAE52B4D482100CFC647 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */; };
+		1C6FEAE72B4D4DF400CFC647 /* AccessCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE62B4D4DF400CFC647 /* AccessCodeView.swift */; };
 		1C7E8DB52B0D586300BA00F7 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E8DB42B0D586300BA00F7 /* TextView.swift */; };
 		1C967FA82B24CBF80002E6F1 /* NameInputPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */; };
 		1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */; };
@@ -125,6 +126,7 @@
 		1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingTableViewCell.swift; sourceTree = "<group>"; };
 		1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptions.swift; sourceTree = "<group>"; };
 		1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
+		1C6FEAE62B4D4DF400CFC647 /* AccessCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessCodeView.swift; sourceTree = "<group>"; };
 		1C7E8DB42B0D586300BA00F7 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputPopupView.swift; sourceTree = "<group>"; };
 		1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		1C6FEADD2B4D464300CFC647 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1C6FEAE62B4D4DF400CFC647 /* AccessCodeView.swift */,
 				1C6FEADE2B4D466500CFC647 /* Cells */,
 			);
 			path = Views;
@@ -873,6 +876,7 @@
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
 				1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */,
+				1C6FEAE72B4D4DF400CFC647 /* AccessCodeView.swift in Sources */,
 				AA5ED43C2B27661400993B63 /* PodiumCell.swift in Sources */,
 				1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */,
 				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
