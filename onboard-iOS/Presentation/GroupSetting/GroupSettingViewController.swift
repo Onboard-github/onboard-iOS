@@ -9,6 +9,12 @@ import UIKit
 
 final class GroupSettingViewController: UIViewController {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let topMargin: CGFloat = 25
+    }
+    
     // MARK: - UI
     
     private lazy var tableView: UITableView = {
@@ -22,4 +28,33 @@ final class GroupSettingViewController: UIViewController {
                       forCellReuseIdentifier: "GroupSettingTableViewCell")
         return view
     }()
+    
+    // MARK: - Initialize
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.view.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.view.addSubview(self.tableView)
+        
+        self.tableView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+    }
 }
