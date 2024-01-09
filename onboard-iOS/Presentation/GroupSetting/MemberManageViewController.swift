@@ -51,6 +51,8 @@ final class MemberManageViewController: UIViewController {
         view.backgroundColor = Colors.White
         view.separatorStyle = .none
         
+        view.delegate = self
+        view.dataSource = self
         view.register(MemberManageTableViewCell.self,
                       forCellReuseIdentifier: "MemberManageTableViewCell")
         return view
@@ -152,5 +154,27 @@ final class MemberManageViewController: UIViewController {
     @objc
     private func showPrevious() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension MemberManageViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int) -> Int {
+            return tmpData.count
+        }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemberManageTableViewCell",
+                                                 for: indexPath) as! MemberManageTableViewCell
+        let (image, label) = tmpData[indexPath.row]
+        cell.configure(image: image, title: label)
+        return cell
     }
 }

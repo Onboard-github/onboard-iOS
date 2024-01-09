@@ -81,4 +81,9 @@ final class MemberManageTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
         }
     }
+    
+    func configure(image: UIImage?, title: String) {
+        self.titleImage.image = image
+        self.titleLabel.text = title
+    }
 }
