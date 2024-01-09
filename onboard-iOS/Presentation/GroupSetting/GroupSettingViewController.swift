@@ -121,8 +121,8 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
                 let vc = AccessCodeViewController()
                 navigationController?.pushViewController(vc, animated: true)
             case 2:
-                // TODO: - 멤버 관리
-                break
+                let vc = MemberManageViewController()
+                navigationController?.pushViewController(vc, animated: true)
             case 3:
                 // TODO: - 관리자 변경
                 break
