@@ -41,4 +41,6 @@ struct TextLabels {
     static let access_count = "0/6"
     static let access_placeholder = " 6자리 참여 코드를 입력하세요."
     static let access_currentCount = "%d"
+    
+    static let member_delete = "멤버 삭제"
 }
