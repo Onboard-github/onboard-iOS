@@ -18,6 +18,7 @@
 		1C6FEAE32B4D47B500CFC647 /* SettingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */; };
 		1C6FEAE52B4D482100CFC647 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */; };
 		1C6FEAE72B4D4DF400CFC647 /* AccessCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE62B4D4DF400CFC647 /* AccessCodeView.swift */; };
+		1C6FEAE92B4D503500CFC647 /* AccessCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE82B4D503500CFC647 /* AccessCodeViewController.swift */; };
 		1C7E8DB52B0D586300BA00F7 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E8DB42B0D586300BA00F7 /* TextView.swift */; };
 		1C967FA82B24CBF80002E6F1 /* NameInputPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */; };
 		1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */; };
@@ -127,6 +128,7 @@
 		1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptions.swift; sourceTree = "<group>"; };
 		1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
 		1C6FEAE62B4D4DF400CFC647 /* AccessCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessCodeView.swift; sourceTree = "<group>"; };
+		1C6FEAE82B4D503500CFC647 /* AccessCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessCodeViewController.swift; sourceTree = "<group>"; };
 		1C7E8DB42B0D586300BA00F7 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputPopupView.swift; sourceTree = "<group>"; };
 		1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */,
+				1C6FEAE82B4D503500CFC647 /* AccessCodeViewController.swift */,
 				1C6FEADD2B4D464300CFC647 /* Views */,
 				1C6FEAE12B4D478300CFC647 /* Utils */,
 			);
@@ -853,6 +856,7 @@
 				AA69E3BF2B1333D300F74A36 /* GameList.swift in Sources */,
 				1CD208702B1BAEF1008E710E /* GroupCreateReactor.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
+				1C6FEAE92B4D503500CFC647 /* AccessCodeViewController.swift in Sources */,
 				1CDD02E62B35C58100502C04 /* GroupCreateCompleteViewController.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				1CA1BBC42ADABEBD000C5F7E /* TextField.swift in Sources */,
