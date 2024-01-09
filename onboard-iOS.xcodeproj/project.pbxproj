@@ -15,6 +15,7 @@
 		1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */; };
 		1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */; };
 		1C6FEAE02B4D467A00CFC647 /* GroupSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */; };
+		1C6FEAE32B4D47B500CFC647 /* SettingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */; };
 		1C7E8DB52B0D586300BA00F7 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E8DB42B0D586300BA00F7 /* TextView.swift */; };
 		1C967FA82B24CBF80002E6F1 /* NameInputPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */; };
 		1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */; };
@@ -121,6 +122,7 @@
 		1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
 		1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateViewController.swift; sourceTree = "<group>"; };
 		1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingTableViewCell.swift; sourceTree = "<group>"; };
+		1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptions.swift; sourceTree = "<group>"; };
 		1C7E8DB42B0D586300BA00F7 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputPopupView.swift; sourceTree = "<group>"; };
 		1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				1C6FEADD2B4D464300CFC647 /* Views */,
+				1C6FEAE12B4D478300CFC647 /* Utils */,
 			);
 			path = GroupSetting;
 			sourceTree = "<group>";
@@ -285,6 +288,14 @@
 				1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		1C6FEAE12B4D478300CFC647 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		1CA1BBAD2ACF1084000C5F7E /* Font */ = {
@@ -877,6 +888,7 @@
 				611D8CAA2ABED03D0074A55A /* AuthDTO.swift in Sources */,
 				AA9105622AD9A6BA00DA2E96 /* GroupSearchView.swift in Sources */,
 				AAC4663C2B15107300A2126E /* UIColor+Util.swift in Sources */,
+				1C6FEAE32B4D47B500CFC647 /* SettingOptions.swift in Sources */,
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
 				1CFD50DA2ACE79190031269C /* Colors.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
