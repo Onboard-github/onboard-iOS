@@ -100,6 +100,7 @@ final class MemberManageViewController: UIViewController {
         self.textFieldPlaceHolder()
         self.makeConstraints()
         self.setNavigationBar()
+        self.setupGestureRecognizer()
     }
     
     private func textFieldPlaceHolder() {
@@ -151,9 +152,22 @@ final class MemberManageViewController: UIViewController {
         navigationItem.title = TextLabels.member_title
     }
     
+    private func setupGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(backgroundTapped)
+        )
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
     @objc
     private func showPrevious() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func backgroundTapped() {
+        self.view.endEditing(true)
     }
 }
 
