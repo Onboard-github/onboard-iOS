@@ -118,8 +118,8 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
                 // TODO: - 모임 정보 수정
                 break
             case 1:
-                // TODO: - 참여코드 변경
-                break
+                let vc = AccessCodeViewController()
+                navigationController?.pushViewController(vc, animated: true)
             case 2:
                 // TODO: - 멤버 관리
                 break
