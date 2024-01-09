@@ -97,6 +97,7 @@ final class MemberManageViewController: UIViewController {
         
         self.textFieldPlaceHolder()
         self.makeConstraints()
+        self.setNavigationBar()
     }
     
     private func textFieldPlaceHolder() {
@@ -127,5 +128,29 @@ final class MemberManageViewController: UIViewController {
             $0.top.equalTo(textField.snp.bottom).offset(Metric.tableViewTopSpacing)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    private func setNavigationBar() {
+        let image = IconImage.back.image?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        
+        if let navigationBar = navigationController?.navigationBar {
+            let textAttribute: [NSAttributedString.Key: Any] = [
+                NSAttributedString.Key.font: Font.Typography.title2 as Any,
+                NSAttributedString.Key.foregroundColor: Colors.Gray_14
+            ]
+            navigationBar.titleTextAttributes = textAttribute
+        }
+        
+        navigationController?.navigationBar.barTintColor = Colors.White
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: image, style: .done,
+            target: self, action: #selector(showPrevious))
+        navigationItem.title = TextLabels.member_title
+    }
+    
+    @objc
+    private func showPrevious() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
