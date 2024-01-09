@@ -98,8 +98,17 @@ final class AccessCodeView: UIView {
     private func configure() {
         self.backgroundColor = Colors.White
         
+        self.textFieldPlaceHolder()
         self.makeConstraints()
         self.setupGestureRecognizer()
+    }
+    
+    private func textFieldPlaceHolder() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Font.Typography.body3_R as Any,
+            .foregroundColor: Colors.Gray_7]
+        textField.attributedPlaceholder = NSAttributedString(string: TextLabels.access_placeholder,
+                                                             attributes: attributes)
     }
     
     private func makeConstraints() {

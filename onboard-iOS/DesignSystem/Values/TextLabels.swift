@@ -38,4 +38,5 @@ struct TextLabels {
     static let access_new = "새 참여코드"
     static let access_subTitle = "영문, 숫자를 조합하여 사용 가능합니다."
     static let access_count = "0/6"
+    static let access_placeholder = " 6자리 참여 코드를 입력하세요."
 }
