@@ -99,6 +99,7 @@ final class AccessCodeView: UIView {
         self.backgroundColor = Colors.White
         
         self.makeConstraints()
+        self.setupGestureRecognizer()
     }
     
     private func makeConstraints() {
@@ -145,5 +146,18 @@ final class AccessCodeView: UIView {
             $0.top.equalTo(textField.snp.bottom).offset(Metric.textFieldTopSpacing)
             $0.trailing.equalToSuperview().inset(Metric.countRightMargin)
         }
+    }
+    
+    private func setupGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(backgroundTapped)
+        )
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func backgroundTapped() {
+        self.endEditing(true)
     }
 }
