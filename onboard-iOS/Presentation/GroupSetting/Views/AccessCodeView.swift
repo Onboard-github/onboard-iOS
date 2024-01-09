@@ -9,6 +9,19 @@ import UIKit
 
 final class AccessCodeView: UIView {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let topMargin: CGFloat = 35
+        static let leftMagin: CGFloat = 20
+        static let codeTopSpacing: CGFloat = 10
+        static let itemSpacing: CGFloat = 30
+        static let requiredLeftSpacing: CGFloat = 2
+        static let textFieldTopSpacing: CGFloat = 5
+        static let textFieldHeight: CGFloat = 48
+        static let countRightMargin: CGFloat = 30
+    }
+    
     // MARK: - UI
     
     private let titleLabel: UILabel = {
@@ -67,4 +80,70 @@ final class AccessCodeView: UIView {
         label.font = Font.Typography.body5_R
         return label
     }()
+    
+    // MARK: - Initialize
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.titleLabel)
+        self.addSubview(self.codeLabel)
+        self.addSubview(self.newTitleLabel)
+        self.addSubview(self.requiredImage)
+        self.addSubview(self.textField)
+        self.addSubview(self.subTitleLabel)
+        self.addSubview(self.countLabel)
+        
+        self.titleLabel.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
+            $0.leading.equalToSuperview().inset(Metric.leftMagin)
+        }
+        
+        self.codeLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.codeTopSpacing)
+            $0.leading.equalToSuperview().inset(Metric.leftMagin)
+        }
+        
+        self.newTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(codeLabel.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.equalToSuperview().inset(Metric.leftMagin)
+        }
+        
+        self.requiredImage.snp.makeConstraints {
+            $0.top.equalTo(codeLabel.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.equalTo(newTitleLabel.snp.trailing).offset(Metric.requiredLeftSpacing)
+        }
+        
+        self.textField.snp.makeConstraints {
+            $0.top.equalTo(newTitleLabel.snp.bottom).offset(Metric.textFieldTopSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftMagin)
+            $0.height.equalTo(Metric.textFieldHeight)
+        }
+        
+        self.subTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.bottom).offset(Metric.textFieldTopSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftMagin)
+        }
+        
+        self.countLabel.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.bottom).offset(Metric.textFieldTopSpacing)
+            $0.trailing.equalToSuperview().inset(Metric.countRightMargin)
+        }
+    }
 }
