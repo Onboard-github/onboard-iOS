@@ -32,6 +32,7 @@ struct TextLabels {
     // MARK: - Group Setting
     
     static let setting_title = "모임 설정"
+    static let accessCode_change_title = "참여코드 변경"
     
     static let access_current = "현재 참여코드"
     static let access_code = "000000"
