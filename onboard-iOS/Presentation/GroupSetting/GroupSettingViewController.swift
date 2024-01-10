@@ -124,8 +124,8 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
                 let vc = MemberManageViewController()
                 navigationController?.pushViewController(vc, animated: true)
             case 3:
-                // TODO: - 관리자 변경
-                break
+                let vc = OwnerManageViewController()
+                navigationController?.pushViewController(vc, animated: true)
             case 4:
                 // TODO: - 모임 삭제
                 break
