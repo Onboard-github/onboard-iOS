@@ -79,4 +79,9 @@ final class OwnerManageTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
         }
     }
+    
+    func configure(image: UIImage?, title: String) {
+        titleImage.image = image
+        titleLabel.text = title
+    }
 }

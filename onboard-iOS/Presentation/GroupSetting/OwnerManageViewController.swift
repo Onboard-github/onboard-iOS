@@ -51,6 +51,8 @@ final class OwnerManageViewController: UIViewController {
         view.backgroundColor = Colors.White
         view.separatorStyle = .none
         
+        view.delegate = self
+        view.dataSource = self
         view.register(OwnerManageTableViewCell.self,
                       forCellReuseIdentifier: "OwnerManageTableViewCell")
         return view
@@ -151,5 +153,25 @@ final class OwnerManageViewController: UIViewController {
     @objc
     private func showPrevious() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int) -> Int {
+            return tmpData.count
+        }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerManageTableViewCell",
+                                                 for: indexPath) as! OwnerManageTableViewCell
+        let (image, label) = tmpData[indexPath.row]
+        cell.configure(image: image, title: label)
+        return cell
     }
 }
