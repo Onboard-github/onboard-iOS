@@ -46,4 +46,6 @@ struct TextLabels {
     static let member_title_info = "그룹에 속해있는 멤버와 임시 멤버를 관리할 수 있습니다."
     static let member_placeholder = "   멤버 검색"
     static let member_delete = "멤버 삭제"
+    
+    static let owner_title_info = "관리자 권한을 넘길 멤버를 선택해주세요."
 }

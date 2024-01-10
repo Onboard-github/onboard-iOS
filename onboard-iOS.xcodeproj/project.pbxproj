@@ -14,6 +14,7 @@
 		1C30170D2B4D718400128E5C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170C2B4D718400128E5C /* AlertView.swift */; };
 		1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170E2B4EBD1D00128E5C /* AlertState.swift */; };
 		1C3017112B4EC3E100128E5C /* OwnerManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */; };
+		1C3017132B4EC4D000128E5C /* OwnerManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3017122B4EC4D000128E5C /* OwnerManageViewController.swift */; };
 		1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */; };
 		1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */; };
 		1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */; };
@@ -128,6 +129,7 @@
 		1C30170C2B4D718400128E5C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		1C30170E2B4EBD1D00128E5C /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
 		1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerManageTableViewCell.swift; sourceTree = "<group>"; };
+		1C3017122B4EC4D000128E5C /* OwnerManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerManageViewController.swift; sourceTree = "<group>"; };
 		1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabels.swift; sourceTree = "<group>"; };
 		1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */,
 				1C6FEAE82B4D503500CFC647 /* AccessCodeViewController.swift */,
 				1C6FEAEC2B4D5E7700CFC647 /* MemberManageViewController.swift */,
+				1C3017122B4EC4D000128E5C /* OwnerManageViewController.swift */,
 				1C6FEADD2B4D464300CFC647 /* Views */,
 				1C6FEAE12B4D478300CFC647 /* Utils */,
 			);
@@ -894,6 +897,7 @@
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
+				1C3017132B4EC4D000128E5C /* OwnerManageViewController.swift in Sources */,
 				1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */,
 				1C6FEAE72B4D4DF400CFC647 /* AccessCodeView.swift in Sources */,
 				AA5ED43C2B27661400993B63 /* PodiumCell.swift in Sources */,
