@@ -34,6 +34,7 @@ struct TextLabels {
     static let setting_title = "모임 설정"
     static let accessCode_change_title = "참여코드 변경"
     static let member_title = "멤버 관리"
+    static let owner_title = "관리자 변경"
     
     static let access_current = "현재 참여코드"
     static let access_code = "000000"
