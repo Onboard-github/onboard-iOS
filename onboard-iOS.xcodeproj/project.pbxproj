@@ -12,6 +12,7 @@
 		1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */; };
 		1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51B42AE2B7960020AA71 /* BottomSheetView.swift */; };
 		1C30170D2B4D718400128E5C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170C2B4D718400128E5C /* AlertView.swift */; };
+		1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170E2B4EBD1D00128E5C /* AlertState.swift */; };
 		1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */; };
 		1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */; };
 		1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */; };
@@ -124,6 +125,7 @@
 		1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupViewController.swift; sourceTree = "<group>"; };
 		1C1F51B42AE2B7960020AA71 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		1C30170C2B4D718400128E5C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		1C30170E2B4EBD1D00128E5C /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
 		1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabels.swift; sourceTree = "<group>"; };
 		1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				1CA1BBC92ADABFF9000C5F7E /* PopupState.swift */,
+				1C30170E2B4EBD1D00128E5C /* AlertState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -930,6 +933,7 @@
 				1CEBA1522B333D24007AD07C /* GroupCreateCompleteView.swift in Sources */,
 				AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */,
 				AAF169892B108B0D00EF82A4 /* AlertManager.swift in Sources */,
+				1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
 				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateManager.swift in Sources */,
