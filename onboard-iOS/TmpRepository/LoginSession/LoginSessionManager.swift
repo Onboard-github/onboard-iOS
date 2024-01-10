@@ -9,11 +9,26 @@ import Foundation
 import SwiftKeychainWrapper
 
 class LoginSessionManager {
+    enum State: String {
+        case logout
+        case needJoinGroup
+        case login
+    }
+    
+    static func setState(state: State) {
+        KeychainWrapper.standard.set(state.rawValue, forKey: "state")
+    }
+    
+    static func getState() -> State {
+        return State(rawValue: KeychainWrapper.standard.string(forKey: "state") ?? "logout") ?? .logout
+    }
+    
     static func logout() {
         KeychainWrapper.standard.remove(forKey: "accessToken")
         KeychainWrapper.standard.remove(forKey: "refreshToken")
         KeychainWrapper.standard.remove(forKey: "sessionType")
         KeychainWrapper.standard.remove(forKey: "nickname")
+        KeychainWrapper.standard.remove(forKey: "state")
     }
     
     static func setLoginSession(accessToken: String, refreshToken: String, type: UserLoginSessionType) {

@@ -83,6 +83,9 @@
 		AA09C27E2ACBE9BC00F51A96 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = AA09C27D2ACBE9BC00F51A96 /* KakaoSDKUser */; };
 		AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */; };
 		AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */; };
+		AA31AFB22B3D624A00E91C91 /* TermsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA31AFB12B3D624A00E91C91 /* TermsResponse.swift */; };
+		AA31AFB52B3D662E00E91C91 /* TermCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA31AFB32B3D662E00E91C91 /* TermCell.swift */; };
+		AA31AFB62B3D662E00E91C91 /* TermCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA31AFB42B3D662E00E91C91 /* TermCell.xib */; };
 		AA3E7D5C2B25412D007A6BE9 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = AA3E7D5B2B25412D007A6BE9 /* SkeletonView */; };
 		AA3E7D5F2B254159007A6BE9 /* GameSkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3E7D5E2B254159007A6BE9 /* GameSkeletonCell.swift */; };
 		AA5E9C772B2E8C3D000E3A30 /* GroupJoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5E9C752B2E8C3D000E3A30 /* GroupJoinVC.swift */; };
@@ -194,6 +197,9 @@
 		61AC80042AB73A2800B0B6B5 /* Reactive+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Extension.swift"; sourceTree = "<group>"; };
 		AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginUseCase.swift; sourceTree = "<group>"; };
 		AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
+		AA31AFB12B3D624A00E91C91 /* TermsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsResponse.swift; sourceTree = "<group>"; };
+		AA31AFB32B3D662E00E91C91 /* TermCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermCell.swift; sourceTree = "<group>"; };
+		AA31AFB42B3D662E00E91C91 /* TermCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermCell.xib; sourceTree = "<group>"; };
 		AA3E7D5E2B254159007A6BE9 /* GameSkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSkeletonCell.swift; sourceTree = "<group>"; };
 		AA5E9C752B2E8C3D000E3A30 /* GroupJoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupJoinVC.swift; sourceTree = "<group>"; };
 		AA5E9C762B2E8C3D000E3A30 /* GroupJoinVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupJoinVC.xib; sourceTree = "<group>"; };
@@ -622,6 +628,7 @@
 			isa = PBXGroup;
 			children = (
 				AA69E3BE2B1333D300F74A36 /* GameList.swift */,
+				AA31AFB12B3D624A00E91C91 /* TermsResponse.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -727,6 +734,8 @@
 				AAF169912B10900100EF82A4 /* LoginSelectVC.xib */,
 				AAF1699D2B10E05200EF82A4 /* AgreeVC.swift */,
 				AAF1699E2B10E05200EF82A4 /* AgreeVC.xib */,
+				AA31AFB32B3D662E00E91C91 /* TermCell.swift */,
+				AA31AFB42B3D662E00E91C91 /* TermCell.xib */,
 				AAF169A12B10EED600EF82A4 /* AgreeNicknameVC.swift */,
 				AAF169A22B10EED600EF82A4 /* AgreeNicknameVC.xib */,
 				61AC7FA42AB6D4A300B0B6B5 /* Main.storyboard */,
@@ -848,6 +857,7 @@
 				1CA1BBB52ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				AA5E9C782B2E8C3D000E3A30 /* GroupJoinVC.xib in Resources */,
 				61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */,
+				AA31AFB62B3D662E00E91C91 /* TermCell.xib in Resources */,
 				AAF169932B10900100EF82A4 /* LoginSelectVC.xib in Resources */,
 				1CA1BBB72ACF109B000C5F7E /* SpoqaHanSansNeo-Thin.ttf in Resources */,
 				1CA1BBB62ACF109B000C5F7E /* SpoqaHanSansNeo-Bold.ttf in Resources */,
@@ -891,6 +901,7 @@
 				AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
+				AA31AFB22B3D624A00E91C91 /* TermsResponse.swift in Sources */,
 				1CD208722B1BB339008E710E /* ImageLoader.swift in Sources */,
 				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
 				AA93981A2B25534A0022C5ED /* GameCell.swift in Sources */,
@@ -898,6 +909,7 @@
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
 				1C3017132B4EC4D000128E5C /* OwnerManageViewController.swift in Sources */,
+				AA31AFB52B3D662E00E91C91 /* TermCell.swift in Sources */,
 				1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */,
 				1C6FEAE72B4D4DF400CFC647 /* AccessCodeView.swift in Sources */,
 				AA5ED43C2B27661400993B63 /* PodiumCell.swift in Sources */,
@@ -1098,17 +1110,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XBHLSDCD8G;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = XBHLSDCD8G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1118,7 +1129,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "onboard.onboard-iOS-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "온보드";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1131,17 +1141,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XBHLSDCD8G;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = XBHLSDCD8G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1151,7 +1160,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "onboard.onboard-iOS-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "온보드";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

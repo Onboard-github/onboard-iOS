@@ -16,12 +16,7 @@ class DevelopVC: UIViewController {
     }
     
     @IBAction func logoutButtonAction(_ sender: Any) {
-        AlertManager.show(message: "로그아웃 후 앱이 종료됩니다") {
-            LoginSessionManager.logout()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                exit(0)
-            })
-        }
+        LoginSessionManager.logout()
     }
     
     /*

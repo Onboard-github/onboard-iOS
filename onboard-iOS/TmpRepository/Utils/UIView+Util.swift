@@ -163,3 +163,44 @@ class RoundedView: UIView {
         setupButton()
     }
 }
+
+@IBDesignable
+class CheckButton: UIButton {
+    @IBInspectable var checked: Bool = false {
+        didSet {
+            updateImage()
+        }
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupButton()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupButton()
+    }
+
+    private func setupButton() {
+        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        updateImage()
+    }
+
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setupButton()
+    }
+
+    @objc private func buttonTapped() {
+        checked.toggle()
+    }
+
+    private func updateImage() {
+        if checked {
+            setImage(UIImage(named: "check_orange"), for: .normal)
+        } else {
+            setImage(UIImage(named: "check_gray"), for: .normal)
+        }
+    }
+}
