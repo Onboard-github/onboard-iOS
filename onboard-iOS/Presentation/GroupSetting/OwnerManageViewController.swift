@@ -13,6 +13,11 @@ final class OwnerManageViewController: UIViewController {
     
     private enum Metric {
         static let iconSize: CGFloat = 16
+        static let topMargin: CGFloat = 25
+        static let leftRightMargin: CGFloat = 20
+        static let textFieldTopSpacing: CGFloat = 10
+        static let textFieldHeight: CGFloat = 40
+        static let tableViewTopSpacing: CGFloat = 20
     }
     
     // MARK: - UI
@@ -71,4 +76,46 @@ final class OwnerManageViewController: UIViewController {
         (IconImage.emptyDice.image!, "몜몜"),
         (IconImage.dice.image!, "맴맴")
     ]
+    
+    // MARK: - Initialize
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.view.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.view.addSubview(self.titleLabel)
+        self.view.addSubview(self.textField)
+        self.view.addSubview(self.tableView)
+        
+        self.titleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.textField.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.textFieldTopSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.height.equalTo(Metric.textFieldHeight)
+        }
+        
+        self.tableView.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.bottom).offset(Metric.tableViewTopSpacing)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+    }
 }
