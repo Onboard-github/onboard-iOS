@@ -94,7 +94,16 @@ final class OwnerManageViewController: UIViewController {
     private func configure() {
         self.view.backgroundColor = Colors.White
         
+        self.textFieldPlaceHolder()
         self.makeConstraints()
+    }
+    
+    private func textFieldPlaceHolder() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Font.Typography.body3_R as Any,
+            .foregroundColor: Colors.Gray_7]
+        textField.attributedPlaceholder = NSAttributedString(string: TextLabels.owner_placeholder,
+                                                             attributes: attributes)
     }
     
     private func makeConstraints() {

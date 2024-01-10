@@ -48,4 +48,5 @@ struct TextLabels {
     static let member_delete = "멤버 삭제"
     
     static let owner_title_info = "관리자 권한을 넘길 멤버를 선택해주세요."
+    static let owner_placeholder = "   멤버 검색"
 }
