@@ -13,6 +13,7 @@
 		1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51B42AE2B7960020AA71 /* BottomSheetView.swift */; };
 		1C30170D2B4D718400128E5C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170C2B4D718400128E5C /* AlertView.swift */; };
 		1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170E2B4EBD1D00128E5C /* AlertState.swift */; };
+		1C3017112B4EC3E100128E5C /* OwnerManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */; };
 		1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */; };
 		1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */; };
 		1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */; };
@@ -126,6 +127,7 @@
 		1C1F51B42AE2B7960020AA71 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
 		1C30170C2B4D718400128E5C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		1C30170E2B4EBD1D00128E5C /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
+		1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerManageTableViewCell.swift; sourceTree = "<group>"; };
 		1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabels.swift; sourceTree = "<group>"; };
 		1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */,
 				1C6FEAEA2B4D5D7E00CFC647 /* MemberManageTableViewCell.swift */,
+				1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -938,6 +941,7 @@
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
 				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateManager.swift in Sources */,
 				1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */,
+				1C3017112B4EC3E100128E5C /* OwnerManageTableViewCell.swift in Sources */,
 				AA91058B2ADA4B9C00DA2E96 /* GroupSearchCell.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */,
