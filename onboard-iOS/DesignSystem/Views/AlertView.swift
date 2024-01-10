@@ -124,6 +124,14 @@ final class AlertView: UIView {
         self.backgroundView.addGestureRecognizer(tapGesture)
     }
     
+    func setAlertState(alertState: AlertState,
+                       onClicked: @escaping (() -> Void)) {
+        
+        self.contentLabel.text = alertState.contentLabel
+        self.leftButton.setTitle(alertState.leftButtonLabel, for: .normal)
+        self.rightButton.setTitle(alertState.rightButtonLabel, for: .normal)
+    }
+    
     @objc
     private func backgroundTapped() {
         removeFromSuperview()
