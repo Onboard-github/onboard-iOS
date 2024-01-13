@@ -67,6 +67,7 @@ final class GameResultViewController: UIViewController {
         self.view.backgroundColor = Colors.White
         
         self.makeConstraints()
+        self.setNavigationBar()
     }
     
     private func makeConstraints() {
@@ -89,5 +90,29 @@ final class GameResultViewController: UIViewController {
             $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.collectionViewTopSpacing)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    private func setNavigationBar() {
+        let image = IconImage.back.image?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        
+        if let navigationBar = navigationController?.navigationBar {
+            let textAttribute: [NSAttributedString.Key: Any] = [
+                NSAttributedString.Key.font: Font.Typography.title2 as Any,
+                NSAttributedString.Key.foregroundColor: Colors.Gray_14
+            ]
+            navigationBar.titleTextAttributes = textAttribute
+        }
+        
+        navigationController?.navigationBar.barTintColor = Colors.White
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: image, style: .done,
+            target: self, action: #selector(showPrevious))
+        navigationItem.title = TextLabels.owner_title
+    }
+    
+    @objc
+    private func showPrevious() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
