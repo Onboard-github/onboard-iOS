@@ -9,6 +9,15 @@ import UIKit
 
 final class GameResultViewController: UIViewController {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let progressBarHeight: CGFloat = 2
+        static let labelTopSpacing: CGFloat = 15
+        static let labelLeftMargin: CGFloat = 20
+        static let collectionViewTopSpacing: CGFloat = 20
+    }
+    
     // MARK: - UI
     
     private let progressBar: UIProgressView = {
@@ -38,4 +47,46 @@ final class GameResultViewController: UIViewController {
                       forCellWithReuseIdentifier: "GameResultCollectionViewCell")
         return view
     }()
+    
+    // MARK: - Initialize
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.view.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.view.addSubview(self.progressBar)
+        self.view.addSubview(self.titleLabel)
+        self.view.addSubview(self.gameCollectionView)
+        
+        self.progressBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(Metric.progressBarHeight)
+        }
+        
+        self.titleLabel.snp.makeConstraints {
+            $0.top.equalTo(progressBar.snp.bottom).offset(Metric.labelTopSpacing)
+            $0.leading.equalToSuperview().inset(Metric.labelLeftMargin)
+        }
+        
+        self.gameCollectionView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.collectionViewTopSpacing)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+    }
 }

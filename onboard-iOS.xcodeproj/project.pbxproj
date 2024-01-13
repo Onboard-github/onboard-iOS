@@ -15,6 +15,8 @@
 		1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170E2B4EBD1D00128E5C /* AlertState.swift */; };
 		1C3017112B4EC3E100128E5C /* OwnerManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */; };
 		1C3017132B4EC4D000128E5C /* OwnerManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3017122B4EC4D000128E5C /* OwnerManageViewController.swift */; };
+		1C30171C2B50683D00128E5C /* GameResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30171B2B50683D00128E5C /* GameResultCollectionViewCell.swift */; };
+		1C30171E2B52D8EF00128E5C /* GameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30171D2B52D8EF00128E5C /* GameResultViewController.swift */; };
 		1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */; };
 		1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */; };
 		1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */; };
@@ -130,6 +132,8 @@
 		1C30170E2B4EBD1D00128E5C /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
 		1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerManageTableViewCell.swift; sourceTree = "<group>"; };
 		1C3017122B4EC4D000128E5C /* OwnerManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerManageViewController.swift; sourceTree = "<group>"; };
+		1C30171B2B50683D00128E5C /* GameResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		1C30171D2B52D8EF00128E5C /* GameResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultViewController.swift; sourceTree = "<group>"; };
 		1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabels.swift; sourceTree = "<group>"; };
 		1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
@@ -262,6 +266,31 @@
 				1C30170C2B4D718400128E5C /* AlertView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1C3017162B4ED07500128E5C /* GameResult */ = {
+			isa = PBXGroup;
+			children = (
+				1C30171D2B52D8EF00128E5C /* GameResultViewController.swift */,
+				1C3017172B4ED08B00128E5C /* Views */,
+			);
+			path = GameResult;
+			sourceTree = "<group>";
+		};
+		1C3017172B4ED08B00128E5C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1C3017182B4ED09D00128E5C /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1C3017182B4ED09D00128E5C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1C30171B2B50683D00128E5C /* GameResultCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		1C5EAAFE2AEB8E280020D0D1 /* GroupCreate */ = {
@@ -500,6 +529,7 @@
 				AA9105602AD9A69300DA2E96 /* GroupSearch */,
 				1C5EAAFE2AEB8E280020D0D1 /* GroupCreate */,
 				1C6FEADC2B4D462900CFC647 /* GroupSetting */,
+				1C3017162B4ED07500128E5C /* GameResult */,
 				61AC7FB62AB6D6C300B0B6B5 /* Test */,
 			);
 			path = Presentation;
@@ -875,6 +905,7 @@
 				1CD208702B1BAEF1008E710E /* GroupCreateReactor.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				1C6FEAE92B4D503500CFC647 /* AccessCodeViewController.swift in Sources */,
+				1C30171C2B50683D00128E5C /* GameResultCollectionViewCell.swift in Sources */,
 				1CDD02E62B35C58100502C04 /* GroupCreateCompleteViewController.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				1CA1BBC42ADABEBD000C5F7E /* TextField.swift in Sources */,
@@ -953,6 +984,7 @@
 				AA83D9732AE57AC80068362B /* AuthEntity.swift in Sources */,
 				1C6FEAED2B4D5E7700CFC647 /* MemberManageViewController.swift in Sources */,
 				611D8CA82ABECFFC0074A55A /* AuthRepository.swift in Sources */,
+				1C30171E2B52D8EF00128E5C /* GameResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
