@@ -23,6 +23,7 @@ final class GameResultViewController: UIViewController {
     private let progressBar: UIProgressView = {
         let bar = UIProgressView()
         bar.tintColor = Colors.Orange_5
+        bar.trackTintColor = Colors.Orange_1
         bar.progress = 1.0 / 3.0
         return bar
     }()
