@@ -50,4 +50,9 @@ struct TextLabels {
     
     static let owner_title_info = "관리자 권한을 넘길 멤버를 선택해주세요."
     static let owner_placeholder = "   멤버 검색"
+    
+    // MARK: - Game Result Record
+    
+    static let game_result_title_info = "플레이 한 보드게임을 선택해주세요"
+
 }
