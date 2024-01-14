@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class GroupJoinVC: UIViewController {
     var group: GroupSearchView.Group? {
@@ -30,15 +31,7 @@ class GroupJoinVC: UIViewController {
         let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
         homeTabController.modalPresentationStyle = .fullScreen
         navigationController?.present(homeTabController, animated: true)
+        LoginSessionManager.setState(state: .login)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
