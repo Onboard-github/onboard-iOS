@@ -17,12 +17,20 @@ enum RankVcState {
 }
 
 class RankVC: UIViewController {
+    var groupInfo: GroupInfoRes? {
+        didSet {
+            titleLabelButton.setTitle(groupInfo?.name, for: .normal)
+        }
+    }
+    
     var state: RankVcState = .loading {
         didSet {
             gameDetailTableView.reloadData()
         }
     }
-
+    
+    @IBOutlet weak var titleLabelButton: UIButton!
+    
     private var gameList: GamgeList? {
         didSet {
             pagingViewController.reloadData()
@@ -55,6 +63,8 @@ class RankVC: UIViewController {
         gameDetailTableView.delegate = self
         gameDetailTableView.bounces = false
         gameDetailTableView.allowsSelection = false
+        
+        getGroupInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -195,7 +205,14 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    
+    private func getGroupInfo() {
+        Task {
+            let result = try await OBNetworkManager.shared.asyncRequest(object: GroupInfoRes.self, router: .groupInfo(groupId: LoginSessionManager.currentGroupId ?? -1))
+            if let result = result.value {
+                self.groupInfo = result
+            }
+        }
+    }
 }
 
 extension RankVC: PagingViewControllerDataSource {
