@@ -53,6 +53,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
                 self.window?.rootViewController = homeTabController
+            } else {
+                self.window?.rootViewController = UINavigationController(rootViewController: LoginSelectVC())
             }
         } else {
             self.window?.rootViewController = UINavigationController(rootViewController: LoginSelectVC())

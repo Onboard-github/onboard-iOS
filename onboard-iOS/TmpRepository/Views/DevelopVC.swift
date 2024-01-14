@@ -17,6 +17,7 @@ class DevelopVC: UIViewController {
     
     @IBAction func logoutButtonAction(_ sender: Any) {
         LoginSessionManager.logout()
+        exit(0)
     }
     
     /*

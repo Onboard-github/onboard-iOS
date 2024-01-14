@@ -33,17 +33,22 @@ enum OBRouter: URLRequestConvertible {
     case randomImage
     case createGroup(body: Body)
     case getTerms
+    case groupMemeberPatch(groupId: Int, userId: Int)
+    case groupMembers(groupId: Int)
+    case addGroupGuest(groupId: Int, nickName: String?)
 
     // MARK: - HTTP Method
 
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList, .gameList, .randomImage, .getTerms:
+        case .testAPI, .groupList, .gameList, .randomImage, .getTerms, .groupMembers:
             return .get
-        case .auth, .addGroup, .pickerImage, .createGroup:
+        case .auth, .addGroup, .pickerImage, .createGroup, .addGroupGuest:
             return .post
         case .setUser:
             return .put
+        case .groupMemeberPatch:
+            return .patch
         }
     }
 
@@ -69,6 +74,12 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group"
         case .getTerms:
             return "api/v1/terms"
+        case let .groupMemeberPatch(groupId, userId):
+            return "api/v1/group/\(groupId)/member/\(userId)"
+        case let .groupMembers(groupId):
+            return "api/v1/group/\(groupId)/member"
+        case let .addGroupGuest(groupId, _):
+            return "api/v1/group/\(groupId)/guest"
         }
     }
 
@@ -78,7 +89,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage:
             return nil
-        case .setUser, .gameList, .getTerms, .createGroup:
+        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
@@ -90,7 +101,9 @@ enum OBRouter: URLRequestConvertible {
 
     var body: Body? {
         switch self {
-        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms:
+        case let .addGroupGuest(_, nickname):
+            return ["nickname": nickname]
+        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers:
             return nil
 
         case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body):
@@ -102,12 +115,14 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms:
+        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest:
             return nil
         case let .groupList(params):
             return params
         case let .pickerImage(params):
             return params
+        case let .groupMembers(groupId):
+            return ["groupId": groupId, "size": 100]
         }
     }
 
