@@ -7,19 +7,28 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 
 class GroupJoinVC: UIViewController {
     var group: GroupSearchView.Group? {
         didSet {
+            backgroundImgView.kf.setImage(with: URL(string: group?.profileImageUrl ?? ""))
+            affiliationLabel.text = group?.organization
             groupName.text = group?.name
+            descriptionLabel.text = group?.description
         }
     }
+    @IBOutlet weak var backgroundImgView: UIImageView!
+    @IBOutlet weak var affiliationLabel: UILabel!
     @IBOutlet weak var groupName: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //스켈레톤 적용
+        affiliationLabel.text = nil
+        groupName.text = nil
+        descriptionLabel.text = nil
     }
 
     @IBAction func backButton(_ sender: Any) {

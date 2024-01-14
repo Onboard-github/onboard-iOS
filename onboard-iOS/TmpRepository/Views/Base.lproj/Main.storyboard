@@ -833,16 +833,28 @@
                                     <action selector="logoutButtonAction:" destination="QfE-LN-TcP" eventType="touchUpInside" id="yHU-br-bMa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Me-KK-CLa">
+                                <rect key="frame" x="16" y="130" width="361" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qEW-pf-mWH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="8Me-KK-CLa" firstAttribute="leading" secondItem="qEW-pf-mWH" secondAttribute="leading" constant="16" id="8tb-wL-WUj"/>
                             <constraint firstItem="hOY-2h-irV" firstAttribute="leading" secondItem="qEW-pf-mWH" secondAttribute="leading" constant="20" id="M6C-za-ish"/>
                             <constraint firstItem="hOY-2h-irV" firstAttribute="top" secondItem="qEW-pf-mWH" secondAttribute="top" constant="20" id="TCD-HL-9XE"/>
+                            <constraint firstItem="8Me-KK-CLa" firstAttribute="top" secondItem="hOY-2h-irV" secondAttribute="bottom" constant="16" id="TVY-dx-v7C"/>
                             <constraint firstItem="qEW-pf-mWH" firstAttribute="trailing" secondItem="hOY-2h-irV" secondAttribute="trailing" constant="20" id="m9a-5Z-8iw"/>
+                            <constraint firstItem="qEW-pf-mWH" firstAttribute="trailing" secondItem="8Me-KK-CLa" secondAttribute="trailing" constant="16" id="ugt-u3-Gdf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="개발 메뉴" id="moj-5t-84m"/>
+                    <connections>
+                        <outlet property="groupInfoLabel" destination="8Me-KK-CLa" id="J80-Au-z4o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5o-1I-4sL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

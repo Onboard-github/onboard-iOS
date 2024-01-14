@@ -8,26 +8,21 @@
 import UIKit
 
 class DevelopVC: UIViewController {
-
+    @IBOutlet weak var groupInfoLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        Task {
+            let result = try await OBNetworkManager.shared.asyncRequest(object: GroupInfoRes.self, router: .groupInfo(groupId: LoginSessionManager.currentGroupId ?? -1))
+            if let result = result.value {
+                groupInfoLabel.text = "현재 가입된 그룹 정보: \(result)"
+            }
+        }
     }
     
     @IBAction func logoutButtonAction(_ sender: Any) {
         LoginSessionManager.logout()
         exit(0)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
