@@ -10,11 +10,7 @@ import PanModal
 import Alamofire
 
 class LoginSelectVC: UIViewController {
-    lazy var agree: AgreeVC = {
-        let vc = AgreeVC()
-        vc.delegate = self
-        return vc
-    }()
+    var agree: AgreeVC?
     
     let kakaoLoginManager = KakaoLoginManagerImpl()
     let authRepository = AuthRepositoryImpl()
@@ -58,16 +54,18 @@ extension LoginSelectVC: KakaoLoginDelegate {
                 LoginSessionManager.setState(state: .needJoinGroup)
             }
             
+            let vc = AgreeVC()
+            agree = vc
+            vc.delegate = self
             
-            
-            presentPanModal(agree)
+            presentPanModal(vc)
         }
     }
 }
 
 extension LoginSelectVC: AgreeDelegate {
     func agreeComplete() {
-        agree.dismiss(animated: true) { [weak self] in
+        agree?.dismiss(animated: true) { [weak self] in
             if let nickname = LoginSessionManager.getNickname() {
                 let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
                 let groupList = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
