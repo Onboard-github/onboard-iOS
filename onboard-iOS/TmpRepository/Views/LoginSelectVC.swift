@@ -7,6 +7,7 @@
 
 import UIKit
 import PanModal
+import Alamofire
 
 class LoginSelectVC: UIViewController {
     lazy var agree: AgreeVC = {
@@ -47,6 +48,14 @@ extension LoginSelectVC: KakaoLoginDelegate {
                 LogManager.log(messaeg: "기존 로그인되어있던 로그인 정보 \(currentSesison) 삭제")
             }
             
+            let meInfoResult = try await OBNetworkManager.shared.asyncRequest(object: GetMeRes.self, router: .getMe)
+            
+            if let result = meInfoResult.value {
+                // 이미 닉네임이 있음 - 가입 완료 상태이므로 닉네임 설정화면 스킵
+                LoginSessionManager.setNickname(nickname: result.nickname)
+                LoginSessionManager.setState(state: .needJoinGroup)
+            }
+            
             LoginSessionManager.setLoginSession(accessToken: result.accessToken, refreshToken: result.refreshToken, type: .kakao)
             
             presentPanModal(agree)
@@ -57,8 +66,15 @@ extension LoginSelectVC: KakaoLoginDelegate {
 extension LoginSelectVC: AgreeDelegate {
     func agreeComplete() {
         agree.dismiss(animated: true) { [weak self] in
-            let nickNameVC = AgreeNicknameVC()
-            self?.navigationController?.pushViewController(nickNameVC, animated: true)
+            if let nickname = LoginSessionManager.getNickname() {
+                let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
+                let groupList = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
+                LoginSessionManager.setState(state: .needJoinGroup)
+                self?.navigationController?.pushViewController(groupList, animated: true)
+            } else {
+                let nickNameVC = AgreeNicknameVC()
+                self?.navigationController?.pushViewController(nickNameVC, animated: true)
+            }
         }
     }
 }
