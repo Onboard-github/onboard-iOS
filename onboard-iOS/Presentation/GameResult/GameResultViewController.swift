@@ -138,3 +138,15 @@ extension GameResultViewController: UICollectionViewDelegate, UICollectionViewDa
             return cell
         }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension GameResultViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: 102, height: 156)
+        }
+}
