@@ -44,6 +44,8 @@ final class GameResultViewController: UIViewController {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = Colors.White
         
+        view.delegate = self
+        view.dataSource = self
         view.register(GameResultCollectionViewCell.self,
                       forCellWithReuseIdentifier: "GameResultCollectionViewCell")
         return view
@@ -115,4 +117,24 @@ final class GameResultViewController: UIViewController {
     private func showPrevious() {
         self.navigationController?.popViewController(animated: true)
     }
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
+extension GameResultViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int) -> Int {
+            return 1
+        }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameResultCollectionViewCell",
+                                                          for: indexPath) as! GameResultCollectionViewCell
+            return cell
+        }
 }
