@@ -70,7 +70,21 @@ extension LoginSelectVC: AgreeDelegate {
                 let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
                 let groupList = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
                 LoginSessionManager.setState(state: .needJoinGroup)
-                self?.navigationController?.pushViewController(groupList, animated: true)
+                
+                Task {
+                    // 가입된 그룹 하나라도 있는지 체크
+                    let result = try await OBNetworkManager.shared.asyncRequest(object: GetMyGroupsV2Res.self, router: .getMyGroupsV2)
+                    if let result = result.value, result.contents.count > 0 {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                        homeTabController.modalPresentationStyle = .fullScreen
+                        self?.navigationController?.present(homeTabController, animated: true)
+                        LoginSessionManager.setState(state: .login)
+                    } else {
+                        //가입한 그룹 하나도 없음
+                        self?.navigationController?.pushViewController(groupList, animated: true)
+                    }
+                }
             } else {
                 let nickNameVC = AgreeNicknameVC()
                 self?.navigationController?.pushViewController(nickNameVC, animated: true)

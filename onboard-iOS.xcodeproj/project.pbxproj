@@ -53,6 +53,7 @@
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		3B282DF82B5381F900483A2A /* GroupInfoRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DF72B5381F900483A2A /* GroupInfoRes.swift */; };
 		3B282DFA2B5598E400483A2A /* GetMeRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DF92B5598E400483A2A /* GetMeRes.swift */; };
+		3B282DFC2B55A74200483A2A /* GetMyGroupsV2Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */; };
 		3BC078452B4F441B0032BB4C /* GroupMembersRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
@@ -174,6 +175,7 @@
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3B282DF72B5381F900483A2A /* GroupInfoRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoRes.swift; sourceTree = "<group>"; };
 		3B282DF92B5598E400483A2A /* GetMeRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMeRes.swift; sourceTree = "<group>"; };
+		3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyGroupsV2Res.swift; sourceTree = "<group>"; };
 		3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersRes.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */,
 				3B282DF72B5381F900483A2A /* GroupInfoRes.swift */,
 				3B282DF92B5598E400483A2A /* GetMeRes.swift */,
+				3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */,
 			);
 			path = NetworkModel;
 			sourceTree = "<group>";
@@ -942,6 +945,7 @@
 				AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */,
 				1CA1BBB92ACF123D000C5F7E /* Typography.swift in Sources */,
 				AAF169A32B10EED600EF82A4 /* AgreeNicknameVC.swift in Sources */,
+				3B282DFC2B55A74200483A2A /* GetMyGroupsV2Res.swift in Sources */,
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
 				1C6FEAE52B4D482100CFC647 /* GroupSettingViewController.swift in Sources */,
 				1C6FEAEB2B4D5D7E00CFC647 /* MemberManageTableViewCell.swift in Sources */,
