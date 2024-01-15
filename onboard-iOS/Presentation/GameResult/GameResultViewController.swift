@@ -157,7 +157,7 @@ extension GameResultViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
-            return 1
+            return reactor?.currentState.gameData.first?.list.count ?? 0
         }
     
     func collectionView(
@@ -166,6 +166,17 @@ extension GameResultViewController: UICollectionViewDelegate, UICollectionViewDa
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameResultCollectionViewCell",
                                                           for: indexPath) as! GameResultCollectionViewCell
+            
+            if let gameData = reactor?.currentState.gameData,
+               let firstGameList = gameData.first?.list,
+               indexPath.item < firstGameList.count {
+                
+                let game = firstGameList[indexPath.item]
+                
+                cell.configure(imageURL: game.img,
+                               name: game.name)
+            }
+            
             return cell
         }
 }
