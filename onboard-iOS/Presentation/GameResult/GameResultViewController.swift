@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import ReactorKit
 
-final class GameResultViewController: UIViewController {
+final class GameResultViewController: UIViewController, View {
+    
+    typealias Reactor = GameResultReactor
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -53,14 +60,38 @@ final class GameResultViewController: UIViewController {
     
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: GameResultReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: GameResultReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GameResultReactor) {
+        reactor.action.onNext(.fetchResult(groupId: 123,
+                                           sort: "MATCH_COUNT"))
+    }
+    
+    func bindState(reactor: GameResultReactor) {
+        reactor.state
+            .map { $0.gameData }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                self?.gameCollectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Configure
