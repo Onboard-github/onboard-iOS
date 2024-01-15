@@ -48,9 +48,9 @@ extension LoginSelectVC: KakaoLoginDelegate {
             }
             
             LoginSessionManager.setLoginSession(accessToken: result.accessToken, refreshToken: result.refreshToken, type: .kakao)
+            
+            presentPanModal(agree)
         }
-        
-        presentPanModal(agree)
     }
 }
 
