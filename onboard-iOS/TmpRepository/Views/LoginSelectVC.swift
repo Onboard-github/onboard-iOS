@@ -48,6 +48,8 @@ extension LoginSelectVC: KakaoLoginDelegate {
                 LogManager.log(messaeg: "기존 로그인되어있던 로그인 정보 \(currentSesison) 삭제")
             }
             
+            LoginSessionManager.setLoginSession(accessToken: result.accessToken, refreshToken: result.refreshToken, type: .kakao)
+            
             let meInfoResult = try await OBNetworkManager.shared.asyncRequest(object: GetMeRes.self, router: .getMe)
             
             if let result = meInfoResult.value {
@@ -56,7 +58,7 @@ extension LoginSelectVC: KakaoLoginDelegate {
                 LoginSessionManager.setState(state: .needJoinGroup)
             }
             
-            LoginSessionManager.setLoginSession(accessToken: result.accessToken, refreshToken: result.refreshToken, type: .kakao)
+            
             
             presentPanModal(agree)
         }

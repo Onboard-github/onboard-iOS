@@ -9,6 +9,7 @@ import UIKit
 
 class DevelopVC: UIViewController {
     @IBOutlet weak var groupInfoLabel: UILabel!
+    @IBOutlet weak var userInfoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,9 @@ class DevelopVC: UIViewController {
             if let result = result.value {
                 groupInfoLabel.text = "현재 가입된 그룹 정보: \(result)"
             }
+            
+            let meInfoResult = try await OBNetworkManager.shared.asyncRequest(object: GetMeRes.self, router: .getMe)
+            userInfoLabel.text = "닉네임: \(meInfoResult.value?.nickname ?? ""), id: \(meInfoResult.value?.id ?? -1)"
         }
     }
     
