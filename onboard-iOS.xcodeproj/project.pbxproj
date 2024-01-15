@@ -21,6 +21,7 @@
 		1C327B1D2B55714800F02C26 /* GameResultEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C327B1C2B55714800F02C26 /* GameResultEntity.swift */; };
 		1C327B1F2B5571BF00F02C26 /* GameResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C327B1E2B5571BF00F02C26 /* GameResultDTO.swift */; };
 		1C327B222B55721300F02C26 /* GameResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C327B212B55721300F02C26 /* GameResultUseCase.swift */; };
+		1C327B242B55747C00F02C26 /* GameResultReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C327B232B55747C00F02C26 /* GameResultReactor.swift */; };
 		1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */; };
 		1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */; };
 		1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */; };
@@ -142,6 +143,7 @@
 		1C327B1C2B55714800F02C26 /* GameResultEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultEntity.swift; sourceTree = "<group>"; };
 		1C327B1E2B5571BF00F02C26 /* GameResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultDTO.swift; sourceTree = "<group>"; };
 		1C327B212B55721300F02C26 /* GameResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultUseCase.swift; sourceTree = "<group>"; };
+		1C327B232B55747C00F02C26 /* GameResultReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultReactor.swift; sourceTree = "<group>"; };
 		1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabels.swift; sourceTree = "<group>"; };
 		1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				1C30171D2B52D8EF00128E5C /* GameResultViewController.swift */,
+				1C327B232B55747C00F02C26 /* GameResultReactor.swift */,
 				1C3017172B4ED08B00128E5C /* Views */,
 			);
 			path = GameResult;
@@ -1003,6 +1006,7 @@
 				AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */,
 				AAF169892B108B0D00EF82A4 /* AlertManager.swift in Sources */,
 				1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */,
+				1C327B242B55747C00F02C26 /* GameResultReactor.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
 				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateManager.swift in Sources */,
