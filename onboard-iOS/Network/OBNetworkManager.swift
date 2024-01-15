@@ -25,11 +25,11 @@ final class OBNetworkManager {
             .serializingDecodable(object)
             .response
         
-//        if let afError = response.error as? AFError {
-//            if let data = response.data, let dataString = String(data: data, encoding: .utf8) {
-//                print(dataString)
-//            }
-//        }
+        if let afError = response.error as? AFError {
+            if let data = response.data, let dataString = String(data: data, encoding: .utf8) {
+                print("네트워크 애러: \(dataString)")
+            }
+        }
 
         return response
     }
