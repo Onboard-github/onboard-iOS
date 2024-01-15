@@ -9,6 +9,8 @@ import Foundation
 
 import Alamofire
 
+import ReactorKit
+
 enum OBRouter: URLRequestConvertible {
 
     // MARK: - Properties
@@ -24,20 +26,29 @@ enum OBRouter: URLRequestConvertible {
     // MARK: - APIs
 
     case testAPI
+    
+    // Auth
     case auth(body: Body)
+    
+    // Group
     case groupList(params: Params)
     case addGroup(body: Body)
     case setUser(body: Body)
     case gameList
+    case createGroup(body: Body)
+    
+    // Group Image
     case pickerImage(params: Params)
     case randomImage
-    case createGroup(body: Body)
+    
+    // Game Result
+    case gameResult(params: Params)
 
     // MARK: - HTTP Method
 
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList, .gameList, .randomImage:
+        case .testAPI, .groupList, .gameList, .randomImage, .gameResult:
             return .get
         case .auth, .addGroup, .pickerImage, .createGroup:
             return .post
@@ -66,6 +77,8 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group/default-image"
         case .createGroup:
             return "api/v1/group"
+        case .gameResult:
+            return "api/v1/group/123/game"
         }
     }
 
@@ -75,7 +88,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage:
             return nil
-        case .setUser, .gameList, .createGroup:
+        case .setUser, .gameList, .createGroup, .gameResult:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
@@ -87,7 +100,7 @@ enum OBRouter: URLRequestConvertible {
 
     var body: Body? {
         switch self {
-        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage:
+        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .gameResult:
             return nil
 
         case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body):
@@ -104,6 +117,8 @@ enum OBRouter: URLRequestConvertible {
         case let .groupList(params):
             return params
         case let .pickerImage(params):
+            return params
+        case let .gameResult(params):
             return params
         }
     }
