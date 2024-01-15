@@ -141,7 +141,7 @@ final class GameResultViewController: UIViewController, View {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: image, style: .done,
             target: self, action: #selector(showPrevious))
-        navigationItem.title = TextLabels.owner_title
+        navigationItem.title = TextLabels.game_result_title
     }
     
     @objc
