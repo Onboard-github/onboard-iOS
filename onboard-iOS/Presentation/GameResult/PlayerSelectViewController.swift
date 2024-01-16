@@ -75,6 +75,8 @@ final class PlayerSelectViewController: UIViewController {
         view.backgroundColor = Colors.White
         view.separatorStyle = .none
         
+        view.delegate = self
+        view.dataSource = self
         view.register(OwnerManageTableViewCell.self,
                       forCellReuseIdentifier: "OwnerManageTableViewCell")
         return view
@@ -151,4 +153,24 @@ final class PlayerSelectViewController: UIViewController {
             $0.height.equalTo(Metric.buttonHeight)
         }
     }
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int) -> Int {
+            return 1
+        }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerManageTableViewCell",
+                                                     for: indexPath) as! OwnerManageTableViewCell
+            return cell
+        }
 }
