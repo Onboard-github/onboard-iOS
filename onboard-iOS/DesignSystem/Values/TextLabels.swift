@@ -55,5 +55,6 @@ struct TextLabels {
     
     static let game_result_title = "게임 결과 기록"
     static let game_result_title_info = "플레이 한 보드게임을 선택해주세요"
-
+    static let game_player_title_info = "게임을 함께 플레이 한 멤버를 선택해주세요"
+    static let game_player_confirm = "플레이어 선택 완료"
 }
