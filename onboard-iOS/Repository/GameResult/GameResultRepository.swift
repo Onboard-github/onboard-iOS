@@ -34,3 +34,18 @@ final class GameResultRepositoryImpl: GameResultRepository {
         }
     }
 }
+
+extension GameResultDTO {
+    func toDomain() -> GameResultEntity.Res {
+        let gameList = self.list.map({
+            GameResultEntity.Res.GameList(
+                id: $0.id,
+                img: $0.img,
+                matchCount: $0.matchCount,
+                maxMember: $0.maxMember,
+                minMember: $0.minMember,
+                name: $0.name)
+        })
+        return GameResultEntity.Res(list: gameList)
+    }
+}

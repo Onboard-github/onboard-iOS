@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import ReactorKit
 
-final class GameResultViewController: UIViewController {
+final class GameResultViewController: UIViewController, View {
+    
+    typealias Reactor = GameResultReactor
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -44,6 +51,8 @@ final class GameResultViewController: UIViewController {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = Colors.White
         
+        view.delegate = self
+        view.dataSource = self
         view.register(GameResultCollectionViewCell.self,
                       forCellWithReuseIdentifier: "GameResultCollectionViewCell")
         return view
@@ -51,14 +60,38 @@ final class GameResultViewController: UIViewController {
     
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: GameResultReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: GameResultReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GameResultReactor) {
+        reactor.action.onNext(.fetchResult(groupId: 123,
+                                           sort: "MATCH_COUNT"))
+    }
+    
+    func bindState(reactor: GameResultReactor) {
+        reactor.state
+            .map { $0.gameData }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                self?.gameCollectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Configure
@@ -108,11 +141,54 @@ final class GameResultViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: image, style: .done,
             target: self, action: #selector(showPrevious))
-        navigationItem.title = TextLabels.owner_title
+        navigationItem.title = TextLabels.game_result_title
     }
     
     @objc
     private func showPrevious() {
         self.navigationController?.popViewController(animated: true)
     }
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
+extension GameResultViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int) -> Int {
+            return reactor?.currentState.gameData.first?.list.count ?? 0
+        }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameResultCollectionViewCell",
+                                                          for: indexPath) as! GameResultCollectionViewCell
+            
+            if let gameData = reactor?.currentState.gameData,
+               let firstGameList = gameData.first?.list,
+               indexPath.item < firstGameList.count {
+                
+                let game = firstGameList[indexPath.item]
+                
+                cell.configure(imageURL: game.img,
+                               name: game.name)
+            }
+            
+            return cell
+        }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension GameResultViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: 102, height: 156)
+        }
 }

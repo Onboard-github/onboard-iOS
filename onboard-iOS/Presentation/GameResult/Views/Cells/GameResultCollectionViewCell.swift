@@ -68,4 +68,11 @@ final class GameResultCollectionViewCell: UICollectionViewCell {
             $0.top.equalTo(gameImage.snp.bottom).offset(Metric.labelTopSpacing)
         }
     }
+    
+    func configure(imageURL: String, name: String) {
+        ImageLoader.loadImage(from: imageURL) { [weak self] image in
+            self?.gameImage.image = image
+        }
+        gameLabel.text = name
+    }
 }
