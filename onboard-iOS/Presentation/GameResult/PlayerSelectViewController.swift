@@ -13,6 +13,13 @@ final class PlayerSelectViewController: UIViewController {
     
     private enum Metric {
         static let iconSize: CGFloat = 16
+        static let progressBarHeight: CGFloat = 2
+        static let labelTopSpacing: CGFloat = 15
+        static let leftRightMargin: CGFloat = 20
+        static let textFieldTopSpacing: CGFloat = 20
+        static let buttonLeftSpacing: CGFloat = 10
+        static let tableViewSpacing: CGFloat = 10
+        static let buttonHeight: CGFloat = 48
     }
     
     // MARK: - UI
@@ -78,4 +85,70 @@ final class PlayerSelectViewController: UIViewController {
         button.setTitle(TextLabels.game_player_confirm, for: .normal)
         return button
     }()
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configure() {
+        self.view.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.view.addSubview(self.progressBar)
+        self.view.addSubview(self.titleLabel)
+        self.view.addSubview(self.playerLabel)
+        self.view.addSubview(self.textField)
+        self.view.addSubview(self.addButton)
+        self.view.addSubview(self.playerTableView)
+        self.view.addSubview(self.confirmButton)
+        
+        self.progressBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(Metric.progressBarHeight)
+        }
+        
+        self.titleLabel.snp.makeConstraints {
+            $0.top.equalTo(progressBar.snp.bottom).offset(Metric.labelTopSpacing)
+            $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.playerLabel.snp.makeConstraints {
+            $0.top.equalTo(progressBar.snp.bottom).offset(Metric.labelTopSpacing)
+            $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.textField.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.textFieldTopSpacing)
+            $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.addButton.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.top)
+            $0.bottom.equalTo(textField.snp.bottom)
+            $0.leading.equalTo(textField.snp.trailing).offset(Metric.buttonLeftSpacing)
+            $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.playerTableView.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.bottom).offset(Metric.tableViewSpacing)
+            $0.bottom.equalTo(confirmButton.snp.top).offset(-Metric.tableViewSpacing)
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        self.confirmButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(Metric.leftRightMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.height.equalTo(Metric.buttonHeight)
+        }
+    }
 }
