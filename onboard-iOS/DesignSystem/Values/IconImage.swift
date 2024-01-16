@@ -12,7 +12,9 @@ enum IconImage {
     case search_gray
     
     case X
+    
     case plus
+    case plusButton
     
     case manager
     case code
@@ -86,8 +88,11 @@ enum IconImage {
             
         case .X:
             return UIImage(named: "icon_X")
+            
         case .plus:
             return UIImage(named: "icon_plus")
+        case .plusButton:
+            return UIImage(named: "icon_plusButton")
             
         case .manager:
             return UIImage(named: "icon_manager")
