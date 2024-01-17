@@ -179,6 +179,14 @@ extension GameResultViewController: UICollectionViewDelegate, UICollectionViewDa
             
             return cell
         }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath) {
+            
+            let vc = PlayerSelectViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
