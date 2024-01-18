@@ -21,3 +21,19 @@ struct GameResultEntity {
         }
     }
 }
+
+struct PlayerEntity {
+    struct Res {
+        let contents: [PlayerList]
+        
+        let cursor: String
+        let hasNext: Bool
+        
+        struct PlayerList: Codable {
+            let id: Int
+            let role: String
+            let nickname: String
+            let level: Int
+        }
+    }
+}
