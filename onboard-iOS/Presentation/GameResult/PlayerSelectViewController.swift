@@ -223,7 +223,7 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
-            return 1
+            return reactor?.currentState.playerData.first?.contents.count ?? 0
         }
     
     func tableView(
@@ -232,6 +232,19 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerManageTableViewCell",
                                                      for: indexPath) as! OwnerManageTableViewCell
+            
+            let image = IconImage.dice.image
+            
+            if let data = reactor?.currentState.playerData,
+               let firstGameList = data.first?.contents,
+               indexPath.item < firstGameList.count {
+                
+                let game = firstGameList[indexPath.item]
+                
+                cell.configure(image: image,
+                               title: game.nickname)
+            }
+            
             return cell
         }
 }
