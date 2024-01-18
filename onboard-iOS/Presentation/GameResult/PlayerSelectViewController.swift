@@ -50,6 +50,7 @@ final class PlayerSelectViewController: UIViewController, View {
     
     private let playerLabel: UILabel = {
         let label = UILabel()
+        label.text = GameDataSingleton.shared.gameData.map { "\($0.minMember)~\($0.maxMember)명" }
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body4_R
         return label
