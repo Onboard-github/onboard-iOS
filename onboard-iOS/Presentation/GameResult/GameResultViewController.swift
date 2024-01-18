@@ -156,39 +156,49 @@ extension GameResultViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(
         _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int) -> Int {
-            return reactor?.currentState.gameData.first?.list.count ?? 0
-        }
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return reactor?.currentState.gameData.first?.list.count ?? 0
+    }
     
     func collectionView(
         _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "GameResultCollectionViewCell",
+            for: indexPath) as! GameResultCollectionViewCell
+        
+        if let gameData = reactor?.currentState.gameData,
+           let firstGameList = gameData.first?.list,
+           indexPath.item < firstGameList.count {
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameResultCollectionViewCell",
-                                                          for: indexPath) as! GameResultCollectionViewCell
+            let game = firstGameList[indexPath.item]
             
-            if let gameData = reactor?.currentState.gameData,
-               let firstGameList = gameData.first?.list,
-               indexPath.item < firstGameList.count {
-                
-                let game = firstGameList[indexPath.item]
-                
-                cell.configure(imageURL: game.img,
-                               name: game.name)
-            }
-            
-            return cell
+            cell.configure(imageURL: game.img,
+                           name: game.name)
         }
+        
+        return cell
+    }
     
     func collectionView(
         _ collectionView: UICollectionView,
-        didSelectItemAt indexPath: IndexPath) {
-            
-            let useCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
-            let reactor = PlayerReactor(useCase: useCase)
-            let vc = PlayerSelectViewController(reactor: reactor)
-            navigationController?.pushViewController(vc, animated: true)
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        
+        guard let gameData = reactor?.currentState.gameData.first?.list[indexPath.item] else {
+            return
         }
+        
+        GameDataSingleton.shared.gameData = gameData
+        
+        let useCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+        let reactor = PlayerReactor(useCase: useCase)
+        let vc = PlayerSelectViewController(reactor: reactor)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -198,7 +208,8 @@ extension GameResultViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: 102, height: 156)
-        }
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(width: 102, height: 156)
+    }
 }
