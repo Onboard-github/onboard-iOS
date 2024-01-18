@@ -248,31 +248,35 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(
         _ tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
-            return reactor?.currentState.playerData.first?.contents.count ?? 0
-        }
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return reactor?.currentState.playerData.first?.contents.count ?? 0
+    }
     
     func tableView(
         _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "OwnerManageTableViewCell",
+            for: indexPath
+        ) as! OwnerManageTableViewCell
+        
+        let image = IconImage.dice.image
+        
+        if let data = reactor?.currentState.playerData,
+           let firstGameList = data.first?.contents,
+           indexPath.item < firstGameList.count {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerManageTableViewCell",
-                                                     for: indexPath) as! OwnerManageTableViewCell
+            let game = firstGameList[indexPath.item]
             
-            let image = IconImage.dice.image
-            
-            if let data = reactor?.currentState.playerData,
-               let firstGameList = data.first?.contents,
-               indexPath.item < firstGameList.count {
-                
-                let game = firstGameList[indexPath.item]
-                
-                cell.configure(image: image,
-                               title: game.nickname)
-            }
-            
-            return cell
+            cell.configure(image: image,
+                           title: game.nickname)
         }
+        
+        return cell
+    }
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
