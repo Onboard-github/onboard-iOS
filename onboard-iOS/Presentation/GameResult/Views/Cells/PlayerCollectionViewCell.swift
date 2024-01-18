@@ -15,7 +15,7 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
         static let buttonMargin: CGFloat = 5
         static let buttonSize: CGFloat = 12
         static let imageSize: CGFloat = 32
-        static let labelMargin: CGFloat = 5
+        static let labelMargin: CGFloat = 2
     }
     
     // MARK: - UI
