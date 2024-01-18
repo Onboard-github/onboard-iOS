@@ -80,4 +80,9 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
             $0.leading.trailing.equalToSuperview().inset(Metric.labelMargin)
         }
     }
+    
+    func configure(image: UIImage?, title: String) {
+        self.playerImage.image = image
+        self.playerLabel.text = title
+    }
 }

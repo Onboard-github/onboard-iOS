@@ -285,12 +285,17 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             
             let game = firstGameList[indexPath.item]
             
-            cell.configure(image: image,
-                           title: game.nickname)
-        }
-        
-        cell.didTapSelectButton = { [weak self] in
-            self?.buttonToggles()
+            cell.configure(image: image, title: game.nickname)
+            
+            cell.didTapSelectButton = { [weak self] in
+                self?.buttonToggles()
+                
+                if let playerCell = self?.playerCollectionView.cellForItem(
+                    at: IndexPath(item: 0, section: 0)
+                ) as? PlayerCollectionViewCell {
+                    playerCell.configure(image: image, title: game.nickname)
+                }
+            }
         }
         
         return cell
@@ -318,6 +323,10 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
             withReuseIdentifier: "PlayerCollectionViewCell",
             for: indexPath
         ) as! PlayerCollectionViewCell
+        
+        if let game = reactor?.currentState.playerData.first?.contents.first {
+            cell.configure(image: IconImage.dice.image, title: game.nickname)
+        }
         
         return cell
     }
