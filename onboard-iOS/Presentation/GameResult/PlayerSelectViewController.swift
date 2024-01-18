@@ -138,7 +138,7 @@ final class PlayerSelectViewController: UIViewController, View {
     
     func bindAction(reactor: PlayerReactor) {
         reactor.action.onNext(.fetchResult(groupId: 123,
-                                           size: "앙"))
+                                           size: "1"))
     }
     
     func bindState(reactor: PlayerReactor) {
@@ -236,6 +236,20 @@ final class PlayerSelectViewController: UIViewController, View {
         navigationItem.title = GameDataSingleton.shared.gameData?.name
     }
     
+    private func buttonToggles() {
+        playerCollectionView.isHidden.toggle()
+        
+        let topOffset = playerCollectionView.isHidden ? titleLabel.snp.bottom : playerCollectionView.snp.bottom
+        textField.snp.remakeConstraints {
+            $0.top.equalTo(topOffset).offset(Metric.textFieldTopSpacing)
+            $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     @objc
     private func showPrevious() {
         self.navigationController?.popViewController(animated: true)
@@ -273,6 +287,10 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             
             cell.configure(image: image,
                            title: game.nickname)
+        }
+        
+        cell.didTapSelectButton = { [weak self] in
+            self?.buttonToggles()
         }
         
         return cell
