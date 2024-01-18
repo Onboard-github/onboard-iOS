@@ -24,6 +24,8 @@ final class PlayerSelectViewController: UIViewController, View {
         static let progressBarHeight: CGFloat = 2
         static let labelTopSpacing: CGFloat = 15
         static let leftRightMargin: CGFloat = 20
+        static let collectionViewTopSpacing: CGFloat = 20
+        static let collectionViewHeight: CGFloat = 68
         static let textFieldTopSpacing: CGFloat = 20
         static let buttonLeftSpacing: CGFloat = 10
         static let tableViewSpacing: CGFloat = 10
@@ -160,6 +162,7 @@ final class PlayerSelectViewController: UIViewController, View {
         self.view.addSubview(self.progressBar)
         self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.playerLabel)
+        self.view.addSubview(self.playerCollectionView)
         self.view.addSubview(self.textField)
         self.view.addSubview(self.addButton)
         self.view.addSubview(self.playerTableView)
@@ -179,6 +182,12 @@ final class PlayerSelectViewController: UIViewController, View {
         self.playerLabel.snp.makeConstraints {
             $0.top.equalTo(progressBar.snp.bottom).offset(Metric.labelTopSpacing)
             $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.playerCollectionView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.collectionViewTopSpacing)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(Metric.collectionViewHeight)
         }
         
         self.textField.snp.makeConstraints {
