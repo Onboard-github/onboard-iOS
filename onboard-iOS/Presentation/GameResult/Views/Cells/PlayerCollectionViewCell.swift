@@ -9,6 +9,15 @@ import UIKit
 
 final class PlayerCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let buttonMargin: CGFloat = 5
+        static let buttonSize: CGFloat = 12
+        static let imageSize: CGFloat = 32
+        static let labelMargin: CGFloat = 5
+    }
+    
     // MARK: - UI
     
     private let deleteButton: UIButton = {
@@ -29,4 +38,46 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
         label.font = Font.Typography.label4_B
         return label
     }()
+    
+    // MARK: - Initialize
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.deleteButton)
+        self.addSubview(self.playerImage)
+        self.addSubview(self.playerLabel)
+        
+        self.deleteButton.snp.makeConstraints {
+            $0.top.equalTo(Metric.buttonMargin)
+            $0.trailing.equalTo(-Metric.buttonMargin)
+            $0.width.height.equalTo(Metric.buttonSize)
+        }
+        
+        self.playerImage.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.height.equalTo(Metric.imageSize)
+        }
+        
+        self.playerLabel.snp.makeConstraints {
+            $0.top.equalTo(playerImage.snp.bottom).offset(Metric.labelMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.labelMargin)
+        }
+    }
 }
