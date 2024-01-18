@@ -39,6 +39,10 @@ final class OwnerManageTableViewCell: UITableViewCell {
         return button
     }()
     
+    // MARK: - Properties
+    
+    var didTapSelectButton: (() -> Void)?
+    
     // MARK: - Initialize
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,7 +60,14 @@ final class OwnerManageTableViewCell: UITableViewCell {
     private func configure() {
         self.selectionStyle = .none
         
+        self.addConfigure()
         self.makeConstraints()
+    }
+    
+    private func addConfigure() {
+        self.selectButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.didTapSelectButton?()
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
