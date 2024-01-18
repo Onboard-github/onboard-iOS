@@ -36,6 +36,7 @@
 		1C7E8DB52B0D586300BA00F7 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E8DB42B0D586300BA00F7 /* TextView.swift */; };
 		1C840B392B5935B900067E91 /* PlayerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840B382B5935B900067E91 /* PlayerRepository.swift */; };
 		1C840B3B2B5936BE00067E91 /* PlayerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840B3A2B5936BE00067E91 /* PlayerUseCase.swift */; };
+		1C840B3D2B59377D00067E91 /* PlayerReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840B3C2B59377D00067E91 /* PlayerReactor.swift */; };
 		1C967FA82B24CBF80002E6F1 /* NameInputPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */; };
 		1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */; };
 		1CA1BBB42ACF109B000C5F7E /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAF2ACF109A000C5F7E /* SpoqaHanSansNeo-Light.ttf */; };
@@ -162,6 +163,7 @@
 		1C7E8DB42B0D586300BA00F7 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		1C840B382B5935B900067E91 /* PlayerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRepository.swift; sourceTree = "<group>"; };
 		1C840B3A2B5936BE00067E91 /* PlayerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUseCase.swift; sourceTree = "<group>"; };
+		1C840B3C2B59377D00067E91 /* PlayerReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerReactor.swift; sourceTree = "<group>"; };
 		1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputPopupView.swift; sourceTree = "<group>"; };
 		1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
 		1CA1BBAF2ACF109A000C5F7E /* SpoqaHanSansNeo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.ttf"; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				1C30171D2B52D8EF00128E5C /* GameResultViewController.swift */,
 				1C327B272B5630DC00F02C26 /* PlayerSelectViewController.swift */,
 				1C327B232B55747C00F02C26 /* GameResultReactor.swift */,
+				1C840B3C2B59377D00067E91 /* PlayerReactor.swift */,
 				1C3017172B4ED08B00128E5C /* Views */,
 			);
 			path = GameResult;
@@ -953,6 +956,7 @@
 				1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */,
 				1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */,
 				1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */,
+				1C840B3D2B59377D00067E91 /* PlayerReactor.swift in Sources */,
 				1C840B3B2B5936BE00067E91 /* PlayerUseCase.swift in Sources */,
 				AACCA91B2AE19A09000A4CDA /* NewGroupButton.swift in Sources */,
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
