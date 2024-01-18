@@ -34,6 +34,7 @@
 		1C6FEAEB2B4D5D7E00CFC647 /* MemberManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAEA2B4D5D7E00CFC647 /* MemberManageTableViewCell.swift */; };
 		1C6FEAED2B4D5E7700CFC647 /* MemberManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAEC2B4D5E7700CFC647 /* MemberManageViewController.swift */; };
 		1C7E8DB52B0D586300BA00F7 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E8DB42B0D586300BA00F7 /* TextView.swift */; };
+		1C840B392B5935B900067E91 /* PlayerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840B382B5935B900067E91 /* PlayerRepository.swift */; };
 		1C967FA82B24CBF80002E6F1 /* NameInputPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */; };
 		1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */; };
 		1CA1BBB42ACF109B000C5F7E /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAF2ACF109A000C5F7E /* SpoqaHanSansNeo-Light.ttf */; };
@@ -158,6 +159,7 @@
 		1C6FEAEA2B4D5D7E00CFC647 /* MemberManageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManageTableViewCell.swift; sourceTree = "<group>"; };
 		1C6FEAEC2B4D5E7700CFC647 /* MemberManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManageViewController.swift; sourceTree = "<group>"; };
 		1C7E8DB42B0D586300BA00F7 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		1C840B382B5935B900067E91 /* PlayerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRepository.swift; sourceTree = "<group>"; };
 		1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputPopupView.swift; sourceTree = "<group>"; };
 		1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
 		1CA1BBAF2ACF109A000C5F7E /* SpoqaHanSansNeo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.ttf"; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				1C327B1A2B556EC800F02C26 /* GameResultRepository.swift */,
+				1C840B382B5935B900067E91 /* PlayerRepository.swift */,
 			);
 			path = GameResult;
 			sourceTree = "<group>";
@@ -980,6 +983,7 @@
 				1CA1BBB92ACF123D000C5F7E /* Typography.swift in Sources */,
 				AAF169A32B10EED600EF82A4 /* AgreeNicknameVC.swift in Sources */,
 				61AC7FBA2AB6D71900B0B6B5 /* TestViewController.swift in Sources */,
+				1C840B392B5935B900067E91 /* PlayerRepository.swift in Sources */,
 				1C6FEAE52B4D482100CFC647 /* GroupSettingViewController.swift in Sources */,
 				1C6FEAEB2B4D5D7E00CFC647 /* MemberManageTableViewCell.swift in Sources */,
 				1CD2086C2B1BAC28008E710E /* GroupCreateDTO.swift in Sources */,
