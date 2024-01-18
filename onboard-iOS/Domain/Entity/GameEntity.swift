@@ -1,5 +1,5 @@
 //
-//  GameResultEntity.swift
+//  GameEntity.swift
 //  onboard-iOS
 //
 //  Created by 혜리 on 1/15/24.
