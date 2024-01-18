@@ -56,6 +56,20 @@ final class PlayerSelectViewController: UIViewController, View {
         return label
     }()
     
+    private lazy var playerCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.backgroundColor = Colors.White
+        view.isHidden = true
+        
+        view.register(PlayerCollectionViewCell.self,
+                      forCellWithReuseIdentifier: "PlayerCollectionViewCell")
+        return view
+    }()
+    
     private let textField: TextField = {
         let textField = TextField()
         let view = UIView(frame: CGRect(x: 0, y: 0, width: Metric.iconSize + 20, height: Metric.iconSize))
