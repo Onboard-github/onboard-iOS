@@ -43,6 +43,13 @@ final class OwnerManageTableViewCell: UITableViewCell {
     
     var didTapSelectButton: (() -> Void)?
     
+    var isButtonSelected: Bool = true {
+        didSet {
+            let image = isButtonSelected ? IconImage.deselect.image : IconImage.select.image
+            self.selectButton.setImage(image, for: .normal)
+        }
+    }
+    
     // MARK: - Initialize
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -67,6 +74,7 @@ final class OwnerManageTableViewCell: UITableViewCell {
     private func addConfigure() {
         self.selectButton.addAction(UIAction(handler: { [weak self] _ in
             self?.didTapSelectButton?()
+            self?.isButtonSelected.toggle()
         }), for: .touchUpInside)
     }
     
