@@ -184,7 +184,9 @@ extension GameResultViewController: UICollectionViewDelegate, UICollectionViewDa
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath) {
             
-            let vc = PlayerSelectViewController()
+            let useCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+            let reactor = PlayerReactor(useCase: useCase)
+            let vc = PlayerSelectViewController(reactor: reactor)
             navigationController?.pushViewController(vc, animated: true)
         }
 }
