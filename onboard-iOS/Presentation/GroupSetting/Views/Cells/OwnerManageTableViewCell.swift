@@ -60,9 +60,9 @@ final class OwnerManageTableViewCell: UITableViewCell {
     }
     
     private func makeConstraints() {
-        self.addSubview(self.titleImage)
-        self.addSubview(self.titleLabel)
-        self.addSubview(self.selectButton)
+        self.contentView.addSubview(self.titleImage)
+        self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.selectButton)
         
         self.titleImage.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(Metric.leftMargin)
