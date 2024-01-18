@@ -7,7 +7,15 @@
 
 import UIKit
 
-final class PlayerSelectViewController: UIViewController {
+import ReactorKit
+
+final class PlayerSelectViewController: UIViewController, View {
+    
+    typealias Reactor = PlayerReactor
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -90,14 +98,38 @@ final class PlayerSelectViewController: UIViewController {
     
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: PlayerReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: PlayerReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: PlayerReactor) {
+        reactor.action.onNext(.fetchResult(groupId: 123,
+                                           size: "앙"))
+    }
+    
+    func bindState(reactor: PlayerReactor) {
+        reactor.state
+            .map { $0.playerData }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                self?.playerTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Configure
