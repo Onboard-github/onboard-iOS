@@ -311,13 +311,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		1C327B192B556EB500F02C26 /* GameResult */ = {
+		1C327B192B556EB500F02C26 /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				1C327B1A2B556EC800F02C26 /* GameResultRepository.swift */,
 				1C840B382B5935B900067E91 /* PlayerRepository.swift */,
 			);
-			path = GameResult;
+			path = Game;
 			sourceTree = "<group>";
 		};
 		1C327B202B55720F00F02C26 /* Game */ = {
@@ -538,7 +538,7 @@
 		61AC7FB32AB6D68400B0B6B5 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				1C327B192B556EB500F02C26 /* GameResult */,
+				1C327B192B556EB500F02C26 /* Game */,
 				AA7035F92ADB81B600B26537 /* Group */,
 				1CDF4D312AB95FA300CFDFBA /* SocialLogin */,
 				611D8CA62ABECFB10074A55A /* Auth */,
