@@ -208,7 +208,7 @@ final class PlayerSelectViewController: UIViewController, View {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: image, style: .done,
             target: self, action: #selector(showPrevious))
-        navigationItem.title = ""
+        navigationItem.title = GameDataSingleton.shared.gameData?.name
     }
     
     @objc
