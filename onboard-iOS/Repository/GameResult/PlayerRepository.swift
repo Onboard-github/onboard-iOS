@@ -27,8 +27,28 @@ final class PlayerRepositoryImpl: PlayerRepository {
             guard let data = result.value else {
                 throw NetworkError.noExist
             }
+            
+            return data.toDomain()
         } catch {
             throw error
         }
+    }
+}
+
+extension PlayerDTO {
+    func toDomain() -> PlayerEntity.Res {
+        let playerList = self.contents.map({
+            PlayerEntity.Res.PlayerList(
+                id: $0.id,
+                role: $0.role,
+                nickname: $0.nickname,
+                level: $0.level
+            )
+        })
+        return PlayerEntity.Res(
+            contents: playerList,
+            cursor: self.cursor,
+            hasNext: self.hasNext
+        )
     }
 }
