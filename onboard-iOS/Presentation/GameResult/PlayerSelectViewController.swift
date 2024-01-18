@@ -67,6 +67,8 @@ final class PlayerSelectViewController: UIViewController, View {
         view.backgroundColor = Colors.White
         view.isHidden = true
         
+        view.delegate = self
+        view.dataSource = self
         view.register(PlayerCollectionViewCell.self,
                       forCellWithReuseIdentifier: "PlayerCollectionViewCell")
         return view
@@ -271,4 +273,30 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             
             return cell
         }
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
+extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        
+        return 1
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "PlayerCollectionViewCell",
+            for: indexPath
+        ) as! PlayerCollectionViewCell
+        
+        return cell
+    }
 }
