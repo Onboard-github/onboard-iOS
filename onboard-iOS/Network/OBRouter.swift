@@ -12,19 +12,19 @@ import Alamofire
 import ReactorKit
 
 enum OBRouter: URLRequestConvertible {
-
+    
     // MARK: - Properties
-
+    
     typealias Header = [String: Any]
     typealias Body = [String: Any]
     typealias Params = [String: Any]
-
+    
     var baseURL: URL {
         return URL(string: API.BASE_URL)!
     }
-
+    
     // MARK: - APIs
-
+    
     case testAPI
     
     // Auth
@@ -43,12 +43,13 @@ enum OBRouter: URLRequestConvertible {
     
     // Game Result
     case gameResult(params: Params)
-
+    case gamePlayer(params: Params)
+    
     // MARK: - HTTP Method
-
+    
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList, .gameList, .randomImage, .gameResult:
+        case .testAPI, .groupList, .gameList, .randomImage, .gameResult, .gamePlayer:
             return .get
         case .auth, .addGroup, .pickerImage, .createGroup:
             return .post
@@ -56,9 +57,9 @@ enum OBRouter: URLRequestConvertible {
             return .put
         }
     }
-
+    
     // MARK: - Path
-
+    
     var path: String {
         switch self {
         case .testAPI:
@@ -79,30 +80,32 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group"
         case .gameResult:
             return "api/v1/group/123/game"
+        case .gamePlayer:
+            return "api/v1/group/123/member"
         }
     }
-
+    
     // MARK: - Header
-
+    
     var header: Header? {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage:
             return nil
-        case .setUser, .gameList, .createGroup, .gameResult:
+        case .setUser, .gameList, .createGroup, .gameResult, .gamePlayer:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
                     "content-type": "multipart/form-data"]
         }
     }
-
+    
     // MARK: - Request Body
-
+    
     var body: Body? {
         switch self {
-        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .gameResult:
+        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .gameResult, .gamePlayer:
             return nil
-
+            
         case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body):
             return body
         }
@@ -118,16 +121,16 @@ enum OBRouter: URLRequestConvertible {
             return params
         case let .pickerImage(params):
             return params
-        case let .gameResult(params):
+        case let .gameResult(params), let .gamePlayer(params):
             return params
         }
     }
-
+    
     // MARK: - URL Request
-
+    
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(path)
-
+        
         var request = URLRequest(url: url)
         request.method = method
         
@@ -147,7 +150,7 @@ enum OBRouter: URLRequestConvertible {
             "application/json",
             forHTTPHeaderField: "Accept"
         )
-
+        
         return request
     }
 }
