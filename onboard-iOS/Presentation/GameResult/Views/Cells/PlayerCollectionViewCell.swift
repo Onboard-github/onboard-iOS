@@ -39,6 +39,10 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: - Properties
+    
+    var didTapDeleteButton: (() -> Void)?
+    
     // MARK: - Initialize
     
     override init(frame: CGRect) {
@@ -56,7 +60,14 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
     private func configure() {
         self.backgroundColor = Colors.White
         
+        self.addConfigure()
         self.makeConstraints()
+    }
+    
+    private func addConfigure() {
+        self.deleteButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.didTapDeleteButton?()
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
