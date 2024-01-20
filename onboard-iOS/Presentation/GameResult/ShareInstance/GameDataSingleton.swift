@@ -7,6 +7,8 @@
 
 import Foundation
 
+import UIKit
+
 class GameDataSingleton {
     
     static let shared = GameDataSingleton()
@@ -14,4 +16,9 @@ class GameDataSingleton {
     var gameData: GameResultEntity.Res.GameList?
     
     private init() {}
+}
+
+struct PlayerList {
+    let image: UIImage
+    let title: String
 }
