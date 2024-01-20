@@ -29,6 +29,7 @@ final class PlayerSelectViewController: UIViewController, View {
         static let textFieldTopSpacing: CGFloat = 20
         static let buttonLeftSpacing: CGFloat = 10
         static let tableViewSpacing: CGFloat = 10
+        static let buttonBottomMargin: CGFloat = 10
         static let buttonHeight: CGFloat = 48
     }
     
@@ -212,7 +213,7 @@ final class PlayerSelectViewController: UIViewController, View {
         }
         
         self.confirmButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(Metric.leftRightMargin)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-Metric.buttonBottomMargin)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
             $0.height.equalTo(Metric.buttonHeight)
         }
