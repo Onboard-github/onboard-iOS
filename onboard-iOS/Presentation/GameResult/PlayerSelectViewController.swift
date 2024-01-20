@@ -290,10 +290,11 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             cell.didTapSelectButton = { [weak self] in
                 self?.buttonToggles()
                 
-                if let playerCell = self?.playerCollectionView.cellForItem(
-                    at: IndexPath(item: 0, section: 0)
-                ) as? PlayerCollectionViewCell {
-                    playerCell.configure(image: image, title: game.nickname)
+                if let image = IconImage.dice.image {
+                    let data = PlayerList(image: image, title: game.nickname)
+                    GameDataSingleton.shared.addSelectedPlayer(data)
+                    
+                    self?.playerCollectionView.reloadData()
                 }
             }
         }
@@ -310,8 +311,7 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        
-        return 1
+        return GameDataSingleton.shared.playerData.count
     }
     
     func collectionView(
@@ -324,8 +324,9 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
             for: indexPath
         ) as! PlayerCollectionViewCell
         
-        if let game = reactor?.currentState.playerData.first?.contents.first {
-            cell.configure(image: IconImage.dice.image, title: game.nickname)
+        if GameDataSingleton.shared.playerData.indices.contains(indexPath.item) {
+            let selectedPlayer = GameDataSingleton.shared.playerData[indexPath.item]
+            cell.configure(image: selectedPlayer.image, title: selectedPlayer.title)
         }
         
         return cell
