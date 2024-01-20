@@ -237,20 +237,6 @@ final class PlayerSelectViewController: UIViewController, View {
         navigationItem.title = GameDataSingleton.shared.gameData?.name
     }
     
-    private func buttonToggles() {
-        playerCollectionView.isHidden.toggle()
-        
-        let topOffset = playerCollectionView.isHidden ? titleLabel.snp.bottom : playerCollectionView.snp.bottom
-        textField.snp.remakeConstraints {
-            $0.top.equalTo(topOffset).offset(Metric.textFieldTopSpacing)
-            $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
-        }
-        
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
     private func toggleLayout() {
         playerCollectionView.isHidden.toggle()
         
