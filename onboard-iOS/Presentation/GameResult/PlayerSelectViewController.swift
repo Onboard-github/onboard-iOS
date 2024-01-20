@@ -60,11 +60,12 @@ final class PlayerSelectViewController: UIViewController, View {
     
     private lazy var playerCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = Colors.White
+        view.showsHorizontalScrollIndicator = false
         view.isHidden = true
         
         view.delegate = self
