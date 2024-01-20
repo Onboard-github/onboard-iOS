@@ -250,6 +250,20 @@ final class PlayerSelectViewController: UIViewController, View {
         }
     }
     
+    private func toggleLayout() {
+        playerCollectionView.isHidden.toggle()
+        
+        let topOffset = playerCollectionView.isHidden ? titleLabel.snp.bottom : playerCollectionView.snp.bottom
+        textField.snp.remakeConstraints {
+            $0.top.equalTo(topOffset).offset(Metric.textFieldTopSpacing)
+            $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     @objc
     private func showPrevious() {
         self.navigationController?.popViewController(animated: true)
@@ -288,13 +302,12 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             cell.configure(image: image, title: game.nickname)
             
             cell.didTapSelectButton = { [weak self] in
-                self?.buttonToggles()
-                
                 if let image = IconImage.dice.image {
                     let data = PlayerList(image: image, title: game.nickname)
                     GameDataSingleton.shared.addSelectedPlayer(data)
                     
                     self?.playerCollectionView.reloadData()
+                    self?.toggleLayout()
                 }
             }
         }
@@ -327,6 +340,17 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
         if GameDataSingleton.shared.playerData.indices.contains(indexPath.item) {
             let selectedPlayer = GameDataSingleton.shared.playerData[indexPath.item]
             cell.configure(image: selectedPlayer.image, title: selectedPlayer.title)
+        }
+        
+        cell.didTapDeleteButton = { [weak self] in
+            guard let indexPath = collectionView.indexPath(for: cell) else { return }
+            GameDataSingleton.shared.removePlayer(at: indexPath.item)
+            
+            collectionView.deleteItems(at: [indexPath])
+            
+            if GameDataSingleton.shared.playerData.isEmpty {
+                self?.toggleLayout()
+            }
         }
         
         return cell
