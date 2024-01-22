@@ -87,7 +87,11 @@ class BottomSheetView: UIView {
         return label
     }()
     
-    private var registerButton = BaseButton(status: .disabled, style: .normal)
+    private let registerButton: BaseButton = {
+        let button = BaseButton(status: .disabled, style: .normal)
+        button.setTitle(TextLabels.bottom_register_button, for: .normal)
+        return button
+    }()
     
     private lazy var titleStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
@@ -141,7 +145,7 @@ class BottomSheetView: UIView {
         self.addSubview(self.contentView)
         self.contentView.addSubview(self.titleStackView)
         self.contentView.addSubview(self.textFieldStackView)
-        self.contentView.addSubview(self.registerButton)
+        self.addSubview(self.registerButton)
         
         self.backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
