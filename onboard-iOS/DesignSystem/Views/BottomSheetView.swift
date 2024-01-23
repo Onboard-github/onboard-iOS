@@ -42,6 +42,7 @@ class BottomSheetView: UIView {
         let label = UILabel()
         label.textColor = Colors.Gray_15
         label.font = Font.Typography.title2
+        label.numberOfLines = 0
         return label
     }()
     
