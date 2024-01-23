@@ -19,7 +19,6 @@ final class TestViewController: UIViewController, View {
 
     private let testView = TestView()
     private let popupView = PopupView()
-    private let bottomSheetView = BottomSheetView()
     
     // MARK: - Life Cycles
 
@@ -99,27 +98,6 @@ final class TestViewController: UIViewController, View {
             
             popupView.setState(popupState: popupState, onClickLink: { })
             popupView.contentView.snp.makeConstraints {
-                $0.height.equalTo(272)
-            }
-        }
-        
-        self.testView.didTapbottomSheetMemberButton = { [self] in
-            view.addSubview(bottomSheetView)
-            bottomSheetView.snp.makeConstraints {
-                $0.edges.equalToSuperview()
-            }
-            
-            let popupState = PopupState(titleLabel: "임시 멤버 추가",
-                                        subTitleLabel: "아직 온보드에 가입하지 않은 멤버를 임시로 추가해서 기록을 남기세요. Tip : 기억하기 쉬운 닉네임을 설정한 뒤 멤버에게도 알려주세요. 임시 멤버가 서비스에 가입할 때 기록을 연동할 수 있어요!",
-                                        textFieldPlaceholder: "닉네임을 입력해주세요.",
-                                        textFieldSubTitleLabel: "이미 추가한 임시 멤버가 아닌지 잘 확인해주세요!",
-                                        countLabel: "0/10",
-                                        buttonLabel: "모임 등록하기",
-                                        linkButtonState: LinkButtonState(isLink: false),
-                                        textFieldLabelState: TextFieldLabelState(isHidden: true))
-            
-            bottomSheetView.setState(popupState: popupState, onClickLink: { })
-            bottomSheetView.contentView.snp.makeConstraints {
                 $0.height.equalTo(272)
             }
         }
