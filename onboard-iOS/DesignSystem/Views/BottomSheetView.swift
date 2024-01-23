@@ -12,12 +12,13 @@ class BottomSheetView: UIView {
     // MARK: - Metric
     
     private enum Metric {
-        static let contentViewWidth: CGFloat = 360
-        static let contentViewHeight: CGFloat = 288
+        static let iconSize: CGFloat = 24
         static let topMargin: CGFloat = 26
         static let leftRightMargin: CGFloat = 24
-        static let iconSize: CGFloat = 24
+        static let labelTopSpacing: CGFloat = 5
+        static let textFieldTopSpacing: CGFloat = 15
         static let textFieldHeight: CGFloat = 52
+        static let buttonTopSpacing: CGFloat = 20
         static let buttonHeight: CGFloat = 52
     }
     
@@ -95,15 +96,6 @@ class BottomSheetView: UIView {
         return button
     }()
     
-    private lazy var titleStackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [titleLabel, subTitleLabel])
-        view.spacing = 2
-        view.axis = .vertical
-        view.distribution = .fill
-        view.alignment = .fill
-        return view
-    }()
-    
     private lazy var textFieldStackView: UIStackView = {
         let view = UIStackView(arrangedSubviews: [textFieldTitleLabel, textField, bottomStackView])
         view.spacing = 2
@@ -144,7 +136,8 @@ class BottomSheetView: UIView {
     private func makeConstraints() {
         self.addSubview(self.backgroundView)
         self.addSubview(self.contentView)
-        self.contentView.addSubview(self.titleStackView)
+        self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.subTitleLabel)
         self.contentView.addSubview(self.textFieldStackView)
         self.addSubview(self.registerButton)
         
@@ -153,13 +146,16 @@ class BottomSheetView: UIView {
         }
         
         self.contentView.snp.makeConstraints {
-            $0.width.equalTo(Metric.contentViewWidth)
-            $0.height.equalTo(Metric.contentViewHeight)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
-        self.titleStackView.snp.makeConstraints {
+        self.titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(Metric.topMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.subTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.labelTopSpacing)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
@@ -168,12 +164,12 @@ class BottomSheetView: UIView {
         }
         
         self.textFieldStackView.snp.makeConstraints {
-            $0.top.equalTo(titleStackView.snp.bottom).offset(15)
+            $0.top.equalTo(subTitleLabel.snp.bottom).offset(Metric.textFieldTopSpacing)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
         self.registerButton.snp.makeConstraints {
-            $0.top.equalTo(textFieldStackView.snp.bottom).offset(20)
+            $0.top.equalTo(textFieldStackView.snp.bottom).offset(Metric.buttonTopSpacing)
             $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(Metric.buttonHeight)
         }
