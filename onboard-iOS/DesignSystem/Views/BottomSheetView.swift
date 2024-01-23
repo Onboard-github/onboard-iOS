@@ -186,18 +186,20 @@ class BottomSheetView: UIView {
     func setState(popupState: PopupState,
                   onClickLink: @escaping (() -> Void)) {
         
-        titleLabel.text = popupState.titleLabel
-        subTitleLabel.text = popupState.subTitleLabel
-        textFieldTitleLabel.text = popupState.textFieldLabelState?.string ?? ""
-        textFieldSubTitleLabel.text = popupState.textFieldSubTitleLabel
-        countLabel.text = popupState.countLabel
-        registerButton.setTitle(popupState.buttonLabel, for: .normal)
+        self.titleLabel.text = popupState.titleLabel
+        self.subTitleLabel.text = popupState.subTitleLabel
+        self.textFieldTitleLabel.text = popupState.textFieldLabelState?.string ?? ""
+        self.textFieldSubTitleLabel.text = popupState.textFieldSubTitleLabel
+        self.countLabel.text = popupState.countLabel
+        self.registerButton.setTitle(popupState.buttonLabel, for: .normal)
         
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: Font.Typography.body3_R as Any,
-            .foregroundColor: Colors.Gray_7]
-        textField.attributedPlaceholder = NSAttributedString(string: popupState.textFieldPlaceholder,
-                                                             attributes: attributes)
+        self.textField.attributedPlaceholder = NSAttributedString(
+            string: popupState.textFieldPlaceholder,
+            attributes: [
+                .font: Font.Typography.body3_R as Any,
+                .foregroundColor: Colors.Gray_7
+            ]
+        )
     }
     
     @objc
