@@ -1,5 +1,5 @@
 //
-//  BottomSheetView.swift
+//  BottomSheetViewController.swift
 //  onboard-iOS
 //
 //  Created by 혜리 on 2023/10/19.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BottomSheetView: UIView {
+class BottomSheetViewController: UIViewController {
     
     // MARK: - Metric
     
@@ -93,7 +93,6 @@ class BottomSheetView: UIView {
     
     private let registerButton: BaseButton = {
         let button = BaseButton(status: .disabled, style: .normal)
-        button.setTitle(TextLabels.bottom_register_button, for: .normal)
         return button
     }()
     
@@ -117,8 +116,8 @@ class BottomSheetView: UIView {
     
     // MARK: - Initialize
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
         
         self.configure()
     }
@@ -135,12 +134,12 @@ class BottomSheetView: UIView {
     }
     
     private func makeConstraints() {
-        self.addSubview(self.backgroundView)
-        self.addSubview(self.contentView)
+        self.view.addSubview(self.backgroundView)
+        self.view.addSubview(self.contentView)
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.subTitleLabel)
         self.contentView.addSubview(self.textFieldStackView)
-        self.addSubview(self.registerButton)
+        self.view.addSubview(self.registerButton)
         
         self.backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -205,11 +204,11 @@ class BottomSheetView: UIView {
     
     @objc
     private func backgroundTapped() {
-        removeFromSuperview()
+        self.dismiss(animated: false)
     }
 }
 
-extension BottomSheetView: UITextFieldDelegate {
+extension BottomSheetViewController: UITextFieldDelegate {
     
     func textField(
         _ textField: UITextField,
