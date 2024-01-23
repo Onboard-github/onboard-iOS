@@ -198,7 +198,7 @@ class BottomSheetView: UIView {
         registerButton.setTitle(popupState.buttonLabel, for: .normal)
         
         let attributes: [NSAttributedString.Key: Any] = [
-            .font: Font.Typography.body2_R as Any,
+            .font: Font.Typography.body3_R as Any,
             .foregroundColor: Colors.Gray_7]
         textField.attributedPlaceholder = NSAttributedString(string: popupState.textFieldPlaceholder,
                                                              attributes: attributes)
