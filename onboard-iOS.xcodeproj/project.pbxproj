@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0364482B5FBBB000CA4CB9 /* TextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */; };
 		1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */; };
 		1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */; };
 		1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */; };
-		1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51B42AE2B7960020AA71 /* BottomSheetView.swift */; };
+		1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */; };
 		1C30170D2B4D718400128E5C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170C2B4D718400128E5C /* AlertView.swift */; };
 		1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170E2B4EBD1D00128E5C /* AlertState.swift */; };
 		1C3017112B4EC3E100128E5C /* OwnerManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */; };
@@ -135,10 +136,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldState.swift; sourceTree = "<group>"; };
 		1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateEntity.swift; sourceTree = "<group>"; };
 		1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopupView.swift; sourceTree = "<group>"; };
 		1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupViewController.swift; sourceTree = "<group>"; };
-		1C1F51B42AE2B7960020AA71 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		1C30170C2B4D718400128E5C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		1C30170E2B4EBD1D00128E5C /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
 		1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerManageTableViewCell.swift; sourceTree = "<group>"; };
@@ -283,7 +285,7 @@
 				1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */,
 				1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */,
 				1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */,
-				1C1F51B42AE2B7960020AA71 /* BottomSheetView.swift */,
+				1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */,
 				1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */,
 				1C30170C2B4D718400128E5C /* AlertView.swift */,
 			);
@@ -441,6 +443,7 @@
 			children = (
 				1CA1BBC92ADABFF9000C5F7E /* PopupState.swift */,
 				1C30170E2B4EBD1D00128E5C /* AlertState.swift */,
+				1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -978,6 +981,7 @@
 				AA5E9C772B2E8C3D000E3A30 /* GroupJoinVC.swift in Sources */,
 				1C327B282B5630DC00F02C26 /* PlayerSelectViewController.swift in Sources */,
 				AAF169832B1086FB00EF82A4 /* UserLoginSessionData.swift in Sources */,
+				1C0364482B5FBBB000CA4CB9 /* TextFieldState.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				1CD2086A2B1BAB91008E710E /* GroupCreateRepository.swift in Sources */,
@@ -991,7 +995,7 @@
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
 				1C3017132B4EC4D000128E5C /* OwnerManageViewController.swift in Sources */,
-				1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */,
+				1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */,
 				1C327B222B55721300F02C26 /* GameResultUseCase.swift in Sources */,
 				1C6FEAE72B4D4DF400CFC647 /* AccessCodeView.swift in Sources */,
 				AA5ED43C2B27661400993B63 /* PodiumCell.swift in Sources */,
