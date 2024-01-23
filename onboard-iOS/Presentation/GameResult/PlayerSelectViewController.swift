@@ -158,8 +158,32 @@ final class PlayerSelectViewController: UIViewController, View {
     private func configure() {
         self.view.backgroundColor = Colors.White
         
+        self.addConfigure()
         self.makeConstraints()
         self.setNavigationBar()
+    }
+    
+    private func addConfigure() {
+        self.addButton.addAction(UIAction(handler: { [weak self] _ in
+            let bottom = BottomSheetViewController()
+            
+            bottom.contentView.snp.makeConstraints {
+                $0.height.equalTo(260)
+            }
+            
+            let popupState = PopupState(
+                titleLabel: TextLabels.bottom_title,
+                subTitleLabel: TextLabels.bottom_subTitle,
+                textFieldPlaceholder: TextLabels.bottom_textField_placeholder,
+                textFieldSubTitleLabel: "",
+                countLabel: TextLabels.bottom_textField_count,
+                buttonLabel: TextLabels.bottom_register_button
+            )
+            
+            bottom.setState(popupState: popupState, onClickLink: { })
+            bottom.modalPresentationStyle = .overFullScreen
+            self?.present(bottom, animated: false)
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {

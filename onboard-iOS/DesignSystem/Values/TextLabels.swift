@@ -60,5 +60,10 @@ struct TextLabels {
     
     // MARK: - PopupView
     
+    static let bottom_title = "상대방이 아직 온보드에 가입하지 않았다면\n임시 멤버로 추가해보세요!"
+    static let bottom_subTitle = "이후 온보드 가입 시 닉네임으로 기록을 연동할 수 있습니다."
+    static let bottom_textField_placeholder = "임시 멤버가 사용할 닉네임을 입력해주세요."
+    static let bottom_textField_count = "00/10"
+    static let bottom_register_button = "임시 멤버 추가"
     static let bottom_textField_already = "이미 있는 이름입니다. 다른 이름을 설정해주세요."
 }
