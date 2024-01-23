@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C0364482B5FBBB000CA4CB9 /* TextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */; };
+		1C03644A2B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0364492B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift */; };
 		1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */; };
 		1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */; };
 		1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */; };
@@ -137,6 +138,7 @@
 
 /* Begin PBXFileReference section */
 		1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldState.swift; sourceTree = "<group>"; };
+		1C0364492B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlingViewController.swift; sourceTree = "<group>"; };
 		1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateEntity.swift; sourceTree = "<group>"; };
 		1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopupView.swift; sourceTree = "<group>"; };
 		1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupViewController.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				1CA1BBBE2AD439BA000C5F7E /* IconImage.swift */,
 				1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */,
 				1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */,
+				1C0364492B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift */,
 			);
 			path = Values;
 			sourceTree = "<group>";
@@ -964,6 +967,7 @@
 				1C6FEAE02B4D467A00CFC647 /* GroupSettingTableViewCell.swift in Sources */,
 				AA69E3BF2B1333D300F74A36 /* GameList.swift in Sources */,
 				1CD208702B1BAEF1008E710E /* GroupCreateReactor.swift in Sources */,
+				1C03644A2B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				1C6FEAE92B4D503500CFC647 /* AccessCodeViewController.swift in Sources */,
 				1C30171C2B50683D00128E5C /* GameResultCollectionViewCell.swift in Sources */,
