@@ -57,4 +57,8 @@ struct TextLabels {
     static let game_result_title_info = "플레이 한 보드게임을 선택해주세요"
     static let game_player_title_info = "게임을 함께 플레이 한 멤버를 선택해주세요"
     static let game_player_confirm = "플레이어 선택 완료"
+    
+    // MARK: - PopupView
+    
+    static let bottom_register_button = "임시 멤버 추가"
 }
