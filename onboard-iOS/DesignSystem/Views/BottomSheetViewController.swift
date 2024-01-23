@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class BottomSheetViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -61,7 +67,7 @@ class BottomSheetViewController: UIViewController {
         return label
     }()
     
-    private lazy var textField: TextField = {
+    private let textField: TextField = {
         let textField = TextField()
         let view = UIView(frame: CGRect(x: 0, y: 0, width: Metric.iconSize + 10, height: Metric.iconSize))
         let image = UIImageView(image: IconImage.emptyDice.image)
@@ -72,8 +78,7 @@ class BottomSheetViewController: UIViewController {
         
         textField.textColor = Colors.Gray_15
         textField.font = Font.Typography.body2_M
-        
-        textField.delegate = self
+        textField.becomeFirstResponder()
         return textField
     }()
     
@@ -131,6 +136,7 @@ class BottomSheetViewController: UIViewController {
     private func configure() {
         self.makeConstraints()
         self.setupGestureRecognizer()
+        self.setupTextField()
     }
     
     private func makeConstraints() {
@@ -208,25 +214,54 @@ class BottomSheetViewController: UIViewController {
     }
 }
 
-extension BottomSheetViewController: UITextFieldDelegate {
+extension BottomSheetViewController {
     
-    func textField(
-        _ textField: UITextField,
-        shouldChangeCharactersIn range: NSRange,
-        replacementString string: String
-    ) -> Bool {
+    private func setupTextField() {
+        self.textField.rx.text.orEmpty
+            .distinctUntilChanged()
+            .map(inputText(_:))
+            .subscribe(onNext: { [weak self] result in
+                guard let self = self else { return }
+                
+                switch result {
+                case .over:
+                    self.countLabel.textColor = Colors.Red
+                case .overLap:
+                    self.textFieldSubTitleLabel.text = TextLabels.bottom_textField_already
+                    self.textFieldSubTitleLabel.textColor = Colors.Red
+                    self.registerButton.status = .disabled
+                case .normal:
+                    self.registerButton.status = !(self.textField.text?.isEmpty ?? true) && !(self.isValidInput(self.textField.text)) ? .default : .disabled
+                    self.updateCountLabel(self.textField.text?.count ?? 0, 10)
+                }
+            })
+            .disposed(by: disposeBag)
         
-        let maxLength = 10
-        
-        let current = textField.text ?? ""
-        let update = (current as NSString).replacingCharacters(in: range, with: string)
-        
-        let newLength = update.count
-        
-        if newLength <= maxLength {
-            countLabel.text = String(format: "%02d/%d", newLength, maxLength)
+        self.textField.rx.controlEvent(.editingChanged)
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.registerButton.status = !(self.textField.text?.isEmpty ?? true) && !(self.isValidInput(self.textField.text)) ? .default : .disabled
+                self.updateCountLabel(self.textField.text?.count ?? 0, 10)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func inputText(_ text: String) -> TextFieldState {
+        if text.count >= 10 {
+            let index = text.index(text.startIndex, offsetBy: 10)
+            self.textField.text = String(text[..<index])
+            return .over
         }
         
-        return newLength <= maxLength
+        return .normal
+    }
+    
+    private func updateCountLabel(_ currentCount: Int, _ totalCount: Int) {
+        self.countLabel.text = String(format: "%02d/%d", currentCount, totalCount)
+    }
+    
+    private func isValidInput(_ text: String?) -> Bool {
+        let excludeCharacter = CharacterSet(charactersIn: "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅑㅓㅕㅜㅠㅡㅣㅔㅐㅟㅚㅢㅝㅖㅒㅙ")
+        return text?.rangeOfCharacter(from: excludeCharacter) != nil
     }
 }
