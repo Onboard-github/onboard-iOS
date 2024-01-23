@@ -59,17 +59,19 @@ class BottomSheetView: UIView {
         return label
     }()
     
-    private let textField: TextField = {
+    private lazy var textField: TextField = {
         let textField = TextField()
-        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: Metric.iconSize + 10, height: Metric.iconSize))
-        let textFieldImage = UIImageView(image: IconImage.dice.image)
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: Metric.iconSize + 10, height: Metric.iconSize))
+        let image = UIImageView(image: IconImage.emptyDice.image)
+        image.frame = CGRect(x: 10, y: 0, width: Metric.iconSize, height: Metric.iconSize)
+        view.addSubview(image)
+        textField.leftView = view
+        textField.leftViewMode = .always
         
-        textFieldImage.frame = CGRect(x: 10, y: 0, width: Metric.iconSize, height: Metric.iconSize)
-        leftView.addSubview(textFieldImage)
         textField.textColor = Colors.Gray_15
         textField.font = Font.Typography.body2_M
-        textField.leftView = leftView
-        textField.leftViewMode = .always
+        
+        textField.delegate = self
         return textField
     }()
     
@@ -125,9 +127,7 @@ class BottomSheetView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        configureTextField()
-        makeConstraints()
-        setupGestureRecognizer()
+        self.configure()
     }
     
     required init?(coder: NSCoder) {
@@ -136,8 +136,9 @@ class BottomSheetView: UIView {
     
     // MARK: - Configure
     
-    private func configureTextField() {
-        textField.delegate = self
+    private func configure() {
+        self.makeConstraints()
+        self.setupGestureRecognizer()
     }
     
     private func makeConstraints() {
@@ -214,18 +215,20 @@ extension BottomSheetView: UITextFieldDelegate {
     func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn range: NSRange,
-        replacementString string: String) -> Bool {
-            
-            let maxLength = 10
-            
-            let currentText = textField.text ?? ""
-            let newLength = currentText.count + string.count - range.length
-            
-            if newLength <= maxLength {
-                self.countLabel.text = "\(newLength)/\(maxLength)"
-                return true
-            } else {
-                return false
-            }
+        replacementString string: String
+    ) -> Bool {
+        
+        let maxLength = 10
+        
+        let current = textField.text ?? ""
+        let update = (current as NSString).replacingCharacters(in: range, with: string)
+        
+        let newLength = update.count
+        
+        if newLength <= maxLength {
+            countLabel.text = String(format: "%02d/%d", newLength, maxLength)
         }
+        
+        return newLength <= maxLength
+    }
 }
