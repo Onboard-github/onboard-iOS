@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class BottomSheetViewController: UIViewController {
+class BottomSheetViewController: KeyboardHandlingViewController {
     
     // MARK: - Properties
     
