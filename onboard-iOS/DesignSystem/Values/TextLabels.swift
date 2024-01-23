@@ -60,5 +60,5 @@ struct TextLabels {
     
     // MARK: - PopupView
     
-    static let bottom_register_button = "임시 멤버 추가"
+    static let bottom_textField_already = "이미 있는 이름입니다. 다른 이름을 설정해주세요."
 }
