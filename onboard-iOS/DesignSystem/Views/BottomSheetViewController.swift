@@ -261,7 +261,7 @@ extension BottomSheetViewController {
     }
     
     private func isValidInput(_ text: String?) -> Bool {
-        let excludeCharacter = CharacterSet(charactersIn: "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅑㅓㅕㅜㅠㅡㅣㅔㅐㅟㅚㅢㅝㅖㅒㅙ")
+        let excludeCharacter = CharacterSet(charactersIn: "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅐㅜㅠㅡㅣㅔㅐㅟㅚㅢㅝㅖㅒㅙ")
         return text?.rangeOfCharacter(from: excludeCharacter) != nil
     }
 }
