@@ -322,8 +322,8 @@
 		1C3017172B4ED08B00128E5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1C3017182B4ED09D00128E5C /* Cells */,
 				1CF1A85A2B618AFC0098A6AA /* GameScoreView.swift */,
+				1C3017182B4ED09D00128E5C /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";

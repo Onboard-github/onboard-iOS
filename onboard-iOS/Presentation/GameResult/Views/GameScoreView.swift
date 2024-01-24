@@ -9,6 +9,18 @@ import UIKit
 
 final class GameScoreView: UIView {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let iconSize: CGFloat = 16
+        static let progressBarHeight: CGFloat = 2
+        static let labelTopSpacing: CGFloat = 15
+        static let leftRightMargin: CGFloat = 20
+        static let labelLeading: CGFloat = 5
+        static let iconLeading: CGFloat = 10
+        static let tableViewTopSpacing: CGFloat = 30
+    }
+    
     // MARK: - UI
     
     private let progressBar: UIProgressView = {
@@ -82,4 +94,67 @@ final class GameScoreView: UIView {
                       forCellReuseIdentifier: "GameScoreTableViewCell")
         return view
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configure() {
+        self.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.progressBar)
+        self.addSubview(self.calendarIcon)
+        self.addSubview(self.calendarLabel)
+        self.addSubview(self.timeIcon)
+        self.addSubview(self.timeLabel)
+        self.addSubview(self.titleLabel)
+        self.addSubview(self.playerTableView)
+        
+        self.progressBar.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(Metric.progressBarHeight)
+        }
+        
+        self.calendarIcon.snp.makeConstraints {
+            $0.top.equalTo(progressBar.snp.bottom).offset(Metric.labelTopSpacing)
+            $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.calendarLabel.snp.makeConstraints {
+            $0.top.equalTo(progressBar.snp.bottom).offset(Metric.labelTopSpacing)
+            $0.leading.equalTo(calendarIcon.snp.trailing).offset(Metric.labelLeading)
+        }
+        
+        self.timeIcon.snp.makeConstraints {
+            $0.top.equalTo(progressBar.snp.bottom).offset(Metric.labelTopSpacing)
+            $0.leading.equalTo(calendarLabel.snp.trailing).offset(Metric.iconLeading)
+        }
+        
+        self.timeLabel.snp.makeConstraints {
+            $0.top.equalTo(progressBar.snp.bottom).offset(Metric.labelTopSpacing)
+            $0.leading.equalTo(timeIcon.snp.trailing).offset(Metric.labelLeading)
+        }
+        
+        self.titleLabel.snp.makeConstraints {
+            $0.top.equalTo(calendarIcon.snp.bottom).offset(Metric.labelTopSpacing)
+            $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
+        }
+        
+        self.playerTableView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.tableViewTopSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+        }
+    }
 }
