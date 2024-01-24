@@ -65,11 +65,12 @@
 		1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */; };
 		1CDF4D2F2AB8A53900CFDFBA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1CDF4D2E2AB8A53900CFDFBA /* GoogleSignIn */; };
 		1CEBA1522B333D24007AD07C /* GroupCreateCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */; };
+		1CF1A8482B6159810098A6AA /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */; };
+		1CF1A84A2B6159A70098A6AA /* GuestNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
 		611D8CA82ABECFFC0074A55A /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA72ABECFFC0074A55A /* AuthRepository.swift */; };
-		611D8CAA2ABED03D0074A55A /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA92ABED03D0074A55A /* AuthDTO.swift */; };
 		611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CAC2ABED29F0074A55A /* Encodable+Ext.swift */; };
 		61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */; };
 		61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC7FA02AB6D4A300B0B6B5 /* SceneDelegate.swift */; };
@@ -195,13 +196,13 @@
 		1CDD02E52B35C58100502C04 /* GroupCreateCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteViewController.swift; sourceTree = "<group>"; };
 		1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleLoginManager.swift; path = "onboard-iOS/Repository/SocialLogin/GoogleLoginManager.swift"; sourceTree = SOURCE_ROOT; };
 		1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteView.swift; sourceTree = "<group>"; };
+		1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNicknameDTO.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
 		611D8CA32AB8874D0074A55A /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
 		611D8CA52ABECB910074A55A /* onboard-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "onboard-iOS.entitlements"; sourceTree = "<group>"; };
 		611D8CA72ABECFFC0074A55A /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
-		611D8CA92ABED03D0074A55A /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		611D8CAC2ABED29F0074A55A /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		61AC7F9B2AB6D4A300B0B6B5 /* onboard-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboard-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AC7F9E2AB6D4A300B0B6B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -635,10 +636,10 @@
 			children = (
 				61AC7FCD2AB6DDE300B0B6B5 /* TestDTO.swift */,
 				1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */,
-				611D8CA92ABED03D0074A55A /* AuthDTO.swift */,
 				AA7036012ADB8A1400B26537 /* GroupDTO.swift */,
 				1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */,
 				1C327B1E2B5571BF00F02C26 /* GameDTO.swift */,
+				1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1020,16 +1021,17 @@
 				1CD2086C2B1BAC28008E710E /* GroupCreateDTO.swift in Sources */,
 				1C7E8DB52B0D586300BA00F7 /* TextView.swift in Sources */,
 				1CA1BBD02AE00704000C5F7E /* TextFieldLabelState.swift in Sources */,
-				611D8CAA2ABED03D0074A55A /* AuthDTO.swift in Sources */,
 				AA9105622AD9A6BA00DA2E96 /* GroupSearchView.swift in Sources */,
 				AAC4663C2B15107300A2126E /* UIColor+Util.swift in Sources */,
 				1C6FEAE32B4D47B500CFC647 /* SettingOptions.swift in Sources */,
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
 				1CFD50DA2ACE79190031269C /* Colors.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
+				1CF1A8482B6159810098A6AA /* AuthDTO.swift in Sources */,
 				1CA1BBC72ADABFA3000C5F7E /* LinkButtonState.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
+				1CF1A84A2B6159A70098A6AA /* GuestNicknameDTO.swift in Sources */,
 				AAF1698C2B108E3100EF82A4 /* LogManager.swift in Sources */,
 				AACCA9192AE193D3000A4CDA /* GroupSearchBar.swift in Sources */,
 				AA69E3BC2B1332AB00F74A36 /* RankVC.swift in Sources */,
