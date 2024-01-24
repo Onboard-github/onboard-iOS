@@ -73,6 +73,7 @@
 		1CF1A8552B615CD70098A6AA /* GuestReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8542B615CD70098A6AA /* GuestReactor.swift */; };
 		1CF1A8592B6160850098A6AA /* GameScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8582B6160850098A6AA /* GameScoreTableViewCell.swift */; };
 		1CF1A85B2B618AFC0098A6AA /* GameScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A85A2B618AFC0098A6AA /* GameScoreView.swift */; };
+		1CF1A85D2B618D520098A6AA /* GameScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A85C2B618D520098A6AA /* GameScoreViewController.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
@@ -209,6 +210,7 @@
 		1CF1A8542B615CD70098A6AA /* GuestReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestReactor.swift; sourceTree = "<group>"; };
 		1CF1A8582B6160850098A6AA /* GameScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreTableViewCell.swift; sourceTree = "<group>"; };
 		1CF1A85A2B618AFC0098A6AA /* GameScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreView.swift; sourceTree = "<group>"; };
+		1CF1A85C2B618D520098A6AA /* GameScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreViewController.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			children = (
 				1C30171D2B52D8EF00128E5C /* GameResultViewController.swift */,
 				1C327B272B5630DC00F02C26 /* PlayerSelectViewController.swift */,
+				1CF1A85C2B618D520098A6AA /* GameScoreViewController.swift */,
 				1CF1A8532B615CA60098A6AA /* Reactor */,
 				1C3017172B4ED08B00128E5C /* Views */,
 				1C47C9952B597F3D00D80E9C /* ShareInstance */,
@@ -1065,6 +1068,7 @@
 				AAF1698C2B108E3100EF82A4 /* LogManager.swift in Sources */,
 				AACCA9192AE193D3000A4CDA /* GroupSearchBar.swift in Sources */,
 				AA69E3BC2B1332AB00F74A36 /* RankVC.swift in Sources */,
+				1CF1A85D2B618D520098A6AA /* GameScoreViewController.swift in Sources */,
 				AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				1C30170D2B4D718400128E5C /* AlertView.swift in Sources */,
