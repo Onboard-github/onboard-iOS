@@ -39,6 +39,17 @@ final class OwnerManageTableViewCell: UITableViewCell {
         return button
     }()
     
+    // MARK: - Properties
+    
+    var didTapSelectButton: (() -> Void)?
+    
+    var isButtonSelected: Bool = true {
+        didSet {
+            let image = isButtonSelected ? IconImage.deselect.image : IconImage.select.image
+            self.selectButton.setImage(image, for: .normal)
+        }
+    }
+    
     // MARK: - Initialize
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,13 +67,21 @@ final class OwnerManageTableViewCell: UITableViewCell {
     private func configure() {
         self.selectionStyle = .none
         
+        self.addConfigure()
         self.makeConstraints()
     }
     
+    private func addConfigure() {
+        self.selectButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.didTapSelectButton?()
+            self?.isButtonSelected.toggle()
+        }), for: .touchUpInside)
+    }
+    
     private func makeConstraints() {
-        self.addSubview(self.titleImage)
-        self.addSubview(self.titleLabel)
-        self.addSubview(self.selectButton)
+        self.contentView.addSubview(self.titleImage)
+        self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.selectButton)
         
         self.titleImage.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(Metric.leftMargin)

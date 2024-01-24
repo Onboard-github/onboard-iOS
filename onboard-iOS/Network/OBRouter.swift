@@ -9,18 +9,20 @@ import Foundation
 
 import Alamofire
 
+import ReactorKit
+
 enum OBRouter: URLRequestConvertible {
-
+    
     // MARK: - Properties
-
+    
     typealias Header = [String: Any]
     typealias Body = [String: Any]
     typealias Params = [String: Any]
-
+    
     var baseURL: URL {
         return URL(string: API.BASE_URL)!
     }
-
+    
     // MARK: - APIs
     
     // Group
@@ -49,22 +51,33 @@ enum OBRouter: URLRequestConvertible {
     
     // 정리안됨
     case testAPI
+    
+    // Auth
     case auth(body: Body)
+    
+    // Group
     case addGroup(body: Body)
     case gameList
+    case createGroup(body: Body)
+    
+    // Group Image
     case pickerImage(params: Params)
     case randomImage
-    case createGroup(body: Body)
     case getTerms
     case groupMemeberPatch(groupId: Int, userId: Int)
     case groupMembers(groupId: Int)
     case addGroupGuest(groupId: Int, nickName: String?)
 
+    
+    // Game Result
+    case gameResult(params: Params)
+    case gamePlayer(params: Params)
+    
     // MARK: - HTTP Method
-
+    
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList, .gameList, .randomImage, .getTerms, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2:
+        case .testAPI, .groupList, .gameList, .randomImage, .getTerms, .gameResult, .gamePlayer, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2:
             return .get
         case .auth, .addGroup, .pickerImage, .createGroup, .addGroupGuest:
             return .post
@@ -74,9 +87,9 @@ enum OBRouter: URLRequestConvertible {
             return .patch
         }
     }
-
+    
     // MARK: - Path
-
+    
     var path: String {
         switch self {
         case .testAPI:
@@ -107,32 +120,36 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group/\(groupId)"
         case .getMyGroupsV2:
             return "api/v2/user/me/group"
+        case .gameResult:
+            return "api/v1/group/123/game"
+        case .gamePlayer:
+            return "api/v1/group/123/member"
         }
     }
-
+    
     // MARK: - Header
-
+    
     var header: Header? {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage:
             return nil
-        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2:
+        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
                     "content-type": "multipart/form-data"]
         }
     }
-
+    
     // MARK: - Request Body
-
+    
     var body: Body? {
         switch self {
         case let .addGroupGuest(_, nickname):
             return ["nickname": nickname]
-        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2:
+        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer:
             return nil
-
+            
         case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body):
             return body
         }
@@ -150,14 +167,16 @@ enum OBRouter: URLRequestConvertible {
             return params
         case let .groupMembers(groupId):
             return ["groupId": groupId, "size": 100]
+        case let .gameResult(params), let .gamePlayer(params):
+            return params
         }
     }
-
+    
     // MARK: - URL Request
-
+    
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(path)
-
+        
         var request = URLRequest(url: url)
         request.method = method
         
@@ -177,7 +196,7 @@ enum OBRouter: URLRequestConvertible {
             "application/json",
             forHTTPHeaderField: "Accept"
         )
-
+        
         return request
     }
 }
