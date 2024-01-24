@@ -68,6 +68,7 @@
 		1CF1A8482B6159810098A6AA /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */; };
 		1CF1A84A2B6159A70098A6AA /* GuestNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */; };
 		1CF1A84E2B615A2A0098A6AA /* GuestNickNameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A84D2B615A2A0098A6AA /* GuestNickNameEntity.swift */; };
+		1CF1A8502B615A9E0098A6AA /* GuestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A84F2B615A9E0098A6AA /* GuestRepository.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
@@ -199,6 +200,7 @@
 		1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteView.swift; sourceTree = "<group>"; };
 		1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNicknameDTO.swift; sourceTree = "<group>"; };
 		1CF1A84D2B615A2A0098A6AA /* GuestNickNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNickNameEntity.swift; sourceTree = "<group>"; };
+		1CF1A84F2B615A9E0098A6AA /* GuestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestRepository.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 			children = (
 				1C327B1A2B556EC800F02C26 /* GameResultRepository.swift */,
 				1C840B382B5935B900067E91 /* PlayerRepository.swift */,
+				1CF1A84F2B615A9E0098A6AA /* GuestRepository.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -981,6 +984,7 @@
 				1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */,
 				1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */,
 				1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */,
+				1CF1A8502B615A9E0098A6AA /* GuestRepository.swift in Sources */,
 				1C840B3D2B59377D00067E91 /* PlayerReactor.swift in Sources */,
 				1C840B3B2B5936BE00067E91 /* PlayerUseCase.swift in Sources */,
 				AACCA91B2AE19A09000A4CDA /* NewGroupButton.swift in Sources */,
