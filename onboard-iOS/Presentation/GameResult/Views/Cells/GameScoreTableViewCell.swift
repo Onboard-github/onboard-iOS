@@ -9,6 +9,18 @@ import UIKit
 
 final class GameScoreTableViewCell: UITableViewCell {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let leftRightMargin: CGFloat = 10
+        static let playerLeftSpacing: CGFloat = 90
+        static let textFieldBottomSpacing: CGFloat = 1
+        static let textFieldWidth: CGFloat = 100
+        static let textFieldRightSpacing: CGFloat = 3
+        static let underLineTopSpacing: CGFloat = 5
+        static let underLineHeight: CGFloat = 1
+    }
+
     // MARK: - UI
     
     private let rankLabel: UILabel = {
@@ -61,4 +73,67 @@ final class GameScoreTableViewCell: UITableViewCell {
         view.backgroundColor = Colors.Gray_6
         return view
     }()
+    
+    // MARK: - Initialize
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.selectionStyle = .none
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.contentView.addSubview(self.rankLabel)
+        self.contentView.addSubview(self.diceImage)
+        self.contentView.addSubview(self.playerLabel)
+        self.contentView.addSubview(self.scoreTextField)
+        self.contentView.addSubview(self.scoreLabel)
+        self.contentView.addSubview(self.underLine)
+        
+        self.rankLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.diceImage.snp.makeConstraints {
+            $0.leading.equalTo(rankLabel.snp.trailing).offset(Metric.leftRightMargin)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.playerLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(Metric.playerLeftSpacing)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.scoreTextField.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.bottom.equalTo(underLine.snp.top).inset(Metric.textFieldBottomSpacing)
+            $0.width.equalTo(Metric.textFieldWidth)
+            $0.trailing.equalTo(scoreLabel.snp.leading).offset(-Metric.textFieldRightSpacing)
+        }
+        
+        self.scoreLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.underLine.snp.makeConstraints {
+            $0.top.equalTo(playerLabel.snp.bottom).offset(Metric.underLineTopSpacing)
+            $0.leading.equalTo(playerLabel.snp.leading)
+            $0.trailing.equalTo(scoreLabel.snp.trailing)
+            $0.height.equalTo(Metric.underLineHeight)
+        }
+    }
 }
