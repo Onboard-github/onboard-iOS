@@ -70,6 +70,7 @@
 		1CF1A84E2B615A2A0098A6AA /* GuestNickNameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A84D2B615A2A0098A6AA /* GuestNickNameEntity.swift */; };
 		1CF1A8502B615A9E0098A6AA /* GuestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A84F2B615A9E0098A6AA /* GuestRepository.swift */; };
 		1CF1A8522B615C000098A6AA /* GuestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8512B615C000098A6AA /* GuestUseCase.swift */; };
+		1CF1A8552B615CD70098A6AA /* GuestReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8542B615CD70098A6AA /* GuestReactor.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
@@ -203,6 +204,7 @@
 		1CF1A84D2B615A2A0098A6AA /* GuestNickNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNickNameEntity.swift; sourceTree = "<group>"; };
 		1CF1A84F2B615A9E0098A6AA /* GuestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestRepository.swift; sourceTree = "<group>"; };
 		1CF1A8512B615C000098A6AA /* GuestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestUseCase.swift; sourceTree = "<group>"; };
+		1CF1A8542B615CD70098A6AA /* GuestReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestReactor.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
@@ -306,8 +308,7 @@
 			children = (
 				1C30171D2B52D8EF00128E5C /* GameResultViewController.swift */,
 				1C327B272B5630DC00F02C26 /* PlayerSelectViewController.swift */,
-				1C327B232B55747C00F02C26 /* GameResultReactor.swift */,
-				1C840B3C2B59377D00067E91 /* PlayerReactor.swift */,
+				1CF1A8532B615CA60098A6AA /* Reactor */,
 				1C3017172B4ED08B00128E5C /* Views */,
 				1C47C9952B597F3D00D80E9C /* ShareInstance */,
 			);
@@ -465,6 +466,16 @@
 				1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */,
 			);
 			path = SocialLogin;
+			sourceTree = "<group>";
+		};
+		1CF1A8532B615CA60098A6AA /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				1C327B232B55747C00F02C26 /* GameResultReactor.swift */,
+				1C840B3C2B59377D00067E91 /* PlayerReactor.swift */,
+				1CF1A8542B615CD70098A6AA /* GuestReactor.swift */,
+			);
+			path = Reactor;
 			sourceTree = "<group>";
 		};
 		1CFD50D72ACE78E80031269C /* DesignSystem */ = {
@@ -1006,6 +1017,7 @@
 				1CD208722B1BB339008E710E /* ImageLoader.swift in Sources */,
 				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
 				AA93981A2B25534A0022C5ED /* GameCell.swift in Sources */,
+				1CF1A8552B615CD70098A6AA /* GuestReactor.swift in Sources */,
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
