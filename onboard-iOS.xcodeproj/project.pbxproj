@@ -68,9 +68,6 @@
 		1CF1A8482B6159810098A6AA /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */; };
 		1CF1A84A2B6159A70098A6AA /* GuestNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */; };
 		1CF1A84E2B615A2A0098A6AA /* GuestNickNameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A84D2B615A2A0098A6AA /* GuestNickNameEntity.swift */; };
-		1CF1A8502B615A9E0098A6AA /* GuestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A84F2B615A9E0098A6AA /* GuestRepository.swift */; };
-		1CF1A8522B615C000098A6AA /* GuestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8512B615C000098A6AA /* GuestUseCase.swift */; };
-		1CF1A8552B615CD70098A6AA /* GuestReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8542B615CD70098A6AA /* GuestReactor.swift */; };
 		1CF1A8592B6160850098A6AA /* GameScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8582B6160850098A6AA /* GameScoreTableViewCell.swift */; };
 		1CF1A85B2B618AFC0098A6AA /* GameScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A85A2B618AFC0098A6AA /* GameScoreView.swift */; };
 		1CF1A85D2B618D520098A6AA /* GameScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A85C2B618D520098A6AA /* GameScoreViewController.swift */; };
@@ -205,9 +202,6 @@
 		1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteView.swift; sourceTree = "<group>"; };
 		1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNicknameDTO.swift; sourceTree = "<group>"; };
 		1CF1A84D2B615A2A0098A6AA /* GuestNickNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNickNameEntity.swift; sourceTree = "<group>"; };
-		1CF1A84F2B615A9E0098A6AA /* GuestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestRepository.swift; sourceTree = "<group>"; };
-		1CF1A8512B615C000098A6AA /* GuestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestUseCase.swift; sourceTree = "<group>"; };
-		1CF1A8542B615CD70098A6AA /* GuestReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestReactor.swift; sourceTree = "<group>"; };
 		1CF1A8582B6160850098A6AA /* GameScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreTableViewCell.swift; sourceTree = "<group>"; };
 		1CF1A85A2B618AFC0098A6AA /* GameScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreView.swift; sourceTree = "<group>"; };
 		1CF1A85C2B618D520098A6AA /* GameScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreViewController.swift; sourceTree = "<group>"; };
@@ -346,7 +340,6 @@
 			children = (
 				1C327B1A2B556EC800F02C26 /* GameResultRepository.swift */,
 				1C840B382B5935B900067E91 /* PlayerRepository.swift */,
-				1CF1A84F2B615A9E0098A6AA /* GuestRepository.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -356,7 +349,6 @@
 			children = (
 				1C327B212B55721300F02C26 /* GameResultUseCase.swift */,
 				1C840B3A2B5936BE00067E91 /* PlayerUseCase.swift */,
-				1CF1A8512B615C000098A6AA /* GuestUseCase.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -482,7 +474,6 @@
 			children = (
 				1C327B232B55747C00F02C26 /* GameResultReactor.swift */,
 				1C840B3C2B59377D00067E91 /* PlayerReactor.swift */,
-				1CF1A8542B615CD70098A6AA /* GuestReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -1008,7 +999,6 @@
 				1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */,
 				1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */,
 				1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */,
-				1CF1A8502B615A9E0098A6AA /* GuestRepository.swift in Sources */,
 				1C840B3D2B59377D00067E91 /* PlayerReactor.swift in Sources */,
 				1C840B3B2B5936BE00067E91 /* PlayerUseCase.swift in Sources */,
 				AACCA91B2AE19A09000A4CDA /* NewGroupButton.swift in Sources */,
@@ -1027,7 +1017,6 @@
 				1CD208722B1BB339008E710E /* ImageLoader.swift in Sources */,
 				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
 				AA93981A2B25534A0022C5ED /* GameCell.swift in Sources */,
-				1CF1A8552B615CD70098A6AA /* GuestReactor.swift in Sources */,
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,
 				611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */,
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
@@ -1084,7 +1073,6 @@
 				1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */,
 				1C327B242B55747C00F02C26 /* GameResultReactor.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
-				1CF1A8522B615C000098A6AA /* GuestUseCase.swift in Sources */,
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
 				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateManager.swift in Sources */,
 				1CF1A85B2B618AFC0098A6AA /* GameScoreView.swift in Sources */,

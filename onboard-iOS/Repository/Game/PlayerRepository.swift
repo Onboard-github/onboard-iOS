@@ -9,6 +9,7 @@ import Foundation
 
 protocol PlayerRepository {
     func requestPlayerList(groupId: Int, size: String) async throws -> PlayerEntity.Res
+    func requestValidateNickName(groupId: Int, nickname: String) async throws -> GuestNickNameEntity.Res
 }
 
 final class PlayerRepositoryImpl: PlayerRepository {
@@ -33,6 +34,33 @@ final class PlayerRepositoryImpl: PlayerRepository {
             throw error
         }
     }
+    
+    func requestValidateNickName(groupId: Int, nickname: String) async throws -> GuestNickNameEntity.Res {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: GuestNicknameDTO.self,
+                    router: OBRouter.validateNicknameGuest(
+                        params: [
+                            "groupId": groupId,
+                            "nickname": nickname
+                        ]
+                    )
+                )
+            
+            print("result: \(result)")
+            
+            guard let data = result.value else {
+                throw NetworkError.noExist
+            }
+            
+            return data.toDomain()
+        } catch {
+            print("error: \(error.localizedDescription)")
+            throw error
+        }
+    }
 }
 
 extension PlayerDTO {
@@ -49,6 +77,15 @@ extension PlayerDTO {
             contents: playerList,
             cursor: self.cursor,
             hasNext: self.hasNext
+        )
+    }
+}
+
+extension GuestNicknameDTO {
+    func toDomain() -> GuestNickNameEntity.Res {
+        return GuestNickNameEntity.Res(
+            isAvailable: self.isAvailable,
+            reason: self.reason
         )
     }
 }
