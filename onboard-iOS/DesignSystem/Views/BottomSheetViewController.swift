@@ -233,6 +233,8 @@ extension BottomSheetViewController {
                 case .normal:
                     self.registerButton.status = !(self.textField.text?.isEmpty ?? true) && !(self.isValidInput(self.textField.text)) ? .default : .disabled
                     self.updateCountLabel(self.textField.text?.count ?? 0, 10)
+                    
+                    GameDataSingleton.shared.addGuestNickName(self.textField.text ?? "")
                 }
             })
             .disposed(by: disposeBag)
