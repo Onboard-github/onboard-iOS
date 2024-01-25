@@ -15,6 +15,8 @@ class BottomSheetViewController: KeyboardHandlingViewController {
     
     var disposeBag = DisposeBag()
     
+    var didTapButton: (() -> Void)?
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -134,9 +136,16 @@ class BottomSheetViewController: KeyboardHandlingViewController {
     // MARK: - Configure
     
     private func configure() {
+        self.addConfigure()
         self.makeConstraints()
         self.setupGestureRecognizer()
         self.setupTextField()
+    }
+    
+    private func addConfigure() {
+        self.registerButton.addAction(UIAction(handler: { _ in
+            self.didTapButton?()
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
