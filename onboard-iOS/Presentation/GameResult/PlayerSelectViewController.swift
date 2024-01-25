@@ -183,6 +183,13 @@ final class PlayerSelectViewController: UIViewController, View {
             bottom.setState(popupState: popupState, onClickLink: { })
             bottom.modalPresentationStyle = .overFullScreen
             self?.present(bottom, animated: false)
+            
+            bottom.didTapButton = { [weak self] in
+                if let nickname = GameDataSingleton.shared.guestNickNameData {
+                    self?.reactor?.action.onNext(.validateNickname(groupId: 123, nickname: nickname))
+                }
+            }
+            
         }), for: .touchUpInside)
     }
     
