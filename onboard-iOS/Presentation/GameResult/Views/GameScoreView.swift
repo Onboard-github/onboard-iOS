@@ -90,6 +90,8 @@ final class GameScoreView: UIView {
         view.backgroundColor = Colors.White
         view.separatorStyle = .none
         
+        view.delegate = self
+        view.dataSource = self
         view.register(GameScoreTableViewCell.self,
                       forCellReuseIdentifier: "GameScoreTableViewCell")
         return view
@@ -156,5 +158,27 @@ final class GameScoreView: UIView {
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
             $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
+    }
+}
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension GameScoreView: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return 2 // 임시
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GameScoreTableViewCell",
+                                                 for: indexPath) as! GameScoreTableViewCell
+        
+        return cell
     }
 }
