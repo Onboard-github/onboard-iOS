@@ -9,5 +9,5 @@ import Foundation
 
 struct GuestNicknameDTO: Decodable {
     let isAvailable: Bool
-    let reason: String
+    let reason: String?
 }

@@ -85,7 +85,7 @@ extension GuestNicknameDTO {
     func toDomain() -> GuestNickNameEntity.Res {
         return GuestNickNameEntity.Res(
             isAvailable: self.isAvailable,
-            reason: self.reason
+            reason: self.reason ?? ""
         )
     }
 }
