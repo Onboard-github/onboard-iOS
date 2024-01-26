@@ -37,3 +37,13 @@ struct PlayerEntity {
         }
     }
 }
+
+struct AddPlayerEntity {
+    struct Res {
+        
+    }
+    
+    struct Req {
+        let nickname: String
+    }
+}
