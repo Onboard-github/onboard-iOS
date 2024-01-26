@@ -39,7 +39,7 @@ final class PlayerReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .fetchResult(groupId, size):
-            return self.gameListResult(groupId: groupId, size: size)
+            return self.PlayerListResult(groupId: groupId, size: size)
         case let .validateNickname(groupId, nickname):
             return self.validateResult(groupId: groupId, nickname: nickname)
         }
@@ -61,7 +61,7 @@ final class PlayerReactor: Reactor {
 
 extension PlayerReactor {
     
-    private func gameListResult(groupId: Int, size: String) -> Observable<Mutation> {
+    private func PlayerListResult(groupId: Int, size: String) -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
             guard let self = self else { return Disposables.create() }
             
