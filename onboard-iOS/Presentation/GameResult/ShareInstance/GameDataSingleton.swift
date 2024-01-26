@@ -14,9 +14,10 @@ import RxCocoa
 class GameDataSingleton {
     
     static let shared = GameDataSingleton()
-
+    
     var gameData: GameResultEntity.Res.GameList?
-    var playerData: [PlayerList] = []
+    var playerData: [PlayerEntity.Res] = []
+    var selectedPlayerData: [PlayerList] = []
     var guestNickNameData: String?
     
     private let textSubject = PublishSubject<String>()
@@ -24,16 +25,24 @@ class GameDataSingleton {
     var textObservable: Observable<String> {
         return textSubject.asObservable()
     }
-
+    
+    // MARK: - Initialize
+    
     private init() {}
-
-    func addSelectedPlayer(_ player: PlayerList) {
+    
+    // MARK: - Func
+    
+    func addPlayer(_ player: PlayerEntity.Res) {
         self.playerData.append(player)
     }
-
+    
+    func addSelectedPlayer(_ player: PlayerList) {
+        self.selectedPlayerData.append(player)
+    }
+    
     func removePlayer(at index: Int) {
-        guard index < self.playerData.count else { return }
-        self.playerData.remove(at: index)
+        guard index < self.selectedPlayerData.count else { return }
+        self.selectedPlayerData.remove(at: index)
     }
     
     func addGuestNickName(_ text: String) {

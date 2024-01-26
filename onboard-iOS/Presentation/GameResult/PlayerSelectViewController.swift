@@ -343,7 +343,7 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return GameDataSingleton.shared.playerData.count
+        return GameDataSingleton.shared.selectedPlayerData.count
     }
     
     func collectionView(
@@ -356,8 +356,8 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
             for: indexPath
         ) as! PlayerCollectionViewCell
         
-        if GameDataSingleton.shared.playerData.indices.contains(indexPath.item) {
-            let selectedPlayer = GameDataSingleton.shared.playerData[indexPath.item]
+        if GameDataSingleton.shared.selectedPlayerData.indices.contains(indexPath.item) {
+            let selectedPlayer = GameDataSingleton.shared.selectedPlayerData[indexPath.item]
             cell.configure(image: selectedPlayer.image, title: selectedPlayer.title)
         }
         
@@ -367,7 +367,7 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
             
             collectionView.deleteItems(at: [indexPath])
             
-            if GameDataSingleton.shared.playerData.isEmpty {
+            if GameDataSingleton.shared.selectedPlayerData.isEmpty {
                 self?.toggleLayout()
             }
         }
