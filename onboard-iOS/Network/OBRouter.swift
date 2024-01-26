@@ -45,6 +45,7 @@ enum OBRouter: URLRequestConvertible {
     case gameResult(params: Params)
     case gamePlayer(params: Params)
     case validateNicknameGuest(params: Params)
+    case addPlayer(params: Params, body: Body)
     
     // MARK: - HTTP Method
     
@@ -52,7 +53,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .groupList, .gameList, .randomImage, .gameResult, .gamePlayer, .validateNicknameGuest:
             return .get
-        case .auth, .addGroup, .pickerImage, .createGroup:
+        case .auth, .addGroup, .pickerImage, .createGroup, .addPlayer:
             return .post
         case .setUser:
             return .put
@@ -85,6 +86,8 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group/123/member"
         case .validateNicknameGuest:
             return "api/v1/group/123/member/validateNickname"
+        case .addPlayer:
+            return "api/v1/group/123/guest"
         }
     }
     
@@ -92,7 +95,7 @@ enum OBRouter: URLRequestConvertible {
     
     var header: Header? {
         switch self {
-        case .testAPI, .auth, .addGroup, .groupList, .randomImage, .validateNicknameGuest:
+        case .testAPI, .auth, .addGroup, .groupList, .randomImage, .validateNicknameGuest, .addPlayer:
             return nil
         case .setUser, .gameList, .createGroup, .gameResult, .gamePlayer:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
@@ -111,6 +114,9 @@ enum OBRouter: URLRequestConvertible {
             
         case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body):
             return body
+            
+        case let .addPlayer(_, body):
+            return body
         }
     }
     
@@ -124,7 +130,7 @@ enum OBRouter: URLRequestConvertible {
             return params
         case let .pickerImage(params):
             return params
-        case let .gameResult(params), let .gamePlayer(params), let .validateNicknameGuest(params):
+        case let .gameResult(params), let .gamePlayer(params), let .validateNicknameGuest(params), let .addPlayer(params, _):
             return params
         }
     }
