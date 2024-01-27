@@ -8,8 +8,11 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import ReactorKit
 
-class BottomSheetViewController: KeyboardHandlingViewController {
+class BottomSheetViewController: KeyboardHandlingViewController, View {
+    
+    typealias Reactor = PlayerReactor
     
     // MARK: - Properties
     
@@ -123,8 +126,10 @@ class BottomSheetViewController: KeyboardHandlingViewController {
     
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: PlayerReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
@@ -133,19 +138,24 @@ class BottomSheetViewController: KeyboardHandlingViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Configure
+    // MARK: - Bind
     
-    private func configure() {
-        self.addConfigure()
-        self.makeConstraints()
-        self.setupGestureRecognizer()
-        self.setupTextField()
+    func bind(reactor: PlayerReactor) {
+        self.bindAction(reactor: reactor)
     }
     
-    private func addConfigure() {
+    func bindAction(reactor: PlayerReactor) {
         self.registerButton.addAction(UIAction(handler: { _ in
             self.didTapButton?()
         }), for: .touchUpInside)
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.makeConstraints()
+        self.setupGestureRecognizer()
+        self.setupTextField()
     }
     
     private func makeConstraints() {
@@ -253,6 +263,15 @@ extension BottomSheetViewController {
                 guard let self = self else { return }
                 self.registerButton.status = !(self.textField.text?.isEmpty ?? true) && !(self.isValidInput(self.textField.text)) ? .default : .disabled
                 self.updateCountLabel(self.textField.text?.count ?? 0, 10)
+            })
+            .disposed(by: disposeBag)
+        
+        self.textField.rx.text.orEmpty
+            .distinctUntilChanged()
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] text in
+                guard let nickname = GameDataSingleton.shared.guestNickNameData else { return }
+                self?.reactor?.action.onNext(.validateNickname(groupId: 123, nickname: nickname))
             })
             .disposed(by: disposeBag)
     }
