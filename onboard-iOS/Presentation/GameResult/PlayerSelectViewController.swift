@@ -187,6 +187,13 @@ final class PlayerSelectViewController: UIViewController, View {
             self?.present(bottom, animated: false)
             
             bottom.didTapButton = { [weak self] in
+                guard let nickname = GameDataSingleton.shared.guestNickNameData else { return }
+                let req = AddPlayerEntity.Req(nickname: nickname)
+                self?.reactor?.action.onNext(.addPlayer(groupId: 123, req: req))
+                GameDataSingleton.shared.addPlayer(PlayerList(image: IconImage.emptyDice.image!,
+                                                              title: nickname))
+                self?.playerTableView.reloadData()
+                bottom.dismiss(animated: false)
             }
             
         }), for: .touchUpInside)
@@ -292,11 +299,10 @@ final class PlayerSelectViewController: UIViewController, View {
 
 extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-        return reactor?.currentState.playerData.first?.contents.count ?? 0
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let data = reactor?.currentState.playerData.first?.contents.count ?? 0
+        let newData = GameDataSingleton.shared.playerData.count
+        return data + newData
     }
     
     func tableView(
@@ -311,17 +317,26 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
         
         let image = IconImage.dice.image
         
-        if let data = reactor?.currentState.playerData,
-           let firstGameList = data.first?.contents,
-           indexPath.item < firstGameList.count {
-            
-            let game = firstGameList[indexPath.item]
-            
-            cell.configure(image: image, title: game.nickname)
+        if indexPath.row == 0,
+           let data = reactor?.currentState.playerData.first?.contents.first {
+            cell.configure(image: image, title: data.nickname)
             
             cell.didTapSelectButton = { [weak self] in
                 if let image = IconImage.dice.image {
-                    let data = PlayerList(image: image, title: game.nickname)
+                    let data = PlayerList(image: image, title: data.nickname)
+                    GameDataSingleton.shared.addSelectedPlayer(data)
+                    
+                    self?.playerCollectionView.reloadData()
+                    self?.toggleLayout()
+                }
+            }
+        } else if indexPath.row - 1 < GameDataSingleton.shared.playerData.count {
+            let newData = GameDataSingleton.shared.playerData[indexPath.row - 1]
+            cell.configure(image: newData.image, title: newData.title, titleColor: Colors.Gray_9)
+            
+            cell.didTapSelectButton = { [weak self] in
+                if let image = IconImage.dice.image {
+                    let data = PlayerList(image: image, title: newData.title)
                     GameDataSingleton.shared.addSelectedPlayer(data)
                     
                     self?.playerCollectionView.reloadData()
