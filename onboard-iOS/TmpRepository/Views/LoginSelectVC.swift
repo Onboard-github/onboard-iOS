@@ -13,6 +13,7 @@ class LoginSelectVC: UIViewController {
     var agree: AgreeVC?
     
     let kakaoLoginManager = KakaoLoginManagerImpl()
+    let appleLoginManager = AppleLoginManagerImpl()
     let authRepository = AuthRepositoryImpl()
 
     override func viewDidLoad() {
@@ -29,22 +30,16 @@ class LoginSelectVC: UIViewController {
     }
     
     @IBAction func appleLogin(_ sender: Any) {
-        AlertManager.show(message: "애플 로그인 미구현")
+        appleLoginManager.excute(delegate: self)
     }
-}
-
-extension LoginSelectVC: KakaoLoginDelegate {
-    func sendOAuthToken(_ token: String) {
+    
+    private func acceptTokenHandler(authEntity: AuthEntity.Res, type: UserLoginSessionType) {
         Task {
-            let result = try await self.authRepository.signIn(
-                req: AuthEntity.Req(type: .kakao, token: token)
-            )
-            
             if let currentSesison = LoginSessionManager.getLoginSession() {
                 LogManager.log(messaeg: "기존 로그인되어있던 로그인 정보 \(currentSesison) 삭제")
             }
             
-            LoginSessionManager.setLoginSession(accessToken: result.accessToken, refreshToken: result.refreshToken, type: .kakao)
+            LoginSessionManager.setLoginSession(accessToken: authEntity.accessToken, refreshToken: authEntity.refreshToken, type: type)
             
             let meInfoResult = try await OBNetworkManager.shared.asyncRequest(object: GetMeRes.self, router: .getMe)
             
@@ -66,7 +61,7 @@ extension LoginSelectVC: KakaoLoginDelegate {
 extension LoginSelectVC: AgreeDelegate {
     func agreeComplete() {
         agree?.dismiss(animated: true) { [weak self] in
-            if let nickname = LoginSessionManager.getNickname() {
+            if LoginSessionManager.getNickname() != nil {
                 let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
                 let groupList = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
                 LoginSessionManager.setState(state: .needJoinGroup)
@@ -89,6 +84,30 @@ extension LoginSelectVC: AgreeDelegate {
                 let nickNameVC = AgreeNicknameVC()
                 self?.navigationController?.pushViewController(nickNameVC, animated: true)
             }
+        }
+    }
+}
+
+extension LoginSelectVC: KakaoLoginDelegate {
+    func sendOAuthToken(_ token: String) {
+        Task {
+            let result = try await self.authRepository.signIn(
+                req: AuthEntity.Req(type: .kakao, token: token)
+            )
+            
+            acceptTokenHandler(authEntity: result, type: .kakao)
+        }
+    }
+}
+
+extension LoginSelectVC: AppleLoginDelegate {
+    func success(token: String) {
+        Task {
+            let result = try await self.authRepository.signIn(
+                req: AuthEntity.Req(type: .apple, token: token)
+            )
+            
+            acceptTokenHandler(authEntity: result, type: .apple)
         }
     }
 }
