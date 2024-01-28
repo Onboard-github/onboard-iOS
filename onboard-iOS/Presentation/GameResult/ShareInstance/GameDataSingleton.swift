@@ -16,7 +16,7 @@ class GameDataSingleton {
     static let shared = GameDataSingleton()
     
     var gameData: GameResultEntity.Res.GameList?
-    var playerData: [PlayerEntity.Res] = []
+    var playerData: [PlayerList] = []
     var selectedPlayerData: [PlayerList] = []
     var guestNickNameData: String?
     
@@ -32,7 +32,7 @@ class GameDataSingleton {
     
     // MARK: - Func
     
-    func addPlayer(_ player: PlayerEntity.Res) {
+    func addPlayer(_ player: PlayerList) {
         self.playerData.append(player)
     }
     
