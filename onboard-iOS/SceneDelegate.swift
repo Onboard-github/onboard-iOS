@@ -23,6 +23,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.windowScene = scene
         
+        if LoginSessionManager.isAlreadySetup != true {
+            print("삭제 후 재설치 감지")
+            LoginSessionManager.logout()
+            LoginSessionManager.isAlreadySetup = true
+        }
+        
         self.initKakaoSDK()
 
         let testUseCase = TestUseCaseImpl(repository: TestRepositoryImpl())

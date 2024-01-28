@@ -15,6 +15,16 @@ class LoginSessionManager {
         case login
     }
     
+    static var isAlreadySetup: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: "isAlreadySetup")
+        }
+        
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "isAlreadySetup")
+        }
+    }
+    
     static func setState(state: State) {
         KeychainWrapper.standard.set(state.rawValue, forKey: "state")
     }
