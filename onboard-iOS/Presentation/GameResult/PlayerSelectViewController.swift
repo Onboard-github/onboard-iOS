@@ -165,7 +165,9 @@ final class PlayerSelectViewController: UIViewController, View {
     
     private func addConfigure() {
         self.addButton.addAction(UIAction(handler: { [weak self] _ in
-            let bottom = BottomSheetViewController()
+            let useCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+            let reactor = PlayerReactor(useCase: useCase)
+            let bottom = BottomSheetViewController(reactor: reactor)
             
             bottom.contentView.snp.makeConstraints {
                 $0.height.equalTo(260)
@@ -185,9 +187,6 @@ final class PlayerSelectViewController: UIViewController, View {
             self?.present(bottom, animated: false)
             
             bottom.didTapButton = { [weak self] in
-                if let nickname = GameDataSingleton.shared.guestNickNameData {
-                    self?.reactor?.action.onNext(.validateNickname(groupId: 123, nickname: nickname))
-                }
             }
             
         }), for: .touchUpInside)
