@@ -142,12 +142,28 @@ class BottomSheetViewController: KeyboardHandlingViewController, View {
     
     func bind(reactor: PlayerReactor) {
         self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
     }
     
     func bindAction(reactor: PlayerReactor) {
         self.registerButton.addAction(UIAction(handler: { _ in
             self.didTapButton?()
         }), for: .touchUpInside)
+    }
+    
+    func bindState(reactor: PlayerReactor) {
+        reactor.state
+            .compactMap { $0.nicknameResult?.reason }
+            .map { reason -> TextFieldState in
+                return reason == "DUPLICATED_NICKNAME" ? .overLap : .normal
+            }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] state in
+                DispatchQueue.main.async {
+                    self?.updateTextFieldState(for: state)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Configure
@@ -231,6 +247,31 @@ class BottomSheetViewController: KeyboardHandlingViewController, View {
     private func backgroundTapped() {
         self.dismiss(animated: false)
     }
+    
+    private func updateTextFieldState(for state: TextFieldState) {
+        switch state {
+        case .over:
+            self.countLabel.textColor = Colors.Red
+            self.registerButton.status = .disabled
+            
+            self.textFieldSubTitleLabel.text = nil
+        case .overLap:
+            self.textFieldSubTitleLabel.text = TextLabels.bottom_textField_already
+            self.textFieldSubTitleLabel.textColor = Colors.Red
+            self.registerButton.status = .disabled
+            
+            self.countLabel.textColor = Colors.Gray_8
+        case .normal:
+            self.registerButton.status = !(self.textField.text?.isEmpty ?? true) && !(self.isValidInput(self.textField.text)) ? .default : .disabled
+            self.updateCountLabel(self.textField.text?.count ?? 0, 10)
+            self.textFieldSubTitleLabel.text = ""
+            
+            self.textFieldSubTitleLabel.text = nil
+            self.countLabel.textColor = Colors.Gray_8
+            
+            GameDataSingleton.shared.addGuestNickName(self.textField.text ?? "")
+        }
+    }
 }
 
 extension BottomSheetViewController {
@@ -240,21 +281,7 @@ extension BottomSheetViewController {
             .distinctUntilChanged()
             .map(inputText(_:))
             .subscribe(onNext: { [weak self] result in
-                guard let self = self else { return }
-                
-                switch result {
-                case .over:
-                    self.countLabel.textColor = Colors.Red
-                case .overLap:
-                    self.textFieldSubTitleLabel.text = TextLabels.bottom_textField_already
-                    self.textFieldSubTitleLabel.textColor = Colors.Red
-                    self.registerButton.status = .disabled
-                case .normal:
-                    self.registerButton.status = !(self.textField.text?.isEmpty ?? true) && !(self.isValidInput(self.textField.text)) ? .default : .disabled
-                    self.updateCountLabel(self.textField.text?.count ?? 0, 10)
-                    
-                    GameDataSingleton.shared.addGuestNickName(self.textField.text ?? "")
-                }
+                self?.updateTextFieldState(for: result)
             })
             .disposed(by: disposeBag)
         
