@@ -99,8 +99,11 @@ final class OwnerManageTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(image: UIImage?, title: String) {
+    func configure(image: UIImage?, title: String, titleColor: UIColor? = nil) {
         titleImage.image = image
         titleLabel.text = title
+        if let color = titleColor {
+            titleLabel.textColor = color
+        }
     }
 }
