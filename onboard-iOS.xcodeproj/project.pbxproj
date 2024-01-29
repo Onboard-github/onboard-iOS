@@ -68,6 +68,7 @@
 		3B282DFA2B5598E400483A2A /* GetMeRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DF92B5598E400483A2A /* GetMeRes.swift */; };
 		3B282DFC2B55A74200483A2A /* GetMyGroupsV2Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */; };
 		3BC078452B4F441B0032BB4C /* GroupMembersRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */; };
+		3BE4B8C62B67B2E9006679DC /* EmptyGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE4B8C52B67B2E9006679DC /* EmptyGroupCell.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
 		611D8CA82ABECFFC0074A55A /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA72ABECFFC0074A55A /* AuthRepository.swift */; };
@@ -203,6 +204,7 @@
 		3B282DF92B5598E400483A2A /* GetMeRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMeRes.swift; sourceTree = "<group>"; };
 		3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyGroupsV2Res.swift; sourceTree = "<group>"; };
 		3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersRes.swift; sourceTree = "<group>"; };
+		3BE4B8C52B67B2E9006679DC /* EmptyGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGroupCell.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
 		611D8CA32AB8874D0074A55A /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 				AA3E7D5E2B254159007A6BE9 /* GameSkeletonCell.swift */,
 				AA9398192B25534A0022C5ED /* GameCell.swift */,
 				AA5ED43B2B27661400993B63 /* PodiumCell.swift */,
+				3BE4B8C52B67B2E9006679DC /* EmptyGroupCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1082,6 +1085,7 @@
 				1C3017112B4EC3E100128E5C /* OwnerManageTableViewCell.swift in Sources */,
 				AA91058B2ADA4B9C00DA2E96 /* GroupSearchCell.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
+				3BE4B8C62B67B2E9006679DC /* EmptyGroupCell.swift in Sources */,
 				1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */,
 				AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */,
 				AA83D9732AE57AC80068362B /* AuthEntity.swift in Sources */,
