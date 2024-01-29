@@ -58,8 +58,6 @@ class GroupJoinVC: UIViewController {
 //            }
 //        }
         
-        LoginSessionManager.currentGroupId = group?.id
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
         homeTabController.modalPresentationStyle = .fullScreen

@@ -39,7 +39,6 @@ class LoginSessionManager {
         KeychainWrapper.standard.remove(forKey: "sessionType")
         KeychainWrapper.standard.remove(forKey: "nickname")
         KeychainWrapper.standard.remove(forKey: "state")
-        KeychainWrapper.standard.remove(forKey: "currentGroupId")
     }
     
     static func setLoginSession(accessToken: String, refreshToken: String, type: UserLoginSessionType) {
@@ -67,19 +66,5 @@ class LoginSessionManager {
     
     static func getNickname() -> String? {
         return KeychainWrapper.standard.string(forKey: "nickname")
-    }
-    
-    static var currentGroupId: Int? {
-        get {
-            return KeychainWrapper.standard.integer(forKey: "currentGroupId")
-        }
-        
-        set {
-            if let id = newValue {
-                KeychainWrapper.standard.set(id, forKey: "currentGroupId")
-            } else {
-                KeychainWrapper.standard.remove(forKey: "currentGroupId")
-            }
-        }
     }
 }

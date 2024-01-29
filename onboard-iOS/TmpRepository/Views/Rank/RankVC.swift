@@ -13,13 +13,28 @@ import Kingfisher
 
 enum RankVcState {
     case loading
+    case notJoinedGroup
     case loaded
 }
 
 class RankVC: UIViewController {
-    var groupInfo: GroupInfoRes? {
+    var joinedGroupList: GetMyGroupsV2Res? {
         didSet {
-            titleLabelButton.setTitle(groupInfo?.name, for: .normal)
+            guard let list = joinedGroupList?.contents else { return }
+            print("가입 수 : \(list.count)")
+            
+            if list.count > 0 {
+                getGroupInfo(groupId: joinedGroupList?.contents.first?.groupId ?? -1)
+            }
+            if list.count == 0 {
+                state = .notJoinedGroup
+            }
+            gameDetailTableView.reloadData()
+        }
+    }
+    var selectedGroupInfo: GroupInfoRes? {
+        didSet {
+            titleLabelButton.setTitle(selectedGroupInfo?.name, for: .normal)
         }
     }
     
@@ -64,7 +79,7 @@ class RankVC: UIViewController {
         gameDetailTableView.bounces = false
         gameDetailTableView.allowsSelection = false
         
-        getGroupInfo()
+        getJoinedGroups()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,7 +120,11 @@ extension RankVC: PagingViewControllerDelegate {
             self.state = .loading
             if item.iconUrl.isEmpty == false {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
-                    self?.state = .loaded
+                    if self?.joinedGroupList?.contents.count == 0 {
+                        self?.state = .notJoinedGroup
+                    } else {
+                        self?.state = .loaded
+                    }
                 })
             }
         }
@@ -115,6 +134,8 @@ extension RankVC: PagingViewControllerDelegate {
 extension RankVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.state {
+        case .notJoinedGroup:
+            return 1
         case .loading:
             return 5
         case .loaded:
@@ -125,6 +146,8 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.state {
+        case .notJoinedGroup:
+            return tableView.dequeueReusableCell(withIdentifier: "emptyGroupCell", for: indexPath)
         case .loading:
             if indexPath.row == 0 {
                 return tableView.dequeueReusableCell(withIdentifier: "podiumSkeletonCell", for: indexPath)
@@ -205,11 +228,21 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    private func getGroupInfo() {
+    private func getJoinedGroups() {
         Task {
-            let result = try await OBNetworkManager.shared.asyncRequest(object: GroupInfoRes.self, router: .groupInfo(groupId: LoginSessionManager.currentGroupId ?? -1))
+            // 가입된 그룹 하나라도 있는지 체크
+            let result = try await OBNetworkManager.shared.asyncRequest(object: GetMyGroupsV2Res.self, router: .getMyGroupsV2)
             if let result = result.value {
-                self.groupInfo = result
+                joinedGroupList = result
+            }
+        }
+    }
+    
+    private func getGroupInfo(groupId: Int) {
+        Task {
+            let result = try await OBNetworkManager.shared.asyncRequest(object: GroupInfoRes.self, router: .groupInfo(groupId: groupId))
+            if let result = result.value {
+                self.selectedGroupInfo = result
             }
         }
     }
