@@ -155,7 +155,7 @@ enum OBRouter: URLRequestConvertible {
     var body: Body? {
         switch self {
         case let .addGroupGuest(_, nickname):
-            return ["nickname": nickname]
+            return ["nickname": nickname ?? "x"]
         case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete:
             return nil
             

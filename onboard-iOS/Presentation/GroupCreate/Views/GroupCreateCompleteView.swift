@@ -189,6 +189,10 @@ final class GroupCreateCompleteView: UIView {
             let pasteboard = UIPasteboard.general
             pasteboard.string = self?.accessCodeLabel.text
         }), for: .touchUpInside)
+        
+        self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.findViewController()?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true)
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {

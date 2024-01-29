@@ -48,16 +48,4 @@ class TermCell: UITableViewCell {
             }
         }
     }
-    
-    // Helper function to find the parent view controller
-    private func findViewController() -> UIViewController? {
-        var responder: UIResponder? = self
-        while let nextResponder = responder?.next {
-            if let viewController = nextResponder as? UIViewController {
-                return viewController
-            }
-            responder = nextResponder
-        }
-        return nil
-    }
 }

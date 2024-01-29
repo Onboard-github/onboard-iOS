@@ -20,6 +20,10 @@ final class GroupSearchViewController: UIViewController, View {
     
     // MARK: - Life Cycles
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     override func loadView() {
         self.view = groupSearchView
         groupSearchView.delegate = self

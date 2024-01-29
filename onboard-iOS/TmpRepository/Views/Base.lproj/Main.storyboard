@@ -281,6 +281,9 @@
                                                                             <real key="value" value="16"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="groupJoinHandler:" destination="YTw-DZ-iWg" eventType="touchUpInside" id="vbz-AM-EZz"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
