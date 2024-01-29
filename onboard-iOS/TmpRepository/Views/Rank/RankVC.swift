@@ -40,10 +40,22 @@ class RankVC: UIViewController {
     
     var state: RankVcState = .loading {
         didSet {
+            if state == .notJoinedGroup || state == .loading {
+                titleLabelButton.isHidden = true
+                titleLabelArrow.isHidden = true
+                moreButton.isHidden = true
+            } else {
+                titleLabelButton.isHidden = false
+                titleLabelArrow.isHidden = false
+                moreButton.isHidden = false
+            }
+            
             gameDetailTableView.reloadData()
         }
     }
     
+    @IBOutlet weak var moreButton: UIImageView!
+    @IBOutlet weak var titleLabelArrow: UIImageView!
     @IBOutlet weak var titleLabelButton: UIButton!
     
     private var gameList: GamgeList? {

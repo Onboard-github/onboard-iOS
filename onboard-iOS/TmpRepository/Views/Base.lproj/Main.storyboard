@@ -1033,7 +1033,9 @@
                     <navigationItem key="navigationItem" id="rJ1-wi-qgJ"/>
                     <connections>
                         <outlet property="gameDetailTableView" destination="G3i-me-Tk8" id="0z1-xf-3qb"/>
+                        <outlet property="moreButton" destination="yLq-ke-kdr" id="gjW-Vh-bMF"/>
                         <outlet property="pagingBackground" destination="GkZ-5x-wAb" id="itj-I6-3kZ"/>
+                        <outlet property="titleLabelArrow" destination="45h-Yc-3tA" id="TX6-SR-z40"/>
                         <outlet property="titleLabelButton" destination="Acn-eA-rWq" id="Mv6-ej-oQ6"/>
                     </connections>
                 </viewController>
