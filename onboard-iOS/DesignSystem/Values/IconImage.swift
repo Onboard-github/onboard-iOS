@@ -206,12 +206,3 @@ enum IconImage {
         }
     }
 }
-
-extension UIButton {
-    convenience init(style: IconImage) {
-        self.init(type: .custom)
-        
-        setImage(style.image, for: .normal)
-        imageView?.contentMode = .scaleAspectFit
-    }
-}
