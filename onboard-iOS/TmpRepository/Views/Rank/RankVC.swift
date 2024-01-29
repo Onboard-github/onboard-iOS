@@ -128,6 +128,10 @@ class RankVC: UIViewController {
 
 extension RankVC: PagingViewControllerDelegate {
     func pagingViewController(_ pagingViewController: PagingViewController, didSelectItem pagingItem: PagingItem) {
+        if state == .notJoinedGroup {
+            return
+        }
+        
         if let item = pagingItem as? IconItem {
             self.state = .loading
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
