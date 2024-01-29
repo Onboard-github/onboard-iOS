@@ -230,7 +230,6 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
     
     private func getJoinedGroups() {
         Task {
-            // 가입된 그룹 하나라도 있는지 체크
             let result = try await OBNetworkManager.shared.asyncRequest(object: GetMyGroupsV2Res.self, router: .getMyGroupsV2)
             if let result = result.value {
                 joinedGroupList = result

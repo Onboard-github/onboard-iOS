@@ -29,6 +29,8 @@ enum OBRouter: URLRequestConvertible {
     case groupList(params: Params) // 그룹 리스트 가져오기
     case groupInfo(groupId: Int) // 단일 그룹 상세 정보 보기
     
+    case groupDelete(groupId: Int) // 그룹 삭제하기, Onwer만 가능
+    
     // Match
     
     // Terms
@@ -46,6 +48,7 @@ enum OBRouter: URLRequestConvertible {
     // Game
     
     // Member
+    case myGroupUnsubscribe(groupId: Int)
     
     // File
     
@@ -85,6 +88,8 @@ enum OBRouter: URLRequestConvertible {
             return .put
         case .groupMemeberPatch:
             return .patch
+        case .myGroupUnsubscribe, .groupDelete:
+            return .delete
         }
     }
     
@@ -124,6 +129,10 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group/123/game"
         case .gamePlayer:
             return "api/v1/group/123/member"
+        case let .myGroupUnsubscribe(groupId):
+            return "api/v1/group/\(groupId)/me"
+        case let .groupDelete(groupId):
+            return "api/v1/group/\(groupId)"
         }
     }
     
@@ -133,7 +142,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage:
             return nil
-        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer:
+        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
@@ -147,7 +156,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case let .addGroupGuest(_, nickname):
             return ["nickname": nickname]
-        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer:
+        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete:
             return nil
             
         case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body):
@@ -159,7 +168,7 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2:
+        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .myGroupUnsubscribe, .groupDelete:
             return nil
         case let .groupList(params):
             return params

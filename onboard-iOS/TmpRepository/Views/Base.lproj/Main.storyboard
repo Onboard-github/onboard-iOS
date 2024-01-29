@@ -1069,17 +1069,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSB-QP-r95">
+                                <rect key="frame" x="20" y="203.33333333333334" width="353" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="가입 그룹 전부 탈퇴"/>
+                                <connections>
+                                    <action selector="myGroupClean:" destination="QfE-LN-TcP" eventType="touchUpInside" id="Is7-If-V1U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qEW-pf-mWH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8Me-KK-CLa" firstAttribute="leading" secondItem="qEW-pf-mWH" secondAttribute="leading" constant="16" id="8tb-wL-WUj"/>
                             <constraint firstItem="MF4-3m-qns" firstAttribute="leading" secondItem="qEW-pf-mWH" secondAttribute="leading" constant="16" id="9f4-W2-awe"/>
+                            <constraint firstItem="qEW-pf-mWH" firstAttribute="trailing" secondItem="oSB-QP-r95" secondAttribute="trailing" constant="20" id="BsV-b2-vDf"/>
                             <constraint firstItem="MF4-3m-qns" firstAttribute="top" secondItem="8Me-KK-CLa" secondAttribute="bottom" constant="16" id="JEZ-g7-40m"/>
                             <constraint firstItem="hOY-2h-irV" firstAttribute="leading" secondItem="qEW-pf-mWH" secondAttribute="leading" constant="20" id="M6C-za-ish"/>
                             <constraint firstItem="hOY-2h-irV" firstAttribute="top" secondItem="qEW-pf-mWH" secondAttribute="top" constant="20" id="TCD-HL-9XE"/>
                             <constraint firstItem="8Me-KK-CLa" firstAttribute="top" secondItem="hOY-2h-irV" secondAttribute="bottom" constant="16" id="TVY-dx-v7C"/>
+                            <constraint firstItem="oSB-QP-r95" firstAttribute="top" secondItem="MF4-3m-qns" secondAttribute="bottom" constant="16" id="g60-xd-A6d"/>
                             <constraint firstItem="qEW-pf-mWH" firstAttribute="trailing" secondItem="hOY-2h-irV" secondAttribute="trailing" constant="20" id="m9a-5Z-8iw"/>
+                            <constraint firstItem="oSB-QP-r95" firstAttribute="leading" secondItem="qEW-pf-mWH" secondAttribute="leading" constant="20" id="q3w-Z9-Rx6"/>
                             <constraint firstItem="qEW-pf-mWH" firstAttribute="trailing" secondItem="8Me-KK-CLa" secondAttribute="trailing" constant="16" id="ugt-u3-Gdf"/>
                         </constraints>
                     </view>
