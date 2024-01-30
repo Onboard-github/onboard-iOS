@@ -11,4 +11,5 @@ enum TextFieldState {
     case normal
     case over
     case overLap
+    case invalid
 }
