@@ -22,8 +22,6 @@ final class OwnerManageTableViewCell: UITableViewCell {
     
     private let titleImage: UIImageView = {
         let imageView = UIImageView()
-        let image = IconImage.dice.image
-        imageView.image = image
         return imageView
     }()
     
@@ -120,7 +118,7 @@ final class OwnerManageTableViewCell: UITableViewCell {
     }
     
     func configure(
-        image: UIImage?,
+        image: UIImage? = IconImage.dice.image,
         title: String,
         titleColor: UIColor? = nil, 
         showMeImage: Bool = true
