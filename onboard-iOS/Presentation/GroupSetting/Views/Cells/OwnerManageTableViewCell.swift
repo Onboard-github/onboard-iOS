@@ -119,11 +119,15 @@ final class OwnerManageTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(image: UIImage?, title: String, titleColor: UIColor? = nil) {
-        titleImage.image = image
-        titleLabel.text = title
-        if let color = titleColor {
-            titleLabel.textColor = color
-        }
+    func configure(
+        image: UIImage?,
+        title: String,
+        titleColor: UIColor? = nil, 
+        showMeImage: Bool = true
+    ) {
+        self.titleImage.image = image
+        self.titleLabel.text = title
+        self.titleLabel.textColor = titleColor
+        self.meImage.isHidden = !showMeImage
     }
 }
