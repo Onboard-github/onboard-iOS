@@ -51,7 +51,11 @@ class GameDataSingleton {
     }
 }
 
-struct PlayerList {
+struct PlayerList: Equatable {
     let image: UIImage
     let title: String
+    
+    static func == (lhs: PlayerList, rhs: PlayerList) -> Bool {
+        return lhs.image == rhs.image && lhs.title == rhs.title
+    }
 }
