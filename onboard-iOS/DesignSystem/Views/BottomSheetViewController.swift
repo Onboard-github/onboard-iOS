@@ -155,7 +155,14 @@ class BottomSheetViewController: KeyboardHandlingViewController, View {
         reactor.state
             .compactMap { $0.nicknameResult?.reason }
             .map { reason -> TextFieldState in
-                return reason == "DUPLICATED_NICKNAME" ? .overLap : .normal
+                switch reason {
+                case "DUPLICATED_NICKNAME":
+                    return .overLap
+                case "INVALID_NICKNAME":
+                    return .invalid
+                default:
+                    return .normal
+                }
             }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] state in
@@ -253,19 +260,19 @@ class BottomSheetViewController: KeyboardHandlingViewController, View {
         case .over:
             self.countLabel.textColor = Colors.Red
             self.registerButton.status = .disabled
-            
             self.textFieldSubTitleLabel.text = nil
+            
         case .overLap:
             self.textFieldSubTitleLabel.text = TextLabels.bottom_textField_already
             self.textFieldSubTitleLabel.textColor = Colors.Red
             self.registerButton.status = .disabled
-            
             self.countLabel.textColor = Colors.Gray_8
-        case .normal:
-            self.registerButton.status = !(self.textField.text?.isEmpty ?? true) && !(self.isValidInput(self.textField.text)) ? .default : .disabled
-            self.updateCountLabel(self.textField.text?.count ?? 0, 10)
-            self.textFieldSubTitleLabel.text = ""
             
+        case .invalid:
+            self.registerButton.status = .disabled
+            
+        case .normal:
+            self.registerButton.status = .default
             self.textFieldSubTitleLabel.text = nil
             self.countLabel.textColor = Colors.Gray_8
             
@@ -288,7 +295,6 @@ extension BottomSheetViewController {
         self.textField.rx.controlEvent(.editingChanged)
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.registerButton.status = !(self.textField.text?.isEmpty ?? true) && !(self.isValidInput(self.textField.text)) ? .default : .disabled
                 self.updateCountLabel(self.textField.text?.count ?? 0, 10)
             })
             .disposed(by: disposeBag)
@@ -315,10 +321,5 @@ extension BottomSheetViewController {
     
     private func updateCountLabel(_ currentCount: Int, _ totalCount: Int) {
         self.countLabel.text = String(format: "%02d/%d", currentCount, totalCount)
-    }
-    
-    private func isValidInput(_ text: String?) -> Bool {
-        let excludeCharacter = CharacterSet(charactersIn: "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅐㅜㅠㅡㅣㅔㅐㅟㅚㅢㅝㅖㅒㅙ")
-        return text?.rangeOfCharacter(from: excludeCharacter) != nil
     }
 }
