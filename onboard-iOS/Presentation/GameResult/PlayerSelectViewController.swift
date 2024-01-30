@@ -197,6 +197,11 @@ final class PlayerSelectViewController: UIViewController, View {
             }
             
         }), for: .touchUpInside)
+        
+        self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
+            let gameScoreViewController = GameScoreViewController()
+            self?.navigationController?.pushViewController(gameScoreViewController, animated: true)
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
