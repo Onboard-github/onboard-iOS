@@ -276,7 +276,7 @@ final class PlayerSelectViewController: UIViewController, View {
     }
     
     private func toggleLayout() {
-        playerCollectionView.isHidden.toggle()
+        self.playerCollectionView.isHidden = GameDataSingleton.shared.selectedPlayerData.isEmpty
         
         let topOffset = playerCollectionView.isHidden ? titleLabel.snp.bottom : playerCollectionView.snp.bottom
         textField.snp.remakeConstraints {
@@ -286,6 +286,14 @@ final class PlayerSelectViewController: UIViewController, View {
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func setButtonStatus() {
+        let selectedCount = GameDataSingleton.shared.selectedPlayerData.count
+        
+        if let gameData = GameDataSingleton.shared.gameData {
+            confirmButton.status = (gameData.minMember...gameData.maxMember ~= selectedCount) ? .default : .disabled
         }
     }
     
@@ -315,33 +323,44 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             for: indexPath
         ) as! OwnerManageTableViewCell
         
-        let image = IconImage.dice.image
-        
         if indexPath.row == 0,
            let data = reactor?.currentState.playerData.first?.contents.first {
-            cell.configure(image: image, title: data.nickname)
+            cell.configure(title: data.nickname, showMeImage: true)
             
             cell.didTapSelectButton = { [weak self] in
-                if let image = IconImage.dice.image {
-                    let data = PlayerList(image: image, title: data.nickname)
-                    GameDataSingleton.shared.addSelectedPlayer(data)
-                    
-                    self?.playerCollectionView.reloadData()
-                    self?.toggleLayout()
+                guard tableView.indexPath(for: cell) != nil else { return }
+                
+                let existData = PlayerList(image: IconImage.dice.image!, title: data.nickname)
+                
+                if GameDataSingleton.shared.selectedPlayerData.contains(existData) {
+                    GameDataSingleton.shared.removeSelectedPlayer(existData)
+                } else {
+                    GameDataSingleton.shared.addSelectedPlayer(existData)
                 }
+                
+                self?.setButtonStatus()
+                self?.playerCollectionView.reloadData()
+                self?.toggleLayout()
+                
             }
         } else if indexPath.row - 1 < GameDataSingleton.shared.playerData.count {
             let newData = GameDataSingleton.shared.playerData[indexPath.row - 1]
-            cell.configure(image: newData.image, title: newData.title, titleColor: Colors.Gray_9)
+            cell.configure(image: newData.image, title: newData.title, titleColor: Colors.Gray_9, showMeImage: false)
             
             cell.didTapSelectButton = { [weak self] in
-                if let image = IconImage.dice.image {
-                    let data = PlayerList(image: image, title: newData.title)
+                guard tableView.indexPath(for: cell) != nil else { return }
+                
+                let data = PlayerList(image: newData.image, title: newData.title)
+                
+                if GameDataSingleton.shared.selectedPlayerData.contains(data) {
+                    GameDataSingleton.shared.removeSelectedPlayer(data)
+                } else {
                     GameDataSingleton.shared.addSelectedPlayer(data)
-                    
-                    self?.playerCollectionView.reloadData()
-                    self?.toggleLayout()
                 }
+                
+                self?.setButtonStatus()
+                self?.playerCollectionView.reloadData()
+                self?.toggleLayout()
             }
         }
         
