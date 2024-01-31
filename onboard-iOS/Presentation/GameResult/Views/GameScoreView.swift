@@ -89,7 +89,7 @@ final class GameScoreView: UIView {
     
     private lazy var playerTableView: UITableView = {
         let view = UITableView()
-        view.rowHeight = 60
+        view.rowHeight = 70
         view.backgroundColor = Colors.White
         view.separatorStyle = .none
         
