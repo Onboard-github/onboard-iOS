@@ -32,8 +32,6 @@ final class GameScoreTableViewCell: UITableViewCell {
     
     private let diceImage: UIImageView = {
         let imageView = UIImageView()
-        let image = IconImage.dice.image
-        imageView.image = image
         return imageView
     }()
     
