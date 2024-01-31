@@ -76,6 +76,12 @@ final class GroupCreateView: UIView {
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
         text.layer.borderColor = Colors.Gray_5.cgColor
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Font.Typography.body3_R as Any,
+            .foregroundColor: Colors.Gray_7]
+        text.attributedPlaceholder = NSAttributedString(string: TextLabels.group_name_placeholder,
+                                                        attributes: attributes)
         return text
     }()
     
@@ -137,6 +143,12 @@ final class GroupCreateView: UIView {
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
         text.layer.borderColor = Colors.Gray_5.cgColor
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Font.Typography.body3_R as Any,
+            .foregroundColor: Colors.Gray_7]
+        text.attributedPlaceholder = NSAttributedString(string: TextLabels.group_organization_placeholder,
+                                                        attributes: attributes)
         return text
     }()
     
@@ -184,7 +196,6 @@ final class GroupCreateView: UIView {
         self.backgroundColor = Colors.Gray_2
         
         self.addConfigure()
-        self.textFieldPlaceHolder()
         self.makeConstraints()
         
         self.setupTextField()
@@ -199,16 +210,6 @@ final class GroupCreateView: UIView {
         self.registerButton.addAction(UIAction(handler: { _ in
             self.didTapRegisterButton?()
         }), for: .touchUpInside)
-    }
-    
-    private func textFieldPlaceHolder() {
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: Font.Typography.body3_R as Any,
-            .foregroundColor: Colors.Gray_7]
-        nameTextField.attributedPlaceholder = NSAttributedString(string: TextLabels.group_name_placeholder,
-                                                                 attributes: attributes)
-        organizationTextField.attributedPlaceholder = NSAttributedString(string: TextLabels.group_organization_placeholder,
-                                                                         attributes: attributes)
     }
     
     private func makeConstraints() {
@@ -363,7 +364,7 @@ extension GroupCreateView {
     }
 }
 
-// MARK: - UITextViewDelegate
+// MARK: - TextView
 
 extension GroupCreateView: UITextViewDelegate {
     
@@ -377,13 +378,13 @@ extension GroupCreateView: UITextViewDelegate {
                 self?.descriptionTextView.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
             })
             .disposed(by: disposeBag)
-
+        
         descriptionTextView.rx.didBeginEditing
             .subscribe(onNext: { [weak self] in
                 self?.handleTextViewEditing(true, textView: self?.descriptionTextView)
             })
             .disposed(by: disposeBag)
-
+        
         descriptionTextView.rx.didEndEditing
             .subscribe(onNext: { [weak self] in
                 self?.handleTextViewEditing(false, textView: self?.descriptionTextView)
