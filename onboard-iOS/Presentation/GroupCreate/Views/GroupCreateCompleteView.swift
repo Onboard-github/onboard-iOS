@@ -286,5 +286,11 @@ final class GroupCreateCompleteView: UIView {
             })
             .disposed(by: disposeBag)
         
+        GroupCreateSingleton.shared.ownerText
+            .subscribe(onNext: { [weak self] text in
+                self?.ownerNameLabel.text = text
+            })
+            .disposed(by: disposeBag)
+        
     }
 }
