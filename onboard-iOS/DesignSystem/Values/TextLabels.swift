@@ -64,6 +64,7 @@ struct TextLabels {
     static let game_record_title = "결과 기록"
     static let game_record_placeholder = "0"
     static let game_record_score = "점"
+    static let game_record_confirm = "기록 완료"
     
     // MARK: - PopupView
     
