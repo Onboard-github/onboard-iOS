@@ -9,13 +9,17 @@ import UIKit
 
 class KeyboardHandlingViewController: UIViewController {
     
+    var isKeyboardVisible = false
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         addKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         removeKeyboardNotifications()
     }
     
@@ -40,18 +44,28 @@ class KeyboardHandlingViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ noti: NSNotification) {
+        guard !isKeyboardVisible else {
+            return
+        }
+        
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.view.frame.origin.y -= keyboardHeight
+            self.isKeyboardVisible = true
         }
     }
     
     @objc func keyboardWillHide(_ noti: NSNotification) {
+        guard self.isKeyboardVisible else {
+            return
+        }
+        
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.view.frame.origin.y += keyboardHeight
+            self.isKeyboardVisible = false
         }
     }
 }
