@@ -85,10 +85,13 @@ extension GroupCreateReactor {
                 do {
                     let result = try await self.useCase.fetchFileUpload(file: file, purpose: purpose)
                     
-                    let url = result.url
-                    let uuid = result.uuid
-                    GroupCreateManager.saveUrl(url)
-                    GroupCreateManager.saveUUID(uuid)
+                    DispatchQueue.main.async {
+                        let url = result.url
+                        let uuid = result.uuid
+                        GroupCreateSingleton.shared.groupImageUrl.accept(url)
+                        GroupCreateSingleton.shared.groupImageUrl.accept(uuid)
+                    }
+                    
                 } catch {
                     observer.onError(error)
                 }
@@ -106,10 +109,12 @@ extension GroupCreateReactor {
                 do {
                     let result = try await self.useCase.fetchRandomImage()
                     
-                    let url = result.url
-                    let uuid = result.uuid
-                    GroupCreateManager.saveUrl(url)
-                    GroupCreateManager.saveUUID(uuid)
+                    DispatchQueue.main.async {
+                        let url = result.url
+                        let uuid = result.uuid
+                        GroupCreateSingleton.shared.groupImageUrl.accept(url)
+                        GroupCreateSingleton.shared.groupImageUrl.accept(uuid)
+                    }
                     
                     observer.onNext(.setRandomImage(result: result.url))
                 } catch {
