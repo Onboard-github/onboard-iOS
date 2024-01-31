@@ -107,7 +107,7 @@ final class GameScoreView: UIView {
         return view
     }()
     
-    private let confirmButton: UIButton = {
+    private let confirmButton: BaseButton = {
         let button = BaseButton(status: .disabled, style: .rounded)
         button.setTitle(TextLabels.game_record_confirm, for: .normal)
         return button
@@ -216,6 +216,8 @@ extension GameScoreView: UITableViewDelegate, UITableViewDataSource {
                 self?.textFieldDidEndEditing(cell.scoreTextField, at: indexPath)
             })
             .disposed(by: disposeBag)
+        
+        self.confirmButton.status = cell.scoreTextField.text!.isEmpty ? .disabled : .default
         
         return cell
     }
