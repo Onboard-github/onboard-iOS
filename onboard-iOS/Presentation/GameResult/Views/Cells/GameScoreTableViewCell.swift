@@ -170,5 +170,14 @@ extension GameScoreTableViewCell {
                 self?.underLine.backgroundColor = color
             })
             .disposed(by: disposeBag)
+        
+        self.scoreTextField.rx.controlEvent(.editingDidEnd)
+            .subscribe(onNext: { [weak self] in
+                if let number = NumberFormatter().number(from: self?.scoreTextField.text ?? "") {
+                    let formattedString = NumberFormatter.localizedString(from: number, number: .decimal)
+                    self?.scoreTextField.text = formattedString
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
