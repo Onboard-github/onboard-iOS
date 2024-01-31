@@ -7,7 +7,14 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class GameScoreView: UIView {
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -200,6 +207,30 @@ extension GameScoreView: UITableViewDelegate, UITableViewDataSource {
                        image: selectedPlayer.image,
                        title: selectedPlayer.title)
         
+        cell.scoreTextField.tag = indexPath.row
+        cell.scoreTextField.text = selectedPlayer.score
+        
+        cell.scoreTextField.rx.controlEvent(.editingDidEnd)
+            .subscribe(onNext: { [weak self] in
+                guard let indexPath = tableView.indexPath(for: cell) else { return }
+                self?.textFieldDidEndEditing(cell.scoreTextField, at: indexPath)
+            })
+            .disposed(by: disposeBag)
+        
         return cell
+    }
+    
+    private func textFieldDidEndEditing(_ textField: UITextField, at indexPath: IndexPath) {
+        let index = textField.tag
+        let newScore = textField.text ?? "0"
+        GameDataSingleton.shared.selectedPlayerData[index].score = newScore
+        
+        GameDataSingleton.shared.selectedPlayerData = GameDataSingleton.shared.selectedPlayerData.sorted { (player1, player2) -> Bool in
+            let score1 = Int(player1.score ?? "0") ?? 0
+            let score2 = Int(player2.score ?? "0") ?? 0
+            return score1 > score2
+        }
+        self.playerTableView.reloadRows(at: [indexPath], with: .none)
+        self.playerTableView.reloadData()
     }
 }
