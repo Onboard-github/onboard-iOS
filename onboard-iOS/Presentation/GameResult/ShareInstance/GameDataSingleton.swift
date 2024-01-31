@@ -32,10 +32,18 @@ class GameDataSingleton {
     
     // MARK: - Func
     
+    // 임시 멤버 닉네임 추가
+    func addGuestNickName(_ text: String) {
+        self.guestNickNameData = text
+        textSubject.onNext(text)
+    }
+    
+    // 임시 멤버 추가
     func addPlayer(_ player: PlayerList) {
         self.playerData.append(player)
     }
     
+    // 플레이어 선택
     func addSelectedPlayer(_ player: PlayerList) {
         self.selectedPlayerData.append(player)
     }
@@ -45,9 +53,11 @@ class GameDataSingleton {
         self.selectedPlayerData.remove(at: index)
     }
     
-    func addGuestNickName(_ text: String) {
-        self.guestNickNameData = text
-        textSubject.onNext(text)
+    // 선택한 플레이어 제거
+    func removeSelectedPlayer(_ player: PlayerList) {
+        if let index = self.selectedPlayerData.firstIndex(where: { $0.title == player.title }) {
+            self.selectedPlayerData.remove(at: index)
+        }
     }
 }
 
