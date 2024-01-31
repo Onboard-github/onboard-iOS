@@ -134,4 +134,12 @@ final class GameScoreTableViewCell: UITableViewCell {
             $0.height.equalTo(Metric.underLineHeight)
         }
     }
+    
+    func configure(rank: String, image: UIImage?, title: String) {
+        self.rankLabel.text = rank
+        self.diceImage.image = image
+        self.playerLabel.text = title
+        
+        self.rankLabel.textColor = (rank == "1위") ? Colors.Orange_10 : Colors.Gray_9
+    }
 }
