@@ -9,7 +9,7 @@ import UIKit
 
 import ReactorKit
 
-final class GroupCreateViewController: UIViewController, View {
+final class GroupCreateViewController: KeyboardHalfHandlingViewController, View {
     
     typealias Reactor = GroupCreateReactor
     
