@@ -167,7 +167,7 @@ final class GroupCreateCompleteView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.configure()=
+        self.configure()
     }
     
     required init?(coder: NSCoder) {
@@ -268,6 +268,12 @@ final class GroupCreateCompleteView: UIView {
     }
     
     private func getCreateData() {
+        GroupCreateSingleton.shared.organizationText
+            .subscribe(onNext: { [weak self] text in
+                self?.organizationLabel.text = text
+            })
+            .disposed(by: disposeBag)
+        
         GroupCreateSingleton.shared.nameText
             .subscribe(onNext: { [weak self] text in
                 self?.nameLabel.text = text

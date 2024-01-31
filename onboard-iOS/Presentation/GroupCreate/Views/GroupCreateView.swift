@@ -349,7 +349,6 @@ extension GroupCreateView {
                 self?.nameTextField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
                 
                 GroupCreateSingleton.shared.nameText.accept(text)
-                print("Stored Name Text: \(GroupCreateSingleton.shared.nameText.value)")
             })
             .disposed(by: disposeBag)
         
@@ -360,6 +359,8 @@ extension GroupCreateView {
                 let updatedText = String(text.prefix(maxLength))
                 self?.organizationCountLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
                 self?.organizationTextField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+                
+                GroupCreateSingleton.shared.organizationText.accept(text)
             })
             .disposed(by: disposeBag)
         
@@ -401,7 +402,6 @@ extension GroupCreateView: UITextViewDelegate {
                 self?.descriptionTextView.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
                 
                 GroupCreateSingleton.shared.descriptionText.accept(text)
-                print("Stored Description Text: \(GroupCreateSingleton.shared.descriptionText.value)")
             })
             .disposed(by: disposeBag)
         
