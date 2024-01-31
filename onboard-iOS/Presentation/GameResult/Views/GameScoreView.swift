@@ -195,6 +195,11 @@ extension GameScoreView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameScoreTableViewCell",
                                                  for: indexPath) as! GameScoreTableViewCell
         
+        let selectedPlayer = GameDataSingleton.shared.selectedPlayerData[indexPath.item]
+        cell.configure(rank: "\(indexPath.row + 1)\(TextLabels.game_record_rank)",
+                       image: selectedPlayer.image,
+                       title: selectedPlayer.title)
+        
         return cell
     }
 }

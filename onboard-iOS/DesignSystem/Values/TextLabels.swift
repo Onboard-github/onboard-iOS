@@ -62,6 +62,8 @@ struct TextLabels {
     static let game_record_time = "hh:mm"
     static let game_record_title_info = "게임 결과를 입력해주세요!"
     static let game_record_title = "결과 기록"
+    
+    static let game_record_rank = "위"
     static let game_record_placeholder = "0"
     static let game_record_score = "점"
     static let game_record_confirm = "기록 완료"
