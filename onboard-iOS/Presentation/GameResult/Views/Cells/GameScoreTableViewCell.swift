@@ -7,7 +7,14 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class GameScoreTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -20,7 +27,7 @@ final class GameScoreTableViewCell: UITableViewCell {
         static let underLineTopSpacing: CGFloat = 5
         static let underLineHeight: CGFloat = 1
     }
-
+    
     // MARK: - UI
     
     private let rankLabel: UILabel = {
@@ -89,6 +96,7 @@ final class GameScoreTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         
         self.makeConstraints()
+        self.setupTextField()
     }
     
     private func makeConstraints() {
@@ -140,5 +148,18 @@ final class GameScoreTableViewCell: UITableViewCell {
         self.playerLabel.text = title
         
         self.rankLabel.textColor = (rank == "1위") ? Colors.Orange_10 : Colors.Gray_9
+    }
+}
+
+// MARK: - TextField
+
+extension GameScoreTableViewCell {
+    
+    private func setupTextField() {
+        
+        self.scoreTextField.rx.text
+            .map { $0.map { String($0.prefix(5)) } }
+            .bind(to: scoreTextField.rx.text)
+            .disposed(by: disposeBag)
     }
 }
