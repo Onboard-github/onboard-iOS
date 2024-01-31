@@ -106,12 +106,11 @@ final class GroupCreateView: UIView {
         return image
     }()
     
-    private lazy var descriptionTextView: TextView = {
+    private let descriptionTextView: TextView = {
         let textView = TextView()
         textView.textColor = Colors.Gray_15
         textView.font = Font.Typography.body3_R
         textView.placeholder = TextLabels.group_description_placeholder
-        textView.delegate = self
         return textView
     }()
     
@@ -187,7 +186,9 @@ final class GroupCreateView: UIView {
         self.addConfigure()
         self.textFieldPlaceHolder()
         self.makeConstraints()
+        
         self.setupTextField()
+        self.setupTextView()
     }
     
     private func addConfigure() {
@@ -311,10 +312,6 @@ final class GroupCreateView: UIView {
             $0.height.equalTo(Metric.buttonHeight)
         }
     }
-    
-    private func updateCountLabel(characterCount: Int) {
-        self.descriptionCountLabel.text = "\(characterCount)/\(TextLabels.group_description_maxCount)"
-    }
 }
 
 // MARK: - TextField
@@ -370,50 +367,31 @@ extension GroupCreateView {
 
 extension GroupCreateView: UITextViewDelegate {
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == TextLabels.group_description_placeholder {
-            textView.text = nil
-            textView.textColor = Colors.Gray_15
-        }
-        
-        textView.layer.borderColor = Colors.Gray_7.cgColor
+    private func setupTextView() {
+        descriptionTextView.rx.text
+            .orEmpty
+            .subscribe(onNext: { [weak self] text in
+                let maxLength = 72
+                let updatedText = String(text.prefix(maxLength))
+                self?.descriptionCountLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
+                self?.descriptionTextView.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+            })
+            .disposed(by: disposeBag)
+
+        descriptionTextView.rx.didBeginEditing
+            .subscribe(onNext: { [weak self] in
+                self?.handleTextViewEditing(true, textView: self?.descriptionTextView)
+            })
+            .disposed(by: disposeBag)
+
+        descriptionTextView.rx.didEndEditing
+            .subscribe(onNext: { [weak self] in
+                self?.handleTextViewEditing(false, textView: self?.descriptionTextView)
+            })
+            .disposed(by: disposeBag)
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            textView.text = TextLabels.group_description_placeholder
-            textView.textColor = Colors.Gray_7
-            updateCountLabel(characterCount: 0)
-        }
-        
-        textView.layer.borderColor = Colors.Gray_5.cgColor
-        
-        if let description = textView.text {
-            GroupCreateManager.saveDescription(description)
-        }
+    private func handleTextViewEditing(_ isEditing: Bool, textView: UITextView?) {
+        textView?.layer.borderColor = isEditing ? Colors.Gray_7.cgColor : Colors.Gray_5.cgColor
     }
-    
-    func textView(
-        _ textView: UITextView,
-        shouldChangeTextIn range: NSRange,
-        replacementText text: String) -> Bool {
-            
-            let newString = (textView.text as NSString)
-                .replacingCharacters(in: range, with: text)
-                .trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            let characterCount = newString.count
-            let maxLength = 72
-            
-            guard characterCount <= maxLength else {
-                return false
-            }
-            
-            let count = String(format: "%02d", characterCount)
-            updateCountLabel(characterCount: characterCount)
-            
-            descriptionCountLabel.text = "\(count)/\(maxLength)"
-            
-            return true
-        }
 }
