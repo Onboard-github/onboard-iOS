@@ -183,7 +183,6 @@ final class GroupCreateView: UIView {
         self.addConfigure()
         self.textFieldPlaceHolder()
         self.makeConstraints()
-        self.setupGestureRecognizer()
     }
     
     private func addConfigure() {
@@ -308,21 +307,8 @@ final class GroupCreateView: UIView {
         }
     }
     
-    private func setupGestureRecognizer() {
-        let tapGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(backgroundTapped)
-        )
-        self.addGestureRecognizer(tapGesture)
-    }
-    
     private func updateCountLabel(characterCount: Int) {
         self.descriptionCountLabel.text = "\(characterCount)/\(TextLabels.group_description_maxCount)"
-    }
-    
-    @objc
-    private func backgroundTapped() {
-        self.endEditing(true)
     }
 }
 

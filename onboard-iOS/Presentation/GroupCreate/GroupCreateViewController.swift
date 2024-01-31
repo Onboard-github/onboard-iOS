@@ -26,7 +26,7 @@ final class GroupCreateViewController: KeyboardHalfHandlingViewController, View 
     }
     
     // MARK: - Initialize
-
+    
     init(reactor: GroupCreateReactor) {
         super.init(nibName: nil, bundle: nil)
         
@@ -37,6 +37,10 @@ final class GroupCreateViewController: KeyboardHalfHandlingViewController, View 
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     // MARK: - Bind
