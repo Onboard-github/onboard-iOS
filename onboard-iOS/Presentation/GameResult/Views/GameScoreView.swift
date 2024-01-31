@@ -19,6 +19,9 @@ final class GameScoreView: UIView {
         static let labelLeading: CGFloat = 5
         static let iconLeading: CGFloat = 10
         static let tableViewTopSpacing: CGFloat = 30
+        static let tableViewSpacing: CGFloat = 10
+        static let buttonBottomMargin: CGFloat = 10
+        static let buttonHeight: CGFloat = 48
     }
     
     // MARK: - UI
@@ -95,6 +98,12 @@ final class GameScoreView: UIView {
         view.register(GameScoreTableViewCell.self,
                       forCellReuseIdentifier: "GameScoreTableViewCell")
         return view
+    }()
+    
+    private let confirmButton: UIButton = {
+        let button = BaseButton(status: .disabled, style: .rounded)
+        button.setTitle(TextLabels.game_record_confirm, for: .normal)
+        return button
     }()
     
     override init(frame: CGRect) {
