@@ -197,6 +197,7 @@ final class GroupCreateView: UIView {
         
         self.addConfigure()
         self.makeConstraints()
+        self.setButtonStatus()
         
         self.setupTextField()
         self.setupTextView()
@@ -312,6 +313,25 @@ final class GroupCreateView: UIView {
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
             $0.height.equalTo(Metric.buttonHeight)
         }
+    }
+    
+    private func setButtonStatus() {
+        let nameTextFieldObservable = nameTextField.rx.text.orEmpty
+            .map { $0.count >= 1 }
+        
+        let textViewObservable = descriptionTextView.rx.text.orEmpty
+            .map { $0.count >= 1 }
+        
+        let observable = Observable.combineLatest(nameTextFieldObservable, textViewObservable)
+            .map { nameIsValid, descriptionIsValid in
+                return nameIsValid && descriptionIsValid
+            }
+        
+        observable
+            .subscribe(onNext: { [weak self] isInputValid in
+                self?.registerButton.status = isInputValid ? .default : .disabled
+            })
+            .disposed(by: disposeBag)
     }
 }
 
