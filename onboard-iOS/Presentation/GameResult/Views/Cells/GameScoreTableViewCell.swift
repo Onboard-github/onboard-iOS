@@ -25,7 +25,6 @@ final class GameScoreTableViewCell: UITableViewCell {
     
     private let rankLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Colors.Gray_9
         label.font = Font.Typography.title4
         return label
     }()
