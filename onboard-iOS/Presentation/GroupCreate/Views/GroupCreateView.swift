@@ -347,6 +347,9 @@ extension GroupCreateView {
                 let updatedText = String(text.prefix(maxLength))
                 self?.nameCountLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
                 self?.nameTextField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+                
+                GroupCreateSingleton.shared.nameText.accept(text)
+                print("Stored Name Text: \(GroupCreateSingleton.shared.nameText.value)")
             })
             .disposed(by: disposeBag)
         

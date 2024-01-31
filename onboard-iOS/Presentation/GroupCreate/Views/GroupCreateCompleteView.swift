@@ -167,54 +167,7 @@ final class GroupCreateCompleteView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.configure()
-        
-        GroupCreateSingleton.shared.groupImageUrl
-            .subscribe(onNext: { [weak self] urlString in
-                if let url = URL(string: urlString), 
-                    let data = try? Data(contentsOf: url),
-                    let image = UIImage(data: data) {
-                    self?.backgroundImage.image = image
-                    print("url : \(url)")
-                }
-            })
-            .disposed(by: disposeBag)
-
-        
-        GroupCreateSingleton.shared.organizationText
-            .subscribe(onNext: { [weak self] text in
-                self?.organizationLabel.text = text
-                print("organization 잘 표시되니 : \(text)")
-            })
-            .disposed(by: disposeBag)
-        
-        GroupCreateSingleton.shared.nameText
-            .subscribe(onNext: { [weak self] text in
-                self?.nameLabel.text = text
-                print("name 잘 표시되니 : \(text)")
-            })
-            .disposed(by: disposeBag)
-        
-        GroupCreateSingleton.shared.descriptionText
-            .subscribe(onNext: { [weak self] text in
-                self?.descriptionLabel.text = text
-                print("description 잘 표시되니 : \(text)")
-            })
-            .disposed(by: disposeBag)
-        
-        GroupCreateSingleton.shared.ownerText
-            .subscribe(onNext: { [weak self] text in
-                self?.ownerNameLabel.text = text
-                print("owner 잘 표시되니 : \(text)")
-            })
-            .disposed(by: disposeBag)
-        
-        GroupCreateSingleton.shared.accessCodeText
-            .subscribe(onNext: { [weak self] text in
-                self?.accessCodeLabel.text = text
-                print("accessCode 잘 표시되니 : \(text)")
-            })
-            .disposed(by: disposeBag)
+        self.configure()=
     }
     
     required init?(coder: NSCoder) {
@@ -226,6 +179,7 @@ final class GroupCreateCompleteView: UIView {
     private func configure() {
         self.addConfigure()
         self.makeConstraints()
+        self.getCreateData()
     }
     
     private func addConfigure() {
@@ -311,5 +265,13 @@ final class GroupCreateCompleteView: UIView {
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
             $0.height.equalTo(Metric.buttonHeight)
         }
+    }
+    
+    private func getCreateData() {
+        GroupCreateSingleton.shared.nameText
+            .subscribe(onNext: { [weak self] text in
+                self?.nameLabel.text = text
+            })
+            .disposed(by: disposeBag)
     }
 }
