@@ -321,7 +321,7 @@ final class GroupCreateView: UIView {
 
 extension GroupCreateView {
     
-    func setupTextField() {
+    private func setupTextField() {
         self.nameTextField.rx.text
             .orEmpty
             .subscribe(onNext: { [weak self] text in
