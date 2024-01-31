@@ -9,6 +9,9 @@ import UIKit
 
 import ReactorKit
 
+import RxSwift
+import RxCocoa
+
 final class NameInputPopupView: UIViewController, View {
     
     typealias Reactor = GroupCreateReactor
@@ -63,7 +66,7 @@ final class NameInputPopupView: UIViewController, View {
         return label
     }()
     
-    private lazy var textField: TextField = {
+    private let textField: TextField = {
         let textField = TextField()
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: Metric.iconSize + 10, height: Metric.iconSize))
         let textFieldImage = UIImageView(image: IconImage.manager.image)
@@ -74,7 +77,6 @@ final class NameInputPopupView: UIViewController, View {
         leftView.addSubview(textFieldImage)
         textField.leftView = leftView
         textField.leftViewMode = .always
-        textField.delegate = self
         return textField
     }()
     
@@ -178,6 +180,7 @@ final class NameInputPopupView: UIViewController, View {
     private func configure() {
         self.makeConstraints()
         self.setupGestureRecognizer()
+        self.setupTextField()
     }
     
     private func makeConstraints() {
@@ -232,43 +235,19 @@ final class NameInputPopupView: UIViewController, View {
     }
 }
 
-// MARK: - UITextFieldDelegate
+// MARK: - TextField
 
-extension NameInputPopupView: UITextFieldDelegate {
+extension NameInputPopupView: UITextViewDelegate {
     
-    func textField(
-        _ textField: UITextField,
-        shouldChangeCharactersIn range: NSRange,
-        replacementString string: String) -> Bool {
-            
-            let maxLength = 10
-            
-            let currentText = textField.text ?? ""
-            let newLength = (currentText as NSString).replacingCharacters(in: range, with: string).count
-            
-            if newLength <= maxLength {
-                let formattedText = String(format: "%02d/%02d", newLength, maxLength)
-                self.countLabel.text = formattedText
-                
-                return true
-            } else {
-                return false
-            }
-        }
-    
-    func textFieldDidEndEditing(
-        _ textField: UITextField) {
-            guard let text = textField.text,
-                    !text.isEmpty else {
-                return
-            }
-            
-            switch textField {
-            case self.textField:
-                GroupCreateManager.saveOwner(text)
-                print("saveOwner \(text)")
-            default:
-                break
-            }
-        }
+    private func setupTextField() {
+        self.textField.rx.text
+            .orEmpty
+            .subscribe(onNext: { [weak self] text in
+                let maxLength = 14
+                let updatedText = String(text.prefix(maxLength))
+                self?.countLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
+                self?.textField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+            })
+            .disposed(by: disposeBag)
+    }
 }
