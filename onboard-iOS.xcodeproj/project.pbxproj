@@ -55,7 +55,7 @@
 		1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */; };
 		1CA1BBD02AE00704000C5F7E /* TextFieldLabelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */; };
 		1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */; };
-		1CCBDB3D2B2EB9820097DEE6 /* GroupCreateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCBDB3C2B2EB9820097DEE6 /* GroupCreateManager.swift */; };
+		1CCBDB3D2B2EB9820097DEE6 /* GroupCreateSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */; };
 		1CD2086A2B1BAB91008E710E /* GroupCreateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD208692B1BAB91008E710E /* GroupCreateRepository.swift */; };
 		1CD2086C2B1BAC28008E710E /* GroupCreateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */; };
 		1CD2086E2B1BADB2008E710E /* GroupCreateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086D2B1BADB2008E710E /* GroupCreateUseCase.swift */; };
@@ -200,7 +200,7 @@
 		1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLabelState.swift; sourceTree = "<group>"; };
 		1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
-		1CCBDB3C2B2EB9820097DEE6 /* GroupCreateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateManager.swift; sourceTree = "<group>"; };
+		1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateSingleton.swift; sourceTree = "<group>"; };
 		1CD208692B1BAB91008E710E /* GroupCreateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateRepository.swift; sourceTree = "<group>"; };
 		1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateDTO.swift; sourceTree = "<group>"; };
 		1CD2086D2B1BADB2008E710E /* GroupCreateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateUseCase.swift; sourceTree = "<group>"; };
@@ -712,7 +712,7 @@
 				611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */,
 				AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */,
 				1CD208712B1BB339008E710E /* ImageLoader.swift */,
-				1CCBDB3C2B2EB9820097DEE6 /* GroupCreateManager.swift */,
+				1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1061,7 +1061,7 @@
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
 				1C3017132B4EC4D000128E5C /* OwnerManageViewController.swift in Sources */,
 				AA31AFB52B3D662E00E91C91 /* TermCell.swift in Sources */,
-				1C1F51B52AE2B7960020AA71 /* BottomSheetView.swift in Sources */,
+				1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */,
 				1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */,
 				1C327B222B55721300F02C26 /* GameResultUseCase.swift in Sources */,
 				1C6FEAE72B4D4DF400CFC647 /* AccessCodeView.swift in Sources */,
@@ -1118,7 +1118,7 @@
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				3B282DF82B5381F900483A2A /* GroupInfoRes.swift in Sources */,
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
-				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateManager.swift in Sources */,
+				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateSingleton.swift in Sources */,
 				1CF1A85B2B618AFC0098A6AA /* GameScoreView.swift in Sources */,
 				1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */,
 				1C3017112B4EC3E100128E5C /* OwnerManageTableViewCell.swift in Sources */,

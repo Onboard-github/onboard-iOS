@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class GroupCreateCompleteView: UIView {
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -28,10 +34,6 @@ final class GroupCreateCompleteView: UIView {
     
     private let backgroundImage: UIImageView = {
         let imageView = UIImageView()
-        let savedUrl = GroupCreateManager.getUrl()
-        if let url = URL(string: savedUrl ?? "") {
-            imageView.kf.setImage(with: url)
-        }
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
         return imageView
@@ -47,7 +49,6 @@ final class GroupCreateCompleteView: UIView {
     
     private let organizationLabel: UILabel = {
         let label = UILabel()
-        label.text = GroupCreateManager.getOrganization()
         label.textColor = Colors.Gray_2
         label.font = Font.Typography.body3_R
         return label
@@ -55,7 +56,6 @@ final class GroupCreateCompleteView: UIView {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = GroupCreateManager.getName()
         label.textColor = Colors.Gray_2
         label.font = Font.Typography.headLine
         return label
@@ -63,7 +63,6 @@ final class GroupCreateCompleteView: UIView {
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = GroupCreateManager.getDescription()
         label.textColor = Colors.Gray_2
         label.font = Font.Typography.body3_R
         return label
@@ -86,7 +85,6 @@ final class GroupCreateCompleteView: UIView {
     
     private let ownerNameLabel: UILabel = {
         let label = UILabel()
-        label.text = GroupCreateManager.getOwner()
         label.textColor = Colors.Gray_2
         label.font = Font.Typography.title3
         return label
@@ -109,7 +107,6 @@ final class GroupCreateCompleteView: UIView {
     
     private let accessCodeLabel: UILabel = {
         let label = UILabel()
-        label.text = GroupCreateManager.getCode()
         label.textColor = Colors.Gray_2
         label.font = Font.Typography.title3
         return label
@@ -171,6 +168,53 @@ final class GroupCreateCompleteView: UIView {
         super.init(frame: frame)
         
         self.configure()
+        
+        GroupCreateSingleton.shared.groupImageUrl
+            .subscribe(onNext: { [weak self] urlString in
+                if let url = URL(string: urlString), 
+                    let data = try? Data(contentsOf: url),
+                    let image = UIImage(data: data) {
+                    self?.backgroundImage.image = image
+                    print("url : \(url)")
+                }
+            })
+            .disposed(by: disposeBag)
+
+        
+        GroupCreateSingleton.shared.organizationText
+            .subscribe(onNext: { [weak self] text in
+                self?.organizationLabel.text = text
+                print("organization 잘 표시되니 : \(text)")
+            })
+            .disposed(by: disposeBag)
+        
+        GroupCreateSingleton.shared.nameText
+            .subscribe(onNext: { [weak self] text in
+                self?.nameLabel.text = text
+                print("name 잘 표시되니 : \(text)")
+            })
+            .disposed(by: disposeBag)
+        
+        GroupCreateSingleton.shared.descriptionText
+            .subscribe(onNext: { [weak self] text in
+                self?.descriptionLabel.text = text
+                print("description 잘 표시되니 : \(text)")
+            })
+            .disposed(by: disposeBag)
+        
+        GroupCreateSingleton.shared.ownerText
+            .subscribe(onNext: { [weak self] text in
+                self?.ownerNameLabel.text = text
+                print("owner 잘 표시되니 : \(text)")
+            })
+            .disposed(by: disposeBag)
+        
+        GroupCreateSingleton.shared.accessCodeText
+            .subscribe(onNext: { [weak self] text in
+                self?.accessCodeLabel.text = text
+                print("accessCode 잘 표시되니 : \(text)")
+            })
+            .disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {
