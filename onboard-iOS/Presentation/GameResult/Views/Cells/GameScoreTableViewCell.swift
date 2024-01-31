@@ -48,7 +48,7 @@ final class GameScoreTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var scoreTextField: UITextField = {
+    internal let scoreTextField: UITextField = {
         let textField = UITextField()
         textField.textColor = Colors.Gray_15
         textField.font = Font.Typography.headLine
