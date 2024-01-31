@@ -185,7 +185,7 @@ extension GameScoreView: UITableViewDelegate, UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 2 // 임시
+        return GameDataSingleton.shared.selectedPlayerData.count
     }
     
     func tableView(
