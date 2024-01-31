@@ -399,15 +399,25 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
             cell.configure(image: selectedPlayer.image, title: selectedPlayer.title)
         }
         
-        cell.didTapDeleteButton = { [weak self] in
-            guard let indexPath = collectionView.indexPath(for: cell) else { return }
+        cell.didTapDeleteButton = { [weak self, weak cell] in
+            guard let indexPath = collectionView.indexPath(for: cell!) else { return }
+
+            guard indexPath.item < GameDataSingleton.shared.selectedPlayerData.count else { return }
+            let deletedPlayer = GameDataSingleton.shared.selectedPlayerData[indexPath.item]
+
             GameDataSingleton.shared.removePlayer(at: indexPath.item)
-            
             collectionView.deleteItems(at: [indexPath])
-            
-            if GameDataSingleton.shared.selectedPlayerData.isEmpty {
-                self?.toggleLayout()
+
+            if let tableView = self?.playerTableView {
+                if let indexToRemove = GameDataSingleton.shared.selectedPlayerData.firstIndex(where: { $0.title == deletedPlayer.title }) {
+                    let tableViewIndexPath = IndexPath(row: indexToRemove + 1, section: 0)
+                    guard tableView.cellForRow(at: tableViewIndexPath) is OwnerManageTableViewCell else { return }
+                    GameDataSingleton.shared.selectedPlayerData.remove(at: indexToRemove)
+                }
             }
+            
+            self?.toggleLayout()
+            self?.setButtonStatus()
         }
         
         return cell
