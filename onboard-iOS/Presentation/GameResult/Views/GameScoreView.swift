@@ -130,6 +130,7 @@ final class GameScoreView: UIView {
         self.addSubview(self.timeLabel)
         self.addSubview(self.titleLabel)
         self.addSubview(self.playerTableView)
+        self.addSubview(self.confirmButton)
         
         self.progressBar.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide.snp.top)
@@ -164,8 +165,14 @@ final class GameScoreView: UIView {
         
         self.playerTableView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.tableViewTopSpacing)
+            $0.bottom.equalTo(confirmButton.snp.top).offset(-Metric.tableViewSpacing)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
-            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        self.confirmButton.snp.makeConstraints {
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-Metric.buttonBottomMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.height.equalTo(Metric.buttonHeight)
         }
     }
 }
