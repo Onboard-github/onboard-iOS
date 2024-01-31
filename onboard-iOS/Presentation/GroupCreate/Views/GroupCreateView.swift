@@ -7,8 +7,14 @@
 
 import UIKit
 import ReactorKit
+import RxSwift
+import RxCocoa
 
 final class GroupCreateView: UIView {
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -65,12 +71,11 @@ final class GroupCreateView: UIView {
         return image
     }()
     
-    private lazy var nameTextField: TextField = {
+    private let nameTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
         text.layer.borderColor = Colors.Gray_5.cgColor
-        text.delegate = self
         return text
     }()
     
@@ -128,12 +133,11 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private lazy var organizationTextField: TextField = {
+    private let organizationTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
         text.layer.borderColor = Colors.Gray_5.cgColor
-        text.delegate = self
         return text
     }()
     
@@ -183,6 +187,7 @@ final class GroupCreateView: UIView {
         self.addConfigure()
         self.textFieldPlaceHolder()
         self.makeConstraints()
+        self.setupTextField()
     }
     
     private func addConfigure() {
@@ -312,58 +317,53 @@ final class GroupCreateView: UIView {
     }
 }
 
-// MARK: - UITextFieldDelegate
+// MARK: - TextField
 
-extension GroupCreateView: UITextFieldDelegate {
+extension GroupCreateView {
     
-    func textField(
-        _ textField: UITextField,
-        shouldChangeCharactersIn range: NSRange,
-        replacementString string: String) -> Bool {
-            
-            if textField == nameTextField || textField == organizationTextField {
-                let currentText = textField.text ?? ""
-                let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
-                
-                let maxLength = (textField == nameTextField) ? 14 : 15
-                let countLabel = (textField == nameTextField) ? nameCountLabel : organizationCountLabel
-                
-                if updatedText.count <= maxLength {
-                    let count = String(format: "%02d", updatedText.count)
-                    countLabel.text = "\(count)/\(maxLength)"
-                    return true
-                } else {
-                    return false
-                }
-            }
-            return true
-        }
+    func setupTextField() {
+        self.nameTextField.rx.text
+            .orEmpty
+            .subscribe(onNext: { [weak self] text in
+                let maxLength = 14
+                let updatedText = String(text.prefix(maxLength))
+                self?.nameCountLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
+                self?.nameTextField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+            })
+            .disposed(by: disposeBag)
+        
+        self.organizationTextField.rx.text
+            .orEmpty
+            .subscribe(onNext: { [weak self] text in
+                let maxLength = 15
+                let updatedText = String(text.prefix(maxLength))
+                self?.organizationCountLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
+                self?.organizationTextField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+            })
+            .disposed(by: disposeBag)
+        
+        Observable.merge(
+            self.nameTextField.rx.controlEvent(.editingDidBegin).map { true },
+            self.nameTextField.rx.controlEvent(.editingDidEnd).map { false }
+        )
+        .subscribe(onNext: { [weak self] isEditing in
+            self?.handleTextFieldEditing(isEditing: isEditing, textField: self?.nameTextField)
+        })
+        .disposed(by: disposeBag)
+        
+        Observable.merge(
+            self.organizationTextField.rx.controlEvent(.editingDidBegin).map { true },
+            self.organizationTextField.rx.controlEvent(.editingDidEnd).map { false }
+        )
+        .subscribe(onNext: { [weak self] isEditing in
+            self?.handleTextFieldEditing(isEditing: isEditing, textField: self?.organizationTextField)
+        })
+        .disposed(by: disposeBag)
+    }
     
-    func textFieldDidBeginEditing(
-        _ textField: UITextField) {
-            textField.layer.borderColor = Colors.Gray_7.cgColor
-        }
-    
-    func textFieldDidEndEditing(
-        _ textField: UITextField) {
-            guard let text = textField.text,
-                  !text.isEmpty else {
-                return
-            }
-            
-            switch textField {
-            case self.nameTextField:
-                GroupCreateManager.saveName(text)
-                print("saveNames \(text)")
-            case self.organizationTextField:
-                GroupCreateManager.saveOrganization(text)
-                print("saveOrgan \(text)")
-            default:
-                break
-            }
-            
-            textField.layer.borderColor = Colors.Gray_5.cgColor
-        }
+    private func handleTextFieldEditing(isEditing: Bool, textField: UITextField?) {
+        textField?.layer.borderColor = isEditing ? Colors.Gray_7.cgColor : Colors.Gray_5.cgColor
+    }
 }
 
 // MARK: - UITextViewDelegate
