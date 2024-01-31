@@ -57,4 +57,23 @@ struct TextLabels {
     static let game_result_title_info = "플레이 한 보드게임을 선택해주세요"
     static let game_player_title_info = "게임을 함께 플레이 한 멤버를 선택해주세요"
     static let game_player_confirm = "플레이어 선택 완료"
+    
+    static let game_record_calendar = "yy/MM/dd"
+    static let game_record_time = "hh:mm"
+    static let game_record_title_info = "게임 결과를 입력해주세요!"
+    static let game_record_title = "결과 기록"
+    
+    static let game_record_rank = "위"
+    static let game_record_placeholder = "0"
+    static let game_record_score = "점"
+    static let game_record_confirm = "기록 완료"
+    
+    // MARK: - PopupView
+    
+    static let bottom_title = "상대방이 아직 온보드에 가입하지 않았다면\n임시 멤버로 추가해보세요!"
+    static let bottom_subTitle = "이후 온보드 가입 시 닉네임으로 기록을 연동할 수 있습니다."
+    static let bottom_textField_placeholder = "임시 멤버가 사용할 닉네임을 입력해주세요."
+    static let bottom_textField_count = "00/10"
+    static let bottom_register_button = "임시 멤버 추가"
+    static let bottom_textField_already = "이미 있는 이름입니다. 다른 이름을 설정해주세요."
 }

@@ -158,8 +158,50 @@ final class PlayerSelectViewController: UIViewController, View {
     private func configure() {
         self.view.backgroundColor = Colors.White
         
+        self.addConfigure()
         self.makeConstraints()
         self.setNavigationBar()
+    }
+    
+    private func addConfigure() {
+        self.addButton.addAction(UIAction(handler: { [weak self] _ in
+            let useCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+            let reactor = PlayerReactor(useCase: useCase)
+            let bottom = BottomSheetViewController(reactor: reactor)
+            
+            bottom.contentView.snp.makeConstraints {
+                $0.height.equalTo(260)
+            }
+            
+            let popupState = PopupState(
+                titleLabel: TextLabels.bottom_title,
+                subTitleLabel: TextLabels.bottom_subTitle,
+                textFieldPlaceholder: TextLabels.bottom_textField_placeholder,
+                textFieldSubTitleLabel: "",
+                countLabel: TextLabels.bottom_textField_count,
+                buttonLabel: TextLabels.bottom_register_button
+            )
+            
+            bottom.setState(popupState: popupState, onClickLink: { })
+            bottom.modalPresentationStyle = .overFullScreen
+            self?.present(bottom, animated: false)
+            
+            bottom.didTapButton = { [weak self] in
+                guard let nickname = GameDataSingleton.shared.guestNickNameData else { return }
+                let req = AddPlayerEntity.Req(nickname: nickname)
+                self?.reactor?.action.onNext(.addPlayer(groupId: 123, req: req))
+                GameDataSingleton.shared.addPlayer(PlayerList(image: IconImage.emptyDice.image!,
+                                                              title: nickname))
+                self?.playerTableView.reloadData()
+                bottom.dismiss(animated: false)
+            }
+            
+        }), for: .touchUpInside)
+        
+        self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
+            let gameScoreViewController = GameScoreViewController()
+            self?.navigationController?.pushViewController(gameScoreViewController, animated: true)
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
@@ -239,7 +281,7 @@ final class PlayerSelectViewController: UIViewController, View {
     }
     
     private func toggleLayout() {
-        playerCollectionView.isHidden.toggle()
+        self.playerCollectionView.isHidden = GameDataSingleton.shared.selectedPlayerData.isEmpty
         
         let topOffset = playerCollectionView.isHidden ? titleLabel.snp.bottom : playerCollectionView.snp.bottom
         textField.snp.remakeConstraints {
@@ -249,6 +291,14 @@ final class PlayerSelectViewController: UIViewController, View {
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func setButtonStatus() {
+        let selectedCount = GameDataSingleton.shared.selectedPlayerData.count
+        
+        if let gameData = GameDataSingleton.shared.gameData {
+            confirmButton.status = (gameData.minMember...gameData.maxMember ~= selectedCount) ? .default : .disabled
         }
     }
     
@@ -262,11 +312,10 @@ final class PlayerSelectViewController: UIViewController, View {
 
 extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-        return reactor?.currentState.playerData.first?.contents.count ?? 0
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let data = reactor?.currentState.playerData.first?.contents.count ?? 0
+        let newData = GameDataSingleton.shared.playerData.count
+        return data + newData
     }
     
     func tableView(
@@ -279,24 +328,44 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             for: indexPath
         ) as! OwnerManageTableViewCell
         
-        let image = IconImage.dice.image
-        
-        if let data = reactor?.currentState.playerData,
-           let firstGameList = data.first?.contents,
-           indexPath.item < firstGameList.count {
-            
-            let game = firstGameList[indexPath.item]
-            
-            cell.configure(image: image, title: game.nickname)
+        if indexPath.row == 0,
+           let data = reactor?.currentState.playerData.first?.contents.first {
+            cell.configure(title: data.nickname, showMeImage: true)
             
             cell.didTapSelectButton = { [weak self] in
-                if let image = IconImage.dice.image {
-                    let data = PlayerList(image: image, title: game.nickname)
-                    GameDataSingleton.shared.addSelectedPlayer(data)
-                    
-                    self?.playerCollectionView.reloadData()
-                    self?.toggleLayout()
+                guard tableView.indexPath(for: cell) != nil else { return }
+                
+                let existData = PlayerList(image: IconImage.dice.image!, title: data.nickname)
+                
+                if GameDataSingleton.shared.selectedPlayerData.contains(existData) {
+                    GameDataSingleton.shared.removeSelectedPlayer(existData)
+                } else {
+                    GameDataSingleton.shared.addSelectedPlayer(existData)
                 }
+                
+                self?.setButtonStatus()
+                self?.playerCollectionView.reloadData()
+                self?.toggleLayout()
+                
+            }
+        } else if indexPath.row - 1 < GameDataSingleton.shared.playerData.count {
+            let newData = GameDataSingleton.shared.playerData[indexPath.row - 1]
+            cell.configure(image: newData.image, title: newData.title, titleColor: Colors.Gray_9, showMeImage: false)
+            
+            cell.didTapSelectButton = { [weak self] in
+                guard tableView.indexPath(for: cell) != nil else { return }
+                
+                let data = PlayerList(image: newData.image, title: newData.title)
+                
+                if GameDataSingleton.shared.selectedPlayerData.contains(data) {
+                    GameDataSingleton.shared.removeSelectedPlayer(data)
+                } else {
+                    GameDataSingleton.shared.addSelectedPlayer(data)
+                }
+                
+                self?.setButtonStatus()
+                self?.playerCollectionView.reloadData()
+                self?.toggleLayout()
             }
         }
         
@@ -312,7 +381,7 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return GameDataSingleton.shared.playerData.count
+        return GameDataSingleton.shared.selectedPlayerData.count
     }
     
     func collectionView(
@@ -325,20 +394,30 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
             for: indexPath
         ) as! PlayerCollectionViewCell
         
-        if GameDataSingleton.shared.playerData.indices.contains(indexPath.item) {
-            let selectedPlayer = GameDataSingleton.shared.playerData[indexPath.item]
+        if GameDataSingleton.shared.selectedPlayerData.indices.contains(indexPath.item) {
+            let selectedPlayer = GameDataSingleton.shared.selectedPlayerData[indexPath.item]
             cell.configure(image: selectedPlayer.image, title: selectedPlayer.title)
         }
         
-        cell.didTapDeleteButton = { [weak self] in
-            guard let indexPath = collectionView.indexPath(for: cell) else { return }
+        cell.didTapDeleteButton = { [weak self, weak cell] in
+            guard let indexPath = collectionView.indexPath(for: cell!) else { return }
+
+            guard indexPath.item < GameDataSingleton.shared.selectedPlayerData.count else { return }
+            let deletedPlayer = GameDataSingleton.shared.selectedPlayerData[indexPath.item]
+
             GameDataSingleton.shared.removePlayer(at: indexPath.item)
-            
             collectionView.deleteItems(at: [indexPath])
-            
-            if GameDataSingleton.shared.playerData.isEmpty {
-                self?.toggleLayout()
+
+            if let tableView = self?.playerTableView {
+                if let indexToRemove = GameDataSingleton.shared.selectedPlayerData.firstIndex(where: { $0.title == deletedPlayer.title }) {
+                    let tableViewIndexPath = IndexPath(row: indexToRemove + 1, section: 0)
+                    guard tableView.cellForRow(at: tableViewIndexPath) is OwnerManageTableViewCell else { return }
+                    GameDataSingleton.shared.selectedPlayerData.remove(at: indexToRemove)
+                }
             }
+            
+            self?.toggleLayout()
+            self?.setButtonStatus()
         }
         
         return cell

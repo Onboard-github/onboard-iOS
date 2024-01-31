@@ -13,7 +13,8 @@ final class OwnerManageTableViewCell: UITableViewCell {
     
     private enum Metric {
         static let leftMargin: CGFloat = 24
-        static let labelLeftSpacing: CGFloat = 14
+        static let meImageSize: CGFloat = 14
+        static let stackViewLeading: CGFloat = 60
         static let buttonRightMargin: CGFloat = 24
     }
     
@@ -21,7 +22,12 @@ final class OwnerManageTableViewCell: UITableViewCell {
     
     private let titleImage: UIImageView = {
         let imageView = UIImageView()
-        let image = IconImage.dice.image
+        return imageView
+    }()
+    
+    private let meImage: UIImageView = {
+        let imageView = UIImageView()
+        let image = IconImage.me.image
         imageView.image = image
         return imageView
     }()
@@ -37,6 +43,14 @@ final class OwnerManageTableViewCell: UITableViewCell {
         let button = UIButton()
         button.setImage(IconImage.selected.image, for: .normal)
         return button
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [meImage, titleLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        stackView.alignment = .center
+        return stackView
     }()
     
     // MARK: - Properties
@@ -80,7 +94,7 @@ final class OwnerManageTableViewCell: UITableViewCell {
     
     private func makeConstraints() {
         self.contentView.addSubview(self.titleImage)
-        self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.stackView)
         self.contentView.addSubview(self.selectButton)
         
         self.titleImage.snp.makeConstraints {
@@ -88,8 +102,12 @@ final class OwnerManageTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
         }
         
-        self.titleLabel.snp.makeConstraints {
-            $0.leading.equalTo(titleImage.snp.trailing).offset(Metric.labelLeftSpacing)
+        self.meImage.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.meImageSize)
+        }
+        
+        self.stackView.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(Metric.stackViewLeading)
             $0.centerY.equalToSuperview()
         }
         
@@ -99,8 +117,15 @@ final class OwnerManageTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(image: UIImage?, title: String) {
-        titleImage.image = image
-        titleLabel.text = title
+    func configure(
+        image: UIImage? = IconImage.dice.image,
+        title: String,
+        titleColor: UIColor? = nil, 
+        showMeImage: Bool = true
+    ) {
+        self.titleImage.image = image
+        self.titleLabel.text = title
+        self.titleLabel.textColor = titleColor
+        self.meImage.isHidden = !showMeImage
     }
 }

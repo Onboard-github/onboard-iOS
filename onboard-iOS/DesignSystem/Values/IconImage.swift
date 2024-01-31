@@ -43,6 +43,7 @@ enum IconImage {
     
     case myDefault
     case my
+    case me
     
     case rank3Default
     case rank3
@@ -141,6 +142,8 @@ enum IconImage {
             return UIImage(named: "icon_myDefault")
         case .my:
             return UIImage(named: "icon_my")
+        case .me:
+            return UIImage(named: "icon_me")
             
         case .rank3Default:
             return UIImage(named: "icon_rank3_default")
@@ -201,14 +204,5 @@ enum IconImage {
         case .requiredInput:
             return UIImage(named: "icon_requiredInput")
         }
-    }
-}
-
-extension UIButton {
-    convenience init(style: IconImage) {
-        self.init(type: .custom)
-        
-        setImage(style.image, for: .normal)
-        imageView?.contentMode = .scaleAspectFit
     }
 }

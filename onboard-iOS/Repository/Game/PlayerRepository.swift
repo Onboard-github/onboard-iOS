@@ -9,6 +9,8 @@ import Foundation
 
 protocol PlayerRepository {
     func requestPlayerList(groupId: Int, size: String) async throws -> PlayerEntity.Res
+    func requestValidateNickName(groupId: Int, nickname: String) async throws -> GuestNickNameEntity.Res
+    func requestAddPlayer(groupId: Int, req: AddPlayerEntity.Req) async throws -> AddPlayerEntity.Res
 }
 
 final class PlayerRepositoryImpl: PlayerRepository {
@@ -33,6 +35,58 @@ final class PlayerRepositoryImpl: PlayerRepository {
             throw error
         }
     }
+    
+    func requestValidateNickName(groupId: Int, nickname: String) async throws -> GuestNickNameEntity.Res {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: GuestNicknameDTO.self,
+                    router: OBRouter.validateNicknameGuest(
+                        params: [
+                            "groupId": groupId,
+                            "nickname": nickname
+                        ]
+                    )
+                )
+            
+            print("result: \(result)")
+            
+            guard let data = result.value else {
+                throw NetworkError.noExist
+            }
+            
+            return data.toDomain()
+        } catch {
+            print("error: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func requestAddPlayer(groupId: Int, req: AddPlayerEntity.Req) async throws -> AddPlayerEntity.Res {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: AddPlayerDTO.self,
+                    router: OBRouter.addPlayer(
+                        params: ["groupId": groupId],
+                        body: AddPlayerRequest.Body(
+                            nickname: req.nickname
+                        ).encode()
+                    )
+                )
+            
+            guard let data = result.value else {
+                throw NetworkError.noExist
+            }
+            
+            return data.toDomain()
+            
+        } catch {
+            throw error
+        }
+    }
 }
 
 extension PlayerDTO {
@@ -50,5 +104,20 @@ extension PlayerDTO {
             cursor: self.cursor,
             hasNext: self.hasNext
         )
+    }
+}
+
+extension GuestNicknameDTO {
+    func toDomain() -> GuestNickNameEntity.Res {
+        return GuestNickNameEntity.Res(
+            isAvailable: self.isAvailable,
+            reason: self.reason ?? ""
+        )
+    }
+}
+
+extension AddPlayerDTO {
+    func toDomain() -> AddPlayerEntity.Res {
+        return AddPlayerEntity.Res()
     }
 }

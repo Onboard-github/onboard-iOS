@@ -33,3 +33,13 @@ struct PlayerDTO: Decodable {
         let level: Int
     }
 }
+
+struct AddPlayerDTO: Decodable {
+    
+}
+
+enum AddPlayerRequest {
+    struct Body: Encodable {
+        let nickname: String
+    }
+}
