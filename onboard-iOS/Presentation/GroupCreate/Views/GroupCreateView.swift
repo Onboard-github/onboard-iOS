@@ -399,6 +399,9 @@ extension GroupCreateView: UITextViewDelegate {
                 let updatedText = String(text.prefix(maxLength))
                 self?.descriptionCountLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
                 self?.descriptionTextView.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+                
+                GroupCreateSingleton.shared.descriptionText.accept(text)
+                print("Stored Description Text: \(GroupCreateSingleton.shared.descriptionText.value)")
             })
             .disposed(by: disposeBag)
         
