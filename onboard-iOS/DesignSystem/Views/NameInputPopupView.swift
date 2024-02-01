@@ -51,7 +51,7 @@ final class NameInputPopupView: UIViewController, View {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "관리자 프로필 설정"
+        label.text = TextLabels.owner_popup_title
         label.textColor = Colors.Gray_15
         label.font = Font.Typography.title2
         return label
@@ -59,7 +59,7 @@ final class NameInputPopupView: UIViewController, View {
     
     private let subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "그룹에서 사용할 닉네임을 10자 이하로 입력해주세요."
+        label.text = TextLabels.owner_popup_subTitle
         label.textColor = Colors.Gray_9
         label.font = Font.Typography.body4_R
         return label
@@ -81,7 +81,7 @@ final class NameInputPopupView: UIViewController, View {
     
     private let textFieldSubTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "한글, 영문, 숫자를 조합하여 사용 가능합니다."
+        label.text = TextLabels.owner_popup_textFieldSubTitle
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
@@ -89,7 +89,7 @@ final class NameInputPopupView: UIViewController, View {
     
     private let countLabel: UILabel = {
         let label = UILabel()
-        label.text = "00/10"
+        label.text = TextLabels.owner_popup_count
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
@@ -97,7 +97,7 @@ final class NameInputPopupView: UIViewController, View {
     
     private let registerButton: BaseButton = {
         let button = BaseButton(status: .disabled, style: .bottom)
-        button.setTitle("그룹 등록하기", for: .normal)
+        button.setTitle(TextLabels.owner_popup_register, for: .normal)
         return button
     }()
     

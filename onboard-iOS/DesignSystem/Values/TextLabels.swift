@@ -70,6 +70,12 @@ struct TextLabels {
     
     // MARK: - PopupView
     
+    static let owner_popup_title = "관리자 프로필 설정"
+    static let owner_popup_subTitle = "그룹에서 사용할 닉네임을 10자 이하로 입력해주세요."
+    static let owner_popup_textFieldSubTitle = "한글, 영문, 숫자를 조합하여 사용 가능합니다."
+    static let owner_popup_count = "00/10"
+    static let owner_popup_register = "그룹 등록하기"
+    
     static let bottom_title = "상대방이 아직 온보드에 가입하지 않았다면\n임시 멤버로 추가해보세요!"
     static let bottom_subTitle = "이후 온보드 가입 시 닉네임으로 기록을 연동할 수 있습니다."
     static let bottom_textField_placeholder = "임시 멤버가 사용할 닉네임을 입력해주세요."
