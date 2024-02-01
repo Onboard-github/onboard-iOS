@@ -114,7 +114,7 @@ final class GroupCreateViewController: KeyboardHalfHandlingViewController, View 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: image, style: .done,
             target: self, action: #selector(showPrevious))
-        navigationItem.title = "그룹 등록"
+        navigationItem.title = TextLabels.group_title
     }
     
     @objc
