@@ -71,6 +71,11 @@ struct TextLabels {
     
     // MARK: - PopupView
     
+    static let image_popup_title = "그룹 대표 이미지"
+    static let image_popup_subTitle = "그룹을 소개하는 이미지를 넣어주세요."
+    static let image_popup_fileUpload = "앨범에서 사진 선택"
+    static let image_popup_random = "랜덤 이미지"
+    
     static let owner_popup_title = "관리자 프로필 설정"
     static let owner_popup_subTitle = "그룹에서 사용할 닉네임을 10자 이하로 입력해주세요."
     static let owner_popup_textFieldSubTitle = "한글, 영문, 숫자를 조합하여 사용 가능합니다."

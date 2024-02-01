@@ -49,7 +49,7 @@ final class ImagePopupViewController: UIViewController, View {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "그룹 대표 이미지"
+        label.text = TextLabels.image_popup_title
         label.textColor = Colors.Gray_15
         label.font = Font.Typography.title2
         return label
@@ -57,7 +57,7 @@ final class ImagePopupViewController: UIViewController, View {
     
     private let subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "그룹을 소개하는 이미지를 넣어주세요."
+        label.text = TextLabels.image_popup_subTitle
         label.textColor = Colors.Gray_9
         label.font = Font.Typography.body4_R
         label.numberOfLines = 0
@@ -66,7 +66,7 @@ final class ImagePopupViewController: UIViewController, View {
     
     private let imageButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setTitle("앨범에서 사진 선택", for: .normal)
+        button.setTitle(TextLabels.image_popup_fileUpload, for: .normal)
         button.setTitleColor(Colors.Gray_14, for: .normal)
         button.titleLabel?.font = Font.Typography.body2_R
         button.contentHorizontalAlignment = .left
@@ -75,7 +75,7 @@ final class ImagePopupViewController: UIViewController, View {
     
     private let randomImageButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setTitle("랜덤 이미지", for: .normal)
+        button.setTitle(TextLabels.image_popup_random, for: .normal)
         button.setTitleColor(Colors.Gray_14, for: .normal)
         button.titleLabel?.font = Font.Typography.body2_R
         button.contentHorizontalAlignment = .left
