@@ -19,7 +19,6 @@ final class NameInputPopupView: UIViewController, View {
     // MARK: - Properties
     
     var disposeBag = DisposeBag()
-    private let groupCreateCompleteView = GroupCreateCompleteView()
     
     // MARK: - Metric
     
@@ -97,7 +96,7 @@ final class NameInputPopupView: UIViewController, View {
     }()
     
     private let registerButton: BaseButton = {
-        let button = BaseButton(status: .default, style: .bottom)
+        let button = BaseButton(status: .disabled, style: .bottom)
         button.setTitle("그룹 등록하기", for: .normal)
         return button
     }()
