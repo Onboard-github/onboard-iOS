@@ -247,8 +247,14 @@ extension NameInputPopupView: UITextViewDelegate {
                 self?.countLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
                 self?.textField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
                 
+                self?.setButtonStatus(text: updatedText)
+                
                 GroupCreateSingleton.shared.ownerText.accept(text)
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func setButtonStatus(text: String) {
+        self.registerButton.status = text.isEmpty ? .disabled : .default
     }
 }
