@@ -22,6 +22,9 @@ class GameDataSingleton {
     
     private let textSubject = PublishSubject<String>()
     
+    var calendarText = BehaviorRelay<String>(value: "")
+    var timeText = BehaviorRelay<String>(value: "")
+    
     var textObservable: Observable<String> {
         return textSubject.asObservable()
     }

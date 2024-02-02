@@ -61,6 +61,8 @@ final class GameScoreView: UIView {
         
         label.text = formattedDate
         
+        GameDataSingleton.shared.calendarText.accept(label.text ?? "")
+        
         return label
     }()
     
@@ -82,6 +84,8 @@ final class GameScoreView: UIView {
         let currentTime = Date()
         let formattedTime = timeFormatter.string(from: currentTime)
         label.text = formattedTime
+        
+        GameDataSingleton.shared.timeText.accept(label.text ?? "")
         
         return label
     }()
