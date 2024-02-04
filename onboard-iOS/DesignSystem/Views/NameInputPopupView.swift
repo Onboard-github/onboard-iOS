@@ -150,6 +150,10 @@ final class NameInputPopupView: UIViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.dismiss(animated: false)
+    }
+    
     // MARK: - Bind
     
     func bind(reactor: GroupCreateReactor) {
@@ -181,7 +185,6 @@ final class NameInputPopupView: UIViewController, View {
     
     private func configure() {
         self.makeConstraints()
-        self.setupGestureRecognizer()
         self.setupTextField()
     }
     
@@ -221,19 +224,6 @@ final class NameInputPopupView: UIViewController, View {
             $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(Metric.buttonHeight)
         }
-    }
-    
-    private func setupGestureRecognizer() {
-        let tapGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(backgroundTapped)
-        )
-        self.backgroundView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc
-    private func backgroundTapped() {
-        self.dismiss(animated: false)
     }
 }
 
