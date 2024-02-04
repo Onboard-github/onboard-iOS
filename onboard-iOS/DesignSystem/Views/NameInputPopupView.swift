@@ -154,15 +154,13 @@ final class NameInputPopupView: UIViewController, View {
     func bindAction(reactor: GroupCreateReactor) {
         self.registerButton.addAction(UIAction { [weak self] _ in
             let req = GroupCreateCompleteEntity.Req(
-                name: "",
-                description: "",
-                organization: "",
+                name: GroupCreateSingleton.shared.nameText.value,
+                description: GroupCreateSingleton.shared.descriptionText.value,
+                organization: GroupCreateSingleton.shared.organizationText.value,
                 profileImageUrl: nil,
-                profileImageUuid: "",
+                profileImageUuid: GroupCreateSingleton.shared.groupImageUuid.value,
                 nickname: LoginSessionManager.getNickname() ?? ""
             )
-            
-            print("req \(req)")
             
             self?.reactor?.action.onNext(.createGroups(req: req))
             

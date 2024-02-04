@@ -14,6 +14,7 @@ final class GroupCreateSingleton {
     
     static let shared = GroupCreateSingleton()
     
+    var groupImageUuid = BehaviorRelay<String>(value: "")
     var groupImageUrl = BehaviorRelay<String>(value: "")
     var nameText = BehaviorRelay<String>(value: "")
     var descriptionText = BehaviorRelay<String>(value: "")
