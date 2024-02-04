@@ -72,6 +72,7 @@
 		1CF1A85B2B618AFC0098A6AA /* GameScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A85A2B618AFC0098A6AA /* GameScoreView.swift */; };
 		1CF1A85D2B618D520098A6AA /* GameScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A85C2B618D520098A6AA /* GameScoreViewController.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
+		1CFEDCB12B6E41C900EEE673 /* ResultRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFEDCB02B6E41C900EEE673 /* ResultRecordTableViewCell.swift */; };
 		3B282DF82B5381F900483A2A /* GroupInfoRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DF72B5381F900483A2A /* GroupInfoRes.swift */; };
 		3B282DFA2B5598E400483A2A /* GetMeRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DF92B5598E400483A2A /* GetMeRes.swift */; };
 		3B282DFC2B55A74200483A2A /* GetMyGroupsV2Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */; };
@@ -215,6 +216,7 @@
 		1CF1A85A2B618AFC0098A6AA /* GameScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreView.swift; sourceTree = "<group>"; };
 		1CF1A85C2B618D520098A6AA /* GameScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreViewController.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		1CFEDCB02B6E41C900EEE673 /* ResultRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRecordTableViewCell.swift; sourceTree = "<group>"; };
 		3B282DF72B5381F900483A2A /* GroupInfoRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoRes.swift; sourceTree = "<group>"; };
 		3B282DF92B5598E400483A2A /* GetMeRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMeRes.swift; sourceTree = "<group>"; };
 		3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyGroupsV2Res.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				1C30171B2B50683D00128E5C /* GameResultCollectionViewCell.swift */,
 				1C47C9932B597D1900D80E9C /* PlayerCollectionViewCell.swift */,
 				1CF1A8582B6160850098A6AA /* GameScoreTableViewCell.swift */,
+				1CFEDCB02B6E41C900EEE673 /* ResultRecordTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1034,6 +1037,7 @@
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				1CA1BBC42ADABEBD000C5F7E /* TextField.swift in Sources */,
 				1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */,
+				1CFEDCB12B6E41C900EEE673 /* ResultRecordTableViewCell.swift in Sources */,
 				1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */,
 				3BC078452B4F441B0032BB4C /* GroupMembersRes.swift in Sources */,
 				1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */,
