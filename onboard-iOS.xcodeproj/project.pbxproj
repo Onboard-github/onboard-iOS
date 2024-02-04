@@ -77,6 +77,8 @@
 		3B282DFA2B5598E400483A2A /* GetMeRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DF92B5598E400483A2A /* GetMeRes.swift */; };
 		3B282DFC2B55A74200483A2A /* GetMyGroupsV2Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */; };
 		3BC078452B4F441B0032BB4C /* GroupMembersRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */; };
+		3BDAA8E72B6FE1540038BE4B /* JoinCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */; };
+		3BDAA8E82B6FE1540038BE4B /* JoinCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */; };
 		3BE4B8C62B67B2E9006679DC /* EmptyGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE4B8C52B67B2E9006679DC /* EmptyGroupCell.swift */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
@@ -221,6 +223,8 @@
 		3B282DF92B5598E400483A2A /* GetMeRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMeRes.swift; sourceTree = "<group>"; };
 		3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyGroupsV2Res.swift; sourceTree = "<group>"; };
 		3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersRes.swift; sourceTree = "<group>"; };
+		3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCodeVC.swift; sourceTree = "<group>"; };
+		3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinCodeVC.xib; sourceTree = "<group>"; };
 		3BE4B8C52B67B2E9006679DC /* EmptyGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGroupCell.swift; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
@@ -752,6 +756,8 @@
 			children = (
 				AA5E9C752B2E8C3D000E3A30 /* GroupJoinVC.swift */,
 				AA5E9C762B2E8C3D000E3A30 /* GroupJoinVC.xib */,
+				3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */,
+				3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -993,6 +999,7 @@
 			files = (
 				AAF169962B10907200EF82A4 /* imgs.xcassets in Resources */,
 				1CA1BBB42ACF109B000C5F7E /* SpoqaHanSansNeo-Light.ttf in Resources */,
+				3BDAA8E82B6FE1540038BE4B /* JoinCodeVC.xib in Resources */,
 				61AC7FAB2AB6D4A500B0B6B5 /* LaunchScreen.storyboard in Resources */,
 				61AC7FA82AB6D4A500B0B6B5 /* Assets.xcassets in Resources */,
 				1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */,
@@ -1058,6 +1065,7 @@
 				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
 				AA31AFB22B3D624A00E91C91 /* TermsResponse.swift in Sources */,
 				1CD208722B1BB339008E710E /* ImageLoader.swift in Sources */,
+				3BDAA8E72B6FE1540038BE4B /* JoinCodeVC.swift in Sources */,
 				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
 				AA93981A2B25534A0022C5ED /* GameCell.swift in Sources */,
 				AA9105642ADA242800DA2E96 /* GroupSearchReactor.swift in Sources */,

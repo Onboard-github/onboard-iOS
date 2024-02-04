@@ -37,20 +37,25 @@ class GroupJoinVC: UIViewController {
     
     @IBAction func joinButtonAction(_ sender: Any) {
 //        print("group Id \(group?.id)")
-//        
-        Task { [weak self] in
-            let addedResult2 = try await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .addGroupGuest(groupId: group?.id ?? -1, nickName: "test"))
-            print(addedResult2)
-            if let result = addedResult2.value {
-                print(result)
-            }
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
-            homeTabController.modalPresentationStyle = .fullScreen
-            navigationController?.present(homeTabController, animated: true)
-            LoginSessionManager.setState(state: .login)
-        }
+
+        let codeVC = JoinCodeVC(nibName: "JoinCodeVC", bundle: .main)
+        codeVC.modalTransitionStyle = .crossDissolve
+        codeVC.modalPresentationStyle = .overFullScreen
+        present(codeVC, animated: true)
+        
+//        Task { [weak self] in
+//            let addedResult2 = try await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .addGroupGuest(groupId: group?.id ?? -1, nickName: "test"))
+//            print(addedResult2)
+//            if let result = addedResult2.value {
+//                print(result)
+//            }
+//            
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+//            homeTabController.modalPresentationStyle = .fullScreen
+//            navigationController?.present(homeTabController, animated: true)
+//            LoginSessionManager.setState(state: .login)
+//        }
     }
 
 }
