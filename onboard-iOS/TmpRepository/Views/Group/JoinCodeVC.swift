@@ -41,6 +41,11 @@ extension JoinCodeVC: UITextViewDelegate {
                 if result.value?.result != true {
                     failTextLabel.isHidden = false
                     roundedView.borderWidth = 1
+                    
+                    let nicknameVC = JoinNicknameVC(nibName: "JoinNicknameVC", bundle: .main)
+                    nicknameVC.modalTransitionStyle = .crossDissolve
+                    nicknameVC.modalPresentationStyle = .overCurrentContext
+                    present(nicknameVC, animated: true)
                 } else {
                     failTextLabel.isHidden = true
                     roundedView.borderWidth = 0

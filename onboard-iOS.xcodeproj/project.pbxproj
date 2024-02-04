@@ -77,6 +77,8 @@
 		3B282DF82B5381F900483A2A /* GroupInfoRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DF72B5381F900483A2A /* GroupInfoRes.swift */; };
 		3B282DFA2B5598E400483A2A /* GetMeRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DF92B5598E400483A2A /* GetMeRes.swift */; };
 		3B282DFC2B55A74200483A2A /* GetMyGroupsV2Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */; };
+		3B37EE1A2B6FF91700F7F902 /* JoinNicknameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37EE182B6FF91700F7F902 /* JoinNicknameVC.swift */; };
+		3B37EE1B2B6FF91700F7F902 /* JoinNicknameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B37EE192B6FF91700F7F902 /* JoinNicknameVC.xib */; };
 		3BC078452B4F441B0032BB4C /* GroupMembersRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */; };
 		3BDAA8E72B6FE1540038BE4B /* JoinCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */; };
 		3BDAA8E82B6FE1540038BE4B /* JoinCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */; };
@@ -224,6 +226,8 @@
 		3B282DF72B5381F900483A2A /* GroupInfoRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoRes.swift; sourceTree = "<group>"; };
 		3B282DF92B5598E400483A2A /* GetMeRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMeRes.swift; sourceTree = "<group>"; };
 		3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyGroupsV2Res.swift; sourceTree = "<group>"; };
+		3B37EE182B6FF91700F7F902 /* JoinNicknameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinNicknameVC.swift; sourceTree = "<group>"; };
+		3B37EE192B6FF91700F7F902 /* JoinNicknameVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinNicknameVC.xib; sourceTree = "<group>"; };
 		3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersRes.swift; sourceTree = "<group>"; };
 		3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCodeVC.swift; sourceTree = "<group>"; };
 		3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinCodeVC.xib; sourceTree = "<group>"; };
@@ -753,6 +757,8 @@
 				AA5E9C762B2E8C3D000E3A30 /* GroupJoinVC.xib */,
 				3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */,
 				3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */,
+				3B37EE182B6FF91700F7F902 /* JoinNicknameVC.swift */,
+				3B37EE192B6FF91700F7F902 /* JoinNicknameVC.xib */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -994,6 +1000,7 @@
 			files = (
 				AAF169962B10907200EF82A4 /* imgs.xcassets in Resources */,
 				1CA1BBB42ACF109B000C5F7E /* SpoqaHanSansNeo-Light.ttf in Resources */,
+				3B37EE1B2B6FF91700F7F902 /* JoinNicknameVC.xib in Resources */,
 				3BDAA8E82B6FE1540038BE4B /* JoinCodeVC.xib in Resources */,
 				61AC7FAB2AB6D4A500B0B6B5 /* LaunchScreen.storyboard in Resources */,
 				61AC7FA82AB6D4A500B0B6B5 /* Assets.xcassets in Resources */,
@@ -1039,6 +1046,7 @@
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				1CA1BBC42ADABEBD000C5F7E /* TextField.swift in Sources */,
 				1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */,
+				3B37EE1A2B6FF91700F7F902 /* JoinNicknameVC.swift in Sources */,
 				1CFEDCB12B6E41C900EEE673 /* ResultRecordTableViewCell.swift in Sources */,
 				1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */,
 				3BC078452B4F441B0032BB4C /* GroupMembersRes.swift in Sources */,
