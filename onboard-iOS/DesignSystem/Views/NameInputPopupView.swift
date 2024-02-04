@@ -133,6 +133,10 @@ final class NameInputPopupView: UIViewController, View {
     
     // MARK: - Initialize
     
+    var name: String?
+    var desc: String?
+    var organization: String?
+    
     init(reactor: GroupCreateReactor) {
         super.init(nibName: nil, bundle: nil)
         
@@ -154,12 +158,12 @@ final class NameInputPopupView: UIViewController, View {
     func bindAction(reactor: GroupCreateReactor) {
         self.registerButton.addAction(UIAction { [weak self] _ in
             let req = GroupCreateCompleteEntity.Req(
-                name: "",
-                description: "",
-                organization: "",
+                name: self?.name ?? "",
+                description: self?.desc ?? "",
+                organization: self?.organization ?? "",
                 profileImageUrl: nil,
                 profileImageUuid: "",
-                nickname: LoginSessionManager.getNickname() ?? ""
+                nickname: self?.textField.text ?? (LoginSessionManager.getNickname() ?? "")
             )
             
             print("req \(req)")
