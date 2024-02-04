@@ -71,7 +71,7 @@ final class GroupCreateView: UIView {
         return image
     }()
     
-    private let nameTextField: TextField = {
+    let nameTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
@@ -112,7 +112,7 @@ final class GroupCreateView: UIView {
         return image
     }()
     
-    private let descriptionTextView: TextView = {
+    let descriptionTextView: TextView = {
         let textView = TextView()
         textView.textColor = Colors.Gray_15
         textView.font = Font.Typography.body3_R
@@ -138,7 +138,7 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    private let organizationTextField: TextField = {
+    let organizationTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R

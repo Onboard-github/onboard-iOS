@@ -91,8 +91,13 @@ final class GroupCreateViewController: KeyboardHalfHandlingViewController, View 
         self.groupCreateView.didTapRegisterButton = { [self] in
             let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
             let reactor = GroupCreateReactor(useCase: useCase)
+            
             let nameInputVC = NameInputPopupView(reactor: reactor)
             nameInputVC.modalPresentationStyle = .overFullScreen
+            
+            nameInputVC.name = groupCreateView.nameTextField.text
+            nameInputVC.desc = groupCreateView.descriptionTextView.text
+            nameInputVC.organization = groupCreateView.organizationTextField.text
             
             self.present(nameInputVC, animated: false, completion: nil)
         }

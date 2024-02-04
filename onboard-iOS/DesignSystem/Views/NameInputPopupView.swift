@@ -133,6 +133,10 @@ final class NameInputPopupView: UIViewController, View {
     
     // MARK: - Initialize
     
+    var name: String?
+    var desc: String?
+    var organization: String?
+    
     init(reactor: GroupCreateReactor) {
         super.init(nibName: nil, bundle: nil)
         
@@ -160,6 +164,12 @@ final class NameInputPopupView: UIViewController, View {
                 profileImageUrl: nil,
                 profileImageUuid: GroupCreateSingleton.shared.groupImageUuid.value,
                 nickname: LoginSessionManager.getNickname() ?? ""
+                name: self?.name ?? "",
+                description: self?.desc ?? "",
+                organization: self?.organization ?? "",
+                profileImageUrl: nil,
+                profileImageUuid: "",
+                nickname: self?.textField.text ?? (LoginSessionManager.getNickname() ?? "")
             )
             
             self?.reactor?.action.onNext(.createGroups(req: req))
