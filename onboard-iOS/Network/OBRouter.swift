@@ -30,6 +30,7 @@ enum OBRouter: URLRequestConvertible {
     case groupInfo(groupId: Int) // 단일 그룹 상세 정보 보기
     
     case groupDelete(groupId: Int) // 그룹 삭제하기, Onwer만 가능
+    case groupAccessCodeCheck(groupId: Int, accessCode: String) // 그룹 id 가지고 액세스 코드 확인
     
     // Match
     
@@ -84,7 +85,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .groupList, .gameList, .randomImage, .getTerms, .gameResult, .gamePlayer, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .validateNicknameGuest:
             return .get
-        case .auth, .addGroup, .pickerImage, .createGroup, .addGroupGuest, .addPlayer:
+        case .auth, .addGroup, .pickerImage, .createGroup, .addGroupGuest, .addPlayer, .groupAccessCodeCheck:
             return .post
         case .setUser:
             return .put
@@ -139,6 +140,8 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group/123/member/validateNickname"
         case .addPlayer:
             return "api/v1/group/123/guest"
+        case let .groupAccessCodeCheck(groupId, _):
+            return "api/v1/group/\(groupId)/accessCode"
         }
     }
     
@@ -148,7 +151,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage, .validateNicknameGuest, .addPlayer:
             return nil
-        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete:
+        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
@@ -162,6 +165,10 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case let .addGroupGuest(_, nickname):
             return ["nickname": nickname ?? "x"]
+            
+        case let .groupAccessCodeCheck(groupId, accessCode):
+            return ["accessCode": accessCode]
+            
         case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .validateNicknameGuest:
             return nil
             
@@ -177,7 +184,7 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .myGroupUnsubscribe, .groupDelete:
+        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck:
             return nil
         case let .groupList(params):
             return params

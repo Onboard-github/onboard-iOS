@@ -39,6 +39,7 @@ class GroupJoinVC: UIViewController {
 //        print("group Id \(group?.id)")
 
         let codeVC = JoinCodeVC(nibName: "JoinCodeVC", bundle: .main)
+        codeVC.groupId = group?.id
         codeVC.modalTransitionStyle = .crossDissolve
         codeVC.modalPresentationStyle = .overFullScreen
         present(codeVC, animated: true)

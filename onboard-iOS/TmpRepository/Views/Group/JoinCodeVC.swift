@@ -7,9 +7,15 @@
 
 import UIKit
 
+struct AccessCodeCheck: Codable{
+    var result: Bool
+}
+
 class JoinCodeVC: UIViewController {
+    var groupId: Int?
     @IBOutlet weak var codeTextView: UITextView!
-    
+    @IBOutlet weak var roundedView: RoundedView!
+    @IBOutlet weak var failTextLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         codeTextView.delegate = self
@@ -25,6 +31,21 @@ extension JoinCodeVC: UITextViewDelegate {
         // 텍스트 뷰의 텍스트 길이가 6 이상인 경우 콘솔에 메시지 출력
         if textView.text.count >= 6 {
 //            print("6글자 이상 입력되었습니다.")
+            Task {
+                let result = try await OBNetworkManager
+                    .shared
+                    .asyncRequest(
+                        object: AccessCodeCheck.self,
+                        router: OBRouter.groupAccessCodeCheck(groupId: groupId!, accessCode: textView.text)
+                    )
+                if result.value?.result != true {
+                    failTextLabel.isHidden = false
+                    roundedView.borderWidth = 1
+                } else {
+                    failTextLabel.isHidden = true
+                    roundedView.borderWidth = 0
+                }
+            }
         }
     }
     
