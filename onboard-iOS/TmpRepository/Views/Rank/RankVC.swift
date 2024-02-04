@@ -66,7 +66,7 @@ class RankVC: UIViewController {
             var menus: [UIMenuElement] = []
             
             let groupAddMenu = UIAction(title: "가입 코드 보기", image: nil, handler: { [weak self] _ in
-                AlertManager.show(message: "코드보기")
+                AlertManager.show(message: "가입 코드: \(self?.selectedGroupInfo?.accessCode ?? "")")
             })
             menus.append(groupAddMenu)
             
