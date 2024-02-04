@@ -164,12 +164,6 @@ final class NameInputPopupView: UIViewController, View {
                 profileImageUrl: nil,
                 profileImageUuid: GroupCreateSingleton.shared.groupImageUuid.value,
                 nickname: LoginSessionManager.getNickname() ?? ""
-                name: self?.name ?? "",
-                description: self?.desc ?? "",
-                organization: self?.organization ?? "",
-                profileImageUrl: nil,
-                profileImageUuid: "",
-                nickname: self?.textField.text ?? (LoginSessionManager.getNickname() ?? "")
             )
             
             self?.reactor?.action.onNext(.createGroups(req: req))
