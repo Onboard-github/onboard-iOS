@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JoinCodeVC" customModule="onboard_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="codeTextView" destination="pbt-YL-1Uh" id="CRX-6H-6h0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -89,6 +90,7 @@
                         </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="gDH-oF-etS" secondAttribute="bottom" constant="36" id="BIg-Dy-UUM"/>
                         <constraint firstAttribute="trailing" secondItem="brM-dT-fwN" secondAttribute="trailing" constant="18" id="DFR-cs-Is3"/>
@@ -109,6 +111,9 @@
                             <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="J1J-Oh-Zff" appends="YES" id="KJ9-oj-ufm"/>
+                    </connections>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -130,6 +135,7 @@
                 <action selector="dimmedTap:" destination="-1" id="UNN-8N-46Y"/>
             </connections>
         </tapGestureRecognizer>
+        <tapGestureRecognizer id="J1J-Oh-Zff"/>
     </objects>
     <resources>
         <image name="icon_code" width="20" height="20"/>
