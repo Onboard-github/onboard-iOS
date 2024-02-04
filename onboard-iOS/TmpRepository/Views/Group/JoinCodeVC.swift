@@ -36,7 +36,7 @@ extension JoinCodeVC: UITextViewDelegate {
                     .shared
                     .asyncRequest(
                         object: AccessCodeCheck.self,
-                        router: OBRouter.groupAccessCodeCheck(groupId: groupId!, accessCode: textView.text)
+                        router: OBRouter.groupAccessCodeCheck(groupId: groupId!, accessCode: textView.text.uppercased())
                     )
                 if result.value?.result != true {
                     failTextLabel.isHidden = false
