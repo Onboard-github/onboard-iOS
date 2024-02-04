@@ -35,6 +35,8 @@ class RankVC: UIViewController {
     var selectedGroupInfo: GroupInfoRes? {
         didSet {
             titleLabelButton.setTitle(selectedGroupInfo?.name, for: .normal)
+            state = .loaded
+            gameDetailTableView.reloadData()
         }
     }
     
