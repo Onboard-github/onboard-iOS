@@ -41,6 +41,11 @@
                                             <constraint firstAttribute="width" constant="24" id="md5-DM-W1w"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiR-Xt-dUG">
+                                        <rect key="frame" x="353" y="10" width="24" height="24"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                    </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="45h-Yc-3tA">
                                         <rect key="frame" x="204.66666666666666" y="21" width="12" height="12"/>
                                         <accessibility key="accessibilityConfiguration">
@@ -59,12 +64,16 @@
                                     <constraint firstItem="GkZ-5x-wAb" firstAttribute="leading" secondItem="LP4-cH-Di0" secondAttribute="leading" id="B9M-VR-mbt"/>
                                     <constraint firstAttribute="trailing" secondItem="yLq-ke-kdr" secondAttribute="trailing" constant="16" id="Lyt-92-HgH"/>
                                     <constraint firstItem="45h-Yc-3tA" firstAttribute="centerY" secondItem="Acn-eA-rWq" secondAttribute="centerY" id="P7W-wl-7vT"/>
+                                    <constraint firstItem="qiR-Xt-dUG" firstAttribute="trailing" secondItem="yLq-ke-kdr" secondAttribute="trailing" id="dzW-a8-XE8"/>
+                                    <constraint firstItem="qiR-Xt-dUG" firstAttribute="top" secondItem="yLq-ke-kdr" secondAttribute="top" id="exn-LI-Onw"/>
                                     <constraint firstItem="Acn-eA-rWq" firstAttribute="centerX" secondItem="LP4-cH-Di0" secondAttribute="centerX" id="h4G-zb-Yqg"/>
                                     <constraint firstItem="yLq-ke-kdr" firstAttribute="top" secondItem="LP4-cH-Di0" secondAttribute="top" constant="10" id="mco-4C-w69"/>
                                     <constraint firstAttribute="trailing" secondItem="GkZ-5x-wAb" secondAttribute="trailing" id="sT5-Xj-NVu"/>
                                     <constraint firstAttribute="bottom" secondItem="GkZ-5x-wAb" secondAttribute="bottom" id="t62-ZM-SJe"/>
+                                    <constraint firstItem="qiR-Xt-dUG" firstAttribute="bottom" secondItem="yLq-ke-kdr" secondAttribute="bottom" id="tTz-2L-00m"/>
                                     <constraint firstItem="45h-Yc-3tA" firstAttribute="leading" secondItem="Acn-eA-rWq" secondAttribute="trailing" constant="-8" id="tZu-Cu-IT3"/>
                                     <constraint firstItem="Acn-eA-rWq" firstAttribute="top" secondItem="LP4-cH-Di0" secondAttribute="top" constant="9" id="wMj-0U-kc1"/>
+                                    <constraint firstItem="qiR-Xt-dUG" firstAttribute="leading" secondItem="yLq-ke-kdr" secondAttribute="leading" id="xVs-12-Iy1"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rB-3U-19A">
@@ -106,7 +115,7 @@
                                                                         <fragment content="온보드는">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                                                                <font key="NSFont" metaFont="system" size="17"/>
                                                                                 <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -136,7 +145,7 @@
                                                                         <fragment content="기반">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                                                                <font key="NSFont" metaFont="system" size="17"/>
                                                                                 <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -151,7 +160,7 @@
                                                                         <fragment content="서비스입니다">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                                                                <font key="NSFont" metaFont="system" size="17"/>
                                                                                 <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -168,7 +177,7 @@
                                                                         <fragment content="내">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                                                                <font key="NSFont" metaFont="system" size="17"/>
                                                                                 <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -183,7 +192,7 @@
                                                                         <fragment content="모임을">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                                                                <font key="NSFont" metaFont="system" size="17"/>
                                                                                 <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -198,7 +207,7 @@
                                                                         <fragment content="찾아">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                                                                <font key="NSFont" metaFont="system" size="17"/>
                                                                                 <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -213,7 +222,7 @@
                                                                         <fragment content="가입하고">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                                                                <font key="NSFont" metaFont="system" size="17"/>
                                                                                 <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -228,7 +237,7 @@
                                                                         <fragment content="랭킹을">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                                                                <font key="NSFont" metaFont="system" size="17"/>
                                                                                 <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -243,7 +252,7 @@
                                                                         <fragment content="확인해보세요">
                                                                             <attributes>
                                                                                 <color key="NSColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
+                                                                                <font key="NSFont" metaFont="system" size="17"/>
                                                                                 <font key="NSOriginalFont" metaFont="system" size="17"/>
                                                                                 <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
@@ -1037,6 +1046,7 @@
                     <connections>
                         <outlet property="gameDetailTableView" destination="G3i-me-Tk8" id="0z1-xf-3qb"/>
                         <outlet property="moreButton" destination="yLq-ke-kdr" id="gjW-Vh-bMF"/>
+                        <outlet property="moreButton2" destination="qiR-Xt-dUG" id="FCd-JR-KKC"/>
                         <outlet property="pagingBackground" destination="GkZ-5x-wAb" id="itj-I6-3kZ"/>
                         <outlet property="titleLabelArrow" destination="45h-Yc-3tA" id="TX6-SR-z40"/>
                         <outlet property="titleLabelButton" destination="Acn-eA-rWq" id="Mv6-ej-oQ6"/>

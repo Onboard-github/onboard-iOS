@@ -61,6 +61,22 @@ class RankVC: UIViewController {
     var selectedGroupInfo: GroupInfoRes? {
         didSet {
             titleLabelButton.setTitle(selectedGroupInfo?.name, for: .normal)
+            
+            // 메뉴 항목을 생성합니다.
+            var menus: [UIMenuElement] = []
+            
+            let groupAddMenu = UIAction(title: "가입 코드 보기", image: nil, handler: { [weak self] _ in
+                AlertManager.show(message: "코드보기")
+            })
+            menus.append(groupAddMenu)
+            
+            let menu = UIMenu(title: "", children: menus)
+                
+            // 버튼에 메뉴를 설정합니다.
+            moreButton2.menu = menu
+            moreButton2.showsMenuAsPrimaryAction = true
+            
+            
             state = .loaded
             gameDetailTableView.reloadData()
         }
@@ -72,10 +88,12 @@ class RankVC: UIViewController {
                 titleLabelButton.isHidden = true
                 titleLabelArrow.isHidden = true
                 moreButton.isHidden = true
+                moreButton2.isHidden = true
             } else {
                 titleLabelButton.isHidden = false
                 titleLabelArrow.isHidden = false
                 moreButton.isHidden = false
+                moreButton2.isHidden = false
             }
             
             gameDetailTableView.reloadData()
@@ -83,6 +101,7 @@ class RankVC: UIViewController {
     }
     
     @IBOutlet weak var moreButton: UIImageView!
+    @IBOutlet weak var moreButton2: UIButton!
     @IBOutlet weak var titleLabelArrow: UIImageView!
     @IBOutlet weak var titleLabelButton: UIButton!
     
