@@ -34,6 +34,16 @@ final class GroupCreateCompleteView: UIView {
         }
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
+        
+        // 어두운 뷰를 생성합니다.
+        let darkOverlay = UIView(frame: imageView.bounds)
+        darkOverlay.backgroundColor = UIColor.black.withAlphaComponent(0.3) // 여기서 알파 값을 조정하여 어둠의 정도를 변경할 수 있습니다.
+        darkOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight] // 부모 뷰의 크기가 변경될 때 같이 변경되도록 설정합니다.
+        
+        // 생성한 어두운 뷰를 이미지 뷰에 추가합니다.
+        imageView.addSubview(darkOverlay)
+        
+        
         return imageView
     }()
     
