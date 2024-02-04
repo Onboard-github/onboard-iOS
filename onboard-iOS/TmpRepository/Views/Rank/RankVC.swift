@@ -91,10 +91,15 @@ class RankVC: UIViewController {
         gameDetailTableView.bounces = false
         gameDetailTableView.allowsSelection = false
         
-        getJoinedGroups()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        refresh()
+    }
+    
+    private func refresh() {
+        getJoinedGroups()
         fetchGameList()
     }
     
