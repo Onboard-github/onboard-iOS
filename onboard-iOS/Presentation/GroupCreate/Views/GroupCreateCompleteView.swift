@@ -269,15 +269,15 @@ final class GroupCreateCompleteView: UIView {
     
     private func getCreateData() {
         GroupCreateSingleton.shared.groupImageUrl
-            .subscribe(onNext: { [weak self] urlString in
-                if let url = URL(string: urlString),
-                   let data = try? Data(contentsOf: url),
-                   let image = UIImage(data: data) {
-                    self?.backgroundImage.image = image
+            .subscribe(onNext: { [weak self] imgUrl in
+                ImageLoader.loadImage(from: imgUrl) { [weak self] image in
+                    DispatchQueue.main.async {
+                        self?.backgroundImage.image = image
+                    }
                 }
             })
             .disposed(by: disposeBag)
-
+        
         GroupCreateSingleton.shared.organizationText
             .subscribe(onNext: { [weak self] text in
                 self?.organizationLabel.text = text
