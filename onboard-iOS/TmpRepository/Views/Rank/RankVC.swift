@@ -23,6 +23,32 @@ class RankVC: UIViewController {
             guard let list = joinedGroupList?.contents else { return }
             print("가입 수 : \(list.count)")
             
+            var menus: [UIMenuElement] = []
+            
+            // 메뉴 항목을 생성합니다.
+            let groupAddMenu = UIAction(title: "새 그룹 가입", image: nil, handler: { [weak self] _ in
+                let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
+                let groupList = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
+                let navVC = UINavigationController(rootViewController: groupList)
+                navVC.modalPresentationStyle = .fullScreen
+                self?.present(navVC, animated: true)
+            })
+            menus.append(groupAddMenu)
+            
+            list.forEach { group in
+                let groupAddMenu = UIAction(title: group.groupName, image: nil, handler: { _ in
+                    // 목록 1 선택 시 실행할 코드
+                    print("\(group.groupName) 선택됨")
+                })
+                menus.append(groupAddMenu)
+            }
+            
+            let menu = UIMenu(title: "", children: menus)
+                
+            // 버튼에 메뉴를 설정합니다.
+            titleLabelButton.menu = menu
+            titleLabelButton.showsMenuAsPrimaryAction = true
+            
             if list.count > 0 {
                 getGroupInfo(groupId: joinedGroupList?.contents.first?.groupId ?? -1)
             }
@@ -66,7 +92,7 @@ class RankVC: UIViewController {
         }
     }
     @IBOutlet weak var gameDetailTableView: UITableView!
-    
+
     @IBOutlet weak var pagingBackground: UIView!
     let pagingViewController = PagingViewController()
     
