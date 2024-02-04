@@ -37,6 +37,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             appleUseCase: AppleLoginUseCaseImpl(
                 appleLoginManager: AppleLoginManagerImpl(),
                 authRepository: AuthRepositoryImpl()
+            ), 
+            googleUseCase: GoogleLoginUseCaseImpl(
+                googleLoginManager: GoogleLoginManagerImpl(),
+                authRepository: AuthRepositoryImpl()
             ),
             kakaoUseCase: KakaoLoginUseCaseImpl(
                 kakaoLoginManager: KakaoLoginManagerImpl(),

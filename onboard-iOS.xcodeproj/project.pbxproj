@@ -37,6 +37,8 @@
 		1C6FEAE92B4D503500CFC647 /* AccessCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE82B4D503500CFC647 /* AccessCodeViewController.swift */; };
 		1C6FEAEB2B4D5D7E00CFC647 /* MemberManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAEA2B4D5D7E00CFC647 /* MemberManageTableViewCell.swift */; };
 		1C6FEAED2B4D5E7700CFC647 /* MemberManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAEC2B4D5E7700CFC647 /* MemberManageViewController.swift */; };
+		1C7A952B2B6FEA7000F68DA6 /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A952A2B6FEA7000F68DA6 /* GoogleLoginManager.swift */; };
+		1C7A952D2B6FEA9B00F68DA6 /* GoogleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7A952C2B6FEA9B00F68DA6 /* GoogleLoginUseCase.swift */; };
 		1C7E8DB52B0D586300BA00F7 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7E8DB42B0D586300BA00F7 /* TextView.swift */; };
 		1C840B392B5935B900067E91 /* PlayerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840B382B5935B900067E91 /* PlayerRepository.swift */; };
 		1C840B3B2B5936BE00067E91 /* PlayerUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840B3A2B5936BE00067E91 /* PlayerUseCase.swift */; };
@@ -62,7 +64,6 @@
 		1CD208702B1BAEF1008E710E /* GroupCreateReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086F2B1BAEF1008E710E /* GroupCreateReactor.swift */; };
 		1CD208722B1BB339008E710E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD208712B1BB339008E710E /* ImageLoader.swift */; };
 		1CDD02E62B35C58100502C04 /* GroupCreateCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDD02E52B35C58100502C04 /* GroupCreateCompleteViewController.swift */; };
-		1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */; };
 		1CDF4D2F2AB8A53900CFDFBA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1CDF4D2E2AB8A53900CFDFBA /* GoogleSignIn */; };
 		1CEBA1522B333D24007AD07C /* GroupCreateCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */; };
 		1CF1A8482B6159810098A6AA /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */; };
@@ -185,6 +186,8 @@
 		1C6FEAE82B4D503500CFC647 /* AccessCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessCodeViewController.swift; sourceTree = "<group>"; };
 		1C6FEAEA2B4D5D7E00CFC647 /* MemberManageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManageTableViewCell.swift; sourceTree = "<group>"; };
 		1C6FEAEC2B4D5E7700CFC647 /* MemberManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberManageViewController.swift; sourceTree = "<group>"; };
+		1C7A952A2B6FEA7000F68DA6 /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginManager.swift; sourceTree = "<group>"; };
+		1C7A952C2B6FEA9B00F68DA6 /* GoogleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginUseCase.swift; sourceTree = "<group>"; };
 		1C7E8DB42B0D586300BA00F7 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		1C840B382B5935B900067E91 /* PlayerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRepository.swift; sourceTree = "<group>"; };
 		1C840B3A2B5936BE00067E91 /* PlayerUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUseCase.swift; sourceTree = "<group>"; };
@@ -210,7 +213,6 @@
 		1CD2086F2B1BAEF1008E710E /* GroupCreateReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateReactor.swift; sourceTree = "<group>"; };
 		1CD208712B1BB339008E710E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		1CDD02E52B35C58100502C04 /* GroupCreateCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteViewController.swift; sourceTree = "<group>"; };
-		1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleLoginManager.swift; path = "onboard-iOS/Repository/SocialLogin/GoogleLoginManager.swift"; sourceTree = SOURCE_ROOT; };
 		1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteView.swift; sourceTree = "<group>"; };
 		1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNicknameDTO.swift; sourceTree = "<group>"; };
 		1CF1A84D2B615A2A0098A6AA /* GuestNickNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNickNameEntity.swift; sourceTree = "<group>"; };
@@ -486,14 +488,6 @@
 			path = State;
 			sourceTree = "<group>";
 		};
-		1CDF4D312AB95FA300CFDFBA /* SocialLogin */ = {
-			isa = PBXGroup;
-			children = (
-				1CDF4D2B2AB8A48300CFDFBA /* GoogleLoginManager.swift */,
-			);
-			path = SocialLogin;
-			sourceTree = "<group>";
-		};
 		1CF1A8532B615CA60098A6AA /* Reactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +538,7 @@
 			children = (
 				611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */,
 				AA09C27F2ACBEB0100F51A96 /* KakaoLoginUseCase.swift */,
+				1C7A952C2B6FEA9B00F68DA6 /* GoogleLoginUseCase.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -619,7 +614,6 @@
 			children = (
 				1C327B192B556EB500F02C26 /* Game */,
 				AA7035F92ADB81B600B26537 /* Group */,
-				1CDF4D312AB95FA300CFDFBA /* SocialLogin */,
 				611D8CA62ABECFB10074A55A /* Auth */,
 				61AC7FCC2AB6DDD900B0B6B5 /* DTO */,
 				61AC7FCB2AB6DD2B00B0B6B5 /* Test */,
@@ -718,6 +712,7 @@
 			children = (
 				611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */,
 				AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */,
+				1C7A952A2B6FEA7000F68DA6 /* GoogleLoginManager.swift */,
 				1CD208712B1BB339008E710E /* ImageLoader.swift */,
 				1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */,
 			);
@@ -1060,6 +1055,7 @@
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				1CD2086A2B1BAB91008E710E /* GroupCreateRepository.swift in Sources */,
+				1C7A952B2B6FEA7000F68DA6 /* GoogleLoginManager.swift in Sources */,
 				AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
@@ -1128,6 +1124,7 @@
 				1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */,
 				1C327B242B55747C00F02C26 /* GameResultReactor.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
+				1C7A952D2B6FEA9B00F68DA6 /* GoogleLoginUseCase.swift in Sources */,
 				3B282DF82B5381F900483A2A /* GroupInfoRes.swift in Sources */,
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
 				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateSingleton.swift in Sources */,
@@ -1137,7 +1134,6 @@
 				AA91058B2ADA4B9C00DA2E96 /* GroupSearchCell.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				3BE4B8C62B67B2E9006679DC /* EmptyGroupCell.swift in Sources */,
-				1CDF4D2C2AB8A48300CFDFBA /* GoogleLoginManager.swift in Sources */,
 				AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */,
 				AA83D9732AE57AC80068362B /* AuthEntity.swift in Sources */,
 				1C327B1D2B55714800F02C26 /* GameEntity.swift in Sources */,
