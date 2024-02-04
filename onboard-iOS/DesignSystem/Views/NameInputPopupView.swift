@@ -76,6 +76,7 @@ final class NameInputPopupView: UIViewController, View {
         leftView.addSubview(textFieldImage)
         textField.leftView = leftView
         textField.leftViewMode = .always
+        textField.becomeFirstResponder()
         return textField
     }()
     
