@@ -19,6 +19,7 @@ class GameDataSingleton {
     var playerData: [PlayerList] = []
     var selectedPlayerData: [PlayerList] = []
     var guestNickNameData: String?
+    var groupId: Int?
     
     private let textSubject = PublishSubject<String>()
     
@@ -61,6 +62,16 @@ class GameDataSingleton {
         if let index = self.selectedPlayerData.firstIndex(where: { $0.title == player.title }) {
             self.selectedPlayerData.remove(at: index)
         }
+    }
+    
+    // 그룹 아이디 저장하기
+    func setGroupId(_ id: Int) {
+        groupId = id
+    }
+    
+    // 그룹 아이디 가져오기
+    func getGroupId() -> Int? {
+        return groupId
     }
 }
 
