@@ -331,6 +331,11 @@ extension ResultRecordView: UITableViewDelegate, UITableViewDataSource {
             score: "\(TextLabels.game_record_score)"
         )
         
+        if indexPath.row == 0 {
+            cell.setNicknameLabelColor(Colors.Orange_10)
+            cell.setResultLabelColor(Colors.Orange_10)
+        }
+        
         return cell
     }
 }

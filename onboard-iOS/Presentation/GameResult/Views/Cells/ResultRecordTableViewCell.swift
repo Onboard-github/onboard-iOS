@@ -137,4 +137,12 @@ final class ResultRecordTableViewCell: UITableViewCell {
         
         self.rankingLabel.textColor = (ranking == "1") ? Colors.Orange_10 : Colors.Gray_14
     }
+    
+    internal func setNicknameLabelColor(_ color: UIColor) {
+        self.titleLabel.textColor = color
+    }
+    
+    internal func setResultLabelColor(_ color: UIColor) {
+        self.resultLabel.textColor = color
+    }
 }
