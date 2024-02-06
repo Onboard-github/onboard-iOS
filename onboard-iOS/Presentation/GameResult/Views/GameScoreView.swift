@@ -16,6 +16,8 @@ final class GameScoreView: UIView {
     
     var disposeBag = DisposeBag()
     
+    var didTapButtonAction: (() -> Void)?
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -130,7 +132,14 @@ final class GameScoreView: UIView {
     private func configure() {
         self.backgroundColor = Colors.White
         
+        self.addConfigure()
         self.makeConstraints()
+    }
+    
+    private func addConfigure() {
+        self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.didTapButtonAction?()
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
