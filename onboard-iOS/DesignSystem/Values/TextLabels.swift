@@ -68,6 +68,9 @@ struct TextLabels {
     static let game_record_placeholder = "0"
     static let game_record_score = "점"
     static let game_record_confirm = "기록 완료"
+    static let game_record_player_count = "인 플레이"
+    static let game_record_guide = "최종 기록 이후 점수 수정이 불가능합니다\n정말로 확정하시겠습니까?"
+    static let game_record_register = "기록 확정"
     
     // MARK: - PopupView
     
