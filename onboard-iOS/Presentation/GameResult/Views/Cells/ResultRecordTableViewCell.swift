@@ -11,8 +11,16 @@ final class ResultRecordTableViewCell: UITableViewCell {
     
     // MARK: - UI
     
+    private let rankingLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.Typography.title2
+        return label
+    }()
+    
     private let rankLabel: UILabel = {
         let label = UILabel()
+        label.textColor = Colors.Gray_13
+        label.font = Font.Typography.body5_R
         return label
     }()
     
