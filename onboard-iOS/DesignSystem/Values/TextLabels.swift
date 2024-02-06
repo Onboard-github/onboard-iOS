@@ -71,6 +71,7 @@ struct TextLabels {
     static let game_record_player_count = "인 플레이"
     static let game_record_guide = "최종 기록 이후 점수 수정이 불가능합니다\n정말로 확정하시겠습니까?"
     static let game_record_register = "기록 확정"
+    static let game_record_recording = "모임을 등록하는 중.. "
     
     // MARK: - PopupView
     
