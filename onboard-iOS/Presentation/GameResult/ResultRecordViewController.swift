@@ -36,5 +36,20 @@ final class ResultRecordViewController: UIViewController {
     // MARK: - Configure
     
     private func configure() {
+        self.addConfigure()
+    }
+    
+    private func addConfigure() {
+        
+        resultRecordView.didTapCloseButtonAction = { [weak self] in
+            self?.dismiss(animated: false)
+        }
+        
+        resultRecordView.didTapRegisterButtonAction = {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+            
+            UIApplication.shared.windows.first?.rootViewController = homeTabController
+        }
     }
 }
