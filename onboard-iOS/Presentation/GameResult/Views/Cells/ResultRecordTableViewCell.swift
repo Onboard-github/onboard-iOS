@@ -9,6 +9,17 @@ import UIKit
 
 final class ResultRecordTableViewCell: UITableViewCell {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let rankingLeading: CGFloat = 20
+        static let rankLeading: CGFloat = 2
+        static let imageLeading: CGFloat = 15
+        static let titleLeading: CGFloat = 12
+        static let resultTrailing: CGFloat = 7
+        static let scroeTrailing: CGFloat = 20
+    }
+    
     // MARK: - UI
     
     private let rankingLabel: UILabel = {
@@ -49,4 +60,63 @@ final class ResultRecordTableViewCell: UITableViewCell {
         label.font = Font.Typography.body5_R
         return label
     }()
+    
+    // MARK: - Initialize
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.rankingLabel)
+        self.addSubview(self.rankLabel)
+        self.addSubview(self.titleImage)
+        self.addSubview(self.titleLabel)
+        self.addSubview(self.resultLabel)
+        self.addSubview(self.scoreLabel)
+        
+        self.rankingLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(Metric.rankingLeading)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.rankLabel.snp.makeConstraints {
+            $0.leading.equalTo(rankingLabel.snp.trailing).offset(Metric.rankLeading)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.titleImage.snp.makeConstraints {
+            $0.leading.equalTo(rankLabel.snp.trailing).offset(Metric.imageLeading)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.titleLabel.snp.makeConstraints {
+            $0.leading.equalTo(titleImage.snp.trailing).offset(Metric.titleLeading)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.resultLabel.snp.makeConstraints {
+            $0.trailing.equalTo(scoreLabel.snp.leading).offset(-Metric.resultTrailing)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.scoreLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-Metric.scroeTrailing)
+            $0.centerY.equalToSuperview()
+        }
+    }
 }
