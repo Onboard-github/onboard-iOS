@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0319F72B71B5AC00BD3D44 /* ResultRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0319F62B71B5AC00BD3D44 /* ResultRecordView.swift */; };
 		1C0364482B5FBBB000CA4CB9 /* TextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */; };
 		1C03644A2B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0364492B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift */; };
 		1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */; };
@@ -157,6 +158,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C0319F62B71B5AC00BD3D44 /* ResultRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRecordView.swift; sourceTree = "<group>"; };
 		1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldState.swift; sourceTree = "<group>"; };
 		1C0364492B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlingViewController.swift; sourceTree = "<group>"; };
 		1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateEntity.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				1CF1A85A2B618AFC0098A6AA /* GameScoreView.swift */,
+				1C0319F62B71B5AC00BD3D44 /* ResultRecordView.swift */,
 				1C3017182B4ED09D00128E5C /* Cells */,
 			);
 			path = Views;
@@ -1105,6 +1108,7 @@
 				AA9105622AD9A6BA00DA2E96 /* GroupSearchView.swift in Sources */,
 				AAC4663C2B15107300A2126E /* UIColor+Util.swift in Sources */,
 				1C6FEAE32B4D47B500CFC647 /* SettingOptions.swift in Sources */,
+				1C0319F72B71B5AC00BD3D44 /* ResultRecordView.swift in Sources */,
 				61AC7FBE2AB6D73B00B0B6B5 /* TestReactor.swift in Sources */,
 				1CFD50DA2ACE79190031269C /* Colors.swift in Sources */,
 				61AC7FD12AB6DFBF00B0B6B5 /* TestEntity.swift in Sources */,
