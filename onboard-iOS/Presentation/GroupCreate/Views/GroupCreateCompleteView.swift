@@ -196,7 +196,10 @@ final class GroupCreateCompleteView: UIView {
         }), for: .touchUpInside)
         
         self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
-            self?.findViewController()?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+            
+            UIApplication.shared.windows.first?.rootViewController = homeTabController
         }), for: .touchUpInside)
     }
     
