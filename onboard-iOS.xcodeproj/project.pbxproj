@@ -10,6 +10,7 @@
 		1C0319F72B71B5AC00BD3D44 /* ResultRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0319F62B71B5AC00BD3D44 /* ResultRecordView.swift */; };
 		1C0319F92B71BE8800BD3D44 /* ResultRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0319F82B71BE8800BD3D44 /* ResultRecordViewController.swift */; };
 		1C0319FB2B71CB6500BD3D44 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0319FA2B71CB6500BD3D44 /* LoadingView.swift */; };
+		1C0319FD2B71DCE800BD3D44 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0319FC2B71DCE800BD3D44 /* Toast.swift */; };
 		1C0364482B5FBBB000CA4CB9 /* TextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */; };
 		1C03644A2B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0364492B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift */; };
 		1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */; };
@@ -163,6 +164,7 @@
 		1C0319F62B71B5AC00BD3D44 /* ResultRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRecordView.swift; sourceTree = "<group>"; };
 		1C0319F82B71BE8800BD3D44 /* ResultRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRecordViewController.swift; sourceTree = "<group>"; };
 		1C0319FA2B71CB6500BD3D44 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		1C0319FC2B71DCE800BD3D44 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldState.swift; sourceTree = "<group>"; };
 		1C0364492B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlingViewController.swift; sourceTree = "<group>"; };
 		1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateEntity.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */,
 				1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */,
 				1C0364492B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift */,
+				1C0319FC2B71DCE800BD3D44 /* Toast.swift */,
 			);
 			path = Values;
 			sourceTree = "<group>";
@@ -1146,6 +1149,7 @@
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				1C7A952D2B6FEA9B00F68DA6 /* GoogleLoginUseCase.swift in Sources */,
 				3B282DF82B5381F900483A2A /* GroupInfoRes.swift in Sources */,
+				1C0319FD2B71DCE800BD3D44 /* Toast.swift in Sources */,
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
 				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateSingleton.swift in Sources */,
 				1CF1A85B2B618AFC0098A6AA /* GameScoreView.swift in Sources */,
