@@ -194,6 +194,13 @@ class RankVC: UIViewController {
             $0.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).offset(-30)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-30)
         }
+        
+        self.recordButton.addAction(UIAction { [weak self] _ in
+            let reactor = GameResultReactor(useCase: GameResultUseCaseImpl(repository: GameResultRepositoryImpl()))
+            let vc = UINavigationController(rootViewController: GameResultViewController(reactor: reactor))
+            vc.modalPresentationStyle = .overFullScreen
+            self?.present(vc, animated: true)
+        }, for: .touchUpInside)
     }
 }
 
