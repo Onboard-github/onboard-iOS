@@ -35,6 +35,8 @@ final class ResultRecordView: UIView {
         static let tableViewLRMargin: CGFloat = 20
         static let guideLabelSpacing: CGFloat = 20
         static let registerButtonHeight: CGFloat = 52
+        static let separatorViewLRMargin: CGFloat = 20
+        static let separatorViewHeight: CGFloat = 1
     }
     
     // MARK: - UI
@@ -183,6 +185,8 @@ final class ResultRecordView: UIView {
     private func configure() {
         self.makeConstraints()
         self.getData()
+        
+        self.setSeparatorView()
     }
     
     private func makeConstraints() {
@@ -275,5 +279,25 @@ final class ResultRecordView: UIView {
                 self?.timeLabel.text = text
             })
             .disposed(by: disposeBag)
+    }
+}
+
+extension ResultRecordView {
+    
+    private func setSeparatorView() {
+        
+        let positions = [20, 255]
+        
+        for i in 0..<positions.count {
+            let separatorView = UIView()
+            separatorView.backgroundColor = Colors.Gray_3
+            self.contentView.addSubview(separatorView)
+            
+            separatorView.snp.makeConstraints {
+                $0.top.equalTo(self.gameImage.snp.bottom).offset(CGFloat(positions[i]))
+                $0.leading.trailing.equalToSuperview().inset(Metric.separatorViewLRMargin)
+                $0.height.equalTo(Metric.separatorViewHeight)
+            }
+        }
     }
 }
