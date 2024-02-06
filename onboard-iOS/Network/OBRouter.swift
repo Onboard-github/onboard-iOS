@@ -129,17 +129,21 @@ enum OBRouter: URLRequestConvertible {
         case .getMyGroupsV2:
             return "api/v2/user/me/group"
         case .gameResult:
-            return "api/v1/group/123/game"
+            let groupId = GameDataSingleton.shared.getGroupId()!
+            return "api/v1/group/\(groupId)/game"
         case .gamePlayer:
-            return "api/v1/group/123/member"
+            let groupId = GameDataSingleton.shared.getGroupId()!
+            return "api/v1/group/\(groupId)/member"
         case let .myGroupUnsubscribe(groupId):
             return "api/v1/group/\(groupId)/me"
         case let .groupDelete(groupId):
             return "api/v1/group/\(groupId)"
         case .validateNicknameGuest:
-            return "api/v1/group/123/member/validateNickname"
+            let groupId = GameDataSingleton.shared.getGroupId()!
+            return "api/v1/group/\(groupId)/member/validateNickname"
         case .addPlayer:
-            return "api/v1/group/123/guest"
+            let groupId = GameDataSingleton.shared.getGroupId()!
+            return "api/v1/group/\(groupId)/guest"
         case let .groupAccessCodeCheck(groupId, _):
             return "api/v1/group/\(groupId)/accessCode"
         }
