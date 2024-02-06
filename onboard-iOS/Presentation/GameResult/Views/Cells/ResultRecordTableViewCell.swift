@@ -16,9 +16,9 @@ final class ResultRecordTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let titleImage: UIImage = {
-        let image = UIImage()
-        return image
+    private let titleImage: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
     }()
     
     private let titleLabel: UILabel = {
