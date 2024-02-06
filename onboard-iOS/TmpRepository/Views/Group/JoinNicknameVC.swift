@@ -43,7 +43,9 @@ class JoinNicknameVC: UIViewController {
             print(result.value)
             
             if result.value?.isAvailable == true {
-                
+                let loadingVC = GroupJoinLoadingVC(nibName: "GroupJoinLoadingVC", bundle: .main)
+                loadingVC.modalPresentationStyle = .overFullScreen
+                present(loadingVC, animated: true)
             } else {
 //                roundedInputView.borderWidth = 1
                 subtitleTextView.textColor = UIColor(red: 1.0, green: 0, blue: 0, alpha: 1.0)

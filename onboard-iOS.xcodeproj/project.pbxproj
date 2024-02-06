@@ -83,6 +83,8 @@
 		3BDAA8E72B6FE1540038BE4B /* JoinCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */; };
 		3BDAA8E82B6FE1540038BE4B /* JoinCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */; };
 		3BE4B8C62B67B2E9006679DC /* EmptyGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE4B8C52B67B2E9006679DC /* EmptyGroupCell.swift */; };
+		3BFB194A2B7297090013C3C5 /* GroupJoinLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFB19482B7297090013C3C5 /* GroupJoinLoadingVC.swift */; };
+		3BFB194B2B7297090013C3C5 /* GroupJoinLoadingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BFB19492B7297090013C3C5 /* GroupJoinLoadingVC.xib */; };
 		611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */; };
 		611D8CA22AB886B10074A55A /* AppleLoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */; };
 		611D8CA82ABECFFC0074A55A /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D8CA72ABECFFC0074A55A /* AuthRepository.swift */; };
@@ -232,6 +234,8 @@
 		3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCodeVC.swift; sourceTree = "<group>"; };
 		3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinCodeVC.xib; sourceTree = "<group>"; };
 		3BE4B8C52B67B2E9006679DC /* EmptyGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGroupCell.swift; sourceTree = "<group>"; };
+		3BFB19482B7297090013C3C5 /* GroupJoinLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupJoinLoadingVC.swift; sourceTree = "<group>"; };
+		3BFB19492B7297090013C3C5 /* GroupJoinLoadingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupJoinLoadingVC.xib; sourceTree = "<group>"; };
 		611D8C9F2AB884C10074A55A /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		611D8CA12AB886B10074A55A /* AppleLoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginUseCase.swift; sourceTree = "<group>"; };
 		611D8CA32AB8874D0074A55A /* AuthEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEntity.swift; sourceTree = "<group>"; };
@@ -759,6 +763,8 @@
 				3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */,
 				3B37EE182B6FF91700F7F902 /* JoinNicknameVC.swift */,
 				3B37EE192B6FF91700F7F902 /* JoinNicknameVC.xib */,
+				3BFB19482B7297090013C3C5 /* GroupJoinLoadingVC.swift */,
+				3BFB19492B7297090013C3C5 /* GroupJoinLoadingVC.xib */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -1000,6 +1006,7 @@
 			files = (
 				AAF169962B10907200EF82A4 /* imgs.xcassets in Resources */,
 				1CA1BBB42ACF109B000C5F7E /* SpoqaHanSansNeo-Light.ttf in Resources */,
+				3BFB194B2B7297090013C3C5 /* GroupJoinLoadingVC.xib in Resources */,
 				3B37EE1B2B6FF91700F7F902 /* JoinNicknameVC.xib in Resources */,
 				3BDAA8E82B6FE1540038BE4B /* JoinCodeVC.xib in Resources */,
 				61AC7FAB2AB6D4A500B0B6B5 /* LaunchScreen.storyboard in Resources */,
@@ -1089,6 +1096,7 @@
 				61AC7FC02AB6D74A00B0B6B5 /* TestUseCase.swift in Sources */,
 				AA3E7D5F2B254159007A6BE9 /* GameSkeletonCell.swift in Sources */,
 				AAF169922B10900100EF82A4 /* LoginSelectVC.swift in Sources */,
+				3BFB194A2B7297090013C3C5 /* GroupJoinLoadingVC.swift in Sources */,
 				1C967FA82B24CBF80002E6F1 /* NameInputPopupView.swift in Sources */,
 				AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */,
 				1CA1BBB92ACF123D000C5F7E /* Typography.swift in Sources */,
