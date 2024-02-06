@@ -134,5 +134,7 @@ final class ResultRecordTableViewCell: UITableViewCell {
         self.titleLabel.text = nickname
         self.resultLabel.text = result
         self.scoreLabel.text = score
+        
+        self.rankingLabel.textColor = (ranking == "1") ? Colors.Orange_10 : Colors.Gray_14
     }
 }
