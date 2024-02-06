@@ -18,6 +18,7 @@ class JoinNicknameVC: UIViewController {
     @IBOutlet weak var roundedInputView: RoundedView!
     
     var groupId: Int?
+    var accessCode: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +41,12 @@ class JoinNicknameVC: UIViewController {
                     router: OBRouter.validateNickname(groupId: groupId, nickname: self.nicknameTextInput.text)
                 )
             
-            print(result.value)
-            
             if result.value?.isAvailable == true {
                 let loadingVC = GroupJoinLoadingVC(nibName: "GroupJoinLoadingVC", bundle: .main)
                 loadingVC.nickName = nicknameTextInput.text
                 loadingVC.modalPresentationStyle = .overFullScreen
+                loadingVC.accessCode = accessCode
+                loadingVC.groupId = groupId
                 present(loadingVC, animated: true)
             } else {
 //                roundedInputView.borderWidth = 1

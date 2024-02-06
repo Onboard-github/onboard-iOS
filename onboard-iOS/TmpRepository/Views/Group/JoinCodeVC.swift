@@ -46,6 +46,7 @@ extension JoinCodeVC: UITextViewDelegate {
                     nicknameVC.modalTransitionStyle = .crossDissolve
                     nicknameVC.modalPresentationStyle = .overCurrentContext
                     nicknameVC.groupId = groupId
+                    nicknameVC.accessCode = textView.text.uppercased()
                     present(nicknameVC, animated: true)
                 } else {
                     failTextLabel.isHidden = false

@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Alamofire
 
 class GroupJoinLoadingVC: UIViewController {
+    var groupId: Int?
+    var accessCode: String?
     var nickName: String?
     
     @IBOutlet weak var loadingIndicatorView: UIView!
@@ -45,10 +48,23 @@ class GroupJoinLoadingVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // 로딩화면 2초 보여줌
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             [weak self] in
-            self?.loadingIndicatorView.isHidden = true
-            self?.completedView.isHidden = false
+            Task { [weak self] in
+                let result = try await OBNetworkManager
+                    .shared
+                    .asyncRequest(
+                        object: Empty.self,
+                        router: OBRouter.joinGroupHost(groupId: self?.groupId ?? -1, nickname: self?.nickName ?? "", accessCode: self?.accessCode ?? "", guestId: nil)                    )
+                if result.response?.statusCode == 200 {
+                    self?.loadingIndicatorView.isHidden = true
+                    self?.completedView.isHidden = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: { [weak self] in
+                        self?.presentingViewController?.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true)
+                    })
+                }
+            }
         })
     }
 
