@@ -39,6 +39,13 @@ final class GroupCreateCompleteView: UIView {
         return imageView
     }()
     
+    private let dimmedView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+    
     private let completeLabel: UILabel = {
         let label = UILabel()
         label.text = TextLabels.group_complete_text
@@ -195,6 +202,7 @@ final class GroupCreateCompleteView: UIView {
     
     private func makeConstraints() {
         self.addSubview(self.backgroundImage)
+        self.backgroundImage.addSubview(self.dimmedView)
         
         self.backgroundImage.addSubview(self.completeLabel)
         
@@ -210,6 +218,10 @@ final class GroupCreateCompleteView: UIView {
         self.backgroundImage.addSubview(self.confirmButton)
         
         self.backgroundImage.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        self.dimmedView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
