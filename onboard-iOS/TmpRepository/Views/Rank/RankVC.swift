@@ -23,6 +23,7 @@ class RankVC: UIViewController {
             guard let list = joinedGroupList?.contents else { return }
             print("가입 수 : \(list.count)")
             for group in list {
+                print("groupId:", group.groupId)
                 GameDataSingleton.shared.setGroupId(group.groupId)
             }
             
@@ -141,7 +142,7 @@ class RankVC: UIViewController {
         gameDetailTableView.bounces = false
         gameDetailTableView.allowsSelection = false
         
-        
+        self.configureButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -177,6 +178,21 @@ class RankVC: UIViewController {
                 AlertManager.show(message: error.localizedDescription)
                 throw error
             }
+        }
+    }
+    
+    private let recordButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "icon_plusGame"), for: .normal)
+        return button
+    }()
+    
+    private func configureButton() {
+        self.gameDetailTableView.addSubview(self.recordButton)
+        
+        self.recordButton.snp.makeConstraints {
+            $0.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).offset(-30)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-30)
         }
     }
 }
