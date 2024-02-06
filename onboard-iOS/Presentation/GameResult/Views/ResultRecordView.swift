@@ -15,6 +15,9 @@ final class ResultRecordView: UIView {
     
     var disposeBag = DisposeBag()
     
+    var didTapCloseButtonAction: (() -> Void)?
+    var didTapRegisterButtonAction: (() -> Void)?
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -185,10 +188,21 @@ final class ResultRecordView: UIView {
     // MARK: - Configure
     
     private func configure() {
+        self.addConfigure()
         self.makeConstraints()
         self.getData()
         
         self.setSeparatorView()
+    }
+    
+    private func addConfigure() {
+        self.closeButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.didTapCloseButtonAction?()
+        }), for: .touchUpInside)
+        
+        self.registerButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.didTapRegisterButtonAction?()
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
