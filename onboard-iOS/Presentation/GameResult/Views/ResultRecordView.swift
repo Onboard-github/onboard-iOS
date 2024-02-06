@@ -131,6 +131,8 @@ final class ResultRecordView: UIView {
         view.backgroundColor = Colors.White
         view.separatorStyle = .none
         
+        view.delegate = self
+        view.dataSource = self
         view.register(ResultRecordTableViewCell.self,
                       forCellReuseIdentifier: "ResultRecordTableViewCell")
         return view
@@ -299,5 +301,36 @@ extension ResultRecordView {
                 $0.height.equalTo(Metric.separatorViewHeight)
             }
         }
+    }
+}
+
+extension ResultRecordView: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return GameDataSingleton.shared.selectedPlayerData.count
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultRecordTableViewCell",
+                                                 for: indexPath) as! ResultRecordTableViewCell
+        
+        let selectedPlayer = GameDataSingleton.shared.selectedPlayerData[indexPath.item]
+        
+        cell.configure(
+            ranking: "\(indexPath.row + 1)",
+            rank: "\(TextLabels.game_record_rank)",
+            image: selectedPlayer.image,
+            nickname: selectedPlayer.title,
+            result: selectedPlayer.score!,
+            score: "\(TextLabels.game_record_score)"
+        )
+        
+        return cell
     }
 }

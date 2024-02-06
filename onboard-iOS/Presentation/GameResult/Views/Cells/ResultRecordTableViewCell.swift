@@ -119,4 +119,20 @@ final class ResultRecordTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
         }
     }
+    
+    internal func configure(
+        ranking: String,
+        rank: String,
+        image: UIImage,
+        nickname: String,
+        result: String,
+        score: String
+    ) {
+        self.rankingLabel.text = ranking
+        self.rankLabel.text = rank
+        self.titleImage.image = image
+        self.titleLabel.text = nickname
+        self.resultLabel.text = result
+        self.scoreLabel.text = score
+    }
 }
