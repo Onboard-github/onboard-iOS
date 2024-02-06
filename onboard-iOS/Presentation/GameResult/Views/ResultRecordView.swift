@@ -9,6 +9,28 @@ import UIKit
 
 final class ResultRecordView: UIView {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let contentViewLRMargin: CGFloat = 20
+        static let contentViewHeight: CGFloat = 452
+        static let gameImageTopMargin: CGFloat = 30
+        static let gameImageWidth: CGFloat = 40
+        static let gameImageHeight: CGFloat = 50
+        static let gameLabelTopMargin: CGFloat = 35
+        static let gameLabelLeadingSpacing: CGFloat = 15
+        static let stackViewLeadingSpacing: CGFloat = 10
+        static let closeButtonTopMargin: CGFloat = 20
+        static let closeButtonTrailingMargin: CGFloat = 30
+        static let playViewTrailingMargin: CGFloat = 20
+        static let playViewWidth: CGFloat = 72
+        static let playViewHeight: CGFloat = 22
+        static let tableViewTBMargin: CGFloat = 30
+        static let tableViewLRMargin: CGFloat = 20
+        static let guideLabelSpacing: CGFloat = 20
+        static let registerButtonHeight: CGFloat = 52
+    }
+    
     // MARK: - UI
     
     private let backgroundView: UIView = {
@@ -137,4 +159,100 @@ final class ResultRecordView: UIView {
         stview.spacing = 2
         return stview
     }()
+    
+    // MARK: - Initialize
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.backgroundView)
+        self.backgroundView.addSubview(self.contentView)
+        self.contentView.addSubview(self.gameImage)
+        self.contentView.addSubview(self.gameLabel)
+        self.contentView.addSubview(self.calendarStackView)
+        self.contentView.addSubview(self.timeStackView)
+        self.contentView.addSubview(self.closeButton)
+        self.contentView.addSubview(self.playView)
+        self.playView.addSubview(self.playLabel)
+        self.contentView.addSubview(self.resultRecordTableView)
+        self.contentView.addSubview(self.guideLabel)
+        self.contentView.addSubview(self.registerButton)
+        
+        self.backgroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        self.contentView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(Metric.contentViewLRMargin)
+            $0.centerX.centerY.equalToSuperview()
+            $0.height.equalTo(Metric.contentViewHeight)
+        }
+        
+        self.gameImage.snp.makeConstraints {
+            $0.top.leading.equalToSuperview().inset(Metric.gameImageTopMargin)
+            $0.width.equalTo(Metric.gameImageWidth)
+            $0.height.equalTo(Metric.gameImageHeight)
+        }
+        
+        self.gameLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(Metric.gameLabelTopMargin)
+            $0.leading.equalTo(gameImage.snp.trailing).offset(Metric.gameLabelLeadingSpacing)
+        }
+        
+        self.calendarStackView.snp.makeConstraints {
+            $0.bottom.equalTo(self.gameImage)
+            $0.leading.equalTo(gameImage.snp.trailing).offset(Metric.gameLabelLeadingSpacing)
+        }
+        
+        self.timeStackView.snp.makeConstraints {
+            $0.bottom.equalTo(self.gameImage)
+            $0.leading.equalTo(calendarStackView.snp.trailing).offset(Metric.stackViewLeadingSpacing)
+        }
+        
+        self.closeButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(Metric.closeButtonTopMargin)
+            $0.trailing.equalToSuperview().inset(Metric.closeButtonTrailingMargin)
+        }
+        
+        self.playView.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(Metric.playViewTrailingMargin)
+            $0.bottom.equalTo(self.gameImage)
+            $0.width.equalTo(Metric.playViewWidth)
+            $0.height.equalTo(Metric.playViewHeight)
+        }
+        
+        self.playLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
+        
+        self.resultRecordTableView.snp.makeConstraints {
+            $0.top.equalTo(gameImage.snp.bottom).offset(Metric.tableViewTBMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.tableViewLRMargin)
+            $0.bottom.equalTo(guideLabel.snp.top).offset(-Metric.tableViewTBMargin)
+        }
+        
+        self.guideLabel.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(Metric.guideLabelSpacing)
+            $0.bottom.equalTo(registerButton.snp.top).offset(-Metric.guideLabelSpacing)
+        }
+        
+        self.registerButton.snp.makeConstraints {
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(Metric.registerButtonHeight)
+        }
+    }
 }
