@@ -38,7 +38,16 @@ final class GameScoreViewController: UIViewController {
     // MARK: - Configure
     
     private func configure() {
+        self.addAction()
         self.setNavigationBar()
+    }
+    
+    private func addAction() {
+        self.gameScoreView.didTapButtonAction = {
+            let resultRecordViewController = ResultRecordViewController()
+            resultRecordViewController.modalPresentationStyle = .overFullScreen
+            self.present(resultRecordViewController, animated: false)
+        }
     }
     
     private func setNavigationBar() {
