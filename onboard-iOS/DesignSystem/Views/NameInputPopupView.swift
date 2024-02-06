@@ -132,6 +132,11 @@ final class NameInputPopupView: UIViewController, View {
         return view
     }()
     
+    private let loadingView: LoadingView = {
+        let view = LoadingView()
+        return view
+    }()
+    
     // MARK: - Initialize
     
     var name: String?
@@ -162,22 +167,31 @@ final class NameInputPopupView: UIViewController, View {
     
     func bindAction(reactor: GroupCreateReactor) {
         self.registerButton.addAction(UIAction { [weak self] _ in
-            let req = GroupCreateCompleteEntity.Req(
-                name: GroupCreateSingleton.shared.nameText.value,
-                description: GroupCreateSingleton.shared.descriptionText.value,
-                organization: GroupCreateSingleton.shared.organizationText.value,
-                profileImageUrl: nil,
-                profileImageUuid: GroupCreateSingleton.shared.groupImageUuid.value,
-                nickname: LoginSessionManager.getNickname() ?? ""
-            )
+            self?.view.endEditing(true)
+            self?.contentView.isHidden = true
+            self?.loadingView.setLoadingLabel(TextLabels.game_record_recording)
+            self?.loadingView.isLoading = true
             
-            self?.reactor?.action.onNext(.createGroups(req: req))
-            
-            let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
-            let reactor = GroupCreateReactor(useCase: useCase)
-            let completeVC = GroupCreateCompleteViewController(reactor: reactor)
-            completeVC.modalPresentationStyle = .overFullScreen
-            self?.present(completeVC, animated: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+                self?.loadingView.isLoading = false
+                
+                let req = GroupCreateCompleteEntity.Req(
+                    name: GroupCreateSingleton.shared.nameText.value,
+                    description: GroupCreateSingleton.shared.descriptionText.value,
+                    organization: GroupCreateSingleton.shared.organizationText.value,
+                    profileImageUrl: nil,
+                    profileImageUuid: GroupCreateSingleton.shared.groupImageUuid.value,
+                    nickname: LoginSessionManager.getNickname() ?? ""
+                )
+                
+                self?.reactor?.action.onNext(.createGroups(req: req))
+                
+                let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
+                let reactor = GroupCreateReactor(useCase: useCase)
+                let completeVC = GroupCreateCompleteViewController(reactor: reactor)
+                completeVC.modalPresentationStyle = .overFullScreen
+                self?.present(completeVC, animated: false)
+            }
         }, for: .touchUpInside)
     }
     
@@ -194,6 +208,8 @@ final class NameInputPopupView: UIViewController, View {
         self.contentView.addSubview(self.titleStackView)
         self.contentView.addSubview(self.textFieldStackView)
         self.contentView.addSubview(self.registerButton)
+        
+        self.backgroundView.addSubview(self.loadingView)
         
         self.backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -223,6 +239,10 @@ final class NameInputPopupView: UIViewController, View {
             $0.top.equalTo(textFieldStackView.snp.bottom).offset(Metric.itemSpacing)
             $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(Metric.buttonHeight)
+        }
+        
+        self.loadingView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }
