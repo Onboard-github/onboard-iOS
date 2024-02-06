@@ -7,7 +7,13 @@
 
 import UIKit
 
+import RxSwift
+
 final class ResultRecordView: UIView {
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -176,6 +182,7 @@ final class ResultRecordView: UIView {
     
     private func configure() {
         self.makeConstraints()
+        self.getData()
     }
     
     private func makeConstraints() {
@@ -254,5 +261,19 @@ final class ResultRecordView: UIView {
             $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(Metric.registerButtonHeight)
         }
+    }
+    
+    private func getData() {
+        GameDataSingleton.shared.calendarText
+            .subscribe(onNext: { [weak self] text in
+                self?.calendarLabel.text = text
+            })
+            .disposed(by: disposeBag)
+        
+        GameDataSingleton.shared.timeText
+            .subscribe(onNext: { [weak self] text in
+                self?.timeLabel.text = text
+            })
+            .disposed(by: disposeBag)
     }
 }
