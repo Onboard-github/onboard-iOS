@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C0319F72B71B5AC00BD3D44 /* ResultRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0319F62B71B5AC00BD3D44 /* ResultRecordView.swift */; };
+		1C0319F92B71BE8800BD3D44 /* ResultRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0319F82B71BE8800BD3D44 /* ResultRecordViewController.swift */; };
 		1C0364482B5FBBB000CA4CB9 /* TextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */; };
 		1C03644A2B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0364492B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift */; };
 		1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */; };
@@ -159,6 +160,7 @@
 
 /* Begin PBXFileReference section */
 		1C0319F62B71B5AC00BD3D44 /* ResultRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRecordView.swift; sourceTree = "<group>"; };
+		1C0319F82B71BE8800BD3D44 /* ResultRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRecordViewController.swift; sourceTree = "<group>"; };
 		1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldState.swift; sourceTree = "<group>"; };
 		1C0364492B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlingViewController.swift; sourceTree = "<group>"; };
 		1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateEntity.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				1C30171D2B52D8EF00128E5C /* GameResultViewController.swift */,
 				1C327B272B5630DC00F02C26 /* PlayerSelectViewController.swift */,
 				1CF1A85C2B618D520098A6AA /* GameScoreViewController.swift */,
+				1C0319F82B71BE8800BD3D44 /* ResultRecordViewController.swift */,
 				1CF1A8532B615CA60098A6AA /* Reactor */,
 				1C3017172B4ED08B00128E5C /* Views */,
 				1C47C9952B597F3D00D80E9C /* ShareInstance */,
@@ -1125,6 +1128,7 @@
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
 				1C30170D2B4D718400128E5C /* AlertView.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
+				1C0319F92B71BE8800BD3D44 /* ResultRecordViewController.swift in Sources */,
 				1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */,
 				1C47C9972B597F7600D80E9C /* GameDataSingleton.swift in Sources */,
 				AAF1699F2B10E05200EF82A4 /* AgreeVC.swift in Sources */,
