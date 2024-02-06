@@ -22,6 +22,9 @@ class RankVC: UIViewController {
         didSet {
             guard let list = joinedGroupList?.contents else { return }
             print("가입 수 : \(list.count)")
+            for group in list {
+                GameDataSingleton.shared.setGroupId(group.groupId)
+            }
             
             var menus: [UIMenuElement] = []
             
