@@ -193,6 +193,9 @@ final class GroupCreateCompleteView: UIView {
         self.copyButton.addAction(UIAction(handler: { [weak self] _ in
             let pasteboard = UIPasteboard.general
             pasteboard.string = self?.accessCodeLabel.text
+            
+            Toast().showToast(image: IconImage.dice.image!,
+                              message: TextLabels.group_clipboard_message)
         }), for: .touchUpInside)
         
         self.confirmButton.addAction(UIAction(handler: { [weak self] _ in

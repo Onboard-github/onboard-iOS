@@ -29,6 +29,7 @@ struct TextLabels {
     static let group_accessCode_text = "참여코드"
     static let group_invite_text = "모임에 가입하기 위해서는 참여코드를 입력해야 합니다.\n코드를 공유하고 멤버들을 초대해보세요!"
     static let confirm_text = "확인"
+    static let group_clipboard_message = "클립보드에 복사되었습니다."
     
     // MARK: - Group Setting
     
