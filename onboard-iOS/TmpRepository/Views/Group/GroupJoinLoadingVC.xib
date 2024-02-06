@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupJoinLoadingVC" customModule="onboard_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="completedView" destination="pPV-4x-QaA" id="bMx-NJ-Vbo"/>
+                <outlet property="loadingIndicatorView" destination="PsR-cT-O5j" id="FTv-eF-4Oh"/>
+                <outlet property="nicknameLabel" destination="yhj-qL-GyH" id="rZx-qF-Q4p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -46,14 +49,58 @@
                         <constraint firstItem="U2p-hh-KWj" firstAttribute="top" secondItem="PsR-cT-O5j" secondAttribute="top" constant="2" id="rgA-zL-L3V"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPV-4x-QaA">
+                    <rect key="frame" x="16" y="276" width="361" height="300"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_dice" translatesAutoresizingMaskIntoConstraints="NO" id="Gvu-5Z-LB8">
+                            <rect key="frame" x="135.66666666666666" y="61" width="90" height="90"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="90" id="5hg-Tg-RS8"/>
+                                <constraint firstAttribute="width" constant="90" id="Yir-ne-vVJ"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhj-qL-GyH">
+                            <rect key="frame" x="8" y="180" width="345" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가입을 환영합니다!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqi-2g-gIQ">
+                            <rect key="frame" x="0.0" y="205" width="361" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <color key="textColor" red="1" green="0.4431372549" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="fqi-2g-gIQ" firstAttribute="top" secondItem="yhj-qL-GyH" secondAttribute="bottom" constant="4" id="2Pc-hZ-d5h"/>
+                        <constraint firstAttribute="trailing" secondItem="fqi-2g-gIQ" secondAttribute="trailing" id="38M-8A-8Y4"/>
+                        <constraint firstItem="Gvu-5Z-LB8" firstAttribute="centerY" secondItem="pPV-4x-QaA" secondAttribute="centerY" constant="-44" id="HaM-Gm-bxh"/>
+                        <constraint firstItem="Gvu-5Z-LB8" firstAttribute="centerX" secondItem="pPV-4x-QaA" secondAttribute="centerX" id="RvD-l4-JXb"/>
+                        <constraint firstAttribute="height" constant="300" id="eaB-J8-qeh"/>
+                        <constraint firstItem="fqi-2g-gIQ" firstAttribute="centerX" secondItem="pPV-4x-QaA" secondAttribute="centerX" id="hgn-us-cfU"/>
+                        <constraint firstItem="yhj-qL-GyH" firstAttribute="top" secondItem="Gvu-5Z-LB8" secondAttribute="bottom" constant="29" id="iQu-zs-hII"/>
+                        <constraint firstItem="fqi-2g-gIQ" firstAttribute="leading" secondItem="pPV-4x-QaA" secondAttribute="leading" id="ll2-mw-zue"/>
+                        <constraint firstItem="yhj-qL-GyH" firstAttribute="leading" secondItem="pPV-4x-QaA" secondAttribute="leading" constant="8" id="uWL-Wk-02f"/>
+                        <constraint firstAttribute="trailing" secondItem="yhj-qL-GyH" secondAttribute="trailing" constant="8" id="zGN-4B-Qke"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="PsR-cT-O5j" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ml4-lu-By8"/>
+                <constraint firstItem="pPV-4x-QaA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WBj-ZT-ZnT"/>
+                <constraint firstItem="pPV-4x-QaA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ZGi-0y-2Ry"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pPV-4x-QaA" secondAttribute="trailing" constant="16" id="gUO-En-ebc"/>
                 <constraint firstItem="PsR-cT-O5j" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="opU-Wg-VXZ"/>
+                <constraint firstItem="pPV-4x-QaA" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="xy7-0V-V1X"/>
             </constraints>
-            <point key="canvasLocation" x="-42" y="20"/>
+            <point key="canvasLocation" x="-43.511450381679388" y="19.718309859154932"/>
         </view>
     </objects>
+    <resources>
+        <image name="img_dice" width="80" height="81.666664123535156"/>
+    </resources>
 </document>

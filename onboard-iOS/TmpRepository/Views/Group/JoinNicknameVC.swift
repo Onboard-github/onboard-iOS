@@ -44,6 +44,7 @@ class JoinNicknameVC: UIViewController {
             
             if result.value?.isAvailable == true {
                 let loadingVC = GroupJoinLoadingVC(nibName: "GroupJoinLoadingVC", bundle: .main)
+                loadingVC.nickName = nicknameTextInput.text
                 loadingVC.modalPresentationStyle = .overFullScreen
                 present(loadingVC, animated: true)
             } else {
