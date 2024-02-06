@@ -38,17 +38,18 @@ extension JoinCodeVC: UITextViewDelegate {
                         object: AccessCodeCheck.self,
                         router: OBRouter.groupAccessCodeCheck(groupId: groupId!, accessCode: textView.text.uppercased())
                     )
-                if result.value?.result != true {
-                    failTextLabel.isHidden = false
-                    roundedView.borderWidth = 1
+                if result.value?.result == true {
+                    failTextLabel.isHidden = true
+                    roundedView.borderWidth = 0
                     
                     let nicknameVC = JoinNicknameVC(nibName: "JoinNicknameVC", bundle: .main)
                     nicknameVC.modalTransitionStyle = .crossDissolve
                     nicknameVC.modalPresentationStyle = .overCurrentContext
+                    nicknameVC.groupId = groupId
                     present(nicknameVC, animated: true)
                 } else {
-                    failTextLabel.isHidden = true
-                    roundedView.borderWidth = 0
+                    failTextLabel.isHidden = false
+                    roundedView.borderWidth = 1
                 }
             }
         }
@@ -60,6 +61,11 @@ extension JoinCodeVC: UITextViewDelegate {
         let currentText = textView.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+        
+        if updatedText.count < 6 {
+            failTextLabel.isHidden = true
+            roundedView.borderWidth = 0
+        }
         
         // 업데이트된 텍스트 길이가 7 미만인 경우에만 텍스트 변경 허용
         return updatedText.count < 7
