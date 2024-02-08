@@ -173,6 +173,11 @@ final class ResultRecordView: UIView {
         return stview
     }()
     
+    private let loadingView: ImageLoadingView = {
+        let view = ImageLoadingView()
+        return view
+    }()
+    
     // MARK: - Initialize
     
     override init(frame: CGRect) {
@@ -207,7 +212,7 @@ final class ResultRecordView: UIView {
     
     private func makeConstraints() {
         self.addSubview(self.backgroundView)
-        self.backgroundView.addSubview(self.contentView)
+        self.addSubview(self.contentView)
         self.contentView.addSubview(self.gameImage)
         self.contentView.addSubview(self.gameLabel)
         self.contentView.addSubview(self.calendarStackView)
@@ -218,6 +223,8 @@ final class ResultRecordView: UIView {
         self.contentView.addSubview(self.resultRecordTableView)
         self.contentView.addSubview(self.guideLabel)
         self.contentView.addSubview(self.registerButton)
+        
+        self.backgroundView.addSubview(self.loadingView)
         
         self.backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -280,6 +287,10 @@ final class ResultRecordView: UIView {
         self.registerButton.snp.makeConstraints {
             $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(Metric.registerButtonHeight)
+        }
+        
+        self.loadingView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     
