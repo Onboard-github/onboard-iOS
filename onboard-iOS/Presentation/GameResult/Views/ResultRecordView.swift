@@ -206,7 +206,18 @@ final class ResultRecordView: UIView {
         }), for: .touchUpInside)
         
         self.registerButton.addAction(UIAction(handler: { [weak self] _ in
-            self?.didTapRegisterButtonAction?()
+            self?.contentView.isHidden = true
+            self?.loadingView.showStatus()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                    sceneDelegate.window?.rootViewController = homeTabController
+                }
+            }
         }), for: .touchUpInside)
     }
     
