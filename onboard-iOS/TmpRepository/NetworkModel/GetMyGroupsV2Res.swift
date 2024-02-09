@@ -12,10 +12,12 @@ struct GetMyGroupsV2Res: Codable {
 }
 
 struct MyGroup: Codable {
-    var groupId: Int
-    var groupName: String
-    var nickname: String
-    var organization: String
-    var matchCount: Int
+    var id: Int
+    var name: String // "그룹 이름"
+    var description: String // "그룹 설명"
+    var organization: String // "그룹 소속"
+    var profileImageUrl: String // "uuid"
     var memberId: Int
+    var nickname: String
+    var matchCount: Int
 }

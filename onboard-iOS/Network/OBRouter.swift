@@ -104,17 +104,17 @@ enum OBRouter: URLRequestConvertible {
     var path: String {
         switch self {
         case .testAPI:
-            return "v1/test"
+            return "api/v1/test"
         case .auth:
-            return "v1/auth/login"
+            return "api/v1/auth/login"
         case .groupList, .addGroup:
-            return "v1/group"
+            return "api/v1/group"
         case .setUser, .getMe:
-            return "v1/user/me"
+            return "api/v1/user/me"
         case .gameList:
-            return "v1/group/0/game"
+            return "api/v1/group/0/game"
         case .pickerImage:
-            return "v1/file"
+            return "api/v1/file"
         case .randomImage:
             return "api/v1/group/default-image"
         case .createGroup:
@@ -130,7 +130,7 @@ enum OBRouter: URLRequestConvertible {
         case let .groupInfo(groupId):
             return "api/v1/group/\(groupId)"
         case .getMyGroupsV2:
-            return "api/v2/user/me/group"
+            return "api/v1/user/me/group"
         case .gameResult:
             let groupId = GameDataSingleton.shared.getGroupId()!
             return "api/v1/group/\(groupId)/game"

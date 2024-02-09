@@ -23,8 +23,8 @@ class RankVC: UIViewController {
             guard let list = joinedGroupList?.contents else { return }
             print("가입 수 : \(list.count)")
             for group in list {
-                print("groupId:", group.groupId)
-                GameDataSingleton.shared.setGroupId(group.groupId)
+                print("groupId:", group.id)
+                GameDataSingleton.shared.setGroupId(group.id)
             }
             
             var menus: [UIMenuElement] = []
@@ -40,9 +40,9 @@ class RankVC: UIViewController {
             menus.append(groupAddMenu)
             
             list.forEach { group in
-                let groupAddMenu = UIAction(title: group.groupName, image: nil, handler: { _ in
+                let groupAddMenu = UIAction(title: group.name, image: nil, handler: { _ in
                     // 목록 1 선택 시 실행할 코드
-                    print("\(group.groupName) 선택됨")
+                    print("\(group.name) 선택됨")
                 })
                 menus.append(groupAddMenu)
             }
@@ -54,7 +54,7 @@ class RankVC: UIViewController {
             titleLabelButton.showsMenuAsPrimaryAction = true
             
             if list.count > 0 {
-                getGroupInfo(groupId: joinedGroupList?.contents.first?.groupId ?? -1)
+                getGroupInfo(groupId: joinedGroupList?.contents.first?.id ?? -1)
             }
             if list.count == 0 {
                 state = .notJoinedGroup

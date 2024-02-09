@@ -42,8 +42,8 @@ class DevelopVC: UIViewController {
             let result = try await OBNetworkManager.shared.asyncRequest(object: GetMyGroupsV2Res.self, router: .getMyGroupsV2)
             if let groups = result.value?.contents {
                 for group in groups {
-                    try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .myGroupUnsubscribe(groupId: group.groupId))
-                    try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .groupDelete(groupId: group.groupId))
+                    try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .myGroupUnsubscribe(groupId: group.id))
+                    try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .groupDelete(groupId: group.id))
                     refresh()
                 }
             }
