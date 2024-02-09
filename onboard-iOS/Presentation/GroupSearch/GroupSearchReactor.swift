@@ -72,7 +72,7 @@ extension GroupSearchReactor {
             guard let self else { return Disposables.create() }
             Task {
                 do {
-                    await self.useCase.list(keyword: keyword, pageNumber: 0, pageSize: 10)
+                    await self.useCase.list(keyword: keyword, pageNumber: 0, pageSize: 1000)
                 }
             }
             return Disposables.create()

@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JoinNicknameVC" customModule="onboard_iOS" customModuleProvider="target">
             <connections>
+                <outlet property="nicknameTextInput" destination="C3W-Z7-cod" id="NKe-at-i5V"/>
+                <outlet property="roundedInputView" destination="IsY-Ga-l7M" id="wzB-ob-XrZ"/>
+                <outlet property="subtitleTextView" destination="cf9-6v-wGb" id="4J9-P6-fOr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -110,6 +113,9 @@
                                     <real key="value" value="0.0"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="joinButtonTap:" destination="-1" eventType="touchUpInside" id="BD4-nd-Cum"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -136,6 +142,9 @@
                             <real key="value" value="0.0"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="2XT-qN-Uj0" appends="YES" id="sBs-RE-Zax"/>
+                    </connections>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -148,13 +157,18 @@
                 <constraint firstItem="Hvz-3P-gwD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="mwb-TM-BLt"/>
             </constraints>
             <connections>
-                <outletCollection property="gestureRecognizers" destination="RPb-HE-2A8" appends="YES" id="X6w-lO-jGu"/>
+                <outletCollection property="gestureRecognizers" destination="Ib1-Tw-Zd7" appends="YES" id="TIy-SO-Knh"/>
             </connections>
             <point key="canvasLocation" x="-14.503816793893129" y="19.718309859154932"/>
         </view>
-        <tapGestureRecognizer id="RPb-HE-2A8">
+        <tapGestureRecognizer id="Ib1-Tw-Zd7" userLabel="dimmedTap">
             <connections>
-                <action selector="dimmedTap:" destination="-1" id="u8X-Qc-Uqr"/>
+                <action selector="dimmedTap:" destination="-1" id="ty3-Mr-VGN"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="2XT-qN-Uj0">
+            <connections>
+                <action selector="viewTap:" destination="-1" id="Shg-ug-vbu"/>
             </connections>
         </tapGestureRecognizer>
     </objects>
