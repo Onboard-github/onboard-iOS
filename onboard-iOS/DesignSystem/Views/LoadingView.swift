@@ -107,7 +107,6 @@ final class ImageLoadingView: UIView {
     
     private let loadingLabel: UILabel = {
         let label = UILabel()
-        label.text = TextLabels.imageLoading_loading
         label.textColor = Colors.Orange_10
         label.font = Font.Typography.body3_R
         return label
@@ -115,7 +114,6 @@ final class ImageLoadingView: UIView {
     
     private let completeLabel: UILabel = {
         let label = UILabel()
-        label.text = TextLabels.imageLoading_complete
         label.textColor = Colors.White
         label.font = Font.Typography.title1
         label.textAlignment = .center
@@ -200,5 +198,10 @@ final class ImageLoadingView: UIView {
             self?.loadingLabel.isHidden = true
             self?.completeLabel.isHidden = false
         }
+    }
+    
+    func setLabel(loading: String, complete: String) {
+        self.loadingLabel.text = loading
+        self.completeLabel.text = complete
     }
 }
