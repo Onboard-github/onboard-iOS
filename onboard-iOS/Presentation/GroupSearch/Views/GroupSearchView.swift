@@ -31,9 +31,17 @@ final class GroupSearchView: UIView {
     }
     
     // MARK: - UI
+    private let closeButton: UIButton = {
+        let button = UIButton()
+        button.snp.makeConstraints { make in
+            make.width.height.equalTo(20)
+        }
+        return button
+    }()
+    
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "활동하고 계신\n보드게임 모임을 찾아주세요."
+        titleLabel.text = "모임 둘러보기"
         titleLabel.numberOfLines = 0
         titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         return titleLabel
@@ -81,6 +89,7 @@ final class GroupSearchView: UIView {
     var disposeBag = DisposeBag()
     var didTapAddGroupButton: (() -> Void)?
     var searchBarValueChanged: ((String) -> Void)?
+    var didTapCloseButton: (() -> Void)?
     
     // MARK: - Initialize
     override init(frame: CGRect) {
@@ -131,6 +140,10 @@ final class GroupSearchView: UIView {
             self.didTapAddGroupButton?()
         }), for: .touchUpInside)
         
+        self.closeButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.didTapCloseButton?()
+        }), for: .touchUpInside)
+        
         searchBar.rx.text
             .distinctUntilChanged() // 이전 값과 같은 경우 무시
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance) // 입력 후 0.5초 대기
@@ -144,7 +157,14 @@ final class GroupSearchView: UIView {
         self.addSubview(self.titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).inset(Metric.titleTop)
-            make.leading.trailing.equalToSuperview().inset(Metric.side)
+            make.centerX.equalToSuperview()
+        }
+        
+        self.addSubview(self.closeButton)
+        closeButton.setImage(UIImage(named: "cross"), for: .normal)
+        closeButton.snp.makeConstraints { make in
+            make.centerY.equalTo(titleLabel)
+            make.trailing.equalToSuperview().inset(20)
         }
         
         self.addSubview(self.controlsStack)

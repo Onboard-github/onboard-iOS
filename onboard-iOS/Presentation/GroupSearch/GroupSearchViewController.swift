@@ -65,6 +65,10 @@ final class GroupSearchViewController: UIViewController, View {
 
             self?.navigationController?.present(navigationController, animated: true)
         }
+        
+        self.groupSearchView.didTapCloseButton = { [weak self] in
+            self?.dismiss(animated: true)
+        }
     }
 
     private func bindState(reactor: GroupSearchReactor) {
