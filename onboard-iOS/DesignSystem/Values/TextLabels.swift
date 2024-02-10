@@ -95,5 +95,5 @@ struct TextLabels {
     static let bottom_textField_already = "이미 있는 이름입니다. 다른 이름을 설정해주세요."
     
     static let imageLoading_loading = "점수 기록 중.."
-    static let imageLoading_complete = "테라포밍 마스\n점수 기록이 완료되었습니다!"
+    static let imageLoading_complete = "점수 기록이 완료되었습니다!"
 }
