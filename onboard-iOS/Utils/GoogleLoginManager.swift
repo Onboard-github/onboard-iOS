@@ -33,11 +33,9 @@ final class GoogleLoginManagerImpl: NSObject, GoogleLoginManager {
                 guard let signInResult = signInResult else { return }
                 let user = signInResult.user
 
-                if let gidToken = user.accessToken as? GIDToken {
+                if let gidToken = user.idToken {
                     let accessTokenString = gidToken.tokenString
                     self.token = accessTokenString
-                } else {
-                    print("변환 error")
                 }
             } else {
                 print("Google 로그인 실패: \(error?.localizedDescription ?? "Unknown error")")

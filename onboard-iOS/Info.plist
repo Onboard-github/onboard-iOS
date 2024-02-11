@@ -4,6 +4,8 @@
 <dict>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+    <key>GIDServerClientID</key>
+    <string>407255596267-oh8srvr5ddpv0qd53kdceeu8e7thjeld.apps.googleusercontent.com</string>
     <key>GIDClientID</key>
     <string>407255596267-ug3kch0n6tnc8bmdjj87q0amckjkp7jt.apps.googleusercontent.com</string>
 	<key>CFBundleURLTypes</key>
