@@ -139,10 +139,6 @@ final class NameInputPopupView: UIViewController, View {
     
     // MARK: - Initialize
     
-    var name: String?
-    var desc: String?
-    var organization: String?
-    
     init(reactor: GroupCreateReactor) {
         super.init(nibName: nil, bundle: nil)
         

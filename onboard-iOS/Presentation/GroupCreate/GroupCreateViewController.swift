@@ -95,10 +95,6 @@ final class GroupCreateViewController: KeyboardHalfHandlingViewController, View 
             let nameInputVC = NameInputPopupView(reactor: reactor)
             nameInputVC.modalPresentationStyle = .overFullScreen
             
-            nameInputVC.name = groupCreateView.nameTextField.text
-            nameInputVC.desc = groupCreateView.descriptionTextView.text
-            nameInputVC.organization = groupCreateView.organizationTextField.text
-            
             self.present(nameInputVC, animated: false, completion: nil)
         }
     }
