@@ -71,7 +71,7 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
     }
     
     private func makeConstraints() {
-        self.addSubview(self.deleteButton)
+        self.contentView.addSubview(self.deleteButton)
         self.addSubview(self.playerImage)
         self.addSubview(self.playerLabel)
         
