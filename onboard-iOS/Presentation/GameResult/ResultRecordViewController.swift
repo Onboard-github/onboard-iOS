@@ -37,6 +37,7 @@ final class ResultRecordViewController: UIViewController {
     
     private func configure() {
         self.addConfigure()
+        self.setupGestureRecognizer()
     }
     
     private func addConfigure() {
@@ -44,5 +45,18 @@ final class ResultRecordViewController: UIViewController {
         resultRecordView.didTapCloseButtonAction = { [weak self] in
             self?.dismiss(animated: false)
         }
+    }
+    
+    private func setupGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(backgroundTapped)
+        )
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func backgroundTapped() {
+        self.dismiss(animated: false)
     }
 }
