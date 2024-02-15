@@ -15,6 +15,7 @@ class GameDataSingleton {
     
     static let shared = GameDataSingleton()
     
+    var groupListCount = BehaviorRelay<Int>(value: 0)
     var gameData: GameResultEntity.Res.GameList?
     var playerData: [PlayerList] = []
     var selectedPlayerData: [PlayerList] = []
