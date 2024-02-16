@@ -15,6 +15,7 @@ protocol GroupSearchUseCase {
 
 protocol GroupRepository {
     func list(keyword: String?, pageNumber: Int, pageSize: Int) async throws -> GroupEntity.Res
+    func requestInfo(groupId: Int) async throws -> GroupInfoEntity.Res
 }
 
 final class GroupSearchUseCaseImpl: GroupSearchUseCase {
