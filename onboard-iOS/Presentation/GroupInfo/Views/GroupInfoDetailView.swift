@@ -9,6 +9,26 @@ import UIKit
 
 final class GroupInfoDetailView: UIView {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let topMargin: CGFloat = 30
+        static let leadingTrailingMargin: CGFloat = 25
+        static let settingButtonSize: CGFloat = 20
+        static let itemSpacing: CGFloat = 15
+        static let imageViewWidth: CGFloat = 114
+        static let imageViewHeight: CGFloat = 162
+        static let stackViewTopSpacing: CGFloat = 40
+        static let separatorViewHeight: CGFloat = 1
+        static let profileViewHeight: CGFloat = 68
+        static let diceImageSize: CGFloat = 28
+        static let meImageSize: CGFloat = 14
+        static let meStackViewTopMargin: CGFloat = 20
+        static let countLabelTopSpacing: CGFloat = 5
+        static let modifyButtonMargin: CGFloat = 10
+        static let exitImageSize: CGFloat = 24
+    }
+    
     // MARK: - UI
     
     private let backgroundView: UIView = {
@@ -181,7 +201,7 @@ final class GroupInfoDetailView: UIView {
     
     private let modifyButton: UIButton = {
         let button = UIButton()
-        button.setImage(IconImage.eyeDefault.image, for: .normal)
+        button.setImage(IconImage.pencil.image, for: .normal)
         return button
     }()
     
@@ -193,7 +213,7 @@ final class GroupInfoDetailView: UIView {
     
     private let exitImage: UIImageView = {
         let imageView = UIImageView()
-        let image = IconImage.circleX.image
+        let image = IconImage.exit.image
         imageView.image = image
         return imageView
     }()
@@ -247,4 +267,166 @@ final class GroupInfoDetailView: UIView {
         stview.spacing = 5
         return stview
     }()
+    
+    // MARK: - Initialize
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.backgroundView)
+        self.addSubview(self.infoView)
+        self.infoView.addSubview(self.nameLabel)
+        self.infoView.addSubview(self.settingButton)
+        self.infoView.addSubview(self.groupImageView)
+        self.infoView.addSubview(self.descriptionLabel)
+        self.infoView.addSubview(self.organizationLabel)
+        self.infoView.addSubview(self.memberStackView)
+        self.infoView.addSubview(self.memberNameLabel)
+        self.infoView.addSubview(self.ownerStackView)
+        self.infoView.addSubview(self.ownerNameLabel)
+        self.infoView.addSubview(self.codeStackView)
+        self.infoView.addSubview(self.copyStackView)
+        self.infoView.addSubview(self.separatorView)
+        self.infoView.addSubview(self.profileView)
+        self.profileView.addSubview(self.profileDiceImage)
+        self.profileView.addSubview(self.meStackView)
+        self.profileView.addSubview(self.playCountLabel)
+        self.profileView.addSubview(self.modifyButton)
+        self.infoView.addSubview(self.divView)
+        self.infoView.addSubview(self.exitStackView)
+        
+        self.backgroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        self.infoView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.trailing.equalTo(safeAreaLayoutGuide.snp.trailing)
+            $0.width.equalToSuperview().multipliedBy(2.3 / 3.0)
+        }
+        
+        self.nameLabel.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
+            $0.leading.equalToSuperview().offset(Metric.leadingTrailingMargin)
+            $0.trailing.equalTo(settingButton.snp.leading).offset(-Metric.leadingTrailingMargin)
+        }
+        
+        self.settingButton.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.settingButtonSize)
+            $0.top.equalTo(nameLabel.snp.top)
+            $0.trailing.equalToSuperview().offset(-Metric.leadingTrailingMargin)
+        }
+        
+        self.groupImageView.snp.makeConstraints {
+            $0.top.equalTo(nameLabel.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.equalToSuperview().offset(Metric.leadingTrailingMargin)
+            $0.width.equalTo(Metric.imageViewWidth)
+            $0.height.equalTo(Metric.imageViewHeight)
+        }
+        
+        self.descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(groupImageView.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leadingTrailingMargin)
+        }
+        
+        self.organizationLabel.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.equalToSuperview().offset(Metric.leadingTrailingMargin)
+        }
+        
+        self.memberStackView.snp.makeConstraints {
+            $0.top.equalTo(organizationLabel.snp.bottom).offset(Metric.stackViewTopSpacing)
+            $0.leading.equalToSuperview().offset(Metric.leadingTrailingMargin)
+        }
+        
+        self.memberNameLabel.snp.makeConstraints {
+            $0.top.equalTo(memberStackView.snp.top)
+            $0.leading.equalTo(memberStackView.snp.trailing).offset(Metric.leadingTrailingMargin)
+        }
+        
+        self.ownerStackView.snp.makeConstraints {
+            $0.top.equalTo(memberStackView.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.equalToSuperview().offset(Metric.leadingTrailingMargin)
+        }
+        
+        self.ownerNameLabel.snp.makeConstraints {
+            $0.top.equalTo(ownerStackView.snp.top)
+            $0.leading.equalTo(memberNameLabel.snp.leading)
+        }
+        
+        self.codeStackView.snp.makeConstraints {
+            $0.top.equalTo(ownerStackView.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.equalToSuperview().offset(Metric.leadingTrailingMargin)
+        }
+        
+        self.copyStackView.snp.makeConstraints {
+            $0.top.equalTo(codeStackView.snp.top)
+            $0.leading.equalTo(memberNameLabel.snp.leading)
+        }
+        
+        self.separatorView.snp.makeConstraints {
+            $0.top.equalTo(codeStackView.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leadingTrailingMargin)
+            $0.height.equalTo(Metric.separatorViewHeight)
+        }
+        
+        self.profileView.snp.makeConstraints {
+            $0.top.equalTo(separatorView.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leadingTrailingMargin)
+            $0.height.equalTo(Metric.profileViewHeight)
+        }
+        
+        self.profileDiceImage.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(Metric.leadingTrailingMargin)
+            $0.centerY.equalToSuperview()
+            $0.width.height.equalTo(Metric.diceImageSize)
+        }
+        
+        self.meImage.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.meImageSize)
+        }
+        
+        self.meStackView.snp.makeConstraints {
+            $0.top.equalTo(Metric.meStackViewTopMargin)
+            $0.leading.equalTo(profileDiceImage.snp.trailing).offset(Metric.itemSpacing)
+        }
+        
+        self.playCountLabel.snp.makeConstraints {
+            $0.top.equalTo(meStackView.snp.bottom).offset(Metric.countLabelTopSpacing)
+            $0.leading.equalTo(meStackView.snp.leading)
+        }
+        
+        self.modifyButton.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview().inset(Metric.modifyButtonMargin)
+        }
+        
+        self.divView.snp.makeConstraints {
+            $0.bottom.equalTo(exitButton.snp.top).offset(-Metric.itemSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leadingTrailingMargin)
+            $0.height.equalTo(Metric.separatorViewHeight)
+        }
+        
+        self.exitImage.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.exitImageSize)
+        }
+        
+        self.exitStackView.snp.makeConstraints {
+            $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-Metric.topMargin)
+            $0.leading.equalToSuperview().offset(Metric.leadingTrailingMargin)
+        }
+    }
 }
