@@ -49,6 +49,7 @@
 		1C840B3D2B59377D00067E91 /* PlayerReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C840B3C2B59377D00067E91 /* PlayerReactor.swift */; };
 		1C967FA82B24CBF80002E6F1 /* NameInputPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */; };
 		1C9DF4BD2B7F9D3E0034F18A /* GroupInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9DF4BC2B7F9D3E0034F18A /* GroupInfoDetailView.swift */; };
+		1C9DF4BF2B7F9FCC0034F18A /* GroupInfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9DF4BE2B7F9FCC0034F18A /* GroupInfoDetailViewController.swift */; };
 		1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */; };
 		1CA1BBB42ACF109B000C5F7E /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBAF2ACF109A000C5F7E /* SpoqaHanSansNeo-Light.ttf */; };
 		1CA1BBB52ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CA1BBB02ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf */; };
@@ -207,6 +208,7 @@
 		1C840B3C2B59377D00067E91 /* PlayerReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerReactor.swift; sourceTree = "<group>"; };
 		1C967FA72B24CBF80002E6F1 /* NameInputPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameInputPopupView.swift; sourceTree = "<group>"; };
 		1C9DF4BC2B7F9D3E0034F18A /* GroupInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoDetailView.swift; sourceTree = "<group>"; };
+		1C9DF4BE2B7F9FCC0034F18A /* GroupInfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoDetailViewController.swift; sourceTree = "<group>"; };
 		1CA1BBAE2ACF109A000C5F7E /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
 		1CA1BBAF2ACF109A000C5F7E /* SpoqaHanSansNeo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.ttf"; sourceTree = "<group>"; };
 		1CA1BBB02ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.ttf"; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 		1C9DF4BA2B7F9D2A0034F18A /* GroupInfo */ = {
 			isa = PBXGroup;
 			children = (
+				1C9DF4BE2B7F9FCC0034F18A /* GroupInfoDetailViewController.swift */,
 				1C9DF4BB2B7F9D350034F18A /* Views */,
 			);
 			path = GroupInfo;
@@ -1079,6 +1082,7 @@
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				1C6FEAE92B4D503500CFC647 /* AccessCodeViewController.swift in Sources */,
 				1C30171C2B50683D00128E5C /* GameResultCollectionViewCell.swift in Sources */,
+				1C9DF4BF2B7F9FCC0034F18A /* GroupInfoDetailViewController.swift in Sources */,
 				1CF1A8592B6160850098A6AA /* GameScoreTableViewCell.swift in Sources */,
 				1CDD02E62B35C58100502C04 /* GroupCreateCompleteViewController.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
