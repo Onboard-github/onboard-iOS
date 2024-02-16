@@ -19,7 +19,7 @@ final class GroupCreateView: UIView {
     // MARK: - Metric
     
     private enum Metric {
-        static let topMargin: CGFloat = 120
+        static let topMargin: CGFloat = 20
         static let imageViewWidth: CGFloat = 138
         static let imageViewHeight: CGFloat = 182
         static let imageViewButtonLayout: CGFloat = 10
@@ -233,7 +233,7 @@ final class GroupCreateView: UIView {
         self.addSubview(self.registerButton)
         
         self.titleImageView.snp.makeConstraints {
-            $0.top.equalTo(Metric.topMargin)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(Metric.topMargin)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(Metric.imageViewWidth)
             $0.height.equalTo(Metric.imageViewHeight)
