@@ -21,6 +21,8 @@ enum IconImage {
     case manager
     case code
     case member
+    case exit
+    case pencil
     
     case gold
     case sliver
@@ -108,6 +110,10 @@ enum IconImage {
             return UIImage(named: "icon_code")
         case .member:
             return UIImage(named: "icon_member")
+        case .exit:
+            return UIImage(named: "icon_exit")
+        case .pencil:
+            return UIImage(named: "icon_pencil")
             
         case .gold:
             return UIImage(named: "icon_gold")
