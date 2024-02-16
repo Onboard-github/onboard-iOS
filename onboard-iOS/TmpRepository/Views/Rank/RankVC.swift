@@ -67,18 +67,19 @@ class RankVC: UIViewController {
             titleLabelButton.setTitle(selectedGroupInfo?.name, for: .normal)
             
             // 메뉴 항목을 생성합니다.
-            var menus: [UIMenuElement] = []
-            
-            let groupAddMenu = UIAction(title: "가입 코드 보기", image: nil, handler: { [weak self] _ in
-                AlertManager.show(message: "가입 코드: \(self?.selectedGroupInfo?.accessCode ?? "")")
-            })
-            menus.append(groupAddMenu)
-            
-            let menu = UIMenu(title: "", children: menus)
-                
-            // 버튼에 메뉴를 설정합니다.
-            moreButton2.menu = menu
-            moreButton2.showsMenuAsPrimaryAction = true
+            // 임시 주석 처리
+//            var menus: [UIMenuElement] = []
+//            
+//            let groupAddMenu = UIAction(title: "가입 코드 보기", image: nil, handler: { [weak self] _ in
+//                AlertManager.show(message: "가입 코드: \(self?.selectedGroupInfo?.accessCode ?? "")")
+//            })
+//            menus.append(groupAddMenu)
+//            
+//            let menu = UIMenu(title: "", children: menus)
+//                
+//            // 버튼에 메뉴를 설정합니다.
+//            moreButton2.menu = menu
+//            moreButton2.showsMenuAsPrimaryAction = true
             
             
             state = .loaded
@@ -143,6 +144,14 @@ class RankVC: UIViewController {
         gameDetailTableView.allowsSelection = false
         
         self.configureButton()
+        
+        self.moreButton2.addAction(UIAction(handler: { [weak self] _ in
+            let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
+            let reactor = GroupReactor(useCase: useCase)
+            let groupInfoDetailViewController = GroupInfoDetailViewController(reactor: reactor)
+            groupInfoDetailViewController.modalPresentationStyle = .overFullScreen
+            self?.present(groupInfoDetailViewController, animated: false)
+        }), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
