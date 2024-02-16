@@ -429,4 +429,26 @@ final class GroupInfoDetailView: UIView {
             $0.leading.equalToSuperview().offset(Metric.leadingTrailingMargin)
         }
     }
+    
+    func configureGroupInfo(
+        name: String,
+        titleImage: UIImage,
+        description: String,
+        organization: String,
+        memberCount: Int,
+        owner: String,
+        accessCode: String,
+        nickname: String,
+        playCount: Int
+    ) {
+        self.nameLabel.text = name
+        self.groupImageView.image = titleImage
+        self.descriptionLabel.text = description
+        self.organizationLabel.text = organization
+        self.memberNameLabel.text = "\(memberCount)\(TextLabels.group_memberCount)"
+        self.ownerNameLabel.text = owner
+        self.accessCodeLabel.text = accessCode
+        self.nicknameLabel.text = nickname
+        self.playCountLabel.text = "\(playCount)\(TextLabels.group_playCount)"
+    }
 }

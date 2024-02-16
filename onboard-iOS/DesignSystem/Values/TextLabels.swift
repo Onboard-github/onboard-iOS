@@ -23,6 +23,8 @@ struct TextLabels {
     static let group_organization_placeholder = "Ex) 홍익대학교"
     static let group_organization_count = "00/15"
     static let group_register = "모임 등록하기"
+    static let group_memberCount = "명"
+    static let group_playCount = "회 플레이"
     
     static let group_complete_text = "모임 등록이 완료되었습니다!"
     static let group_owner_text = "관리자"
