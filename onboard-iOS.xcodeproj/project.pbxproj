@@ -69,6 +69,7 @@
 		1CD2086E2B1BADB2008E710E /* GroupCreateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086D2B1BADB2008E710E /* GroupCreateUseCase.swift */; };
 		1CD208702B1BAEF1008E710E /* GroupCreateReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086F2B1BAEF1008E710E /* GroupCreateReactor.swift */; };
 		1CD208722B1BB339008E710E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD208712B1BB339008E710E /* ImageLoader.swift */; };
+		1CD4EB2A2B7FA3BF001F74EA /* GroupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD4EB292B7FA3BF001F74EA /* GroupReactor.swift */; };
 		1CDD02E62B35C58100502C04 /* GroupCreateCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDD02E52B35C58100502C04 /* GroupCreateCompleteViewController.swift */; };
 		1CDF4D2F2AB8A53900CFDFBA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1CDF4D2E2AB8A53900CFDFBA /* GoogleSignIn */; };
 		1CEBA1522B333D24007AD07C /* GroupCreateCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */; };
@@ -228,6 +229,7 @@
 		1CD2086D2B1BADB2008E710E /* GroupCreateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateUseCase.swift; sourceTree = "<group>"; };
 		1CD2086F2B1BAEF1008E710E /* GroupCreateReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateReactor.swift; sourceTree = "<group>"; };
 		1CD208712B1BB339008E710E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		1CD4EB292B7FA3BF001F74EA /* GroupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupReactor.swift; sourceTree = "<group>"; };
 		1CDD02E52B35C58100502C04 /* GroupCreateCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteViewController.swift; sourceTree = "<group>"; };
 		1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteView.swift; sourceTree = "<group>"; };
 		1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNicknameDTO.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				1C9DF4BE2B7F9FCC0034F18A /* GroupInfoDetailViewController.swift */,
+				1CD4EB282B7FA3B8001F74EA /* Reactor */,
 				1C9DF4BB2B7F9D350034F18A /* Views */,
 			);
 			path = GroupInfo;
@@ -526,6 +529,14 @@
 				1C0364472B5FBBB000CA4CB9 /* TextFieldState.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		1CD4EB282B7FA3B8001F74EA /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				1CD4EB292B7FA3BF001F74EA /* GroupReactor.swift */,
+			);
+			path = Reactor;
 			sourceTree = "<group>";
 		};
 		1CF1A8532B615CA60098A6AA /* Reactor */ = {
@@ -1127,6 +1138,7 @@
 				1CA1BBBF2AD439BA000C5F7E /* IconImage.swift in Sources */,
 				611D8CAD2ABED29F0074A55A /* Encodable+Ext.swift in Sources */,
 				1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */,
+				1CD4EB2A2B7FA3BF001F74EA /* GroupReactor.swift in Sources */,
 				1CF1A84E2B615A2A0098A6AA /* GuestNickNameEntity.swift in Sources */,
 				61AC7FC02AB6D74A00B0B6B5 /* TestUseCase.swift in Sources */,
 				AA3E7D5F2B254159007A6BE9 /* GameSkeletonCell.swift in Sources */,
