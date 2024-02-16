@@ -198,11 +198,14 @@ final class GroupCreateCompleteView: UIView {
                               message: TextLabels.group_clipboard_message)
         }), for: .touchUpInside)
         
-        self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
+        self.confirmButton.addAction(UIAction(handler: { _ in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
             
-            UIApplication.shared.windows.first?.rootViewController = homeTabController
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                sceneDelegate.window?.rootViewController = homeTabController
+            }
         }), for: .touchUpInside)
     }
     
