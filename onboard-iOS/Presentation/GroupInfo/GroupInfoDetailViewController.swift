@@ -33,6 +33,8 @@ final class GroupInfoDetailViewController: UIViewController, View {
         super.init(nibName: nil, bundle: nil)
         
         self.reactor = reactor
+        
+        self.configure()
     }
     
     required init?(coder: NSCoder) {
@@ -50,7 +52,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
         let groupId = GameDataSingleton.shared.getGroupId() ?? 0
         self.reactor?.action.onNext(.fetchResult(groupId: groupId))
     }
-        
+    
     func bindState(reactor: GroupReactor) {
         reactor.state
             .compactMap { $0.groupInfoData }
@@ -75,5 +77,24 @@ final class GroupInfoDetailViewController: UIViewController, View {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.setupGestureRecognizer()
+    }
+    
+    private func setupGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(backgroundTapped)
+        )
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func backgroundTapped() {
+        self.dismiss(animated: false)
     }
 }
