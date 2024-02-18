@@ -19,6 +19,7 @@ final class GroupInfoDetailView: UIView {
         static let imageViewWidth: CGFloat = 114
         static let imageViewHeight: CGFloat = 162
         static let stackViewTopSpacing: CGFloat = 40
+        static let codeImageSize: CGFloat = 18
         static let separatorViewHeight: CGFloat = 1
         static let profileViewHeight: CGFloat = 68
         static let diceImageSize: CGFloat = 28
@@ -368,6 +369,10 @@ final class GroupInfoDetailView: UIView {
             $0.leading.equalTo(memberNameLabel.snp.leading)
         }
         
+        self.codeImage.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.codeImageSize)
+        }
+        
         self.codeStackView.snp.makeConstraints {
             $0.top.equalTo(ownerStackView.snp.bottom).offset(Metric.itemSpacing)
             $0.leading.equalToSuperview().offset(Metric.leadingTrailingMargin)
@@ -376,6 +381,7 @@ final class GroupInfoDetailView: UIView {
         self.copyStackView.snp.makeConstraints {
             $0.top.equalTo(codeStackView.snp.top)
             $0.leading.equalTo(memberNameLabel.snp.leading)
+            $0.centerY.equalTo(codeStackView.snp.centerY)
         }
         
         self.separatorView.snp.makeConstraints {
