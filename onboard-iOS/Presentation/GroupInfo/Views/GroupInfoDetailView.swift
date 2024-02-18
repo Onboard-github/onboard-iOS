@@ -251,7 +251,7 @@ final class GroupInfoDetailView: UIView {
     private lazy var copyStackView: UIStackView = {
         let stview = UIStackView(arrangedSubviews: [accessCodeLabel, copyButton])
         stview.axis = .horizontal
-        stview.spacing = 7
+        stview.spacing = 3
         return stview
     }()
     
