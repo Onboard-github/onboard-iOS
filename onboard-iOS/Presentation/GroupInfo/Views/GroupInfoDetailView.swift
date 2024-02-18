@@ -284,7 +284,18 @@ final class GroupInfoDetailView: UIView {
     // MARK: - Configure
     
     private func configure() {
+        self.addConfigure()
         self.makeConstraints()
+    }
+    
+    private func addConfigure() {
+        self.copyButton.addAction(UIAction(handler: { [weak self] _ in
+            let pasteboard = UIPasteboard.general
+            pasteboard.string = self?.accessCodeLabel.text
+            
+            Toast().showToast(image: IconImage.dice.image!,
+                              message: TextLabels.group_clipboard_message)
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
