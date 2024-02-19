@@ -211,16 +211,8 @@ final class ResultRecordView: UIView {
             self?.loadingView.setLabel(
                 loading: TextLabels.imageLoading_loading,
                 complete: "\(GameDataSingleton.shared.gameData?.name ?? "default")\n\(TextLabels.imageLoading_complete)"
-                )
-            DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
-                
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let sceneDelegate = windowScene.delegate as? SceneDelegate {
-                    sceneDelegate.window?.rootViewController = homeTabController
-                }
-            }
+            )
+            self?.didTapRegisterButtonAction?()
         }), for: .touchUpInside)
     }
     
