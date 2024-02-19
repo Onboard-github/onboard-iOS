@@ -63,6 +63,7 @@
 		1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */; };
 		1CA1BBD02AE00704000C5F7E /* TextFieldLabelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */; };
 		1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */; };
+		1CAC01E02B83A1B00006A8D7 /* MatchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC01DF2B83A1B00006A8D7 /* MatchDTO.swift */; };
 		1CCBDB3D2B2EB9820097DEE6 /* GroupCreateSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */; };
 		1CD2086A2B1BAB91008E710E /* GroupCreateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD208692B1BAB91008E710E /* GroupCreateRepository.swift */; };
 		1CD2086C2B1BAC28008E710E /* GroupCreateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */; };
@@ -224,6 +225,7 @@
 		1CA1BBCB2ADAC091000C5F7E /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		1CA1BBCF2AE00704000C5F7E /* TextFieldLabelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLabelState.swift; sourceTree = "<group>"; };
 		1CA1BBD72AE0337E000C5F7E /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		1CAC01DF2B83A1B00006A8D7 /* MatchDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDTO.swift; sourceTree = "<group>"; };
 		1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateSingleton.swift; sourceTree = "<group>"; };
 		1CD208692B1BAB91008E710E /* GroupCreateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateRepository.swift; sourceTree = "<group>"; };
 		1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateDTO.swift; sourceTree = "<group>"; };
@@ -746,6 +748,7 @@
 				1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */,
 				1C327B1E2B5571BF00F02C26 /* GameDTO.swift */,
 				1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */,
+				1CAC01DF2B83A1B00006A8D7 /* MatchDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1116,6 +1119,7 @@
 				1C327B282B5630DC00F02C26 /* PlayerSelectViewController.swift in Sources */,
 				AAF169832B1086FB00EF82A4 /* UserLoginSessionData.swift in Sources */,
 				1C0364482B5FBBB000CA4CB9 /* TextFieldState.swift in Sources */,
+				1CAC01E02B83A1B00006A8D7 /* MatchDTO.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
 				61AC7FE72AB6EEB700B0B6B5 /* APIConstants.swift in Sources */,
 				1CD2086A2B1BAB91008E710E /* GroupCreateRepository.swift in Sources */,
