@@ -156,7 +156,7 @@ enum OBRouter: URLRequestConvertible {
         case let .joinGroupHost(groupId, _, _, _):
             return "api/v1/group/\(groupId)/host"
         case .forceUpdateTest:
-            return "api/v1/force-update"
+            return "api/v1/test/force-update"
         case let .gameLeaderboard(groupId, gameId):
             return "api/v1/group/\(groupId)/game/\(gameId)"
         }
