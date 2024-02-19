@@ -82,14 +82,13 @@ enum OBRouter: URLRequestConvertible {
     // Game
     case gameResult(params: Params)
     case gamePlayer(params: Params)
-    case validateNicknameGuest(params: Params)
     case addPlayer(params: Params, body: Body)
     
     // MARK: - HTTP Method
     
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList, .gameList, .randomImage, .getTerms, .gameResult, .gamePlayer, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .validateNicknameGuest, .validateNickname, .forceUpdateTest, .gameLeaderboard:
+        case .testAPI, .groupList, .gameList, .randomImage, .getTerms, .gameResult, .gamePlayer, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .validateNickname, .forceUpdateTest, .gameLeaderboard:
             return .get
         case .auth, .addGroup, .pickerImage, .createGroup, .addGroupGuest, .addPlayer, .groupAccessCodeCheck, .joinGroupHost, .match:
             return .post
@@ -144,9 +143,6 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group/\(groupId)/me"
         case let .groupDelete(groupId):
             return "api/v1/group/\(groupId)"
-        case .validateNicknameGuest:
-            let groupId = GameDataSingleton.shared.getGroupId()!
-            return "api/v1/group/\(groupId)/member/validateNickname"
         case .addPlayer:
             let groupId = GameDataSingleton.shared.getGroupId()!
             return "api/v1/group/\(groupId)/guest"
@@ -169,7 +165,7 @@ enum OBRouter: URLRequestConvertible {
     
     var header: Header? {
         switch self {
-        case .testAPI, .auth, .addGroup, .groupList, .randomImage, .validateNicknameGuest, .validateNickname:
+        case .testAPI, .auth, .addGroup, .groupList, .randomImage, .validateNickname:
             return nil
         case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .addPlayer, .forceUpdateTest, .gameLeaderboard, .match :
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
@@ -196,7 +192,7 @@ enum OBRouter: URLRequestConvertible {
                 return ["nickname": nickname, "accessCode": accessCode]
             }
             
-        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .validateNicknameGuest, .validateNickname, .forceUpdateTest, .gameLeaderboard:
+        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .validateNickname, .forceUpdateTest, .gameLeaderboard:
             return nil
             
         case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body), let .match(body):
@@ -221,7 +217,7 @@ enum OBRouter: URLRequestConvertible {
             return ["groupId": groupId, "size": 100]
         case let .validateNickname(_, nickname):
             return ["nickname": nickname]
-        case let .gameResult(params), let .gamePlayer(params), let .validateNicknameGuest(params), let .addPlayer(params, _):
+        case let .gameResult(params), let .gamePlayer(params), let .addPlayer(params, _):
             return params
         }
     }
