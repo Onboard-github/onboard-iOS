@@ -44,7 +44,9 @@ final class GameScoreViewController: UIViewController {
     
     private func addAction() {
         self.gameScoreView.didTapButtonAction = {
-            let resultRecordViewController = ResultRecordViewController()
+            let useCase = MatchUseCaseImpl(repository: MatchRepositoryImpl())
+            let reactor = MatchReactor(useCase: useCase)
+            let resultRecordViewController = ResultRecordViewController(reactor: reactor)
             resultRecordViewController.modalPresentationStyle = .overFullScreen
             self.present(resultRecordViewController, animated: false)
         }
