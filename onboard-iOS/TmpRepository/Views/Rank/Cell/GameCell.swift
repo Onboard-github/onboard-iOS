@@ -38,7 +38,11 @@ class GameCell: UITableViewCell {
     }
     
     func reloadCell() {
-        leftLabel.text = "\(info.rankNum)"
+        if info.rankNum == -1 {
+            leftLabel.text = "-"
+        } else {
+            leftLabel.text = "\(info.rankNum)"
+        }
         if info.dice == .dice {
             diceImageView.image = UIImage(named: "img_dice")
         } else {

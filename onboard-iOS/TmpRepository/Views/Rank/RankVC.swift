@@ -18,6 +18,21 @@ enum RankVcState {
 }
 
 class RankVC: UIViewController {
+    var selectedGameId: Int?
+    var gameInfo: [LeaderboardGame] = [] {
+        didSet {
+            gameDetailTableView.reloadData()
+        }
+    }
+    var meInfo: GetMeRes?
+    
+    var rankedGameInfo: [LeaderboardGame] {
+        gameInfo.filter({ $0.rank != nil }).sorted(by: { $0.rank! < $1.rank! })
+    }
+    var unrankedGameInfo: [LeaderboardGame] {
+        gameInfo.filter({ $0.rank == nil })
+    }
+    
     var joinedGroupList: GetMyGroupsV2Res? {
         didSet {
             guard let list = joinedGroupList?.contents else { return }
@@ -42,6 +57,9 @@ class RankVC: UIViewController {
             list.forEach { group in
                 let groupAddMenu = UIAction(title: group.name, image: nil, handler: { _ in
                     // 목록 1 선택 시 실행할 코드
+//                    Task {
+                        self.getGroupInfo(groupId: group.id)
+//                    }
                     print("\(group.name) 선택됨")
                 })
                 menus.append(groupAddMenu)
@@ -65,7 +83,9 @@ class RankVC: UIViewController {
     var selectedGroupInfo: GroupInfoRes? {
         didSet {
             titleLabelButton.setTitle(selectedGroupInfo?.name, for: .normal)
-            
+            if let id = selectedGroupInfo?.id {
+                GameDataSingleton.shared.setGroupId(id)
+            }
             // 메뉴 항목을 생성합니다.
             // 임시 주석 처리
 //            var menus: [UIMenuElement] = []
@@ -82,8 +102,8 @@ class RankVC: UIViewController {
 //            moreButton2.showsMenuAsPrimaryAction = true
             
             
-            state = .loaded
-            gameDetailTableView.reloadData()
+//            state = .loaded
+//            gameDetailTableView.reloadData()
         }
     }
     
@@ -152,6 +172,12 @@ class RankVC: UIViewController {
             groupInfoDetailViewController.modalPresentationStyle = .overFullScreen
             self?.present(groupInfoDetailViewController, animated: false)
         }), for: .touchUpInside)
+        
+        
+        Task {
+            let meInfoResult = try await OBNetworkManager.shared.asyncRequest(object: GetMeRes.self, router: .getMe)
+            self.meInfo = meInfoResult.value
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -211,6 +237,23 @@ class RankVC: UIViewController {
             self?.present(vc, animated: true)
         }, for: .touchUpInside)
     }
+    
+    private func getGameInfo(gameId: Int) {
+        Task {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: GameLeaderboardRes.self,
+                    router: OBRouter.gameLeaderboard(groupId: selectedGroupInfo?.id ?? -1, gameId: gameId)
+                )
+            if let gameInfo = result.value?.contents {
+                self.gameInfo = gameInfo
+            } else {
+                self.gameInfo = []
+            }
+            self.state = .loaded
+        }
+    }
 }
 
 extension RankVC: PagingViewControllerDelegate {
@@ -221,11 +264,12 @@ extension RankVC: PagingViewControllerDelegate {
         
         if let item = pagingItem as? IconItem {
             self.state = .loading
+            getGameInfo(gameId: item.gameId)
+            selectedGameId = item.gameId
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { [weak self] in
                 if self?.joinedGroupList?.contents.count == 0 {
                     self?.state = .notJoinedGroup
-                } else {
-                    self?.state = .loaded
                 }
             })
         }
@@ -240,7 +284,7 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
         case .loading:
             return 5
         case .loaded:
-            return 10
+            return unrankedGameInfo.count + 1
         }
         return 1
     }
@@ -262,43 +306,88 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 0 {
                 if let podiumCell = tableView.dequeueReusableCell(withIdentifier: "podiumCell", for: indexPath) as? PodiumCell {
                     var info = PodiumUserInfo()
-                    if Bool.random() {
-                        info.dice = .dice
-                    } else {
-                        info.dice = .empty
+                    info.dice = .empty
+                    info.isEmptyUser = true
+                    info.isMe = false
+                    info.isRedDot = false
+                    info.playCount = 0
+                    info.playCount = 0
+                    info.score = 0
+                    info.userName = ""
+                    
+                    if let ranker1 = rankedGameInfo.first(where: {$0.rank == 1}) {
+                        if ranker1.role == "GUEST" {
+                            info.dice = .empty
+                        } else {
+                            info.dice = .dice
+                        }
+                        info.isEmptyUser = false
+                        if ranker1.userId == meInfo?.id {
+                            info.isMe = true
+                        }
+                        if ranker1.isChangeRecent {
+                            info.isRedDot = true
+                        }
+                        info.playCount = ranker1.matchCount ?? 0
+                        info.score = ranker1.score ?? 0
+                        info.userName = ranker1.nickname
                     }
-                    info.isEmptyUser = Bool.random()
-                    info.isMe = Bool.random()
-                    info.isRedDot = Bool.random()
-                    info.playCount = Int.random(in: 1...999)
-                    info.score = Int.random(in: 0...999)
-                    info.userName = "ASDASDASD"
                     
                     var info2 = PodiumUserInfo()
-                    if Bool.random() {
-                        info2.dice = .dice
-                    } else {
-                        info2.dice = .empty
+                    info2.dice = .empty
+                    info2.isEmptyUser = true
+                    info2.isMe = false
+                    info2.isRedDot = false
+                    info2.playCount = 0
+                    info2.playCount = 0
+                    info2.score = 0
+                    info2.userName = ""
+                    
+                    if let ranker2 = rankedGameInfo.first(where: {$0.rank == 2}) {
+                        if ranker2.role == "GUEST" {
+                            info2.dice = .empty
+                        } else {
+                            info2.dice = .dice
+                        }
+                        info2.isEmptyUser = false
+                        if ranker2.userId == meInfo?.id {
+                            info2.isMe = true
+                        }
+                        if ranker2.isChangeRecent {
+                            info2.isRedDot = true
+                        }
+                        info2.playCount = ranker2.matchCount ?? 0
+                        info2.score = ranker2.score ?? 0
+                        info2.userName = ranker2.nickname
                     }
-                    info2.isEmptyUser = Bool.random()
-                    info2.isMe = Bool.random()
-                    info2.isRedDot = Bool.random()
-                    info2.playCount = Int.random(in: 1...999)
-                    info2.score = Int.random(in: 0...999)
-                    info2.userName = "ASDASDASD"
                     
                     var info3 = PodiumUserInfo()
-                    if Bool.random() {
-                        info3.dice = .dice
-                    } else {
-                        info3.dice = .empty
+                    info3.dice = .empty
+                    info3.isEmptyUser = true
+                    info3.isMe = false
+                    info3.isRedDot = false
+                    info3.playCount = 0
+                    info3.playCount = 0
+                    info3.score = 0
+                    info3.userName = ""
+                    
+                    if let ranker3 = rankedGameInfo.first(where: {$0.rank == 3}) {
+                        if ranker3.role == "GUEST" {
+                            info3.dice = .empty
+                        } else {
+                            info3.dice = .dice
+                        }
+                        info3.isEmptyUser = false
+                        if ranker3.userId == meInfo?.id {
+                            info3.isMe = true
+                        }
+                        if ranker3.isChangeRecent {
+                            info3.isRedDot = true
+                        }
+                        info3.playCount = ranker3.matchCount ?? 0
+                        info3.score = ranker3.score ?? 0
+                        info3.userName = ranker3.nickname
                     }
-                    info3.isEmptyUser = Bool.random()
-                    info3.isMe = Bool.random()
-                    info3.isRedDot = Bool.random()
-                    info3.playCount = Int.random(in: 1...999)
-                    info3.score = Int.random(in: 0...999)
-                    info3.userName = "ASDASDASD"
                     
                     podiumCell.firstUserInfo = info
                     podiumCell.secondUserInfo = info2
@@ -307,19 +396,33 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
                     return podiumCell
                 }
             } else {
+                let unrankedIndex = indexPath.row - 1
+                let unranker = unrankedGameInfo[unrankedIndex]
+                
                 if let gameCell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as? GameCell {
                     var info = GameCellInfo(rankNum: indexPath.row)
-                    info.userName = "귤귤사람귤귤귤사람귤"
-                    if Bool.random() {
-                        info.dice = .dice
-                    } else {
-                        info.dice = .empty
-                    }
-                    info.isMe = Bool.random()
-                    info.isRedDot = Bool.random()
-                    info.playCount = Int.random(in: 1...999)
-                    info.rankNum = indexPath.row + 3
-                    info.score = Int.random(in: 0...999)
+                    
+                        if unranker.role == "GUEST" {
+                            info.dice = .empty
+                        } else {
+                            info.dice = .dice
+                        }
+                        if unranker.userId == meInfo?.id {
+                            info.isMe = true
+                        } else {
+                            info.isMe = false
+                        }
+                        if unranker.isChangeRecent {
+                            info.isRedDot = true
+                        } else {
+                            info.isRedDot = false
+                        }
+                        info.playCount = unranker.matchCount ?? 0
+                        info.score = unranker.score ?? 0
+                    
+                    info.userName = unranker.nickname
+
+                    info.rankNum = unranker.rank ?? -1
                     gameCell.info = info
                     return gameCell
                 }
@@ -342,7 +445,11 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
         Task {
             let result = try await OBNetworkManager.shared.asyncRequest(object: GroupInfoRes.self, router: .groupInfo(groupId: groupId))
             if let result = result.value {
+                print("!@#@# \(result)")
                 self.selectedGroupInfo = result
+                if let gameId = self.selectedGameId, gameId > 0 {
+                    self.getGameInfo(gameId: gameId)
+                }
             }
         }
     }
@@ -356,9 +463,9 @@ extension RankVC: PagingViewControllerDataSource {
     func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
         let calculatedIndex = index - 2
         if calculatedIndex >= 0 && calculatedIndex < (gameList?.list.count ?? 0) {
-            return IconItem(iconUrl: gameList?.list[calculatedIndex].img ?? "", title: gameList?.list[calculatedIndex].name ?? "", index: index)
+            return IconItem(iconUrl: gameList?.list[calculatedIndex].img ?? "", title: gameList?.list[calculatedIndex].name ?? "", index: index, gameId: gameList?.list[calculatedIndex].id ?? -1)
         } else {
-            return IconItem(iconUrl: "", title: "", index: index)
+            return IconItem(iconUrl: "", title: "", index: index, gameId: -1)
         }
     }
 
@@ -375,11 +482,13 @@ struct IconItem: PagingItem, Hashable {
     let iconUrl: String
     let title: String
     let index: Int
+    let gameId: Int
 
-    init(iconUrl: String, title: String, index: Int) {
+    init(iconUrl: String, title: String, index: Int, gameId: Int) {
         self.iconUrl = iconUrl
         self.title = title
         self.index = index
+        self.gameId = gameId
     }
 
     func isBefore(item: PagingItem) -> Bool {

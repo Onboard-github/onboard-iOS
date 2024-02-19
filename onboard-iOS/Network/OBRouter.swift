@@ -31,6 +31,7 @@ enum OBRouter: URLRequestConvertible {
     
     case groupDelete(groupId: Int) // 그룹 삭제하기, Onwer만 가능
     case groupAccessCodeCheck(groupId: Int, accessCode: String) // 그룹 id 가지고 액세스 코드 확인
+    case gameLeaderboard(groupId: Int, gameId: Int)
     
     // Match
     
@@ -58,6 +59,7 @@ enum OBRouter: URLRequestConvertible {
     
     // 정리안됨
     case testAPI
+    case forceUpdateTest
     
     // Auth
     case auth(body: Body)
@@ -86,7 +88,7 @@ enum OBRouter: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .testAPI, .groupList, .gameList, .randomImage, .getTerms, .gameResult, .gamePlayer, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .validateNicknameGuest, .validateNickname:
+        case .testAPI, .groupList, .gameList, .randomImage, .getTerms, .gameResult, .gamePlayer, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .validateNicknameGuest, .validateNickname, .forceUpdateTest, .gameLeaderboard:
             return .get
         case .auth, .addGroup, .pickerImage, .createGroup, .addGroupGuest, .addPlayer, .groupAccessCodeCheck, .joinGroupHost:
             return .post
@@ -153,6 +155,10 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group/\(groupId)/member/validateNickname"
         case let .joinGroupHost(groupId, _, _, _):
             return "api/v1/group/\(groupId)/host"
+        case .forceUpdateTest:
+            return "api/v1/force-update"
+        case let .gameLeaderboard(groupId, gameId):
+            return "api/v1/group/\(groupId)/game/\(gameId)"
         }
     }
     
@@ -162,7 +168,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage, .validateNicknameGuest, .validateNickname:
             return nil
-        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .addPlayer:
+        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .addPlayer, .forceUpdateTest, .gameLeaderboard:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
@@ -187,7 +193,7 @@ enum OBRouter: URLRequestConvertible {
                 return ["nickname": nickname, "accessCode": accessCode]
             }
             
-        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .validateNicknameGuest, .validateNickname:
+        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .validateNicknameGuest, .validateNickname, .forceUpdateTest, .gameLeaderboard:
             return nil
             
         case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body):
@@ -202,7 +208,7 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost:
+        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .forceUpdateTest, .gameLeaderboard:
             return nil
         case let .groupList(params):
             return params

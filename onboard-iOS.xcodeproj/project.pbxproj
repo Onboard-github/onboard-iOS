@@ -86,6 +86,7 @@
 		3B282DFC2B55A74200483A2A /* GetMyGroupsV2Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */; };
 		3B37EE1A2B6FF91700F7F902 /* JoinNicknameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37EE182B6FF91700F7F902 /* JoinNicknameVC.swift */; };
 		3B37EE1B2B6FF91700F7F902 /* JoinNicknameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B37EE192B6FF91700F7F902 /* JoinNicknameVC.xib */; };
+		3BB194632B833DD40013FE55 /* gameLeaderboardRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB194622B833DD40013FE55 /* gameLeaderboardRes.swift */; };
 		3BC078452B4F441B0032BB4C /* GroupMembersRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */; };
 		3BDAA8E72B6FE1540038BE4B /* JoinCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */; };
 		3BDAA8E82B6FE1540038BE4B /* JoinCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */; };
@@ -244,6 +245,7 @@
 		3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyGroupsV2Res.swift; sourceTree = "<group>"; };
 		3B37EE182B6FF91700F7F902 /* JoinNicknameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinNicknameVC.swift; sourceTree = "<group>"; };
 		3B37EE192B6FF91700F7F902 /* JoinNicknameVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinNicknameVC.xib; sourceTree = "<group>"; };
+		3BB194622B833DD40013FE55 /* gameLeaderboardRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameLeaderboardRes.swift; sourceTree = "<group>"; };
 		3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersRes.swift; sourceTree = "<group>"; };
 		3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCodeVC.swift; sourceTree = "<group>"; };
 		3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinCodeVC.xib; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 				3B282DF72B5381F900483A2A /* GroupInfoRes.swift */,
 				3B282DF92B5598E400483A2A /* GetMeRes.swift */,
 				3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */,
+				3BB194622B833DD40013FE55 /* gameLeaderboardRes.swift */,
 			);
 			path = NetworkModel;
 			sourceTree = "<group>";
@@ -1186,6 +1189,7 @@
 				1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */,
 				1CEBA1522B333D24007AD07C /* GroupCreateCompleteView.swift in Sources */,
 				1C327B1F2B5571BF00F02C26 /* GameDTO.swift in Sources */,
+				3BB194632B833DD40013FE55 /* gameLeaderboardRes.swift in Sources */,
 				AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */,
 				AAF169892B108B0D00EF82A4 /* AlertManager.swift in Sources */,
 				1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */,
