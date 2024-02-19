@@ -67,6 +67,7 @@
 		1CAC01E22B83A2140006A8D7 /* MatchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC01E12B83A2140006A8D7 /* MatchEntity.swift */; };
 		1CAC01E42B83A25C0006A8D7 /* MatchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC01E32B83A25C0006A8D7 /* MatchRepository.swift */; };
 		1CAC01E62B83A2DE0006A8D7 /* MatchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC01E52B83A2DE0006A8D7 /* MatchUseCase.swift */; };
+		1CAC01E82B83A3210006A8D7 /* MatchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC01E72B83A3210006A8D7 /* MatchReactor.swift */; };
 		1CCBDB3D2B2EB9820097DEE6 /* GroupCreateSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */; };
 		1CD2086A2B1BAB91008E710E /* GroupCreateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD208692B1BAB91008E710E /* GroupCreateRepository.swift */; };
 		1CD2086C2B1BAC28008E710E /* GroupCreateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */; };
@@ -232,6 +233,7 @@
 		1CAC01E12B83A2140006A8D7 /* MatchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchEntity.swift; sourceTree = "<group>"; };
 		1CAC01E32B83A25C0006A8D7 /* MatchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRepository.swift; sourceTree = "<group>"; };
 		1CAC01E52B83A2DE0006A8D7 /* MatchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchUseCase.swift; sourceTree = "<group>"; };
+		1CAC01E72B83A3210006A8D7 /* MatchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchReactor.swift; sourceTree = "<group>"; };
 		1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateSingleton.swift; sourceTree = "<group>"; };
 		1CD208692B1BAB91008E710E /* GroupCreateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateRepository.swift; sourceTree = "<group>"; };
 		1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateDTO.swift; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 			children = (
 				1C327B232B55747C00F02C26 /* GameResultReactor.swift */,
 				1C840B3C2B59377D00067E91 /* PlayerReactor.swift */,
+				1CAC01E72B83A3210006A8D7 /* MatchReactor.swift */,
 			);
 			path = Reactor;
 			sourceTree = "<group>";
@@ -1161,6 +1164,7 @@
 				AA3E7D5F2B254159007A6BE9 /* GameSkeletonCell.swift in Sources */,
 				AAF169922B10900100EF82A4 /* LoginSelectVC.swift in Sources */,
 				3BFB194A2B7297090013C3C5 /* GroupJoinLoadingVC.swift in Sources */,
+				1CAC01E82B83A3210006A8D7 /* MatchReactor.swift in Sources */,
 				1C967FA82B24CBF80002E6F1 /* NameInputPopupView.swift in Sources */,
 				AA09C2822ACBF18C00F51A96 /* KakaoLoginManager.swift in Sources */,
 				1CA1BBB92ACF123D000C5F7E /* Typography.swift in Sources */,
