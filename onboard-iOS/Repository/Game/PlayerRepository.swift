@@ -42,11 +42,9 @@ final class PlayerRepositoryImpl: PlayerRepository {
                 .shared
                 .asyncRequest(
                     object: GuestNicknameDTO.self,
-                    router: OBRouter.validateNicknameGuest(
-                        params: [
-                            "groupId": groupId,
-                            "nickname": nickname
-                        ]
+                    router: OBRouter.validateNickname(
+                        groupId: groupId,
+                        nickname: nickname
                     )
                 )
             
