@@ -11,6 +11,7 @@ protocol PlayerRepository {
     func requestPlayerList(groupId: Int, size: String) async throws -> PlayerEntity.Res
     func requestValidateNickName(groupId: Int, nickname: String) async throws -> GuestNickNameEntity.Res
     func requestAddPlayer(groupId: Int, req: AddPlayerEntity.Req) async throws -> AddPlayerEntity.Res
+    func requestAllPlayerList(groupId: Int, gameId: Int) async throws -> GameLeaderboardEntity.Res
 }
 
 final class PlayerRepositoryImpl: PlayerRepository {
@@ -81,6 +82,28 @@ final class PlayerRepositoryImpl: PlayerRepository {
             
             return data.toDomain()
             
+        } catch {
+            throw error
+        }
+    }
+    
+    func requestAllPlayerList(groupId: Int, gameId: Int) async throws -> GameLeaderboardEntity.Res {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: GameLeaderboardRes.self,
+                    router: OBRouter.gameLeaderboard(
+                        groupId: groupId,
+                        gameId: gameId
+                    )
+                )
+            
+            guard let data = result.value else {
+                throw NetworkError.noExist
+            }
+            
+            return data.toDomain()
         } catch {
             throw error
         }

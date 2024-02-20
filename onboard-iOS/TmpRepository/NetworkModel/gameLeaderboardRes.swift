@@ -38,3 +38,23 @@ struct GameLeaderboardEntity {
         }
     }
 }
+
+
+extension GameLeaderboardRes {
+    func toDomain() -> GameLeaderboardEntity.Res {
+        let list = self.contents.map({
+            GameLeaderboardEntity.Res.LeaderboardGame(
+                score: $0.score ?? 0,
+                role: $0.role,
+                nickname: $0.nickname,
+                rank: $0.rank ?? 0,
+                isChangeRecent: $0.isChangeRecent,
+                matchCount: $0.matchCount ?? 0,
+                userId: $0.userId ?? 0,
+                memberId: $0.memberId)
+        })
+        return GameLeaderboardEntity.Res(
+            contents: list
+        )
+    }
+}
