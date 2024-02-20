@@ -63,6 +63,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
     private let settingButton: UIButton = {
         let button = UIButton()
         button.setImage(IconImage.settingDefault.image, for: .normal)
+        button.isHidden = true
         return button
     }()
     
