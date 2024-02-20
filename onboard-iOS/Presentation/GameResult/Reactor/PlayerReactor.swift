@@ -17,18 +17,21 @@ final class PlayerReactor: Reactor {
         case fetchResult(groupId: Int, size: String)
         case validateNickname(groupId: Int, nickname: String)
         case addPlayer(groupId: Int, req: AddPlayerEntity.Req)
+        case allPlayerData(groupId: Int, gameId: Int)
     }
     
     enum Mutation {
         case setPlayerData([PlayerEntity.Res])
         case setNicknameResult(GuestNickNameEntity.Res)
         case setAddPlayer(result: AddPlayerEntity.Res)
+        case setAllPlayerData([GameLeaderboardEntity.Res])
     }
     
     struct State {
         var playerData: [PlayerEntity.Res] = []
         var nicknameResult: GuestNickNameEntity.Res?
         var AddPlayerData: AddPlayerEntity.Res?
+        var allPlayer: [GameLeaderboardEntity.Res] = []
     }
     
     private let useCase: PlayerUseCase
@@ -47,6 +50,8 @@ final class PlayerReactor: Reactor {
             return self.validateResult(groupId: groupId, nickname: nickname)
         case let .addPlayer(groupId, req):
             return self.addPlayerResult(groupId: groupId, req: req)
+        case let .allPlayerData(groupId, gameId):
+            return self.updatePlayerResult(groupId: groupId, gameId: gameId)
         }
     }
     
@@ -60,6 +65,8 @@ final class PlayerReactor: Reactor {
             state.nicknameResult = result
         case .setAddPlayer(let result):
             state.AddPlayerData = result
+        case .setAllPlayerData(let result):
+            state.allPlayer = result
         }
         
         return state
@@ -113,6 +120,24 @@ extension PlayerReactor {
                     let result = try await self.useCase.fetchAddPlayer(groupId: groupId,
                                                                        req: req)
                     observer.onNext(.setAddPlayer(result: result))
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    private func updatePlayerResult(groupId: Int, gameId: Int) -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
+            
+            Task {
+                do {
+                    let result = try await self.useCase.fetchAllPlayer(groupId: groupId,
+                                                                    gameId: gameId)
+                    observer.onNext(.setAllPlayerData([result]))
                 } catch {
                     observer.onError(error)
                 }
