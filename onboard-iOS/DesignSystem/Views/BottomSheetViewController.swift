@@ -304,7 +304,9 @@ extension BottomSheetViewController {
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] text in
                 guard let nickname = GameDataSingleton.shared.guestNickNameData else { return }
-                self?.reactor?.action.onNext(.validateNickname(groupId: 123, nickname: nickname))
+                let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+                self?.reactor?.action.onNext(.validateNickname(groupId: groupId, 
+                                                               nickname: nickname))
             })
             .disposed(by: disposeBag)
     }
