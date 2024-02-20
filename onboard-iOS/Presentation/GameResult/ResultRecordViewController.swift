@@ -64,7 +64,7 @@ final class ResultRecordViewController: UIViewController, View {
             
             let req = MatchEntity.Req(
                 gameId: GameDataSingleton.shared.gameData?.id ?? 0,
-                groupId: GameDataSingleton.shared.getGroupId()!,
+                groupId: GameDataSingleton.shared.getGroupId() ?? 0,
                 matchedDate: "\(GameDataSingleton.shared.calendarText.value) \(GameDataSingleton.shared.timeText.value)",
                 matchMembers: matchMembers
             )
