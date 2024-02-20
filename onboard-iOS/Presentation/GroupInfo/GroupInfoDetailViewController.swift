@@ -288,6 +288,12 @@ final class GroupInfoDetailViewController: UIViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.showMenu()
+    }
+    
     // MARK: - Bind
     
     func bind(reactor: GroupReactor) {
@@ -332,6 +338,8 @@ final class GroupInfoDetailViewController: UIViewController, View {
         self.addConfigure()
         self.makeConstraints()
         self.setupGestureRecognizer()
+        
+        self.showMenu()
     }
     
     private func addConfigure() {
@@ -503,7 +511,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
     
     @objc
     private func backgroundTapped() {
-        
+        self.hideMenu()
     }
     
     func configureGroupInfo(
@@ -526,5 +534,28 @@ final class GroupInfoDetailViewController: UIViewController, View {
         self.accessCodeLabel.text = accessCode
         self.nicknameLabel.text = nickname
         self.playCountLabel.text = "\(playCount)\(TextLabels.group_playCount)"
+    }
+}
+
+extension GroupInfoDetailViewController {
+    func showMenu() {
+        UIView.animate(withDuration: 0.5) {
+            self.infoView.frame = CGRect(x: 0,
+                                         y: self.infoView.frame.origin.y,
+                                         width: self.view.frame.width,
+                                         height: self.infoView.frame.height)
+        }
+    }
+    
+    private func hideMenu() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.infoView.frame = CGRect(x: self.view.frame.width,
+                                         y: self.infoView.frame.origin.y,
+                                         width: self.infoView.frame.width,
+                                         height: self.infoView.frame.height)
+            self.backgroundView.alpha = 0.0
+        }, completion: { _ in
+            self.dismiss(animated: false, completion: nil)
+        })
     }
 }
