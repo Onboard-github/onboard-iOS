@@ -323,7 +323,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
                             memberCount: data.memberCount,
                             owner: data.owner.nickname,
                             accessCode: data.accessCode,
-                            nickname: "닝",
+                            nickname: data.name,
                             playCount: 5
                         )
                     }
