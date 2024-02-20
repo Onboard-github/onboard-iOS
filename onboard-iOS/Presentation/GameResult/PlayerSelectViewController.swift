@@ -145,8 +145,12 @@ final class PlayerSelectViewController: UIViewController, View {
     }
     
     func bindAction(reactor: PlayerReactor) {
-        reactor.action.onNext(.fetchResult(groupId: 123,
+        let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        let gameId = GameDataSingleton.shared.gameData?.id ?? 0
+        reactor.action.onNext(.fetchResult(groupId: groupId,
                                            size: "1"))
+        reactor.action.onNext(.allPlayerData(groupId: groupId,
+                                                gameId: gameId))
     }
     
     func bindState(reactor: PlayerReactor) {
@@ -195,9 +199,9 @@ final class PlayerSelectViewController: UIViewController, View {
             bottom.didTapButton = { [weak self] in
                 guard let nickname = GameDataSingleton.shared.guestNickNameData else { return }
                 let req = AddPlayerEntity.Req(nickname: nickname)
-                self?.reactor?.action.onNext(.addPlayer(groupId: 123, req: req))
-                GameDataSingleton.shared.addPlayer(PlayerList(image: IconImage.emptyDice.image!,
-                                                              title: nickname))
+                let groupId = GameDataSingleton.shared.getGroupId()!
+                self?.reactor?.action.onNext(.addPlayer(groupId: groupId, req: req))
+                
                 self?.playerTableView.reloadData()
                 bottom.dismiss(animated: false)
             }
