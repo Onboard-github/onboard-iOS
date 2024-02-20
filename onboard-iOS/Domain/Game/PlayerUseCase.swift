@@ -11,6 +11,7 @@ protocol PlayerUseCase {
     func fetchPlayerList(groupId: Int, size: String) async throws -> PlayerEntity.Res
     func fetchValidateNickName(groupId: Int, nickname: String) async throws -> GuestNickNameEntity.Res
     func fetchAddPlayer(groupId: Int, req: AddPlayerEntity.Req) async throws -> AddPlayerEntity.Res
+    func fetchAllPlayer(groupId: Int, gameId: Int) async throws -> GameLeaderboardEntity.Res
 }
 
 final class PlayerUseCasempl: PlayerUseCase {
@@ -31,5 +32,9 @@ final class PlayerUseCasempl: PlayerUseCase {
     
     func fetchAddPlayer(groupId: Int, req: AddPlayerEntity.Req) async throws -> AddPlayerEntity.Res {
         try await self.repository.requestAddPlayer(groupId: groupId, req: req)
+    }
+    
+    func fetchAllPlayer(groupId: Int, gameId: Int) async throws -> GameLeaderboardEntity.Res {
+        try await self.repository.requestAllPlayerList(groupId: groupId, gameId: gameId)
     }
 }
