@@ -304,7 +304,9 @@ final class GroupInfoDetailViewController: UIViewController, View {
     
     func bindAction(reactor: GroupReactor) {
         let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        let gameId = GameDataSingleton.shared.gameData?.id ?? 0
         self.reactor?.action.onNext(.fetchResult(groupId: groupId))
+        self.reactor?.action.onNext(.allPlayerData(groupId: groupId, gameId: gameId))
     }
     
     func bindState(reactor: GroupReactor) {
@@ -312,6 +314,10 @@ final class GroupInfoDetailViewController: UIViewController, View {
             .compactMap { $0.groupInfoData }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] data in
+                
+                let playCount = reactor.currentState.allPlayer.first?.contents.first?.matchCount
+
+                
                 ImageLoader.loadImage(from: data.profileImageUrl) { [weak self] image in
                     DispatchQueue.main.async {
                         guard let image = image else { return }
@@ -324,7 +330,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
                             owner: data.owner.nickname,
                             accessCode: data.accessCode,
                             nickname: data.name,
-                            playCount: 5
+                            playCount: playCount ?? -1
                         )
                     }
                     
