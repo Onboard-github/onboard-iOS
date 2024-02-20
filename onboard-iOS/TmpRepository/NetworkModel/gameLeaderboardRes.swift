@@ -21,3 +21,20 @@ struct LeaderboardGame: Codable {
     var userId: Int? //맴버의 User ID, 게스트는 null
     var memberId: Int //맴버 ID
 }
+
+struct GameLeaderboardEntity {
+    struct Res {
+        var contents: [LeaderboardGame]
+        
+        struct LeaderboardGame: Codable {
+            var score: Int
+            var role: String
+            var nickname: String
+            var rank: Int
+            var isChangeRecent: Bool
+            var matchCount: Int
+            var userId: Int
+            var memberId: Int
+        }
+    }
+}
