@@ -15,28 +15,36 @@ final class GroupReactor: Reactor {
     
     enum Action {
         case fetchResult(groupId: Int)
+        case allPlayerData(groupId: Int, gameId: Int)
     }
     
     enum Mutation {
         case setGroupInfo(GroupInfoEntity.Res)
+        case setAllPlayerData([GameLeaderboardEntity.Res])
     }
     
     struct State {
         var groupInfoData: GroupInfoEntity.Res?
+        var allPlayer: [GameLeaderboardEntity.Res] = []
     }
     
     private let useCase: GroupUseCase
+    private let playerUseCase: PlayerUseCase
     
     init(
-        useCase: GroupUseCase
+        useCase: GroupUseCase,
+        playerUseCase: PlayerUseCase
     ) {
         self.useCase = useCase
+        self.playerUseCase = playerUseCase
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .fetchResult(groupId):
             return self.groupInfoResult(groupId: groupId)
+        case let .allPlayerData(groupId, gameId):
+            return self.updatePlayerResult(groupId: groupId, gameId: gameId)
         }
     }
     
@@ -46,6 +54,8 @@ final class GroupReactor: Reactor {
         switch mutation {
         case .setGroupInfo(let result):
             state.groupInfoData = result
+        case .setAllPlayerData(let result):
+            state.allPlayer = result
         }
         
         return state
@@ -69,7 +79,24 @@ extension GroupReactor {
             
             return Disposables.create()
         }
-        
+    }
+    
+    private func updatePlayerResult(groupId: Int, gameId: Int) -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
+            
+            Task {
+                do {
+                    let result = try await self.playerUseCase.fetchAllPlayer(groupId: groupId,
+                                                                             gameId: gameId)
+                    observer.onNext(.setAllPlayerData([result]))
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
     }
 }
 
