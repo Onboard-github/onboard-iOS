@@ -146,8 +146,9 @@ final class PlayerSelectViewController: UIViewController, View {
     
     func bindAction(reactor: PlayerReactor) {
         let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        // size 임시로 고정 처리
         reactor.action.onNext(.fetchResult(groupId: groupId,
-                                           size: "5"))
+                                           size: "20"))
     }
     
     func bindState(reactor: PlayerReactor) {
