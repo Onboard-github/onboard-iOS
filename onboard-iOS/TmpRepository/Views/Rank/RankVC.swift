@@ -167,7 +167,8 @@ class RankVC: UIViewController {
         
         self.moreButton2.addAction(UIAction(handler: { [weak self] _ in
             let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
-            let reactor = GroupReactor(useCase: useCase)
+            let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+            let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase)
             let groupInfoDetailViewController = GroupInfoDetailViewController(reactor: reactor)
             groupInfoDetailViewController.modalPresentationStyle = .overFullScreen
             self?.present(groupInfoDetailViewController, animated: false)
@@ -246,6 +247,7 @@ class RankVC: UIViewController {
                     object: GameLeaderboardRes.self,
                     router: OBRouter.gameLeaderboard(groupId: selectedGroupInfo?.id ?? -1, gameId: gameId)
                 )
+            print("gameInfo: \(result)")
             if let gameInfo = result.value?.contents {
                 self.gameInfo = gameInfo
             } else {
