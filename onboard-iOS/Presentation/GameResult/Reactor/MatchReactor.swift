@@ -63,6 +63,7 @@ extension MatchReactor {
                 do {
                     let result = try await self.useCase.fetchMatch(req: req)
                     
+                    observer.onNext(.setMatch(result: result))
                 } catch {
                     observer.onError(error)
                 }
