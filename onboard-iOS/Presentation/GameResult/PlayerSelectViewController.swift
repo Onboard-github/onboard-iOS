@@ -146,11 +146,8 @@ final class PlayerSelectViewController: UIViewController, View {
     
     func bindAction(reactor: PlayerReactor) {
         let groupId = GameDataSingleton.shared.getGroupId() ?? 0
-        let gameId = GameDataSingleton.shared.gameData?.id ?? 0
         reactor.action.onNext(.fetchResult(groupId: groupId,
-                                           size: "1"))
-        reactor.action.onNext(.allPlayerData(groupId: groupId,
-                                             gameId: gameId))
+                                           size: "5"))
     }
     
     func bindState(reactor: PlayerReactor) {
@@ -342,8 +339,15 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
         if let playerData = reactor?.currentState.playerData.first?.contents {
             if indexPath.row < playerData.count {
                 let data = playerData[indexPath.row]
-                cell.configure(title: data.nickname, showMeImage: true)
+                let titleImage = data.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
+                let titleColor: UIColor = data.role == "GUEST" ? Colors.Gray_9 : Colors.Gray_14
+                let showMeImage = data.role == "OWNER"
+                cell.configure(image: titleImage,
+                               title: data.nickname,
+                               titleColor: titleColor,
+                               showMeImage: showMeImage)
                 
+                // 플레이어 선택 버튼 처리
                 cell.didTapSelectButton = { [weak self] in
                     guard tableView.indexPath(for: cell) != nil else { return }
                     
@@ -359,51 +363,10 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
                     self?.setButtonStatus()
                     self?.playerCollectionView.reloadData()
                     self?.toggleLayout()
-                    
-                }
-                
-            } else {
-                let filteredNewData = reactor?.currentState.allPlayer.first?.contents.filter { $0.role != "OWNER" }
-                
-                guard let filteredNewData = filteredNewData, !filteredNewData.isEmpty else {
-                    return UITableViewCell()
-                }
-                
-                let newDataIndex = indexPath.row - playerData.count
-                guard newDataIndex >= 0 && newDataIndex < filteredNewData.count else {
-                    return UITableViewCell()
-                }
-                
-                let newData = filteredNewData[newDataIndex]
-                
-                cell.configure(image: IconImage.emptyDice.image,
-                               title: newData.nickname,
-                               titleColor: Colors.Gray_9,
-                               showMeImage: false)
-                
-                let data = PlayerList(image: IconImage.emptyDice.image!,
-                                      title: newData.nickname)
-                
-                cell.didTapSelectButton = { [weak self] in
-                    guard tableView.indexPath(for: cell) != nil else { return }
-                    
-                    let data = PlayerList(image: IconImage.emptyDice.image!,
-                                          title: newData.nickname)
-                    
-                    if GameDataSingleton.shared.selectedPlayerData.contains(data) {
-                        GameDataSingleton.shared.removeSelectedPlayer(data)
-                    } else {
-                        GameDataSingleton.shared.addSelectedPlayer(data)
-                    }
-                    
-                    self?.setButtonStatus()
-                    self?.playerCollectionView.reloadData()
-                    self?.toggleLayout()
                 }
                 
             }
         }
-        
         return cell
     }
 }
@@ -471,3 +434,4 @@ extension PlayerSelectViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 52, height: 68)
     }
 }
+
