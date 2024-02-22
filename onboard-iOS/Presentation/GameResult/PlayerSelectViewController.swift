@@ -512,6 +512,8 @@ extension PlayerSelectViewController {
             self?.reactor?.action.onNext(.addPlayer(groupId: groupId, req: req))
             self?.playerTableView.reloadData()
             bottom.dismiss(animated: false)
+            
+            self?.reactor?.action.onNext(.fetchResult(groupId: groupId, size: "20"))
         }
     }
 }
