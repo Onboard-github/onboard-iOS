@@ -199,7 +199,8 @@ final class PlayerSelectViewController: UIViewController, View {
                 let req = AddPlayerEntity.Req(nickname: nickname)
                 let groupId = GameDataSingleton.shared.getGroupId()!
                 self?.reactor?.action.onNext(.addPlayer(groupId: groupId, req: req))
-                
+                self?.reactor?.action.onNext(.fetchResult(groupId: groupId,
+                                                         size: "20"))
                 self?.playerTableView.reloadData()
                 bottom.dismiss(animated: false)
             }
@@ -352,7 +353,8 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
                 cell.didTapSelectButton = { [weak self] in
                     guard tableView.indexPath(for: cell) != nil else { return }
                     
-                    let existData = PlayerList(image: IconImage.dice.image!,
+                    let diceImage = data.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
+                    let existData = PlayerList(image: diceImage!,
                                                title: data.nickname)
                     
                     if GameDataSingleton.shared.selectedPlayerData.contains(existData) {
