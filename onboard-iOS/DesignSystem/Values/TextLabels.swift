@@ -102,4 +102,9 @@ struct TextLabels {
     
     static let imageLoading_loading = "점수 기록 중.."
     static let imageLoading_complete = "점수 기록이 완료되었습니다!"
+    
+    // MARK: - EmptyView
+    
+    static let search_empty_subTitle = "함께 보드게임을 플레이한 상대가 온보드에\n아직 없다면, 임시 멤버로 추가해 기록해보세요!"
+
 }
