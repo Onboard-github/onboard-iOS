@@ -125,6 +125,12 @@ final class PlayerSelectViewController: UIViewController, View {
         return button
     }()
     
+    private let emptyStateView: SearchEmptyStateView = {
+        let view = SearchEmptyStateView()
+        view.isHidden = true
+        return view
+    }()
+    
     // MARK: - Initialize
     
     init(reactor: PlayerReactor) {
@@ -173,42 +179,12 @@ final class PlayerSelectViewController: UIViewController, View {
         self.setNavigationBar()
         
         self.searchPlayers()
+        self.searchEmptyState()
     }
     
     private func addConfigure() {
         self.addButton.addAction(UIAction(handler: { [weak self] _ in
-            let useCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
-            let reactor = PlayerReactor(useCase: useCase)
-            let bottom = BottomSheetViewController(reactor: reactor)
-            
-            bottom.contentView.snp.makeConstraints {
-                $0.height.equalTo(260)
-            }
-            
-            let popupState = PopupState(
-                titleLabel: TextLabels.bottom_title,
-                subTitleLabel: TextLabels.bottom_subTitle,
-                textFieldPlaceholder: TextLabels.bottom_textField_placeholder,
-                textFieldSubTitleLabel: "",
-                countLabel: TextLabels.bottom_textField_count,
-                buttonLabel: TextLabels.bottom_register_button
-            )
-            
-            bottom.setState(popupState: popupState, onClickLink: { })
-            bottom.modalPresentationStyle = .overFullScreen
-            self?.present(bottom, animated: false)
-            
-            bottom.didTapButton = { [weak self] in
-                guard let nickname = GameDataSingleton.shared.guestNickNameData else { return }
-                let req = AddPlayerEntity.Req(nickname: nickname)
-                let groupId = GameDataSingleton.shared.getGroupId()!
-                self?.reactor?.action.onNext(.addPlayer(groupId: groupId, req: req))
-                self?.reactor?.action.onNext(.fetchResult(groupId: groupId,
-                                                         size: "20"))
-                self?.playerTableView.reloadData()
-                bottom.dismiss(animated: false)
-            }
-            
+            self?.addGuest()
         }), for: .touchUpInside)
         
         self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
@@ -326,11 +302,14 @@ final class PlayerSelectViewController: UIViewController, View {
 extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = reactor?.currentState.playerData.first?.contents.count ?? 0
-        if let searchText = self.textField.text, !searchText.isEmpty {
-            count = filteredData.count
+        if let searchText = self.textField.text,
+           !searchText.isEmpty {
+            let searchCount = filteredData.count
+            return searchCount
+        } else {
+            let totalCount = reactor?.currentState.playerData.first?.contents.count ?? 0
+            return totalCount
         }
-        return count
     }
     
     func tableView(
@@ -343,8 +322,16 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             for: indexPath
         ) as! OwnerManageTableViewCell
         
-        guard let playerData = reactor?.currentState.playerData.first?.contents else { return cell }
-        let data = !textField.text!.isEmpty ? filteredData[indexPath.row] : playerData[indexPath.row]
+        var data: PlayerEntity.Res.PlayerList
+        
+        if let searchText = self.textField.text, !searchText.isEmpty {
+            data = filteredData[indexPath.row]
+        } else {
+            guard let playerData = reactor?.currentState.playerData.first?.contents else {
+                return cell
+            }
+            data = playerData[indexPath.row]
+        }
         
         let titleImage = data.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
         let titleColor: UIColor = data.role == "GUEST" ? Colors.Gray_9 : Colors.Gray_14
@@ -453,8 +440,75 @@ extension PlayerSelectViewController {
                     self?.filteredData = (self?.reactor?.currentState.playerData.first?.contents ?? []).filter { $0.nickname.contains(text) }
                 }
                 
+                if self?.filteredData.isEmpty == true {
+                    self?.showEmptyStateView()
+                    self?.emptyStateView.setTitle(title: "'\(text)' \(TextLabels.search_empty_title)")
+                } else {
+                    self?.hideEmptyStateView()
+                }
+                
                 self?.playerTableView.reloadData()
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func showEmptyStateView() {
+        self.emptyStateView.isHidden = false
+        self.playerTableView.isHidden = true
+        
+        self.emptyStateView.didTapButton = {
+            self.addGuest()
+        }
+    }
+    
+    private func hideEmptyStateView() {
+        self.emptyStateView.isHidden = true
+        self.playerTableView.isHidden = false
+    }
+    
+    
+    private func searchEmptyState() {
+        self.view.addSubview(self.emptyStateView)
+        
+        self.emptyStateView.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.bottom).offset(Metric.tableViewSpacing)
+            $0.bottom.equalTo(confirmButton.snp.top).offset(-Metric.tableViewSpacing)
+            $0.leading.trailing.equalToSuperview()
+        }
+    }
+}
+
+extension PlayerSelectViewController {
+    
+    private func addGuest() {
+        let useCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+        let reactor = PlayerReactor(useCase: useCase)
+        let bottom = BottomSheetViewController(reactor: reactor)
+        
+        bottom.contentView.snp.makeConstraints {
+            $0.height.equalTo(260)
+        }
+        
+        let popupState = PopupState(
+            titleLabel: TextLabels.bottom_title,
+            subTitleLabel: TextLabels.bottom_subTitle,
+            textFieldPlaceholder: TextLabels.bottom_textField_placeholder,
+            textFieldSubTitleLabel: "",
+            countLabel: TextLabels.bottom_textField_count,
+            buttonLabel: TextLabels.bottom_register_button
+        )
+        
+        bottom.setState(popupState: popupState, onClickLink: { })
+        bottom.modalPresentationStyle = .overFullScreen
+        self.present(bottom, animated: false)
+        
+        bottom.didTapButton = { [weak self] in
+            guard let nickname = GameDataSingleton.shared.guestNickNameData else { return }
+            let req = AddPlayerEntity.Req(nickname: nickname)
+            let groupId = GameDataSingleton.shared.getGroupId()!
+            self?.reactor?.action.onNext(.addPlayer(groupId: groupId, req: req))
+            self?.playerTableView.reloadData()
+            bottom.dismiss(animated: false)
+        }
     }
 }

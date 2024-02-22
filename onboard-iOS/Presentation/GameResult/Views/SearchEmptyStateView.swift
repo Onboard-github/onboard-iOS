@@ -22,6 +22,7 @@ final class SearchEmptyStateView: UIView {
     
     private let subTitleLabel: UILabel = {
         let label = UILabel()
+        label.text = TextLabels.search_empty_subTitle
         label.textColor = Colors.Gray_10
         label.font = Font.Typography.body3_R
         label.numberOfLines = 0

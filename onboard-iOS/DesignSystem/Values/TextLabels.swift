@@ -105,6 +105,7 @@ struct TextLabels {
     
     // MARK: - EmptyView
     
+    static let search_empty_title = "에 대한 검색어가 없습니다."
     static let search_empty_subTitle = "함께 보드게임을 플레이한 상대가 온보드에\n아직 없다면, 임시 멤버로 추가해 기록해보세요!"
 
 }
