@@ -17,6 +17,8 @@ final class PlayerSelectViewController: UIViewController, View {
     
     var disposeBag = DisposeBag()
     
+    var filteredData: [PlayerEntity.Res.PlayerList] = []
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -169,6 +171,8 @@ final class PlayerSelectViewController: UIViewController, View {
         self.addConfigure()
         self.makeConstraints()
         self.setNavigationBar()
+        
+        self.searchPlayers()
     }
     
     private func addConfigure() {
@@ -322,10 +326,11 @@ final class PlayerSelectViewController: UIViewController, View {
 extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let data = reactor?.currentState.playerData.first?.contents.count ?? 0
-        let filteredData = reactor?.currentState.allPlayer.first?.contents.filter { $0.role != "OWNER" }
-        let newData = filteredData?.count ?? 0
-        return data + newData
+        var count = reactor?.currentState.playerData.first?.contents.count ?? 0
+        if let searchText = self.textField.text, !searchText.isEmpty {
+            count = filteredData.count
+        }
+        return count
     }
     
     func tableView(
@@ -338,37 +343,33 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             for: indexPath
         ) as! OwnerManageTableViewCell
         
-        if let playerData = reactor?.currentState.playerData.first?.contents {
-            if indexPath.row < playerData.count {
-                let data = playerData[indexPath.row]
-                let titleImage = data.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
-                let titleColor: UIColor = data.role == "GUEST" ? Colors.Gray_9 : Colors.Gray_14
-                let showMeImage = data.role == "OWNER"
-                cell.configure(image: titleImage,
-                               title: data.nickname,
-                               titleColor: titleColor,
-                               showMeImage: showMeImage)
-                
-                // 플레이어 선택 버튼 처리
-                cell.didTapSelectButton = { [weak self] in
-                    guard tableView.indexPath(for: cell) != nil else { return }
-                    
-                    let diceImage = data.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
-                    let existData = PlayerList(image: diceImage!,
-                                               title: data.nickname)
-                    
-                    if GameDataSingleton.shared.selectedPlayerData.contains(existData) {
-                        GameDataSingleton.shared.removeSelectedPlayer(existData)
-                    } else {
-                        GameDataSingleton.shared.addSelectedPlayer(existData)
-                    }
-                    
-                    self?.setButtonStatus()
-                    self?.playerCollectionView.reloadData()
-                    self?.toggleLayout()
-                }
-                
+        guard let playerData = reactor?.currentState.playerData.first?.contents else { return cell }
+        let data = !textField.text!.isEmpty ? filteredData[indexPath.row] : playerData[indexPath.row]
+        
+        let titleImage = data.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
+        let titleColor: UIColor = data.role == "GUEST" ? Colors.Gray_9 : Colors.Gray_14
+        let showMeImage = data.role == "OWNER"
+        cell.configure(image: titleImage,
+                       title: data.nickname,
+                       titleColor: titleColor,
+                       showMeImage: showMeImage)
+        
+        cell.didTapSelectButton = { [weak self] in
+            guard tableView.indexPath(for: cell) != nil else { return }
+            
+            let diceImage = data.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
+            let existData = PlayerList(image: diceImage!,
+                                       title: data.nickname)
+            
+            if GameDataSingleton.shared.selectedPlayerData.contains(existData) {
+                GameDataSingleton.shared.removeSelectedPlayer(existData)
+            } else {
+                GameDataSingleton.shared.addSelectedPlayer(existData)
             }
+            
+            self?.setButtonStatus()
+            self?.playerCollectionView.reloadData()
+            self?.toggleLayout()
         }
         return cell
     }
@@ -438,3 +439,22 @@ extension PlayerSelectViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension PlayerSelectViewController {
+    
+    private func searchPlayers() {
+        self.textField.rx.text
+            .distinctUntilChanged()
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] text in
+                guard let text = text else { return }
+                if text.isEmpty {
+                    self?.filteredData = self?.reactor?.currentState.playerData.first?.contents ?? []
+                } else {
+                    self?.filteredData = (self?.reactor?.currentState.playerData.first?.contents ?? []).filter { $0.nickname.contains(text) }
+                }
+                
+                self?.playerTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+    }
+}
