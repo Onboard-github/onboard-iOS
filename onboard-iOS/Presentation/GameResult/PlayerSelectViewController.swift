@@ -145,6 +145,10 @@ final class PlayerSelectViewController: UIViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    
     // MARK: - Bind
     
     func bind(reactor: PlayerReactor) {
@@ -479,7 +483,6 @@ extension PlayerSelectViewController {
 }
 
 extension PlayerSelectViewController {
-    
     private func addGuest() {
         let useCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
         let reactor = PlayerReactor(useCase: useCase)
