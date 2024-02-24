@@ -288,7 +288,7 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
         case .loading:
             return 5
         case .loaded:
-            return unrankedGameInfo.count + 1
+            return unrankedGameInfo.count + 1 + (max(rankedGameInfo.count - 3, 0))
         }
         return 1
     }
@@ -400,35 +400,70 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
                     return podiumCell
                 }
             } else {
-                let unrankedIndex = indexPath.row - 1
-                let unranker = unrankedGameInfo[unrankedIndex]
+                let remainedRankedCount = max((rankedGameInfo.count - 3), 0)
                 
-                if let gameCell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as? GameCell {
-                    var info = GameCellInfo(rankNum: indexPath.row)
+                let unrankedIndex = indexPath.row - 1
+                
+                if remainedRankedCount > unrankedIndex {
+                    let ranker = rankedGameInfo[3 + unrankedIndex]
                     
-                        if unranker.role == "GUEST" {
-                            info.dice = .empty
-                        } else {
-                            info.dice = .dice
-                        }
-                        if unranker.userId == meInfo?.id {
-                            info.isMe = true
-                        } else {
-                            info.isMe = false
-                        }
-                        if unranker.isChangeRecent {
-                            info.isRedDot = true
-                        } else {
-                            info.isRedDot = false
-                        }
-                        info.playCount = unranker.matchCount ?? 0
-                        info.score = unranker.score ?? 0
-                    
-                    info.userName = unranker.nickname
+                    if let gameCell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as? GameCell {
+                        var info = GameCellInfo(rankNum: indexPath.row)
+                        
+                            if ranker.role == "GUEST" {
+                                info.dice = .empty
+                            } else {
+                                info.dice = .dice
+                            }
+                            if ranker.userId == meInfo?.id {
+                                info.isMe = true
+                            } else {
+                                info.isMe = false
+                            }
+                            if ranker.isChangeRecent {
+                                info.isRedDot = true
+                            } else {
+                                info.isRedDot = false
+                            }
+                            info.playCount = ranker.matchCount ?? 0
+                            info.score = ranker.score ?? 0
+                        
+                        info.userName = ranker.nickname
 
-                    info.rankNum = unranker.rank ?? -1
-                    gameCell.info = info
-                    return gameCell
+                        info.rankNum = ranker.rank ?? -1
+                        gameCell.info = info
+                        return gameCell
+                    }
+                } else {
+                    let unranker = unrankedGameInfo[unrankedIndex - remainedRankedCount]
+                    
+                    if let gameCell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as? GameCell {
+                        var info = GameCellInfo(rankNum: indexPath.row)
+                        
+                            if unranker.role == "GUEST" {
+                                info.dice = .empty
+                            } else {
+                                info.dice = .dice
+                            }
+                            if unranker.userId == meInfo?.id {
+                                info.isMe = true
+                            } else {
+                                info.isMe = false
+                            }
+                            if unranker.isChangeRecent {
+                                info.isRedDot = true
+                            } else {
+                                info.isRedDot = false
+                            }
+                            info.playCount = unranker.matchCount ?? 0
+                            info.score = unranker.score ?? 0
+                        
+                        info.userName = unranker.nickname
+
+                        info.rankNum = unranker.rank ?? -1
+                        gameCell.info = info
+                        return gameCell
+                    }
                 }
             }
         }
