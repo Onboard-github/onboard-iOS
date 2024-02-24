@@ -15,17 +15,23 @@ class GameDataSingleton {
     
     static let shared = GameDataSingleton()
     
-    var groupListCount = BehaviorRelay<Int>(value: 0)
-    var gameData: GameResultEntity.Res.GameList?
-    var playerData: [PlayerList] = []
-    var selectedPlayerData: [PlayerList] = []
-    var guestNickNameData: String?
+    // 그룹 아이디
     var groupId: Int?
     
-    private let textSubject = PublishSubject<String>()
+    // 선택한 게임 데이터
+    var gameData: GameResultEntity.Res.GameList?
     
+    // 임시 멤버 추가에서 입력한 닉네임
+    var guestNickNameData: String?
+    
+    // 기록에서 선택한 플레이어 데이터
+    var gamePlayerData: [PlayerEntity.Res.PlayerList] = []
+    
+    // 기록 날짜 및 시간
     var calendarText = BehaviorRelay<String>(value: "")
     var timeText = BehaviorRelay<String>(value: "")
+    
+    private let textSubject = PublishSubject<String>()
     
     var textObservable: Observable<String> {
         return textSubject.asObservable()
@@ -43,26 +49,15 @@ class GameDataSingleton {
         textSubject.onNext(text)
     }
     
-    // 임시 멤버 추가
-    func addPlayer(_ player: PlayerList) {
-        self.playerData.append(player)
+    // 기록에서 선택한 플레이어 데이터 (추가)
+    func addGamePlayer(player: PlayerEntity.Res.PlayerList) {
+        self.gamePlayerData.append(player)
     }
     
-    // 플레이어 선택
-    func addSelectedPlayer(_ player: PlayerList) {
-        self.selectedPlayerData.append(player)
-    }
-    
-    func removePlayer(at index: Int) {
-        guard index < self.selectedPlayerData.count else { return }
-        self.selectedPlayerData.remove(at: index)
-    }
-    
-    // 선택한 플레이어 제거
-    func removeSelectedPlayer(_ player: PlayerList) {
-        if let index = self.selectedPlayerData.firstIndex(where: { $0.title == player.title }) {
-            self.selectedPlayerData.remove(at: index)
-        }
+    // 기록에서 선택한 플레이어 데이터 (제거)
+    func removeGamePlayer(at index: Int) {
+        guard index < self.gamePlayerData.count else { return }
+        self.gamePlayerData.remove(at: index)
     }
     
     // 그룹 아이디 저장하기
@@ -73,15 +68,5 @@ class GameDataSingleton {
     // 그룹 아이디 가져오기
     func getGroupId() -> Int? {
         return groupId
-    }
-}
-
-struct PlayerList: Equatable {
-    let image: UIImage
-    let title: String
-    var score: String?
-    
-    static func == (lhs: PlayerList, rhs: PlayerList) -> Bool {
-        return lhs.image == rhs.image && lhs.title == rhs.title
     }
 }
