@@ -315,7 +315,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] data in
                 
-                let playerInfo = reactor.currentState.allPlayer.first?.contents.first
+                let me = reactor.currentState.allPlayer.first?.contents.filter({ $0.userId == LoginSessionManager.meId }).first
                 
                 ImageLoader.loadImage(from: data.profileImageUrl) { [weak self] image in
                     DispatchQueue.main.async {
@@ -328,8 +328,8 @@ final class GroupInfoDetailViewController: UIViewController, View {
                             memberCount: data.memberCount,
                             owner: data.owner.nickname,
                             accessCode: data.accessCode,
-                            nickname: playerInfo?.nickname ?? "error",
-                            playCount: playerInfo?.matchCount ?? -1
+                            nickname: me?.nickname ?? "error",
+                            playCount: me?.matchCount ?? -1
                         )
                     }
                     

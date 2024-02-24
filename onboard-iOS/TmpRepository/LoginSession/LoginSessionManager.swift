@@ -67,4 +67,24 @@ class LoginSessionManager {
     static func getNickname() -> String? {
         return KeychainWrapper.standard.string(forKey: "nickname")
     }
+    
+    static var meId: Int? {
+        get {
+            UserDefaults.standard.integer(forKey: "meId")
+        }
+        
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "meId")
+        }
+    }
+    
+    static var meMemberId: Int? {
+        get {
+            UserDefaults.standard.integer(forKey: "meMemberId")
+        }
+        
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "meMemberId")
+        }
+    }
 }

@@ -85,6 +85,7 @@ class RankVC: UIViewController {
             titleLabelButton.setTitle(selectedGroupInfo?.name, for: .normal)
             if let id = selectedGroupInfo?.id {
                 GameDataSingleton.shared.setGroupId(id)
+                LoginSessionManager.meMemberId = joinedGroupList?.contents.filter({$0.id == id}).first?.memberId
             }
             // 메뉴 항목을 생성합니다.
             // 임시 주석 처리
@@ -178,6 +179,7 @@ class RankVC: UIViewController {
         Task {
             let meInfoResult = try await OBNetworkManager.shared.asyncRequest(object: GetMeRes.self, router: .getMe)
             self.meInfo = meInfoResult.value
+            LoginSessionManager.meId = meInfoResult.value?.id
         }
     }
     

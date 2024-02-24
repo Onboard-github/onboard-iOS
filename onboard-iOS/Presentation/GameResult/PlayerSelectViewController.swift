@@ -339,7 +339,7 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
         
         let titleImage = data.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
         let titleColor: UIColor = data.role == "GUEST" ? Colors.Gray_9 : Colors.Gray_14
-        let showMeImage = data.role == "OWNER"
+        let showMeImage = data.id == LoginSessionManager.meMemberId
         cell.configure(image: titleImage,
                        title: data.nickname,
                        titleColor: titleColor,
