@@ -122,7 +122,7 @@ final class ResultRecordView: UIView {
     
     private let playLabel: UIView = {
         let label = UILabel()
-        label.text = "\(GameDataSingleton.shared.selectedPlayerData.count)\(TextLabels.game_record_player_count)"
+        label.text = "\(GameDataSingleton.shared.gamePlayerData.count)\(TextLabels.game_record_player_count)"
         label.textColor = Colors.Gray_12
         label.font = Font.Typography.body5_R
         return label
