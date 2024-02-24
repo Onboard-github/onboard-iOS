@@ -341,7 +341,7 @@ extension ResultRecordView: UITableViewDelegate, UITableViewDataSource {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return GameDataSingleton.shared.selectedPlayerData.count
+        return GameDataSingleton.shared.gamePlayerData.count
     }
     
     func tableView(
@@ -351,13 +351,14 @@ extension ResultRecordView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultRecordTableViewCell",
                                                  for: indexPath) as! ResultRecordTableViewCell
         
-        let selectedPlayer = GameDataSingleton.shared.selectedPlayerData[indexPath.item]
+        let selectedPlayer = GameDataSingleton.shared.gamePlayerData[indexPath.item]
+        let titleImage = selectedPlayer.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
         
         cell.configure(
             ranking: "\(indexPath.row + 1)",
             rank: "\(TextLabels.game_record_rank)",
-            image: selectedPlayer.image,
-            nickname: selectedPlayer.title,
+            image: titleImage!,
+            nickname: selectedPlayer.nickname,
             result: selectedPlayer.score!,
             score: "\(TextLabels.game_record_score)"
         )
