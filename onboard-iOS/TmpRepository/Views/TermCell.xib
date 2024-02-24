@@ -36,7 +36,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDL-em-ftS">
                                 <rect key="frame" x="0.0" y="23" width="222" height="17"/>
-                                <color key="tintColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.54509803921568623" green="0.54509803921568623" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="상세보기" titleAlignment="leading">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="13"/>
