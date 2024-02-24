@@ -108,7 +108,7 @@ class RankVC: UIViewController {
         }
     }
     
-    var state: RankVcState = .loading {
+    var state: RankVcState = .loaded {
         didSet {
             if state == .notJoinedGroup || state == .loading {
                 titleLabelButton.isHidden = true
