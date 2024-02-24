@@ -17,7 +17,7 @@ final class PlayerSelectViewController: UIViewController, View {
     
     var disposeBag = DisposeBag()
     
-    var filteredData: [PlayerEntity.Res.PlayerList] = []
+    private var filteredData: [PlayerEntity.Res.PlayerList] = []
     
     // MARK: - Metric
     
@@ -274,7 +274,7 @@ final class PlayerSelectViewController: UIViewController, View {
     }
     
     private func toggleLayout() {
-        self.playerCollectionView.isHidden = GameDataSingleton.shared.selectedPlayerData.isEmpty
+        self.playerCollectionView.isHidden = GameDataSingleton.shared.gamePlayerData.isEmpty
         
         let topOffset = playerCollectionView.isHidden ? titleLabel.snp.bottom : playerCollectionView.snp.bottom
         textField.snp.remakeConstraints {
@@ -288,7 +288,7 @@ final class PlayerSelectViewController: UIViewController, View {
     }
     
     private func setButtonStatus() {
-        let selectedCount = GameDataSingleton.shared.selectedPlayerData.count
+        let selectedCount = GameDataSingleton.shared.gamePlayerData.count
         
         if let gameData = GameDataSingleton.shared.gameData {
             confirmButton.status = (gameData.minMember...gameData.maxMember ~= selectedCount) ? .default : .disabled
@@ -348,20 +348,17 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
         cell.didTapSelectButton = { [weak self] in
             guard tableView.indexPath(for: cell) != nil else { return }
             
-            let diceImage = data.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
-            let existData = PlayerList(image: diceImage!,
-                                       title: data.nickname)
-            
-            if GameDataSingleton.shared.selectedPlayerData.contains(existData) {
-                GameDataSingleton.shared.removeSelectedPlayer(existData)
+            if let index = GameDataSingleton.shared.gamePlayerData.firstIndex(where: { $0.id == data.id }) {
+                GameDataSingleton.shared.removeGamePlayer(at: index)
             } else {
-                GameDataSingleton.shared.addSelectedPlayer(existData)
+                GameDataSingleton.shared.addGamePlayer(player: data)
             }
             
             self?.setButtonStatus()
             self?.playerCollectionView.reloadData()
             self?.toggleLayout()
         }
+        
         return cell
     }
 }
