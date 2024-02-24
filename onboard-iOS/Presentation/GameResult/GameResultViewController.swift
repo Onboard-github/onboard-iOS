@@ -194,7 +194,7 @@ extension GameResultViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         
         GameDataSingleton.shared.gameData = gameData
-        GameDataSingleton.shared.selectedPlayerData.removeAll()
+        GameDataSingleton.shared.gamePlayerData.removeAll()
         
         let useCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
         let reactor = PlayerReactor(useCase: useCase)
