@@ -371,7 +371,7 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return GameDataSingleton.shared.selectedPlayerData.count
+        return GameDataSingleton.shared.gamePlayerData.count
     }
     
     func collectionView(
@@ -384,27 +384,21 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
             for: indexPath
         ) as! PlayerCollectionViewCell
         
-        if GameDataSingleton.shared.selectedPlayerData.indices.contains(indexPath.item) {
-            let selectedPlayer = GameDataSingleton.shared.selectedPlayerData[indexPath.item]
-            cell.configure(image: selectedPlayer.image, title: selectedPlayer.title)
+        // collectionView cell 구성
+        if GameDataSingleton.shared.gamePlayerData.indices.contains(indexPath.item) {
+            let selectedPlayer = GameDataSingleton.shared.gamePlayerData[indexPath.item]
+            let titleImage = selectedPlayer.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
+            cell.configure(image: titleImage, title: selectedPlayer.nickname)
         }
-        
+
+        // 삭제 버튼 이벤트
         cell.didTapDeleteButton = { [weak self, weak cell] in
             guard let indexPath = collectionView.indexPath(for: cell!) else { return }
             
-            guard indexPath.item < GameDataSingleton.shared.selectedPlayerData.count else { return }
-            let deletedPlayer = GameDataSingleton.shared.selectedPlayerData[indexPath.item]
+            guard indexPath.item < GameDataSingleton.shared.gamePlayerData.count else { return }
             
-            GameDataSingleton.shared.removePlayer(at: indexPath.item)
+            GameDataSingleton.shared.removeGamePlayer(at: indexPath.item)
             collectionView.deleteItems(at: [indexPath])
-            
-            if let tableView = self?.playerTableView {
-                if let indexToRemove = GameDataSingleton.shared.selectedPlayerData.firstIndex(where: { $0.title == deletedPlayer.title }) {
-                    let tableViewIndexPath = IndexPath(row: indexToRemove + 1, section: 0)
-                    guard tableView.cellForRow(at: tableViewIndexPath) is OwnerManageTableViewCell else { return }
-                    GameDataSingleton.shared.selectedPlayerData.remove(at: indexToRemove)
-                }
-            }
             
             self?.toggleLayout()
             self?.setButtonStatus()
