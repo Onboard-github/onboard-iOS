@@ -34,6 +34,7 @@ struct PlayerEntity {
             let role: String
             let nickname: String
             let level: Int
+            var score: String?
         }
     }
 }
