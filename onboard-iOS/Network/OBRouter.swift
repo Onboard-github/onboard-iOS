@@ -116,7 +116,7 @@ enum OBRouter: URLRequestConvertible {
         case .gameList:
             return "api/v1/group/0/game"
         case .pickerImage:
-            return "api/v1/file"
+            return "v1/file"
         case .randomImage:
             return "api/v1/group/default-image"
         case .createGroup:

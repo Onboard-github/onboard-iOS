@@ -59,21 +59,19 @@ final class GroupCreateRepositoryImpl: GroupCreateRepository {
     
     func requestCreate(req: GroupCreateCompleteEntity.Req) async throws -> GroupCreateCompleteEntity.Res {
         do {
-            let body = try GroupCreateRequest.Body(
-                name: req.name,
-                description: req.description,
-                organization: req.organization,
-                profileImageUrl: req.profileImageUrl,
-                profileImageUuid: "ac11ca82-bc16-4e6d-baf9-c2d81f3b4f5b",
-                nickname: req.nickname
-            ).encode()
-            
             let result = try await OBNetworkManager
                 .shared
                 .asyncRequest(
                     object: GroupCreateCompleteDTO.self,
                     router: OBRouter.createGroup(
-                        body: body
+                        body: GroupCreateRequest.Body(
+                            name: req.name,
+                            description: req.description,
+                            organization: req.organization,
+                            profileImageUrl: req.profileImageUrl,
+                            profileImageUuid: req.profileImageUuid,
+                            nickname: req.nickname
+                        ).encode()
                     )
                 )
             

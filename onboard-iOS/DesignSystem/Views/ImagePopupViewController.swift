@@ -219,7 +219,7 @@ extension ImagePopupViewController: UIImagePickerControllerDelegate, UINavigatio
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             if let file = createFile(from: image, withName: "image.png", mimeType: "image/png") {
 
-                reactor?.action.onNext(.fileUpload(file: file, purpose: .MATCH_IMAGE))
+                reactor?.action.onNext(.fileUpload(file: file, purpose: .GROUP_IMAGE))
             }
             imageCompletion?(image)
         }
