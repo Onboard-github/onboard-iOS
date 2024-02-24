@@ -114,6 +114,7 @@ final class GroupSearchView: UIView {
         UITableViewDiffableDataSource(tableView: tableView, cellProvider: { tableView, indexPath, group in
             if let cell = tableView.dequeueReusableCell(withIdentifier: "GroupSearchCell", for: indexPath) as? GroupSearchCell {
                 cell.titleLabel.text = group.name
+                cell.infoLabel.text = group.organization
                 cell.subTitleLabel.text = group.description
                 if let imageUrl = URL(string: group.profileImageUrl) {
                     cell.thumbnailView.kf.setImage(with: imageUrl)
