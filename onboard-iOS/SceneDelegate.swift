@@ -53,13 +53,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.appearance().tintColor = UIColor.black
         UITabBar.appearance().backgroundColor = .white
         if let _ = LoginSessionManager.getLoginSession(), let _ = LoginSessionManager.getNickname() {
-            if LoginSessionManager.getState() == .needJoinGroup {
-                let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
-                let groupListVC = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
-                let nav = UINavigationController(rootViewController: groupListVC)
-                nav.navigationBar.isHidden = true
-                self.window?.rootViewController = nav
-            } else if LoginSessionManager.getState() == .login {
+//            if LoginSessionManager.getState() == .needJoinGroup {
+//                let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
+//                let groupListVC = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
+//                let nav = UINavigationController(rootViewController: groupListVC)
+//                nav.navigationBar.isHidden = true
+//                self.window?.rootViewController = nav
+            if LoginSessionManager.getState() == .login {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
                 self.window?.rootViewController = homeTabController
