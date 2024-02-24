@@ -28,6 +28,11 @@ final class OBNetworkManager {
         if let afError = response.error as? AFError {
             if let data = response.data, let dataString = String(data: data, encoding: .utf8) {
                 print("네트워크 애러: \(dataString)")
+                if dataString.contains("Auth004"), dataString.contains("로그인이 필요합니다.") {
+                    print("로그아웃 됨 (또는 토큰만료)")
+                    LoginSessionManager.logout()
+                    exit(0)
+                }
             }
         }
 
