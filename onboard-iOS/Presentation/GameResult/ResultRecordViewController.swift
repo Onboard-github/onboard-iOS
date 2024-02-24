@@ -56,11 +56,15 @@ final class ResultRecordViewController: UIViewController, View {
         
         resultRecordView.didTapRegisterButtonAction = { [weak self] in
             
-            let selectedPlayers = GameDataSingleton.shared.selectedPlayerData
+            let selectedPlayers = GameDataSingleton.shared.gamePlayerData
             
             let matchMembers: [MatchRequest.Body.Match] = selectedPlayers.enumerated().map { (index, player) in
-                return MatchRequest.Body.Match(memberId: index + 1, score: Int(player.score!)!, ranking: index + 1)
+                return MatchRequest.Body.Match(memberId: player.id,
+                                               score: Int(player.score!)!,
+                                               ranking: index + 1)
             }
+            
+            print("matchMembers \(matchMembers)")
             
             let req = MatchEntity.Req(
                 gameId: GameDataSingleton.shared.gameData?.id ?? 0,
