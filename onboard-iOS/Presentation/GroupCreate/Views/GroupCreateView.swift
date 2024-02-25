@@ -19,12 +19,12 @@ final class GroupCreateView: UIView {
     // MARK: - Metric
     
     private enum Metric {
-        static let topMargin: CGFloat = 20
+        static let topMargin: CGFloat = 10
         static let imageViewWidth: CGFloat = 138
         static let imageViewHeight: CGFloat = 182
         static let imageViewButtonLayout: CGFloat = 10
         static let imageViewButtonSize: CGFloat = 28
-        static let nameTopSpacing: CGFloat = 40
+        static let nameTopSpacing: CGFloat = 15
         static let leftRightMargin: CGFloat = 24
         static let requiredSpacing: CGFloat = 2
         static let inputTopSpacing: CGFloat = 5
