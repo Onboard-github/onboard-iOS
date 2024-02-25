@@ -40,8 +40,12 @@ class ProfileVC: UIViewController {
 }
 
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 28
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let background = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
+        let background = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 28))
         let label = UILabel()
         label.textColor = .label
         label.text = "프로필"
