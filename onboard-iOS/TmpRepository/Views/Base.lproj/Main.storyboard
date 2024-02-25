@@ -1131,7 +1131,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="5Ii-rq-oiY" kind="relationship" relationship="viewControllers" id="T8Q-sI-9qX"/>
-                        <segue destination="MxC-RX-38a" kind="relationship" relationship="viewControllers" id="lxv-Gc-jMx"/>
+                        <segue destination="tw9-lA-iQZ" kind="relationship" relationship="viewControllers" id="lxv-Gc-jMx"/>
                         <segue destination="QfE-LN-TcP" kind="relationship" relationship="viewControllers" id="d54-8u-Ivy"/>
                     </connections>
                 </tabBarController>
@@ -1139,7 +1139,7 @@
             </objects>
             <point key="canvasLocation" x="502" y="-22"/>
         </scene>
-        <!--프로필-->
+        <!--ProfileVC-->
         <scene sceneID="uvP-ec-L9x">
             <objects>
                 <viewController id="MxC-RX-38a" customClass="ProfileVC" customModule="onboard_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -1148,38 +1148,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="일이삼사오육칠팔구십 님 " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5c7-fX-MFk">
-                                <rect key="frame" x="20" y="111" width="353" height="33.666666666666657"/>
+                                <rect key="frame" x="20" y="103" width="353" height="33.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지금까지 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3E-bI-3IJ">
-                                <rect key="frame" x="20" y="152.66666666666666" width="67" height="22"/>
+                                <rect key="frame" x="20" y="144.66666666666666" width="67" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8TL-Yo-0Ic">
-                                <rect key="frame" x="87" y="153.33333333333334" width="35.666666666666657" height="21"/>
+                                <rect key="frame" x="87" y="145.33333333333334" width="35.666666666666657" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text=" 게임 플레이 했어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGh-Lh-yaZ">
-                                <rect key="frame" x="122.66666666666667" y="152.66666666666666" width="250.33333333333331" height="22"/>
+                                <rect key="frame" x="122.66666666666667" y="144.66666666666666" width="250.33333333333331" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9o-gs-Hwo">
-                                <rect key="frame" x="20" y="198.66666666666666" width="353" height="1"/>
+                                <rect key="frame" x="20" y="190.66666666666666" width="353" height="1"/>
                                 <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="KLr-Uo-3Gq"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="115" estimatedRowHeight="115" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qpJ-2V-lyN">
-                                <rect key="frame" x="0.0" y="205.66666666666669" width="393" height="563.33333333333326"/>
+                                <rect key="frame" x="0.0" y="197.66666666666669" width="393" height="571.33333333333326"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ProfileCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" id="KvL-9T-NRb" customClass="ProfileCell" customModule="onboard_iOS" customModuleProvider="target">
@@ -1297,12 +1297,18 @@
                             <constraint firstItem="8TL-Yo-0Ic" firstAttribute="centerY" secondItem="g3E-bI-3IJ" secondAttribute="centerY" id="Vel-de-UZh"/>
                             <constraint firstItem="NMP-tZ-ThU" firstAttribute="trailing" secondItem="qpJ-2V-lyN" secondAttribute="trailing" id="Zvr-N8-lc0"/>
                             <constraint firstItem="5c7-fX-MFk" firstAttribute="leading" secondItem="NMP-tZ-ThU" secondAttribute="leading" constant="20" id="aC9-OU-Ga7"/>
-                            <constraint firstItem="5c7-fX-MFk" firstAttribute="top" secondItem="NMP-tZ-ThU" secondAttribute="top" constant="52" id="sEc-Cf-Gd4"/>
+                            <constraint firstItem="5c7-fX-MFk" firstAttribute="top" secondItem="NMP-tZ-ThU" secondAttribute="top" id="sEc-Cf-Gd4"/>
                             <constraint firstItem="NMP-tZ-ThU" firstAttribute="trailing" secondItem="5c7-fX-MFk" secondAttribute="trailing" constant="20" id="vLT-J2-Zie"/>
                             <constraint firstItem="LGh-Lh-yaZ" firstAttribute="trailing" secondItem="5c7-fX-MFk" secondAttribute="trailing" id="xPQ-gc-88e"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="프로필" image="tab_profile_icon" id="MgA-I1-Yc6"/>
+                    <navigationItem key="navigationItem" id="Q1e-QA-pAF">
+                        <barButtonItem key="rightBarButtonItem" image="header_setting" id="hfP-Ln-Tyb">
+                            <connections>
+                                <action selector="settingButtonAction:" destination="MxC-RX-38a" id="sZI-zd-UKG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="gameCountLabel" destination="8TL-Yo-0Ic" id="JnP-Pf-e9Q"/>
                         <outlet property="nameLabel" destination="5c7-fX-MFk" id="JDN-kj-pZ6"/>
@@ -1310,6 +1316,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsJ-kG-Rrd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2660.3053435114502" y="1002.8169014084508"/>
+        </scene>
+        <!--프로필-->
+        <scene sceneID="03r-d5-Qii">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tw9-lA-iQZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="프로필" image="tab_profile_icon" id="MgA-I1-Yc6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WRj-Wh-QTk">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MxC-RX-38a" kind="relationship" relationship="rootViewController" id="yk4-Ma-9rX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rmv-1k-raS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1733.5877862595419" y="1002.8169014084508"/>
         </scene>
@@ -1324,6 +1350,7 @@
         <image name="gold_tropy" width="22.333333969116211" height="22"/>
         <image name="header_down_arrow" width="12" height="12"/>
         <image name="header_more_button" width="24" height="24"/>
+        <image name="header_setting" width="24" height="24"/>
         <image name="icon_rank1_default" width="24" height="24"/>
         <image name="img_dice" width="80" height="81.666664123535156"/>
         <image name="me_badge" width="14" height="14"/>

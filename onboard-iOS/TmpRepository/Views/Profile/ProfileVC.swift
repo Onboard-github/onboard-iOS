@@ -37,6 +37,12 @@ class ProfileVC: UIViewController {
         gameCountLabel.text = "\(ProfileManager.gameCount ?? -1)"
         tableView.reloadData()
     }
+    
+    @IBAction func settingButtonAction(_ sender: Any) {
+        let settingVC = AppSettingVC(nibName: "AppSettingVC", bundle: .main)
+        navigationController?.pushViewController(settingVC, animated: true)
+    }
+    
 }
 
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
