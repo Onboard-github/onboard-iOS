@@ -80,9 +80,10 @@ final class GameResultViewController: UIViewController, View {
     }
     
     func bindAction(reactor: GameResultReactor) {
-        let groupId = GameDataSingleton.shared.getGroupId()!
-        reactor.action.onNext(.fetchResult(groupId: groupId,
-                                           sort: "MATCH_COUNT"))
+        if let groupId = GameDataSingleton.shared.getGroupId() {
+            reactor.action.onNext(.fetchResult(groupId: groupId,
+                                               sort: "MATCH_COUNT"))
+        }
     }
     
     func bindState(reactor: GameResultReactor) {
