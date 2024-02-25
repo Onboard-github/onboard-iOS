@@ -34,6 +34,10 @@ class AgreeVC: UIViewController {
         tableView.bounces = false
         Task { [weak self] in
             let terms = try await OBNetworkManager.shared.asyncRequest(object: TermsResponse.self, router: .getTerms)
+            if terms.value?.contents.count == 0, terms.response?.statusCode == 200 {
+                //동의할게 없으면 바로 진행
+                delegate?.agreeComplete()
+            }
             if let result = terms.value {
                 self?.terms = result.contents
             }
@@ -45,7 +49,13 @@ class AgreeVC: UIViewController {
     }
     
     @IBAction func agreeAction(_ sender: Any) {
-        delegate?.agreeComplete()
+        Task {
+            let agree = try await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .agreeTerms(terms: self.terms.map({$0.code})))
+            if (agree.response?.statusCode ?? 0) >= 200, (agree.response?.statusCode ?? 0) < 300 {
+                delegate?.agreeComplete()
+            }
+        }
+        
     }
     
     @IBAction func allCheckButtonAction(_ sender: Any) {
