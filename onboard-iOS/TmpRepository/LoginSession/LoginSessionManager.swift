@@ -96,6 +96,9 @@ class ProfileManager {
             let meInfoResult = try await OBNetworkManager.shared.asyncRequest(object: GetMeRes.self, router: .getMe)
             profileName = meInfoResult.value?.nickname
             gameCount = result.value?.contents.map({$0.matchCount}).reduce(0, +)
+            if let contents = result.value?.contents, let list = try? JSONEncoder().encode(contents) {
+                groupList = list
+            }
         }
     }
     
@@ -119,13 +122,13 @@ class ProfileManager {
         }
     }
     
-    static var gameList: String? {
+    static var groupList: Data? {
         get {
-            UserDefaults.standard.string(forKey: "gameList")
+            UserDefaults.standard.data(forKey: "groupList")
         }
         
         set {
-            UserDefaults.standard.setValue(newValue, forKey: "gameList")
+            UserDefaults.standard.setValue(newValue, forKey: "groupList")
         }
     }
 }

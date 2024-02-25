@@ -8,10 +8,14 @@
 import UIKit
 
 class ProfileCell: UITableViewCell {
-
+    @IBOutlet weak var leftTopLabel: UILabel!
+    @IBOutlet weak var rightTopLabel: UILabel!
+    @IBOutlet weak var nicknameLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

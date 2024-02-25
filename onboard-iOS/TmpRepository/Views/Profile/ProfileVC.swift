@@ -13,27 +13,39 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var gameCountLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var groupList: [MyGroup] {
+        let decoder = JSONDecoder()
+        if let data = ProfileManager.groupList {
+            let gameList = try? decoder.decode([MyGroup].self, from: data)
+            return gameList ?? []
+        } else {
+            return []
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ProfileManager.refresh()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.bounces = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         nameLabel.text = (ProfileManager.profileName ?? "error") + " 님"
         gameCountLabel.text = "\(ProfileManager.gameCount ?? -1)"
+        tableView.reloadData()
     }
 }
 
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let background = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 28))
+        let background = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
         let label = UILabel()
         label.textColor = .label
         label.text = "프로필"
-        label.font = .systemFont(ofSize: 13, weight: .semibold)
+        label.font = .systemFont(ofSize: 13, weight: .bold)
         background.addSubview(label)
         label.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -43,12 +55,19 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return groupList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as? ProfileCell {
+            let group = groupList[indexPath.row]
+            cell.leftTopLabel.text = group.name
+            cell.rightTopLabel.text = group.organization
+            cell.nicknameLabel.text = group.nickname
+            cell.countLabel.text = "\(group.matchCount)회 플레이"
+            
+            return cell
+        }
         return UITableViewCell()
     }
-    
-    
 }
