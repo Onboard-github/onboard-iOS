@@ -134,6 +134,16 @@ final class GameScoreView: UIView {
         
         self.addConfigure()
         self.makeConstraints()
+        self.setupDismissKeyboardGesture() // 탭 제스처를 설정하는 함수 호출
+    }
+    
+    private func setupDismissKeyboardGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func dismissKeyboard() {
+        self.endEditing(true) // 뷰의 편집 모드를 종료하여 키보드를 내림
     }
     
     private func addConfigure() {
