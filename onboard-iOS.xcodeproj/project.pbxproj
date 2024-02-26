@@ -99,6 +99,8 @@
 		3B9E2CC92B8BBB2200C25147 /* SettingSeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E2CC72B8BBB2200C25147 /* SettingSeparatorCell.xib */; };
 		3BA70CE92B8B974100A14E59 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA70CE72B8B974100A14E59 /* ProfileCell.swift */; };
 		3BA70CEC2B8BA0F000A14E59 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA70CEB2B8BA0F000A14E59 /* ProfileVC.swift */; };
+		3BADB8832B8CFE9A00FA3588 /* RemoveIDVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BADB8812B8CFE9A00FA3588 /* RemoveIDVC.swift */; };
+		3BADB8842B8CFE9A00FA3588 /* RemoveIDVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BADB8822B8CFE9A00FA3588 /* RemoveIDVC.xib */; };
 		3BB194632B833DD40013FE55 /* gameLeaderboardRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB194622B833DD40013FE55 /* gameLeaderboardRes.swift */; };
 		3BC078452B4F441B0032BB4C /* GroupMembersRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */; };
 		3BDAA8E72B6FE1540038BE4B /* JoinCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */; };
@@ -271,6 +273,8 @@
 		3B9E2CC72B8BBB2200C25147 /* SettingSeparatorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSeparatorCell.xib; sourceTree = "<group>"; };
 		3BA70CE72B8B974100A14E59 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		3BA70CEB2B8BA0F000A14E59 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		3BADB8812B8CFE9A00FA3588 /* RemoveIDVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveIDVC.swift; sourceTree = "<group>"; };
+		3BADB8822B8CFE9A00FA3588 /* RemoveIDVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemoveIDVC.xib; sourceTree = "<group>"; };
 		3BB194622B833DD40013FE55 /* gameLeaderboardRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameLeaderboardRes.swift; sourceTree = "<group>"; };
 		3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersRes.swift; sourceTree = "<group>"; };
 		3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCodeVC.swift; sourceTree = "<group>"; };
@@ -616,6 +620,8 @@
 				3B9E2CC32B8BB73F00C25147 /* SettingCell.xib */,
 				3B9E2CC62B8BBB2200C25147 /* SettingSeparatorCell.swift */,
 				3B9E2CC72B8BBB2200C25147 /* SettingSeparatorCell.xib */,
+				3BADB8812B8CFE9A00FA3588 /* RemoveIDVC.swift */,
+				3BADB8822B8CFE9A00FA3588 /* RemoveIDVC.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1110,6 +1116,7 @@
 				1CA1BBB32ACF109B000C5F7E /* SpoqaHanSansNeo-Medium.ttf in Resources */,
 				AAF169A02B10E05200EF82A4 /* AgreeVC.xib in Resources */,
 				1CA1BBB52ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf in Resources */,
+				3BADB8842B8CFE9A00FA3588 /* RemoveIDVC.xib in Resources */,
 				AA5E9C782B2E8C3D000E3A30 /* GroupJoinVC.xib in Resources */,
 				61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */,
 				3B9E2CC52B8BB73F00C25147 /* SettingCell.xib in Resources */,
@@ -1176,6 +1183,7 @@
 				1C7A952B2B6FEA7000F68DA6 /* GoogleLoginManager.swift in Sources */,
 				AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
+				3BADB8832B8CFE9A00FA3588 /* RemoveIDVC.swift in Sources */,
 				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
 				3B9E2CC02B8BB2D900C25147 /* AppSettingVC.swift in Sources */,
 				AA31AFB22B3D624A00E91C91 /* TermsResponse.swift in Sources */,

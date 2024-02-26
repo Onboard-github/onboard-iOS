@@ -40,7 +40,10 @@ class AppSettingVC: UIViewController {
         }),
 //        SettingItem("오픈소스 라이선스", { _ in }),
         SettingItem("", { _ in }, true),
-        SettingItem("회원 탈퇴", { _ in })
+        SettingItem("회원 탈퇴", { vc in
+            let removeVC = RemoveIDVC(nibName: "RemoveIDVC", bundle: .main)
+            vc?.navigationController?.pushViewController(removeVC, animated: true)
+        })
     ]
     
     @IBOutlet weak var tableView: UITableView!
