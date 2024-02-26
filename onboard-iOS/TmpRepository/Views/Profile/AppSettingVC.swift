@@ -6,14 +6,15 @@
 //
 
 import UIKit
+import SafariServices
 
 class AppSettingVC: UIViewController {
     struct SettingItem {
         var isSeparator: Bool
         var title: String
-        var action: () -> Void
+        var action: (UIViewController?) -> Void
         
-        init(_ title: String, _ action: @escaping () -> Void, _ isSeparator: Bool = false) {
+        init(_ title: String, _ action: @escaping (UIViewController?) -> Void, _ isSeparator: Bool = false) {
             self.title = title
             self.action = action
             self.isSeparator = isSeparator
@@ -21,13 +22,25 @@ class AppSettingVC: UIViewController {
     }
     
     let contents: [SettingItem] = [
-        SettingItem("회원 정보 수정", {}),
-        SettingItem("문의", {}),
-        SettingItem("개인정보 처리방침", {}),
-        SettingItem("서비스 이용 약관", {}),
-        SettingItem("오픈소스 라이선스", {}),
-        SettingItem("", {}, true),
-        SettingItem("회원 탈퇴", {})
+//        SettingItem("회원 정보 수정", { _ in }),
+        SettingItem("문의", { _ in
+            AlertManager.show(title: "문의", message: "help.onboardgame@gmail.com\n문의는 이메일로 부탁드립니다.")
+        }),
+        SettingItem("개인정보 처리방침", { vc in
+            if let url = URL(string: "http://api.onboardgame.co.kr/privacy.html") {
+                let safariViewController = SFSafariViewController(url: url)
+                vc?.present(safariViewController, animated: true)
+            }
+        }),
+        SettingItem("서비스 이용 약관", { vc in
+            if let url = URL(string: "http://api.onboardgame.co.kr/terms.html") {
+                let safariViewController = SFSafariViewController(url: url)
+                vc?.present(safariViewController, animated: true)
+            }
+        }),
+//        SettingItem("오픈소스 라이선스", { _ in }),
+        SettingItem("", { _ in }, true),
+        SettingItem("회원 탈퇴", { _ in })
     ]
     
     @IBOutlet weak var tableView: UITableView!
@@ -72,6 +85,13 @@ extension AppSettingVC: UITableViewDelegate, UITableViewDataSource {
             } else {
                 return UITableViewCell()
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let settingItem = contents[indexPath.row]
+        if settingItem.isSeparator {} else {
+            settingItem.action(self)
         }
     }
     
