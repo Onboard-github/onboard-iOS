@@ -20,10 +20,11 @@ final class GameResultRepositoryImpl: GameResultRepository {
                 .asyncRequest(
                     object: GameResultDTO.self,
                     router: OBRouter.gameResult(
-                        params: ["groupId": groupId,
-                                 "sort": sort]
+                        groupId: groupId,
+                        sort: sort
                     )
                 )
+            
             guard let data = result.value else {
                 throw NetworkError.noExist
             }

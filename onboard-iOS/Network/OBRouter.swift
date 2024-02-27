@@ -25,66 +25,58 @@ enum OBRouter: URLRequestConvertible {
     
     // MARK: - APIs
     
-    // Group
-    case groupList(params: Params) // 그룹 리스트 가져오기
-    case groupInfo(groupId: Int) // 단일 그룹 상세 정보 보기
+    // Auth
+    case auth(body: Body)
     
-    case groupDelete(groupId: Int) // 그룹 삭제하기, Onwer만 가능
-    case groupAccessCodeCheck(groupId: Int, accessCode: String) // 그룹 id 가지고 액세스 코드 확인
-    case gameLeaderboard(groupId: Int, gameId: Int)
+    // Group
+    case groupList(params: Params)                               // 그룹 리스트 가져오기
+    case addGroup(body: Body)                                    // 그룹 생성하기
+    case createGroup(body: Body)                                 // 그룹 생성하기
+    case randomImage                                             // 그룹 기본 이미지 랜덤으로 가져오기
+    case groupDelete(groupId: Int)                               // 그룹 삭제하기, Onwer만 가능
+    case groupInfo(groupId: Int)                                 // 단일 그룹 상세 정보 보기
+    case groupAccessCodeCheck(groupId: Int, accessCode: String)  // 그룹 id 가지고 액세스 코드 확인
+    case gameLeaderboard(groupId: Int, gameId: Int)              // 게임 별 리더보드 보기
+    case groupMemeberPatch(groupId: Int, userId: Int)
+    
+    // Game
+    case gameResult(groupId: Int, sort: String) // 게임 목록 가져오기
+    case gameList                               // 게임 목록 가져오기
+    
+    // Member
+    case addGroupGuest(groupId: Int, nickName: String?)                                       // 게스트 추가
+    case joinGroupHost(groupId: Int, nickname: String, accessCode: String, guestId: String?)  // guest id 설정시 닉네임 무시되고 게스트 계정으로 가입됨
+    case myGroupUnsubscribe(groupId: Int)                                                     // 멤버 탈퇴
+    case groupMembers(groupId: Int)                                                           // 멤버 목록 가져오기
+    case validateNickname(groupId: Int, nickname: String)                                     // 닉네임 유효성 체크, 멤버 닉네임 검사
     
     // Match
-    case match(body: Body)
+    case match(body: Body) // 매치 기록하기
+    
+    // Setting
+    
     
     // Terms
     case getTerms
     case agreeTerms(terms: [String])
     
-    // Auth
-    
-    // Setting
+    // test
+    case testAPI
     
     // User
-    
-    case getMe // 내 기본 정보 가져오기
+    case getMe                 // 내 기본 정보 가져오기
     case setUser(body: Body)
     case getMyGroupsV2 // 내가 가입한 그룹 목록 가져오기 v2
     case deleteUserMe
     
-    // Game
-    
-    // Member
-    case joinGroupHost(groupId: Int, nickname: String, accessCode: String, guestId: String?) //guest id 설정시 닉네임 무시되고 게스트계정으로 가입됨
-    
-    case myGroupUnsubscribe(groupId: Int)
-    case validateNickname(groupId: Int, nickname: String) //닉네임 유효성 체크
-    
-    // File
-    
-    // 정리안됨
-    case testAPI
+    // update
     case forceUpdateTest
     
-    // Auth
-    case auth(body: Body)
+    // File
+    case pickerImage(params: Params) // File Upload
     
-    // Group
-    case addGroup(body: Body)
-    case gameList
-    case createGroup(body: Body)
-    
-    // Group Image
-    case pickerImage(params: Params)
-    case randomImage
-    case groupMemeberPatch(groupId: Int, userId: Int)
-    case groupMembers(groupId: Int)
-    case addGroupGuest(groupId: Int, nickName: String?)
-
-    
-    // Game
-    case gameResult(params: Params)
-    case gamePlayer(params: Params)
-    case addPlayer(params: Params, body: Body)
+    case gamePlayer(params: Params) // groupMembers
+    case addPlayer(params: Params, body: Body) // addGroupGuest
     
     // MARK: - HTTP Method
     
@@ -135,8 +127,7 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group/\(groupId)"
         case .getMyGroupsV2:
             return "api/v1/user/me/group"
-        case .gameResult:
-            let groupId = GameDataSingleton.shared.getGroupId()!
+        case let .gameResult(groupId, _):
             return "api/v1/group/\(groupId)/game"
         case .gamePlayer:
             let groupId = GameDataSingleton.shared.getGroupId()!
@@ -212,7 +203,7 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .forceUpdateTest, .gameLeaderboard, .match, .agreeTerms, .deleteUserMe:
+        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .forceUpdateTest, .gameLeaderboard, .match, .agreeTerms, .gameResult, .deleteUserMe:
             return nil
         case let .groupList(params):
             return params
@@ -222,7 +213,7 @@ enum OBRouter: URLRequestConvertible {
             return ["groupId": groupId, "size": 100]
         case let .validateNickname(_, nickname):
             return ["nickname": nickname]
-        case let .gameResult(params), let .gamePlayer(params), let .addPlayer(params, _):
+        case let .gamePlayer(params), let .addPlayer(params, _):
             return params
         }
     }
