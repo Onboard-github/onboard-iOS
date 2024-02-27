@@ -16,7 +16,7 @@ final class PlayerReactor: Reactor {
     enum Action {
         case fetchResult(groupId: Int, size: String)
         case validateNickname(groupId: Int, nickname: String)
-        case addPlayer(groupId: Int, req: AddPlayerEntity.Req)
+        case addPlayer(groupId: Int, nickName: String)
         case allPlayerData(groupId: Int, gameId: Int)
     }
     
@@ -48,8 +48,8 @@ final class PlayerReactor: Reactor {
             return self.PlayerListResult(groupId: groupId, size: size)
         case let .validateNickname(groupId, nickname):
             return self.validateResult(groupId: groupId, nickname: nickname)
-        case let .addPlayer(groupId, req):
-            return self.addPlayerResult(groupId: groupId, req: req)
+        case let .addPlayer(groupId, nickName):
+            return self.addPlayerResult(groupId: groupId, nickName: nickName)
         case let .allPlayerData(groupId, gameId):
             return self.updatePlayerResult(groupId: groupId, gameId: gameId)
         }
@@ -111,14 +111,14 @@ extension PlayerReactor {
         }
     }
     
-    private func addPlayerResult(groupId: Int, req: AddPlayerEntity.Req) -> Observable<Mutation> {
+    private func addPlayerResult(groupId: Int, nickName: String) -> Observable<Mutation> {
         return Observable.create { [weak self] observer in
             guard let self = self else { return Disposables.create() }
             
             Task {
                 do {
                     let result = try await self.useCase.fetchAddPlayer(groupId: groupId,
-                                                                       req: req)
+                                                                       nickName: nickName)
                     observer.onNext(.setAddPlayer(result: result))
                 } catch {
                     observer.onError(error)

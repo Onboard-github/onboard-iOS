@@ -10,7 +10,7 @@ import Foundation
 protocol PlayerRepository {
     func requestPlayerList(groupId: Int, size: String) async throws -> PlayerEntity.Res
     func requestValidateNickName(groupId: Int, nickname: String) async throws -> GuestNickNameEntity.Res
-    func requestAddPlayer(groupId: Int, req: AddPlayerEntity.Req) async throws -> AddPlayerEntity.Res
+    func requestAddPlayer(groupId: Int, nickName: String) async throws -> AddPlayerEntity.Res
     func requestAllPlayerList(groupId: Int, gameId: Int) async throws -> GameLeaderboardEntity.Res
 }
 
@@ -62,17 +62,15 @@ final class PlayerRepositoryImpl: PlayerRepository {
         }
     }
     
-    func requestAddPlayer(groupId: Int, req: AddPlayerEntity.Req) async throws -> AddPlayerEntity.Res {
+    func requestAddPlayer(groupId: Int, nickName: String) async throws -> AddPlayerEntity.Res {
         do {
             let result = try await OBNetworkManager
                 .shared
                 .asyncRequest(
                     object: AddPlayerDTO.self,
-                    router: OBRouter.addPlayer(
-                        params: ["groupId": groupId],
-                        body: AddPlayerRequest.Body(
-                            nickname: req.nickname
-                        ).encode()
+                    router: OBRouter.addGroupGuest(
+                        groupId: groupId,
+                        nickName: nickName
                     )
                 )
             
@@ -81,8 +79,8 @@ final class PlayerRepositoryImpl: PlayerRepository {
             }
             
             return data.toDomain()
-            
         } catch {
+            print("error: \(error.localizedDescription)")
             throw error
         }
     }

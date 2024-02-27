@@ -498,9 +498,8 @@ extension PlayerSelectViewController {
         
         bottom.didTapButton = { [weak self] in
             guard let nickname = GameDataSingleton.shared.guestNickNameData else { return }
-            let req = AddPlayerEntity.Req(nickname: nickname)
-            let groupId = GameDataSingleton.shared.getGroupId()!
-            self?.reactor?.action.onNext(.addPlayer(groupId: groupId, req: req))
+            let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+            self?.reactor?.action.onNext(.addPlayer(groupId: groupId, nickName: nickname))
             self?.playerTableView.reloadData()
             bottom.dismiss(animated: false)
             
