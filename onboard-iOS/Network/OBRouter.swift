@@ -75,7 +75,6 @@ enum OBRouter: URLRequestConvertible {
     case pickerImage(params: Params) // File Upload
     
     case gamePlayer(params: Params) // groupMembers
-    case addPlayer(params: Params, body: Body) // addGroupGuest
     
     // MARK: - HTTP Method
     
@@ -83,7 +82,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .groupList, .gameList, .randomImage, .getTerms, .gameResult, .gamePlayer, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .validateNickname, .forceUpdateTest, .gameLeaderboard:
             return .get
-        case .auth, .addGroup, .pickerImage, .createGroup, .addGroupGuest, .addPlayer, .groupAccessCodeCheck, .joinGroupHost, .match, .agreeTerms:
+        case .auth, .addGroup, .pickerImage, .createGroup, .addGroupGuest, .groupAccessCodeCheck, .joinGroupHost, .match, .agreeTerms:
             return .post
         case .setUser:
             return .put
@@ -135,9 +134,6 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/group/\(groupId)/me"
         case let .groupDelete(groupId):
             return "api/v1/group/\(groupId)"
-        case .addPlayer:
-            let groupId = GameDataSingleton.shared.getGroupId()!
-            return "api/v1/group/\(groupId)/guest"
         case let .groupAccessCodeCheck(groupId, _):
             return "api/v1/group/\(groupId)/accessCode"
         case let .validateNickname(groupId, _):
@@ -159,7 +155,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage, .validateNickname:
             return nil
-        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .addPlayer, .forceUpdateTest, .gameLeaderboard, .match, .agreeTerms :
+        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .forceUpdateTest, .gameLeaderboard, .match, .agreeTerms :
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
@@ -191,8 +187,6 @@ enum OBRouter: URLRequestConvertible {
             return body
         case let .agreeTerms(terms):
             return ["agree": terms]
-        case let .addPlayer(_, body):
-            return body
         }
     }
     
@@ -210,7 +204,7 @@ enum OBRouter: URLRequestConvertible {
             return ["groupId": groupId, "size": 100]
         case let .validateNickname(_, nickname):
             return ["nickname": nickname]
-        case let .gamePlayer(params), let .addPlayer(params, _):
+        case let .gamePlayer(params):
             return params
         }
     }
