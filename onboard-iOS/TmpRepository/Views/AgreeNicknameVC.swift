@@ -47,13 +47,17 @@ class AgreeNicknameVC: UIViewController {
 //                    navigationController?.present(homeTabController, animated: true) { [weak self] in
 //                        LoginSessionManager.setNickname(nickname: self?.nickNameField.text ?? "")
 //                    }
-                    let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
-                    let groupList = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
+//                    let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
+//                    let groupList = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
+                    
                     LoginSessionManager.setNickname(nickname: nickNameField.text ?? "")
-                    LoginSessionManager.setState(state: .needJoinGroup)
-                    navigationController?.pushViewController(groupList, animated: true)
+                    LoginSessionManager.setState(state: .login)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                    homeTabController.modalPresentationStyle = .fullScreen
+                    navigationController?.present(homeTabController, animated: true)
                 } else {
-                    AlertManager.show(message: "응답이 200이 아님 \(result.response?.statusCode)")
+                    AlertManager.show(message: "응답이 200이 아님 \(result.response?.statusCode)\n닉네임이 올바른지 다시 확인해주십시오.")
                 }
                 
             } catch {
