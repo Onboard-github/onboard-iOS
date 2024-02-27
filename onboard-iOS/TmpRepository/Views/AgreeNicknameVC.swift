@@ -61,7 +61,7 @@ class AgreeNicknameVC: UIViewController {
                 }
                 
             } catch {
-                AlertManager.show(message: error.localizedDescription)
+                AlertManager.show(title: "유효하지 않은 닉네임입니다. 다른 이름을 설정해주세요.", message: error.localizedDescription)
                 throw error
             }
         }
