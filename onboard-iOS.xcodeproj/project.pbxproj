@@ -91,6 +91,14 @@
 		3B282DFC2B55A74200483A2A /* GetMyGroupsV2Res.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */; };
 		3B37EE1A2B6FF91700F7F902 /* JoinNicknameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B37EE182B6FF91700F7F902 /* JoinNicknameVC.swift */; };
 		3B37EE1B2B6FF91700F7F902 /* JoinNicknameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B37EE192B6FF91700F7F902 /* JoinNicknameVC.xib */; };
+		3B9E2CC02B8BB2D900C25147 /* AppSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E2CBE2B8BB2D900C25147 /* AppSettingVC.swift */; };
+		3B9E2CC12B8BB2D900C25147 /* AppSettingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E2CBF2B8BB2D900C25147 /* AppSettingVC.xib */; };
+		3B9E2CC42B8BB73F00C25147 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E2CC22B8BB73F00C25147 /* SettingCell.swift */; };
+		3B9E2CC52B8BB73F00C25147 /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E2CC32B8BB73F00C25147 /* SettingCell.xib */; };
+		3B9E2CC82B8BBB2200C25147 /* SettingSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E2CC62B8BBB2200C25147 /* SettingSeparatorCell.swift */; };
+		3B9E2CC92B8BBB2200C25147 /* SettingSeparatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9E2CC72B8BBB2200C25147 /* SettingSeparatorCell.xib */; };
+		3BA70CE92B8B974100A14E59 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA70CE72B8B974100A14E59 /* ProfileCell.swift */; };
+		3BA70CEC2B8BA0F000A14E59 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA70CEB2B8BA0F000A14E59 /* ProfileVC.swift */; };
 		3BB194632B833DD40013FE55 /* gameLeaderboardRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB194622B833DD40013FE55 /* gameLeaderboardRes.swift */; };
 		3BC078452B4F441B0032BB4C /* GroupMembersRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */; };
 		3BDAA8E72B6FE1540038BE4B /* JoinCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */; };
@@ -255,6 +263,14 @@
 		3B282DFB2B55A74200483A2A /* GetMyGroupsV2Res.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyGroupsV2Res.swift; sourceTree = "<group>"; };
 		3B37EE182B6FF91700F7F902 /* JoinNicknameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinNicknameVC.swift; sourceTree = "<group>"; };
 		3B37EE192B6FF91700F7F902 /* JoinNicknameVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinNicknameVC.xib; sourceTree = "<group>"; };
+		3B9E2CBE2B8BB2D900C25147 /* AppSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingVC.swift; sourceTree = "<group>"; };
+		3B9E2CBF2B8BB2D900C25147 /* AppSettingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppSettingVC.xib; sourceTree = "<group>"; };
+		3B9E2CC22B8BB73F00C25147 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		3B9E2CC32B8BB73F00C25147 /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
+		3B9E2CC62B8BBB2200C25147 /* SettingSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSeparatorCell.swift; sourceTree = "<group>"; };
+		3B9E2CC72B8BBB2200C25147 /* SettingSeparatorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingSeparatorCell.xib; sourceTree = "<group>"; };
+		3BA70CE72B8B974100A14E59 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		3BA70CEB2B8BA0F000A14E59 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		3BB194622B833DD40013FE55 /* gameLeaderboardRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameLeaderboardRes.swift; sourceTree = "<group>"; };
 		3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersRes.swift; sourceTree = "<group>"; };
 		3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCodeVC.swift; sourceTree = "<group>"; };
@@ -587,6 +603,21 @@
 				1C0319FC2B71DCE800BD3D44 /* Toast.swift */,
 			);
 			path = Values;
+			sourceTree = "<group>";
+		};
+		3BA70CE62B8B971B00A14E59 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3BA70CE72B8B974100A14E59 /* ProfileCell.swift */,
+				3BA70CEB2B8BA0F000A14E59 /* ProfileVC.swift */,
+				3B9E2CBE2B8BB2D900C25147 /* AppSettingVC.swift */,
+				3B9E2CBF2B8BB2D900C25147 /* AppSettingVC.xib */,
+				3B9E2CC22B8BB73F00C25147 /* SettingCell.swift */,
+				3B9E2CC32B8BB73F00C25147 /* SettingCell.xib */,
+				3B9E2CC62B8BBB2200C25147 /* SettingSeparatorCell.swift */,
+				3B9E2CC72B8BBB2200C25147 /* SettingSeparatorCell.xib */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		3BC078432B4F44020032BB4C /* NetworkModel */ = {
@@ -947,6 +978,7 @@
 		AAF1698D2B108EA900EF82A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3BA70CE62B8B971B00A14E59 /* Profile */,
 				AA5E9C742B2E8C20000E3A30 /* Group */,
 				AA69E3BD2B1333B000F74A36 /* Rank */,
 				AAF169902B10900100EF82A4 /* LoginSelectVC.swift */,
@@ -1068,6 +1100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAF169962B10907200EF82A4 /* imgs.xcassets in Resources */,
+				3B9E2CC12B8BB2D900C25147 /* AppSettingVC.xib in Resources */,
 				1CA1BBB42ACF109B000C5F7E /* SpoqaHanSansNeo-Light.ttf in Resources */,
 				3BFB194B2B7297090013C3C5 /* GroupJoinLoadingVC.xib in Resources */,
 				3B37EE1B2B6FF91700F7F902 /* JoinNicknameVC.xib in Resources */,
@@ -1079,8 +1112,10 @@
 				1CA1BBB52ACF109B000C5F7E /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				AA5E9C782B2E8C3D000E3A30 /* GroupJoinVC.xib in Resources */,
 				61AC7FA62AB6D4A300B0B6B5 /* Main.storyboard in Resources */,
+				3B9E2CC52B8BB73F00C25147 /* SettingCell.xib in Resources */,
 				AA31AFB62B3D662E00E91C91 /* TermCell.xib in Resources */,
 				AAF169932B10900100EF82A4 /* LoginSelectVC.xib in Resources */,
+				3B9E2CC92B8BBB2200C25147 /* SettingSeparatorCell.xib in Resources */,
 				1CA1BBB72ACF109B000C5F7E /* SpoqaHanSansNeo-Thin.ttf in Resources */,
 				1CA1BBB62ACF109B000C5F7E /* SpoqaHanSansNeo-Bold.ttf in Resources */,
 				AAF169A42B10EED600EF82A4 /* AgreeNicknameVC.xib in Resources */,
@@ -1096,8 +1131,10 @@
 			files = (
 				AAF169AA2B12D3AE00EF82A4 /* DevelopVC.swift in Sources */,
 				1CA1BBCA2ADABFF9000C5F7E /* PopupState.swift in Sources */,
+				3B9E2CC42B8BB73F00C25147 /* SettingCell.swift in Sources */,
 				61AC7FCE2AB6DDE300B0B6B5 /* TestDTO.swift in Sources */,
 				61AC7FEA2AB7309400B0B6B5 /* APIEventLogger.swift in Sources */,
+				3BA70CE92B8B974100A14E59 /* ProfileCell.swift in Sources */,
 				1CA1BBCC2ADAC091000C5F7E /* PopupView.swift in Sources */,
 				3B282DFA2B5598E400483A2A /* GetMeRes.swift in Sources */,
 				1CD2086E2B1BADB2008E710E /* GroupCreateUseCase.swift in Sources */,
@@ -1140,6 +1177,7 @@
 				AA7036022ADB8A1400B26537 /* GroupDTO.swift in Sources */,
 				61AC7F9F2AB6D4A300B0B6B5 /* AppDelegate.swift in Sources */,
 				AA7036002ADB85A500B26537 /* GroupListEntity.swift in Sources */,
+				3B9E2CC02B8BB2D900C25147 /* AppSettingVC.swift in Sources */,
 				AA31AFB22B3D624A00E91C91 /* TermsResponse.swift in Sources */,
 				1CD208722B1BB339008E710E /* ImageLoader.swift in Sources */,
 				3BDAA8E72B6FE1540038BE4B /* JoinCodeVC.swift in Sources */,
@@ -1193,6 +1231,7 @@
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
 				1CF1A84A2B6159A70098A6AA /* GuestNicknameDTO.swift in Sources */,
 				AAF1698C2B108E3100EF82A4 /* LogManager.swift in Sources */,
+				3BA70CEC2B8BA0F000A14E59 /* ProfileVC.swift in Sources */,
 				AACCA9192AE193D3000A4CDA /* GroupSearchBar.swift in Sources */,
 				AA69E3BC2B1332AB00F74A36 /* RankVC.swift in Sources */,
 				1CF1A85D2B618D520098A6AA /* GameScoreViewController.swift in Sources */,
@@ -1220,6 +1259,7 @@
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
 				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateSingleton.swift in Sources */,
 				1CF1A85B2B618AFC0098A6AA /* GameScoreView.swift in Sources */,
+				3B9E2CC82B8BBB2200C25147 /* SettingSeparatorCell.swift in Sources */,
 				1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */,
 				1CAC01E42B83A25C0006A8D7 /* MatchRepository.swift in Sources */,
 				1C3017112B4EC3E100128E5C /* OwnerManageTableViewCell.swift in Sources */,
@@ -1379,7 +1419,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = XBHLSDCD8G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";
@@ -1414,7 +1454,7 @@
 				CODE_SIGN_ENTITLEMENTS = "onboard-iOS/onboard-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = XBHLSDCD8G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "onboard-iOS/Info.plist";

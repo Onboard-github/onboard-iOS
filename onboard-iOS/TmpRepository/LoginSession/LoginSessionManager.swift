@@ -88,3 +88,47 @@ class LoginSessionManager {
         }
     }
 }
+
+class ProfileManager {
+    static func refresh() {
+        Task {
+            let result = try await OBNetworkManager.shared.asyncRequest(object: GetMyGroupsV2Res.self, router: .getMyGroupsV2)
+            let meInfoResult = try await OBNetworkManager.shared.asyncRequest(object: GetMeRes.self, router: .getMe)
+            profileName = meInfoResult.value?.nickname
+            gameCount = result.value?.contents.map({$0.matchCount}).reduce(0, +)
+            if let contents = result.value?.contents, let list = try? JSONEncoder().encode(contents) {
+                groupList = list
+            }
+        }
+    }
+    
+    static var profileName: String? {
+        get {
+            UserDefaults.standard.string(forKey: "profileName")
+        }
+        
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "profileName")
+        }
+    }
+    
+    static var gameCount: Int? {
+        get {
+            UserDefaults.standard.integer(forKey: "gameCount")
+        }
+        
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "gameCount")
+        }
+    }
+    
+    static var groupList: Data? {
+        get {
+            UserDefaults.standard.data(forKey: "groupList")
+        }
+        
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "groupList")
+        }
+    }
+}

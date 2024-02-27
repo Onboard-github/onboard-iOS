@@ -143,6 +143,7 @@ class RankVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ProfileManager.refresh()
         pagingViewController.register(IconPagingCell.self, for: IconItem.self)
         pagingViewController.delegate = self
         pagingViewController.menuItemSize = .fixed(width: 80, height: 120)
