@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RemoveIDVC" customModule="onboard_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탈퇴하기 전에 확인해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLa-Sw-noP">
+                    <rect key="frame" x="20" y="71" width="353" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_dot" translatesAutoresizingMaskIntoConstraints="NO" id="LWQ-jr-aLo">
+                    <rect key="frame" x="20" y="111" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="18" id="5di-SX-hhE"/>
+                        <constraint firstAttribute="height" constant="18" id="ohV-Jz-O69"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탈퇴 시 회원님의 계정 및 개인정보(닉네임, 그룹  참여 내역)는 즉시 삭제되며, 삭제된 데이터는 복구할 수 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEN-al-RKi">
+                    <rect key="frame" x="38" y="110.99999999999999" width="335" height="57.333333333333329"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_dot" translatesAutoresizingMaskIntoConstraints="NO" id="NFQ-Me-gdU">
+                    <rect key="frame" x="20" y="192.33333333333334" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="18" id="TMa-3R-rjD"/>
+                        <constraint firstAttribute="height" constant="18" id="XFf-mF-DoY"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="게임 기록 데이터는 다른 회원의 서비스 이용에 영향을 미칠 수 있는 정보입니다. 해당 데이터는 타인이 식별 불가능 하도록 처리되어 보관될 수 있습니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oA-fh-aeD">
+                    <rect key="frame" x="38" y="192.33333333333334" width="335" height="57.333333333333343"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehC-Hf-6CN" customClass="BorderedButton" customModule="onboard_iOS" customModuleProvider="target">
+                    <rect key="frame" x="20" y="744" width="353" height="48"/>
+                    <color key="backgroundColor" red="1" green="0.30196078430000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="ghO-Ba-xMD"/>
+                    </constraints>
+                    <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="탈퇴하기">
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="enableColor">
+                            <color key="value" red="0.92549020049999997" green="0.35686278339999999" blue="0.1764705926" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                            <color key="value" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="removeButtonAction:" destination="-1" eventType="touchUpInside" id="Jxh-Rf-fT6"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="YLa-Sw-noP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="4we-5t-ePD"/>
+                <constraint firstItem="YLa-Sw-noP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="12" id="A39-1u-IXI"/>
+                <constraint firstItem="6oA-fh-aeD" firstAttribute="top" secondItem="NFQ-Me-gdU" secondAttribute="top" id="CDz-Vi-RX9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ehC-Hf-6CN" secondAttribute="trailing" constant="20" id="ELR-Fk-dKs"/>
+                <constraint firstItem="LWQ-jr-aLo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="K5l-PC-Nae"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ehC-Hf-6CN" secondAttribute="bottom" constant="26" id="Km6-nA-uAY"/>
+                <constraint firstItem="KEN-al-RKi" firstAttribute="leading" secondItem="LWQ-jr-aLo" secondAttribute="trailing" id="LgA-op-bDv"/>
+                <constraint firstAttribute="trailing" secondItem="KEN-al-RKi" secondAttribute="trailing" constant="20" id="PDa-Ii-eYX"/>
+                <constraint firstItem="KEN-al-RKi" firstAttribute="top" secondItem="LWQ-jr-aLo" secondAttribute="top" id="UJh-Xc-yG0"/>
+                <constraint firstItem="LWQ-jr-aLo" firstAttribute="top" secondItem="YLa-Sw-noP" secondAttribute="bottom" constant="16" id="VOw-jp-WLI"/>
+                <constraint firstItem="NFQ-Me-gdU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="boW-oA-T0Z"/>
+                <constraint firstItem="NFQ-Me-gdU" firstAttribute="top" secondItem="KEN-al-RKi" secondAttribute="bottom" constant="24" id="c77-Tv-e9o"/>
+                <constraint firstItem="6oA-fh-aeD" firstAttribute="leading" secondItem="NFQ-Me-gdU" secondAttribute="trailing" id="dMD-fZ-kfD"/>
+                <constraint firstItem="ehC-Hf-6CN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="dRj-sC-Dau"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YLa-Sw-noP" secondAttribute="trailing" constant="20" id="mNN-DA-dfJ"/>
+                <constraint firstAttribute="trailing" secondItem="6oA-fh-aeD" secondAttribute="trailing" constant="20" id="sSx-t4-sml"/>
+            </constraints>
+            <point key="canvasLocation" x="31" y="20"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="ehC-Hf-6CN">
+            <size key="intrinsicContentSize" width="72.666666666666671" height="31"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="icon_dot" width="18" height="18"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
