@@ -405,15 +405,15 @@ extension GroupCreateView: UITextViewDelegate {
             })
             .disposed(by: disposeBag)
         
-        descriptionTextView.rx.didBeginEditing
+        self.descriptionTextView.rx.didBeginEditing
             .subscribe(onNext: { [weak self] in
                 self?.handleTextViewEditing(true, textView: self?.descriptionTextView)
             })
             .disposed(by: disposeBag)
         
-        descriptionTextView.rx.didEndEditing
+        self.descriptionTextView.rx.didEndEditing
             .subscribe(onNext: { [weak self] in
-                self?.handleTextViewEditing(false, textView: self?.descriptionTextView)
+                self?.handleTextViewEditing(true, textView: self?.descriptionTextView)
             })
             .disposed(by: disposeBag)
     }
