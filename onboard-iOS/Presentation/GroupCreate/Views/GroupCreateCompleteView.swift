@@ -15,6 +15,8 @@ final class GroupCreateCompleteView: UIView {
     
     var disposeBag = DisposeBag()
     
+    var didTapConfirmButtonAction: (() -> Void)?
+    
     // MARK: - Metric
     
     enum Metric {
@@ -199,13 +201,7 @@ final class GroupCreateCompleteView: UIView {
         }), for: .touchUpInside)
         
         self.confirmButton.addAction(UIAction(handler: { _ in
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
-            
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let sceneDelegate = windowScene.delegate as? SceneDelegate {
-                sceneDelegate.window?.rootViewController = homeTabController
-            }
+            self.didTapConfirmButtonAction?()
         }), for: .touchUpInside)
     }
     

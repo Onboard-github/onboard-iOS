@@ -42,7 +42,20 @@ final class GroupCreateCompleteViewController: UIViewController, View {
     // MARK: - Bind
     
     func bind(reactor: GroupCreateReactor) {
+        self.bindAction(reactor: reactor)
         self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupCreateReactor) {
+        self.groupCreateCompleteView.didTapConfirmButtonAction = {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                sceneDelegate.window?.rootViewController = homeTabController
+            }
+        }
     }
     
     func bindState(reactor: GroupCreateReactor) {
