@@ -12,6 +12,10 @@ import Alamofire
 class LoginSelectVC: UIViewController {
     var agree: AgreeVC?
     
+    @IBOutlet weak var kakaoLoginButton: UIButton!
+    @IBOutlet weak var googleLoginButton: UIButton!
+    @IBOutlet weak var appleLoginButton: UIButton!
+    
     let kakaoLoginManager = KakaoLoginManagerImpl()
     let appleLoginManager = AppleLoginManagerImpl()
     let googleLoginManager = GoogleLoginManagerImpl()
@@ -20,6 +24,8 @@ class LoginSelectVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
+        
+        self.configureButton()
     }
     
     @IBAction func kakaoLogin(_ sender: Any) {
@@ -57,6 +63,17 @@ class LoginSelectVC: UIViewController {
             
             presentPanModal(vc)
         }
+    }
+    
+    private func configureButton() {
+        self.kakaoLoginButton.setTitleColor(Colors.Gray_14, for: .normal)
+        self.kakaoLoginButton.titleLabel?.font = Font.Typography.body3_M
+        
+        self.googleLoginButton.setTitleColor(Colors.Gray_9, for: .normal)
+        self.googleLoginButton.titleLabel?.font = Font.Typography.body3_M
+        
+        self.appleLoginButton.setTitleColor(Colors.Gray_1, for: .normal)
+        self.appleLoginButton.titleLabel?.font = Font.Typography.body3_M
     }
 }
 
