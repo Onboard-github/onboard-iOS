@@ -7,15 +7,10 @@
 
 import UIKit
 
-import ReactorKit
-
-final class GroupCreateCompleteViewController: UIViewController, View {
+final class GroupCreateCompleteViewController: UIViewController {
     
-    typealias Reactor = GroupCreateReactor
     
     // MARK: - Properties
-    
-    var disposeBag = DisposeBag()
     
     private let groupCreateCompleteView = GroupCreateCompleteView()
     
@@ -29,24 +24,24 @@ final class GroupCreateCompleteViewController: UIViewController, View {
     
     // MARK: - Initialize
     
-    init(reactor: GroupCreateReactor) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
         
-        self.reactor = reactor
+        self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Bind
+    // MARK: - Configure
     
-    func bind(reactor: GroupCreateReactor) {
-        self.bindAction(reactor: reactor)
-        self.bindState(reactor: reactor)
+    private func configure() {
+        
+        self.addConfigure()
     }
     
-    func bindAction(reactor: GroupCreateReactor) {
+    private func addConfigure() {
         self.groupCreateCompleteView.didTapConfirmButtonAction = {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
@@ -57,14 +52,4 @@ final class GroupCreateCompleteViewController: UIViewController, View {
             }
         }
     }
-    
-    func bindState(reactor: GroupCreateReactor) {
-         reactor.state
-             .map { $0.createdGroup }
-             .compactMap { $0 }
-             .observe(on: MainScheduler.instance)
-             .subscribe(onNext: { [weak self] data in
-             })
-             .disposed(by: disposeBag)
-     }
 }
