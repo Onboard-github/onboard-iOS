@@ -366,7 +366,7 @@ extension GroupCreateView {
         
         Observable.merge(
             self.nameTextField.rx.controlEvent(.editingDidBegin).map { true },
-            self.nameTextField.rx.controlEvent(.editingDidEnd).map { false }
+            self.nameTextField.rx.controlEvent(.editingDidEnd).map { true }
         )
         .subscribe(onNext: { [weak self] isEditing in
             self?.handleTextFieldEditing(isEditing: isEditing, textField: self?.nameTextField)
@@ -375,7 +375,7 @@ extension GroupCreateView {
         
         Observable.merge(
             self.organizationTextField.rx.controlEvent(.editingDidBegin).map { true },
-            self.organizationTextField.rx.controlEvent(.editingDidEnd).map { false }
+            self.organizationTextField.rx.controlEvent(.editingDidEnd).map { true }
         )
         .subscribe(onNext: { [weak self] isEditing in
             self?.handleTextFieldEditing(isEditing: isEditing, textField: self?.organizationTextField)
