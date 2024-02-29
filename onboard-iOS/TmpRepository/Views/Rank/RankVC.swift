@@ -115,11 +115,13 @@ class RankVC: UIViewController {
                 titleLabelArrow.isHidden = true
                 moreButton.isHidden = true
                 moreButton2.isHidden = true
+                recordButton.isHidden = true
             } else {
                 titleLabelButton.isHidden = false
                 titleLabelArrow.isHidden = false
                 moreButton.isHidden = false
                 moreButton2.isHidden = false
+                recordButton.isHidden = false
             }
             
             gameDetailTableView.reloadData()

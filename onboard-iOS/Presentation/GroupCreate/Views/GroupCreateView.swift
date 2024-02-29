@@ -71,7 +71,7 @@ final class GroupCreateView: UIView {
         return image
     }()
     
-    let nameTextField: TextField = {
+    private let nameTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
@@ -112,7 +112,7 @@ final class GroupCreateView: UIView {
         return image
     }()
     
-    let descriptionTextView: TextView = {
+    private let descriptionTextView: TextView = {
         let textView = TextView()
         textView.textColor = Colors.Gray_15
         textView.font = Font.Typography.body3_R
@@ -138,7 +138,7 @@ final class GroupCreateView: UIView {
         return label
     }()
     
-    let organizationTextField: TextField = {
+    private let organizationTextField: TextField = {
         let text = TextField()
         text.textColor = Colors.Gray_15
         text.font = Font.Typography.body3_R
@@ -366,7 +366,7 @@ extension GroupCreateView {
         
         Observable.merge(
             self.nameTextField.rx.controlEvent(.editingDidBegin).map { true },
-            self.nameTextField.rx.controlEvent(.editingDidEnd).map { false }
+            self.nameTextField.rx.controlEvent(.editingDidEnd).map { true }
         )
         .subscribe(onNext: { [weak self] isEditing in
             self?.handleTextFieldEditing(isEditing: isEditing, textField: self?.nameTextField)
@@ -375,7 +375,7 @@ extension GroupCreateView {
         
         Observable.merge(
             self.organizationTextField.rx.controlEvent(.editingDidBegin).map { true },
-            self.organizationTextField.rx.controlEvent(.editingDidEnd).map { false }
+            self.organizationTextField.rx.controlEvent(.editingDidEnd).map { true }
         )
         .subscribe(onNext: { [weak self] isEditing in
             self?.handleTextFieldEditing(isEditing: isEditing, textField: self?.organizationTextField)
@@ -405,15 +405,15 @@ extension GroupCreateView: UITextViewDelegate {
             })
             .disposed(by: disposeBag)
         
-        descriptionTextView.rx.didBeginEditing
+        self.descriptionTextView.rx.didBeginEditing
             .subscribe(onNext: { [weak self] in
                 self?.handleTextViewEditing(true, textView: self?.descriptionTextView)
             })
             .disposed(by: disposeBag)
         
-        descriptionTextView.rx.didEndEditing
+        self.descriptionTextView.rx.didEndEditing
             .subscribe(onNext: { [weak self] in
-                self?.handleTextViewEditing(false, textView: self?.descriptionTextView)
+                self?.handleTextViewEditing(true, textView: self?.descriptionTextView)
             })
             .disposed(by: disposeBag)
     }
