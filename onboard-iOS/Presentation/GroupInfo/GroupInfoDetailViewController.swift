@@ -8,6 +8,7 @@
 import UIKit
 
 import ReactorKit
+import Alamofire
 
 final class GroupInfoDetailViewController: UIViewController, View {
     
@@ -223,7 +224,6 @@ final class GroupInfoDetailViewController: UIViewController, View {
         let imageView = UIImageView()
         let image = IconImage.exit.image
         imageView.image = image
-        imageView.isHidden = true // TODO: 미완성 기능 숨겨두고 추후 작업
         return imageView
     }()
     
@@ -232,7 +232,15 @@ final class GroupInfoDetailViewController: UIViewController, View {
         button.setTitle(TextLabels.exit_text, for: .normal)
         button.setTitleColor(Colors.Gray_10, for: .normal)
         button.titleLabel?.font = Font.Typography.label3_M
-        button.isHidden = true // TODO: 미완성 기능 숨겨두고 추후 작업
+        button.addAction(UIAction(handler: { _ in
+            let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+            Task {
+                try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .myGroupUnsubscribe(groupId: groupId))
+                try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .groupDelete(groupId: groupId))
+                NotificationCenter.default.post(name: Notification.Name("groupDeleted"), object: nil)
+                AlertManager.show(message: "그룹 나가기가 완료되었습니다.")
+            }
+        }), for: .touchUpInside)
         return button
     }()
     

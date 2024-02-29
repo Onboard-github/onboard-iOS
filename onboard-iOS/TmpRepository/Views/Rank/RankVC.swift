@@ -182,7 +182,13 @@ class RankVC: UIViewController {
             self.meInfo = meInfoResult.value
             LoginSessionManager.meId = meInfoResult.value?.id
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didRecieveNotification), name: Notification.Name("groupDeleted"), object: nil)
     }
+    
+    @objc func didRecieveNotification(_ notification: Notification) {
+        refresh()
+     }
     
     override func viewWillAppear(_ animated: Bool) {
         refresh()
