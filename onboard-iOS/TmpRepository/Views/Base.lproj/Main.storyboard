@@ -1132,7 +1132,6 @@
                     <connections>
                         <segue destination="5Ii-rq-oiY" kind="relationship" relationship="viewControllers" id="T8Q-sI-9qX"/>
                         <segue destination="tw9-lA-iQZ" kind="relationship" relationship="viewControllers" id="lxv-Gc-jMx"/>
-                        <segue destination="QfE-LN-TcP" kind="relationship" relationship="viewControllers" id="d54-8u-Ivy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WV3-vq-aBL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
