@@ -9,6 +9,16 @@ import UIKit
 
 final class ConfirmPopupViewController: UIViewController {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let basePadding: CGFloat = 24
+        static let contentLabelTopMargin: CGFloat = 30
+        static let buttonTopSpacing: CGFloat = 20
+        static let buttonHeight: CGFloat = 52
+        static let buttonWidth: CGFloat = 0.5
+    }
+    
     // MARK: - UI
     
     private let dimmedView: UIView = {
@@ -49,4 +59,59 @@ final class ConfirmPopupViewController: UIViewController {
         button.backgroundColor = Colors.Orange_10
         return button
     }()
+    
+    // MARK: - Initialize
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.view.addSubview(self.dimmedView)
+        self.dimmedView.addSubview(self.contentView)
+        self.contentView.addSubview(self.contentLabel)
+        self.contentView.addSubview(self.cancelButton)
+        self.contentView.addSubview(self.confirmButton)
+        
+        self.dimmedView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        self.contentView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(Metric.basePadding)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.contentLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(Metric.contentLabelTopMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.basePadding)
+        }
+        
+        self.cancelButton.snp.makeConstraints {
+            $0.top.equalTo(contentLabel.snp.bottom).offset(Metric.buttonTopSpacing)
+            $0.bottom.leading.equalToSuperview()
+            $0.width.equalToSuperview().multipliedBy(Metric.buttonWidth)
+            $0.height.equalTo(Metric.buttonHeight)
+        }
+        
+        self.confirmButton.snp.makeConstraints {
+            $0.top.equalTo(contentLabel.snp.bottom).offset(Metric.buttonTopSpacing)
+            $0.bottom.trailing.equalToSuperview()
+            $0.width.equalToSuperview().multipliedBy(Metric.buttonWidth)
+            $0.height.equalTo(Metric.buttonHeight)
+        }
+    }
 }
