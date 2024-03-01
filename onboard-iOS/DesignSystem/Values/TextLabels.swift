@@ -114,5 +114,5 @@ struct TextLabels {
     static let groupInfo_Exit_Message = "모임에서 나가시겠습니까?"
     static let groupInfo_button_cancel = "취소"
     static let groupInfo_button_exit = "나가기"
-
+    static let groupInfo_exit_alert = "그룹 나가기가 완료되었습니다."
 }

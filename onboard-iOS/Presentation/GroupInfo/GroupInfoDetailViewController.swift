@@ -374,6 +374,24 @@ final class GroupInfoDetailViewController: UIViewController, View {
             alert.setState(alertState: state)
             alert.setContentViewHeight(height: Metric.contentViewHeight)
             
+            alert.didTapConfirmButtonAction = {
+                let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+                Task {
+                    try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .myGroupUnsubscribe(groupId: groupId))
+                    try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .groupDelete(groupId: groupId))
+                    NotificationCenter.default.post(name: Notification.Name("groupDeleted"), object: nil)
+                    AlertManager.show(message: "\(TextLabels.groupInfo_exit_alert)")
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                    
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                       let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                        sceneDelegate.window?.rootViewController = homeTabController
+                    }
+                }
+            }
+            
             self?.present(alert, animated: false)
             
         }), for: .touchUpInside)
