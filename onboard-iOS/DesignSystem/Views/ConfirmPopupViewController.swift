@@ -9,6 +9,10 @@ import UIKit
 
 final class ConfirmPopupViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    var didTapConfirmButtonAction: (() -> Void)?
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -76,7 +80,18 @@ final class ConfirmPopupViewController: UIViewController {
     
     private func configure() {
         
+        self.addConfigure()
         self.makeConstraints()
+    }
+    
+    private func addConfigure() {
+        self.cancelButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.dismiss(animated: false)
+        }), for: .touchUpInside)
+        
+        self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.didTapConfirmButtonAction?()
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
