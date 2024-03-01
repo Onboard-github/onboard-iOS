@@ -107,5 +107,12 @@ struct TextLabels {
     
     static let search_empty_title = "에 대한 검색어가 없습니다."
     static let search_empty_subTitle = "함께 보드게임을 플레이한 상대가 온보드에\n아직 없다면, 임시 멤버로 추가해 기록해보세요!"
+    
+    // MARK: - ConfirmPopupView
+    
+    static let groupInfo_Message = "모임에서 나가면 내 랭킹과 게임 기록이 모두\n삭제되며, 취소 또는 복구는 불가능합니다.\n\n"
+    static let groupInfo_Exit_Message = "모임에서 나가시겠습니까?"
+    static let groupInfo_button_cancel = "취소"
+    static let groupInfo_button_exit = "나가기"
 
 }

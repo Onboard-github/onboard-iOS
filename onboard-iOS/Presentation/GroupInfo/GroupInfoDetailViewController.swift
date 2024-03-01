@@ -364,7 +364,16 @@ final class GroupInfoDetailViewController: UIViewController, View {
             
             let alert = ConfirmPopupViewController()
             alert.modalPresentationStyle = .overFullScreen
+            
+            let groupName = self?.reactor?.currentState.groupInfoData?.name ?? ""
+            let message = "\(TextLabels.groupInfo_Message)\(groupName) \(TextLabels.groupInfo_Exit_Message)"
+            let state = AlertState(contentLabel: message,
+                                   leftButtonLabel: "\(TextLabels.groupInfo_button_cancel)",
+                                   rightButtonLabel: "\(TextLabels.groupInfo_button_exit)")
+            
+            alert.setState(alertState: state)
             alert.setContentViewHeight(height: Metric.contentViewHeight)
+            
             self?.present(alert, animated: false)
             
         }), for: .touchUpInside)
