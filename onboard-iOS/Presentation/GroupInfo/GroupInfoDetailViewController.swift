@@ -37,6 +37,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
         static let countLabelTopSpacing: CGFloat = 5
         static let modifyButtonMargin: CGFloat = 10
         static let exitImageSize: CGFloat = 24
+        static let contentViewHeight: CGFloat = 214
     }
     
     // MARK: - UI
@@ -232,15 +233,6 @@ final class GroupInfoDetailViewController: UIViewController, View {
         button.setTitle(TextLabels.exit_text, for: .normal)
         button.setTitleColor(Colors.Gray_10, for: .normal)
         button.titleLabel?.font = Font.Typography.label3_M
-        button.addAction(UIAction(handler: { _ in
-            let groupId = GameDataSingleton.shared.getGroupId() ?? 0
-            Task {
-                try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .myGroupUnsubscribe(groupId: groupId))
-                try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .groupDelete(groupId: groupId))
-                NotificationCenter.default.post(name: Notification.Name("groupDeleted"), object: nil)
-                AlertManager.show(message: "그룹 나가기가 완료되었습니다.")
-            }
-        }), for: .touchUpInside)
         return button
     }()
     
@@ -366,6 +358,15 @@ final class GroupInfoDetailViewController: UIViewController, View {
             
             Toast().showToast(image: IconImage.dice.image!,
                               message: TextLabels.group_clipboard_message)
+        }), for: .touchUpInside)
+        
+        self.exitButton.addAction(UIAction(handler: { [weak self] _ in
+            
+            let alert = ConfirmPopupViewController()
+            alert.modalPresentationStyle = .overFullScreen
+            alert.setContentViewHeight(height: Metric.contentViewHeight)
+            self?.present(alert, animated: false)
+            
         }), for: .touchUpInside)
     }
     
