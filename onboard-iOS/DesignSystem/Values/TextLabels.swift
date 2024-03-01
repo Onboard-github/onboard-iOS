@@ -11,7 +11,7 @@ struct TextLabels {
     
     // MARK: - Group Create
     
-    static let group_title = "그룹 등록"
+    static let group_title = "모임 등록"
     static let group_name = "모임 이름"
     static let group_name_placeholder = "모임 이름을 입력해주세요."
     static let group_name_count = "00/14"
