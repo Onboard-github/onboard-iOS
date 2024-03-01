@@ -129,4 +129,10 @@ final class ConfirmPopupViewController: UIViewController {
             $0.height.equalTo(Metric.buttonHeight)
         }
     }
+    
+    func setState(alertState: AlertState) {
+        self.contentLabel.text = alertState.contentLabel
+        self.cancelButton.setTitle(alertState.leftButtonLabel, for: .normal)
+        self.confirmButton.setTitle(alertState.rightButtonLabel, for: .normal)
+    }
 }
