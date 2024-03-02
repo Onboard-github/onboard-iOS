@@ -5,9 +5,9 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
     <key>GIDServerClientID</key>
-    <string>407255596267-oh8srvr5ddpv0qd53kdceeu8e7thjeld.apps.googleusercontent.com</string>
+    <string>499798963911-c1vtj0pvein1vel8e5v4li5ih634bh3r.apps.googleusercontent.com</string>
     <key>GIDClientID</key>
-    <string>407255596267-ug3kch0n6tnc8bmdjj87q0amckjkp7jt.apps.googleusercontent.com</string>
+    <string>499798963911-tfrl0e1577htvcdfgl3ll8vh84o6qnj9.apps.googleusercontent.com</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -15,7 +15,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.407255596267-ug3kch0n6tnc8bmdjj87q0amckjkp7jt</string>
+				<string>com.googleusercontent.apps.499798963911-tfrl0e1577htvcdfgl3ll8vh84o6qnj9</string>
 			</array>
 		</dict>
 		<dict>
