@@ -158,17 +158,11 @@ extension GameScoreTableViewCell {
     private func setupTextField() {
         
         self.scoreTextField.rx.text
-            .map { $0.map { String($0.prefix(5)) } }
-            .bind(to: scoreTextField.rx.text)
-            .disposed(by: disposeBag)
-        
-        self.scoreTextField.rx.controlEvent(.editingChanged)
-            .map { [weak self] in
-                return self?.scoreTextField.text?.isEmpty == true ? Colors.Gray_6 : Colors.Gray_11
+            .map { text -> String? in
+                let textFieldText = text?.replacingOccurrences(of: ",", with: "")
+                return textFieldText.map { String($0.prefix(5)) }
             }
-            .subscribe(onNext: { [weak self] color in
-                self?.underLine.backgroundColor = color
-            })
+            .bind(to: self.scoreTextField.rx.text)
             .disposed(by: disposeBag)
         
         self.scoreTextField.rx.controlEvent(.editingDidEnd)
