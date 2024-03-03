@@ -145,7 +145,7 @@ final class GameScoreView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.addGestureRecognizer(tapGesture)
     }
-
+    
     @objc private func dismissKeyboard() {
         self.endEditing(true) // 뷰의 편집 모드를 종료하여 키보드를 내림
     }
@@ -245,6 +245,12 @@ extension GameScoreView: UITableViewDelegate, UITableViewDataSource {
             })
             .disposed(by: disposeBag)
         
+        cell.scoreTextField.rx.controlEvent(.editingDidBegin)
+            .subscribe(onNext: {
+                cell.updateUnderLineColor(colors: Colors.Gray_11)
+            })
+            .disposed(by: disposeBag)
+        
         self.confirmButton.status = cell.scoreTextField.text!.isEmpty ? .disabled : .default
         
         return cell
@@ -252,7 +258,7 @@ extension GameScoreView: UITableViewDelegate, UITableViewDataSource {
     
     private func textFieldDidEndEditing(_ textField: UITextField, at indexPath: IndexPath) {
         let index = textField.tag
-        guard let newScoreText = textField.text, 
+        guard let newScoreText = textField.text,
                 let newScore = Int(newScoreText.replacingOccurrences(of: ",", with: "")) else {
             print("유효하지 않은 값")
             return
