@@ -149,6 +149,10 @@ final class GameScoreTableViewCell: UITableViewCell {
         
         self.rankLabel.textColor = (rank == "1위") ? Colors.Orange_10 : Colors.Gray_9
     }
+    
+    func updateUnderLineColor(colors: UIColor) {
+        self.underLine.backgroundColor = colors
+    }
 }
 
 // MARK: - TextField
