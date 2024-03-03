@@ -37,6 +37,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
         static let countLabelTopSpacing: CGFloat = 5
         static let modifyButtonMargin: CGFloat = 10
         static let exitImageSize: CGFloat = 24
+        static let bottomMargin: CGFloat = 15
         static let contentViewHeight: CGFloat = 214
     }
     
@@ -541,7 +542,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
         }
         
         self.exitStackView.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-Metric.topMargin)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-Metric.bottomMargin)
             $0.leading.equalToSuperview().offset(Metric.leadingTrailingMargin)
         }
     }
