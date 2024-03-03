@@ -119,6 +119,8 @@ final class GameScoreView: UIView {
         return button
     }()
     
+    // MARK: - Initialize
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -128,6 +130,8 @@ final class GameScoreView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Configure
     
     private func configure() {
         self.backgroundColor = Colors.White
@@ -248,15 +252,17 @@ extension GameScoreView: UITableViewDelegate, UITableViewDataSource {
     
     private func textFieldDidEndEditing(_ textField: UITextField, at indexPath: IndexPath) {
         let index = textField.tag
-        let newScore = textField.text ?? "0"
-        GameDataSingleton.shared.gamePlayerData[index].score = newScore
-        
-        GameDataSingleton.shared.gamePlayerData = GameDataSingleton.shared.gamePlayerData.sorted { (player1, player2) -> Bool in
-            let score1 = Int(player1.score ?? "0") ?? 0
-            let score2 = Int(player2.score ?? "0") ?? 0
-            return score1 > score2
+        guard let newScoreText = textField.text, 
+                let newScore = Int(newScoreText.replacingOccurrences(of: ",", with: "")) else {
+            print("유효하지 않은 값")
+            return
         }
-        self.playerTableView.reloadRows(at: [indexPath], with: .none)
+        
+        GameDataSingleton.shared.gamePlayerData[index].score = String(newScore)
+        
+        GameDataSingleton.shared.gamePlayerData.sort { Int($0.score ?? "0") ?? 0 > Int($1.score ?? "0") ?? 0 }
+        
+        self.playerTableView.reloadRows(at: [indexPath], with: .fade)
         self.playerTableView.reloadData()
     }
 }
