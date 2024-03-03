@@ -238,6 +238,13 @@ extension GameScoreView: UITableViewDelegate, UITableViewDataSource {
         cell.scoreTextField.tag = indexPath.row
         cell.scoreTextField.text = selectedPlayer.score
         
+        cell.scoreTextField.rx.text.asObservable()
+            .subscribe(onNext: { scoreText in
+                let color = scoreText?.isEmpty == true ? Colors.Gray_6 : Colors.Gray_11
+                cell.updateUnderLineColor(colors: color)
+            })
+            .disposed(by: disposeBag)
+        
         cell.scoreTextField.rx.controlEvent(.editingDidEnd)
             .subscribe(onNext: { [weak self] in
                 guard let indexPath = tableView.indexPath(for: cell) else { return }
