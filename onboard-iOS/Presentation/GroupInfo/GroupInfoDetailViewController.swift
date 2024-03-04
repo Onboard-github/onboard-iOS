@@ -548,15 +548,17 @@ final class GroupInfoDetailViewController: UIViewController, View {
     }
     
     private func setupGestureRecognizer() {
-        let tapGesture = UITapGestureRecognizer(
+        let dimmedTap = UITapGestureRecognizer(
             target: self,
-            action: #selector(backgroundTapped)
+            action: #selector(dimmedViewAction(_:))
         )
-        self.view.addGestureRecognizer(tapGesture)
+        
+        self.dimmedView.addGestureRecognizer(dimmedTap)
+        self.dimmedView.isUserInteractionEnabled = true
     }
     
     @objc
-    private func backgroundTapped() {
+    private func dimmedViewAction(_ tapRecognizer: UITapGestureRecognizer)  {
         self.hideMenu()
     }
     
