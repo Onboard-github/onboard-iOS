@@ -64,6 +64,12 @@ final class OwnerManageViewController: UIViewController {
         return view
     }()
     
+    private let confirmButton: BaseButton = {
+        let button = BaseButton(status: .disabled, style: .rounded)
+        button.setTitle(TextLabels.owner_confirm, for: .normal)
+        return button
+    }()
+    
     // MARK: - Initialize
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
