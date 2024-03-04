@@ -186,9 +186,10 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(
         _ tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
-            return tmpData.count
-        }
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return reactor?.currentState.allPlayer.first?.contents.count ?? 0
+    }
     
     func tableView(
         _ tableView: UITableView,
@@ -196,8 +197,15 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerManageTableViewCell",
                                                  for: indexPath) as! OwnerManageTableViewCell
-        let (image, label) = tmpData[indexPath.row]
-        cell.configure(image: image, title: label)
+        
+        let me = reactor?.currentState.allPlayer.first?.contents.filter({ $0.userId == LoginSessionManager.meId }).first
+        
+        if let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row] {
+            let hideOwner = me != nil && me?.userId == player.userId
+            let diceImage = player.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
+            cell.isHidden = hideOwner
+            cell.configure(image: diceImage, title: player.nickname, showMeImage: false)
+        }
         return cell
     }
 }
