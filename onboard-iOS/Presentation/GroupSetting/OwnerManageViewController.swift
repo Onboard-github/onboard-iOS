@@ -42,6 +42,12 @@ final class OwnerManageViewController: UIViewController {
         
         textField.textColor = Colors.Gray_15
         textField.font = Font.Typography.body2_M
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Font.Typography.body3_R as Any,
+            .foregroundColor: Colors.Gray_7]
+        textField.attributedPlaceholder = NSAttributedString(string: TextLabels.owner_placeholder,
+                                                             attributes: attributes)
         return textField
     }()
     
