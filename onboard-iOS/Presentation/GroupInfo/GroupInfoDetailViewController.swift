@@ -395,6 +395,13 @@ final class GroupInfoDetailViewController: UIViewController, View {
             self?.present(alert, animated: false)
             
         }), for: .touchUpInside)
+        
+        self.settingButton.addAction(UIAction(handler: { [weak self] _ in
+            let groupSettingViewController = GroupSettingViewController()
+            let navigationController = UINavigationController(rootViewController: groupSettingViewController)
+            navigationController.modalPresentationStyle = .overFullScreen
+            self?.present(navigationController, animated: false)
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
