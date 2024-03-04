@@ -7,7 +7,15 @@
 
 import UIKit
 
-final class OwnerManageViewController: UIViewController {
+import ReactorKit
+
+final class OwnerManageViewController: UIViewController, View {
+    
+    typealias Reactor = GroupReactor
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -75,14 +83,31 @@ final class OwnerManageViewController: UIViewController {
     
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: GroupReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: GroupReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupReactor) {
+        
+    }
+    
+    func bindState(reactor: GroupReactor) {
+        
     }
     
     // MARK: - Configure
