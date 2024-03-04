@@ -18,6 +18,9 @@ final class OwnerManageViewController: UIViewController {
         static let textFieldTopSpacing: CGFloat = 10
         static let textFieldHeight: CGFloat = 40
         static let tableViewTopSpacing: CGFloat = 20
+        static let tableViewBottomSpacing: CGFloat = 10
+        static let buttonBottomMargin: CGFloat = 10
+        static let buttonHeight: CGFloat = 48
     }
     
     // MARK: - UI
@@ -95,6 +98,7 @@ final class OwnerManageViewController: UIViewController {
         self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.textField)
         self.view.addSubview(self.tableView)
+        self.view.addSubview(self.confirmButton)
         
         self.titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
@@ -109,7 +113,14 @@ final class OwnerManageViewController: UIViewController {
         
         self.tableView.snp.makeConstraints {
             $0.top.equalTo(textField.snp.bottom).offset(Metric.tableViewTopSpacing)
+            $0.bottom.equalTo(confirmButton.snp.top).offset(-Metric.tableViewBottomSpacing)
             $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        self.confirmButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-Metric.buttonBottomMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.height.equalTo(Metric.buttonHeight)
         }
     }
     
