@@ -64,27 +64,6 @@ final class OwnerManageViewController: UIViewController {
         return view
     }()
     
-    private let tmpData: [(UIImage, String)] = [
-        (IconImage.dice.image!, "귤귤"),
-        (IconImage.emptyDice.image!, "호연호연"),
-        (IconImage.dice.image!, "승용용용용"),
-        (IconImage.dice.image!, "메롱메롱"),
-        (IconImage.dice.image!, "푸항항"),
-        (IconImage.emptyDice.image!, "하하하하하"),
-        (IconImage.emptyDice.image!, "호호홍"),
-        (IconImage.emptyDice.image!, "막창"),
-        (IconImage.dice.image!, "낙곱새맛있겠다"),
-        (IconImage.dice.image!, "마라탕"),
-        (IconImage.emptyDice.image!, "마라샹궈"),
-        (IconImage.dice.image!, "관리자변경하지마"),
-        (IconImage.dice.image!, "먀옹"),
-        (IconImage.dice.image!, "히히"),
-        (IconImage.emptyDice.image!, "임시임"),
-        (IconImage.dice.image!, "메메메"),
-        (IconImage.emptyDice.image!, "몜몜"),
-        (IconImage.dice.image!, "맴맴")
-    ]
-    
     // MARK: - Initialize
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
