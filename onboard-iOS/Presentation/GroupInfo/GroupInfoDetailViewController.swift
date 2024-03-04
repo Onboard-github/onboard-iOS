@@ -43,7 +43,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
     
     // MARK: - UI
     
-    private let backgroundView: UIView = {
+    private let dimmedView: UIView = {
         let view = UIView()
         view.backgroundColor = .darkGray.withAlphaComponent(0.7)
         return view
@@ -399,7 +399,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
     }
     
     private func makeConstraints() {
-        self.view.addSubview(self.backgroundView)
+        self.view.addSubview(self.dimmedView)
         self.view.addSubview(self.infoView)
         self.infoView.addSubview(self.nameLabel)
         self.infoView.addSubview(self.settingButton)
@@ -421,7 +421,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
         self.infoView.addSubview(self.divView)
         self.infoView.addSubview(self.exitStackView)
         
-        self.backgroundView.snp.makeConstraints {
+        self.dimmedView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
@@ -599,7 +599,7 @@ extension GroupInfoDetailViewController {
                                          y: self.infoView.frame.origin.y,
                                          width: self.infoView.frame.width,
                                          height: self.infoView.frame.height)
-            self.backgroundView.alpha = 0.0
+            self.dimmedView.alpha = 0.0
         }, completion: { _ in
             self.dismiss(animated: false, completion: nil)
         })
