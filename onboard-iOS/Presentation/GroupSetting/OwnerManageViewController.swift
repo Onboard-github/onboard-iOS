@@ -103,11 +103,19 @@ final class OwnerManageViewController: UIViewController, View {
     }
     
     func bindAction(reactor: GroupReactor) {
-        
+        let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        let gameId = GameDataSingleton.shared.gameData?.id ?? 0
+        self.reactor?.action.onNext(.allPlayerData(groupId: groupId, gameId: gameId))
     }
     
     func bindState(reactor: GroupReactor) {
-        
+        reactor.state
+            .compactMap { $0.allPlayer }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                self?.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Configure
