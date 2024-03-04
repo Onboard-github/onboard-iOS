@@ -92,9 +92,10 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(
         _ tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
-            return SettingOptions.allCases.count
-        }
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return SettingOptions.allCases.count
+    }
     
     func tableView(
         _ tableView: UITableView,
@@ -105,32 +106,47 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
         if let option = SettingOptions(rawValue: indexPath.row) {
             cell.setOption(option)
         }
-        cell.separatorView.isHidden = indexPath.row != SettingOptions.allCases.count - 2
+        // cell.separatorView.isHidden = indexPath.row != SettingOptions.allCases.count - 2
+        cell.separatorView.isHidden = true
         return cell
     }
     
     func tableView(
         _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath) {
-            
-            switch indexPath.row {
-            case 0:
-                // TODO: - 모임 정보 수정
-                break
-            case 1:
-                let vc = AccessCodeViewController()
-                navigationController?.pushViewController(vc, animated: true)
-            case 2:
-                let vc = MemberManageViewController()
-                navigationController?.pushViewController(vc, animated: true)
-            case 3:
-                let vc = OwnerManageViewController()
-                navigationController?.pushViewController(vc, animated: true)
-            case 4:
-                // TODO: - 모임 삭제
-                break
-            default:
-                break
-            }
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        
+//        switch indexPath.row {
+//        case 0:
+//            // TODO: - 모임 정보 수정
+//            break
+//        case 1:
+//            let vc = AccessCodeViewController()
+//            navigationController?.pushViewController(vc, animated: true)
+//        case 2:
+//            let vc = MemberManageViewController()
+//            navigationController?.pushViewController(vc, animated: true)
+//        case 3:
+//            let vc = OwnerManageViewController()
+//            navigationController?.pushViewController(vc, animated: true)
+//        case 4:
+//            // TODO: - 모임 삭제
+//            break
+//        default:
+//            break
+//        }
+        
+        switch indexPath.row {
+        case 0:
+            let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
+            let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+            let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase)
+            let vc = OwnerManageViewController(reactor: reactor)
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            break
+        default:
+            break
         }
+    }
 }
