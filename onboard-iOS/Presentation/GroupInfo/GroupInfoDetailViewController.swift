@@ -66,7 +66,6 @@ final class GroupInfoDetailViewController: UIViewController, View {
     private let settingButton: UIButton = {
         let button = UIButton()
         button.setImage(IconImage.settingDefault.image, for: .normal)
-        button.isHidden = true
         return button
     }()
     
@@ -336,7 +335,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
                             playCount: me?.matchCount ?? -1
                         )
                     }
-                    
+                    self?.settingButton.isHidden = me?.role == "OWNER" ? false : true
                 }
             })
             .disposed(by: disposeBag)
