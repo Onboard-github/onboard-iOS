@@ -57,9 +57,9 @@ final class OwnerManageTableViewCell: UITableViewCell {
     
     var didTapSelectButton: (() -> Void)?
     
-    var isButtonSelected: Bool = true {
+    var isButtonSelected: Bool = false {
         didSet {
-            let image = isButtonSelected ? IconImage.deselect.image : IconImage.select.image
+            let image = isButtonSelected ? IconImage.select.image : IconImage.deselect.image
             self.selectButton.setImage(image, for: .normal)
         }
     }
@@ -120,12 +120,17 @@ final class OwnerManageTableViewCell: UITableViewCell {
     func configure(
         image: UIImage? = IconImage.dice.image,
         title: String,
-        titleColor: UIColor? = nil, 
+        titleColor: UIColor? = nil,
         showMeImage: Bool = true
     ) {
         self.titleImage.image = image
         self.titleLabel.text = title
         self.titleLabel.textColor = titleColor
         self.meImage.isHidden = !showMeImage
+    }
+    
+    func updateButtonState(isSelected: Bool) {
+        let image = isSelected ? IconImage.select.image : IconImage.deselect.image
+        self.selectButton.setImage(image, for: .normal)
     }
 }
