@@ -37,6 +37,7 @@
 		1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */; };
 		1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */; };
 		1C6302122B96E5BE0085106D /* MemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6302112B96E5BE0085106D /* MemberDTO.swift */; };
+		1C6302192B96E6220085106D /* MemberEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6302182B96E6220085106D /* MemberEntity.swift */; };
 		1C6FEAE02B4D467A00CFC647 /* GroupSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */; };
 		1C6FEAE32B4D47B500CFC647 /* SettingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */; };
 		1C6FEAE52B4D482100CFC647 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */; };
@@ -215,6 +216,7 @@
 		1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
 		1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateViewController.swift; sourceTree = "<group>"; };
 		1C6302112B96E5BE0085106D /* MemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDTO.swift; sourceTree = "<group>"; };
+		1C6302182B96E6220085106D /* MemberEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberEntity.swift; sourceTree = "<group>"; };
 		1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingTableViewCell.swift; sourceTree = "<group>"; };
 		1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptions.swift; sourceTree = "<group>"; };
 		1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
@@ -477,6 +479,14 @@
 			isa = PBXGroup;
 			children = (
 				1C6302112B96E5BE0085106D /* MemberDTO.swift */,
+			);
+			path = Member;
+			sourceTree = "<group>";
+		};
+		1C6302152B96E60E0085106D /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				1C6302182B96E6220085106D /* MemberEntity.swift */,
 			);
 			path = Member;
 			sourceTree = "<group>";
@@ -818,6 +828,7 @@
 		61AC7FCF2AB6DF6300B0B6B5 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				1C6302152B96E60E0085106D /* Member */,
 				61AC7FD02AB6DFBF00B0B6B5 /* TestEntity.swift */,
 				611D8CA32AB8874D0074A55A /* AuthEntity.swift */,
 				AA7035FF2ADB85A500B26537 /* GroupListEntity.swift */,
@@ -1187,6 +1198,7 @@
 				1C105F652B92986B00016545 /* ConfirmPopupViewController.swift in Sources */,
 				1C47C9942B597D1900D80E9C /* PlayerCollectionViewCell.swift in Sources */,
 				1C1048FC2B8748860042E0D3 /* SearchEmptyStateView.swift in Sources */,
+				1C6302192B96E6220085106D /* MemberEntity.swift in Sources */,
 				61AC7FBC2AB6D72C00B0B6B5 /* TestView.swift in Sources */,
 				AA5E9C772B2E8C3D000E3A30 /* GroupJoinVC.swift in Sources */,
 				1C327B282B5630DC00F02C26 /* PlayerSelectViewController.swift in Sources */,
