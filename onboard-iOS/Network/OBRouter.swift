@@ -49,6 +49,7 @@ enum OBRouter: URLRequestConvertible {
     case myGroupUnsubscribe(groupId: Int)                                                     // 멤버 탈퇴
     case groupMembers(groupId: Int)                                                           // 멤버 목록 가져오기
     case validateNickname(groupId: Int, nickname: String)                                     // 닉네임 유효성 체크, 멤버 닉네임 검사
+    case assignOwner(groupId: Int, memberId: Int)                                             // 그룹장 임명 (onwer에서 host로)
     
     // Match
     case match(body: Body) // 매치 기록하기
@@ -66,7 +67,7 @@ enum OBRouter: URLRequestConvertible {
     // User
     case getMe                 // 내 기본 정보 가져오기
     case setUser(body: Body)
-    case getMyGroupsV2 // 내가 가입한 그룹 목록 가져오기 v2
+    case getMyGroupsV2         // 내가 가입한 그룹 목록 가져오기 v2
     case deleteUserMe
     
     // update
@@ -87,7 +88,7 @@ enum OBRouter: URLRequestConvertible {
             return .post
         case .setUser:
             return .put
-        case .groupMemeberPatch:
+        case .groupMemeberPatch, .assignOwner:
             return .patch
         case .myGroupUnsubscribe, .groupDelete, .deleteUserMe:
             return .delete
@@ -149,6 +150,8 @@ enum OBRouter: URLRequestConvertible {
             return "api/v1/match"
         case .deleteUserMe:
             return "api/v1/user/me"
+        case let .assignOwner(groupId, memberId):
+            return "api/v1/group/\(groupId)/member/\(memberId)/assign-owner"
         }
     }
     
@@ -158,7 +161,7 @@ enum OBRouter: URLRequestConvertible {
         switch self {
         case .testAPI, .auth, .addGroup, .groupList, .randomImage, .validateNickname:
             return nil
-        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .forceUpdateTest, .gameLeaderboard, .match, .agreeTerms, .deleteUserMe :
+        case .setUser, .gameList, .getTerms, .createGroup, .groupMemeberPatch, .groupMembers, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .forceUpdateTest, .gameLeaderboard, .match, .agreeTerms, .deleteUserMe, .assignOwner :
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")"]
         case .pickerImage:
             return ["Authorization": "Bearer \(LoginSessionManager.getLoginSession()?.accessToken ?? "")",
@@ -183,7 +186,7 @@ enum OBRouter: URLRequestConvertible {
                 return ["nickname": nickname, "accessCode": accessCode]
             }
             
-        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .validateNickname, .forceUpdateTest, .gameLeaderboard, .deleteUserMe:
+        case .testAPI, .groupList, .gameList, .pickerImage, .randomImage, .getTerms, .groupMemeberPatch, .groupMembers, .groupInfo, .getMe, .getMyGroupsV2, .gameResult, .gamePlayer, .myGroupUnsubscribe, .groupDelete, .validateNickname, .forceUpdateTest, .gameLeaderboard, .deleteUserMe, .assignOwner:
             return nil
             
         case let .auth(body), let .addGroup(body), let .setUser(body), let .createGroup(body), let .match(body):
@@ -197,7 +200,7 @@ enum OBRouter: URLRequestConvertible {
     
     var params: Params? {
         switch self {
-        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .forceUpdateTest, .gameLeaderboard, .match, .agreeTerms, .gameResult, .deleteUserMe:
+        case .testAPI, .auth, .addGroup, .setUser, .gameList, .randomImage, .createGroup, .getTerms, .groupMemeberPatch, .addGroupGuest, .groupInfo, .getMe, .getMyGroupsV2, .myGroupUnsubscribe, .groupDelete, .groupAccessCodeCheck, .joinGroupHost, .forceUpdateTest, .gameLeaderboard, .match, .agreeTerms, .gameResult, .deleteUserMe, .assignOwner:
             return nil
         case let .groupList(params):
             return params
