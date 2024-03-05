@@ -212,9 +212,7 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerManageTableViewCell",
                                                  for: indexPath) as! OwnerManageTableViewCell
-        
-        let me = reactor?.currentState.allPlayer.first?.contents.filter({ $0.userId == LoginSessionManager.meId }).first
-        
+                
         let count = reactor?.currentState.allPlayer.first?.contents.count ?? 0
         if let player = (count == 1 ? nil : reactor?.currentState.allPlayer.first?.contents[indexPath.row]) {
             let me = reactor?.currentState.allPlayer.first?.contents.first(where: { $0.userId == LoginSessionManager.meId })
