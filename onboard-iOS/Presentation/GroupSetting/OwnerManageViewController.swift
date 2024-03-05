@@ -158,7 +158,7 @@ final class OwnerManageViewController: UIViewController, View {
     }
     
     private func setNavigationBar() {
-        let image = IconImage.back.image?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        let image = IconImage.back.image?.withTintColor(Colors.Black, renderingMode: .alwaysOriginal)
         
         if let navigationBar = navigationController?.navigationBar {
             let textAttribute: [NSAttributedString.Key: Any] = [
