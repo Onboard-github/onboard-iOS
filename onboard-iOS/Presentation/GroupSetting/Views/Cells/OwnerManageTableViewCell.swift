@@ -88,7 +88,7 @@ final class OwnerManageTableViewCell: UITableViewCell {
     private func addConfigure() {
         self.selectButton.addAction(UIAction(handler: { [weak self] _ in
             self?.didTapSelectButton?()
-            self?.isButtonSelected.toggle()
+//            self?.isButtonSelected.toggle()
         }), for: .touchUpInside)
     }
     

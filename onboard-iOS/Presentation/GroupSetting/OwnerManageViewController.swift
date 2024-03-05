@@ -17,6 +17,8 @@ final class OwnerManageViewController: UIViewController, View {
     
     var disposeBag = DisposeBag()
     
+    private var selectedIndexPath: IndexPath?
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -227,7 +229,18 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
             self.emptyStateLabel.isHidden = false
         }
         
+        cell.updateButtonState(isSelected: indexPath == self.selectedIndexPath)
+        
         return cell
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        self.selectedIndexPath = (indexPath == self.selectedIndexPath) ? nil : indexPath
+        
+        self.tableView.reloadData()
     }
     
     func tableView(
