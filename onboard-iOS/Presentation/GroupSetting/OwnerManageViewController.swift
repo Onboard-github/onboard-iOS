@@ -213,12 +213,20 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         
         let me = reactor?.currentState.allPlayer.first?.contents.filter({ $0.userId == LoginSessionManager.meId }).first
         
-        if let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row] {
+        let count = reactor?.currentState.allPlayer.first?.contents.count ?? 0
+        if let player = (count == 1 ? nil : reactor?.currentState.allPlayer.first?.contents[indexPath.row]) {
+            let me = reactor?.currentState.allPlayer.first?.contents.first(where: { $0.userId == LoginSessionManager.meId })
             let hideOwner = me != nil && me?.userId == player.userId
             let diceImage = player.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
             cell.isHidden = hideOwner
             cell.configure(image: diceImage, title: player.nickname, showMeImage: false)
+            
+            self.emptyStateLabel.isHidden = true
+        } else {
+            cell.isHidden = true
+            self.emptyStateLabel.isHidden = false
         }
+        
         return cell
     }
     
