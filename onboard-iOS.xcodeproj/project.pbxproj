@@ -39,6 +39,7 @@
 		1C6302122B96E5BE0085106D /* MemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6302112B96E5BE0085106D /* MemberDTO.swift */; };
 		1C6302192B96E6220085106D /* MemberEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6302182B96E6220085106D /* MemberEntity.swift */; };
 		1C63021C2B96E6440085106D /* MemberRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C63021B2B96E6440085106D /* MemberRepository.swift */; };
+		1C63021F2B96E7410085106D /* MemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C63021E2B96E7410085106D /* MemberUseCase.swift */; };
 		1C6FEAE02B4D467A00CFC647 /* GroupSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */; };
 		1C6FEAE32B4D47B500CFC647 /* SettingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */; };
 		1C6FEAE52B4D482100CFC647 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */; };
@@ -219,6 +220,7 @@
 		1C6302112B96E5BE0085106D /* MemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDTO.swift; sourceTree = "<group>"; };
 		1C6302182B96E6220085106D /* MemberEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberEntity.swift; sourceTree = "<group>"; };
 		1C63021B2B96E6440085106D /* MemberRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRepository.swift; sourceTree = "<group>"; };
+		1C63021E2B96E7410085106D /* MemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUseCase.swift; sourceTree = "<group>"; };
 		1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingTableViewCell.swift; sourceTree = "<group>"; };
 		1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptions.swift; sourceTree = "<group>"; };
 		1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
@@ -501,6 +503,14 @@
 			path = Member;
 			sourceTree = "<group>";
 		};
+		1C63021D2B96E7240085106D /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				1C63021E2B96E7410085106D /* MemberUseCase.swift */,
+			);
+			path = Member;
+			sourceTree = "<group>";
+		};
 		1C6FEADC2B4D462900CFC647 /* GroupSetting */ = {
 			isa = PBXGroup;
 			children = (
@@ -763,6 +773,7 @@
 		61AC7FB42AB6D68B00B0B6B5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				1C63021D2B96E7240085106D /* Member */,
 				1C327B202B55720F00F02C26 /* Game */,
 				AA7035FC2ADB81E800B26537 /* Group */,
 				611D8C9E2AB884AB0074A55A /* Login */,
@@ -1288,6 +1299,7 @@
 				1CAC01E22B83A2140006A8D7 /* MatchEntity.swift in Sources */,
 				1C30170D2B4D718400128E5C /* AlertView.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
+				1C63021F2B96E7410085106D /* MemberUseCase.swift in Sources */,
 				1C0319F92B71BE8800BD3D44 /* ResultRecordViewController.swift in Sources */,
 				1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */,
 				1C47C9972B597F7600D80E9C /* GameDataSingleton.swift in Sources */,
