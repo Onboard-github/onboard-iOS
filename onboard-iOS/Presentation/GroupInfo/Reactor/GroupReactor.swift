@@ -11,33 +11,51 @@ import ReactorKit
 
 final class GroupReactor: Reactor {
     
+    // MARK: - InitialState
+    
     var initialState: State = .init(groupInfoData: nil)
+    
+    // MARK: - Action
     
     enum Action {
         case fetchResult(groupId: Int)
         case allPlayerData(groupId: Int, gameId: Int)
+        case assginOwner(groupId: Int, memberId: Int)
     }
+    
+    // MARK: - Mutation
     
     enum Mutation {
         case setGroupInfo(GroupInfoEntity.Res)
         case setAllPlayerData([GameLeaderboardEntity.Res])
+        case setOwner(result: MemberEntity.Res)
     }
+    
+    // MARK: - State
     
     struct State {
         var groupInfoData: GroupInfoEntity.Res?
         var allPlayer: [GameLeaderboardEntity.Res] = []
+        var assginOwnerResult: MemberEntity.Res?
     }
+    
+    // MARK: - Initialize
     
     private let useCase: GroupUseCase
     private let playerUseCase: PlayerUseCase
+    private let memberUseCase: MemberUseCase
     
     init(
         useCase: GroupUseCase,
-        playerUseCase: PlayerUseCase
+        playerUseCase: PlayerUseCase,
+        memberUseCase: MemberUseCase
     ) {
         self.useCase = useCase
         self.playerUseCase = playerUseCase
+        self.memberUseCase = memberUseCase
     }
+    
+    // MARK: - Mutate
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
@@ -45,8 +63,12 @@ final class GroupReactor: Reactor {
             return self.groupInfoResult(groupId: groupId)
         case let .allPlayerData(groupId, gameId):
             return self.updatePlayerResult(groupId: groupId, gameId: gameId)
+        case let .assginOwner(groupId, memberId):
+            return self.assignOwnerResult(groupId: groupId, memberId: memberId)
         }
     }
+    
+    // MARK: - Reduce
     
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
@@ -56,6 +78,8 @@ final class GroupReactor: Reactor {
             state.groupInfoData = result
         case .setAllPlayerData(let result):
             state.allPlayer = result
+        case .setOwner(let result):
+            state.assginOwnerResult = result
         }
         
         return state
@@ -90,6 +114,24 @@ extension GroupReactor {
                     let result = try await self.playerUseCase.fetchAllPlayer(groupId: groupId,
                                                                              gameId: gameId)
                     observer.onNext(.setAllPlayerData([result]))
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    private func assignOwnerResult(groupId: Int, memberId: Int) -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
+            
+            Task {
+                do {
+                    let result = try await self.memberUseCase.fetchAssignOwner(groupId: groupId, memberId: memberId)
+                    
+                    observer.onNext(.setOwner(result: result))
                 } catch {
                     observer.onError(error)
                 }

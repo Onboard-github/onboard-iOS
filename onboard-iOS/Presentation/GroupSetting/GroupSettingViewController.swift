@@ -140,7 +140,8 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
         case 0:
             let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
             let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
-            let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase)
+            let memberUseCase = MemberUseCaseImpl(repository: MemberRepositoryImpl())
+            let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase, memberUseCase: memberUseCase)
             let vc = OwnerManageViewController(reactor: reactor)
             navigationController?.pushViewController(vc, animated: true)
         case 1:

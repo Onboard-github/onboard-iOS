@@ -172,7 +172,8 @@ class RankVC: UIViewController {
         self.moreButton2.addAction(UIAction(handler: { [weak self] _ in
             let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
             let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
-            let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase)
+            let memberUseCase = MemberUseCaseImpl(repository: MemberRepositoryImpl())
+            let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase, memberUseCase: memberUseCase)
             let groupInfoDetailViewController = GroupInfoDetailViewController(reactor: reactor)
             groupInfoDetailViewController.modalPresentationStyle = .overFullScreen
             self?.present(groupInfoDetailViewController, animated: false)
