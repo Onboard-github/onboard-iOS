@@ -227,7 +227,9 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
             self.emptyStateLabel.isHidden = false
         }
         
-        cell.updateButtonState(isSelected: indexPath == self.selectedIndexPath)
+        cell.updateButtonState(isSelected: indexPath == selectedIndexPath)
+        
+        self.confirmButton.status = self.selectedIndexPath != nil ? .default : .disabled
         
         return cell
     }
@@ -236,9 +238,9 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        self.selectedIndexPath = (indexPath == self.selectedIndexPath) ? nil : indexPath
+        selectedIndexPath = (indexPath == selectedIndexPath) ? nil : indexPath
         
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     func tableView(
