@@ -81,6 +81,14 @@ final class OwnerManageViewController: UIViewController, View {
         return button
     }()
     
+    private let emptyStateLabel: UILabel = {
+        let label = UILabel()
+        label.text = TextLabels.assginOwner_empty_Message
+        label.textColor = Colors.Gray_11
+        label.font = Font.Typography.body2_M
+        return label
+    }()
+    
     // MARK: - Initialize
     
     init(reactor: GroupReactor) {
@@ -132,6 +140,7 @@ final class OwnerManageViewController: UIViewController, View {
         self.view.addSubview(self.textField)
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.confirmButton)
+        self.view.addSubview(self.emptyStateLabel)
         
         self.titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
@@ -154,6 +163,10 @@ final class OwnerManageViewController: UIViewController, View {
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-Metric.buttonBottomMargin)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
             $0.height.equalTo(Metric.buttonHeight)
+        }
+        
+        self.emptyStateLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
         }
     }
     
