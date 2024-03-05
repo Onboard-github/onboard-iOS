@@ -36,6 +36,7 @@
 		1C47C9972B597F7600D80E9C /* GameDataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9962B597F7600D80E9C /* GameDataSingleton.swift */; };
 		1C5EAB012AEB8E720020D0D1 /* GroupCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */; };
 		1C5EAB032AEBFC220020D0D1 /* GroupCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */; };
+		1C6302122B96E5BE0085106D /* MemberDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6302112B96E5BE0085106D /* MemberDTO.swift */; };
 		1C6FEAE02B4D467A00CFC647 /* GroupSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */; };
 		1C6FEAE32B4D47B500CFC647 /* SettingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */; };
 		1C6FEAE52B4D482100CFC647 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */; };
@@ -213,6 +214,7 @@
 		1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		1C5EAB002AEB8E720020D0D1 /* GroupCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateView.swift; sourceTree = "<group>"; };
 		1C5EAB022AEBFC220020D0D1 /* GroupCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateViewController.swift; sourceTree = "<group>"; };
+		1C6302112B96E5BE0085106D /* MemberDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDTO.swift; sourceTree = "<group>"; };
 		1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingTableViewCell.swift; sourceTree = "<group>"; };
 		1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptions.swift; sourceTree = "<group>"; };
 		1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
@@ -469,6 +471,14 @@
 				1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1C6302102B96E5B50085106D /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				1C6302112B96E5BE0085106D /* MemberDTO.swift */,
+			);
+			path = Member;
 			sourceTree = "<group>";
 		};
 		1C6FEADC2B4D462900CFC647 /* GroupSetting */ = {
@@ -792,6 +802,7 @@
 		61AC7FCC2AB6DDD900B0B6B5 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				1C6302102B96E5B50085106D /* Member */,
 				61AC7FCD2AB6DDE300B0B6B5 /* TestDTO.swift */,
 				1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */,
 				611D8CA92ABED03D0074A55A /* AuthDTO.swift */,
@@ -1156,6 +1167,7 @@
 				1CD208702B1BAEF1008E710E /* GroupCreateReactor.swift in Sources */,
 				1C03644A2B5FC38400CA4CB9 /* KeyboardHandlingViewController.swift in Sources */,
 				61AC7FC42AB6DA0200B0B6B5 /* OBRouter.swift in Sources */,
+				1C6302122B96E5BE0085106D /* MemberDTO.swift in Sources */,
 				1C6FEAE92B4D503500CFC647 /* AccessCodeViewController.swift in Sources */,
 				1C30171C2B50683D00128E5C /* GameResultCollectionViewCell.swift in Sources */,
 				1C9DF4BF2B7F9FCC0034F18A /* GroupInfoDetailViewController.swift in Sources */,
