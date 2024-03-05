@@ -35,3 +35,9 @@ final class MemberRepositoryImpl: MemberRepository {
         }
     }
 }
+
+extension MemberDTO {
+    func toDomain() -> MemberEntity.Res {
+        return MemberEntity.Res()
+    }
+}
