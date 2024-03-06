@@ -238,7 +238,11 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        selectedIndexPath = (indexPath == selectedIndexPath) ? nil : indexPath
+        self.selectedIndexPath = (indexPath == self.selectedIndexPath) ? nil : indexPath
+        
+        self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
+            
+        }), for: .touchUpInside)
         
         tableView.reloadData()
     }
