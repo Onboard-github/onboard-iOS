@@ -21,6 +21,7 @@ final class GroupReactor: Reactor {
         case fetchResult(groupId: Int)
         case allPlayerData(groupId: Int, gameId: Int)
         case assginOwner(groupId: Int, memberId: Int)
+        case groupDelete(groupId: Int)
     }
     
     // MARK: - Mutation
@@ -65,6 +66,8 @@ final class GroupReactor: Reactor {
             return self.updatePlayerResult(groupId: groupId, gameId: gameId)
         case let .assginOwner(groupId, memberId):
             return self.assignOwnerResult(groupId: groupId, memberId: memberId)
+        case let .groupDelete(groupId):
+            return self.groupDeleteResult(groupId: groupId)
         }
     }
     
@@ -140,5 +143,21 @@ extension GroupReactor {
             return Disposables.create()
         }
     }
+    
+    private func groupDeleteResult(groupId: Int) -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
+            
+            Task {
+                do {
+                    try await self.useCase.fetchGroupDelete(groupId: groupId)
+                    
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
 }
-
