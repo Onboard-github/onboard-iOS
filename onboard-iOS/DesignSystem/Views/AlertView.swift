@@ -127,7 +127,7 @@ final class AlertView: UIView {
     func setAlertState(alertState: AlertState,
                        onClicked: @escaping (() -> Void)) {
         
-        self.contentLabel.text = alertState.contentLabel
+        self.contentLabel.attributedText = alertState.contentLabel
         self.leftButton.setTitle(alertState.leftButtonLabel, for: .normal)
         self.rightButton.setTitle(alertState.rightButtonLabel, for: .normal)
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct AlertState {
-    let contentLabel: String
+    let contentLabel: NSAttributedString
     let leftButtonLabel: String
     let rightButtonLabel: String
 }
