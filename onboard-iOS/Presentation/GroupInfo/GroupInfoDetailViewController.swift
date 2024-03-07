@@ -395,6 +395,27 @@ final class GroupInfoDetailViewController: UIViewController, View {
                 self?.present(alert, animated: false)
             }
             
+            // 오너이자 멤버가 오너(한 명)만 있는 경우
+            else if self?.reactor?.currentState.allPlayer.first?.contents.first?.role == "OWNER" && self?.reactor?.currentState.groupInfoData!.memberCount == 1 {
+                
+                let alert = ConfirmPopupViewController()
+                alert.modalPresentationStyle = .overFullScreen
+                
+                let message = "\(TextLabels.groupInfo_onlyOwner_message)\(TextLabels.groupInfo_onlyOwner_move) \(TextLabels.groupInfo_onlyOwner_move_message)"
+                let attributedString = NSMutableAttributedString(string: message)
+                let range = (message as NSString).range(of: TextLabels.groupInfo_onlyOwner_move)
+                attributedString.addAttribute(.font, value: Font.Typography.title4 as Any, range: range)
+                
+                let state = AlertState(contentLabel: attributedString,
+                                       leftButtonLabel: TextLabels.groupInfo_button_cancel,
+                                       rightButtonLabel: TextLabels.groupInfo_button_move)
+                
+                alert.setState(alertState: state)
+                alert.setContentViewHeight(height: 234)
+                
+                self?.present(alert, animated: false)
+            }
+            
             // 멤버인 경우
             else {
                 let alert = ConfirmPopupViewController()
