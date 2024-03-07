@@ -248,8 +248,12 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
             alert.modalPresentationStyle = .overFullScreen
             
             let message = "\(TextLabels.assginOwner_Message) \(player?.nickname ?? "") \(TextLabels.assginOwner_changeMessage)"
-            let state = AlertState(contentLabel: message,
-                                   leftButtonLabel: "\(TextLabels.groupInfo_button_cancel)",
+            let attributedString = NSMutableAttributedString(string: message)
+            let range = (message as NSString).range(of: player?.nickname ?? "")
+            attributedString.addAttribute(.font, value: Font.Typography.title3 as Any, range: range)
+            
+            let state = AlertState(contentLabel: attributedString,
+                                   leftButtonLabel: TextLabels.groupInfo_button_cancel,
                                    rightButtonLabel: TextLabels.assginOwner_button_assgin)
             
             alert.setState(alertState: state)
@@ -284,5 +288,15 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         return (me.userId == player.userId) ? 0 : 52
+    }
+}
+
+extension UILabel {
+    func asFont(targetString: String, font: UIFont) {
+        let fullText = text ?? ""
+        let attributedString = NSMutableAttributedString(string: fullText)
+        let range = (fullText as NSString).range(of: targetString)
+        attributedString.addAttribute(.font, value: font, range: range)
+        attributedText = attributedString
     }
 }
