@@ -362,41 +362,48 @@ final class GroupInfoDetailViewController: UIViewController, View {
         
         self.exitButton.addAction(UIAction(handler: { [weak self] _ in
             
-            let alert = ConfirmPopupViewController()
-            alert.modalPresentationStyle = .overFullScreen
-            
-            let groupName = self?.reactor?.currentState.groupInfoData?.name ?? ""
-            let message = "\(TextLabels.groupInfo_message)\(groupName) \(TextLabels.groupInfo_exit_message)"
-            let attributedString = NSMutableAttributedString(string: message)
-            let range = (message as NSString).range(of: groupName)
-            attributedString.addAttribute(.font, value: Font.Typography.title3 as Any, range: range)
-            
-            let state = AlertState(contentLabel: attributedString,
-                                   leftButtonLabel: TextLabels.groupInfo_button_cancel,
-                                   rightButtonLabel: TextLabels.groupInfo_button_exit)
-            
-            alert.setState(alertState: state)
-            alert.setContentViewHeight(height: Metric.contentViewHeight)
-            
-            alert.didTapConfirmButtonAction = {
-                let groupId = GameDataSingleton.shared.getGroupId() ?? 0
-                Task {
-                    try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .myGroupUnsubscribe(groupId: groupId))
-                    try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .groupDelete(groupId: groupId))
-                    NotificationCenter.default.post(name: Notification.Name("groupDeleted"), object: nil)
-                    AlertManager.show(message: "\(TextLabels.groupInfo_exit_alert)")
-                    
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
-                    
-                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                       let sceneDelegate = windowScene.delegate as? SceneDelegate {
-                        sceneDelegate.window?.rootViewController = homeTabController
-                    }
-                }
+            // 오너이자 멤버가 있는 경우
+            if self?.reactor?.currentState.allPlayer.first?.contents.first?.role == "OWNER" && self?.reactor?.currentState.groupInfoData!.memberCount ?? 0 >= 2 {
+                
+                
             }
             
-            self?.present(alert, animated: false)
+            // 멤버인 경우
+            else {
+                let alert = ConfirmPopupViewController()
+                alert.modalPresentationStyle = .overFullScreen
+                
+                let groupName = self?.reactor?.currentState.groupInfoData?.name ?? ""
+                let message = "\(TextLabels.groupInfo_message)\(groupName) \(TextLabels.groupInfo_exit_message)"
+                let attributedString = NSMutableAttributedString(string: message)
+                let range = (message as NSString).range(of: groupName)
+                attributedString.addAttribute(.font, value: Font.Typography.title4 as Any, range: range)
+                
+                let state = AlertState(contentLabel: attributedString,
+                                       leftButtonLabel: TextLabels.groupInfo_button_cancel,
+                                       rightButtonLabel: TextLabels.groupInfo_button_exit)
+                
+                alert.setState(alertState: state)
+                alert.setContentViewHeight(height: Metric.contentViewHeight)
+                
+                alert.didTapConfirmButtonAction = {
+                    let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+                    Task {
+                        try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .myGroupUnsubscribe(groupId: groupId))
+                        AlertManager.show(message: "\(TextLabels.groupInfo_exit_alert)")
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                        
+                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                           let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                            sceneDelegate.window?.rootViewController = homeTabController
+                        }
+                    }
+                }
+                
+                self?.present(alert, animated: false)
+            }
             
         }), for: .touchUpInside)
         
