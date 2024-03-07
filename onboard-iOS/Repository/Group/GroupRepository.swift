@@ -8,6 +8,12 @@
 import Foundation
 import Alamofire
 
+protocol GroupRepository {
+    func list(keyword: String?, pageNumber: Int, pageSize: Int) async throws -> GroupEntity.Res
+    func requestInfo(groupId: Int) async throws -> GroupInfoEntity.Res
+    func requestGroupDelete(groupId: Int) async throws
+}
+
 final class GroupRepositoryImpl: GroupRepository {
     
     func list(keyword: String? = nil, pageNumber: Int = 0, pageSize: Int = 10) async throws -> GroupEntity.Res {
