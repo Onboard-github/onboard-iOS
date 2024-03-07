@@ -378,7 +378,19 @@ final class GroupInfoDetailViewController: UIViewController, View {
                                        rightButtonLabel: TextLabels.groupInfo_button_move)
                 
                 alert.setState(alertState: state)
-                alert.setContentViewHeight(height: Metric.contentViewHeight)
+                alert.setContentViewHeight(height: 234)
+                
+                alert.didTapConfirmButtonAction = { [weak self] in
+                    self?.dismiss(animated: false)
+                    let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
+                    let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+                    let memberUseCase = MemberUseCaseImpl(repository: MemberRepositoryImpl())
+                    let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase, memberUseCase: memberUseCase)
+                    let vc = OwnerManageViewController(reactor: reactor)
+                    let navigationController = UINavigationController(rootViewController: vc)
+                    navigationController.modalPresentationStyle = .overFullScreen
+                    self?.present(navigationController, animated: false)
+                }
                 
                 self?.present(alert, animated: false)
             }
