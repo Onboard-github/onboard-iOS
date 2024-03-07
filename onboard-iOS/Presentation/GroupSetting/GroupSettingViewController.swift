@@ -82,7 +82,7 @@ final class GroupSettingViewController: UIViewController {
     
     @objc
     private func showPrevious() {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
