@@ -415,7 +415,11 @@ final class GroupInfoDetailViewController: UIViewController, View {
                 
                 alert.didTapConfirmButtonAction = { [weak self] in
                     self?.dismiss(animated: false)
-                    let groupSettingViewController = GroupSettingViewController()
+                    let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
+                    let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+                    let memberUseCase = MemberUseCaseImpl(repository: MemberRepositoryImpl())
+                    let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase, memberUseCase: memberUseCase)
+                    let groupSettingViewController = GroupSettingViewController(reactor: reactor)
                     let navigationController = UINavigationController(rootViewController: groupSettingViewController)
                     navigationController.modalPresentationStyle = .overFullScreen
                     self?.present(navigationController, animated: false)
@@ -464,7 +468,11 @@ final class GroupInfoDetailViewController: UIViewController, View {
         }), for: .touchUpInside)
         
         self.settingButton.addAction(UIAction(handler: { [weak self] _ in
-            let groupSettingViewController = GroupSettingViewController()
+            let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
+            let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+            let memberUseCase = MemberUseCaseImpl(repository: MemberRepositoryImpl())
+            let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase, memberUseCase: memberUseCase)
+            let groupSettingViewController = GroupSettingViewController(reactor: reactor)
             let navigationController = UINavigationController(rootViewController: groupSettingViewController)
             navigationController.modalPresentationStyle = .overFullScreen
             self?.present(navigationController, animated: false)
