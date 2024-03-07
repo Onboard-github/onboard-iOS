@@ -166,7 +166,23 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
             let vc = OwnerManageViewController(reactor: reactor)
             navigationController?.pushViewController(vc, animated: true)
         case 1:
-            break
+            let alert = ConfirmPopupViewController()
+            alert.modalPresentationStyle = .overFullScreen
+            
+            let groupName = self.reactor?.currentState.groupInfoData?.name ?? ""
+            let message = "\(TextLabels.groupInfo_groupDelete_message)\(groupName) \(TextLabels.groupInfo_groupDelete_delete_message)"
+            let attributedString = NSMutableAttributedString(string: message)
+            let range = (message as NSString).range(of: groupName)
+            attributedString.addAttribute(.font, value: Font.Typography.title3 as Any, range: range)
+            
+            let state = AlertState(contentLabel: attributedString,
+                                   leftButtonLabel: TextLabels.groupInfo_button_cancel,
+                                   rightButtonLabel: TextLabels.groupInfo_button_delete)
+            
+            alert.setState(alertState: state)
+            alert.setContentViewHeight(height: 234)
+            
+            self.present(alert, animated: false)
         default:
             break
         }
