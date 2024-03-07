@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import ReactorKit
 
-final class GroupSettingViewController: UIViewController {
+final class GroupSettingViewController: UIViewController, View {
+    
+    typealias Reactor = GroupReactor
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -33,14 +40,28 @@ final class GroupSettingViewController: UIViewController {
     
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: GroupReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: GroupReactor) {
+        self.bindAction(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupReactor) {
+        let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        let gameId = GameDataSingleton.shared.gameData?.id ?? 0
+        self.reactor?.action.onNext(.fetchResult(groupId: groupId))
     }
     
     // MARK: - Configure
