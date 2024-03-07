@@ -241,6 +241,8 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         self.selectedIndexPath = (indexPath == self.selectedIndexPath) ? nil : indexPath
         let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row]
         
+        self.confirmButton.removeTarget(nil, action: nil, for: .touchUpInside)
+        
         self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
             let alert = ConfirmPopupViewController()
             alert.modalPresentationStyle = .overFullScreen
