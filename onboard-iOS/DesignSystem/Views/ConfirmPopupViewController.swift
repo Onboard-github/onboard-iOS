@@ -131,7 +131,7 @@ final class ConfirmPopupViewController: UIViewController {
     }
     
     func setState(alertState: AlertState) {
-        self.contentLabel.text = alertState.contentLabel
+        self.contentLabel.attributedText = alertState.contentLabel
         self.cancelButton.setTitle(alertState.leftButtonLabel, for: .normal)
         self.confirmButton.setTitle(alertState.rightButtonLabel, for: .normal)
     }
