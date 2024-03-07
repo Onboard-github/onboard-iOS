@@ -363,9 +363,24 @@ final class GroupInfoDetailViewController: UIViewController, View {
         self.exitButton.addAction(UIAction(handler: { [weak self] _ in
             
             // 오너이자 멤버가 있는 경우
-            if self?.reactor?.currentState.allPlayer.first?.contents.first?.role == "OWNER" && self?.reactor?.currentState.groupInfoData!.memberCount ?? 0 >= 2 {
+            if self?.reactor?.currentState.allPlayer.first?.contents.first?.role == "OWNER" && self?.reactor?.currentState.groupInfoData?.memberCount ?? 0 >= 2 {
                 
+                let alert = ConfirmPopupViewController()
+                alert.modalPresentationStyle = .overFullScreen
                 
+                let message = "\(TextLabels.groupInfo_owner_message)\(TextLabels.groupInfo_owner_move) \(TextLabels.groupInfo_owner_move_message)"
+                let attributedString = NSMutableAttributedString(string: message)
+                let range = (message as NSString).range(of: TextLabels.groupInfo_owner_move)
+                attributedString.addAttribute(.font, value: Font.Typography.title4 as Any, range: range)
+                
+                let state = AlertState(contentLabel: attributedString,
+                                       leftButtonLabel: TextLabels.groupInfo_button_cancel,
+                                       rightButtonLabel: TextLabels.groupInfo_button_move)
+                
+                alert.setState(alertState: state)
+                alert.setContentViewHeight(height: Metric.contentViewHeight)
+                
+                self?.present(alert, animated: false)
             }
             
             // 멤버인 경우
