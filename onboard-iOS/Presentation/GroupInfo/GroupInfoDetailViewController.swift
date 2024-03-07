@@ -413,6 +413,14 @@ final class GroupInfoDetailViewController: UIViewController, View {
                 alert.setState(alertState: state)
                 alert.setContentViewHeight(height: 234)
                 
+                alert.didTapConfirmButtonAction = { [weak self] in
+                    self?.dismiss(animated: false)
+                    let groupSettingViewController = GroupSettingViewController()
+                    let navigationController = UINavigationController(rootViewController: groupSettingViewController)
+                    navigationController.modalPresentationStyle = .overFullScreen
+                    self?.present(navigationController, animated: false)
+                }
+                
                 self?.present(alert, animated: false)
             }
             
