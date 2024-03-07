@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 final class GroupRepositoryImpl: GroupRepository {
     
@@ -47,6 +48,21 @@ final class GroupRepositoryImpl: GroupRepository {
             }
             
             return data.toDomain()
+        } catch {
+            throw error
+        }
+    }
+    
+    func requestGroupDelete(groupId: Int) async throws {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: Empty.self,
+                    router: OBRouter.groupDelete(
+                        groupId: groupId
+                    )
+                )
         } catch {
             throw error
         }
