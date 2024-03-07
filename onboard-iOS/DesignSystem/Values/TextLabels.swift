@@ -118,4 +118,7 @@ struct TextLabels {
     static let groupInfo_exit_alert = "그룹 나가기가 완료되었습니다."
     
     static let assginOwner_empty_Message = "관리자 권한을 넘길 멤버가 없습니다."
+    static let assginOwner_Message = "관리자 권한을 넘기면 취소가 불가능합니다.\n\n관리자를"
+    static let assginOwner_changeMessage = "님으로\n변경하시겠습니까?"
+    static let assginOwner_button_assgin = "변경하기"
 }
