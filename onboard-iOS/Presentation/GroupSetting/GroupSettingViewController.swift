@@ -182,6 +182,21 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
             alert.setState(alertState: state)
             alert.setContentViewHeight(height: 234)
             
+            alert.didTapConfirmButtonAction = { [weak self] in
+                let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+                Task {
+                    self?.reactor?.action.onNext(.groupDelete(groupId: groupId))
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                    
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                       let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                        sceneDelegate.window?.rootViewController = homeTabController
+                    }
+                }
+            }
+            
             self.present(alert, animated: false)
         default:
             break
