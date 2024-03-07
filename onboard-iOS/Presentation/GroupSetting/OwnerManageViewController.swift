@@ -212,7 +212,7 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerManageTableViewCell",
                                                  for: indexPath) as! OwnerManageTableViewCell
-                
+        
         let count = reactor?.currentState.allPlayer.first?.contents.count ?? 0
         if let player = (count == 1 ? nil : reactor?.currentState.allPlayer.first?.contents[indexPath.row]) {
             let me = reactor?.currentState.allPlayer.first?.contents.first(where: { $0.userId == LoginSessionManager.meId })
@@ -258,7 +258,14 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
             alert.didTapConfirmButtonAction = {
                 let groupId = GameDataSingleton.shared.getGroupId() ?? 0
                 self?.reactor?.action.onNext(.assginOwner(groupId: groupId, memberId: player?.memberId ?? 0))
-                print("groupId: \(groupId), memberId: \(player?.memberId ?? 0)")
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                    sceneDelegate.window?.rootViewController = homeTabController
+                }
             }
             
             self?.present(alert, animated: false)
