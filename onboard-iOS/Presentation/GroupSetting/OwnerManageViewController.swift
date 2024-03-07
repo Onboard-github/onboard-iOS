@@ -253,6 +253,12 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
             alert.setState(alertState: state)
             alert.setContentViewHeight(height: 216)
             
+            alert.didTapConfirmButtonAction = {
+                let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+                self?.reactor?.action.onNext(.assginOwner(groupId: groupId, memberId: player?.memberId ?? 0))
+                print("groupId: \(groupId), memberId: \(player?.memberId ?? 0)")
+            }
+            
             self?.present(alert, animated: false)
         }), for: .touchUpInside)
         
