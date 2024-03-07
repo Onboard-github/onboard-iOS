@@ -111,7 +111,9 @@ struct TextLabels {
     
     // MARK: - ConfirmPopupView
     
-    static let groupInfo_message = "모임에서 나가면 내 랭킹과 게임 기록이 모두\n삭제되며, 취소 또는 복구는 불가능합니다.\n\n"
+    static let groupInfo_groupDelete_message = "모임 삭제 시 모임과 관련된 모든 기록이\n삭제되며, 취소 또는 복구는 불가능합니다.\n\n"
+    static let groupInfo_groupDelete_delete_message = "모임을 삭제하시겠습니끼?"
+    static let groupInfo_message = "모임에서 나가면 내 랭킹과 게임 기록이 모두\n삭제되며, 취소 또는 복구가 불가능합니다.\n\n"
     static let groupInfo_exit_message = "모임에서 나가시겠습니까?"
     
     static let groupInfo_owner_message = "현재 모임의 관리자입니다. 모임을 나가시려면\n"
@@ -125,6 +127,7 @@ struct TextLabels {
     static let groupInfo_button_cancel = "취소"
     static let groupInfo_button_exit = "나가기"
     static let groupInfo_button_move = "이동하기"
+    static let groupInfo_button_delete = "삭제하기"
     static let groupInfo_exit_alert = "그룹 나가기가 완료되었습니다."
     
     static let assginOwner_empty_Message = "관리자 권한을 넘길 멤버가 없습니다."
