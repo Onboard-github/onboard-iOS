@@ -239,9 +239,21 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         didSelectRowAt indexPath: IndexPath
     ) {
         self.selectedIndexPath = (indexPath == self.selectedIndexPath) ? nil : indexPath
+        let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row]
         
         self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
+            let alert = ConfirmPopupViewController()
+            alert.modalPresentationStyle = .overFullScreen
             
+            let message = "\(TextLabels.assginOwner_Message) \(player?.nickname ?? "") \(TextLabels.assginOwner_changeMessage)"
+            let state = AlertState(contentLabel: message,
+                                   leftButtonLabel: "\(TextLabels.groupInfo_button_cancel)",
+                                   rightButtonLabel: TextLabels.assginOwner_button_assgin)
+            
+            alert.setState(alertState: state)
+            alert.setContentViewHeight(height: 216)
+            
+            self?.present(alert, animated: false)
         }), for: .touchUpInside)
         
         tableView.reloadData()
