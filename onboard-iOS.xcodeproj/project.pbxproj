@@ -89,6 +89,7 @@
 		1CF1A8592B6160850098A6AA /* GameScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8582B6160850098A6AA /* GameScoreTableViewCell.swift */; };
 		1CF1A85B2B618AFC0098A6AA /* GameScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A85A2B618AFC0098A6AA /* GameScoreView.swift */; };
 		1CF1A85D2B618D520098A6AA /* GameScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A85C2B618D520098A6AA /* GameScoreViewController.swift */; };
+		1CF46D112B9A643200C1130A /* GroupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF46D102B9A643200C1130A /* GroupUseCase.swift */; };
 		1CFD50DA2ACE79190031269C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFD50D92ACE79190031269C /* Colors.swift */; };
 		1CFEDCB12B6E41C900EEE673 /* ResultRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFEDCB02B6E41C900EEE673 /* ResultRecordTableViewCell.swift */; };
 		3B282DF82B5381F900483A2A /* GroupInfoRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B282DF72B5381F900483A2A /* GroupInfoRes.swift */; };
@@ -268,6 +269,7 @@
 		1CF1A8582B6160850098A6AA /* GameScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreTableViewCell.swift; sourceTree = "<group>"; };
 		1CF1A85A2B618AFC0098A6AA /* GameScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreView.swift; sourceTree = "<group>"; };
 		1CF1A85C2B618D520098A6AA /* GameScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreViewController.swift; sourceTree = "<group>"; };
+		1CF46D102B9A643200C1130A /* GroupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUseCase.swift; sourceTree = "<group>"; };
 		1CFD50D92ACE79190031269C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1CFEDCB02B6E41C900EEE673 /* ResultRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRecordTableViewCell.swift; sourceTree = "<group>"; };
 		3B282DF72B5381F900483A2A /* GroupInfoRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoRes.swift; sourceTree = "<group>"; };
@@ -947,6 +949,7 @@
 		AA7035FC2ADB81E800B26537 /* Group */ = {
 			isa = PBXGroup;
 			children = (
+				1CF46D102B9A643200C1130A /* GroupUseCase.swift */,
 				AA7035FD2ADB820300B26537 /* GroupSearchUseCase.swift */,
 				1CD2086D2B1BADB2008E710E /* GroupCreateUseCase.swift */,
 			);
@@ -1326,6 +1329,7 @@
 				AA91058B2ADA4B9C00DA2E96 /* GroupSearchCell.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				3BE4B8C62B67B2E9006679DC /* EmptyGroupCell.swift in Sources */,
+				1CF46D112B9A643200C1130A /* GroupUseCase.swift in Sources */,
 				AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */,
 				AA83D9732AE57AC80068362B /* AuthEntity.swift in Sources */,
 				1C327B1D2B55714800F02C26 /* GameEntity.swift in Sources */,
