@@ -26,24 +26,33 @@ final class GroupSearchCell: UITableViewCell {
     }
     
     // MARK: - UI
+    let cornerBackgroundView: UIView = {
+        let view = RoundedView()
+        view.backgroundColor = .white
+        view.cornerRadius = 12
+        view.borderWidth = 1
+        view.borderColor = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0)
+        return view
+    }()
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "보드게임 동아리 이름"
-        label.font = .systemFont(ofSize: 16)
+        label.font = Font.Typography.title3
         return label
     }()
     
     let subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "우리 보드게임 동아리는 이런 곳입니다 한줄...................."
-        label.font = .systemFont(ofSize: 12)
+        label.font = Font.Typography.body4_R
         return label
     }()
     
     let infoLabel: UILabel = {
         let label = UILabel()
         label.text = "00명"
-        label.font = .systemFont(ofSize: 11)
+        label.font = Font.Typography.body5_R
         label.textColor = .lightGray
         return label
     }()
@@ -51,7 +60,7 @@ final class GroupSearchCell: UITableViewCell {
     let secondInfoLabel: UILabel = {
         let label = UILabel()
         label.text = "XX대학교"
-        label.font = .systemFont(ofSize: 11)
+        label.font = Font.Typography.body5_R
         label.textColor = .lightGray
         return label
     }()
@@ -84,22 +93,28 @@ final class GroupSearchCell: UITableViewCell {
     }
     
     private func makeConstraints() {
-        self.addSubview(self.thumbnailView)
-        self.addSubview(self.titleLabel)
+        self.addSubview(self.cornerBackgroundView)
+        cornerBackgroundView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(6)
+            make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        cornerBackgroundView.addSubview(self.thumbnailView)
+        cornerBackgroundView.addSubview(self.titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).inset(Metric.titleTop)
             make.leading.equalToSuperview().inset(Metric.labelLeading)
             make.trailing.equalTo(thumbnailView.snp.leading).offset(-Metric.lableTrailing)
         }
         
-        self.addSubview(self.subTitleLabel)
+        cornerBackgroundView.addSubview(self.subTitleLabel)
         subTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(Metric.titleBottom)
             make.leading.equalToSuperview().inset(Metric.labelLeading)
             make.trailing.equalTo(thumbnailView.snp.leading).offset(-Metric.lableTrailing)
         }
 
-        self.addSubview(self.infoLabel)
+        cornerBackgroundView.addSubview(self.infoLabel)
         infoLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(Metric.labelLeading)
             make.bottom.equalToSuperview().inset(Metric.infoLabelBottom)
