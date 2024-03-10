@@ -116,6 +116,7 @@ final class GroupSearchView: UIView {
                 cell.titleLabel.text = group.name
                 cell.infoLabel.text = group.organization
                 cell.subTitleLabel.text = group.description
+                cell.backgroundColor = .clear
                 if let imageUrl = URL(string: group.profileImageUrl) {
                     cell.thumbnailView.kf.setImage(with: imageUrl)
                 }
@@ -128,10 +129,11 @@ final class GroupSearchView: UIView {
     
     // MARK: - Configure
     private func configure() {
-        self.backgroundColor = .systemBackground
+        self.backgroundColor = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1.0)
         
         tableView.register(GroupSearchCell.self, forCellReuseIdentifier: "GroupSearchCell")
         tableView.delegate = self
+        tableView.backgroundColor = .clear
         self.addActionConfigure()
         self.makeConstraints()
     }

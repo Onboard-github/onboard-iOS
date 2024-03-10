@@ -38,7 +38,7 @@ final class GroupSearchBar: UITextField {
         
         addSubview(bottomLine)
         bottomLine.snp.makeConstraints { make in
-            make.height.equalTo(3)
+            make.height.equalTo(1.5)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview().inset(1)
         }
