@@ -11,6 +11,8 @@ class AgreeNicknameVC: UIViewController {
     @IBOutlet weak var nickNameField: UITextField!
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var confirmButton: BorderedButton!
+    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet weak var roundedView: RoundedView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +63,10 @@ class AgreeNicknameVC: UIViewController {
                 }
                 
             } catch {
-                AlertManager.show(title: "유효하지 않은 닉네임입니다. 다른 이름을 설정해주세요.", message: error.localizedDescription)
+                subtitle.textColor = UIColor(red: 1.0, green: 0, blue: 0, alpha: 1.0)
+                AlertManager.show(title: "애러", message: "유효하지 않은 닉네임입니다. 다른 이름을 설정해주세요.\n\(error.localizedDescription)")
+                roundedView.borderColor = .red
+                confirmButton.isEnabled = false
                 throw error
             }
         }
@@ -89,6 +94,9 @@ extension AgreeNicknameVC: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         maxLabel.text = "\(textField.text?.count ?? 0)/10"
         //            print("현재 글자 수: \(textField.text?.count ?? 0)")
+        subtitle.textColor = UIColor(red: 165/255, green: 165/255, blue: 165/255, alpha: 1.0)
+        roundedView.borderColor = UIColor(red: 193/255, green: 193/255, blue: 193/255, alpha: 1.0)
+        
         if textField.text?.count == 0 {
             confirmButton.isEnabled = false
         } else {
