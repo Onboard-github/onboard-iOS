@@ -85,10 +85,8 @@ final class GroupSearchViewController: UIViewController, View {
 extension GroupSearchViewController: GroupSearchDelegate {
     func select(group: GroupSearchView.Group?) {
         let joinVC = GroupJoinVC()
+        joinVC.group = group
         navigationController?.pushViewController(joinVC, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-            joinVC.group = group
-        })
     }
 }
 
