@@ -592,11 +592,22 @@ class IconPagingCell: PagingCell {
                 selected: selected,
                 options: options
             )
-
-            imageView.kf.setImage(with: URL(string: item.iconUrl))
+            
+            // 이미지 로딩
+            imageView.kf.setImage(with: URL(string: item.iconUrl)) { [weak self] _ in
+                // 마스크 이미지 로딩
+                if let maskImage = UIImage(named: "maskImg"), let original = self?.imageView.image {
+                    
+                    let maskImageView = UIImageView(image: maskImage)
+                    // 이미지를 마스킹
+                    self?.imageView.mask = maskImageView
+                }
+            }
+            
+            
             
             titleLabel.text = item.title
-
+            
             if viewModel.selected {
                 imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
                 imageView.alpha = 1
@@ -608,7 +619,7 @@ class IconPagingCell: PagingCell {
                 titleLabel.font = .boldSystemFont(ofSize: 10)
                 titleLabel.alpha = 0.7
             }
-
+            
             self.viewModel = viewModel
         }
     }
