@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SpoqaHanSansNeo-Medium.ttf">
+            <string>SpoqaHanSansNeo-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--랭킹-->
         <scene sceneID="Ij6-f0-z2y">
@@ -93,8 +98,53 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tableViewCell>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emptyMatchedCell" id="GcW-Rp-T5R" customClass="EmptyMatchedCell" customModule="onboard_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="95" width="393" height="262"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GcW-Rp-T5R" id="5L0-Mp-Laq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="262"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7iO-Oi-ddM">
+                                                            <rect key="frame" x="0.0" y="11" width="393" height="240"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyMatchedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RU4-9N-PsB">
+                                                                    <rect key="frame" x="142.66666666666666" y="50" width="108" height="84"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="108" id="Mri-zl-lm2"/>
+                                                                        <constraint firstAttribute="height" constant="84" id="WEw-iW-cOd"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cg3-hX-E56">
+                                                                    <rect key="frame" x="91.333333333333329" y="146" width="210.66666666666669" height="35.333333333333343"/>
+                                                                    <string key="text">게임을 플레이하고
+결과를 기록해 실력을 확인해 보세요!</string>
+                                                                    <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Medium" family="Spoqa Han Sans Neo" pointSize="14"/>
+                                                                    <color key="textColor" red="0.20000001788139343" green="0.20000001788139343" blue="0.20000001788139343" alpha="0.49803921580314636" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="Cg3-hX-E56" firstAttribute="centerX" secondItem="7iO-Oi-ddM" secondAttribute="centerX" id="FFo-Ke-EMd"/>
+                                                                <constraint firstItem="RU4-9N-PsB" firstAttribute="centerX" secondItem="7iO-Oi-ddM" secondAttribute="centerX" id="Wm8-Km-v6F"/>
+                                                                <constraint firstItem="Cg3-hX-E56" firstAttribute="top" secondItem="RU4-9N-PsB" secondAttribute="bottom" constant="12" id="af5-s9-nl8"/>
+                                                                <constraint firstItem="RU4-9N-PsB" firstAttribute="top" secondItem="7iO-Oi-ddM" secondAttribute="top" constant="50" id="dag-8V-khe"/>
+                                                                <constraint firstAttribute="height" constant="240" id="ryC-cS-ziJ"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="7iO-Oi-ddM" secondAttribute="trailing" id="1Li-OF-CRj"/>
+                                                        <constraint firstItem="7iO-Oi-ddM" firstAttribute="top" secondItem="5L0-Mp-Laq" secondAttribute="topMargin" id="1Y8-38-bqd"/>
+                                                        <constraint firstItem="7iO-Oi-ddM" firstAttribute="leading" secondItem="5L0-Mp-Laq" secondAttribute="leading" id="Gaf-u8-iGo"/>
+                                                        <constraint firstItem="7iO-Oi-ddM" firstAttribute="bottom" secondItem="5L0-Mp-Laq" secondAttribute="bottomMargin" id="hn3-Ef-BlX"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emptyGroupCell" id="YTw-DZ-iWg" customClass="EmptyGroupCell" customModule="onboard_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="95" width="393" height="372"/>
+                                                <rect key="frame" x="0.0" y="357" width="393" height="372"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YTw-DZ-iWg" id="vDh-4d-Bd7">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="372"/>
@@ -321,14 +371,14 @@
                                                 <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="podiumCell" id="HXh-Ab-n0B" customClass="PodiumCell" customModule="onboard_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="467" width="393" height="278"/>
+                                                <rect key="frame" x="0.0" y="729" width="393" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HXh-Ab-n0B" id="dee-ui-Fau">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="278"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="45"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqM-gR-bRB">
-                                                            <rect key="frame" x="131" y="11" width="131" height="256"/>
+                                                            <rect key="frame" x="131" y="11" width="131" height="23"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="podium_empty" translatesAutoresizingMaskIntoConstraints="NO" id="PUK-gn-vvO">
@@ -426,7 +476,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ooF-74-gZv" userLabel="left">
-                                                            <rect key="frame" x="0.0" y="0.0" width="131" height="278"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="131" height="45"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="podium_empty" translatesAutoresizingMaskIntoConstraints="NO" id="V6S-El-pdb">
                                                                     <rect key="frame" x="25.666666666666671" y="124.33333333333331" width="80" height="33"/>
@@ -542,7 +592,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAd-i3-Gha" userLabel="right">
-                                                            <rect key="frame" x="262" y="0.0" width="131" height="278"/>
+                                                            <rect key="frame" x="262" y="0.0" width="131" height="45"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="podium_empty" translatesAutoresizingMaskIntoConstraints="NO" id="dzH-NE-Y8b">
                                                                     <rect key="frame" x="25.666666666666686" y="124.33333333333331" width="80" height="33"/>
@@ -711,24 +761,24 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameCell" id="7Ze-ev-fdV" customClass="GameCell" customModule="onboard_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="745" width="393" height="74"/>
+                                                <rect key="frame" x="0.0" y="774" width="393" height="74"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Ze-ev-fdV" id="fpq-99-6i3">
                                                     <rect key="frame" x="0.0" y="0.0" width="393" height="74"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8S-iN-EMs" customClass="RoundedView" customModule="onboard_iOS" customModuleProvider="target">
-                                                            <rect key="frame" x="20" y="0.0" width="353" height="68"/>
+                                                            <rect key="frame" x="20" y="0.0" width="353" height="39"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nky-a2-9Rw">
-                                                                    <rect key="frame" x="47" y="20" width="28" height="28"/>
+                                                                    <rect key="frame" x="47" y="5.6666666666666679" width="28" height="28.000000000000004"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="28" id="02T-tC-wEx"/>
                                                                         <constraint firstAttribute="height" constant="28" id="aa6-4f-fN3"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWJ-1y-Yuu">
-                                                                    <rect key="frame" x="23" y="26.999999999999996" width="5.6666666666666679" height="14.333333333333332"/>
+                                                                    <rect key="frame" x="23" y="12.333333333333332" width="5.6666666666666679" height="14.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -829,14 +879,14 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameSkeletonCell" id="4pt-zK-Pvx" userLabel="gameSkeletonCell" customClass="GameSkeletonCell" customModule="onboard_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="819" width="393" height="74"/>
+                                                <rect key="frame" x="0.0" y="848" width="393" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4pt-zK-Pvx" id="q5L-vp-BJ9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="74"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="45"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5r-PP-hHk" customClass="RoundedView" customModule="onboard_iOS" customModuleProvider="target">
-                                                            <rect key="frame" x="20" y="0.0" width="353" height="68"/>
+                                                            <rect key="frame" x="20" y="0.0" width="353" height="39"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edh-Vy-335" customClass="RoundedView" customModule="onboard_iOS" customModuleProvider="target">
                                                                     <rect key="frame" x="314" y="37" width="15" height="14"/>
@@ -959,10 +1009,10 @@
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="podiumSkeletonCell" id="CKf-m9-IFf" userLabel="podiumSkeletonCell">
-                                                <rect key="frame" x="0.0" y="893" width="393" height="45"/>
+                                                <rect key="frame" x="0.0" y="893" width="393" height="256"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CKf-m9-IFf" id="tcA-rn-zWm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="256"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="podium_skeleton" translatesAutoresizingMaskIntoConstraints="NO" id="o7c-ru-WC3">
@@ -982,10 +1032,10 @@
                                                 <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emptyGamePlayCell" id="cJl-XD-xOA">
-                                                <rect key="frame" x="0.0" y="938" width="393" height="240"/>
+                                                <rect key="frame" x="0.0" y="1149" width="393" height="45"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cJl-XD-xOA" id="7wq-BG-iic">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="240"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="45"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_view_dice" translatesAutoresizingMaskIntoConstraints="NO" id="e3M-Kv-vrz">
@@ -1345,6 +1395,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="emptyMatchedIcon" width="108.33333587646484" height="84"/>
         <image name="empty_view_dice" width="125" height="101"/>
         <image name="gold_tropy" width="22.333333969116211" height="22"/>
         <image name="header_down_arrow" width="12" height="12"/>

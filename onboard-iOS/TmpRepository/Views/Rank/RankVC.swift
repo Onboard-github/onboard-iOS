@@ -318,96 +318,102 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
             }
         case .loaded:
             if indexPath.row == 0 {
-                if let podiumCell = tableView.dequeueReusableCell(withIdentifier: "podiumCell", for: indexPath) as? PodiumCell {
-                    var info = PodiumUserInfo()
-                    info.dice = .empty
-                    info.isEmptyUser = true
-                    info.isMe = false
-                    info.isRedDot = false
-                    info.playCount = 0
-                    info.playCount = 0
-                    info.score = 0
-                    info.userName = ""
-                    
-                    if let ranker1 = rankedGameInfo.first(where: {$0.rank == 1}) {
-                        if ranker1.role == "GUEST" {
-                            info.dice = .empty
-                        } else {
-                            info.dice = .dice
-                        }
-                        info.isEmptyUser = false
-                        if ranker1.userId == meInfo?.id {
-                            info.isMe = true
-                        }
-                        if ranker1.isChangeRecent {
-                            info.isRedDot = true
-                        }
-                        info.playCount = ranker1.matchCount ?? 0
-                        info.score = ranker1.score ?? 0
-                        info.userName = ranker1.nickname
+                if rankedGameInfo.count == 0, unrankedGameInfo.count != 0 {
+                    if let emptyMatchedCell = tableView.dequeueReusableCell(withIdentifier: "emptyMatchedCell", for: indexPath) as? EmptyMatchedCell {
+                        return emptyMatchedCell
                     }
-                    
-                    var info2 = PodiumUserInfo()
-                    info2.dice = .empty
-                    info2.isEmptyUser = true
-                    info2.isMe = false
-                    info2.isRedDot = false
-                    info2.playCount = 0
-                    info2.playCount = 0
-                    info2.score = 0
-                    info2.userName = ""
-                    
-                    if let ranker2 = rankedGameInfo.first(where: {$0.rank == 2}) {
-                        if ranker2.role == "GUEST" {
-                            info2.dice = .empty
-                        } else {
-                            info2.dice = .dice
+                } else {
+                    if let podiumCell = tableView.dequeueReusableCell(withIdentifier: "podiumCell", for: indexPath) as? PodiumCell {
+                        var info = PodiumUserInfo()
+                        info.dice = .empty
+                        info.isEmptyUser = true
+                        info.isMe = false
+                        info.isRedDot = false
+                        info.playCount = 0
+                        info.playCount = 0
+                        info.score = 0
+                        info.userName = ""
+                        
+                        if let ranker1 = rankedGameInfo.first(where: {$0.rank == 1}) {
+                            if ranker1.role == "GUEST" {
+                                info.dice = .empty
+                            } else {
+                                info.dice = .dice
+                            }
+                            info.isEmptyUser = false
+                            if ranker1.userId == meInfo?.id {
+                                info.isMe = true
+                            }
+                            if ranker1.isChangeRecent {
+                                info.isRedDot = true
+                            }
+                            info.playCount = ranker1.matchCount ?? 0
+                            info.score = ranker1.score ?? 0
+                            info.userName = ranker1.nickname
                         }
-                        info2.isEmptyUser = false
-                        if ranker2.userId == meInfo?.id {
-                            info2.isMe = true
+                        
+                        var info2 = PodiumUserInfo()
+                        info2.dice = .empty
+                        info2.isEmptyUser = true
+                        info2.isMe = false
+                        info2.isRedDot = false
+                        info2.playCount = 0
+                        info2.playCount = 0
+                        info2.score = 0
+                        info2.userName = ""
+                        
+                        if let ranker2 = rankedGameInfo.first(where: {$0.rank == 2}) {
+                            if ranker2.role == "GUEST" {
+                                info2.dice = .empty
+                            } else {
+                                info2.dice = .dice
+                            }
+                            info2.isEmptyUser = false
+                            if ranker2.userId == meInfo?.id {
+                                info2.isMe = true
+                            }
+                            if ranker2.isChangeRecent {
+                                info2.isRedDot = true
+                            }
+                            info2.playCount = ranker2.matchCount ?? 0
+                            info2.score = ranker2.score ?? 0
+                            info2.userName = ranker2.nickname
                         }
-                        if ranker2.isChangeRecent {
-                            info2.isRedDot = true
+                        
+                        var info3 = PodiumUserInfo()
+                        info3.dice = .empty
+                        info3.isEmptyUser = true
+                        info3.isMe = false
+                        info3.isRedDot = false
+                        info3.playCount = 0
+                        info3.playCount = 0
+                        info3.score = 0
+                        info3.userName = ""
+                        
+                        if let ranker3 = rankedGameInfo.first(where: {$0.rank == 3}) {
+                            if ranker3.role == "GUEST" {
+                                info3.dice = .empty
+                            } else {
+                                info3.dice = .dice
+                            }
+                            info3.isEmptyUser = false
+                            if ranker3.userId == meInfo?.id {
+                                info3.isMe = true
+                            }
+                            if ranker3.isChangeRecent {
+                                info3.isRedDot = true
+                            }
+                            info3.playCount = ranker3.matchCount ?? 0
+                            info3.score = ranker3.score ?? 0
+                            info3.userName = ranker3.nickname
                         }
-                        info2.playCount = ranker2.matchCount ?? 0
-                        info2.score = ranker2.score ?? 0
-                        info2.userName = ranker2.nickname
+                        
+                        podiumCell.firstUserInfo = info
+                        podiumCell.secondUserInfo = info2
+                        podiumCell.thirdUserInfo = info3
+                        
+                        return podiumCell
                     }
-                    
-                    var info3 = PodiumUserInfo()
-                    info3.dice = .empty
-                    info3.isEmptyUser = true
-                    info3.isMe = false
-                    info3.isRedDot = false
-                    info3.playCount = 0
-                    info3.playCount = 0
-                    info3.score = 0
-                    info3.userName = ""
-                    
-                    if let ranker3 = rankedGameInfo.first(where: {$0.rank == 3}) {
-                        if ranker3.role == "GUEST" {
-                            info3.dice = .empty
-                        } else {
-                            info3.dice = .dice
-                        }
-                        info3.isEmptyUser = false
-                        if ranker3.userId == meInfo?.id {
-                            info3.isMe = true
-                        }
-                        if ranker3.isChangeRecent {
-                            info3.isRedDot = true
-                        }
-                        info3.playCount = ranker3.matchCount ?? 0
-                        info3.score = ranker3.score ?? 0
-                        info3.userName = ranker3.nickname
-                    }
-                    
-                    podiumCell.firstUserInfo = info
-                    podiumCell.secondUserInfo = info2
-                    podiumCell.thirdUserInfo = info3
-                    
-                    return podiumCell
                 }
             } else {
                 let remainedRankedCount = max((rankedGameInfo.count - 3), 0)

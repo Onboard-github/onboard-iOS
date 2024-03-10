@@ -110,6 +110,7 @@
 		3BC078452B4F441B0032BB4C /* GroupMembersRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */; };
 		3BDAA8E72B6FE1540038BE4B /* JoinCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */; };
 		3BDAA8E82B6FE1540038BE4B /* JoinCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */; };
+		3BDFDDA12B9D9A6E00ABFDFC /* EmptyMatchedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDFDDA02B9D9A6E00ABFDFC /* EmptyMatchedCell.swift */; };
 		3BE4B8C62B67B2E9006679DC /* EmptyGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE4B8C52B67B2E9006679DC /* EmptyGroupCell.swift */; };
 		3BFB194A2B7297090013C3C5 /* GroupJoinLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFB19482B7297090013C3C5 /* GroupJoinLoadingVC.swift */; };
 		3BFB194B2B7297090013C3C5 /* GroupJoinLoadingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BFB19492B7297090013C3C5 /* GroupJoinLoadingVC.xib */; };
@@ -289,6 +290,7 @@
 		3BC078442B4F441B0032BB4C /* GroupMembersRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersRes.swift; sourceTree = "<group>"; };
 		3BDAA8E52B6FE1540038BE4B /* JoinCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCodeVC.swift; sourceTree = "<group>"; };
 		3BDAA8E62B6FE1540038BE4B /* JoinCodeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinCodeVC.xib; sourceTree = "<group>"; };
+		3BDFDDA02B9D9A6E00ABFDFC /* EmptyMatchedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMatchedCell.swift; sourceTree = "<group>"; };
 		3BE4B8C52B67B2E9006679DC /* EmptyGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGroupCell.swift; sourceTree = "<group>"; };
 		3BFB19482B7297090013C3C5 /* GroupJoinLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupJoinLoadingVC.swift; sourceTree = "<group>"; };
 		3BFB19492B7297090013C3C5 /* GroupJoinLoadingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupJoinLoadingVC.xib; sourceTree = "<group>"; };
@@ -897,6 +899,7 @@
 				AA9398192B25534A0022C5ED /* GameCell.swift */,
 				AA5ED43B2B27661400993B63 /* PodiumCell.swift */,
 				3BE4B8C52B67B2E9006679DC /* EmptyGroupCell.swift */,
+				3BDFDDA02B9D9A6E00ABFDFC /* EmptyMatchedCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1319,6 +1322,7 @@
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
 				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateSingleton.swift in Sources */,
 				1CF1A85B2B618AFC0098A6AA /* GameScoreView.swift in Sources */,
+				3BDFDDA12B9D9A6E00ABFDFC /* EmptyMatchedCell.swift in Sources */,
 				3B9E2CC82B8BBB2200C25147 /* SettingSeparatorCell.swift in Sources */,
 				1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */,
 				1CAC01E42B83A25C0006A8D7 /* MatchRepository.swift in Sources */,
