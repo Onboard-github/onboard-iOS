@@ -17,6 +17,7 @@ class AgreeNicknameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nickNameField.delegate = self
+        nickNameField.placeholder = "이름을 입력해주세요."
     }
     
     class Empty: Codable {}
