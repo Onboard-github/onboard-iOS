@@ -186,6 +186,7 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
                 let groupId = GameDataSingleton.shared.getGroupId() ?? 0
                 Task {
                     self?.reactor?.action.onNext(.groupDelete(groupId: groupId))
+                    NotificationCenter.default.post(name: Notification.Name("groupDeleted"), object: nil)
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
