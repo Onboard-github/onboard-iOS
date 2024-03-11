@@ -362,46 +362,117 @@ final class GroupInfoDetailViewController: UIViewController, View {
         
         self.exitButton.addAction(UIAction(handler: { [weak self] _ in
             
-            let alert = ConfirmPopupViewController()
-            alert.modalPresentationStyle = .overFullScreen
-            
-            let groupName = self?.reactor?.currentState.groupInfoData?.name ?? ""
-            let message = "\(TextLabels.groupInfo_Message)\(groupName) \(TextLabels.groupInfo_Exit_Message)"
-            let attributedString = NSMutableAttributedString(string: message)
-            let range = (message as NSString).range(of: groupName)
-            attributedString.addAttribute(.font, value: Font.Typography.title3 as Any, range: range)
-            
-            let state = AlertState(contentLabel: attributedString,
-                                   leftButtonLabel: "\(TextLabels.groupInfo_button_cancel)",
-                                   rightButtonLabel: "\(TextLabels.groupInfo_button_exit)")
-            
-            alert.setState(alertState: state)
-            alert.setContentViewHeight(height: Metric.contentViewHeight)
-            
-            alert.didTapConfirmButtonAction = {
-                let groupId = GameDataSingleton.shared.getGroupId() ?? 0
-                Task {
-                    try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .myGroupUnsubscribe(groupId: groupId))
-                    try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .groupDelete(groupId: groupId))
-                    NotificationCenter.default.post(name: Notification.Name("groupDeleted"), object: nil)
-                    AlertManager.show(message: "\(TextLabels.groupInfo_exit_alert)")
-                    
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
-                    
-                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                       let sceneDelegate = windowScene.delegate as? SceneDelegate {
-                        sceneDelegate.window?.rootViewController = homeTabController
-                    }
+            // 오너이자 멤버가 있는 경우
+            if self?.reactor?.currentState.allPlayer.first?.contents.first?.role == "OWNER" && self?.reactor?.currentState.groupInfoData?.memberCount ?? 0 >= 2 {
+                
+                let alert = ConfirmPopupViewController()
+                alert.modalPresentationStyle = .overFullScreen
+                
+                let message = "\(TextLabels.groupInfo_owner_message)\(TextLabels.groupInfo_owner_move) \(TextLabels.groupInfo_owner_move_message)"
+                let attributedString = NSMutableAttributedString(string: message)
+                let range = (message as NSString).range(of: TextLabels.groupInfo_owner_move)
+                attributedString.addAttribute(.font, value: Font.Typography.title4 as Any, range: range)
+                
+                let state = AlertState(contentLabel: attributedString,
+                                       leftButtonLabel: TextLabels.groupInfo_button_cancel,
+                                       rightButtonLabel: TextLabels.groupInfo_button_move)
+                
+                alert.setState(alertState: state)
+                alert.setContentViewHeight(height: 234)
+                
+                alert.didTapConfirmButtonAction = { [weak self] in
+                    self?.dismiss(animated: false)
+                    let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
+                    let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+                    let memberUseCase = MemberUseCaseImpl(repository: MemberRepositoryImpl())
+                    let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase, memberUseCase: memberUseCase)
+                    let vc = OwnerManageViewController(reactor: reactor)
+                    let navigationController = UINavigationController(rootViewController: vc)
+                    navigationController.modalPresentationStyle = .overFullScreen
+                    self?.present(navigationController, animated: false)
                 }
+                
+                self?.present(alert, animated: false)
             }
             
-            self?.present(alert, animated: false)
+            // 오너이자 멤버가 오너(한 명)만 있는 경우
+            else if self?.reactor?.currentState.allPlayer.first?.contents.first?.role == "OWNER" && self?.reactor?.currentState.groupInfoData!.memberCount == 1 {
+                
+                let alert = ConfirmPopupViewController()
+                alert.modalPresentationStyle = .overFullScreen
+                
+                let message = "\(TextLabels.groupInfo_onlyOwner_message)\(TextLabels.groupInfo_onlyOwner_move) \(TextLabels.groupInfo_onlyOwner_move_message)"
+                let attributedString = NSMutableAttributedString(string: message)
+                let range = (message as NSString).range(of: TextLabels.groupInfo_onlyOwner_move)
+                attributedString.addAttribute(.font, value: Font.Typography.title4 as Any, range: range)
+                
+                let state = AlertState(contentLabel: attributedString,
+                                       leftButtonLabel: TextLabels.groupInfo_button_cancel,
+                                       rightButtonLabel: TextLabels.groupInfo_button_move)
+                
+                alert.setState(alertState: state)
+                alert.setContentViewHeight(height: 234)
+                
+                alert.didTapConfirmButtonAction = { [weak self] in
+                    self?.dismiss(animated: false)
+                    let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
+                    let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+                    let memberUseCase = MemberUseCaseImpl(repository: MemberRepositoryImpl())
+                    let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase, memberUseCase: memberUseCase)
+                    let groupSettingViewController = GroupSettingViewController(reactor: reactor)
+                    let navigationController = UINavigationController(rootViewController: groupSettingViewController)
+                    navigationController.modalPresentationStyle = .overFullScreen
+                    self?.present(navigationController, animated: false)
+                }
+                
+                self?.present(alert, animated: false)
+            }
+            
+            // 멤버인 경우
+            else {
+                let alert = ConfirmPopupViewController()
+                alert.modalPresentationStyle = .overFullScreen
+                
+                let groupName = self?.reactor?.currentState.groupInfoData?.name ?? ""
+                let message = "\(TextLabels.groupInfo_message)\(groupName) \(TextLabels.groupInfo_exit_message)"
+                let attributedString = NSMutableAttributedString(string: message)
+                let range = (message as NSString).range(of: groupName)
+                attributedString.addAttribute(.font, value: Font.Typography.title4 as Any, range: range)
+                
+                let state = AlertState(contentLabel: attributedString,
+                                       leftButtonLabel: TextLabels.groupInfo_button_cancel,
+                                       rightButtonLabel: TextLabels.groupInfo_button_exit)
+                
+                alert.setState(alertState: state)
+                alert.setContentViewHeight(height: Metric.contentViewHeight)
+                
+                alert.didTapConfirmButtonAction = {
+                    let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+                    Task {
+                        self?.reactor?.action.onNext(.memberUnsubscribe(groupId: groupId))
+                        AlertManager.show(message: "\(TextLabels.groupInfo_exit_alert)")
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                        
+                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                           let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                            sceneDelegate.window?.rootViewController = homeTabController
+                        }
+                    }
+                }
+                
+                self?.present(alert, animated: false)
+            }
             
         }), for: .touchUpInside)
         
         self.settingButton.addAction(UIAction(handler: { [weak self] _ in
-            let groupSettingViewController = GroupSettingViewController()
+            let useCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
+            let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+            let memberUseCase = MemberUseCaseImpl(repository: MemberRepositoryImpl())
+            let reactor = GroupReactor(useCase: useCase, playerUseCase: playerUseCase, memberUseCase: memberUseCase)
+            let groupSettingViewController = GroupSettingViewController(reactor: reactor)
             let navigationController = UINavigationController(rootViewController: groupSettingViewController)
             navigationController.modalPresentationStyle = .overFullScreen
             self?.present(navigationController, animated: false)

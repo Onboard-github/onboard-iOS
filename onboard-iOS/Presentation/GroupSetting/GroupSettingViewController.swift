@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import ReactorKit
 
-final class GroupSettingViewController: UIViewController {
+final class GroupSettingViewController: UIViewController, View {
+    
+    typealias Reactor = GroupReactor
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -33,14 +40,28 @@ final class GroupSettingViewController: UIViewController {
     
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: GroupReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: GroupReactor) {
+        self.bindAction(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupReactor) {
+        let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        let gameId = GameDataSingleton.shared.gameData?.id ?? 0
+        self.reactor?.action.onNext(.fetchResult(groupId: groupId))
     }
     
     // MARK: - Configure
@@ -82,7 +103,7 @@ final class GroupSettingViewController: UIViewController {
     
     @objc
     private func showPrevious() {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -145,7 +166,39 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
             let vc = OwnerManageViewController(reactor: reactor)
             navigationController?.pushViewController(vc, animated: true)
         case 1:
-            break
+            let alert = ConfirmPopupViewController()
+            alert.modalPresentationStyle = .overFullScreen
+            
+            let groupName = self.reactor?.currentState.groupInfoData?.name ?? ""
+            let message = "\(TextLabels.groupInfo_groupDelete_message)\(groupName) \(TextLabels.groupInfo_groupDelete_delete_message)"
+            let attributedString = NSMutableAttributedString(string: message)
+            let range = (message as NSString).range(of: groupName)
+            attributedString.addAttribute(.font, value: Font.Typography.title3 as Any, range: range)
+            
+            let state = AlertState(contentLabel: attributedString,
+                                   leftButtonLabel: TextLabels.groupInfo_button_cancel,
+                                   rightButtonLabel: TextLabels.groupInfo_button_delete)
+            
+            alert.setState(alertState: state)
+            alert.setContentViewHeight(height: 234)
+            
+            alert.didTapConfirmButtonAction = { [weak self] in
+                let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+                Task {
+                    self?.reactor?.action.onNext(.groupDelete(groupId: groupId))
+                    NotificationCenter.default.post(name: Notification.Name("groupDeleted"), object: nil)
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                    
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                       let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                        sceneDelegate.window?.rootViewController = homeTabController
+                    }
+                }
+            }
+            
+            self.present(alert, animated: false)
         default:
             break
         }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol MemberUseCase {
     func fetchAssignOwner(groupId: Int, memberId: Int) async throws -> MemberEntity.Res
+    func fetchMemberUnsubscribe(groupId: Int) async throws
 }
 
 final class MemberUseCaseImpl: MemberUseCase {
@@ -21,5 +22,9 @@ final class MemberUseCaseImpl: MemberUseCase {
     
     func fetchAssignOwner(groupId: Int, memberId: Int) async throws -> MemberEntity.Res {
         try await self.repository.requestAssignOwner(groupId: groupId, memberId: memberId)
+    }
+    
+    func fetchMemberUnsubscribe(groupId: Int) async throws {
+        try await self.repository.requestMemberUnsubscribe(groupId: groupId)
     }
 }

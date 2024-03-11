@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol MemberRepository {
     func requestAssignOwner(groupId: Int, memberId: Int) async throws -> MemberEntity.Res
+    func requestMemberUnsubscribe(groupId: Int) async throws
 }
 
 final class MemberRepositoryImpl: MemberRepository {
@@ -30,6 +32,22 @@ final class MemberRepositoryImpl: MemberRepository {
             }
             
             return data.toDomain()
+        } catch {
+            throw error
+        }
+    }
+    
+    func requestMemberUnsubscribe(groupId: Int) async throws {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: Empty.self,
+                    router: OBRouter.myGroupUnsubscribe(
+                        groupId: groupId
+                    )
+                )
+            
         } catch {
             throw error
         }
