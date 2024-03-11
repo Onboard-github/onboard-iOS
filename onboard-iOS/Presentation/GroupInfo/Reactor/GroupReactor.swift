@@ -22,6 +22,7 @@ final class GroupReactor: Reactor {
         case allPlayerData(groupId: Int, gameId: Int)
         case assginOwner(groupId: Int, memberId: Int)
         case groupDelete(groupId: Int)
+        case memberUnsubscribe(groupId: Int)
     }
     
     // MARK: - Mutation
@@ -30,6 +31,7 @@ final class GroupReactor: Reactor {
         case setGroupInfo(GroupInfoEntity.Res)
         case setAllPlayerData([GameLeaderboardEntity.Res])
         case setOwner(result: MemberEntity.Res)
+        case setMemberUnsubscribe(result: MemberEntity.Res)
     }
     
     // MARK: - State
@@ -38,6 +40,7 @@ final class GroupReactor: Reactor {
         var groupInfoData: GroupInfoEntity.Res?
         var allPlayer: [GameLeaderboardEntity.Res] = []
         var assginOwnerResult: MemberEntity.Res?
+        var memberUnsubscribeResult: MemberEntity.Res?
     }
     
     // MARK: - Initialize
@@ -68,6 +71,8 @@ final class GroupReactor: Reactor {
             return self.assignOwnerResult(groupId: groupId, memberId: memberId)
         case let .groupDelete(groupId):
             return self.groupDeleteResult(groupId: groupId)
+        case let .memberUnsubscribe(groupId):
+            return self.memberUnsubscribeResult(groupId: groupId)
         }
     }
     
@@ -83,6 +88,8 @@ final class GroupReactor: Reactor {
             state.allPlayer = result
         case .setOwner(let result):
             state.assginOwnerResult = result
+        case .setMemberUnsubscribe(let result):
+            state.memberUnsubscribeResult = result
         }
         
         return state
@@ -151,6 +158,23 @@ extension GroupReactor {
             Task {
                 do {
                     try await self.useCase.fetchGroupDelete(groupId: groupId)
+                    
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    private func memberUnsubscribeResult(groupId: Int) -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
+            
+            Task {
+                do {
+                    try await self.memberUseCase.fetchMemberUnsubscribe(groupId: groupId)
                     
                 } catch {
                     observer.onError(error)
