@@ -449,7 +449,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
                 alert.didTapConfirmButtonAction = {
                     let groupId = GameDataSingleton.shared.getGroupId() ?? 0
                     Task {
-                        try? await OBNetworkManager.shared.asyncRequest(object: Empty.self, router: .myGroupUnsubscribe(groupId: groupId))
+                        self?.reactor?.action.onNext(.memberUnsubscribe(groupId: groupId))
                         AlertManager.show(message: "\(TextLabels.groupInfo_exit_alert)")
                         
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
