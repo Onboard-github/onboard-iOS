@@ -182,8 +182,6 @@ final class NameInputPopupView: UIViewController, View {
                 
                 self?.reactor?.action.onNext(.createGroups(req: req))
                 
-                let useCase = GroupCreateUseCaseImpl(repository: GroupCreateRepositoryImpl())
-                let reactor = GroupCreateReactor(useCase: useCase)
                 let completeVC = GroupCreateCompleteViewController()
                 completeVC.modalPresentationStyle = .overFullScreen
                 self?.present(completeVC, animated: false)
