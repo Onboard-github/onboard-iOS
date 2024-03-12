@@ -89,7 +89,7 @@ final class PlayerSelectViewController: UIViewController, View {
         textField.rightViewMode = .always
         
         textField.textColor = Colors.Gray_15
-        textField.font = Font.Typography.body2_M
+        textField.font = Font.Typography.body3_R
         
         let attributes: [NSAttributedString.Key: Any] = [
             .font: Font.Typography.body3_R as Any,
