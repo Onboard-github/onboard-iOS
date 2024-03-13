@@ -151,10 +151,6 @@ final class NameInputPopupView: UIViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss(animated: false)
-    }
-    
     // MARK: - Bind
     
     func bind(reactor: GroupCreateReactor) {
