@@ -189,6 +189,8 @@ final class NameInputPopupView: UIViewController, View {
     
     private func configure() {
         self.makeConstraints()
+        self.setupGestureRecognizer()
+        
         self.setupTextField()
     }
     
@@ -234,6 +236,20 @@ final class NameInputPopupView: UIViewController, View {
         self.loadingView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    private func setupGestureRecognizer() {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(backgroundTapped)
+        )
+        self.backgroundView.addGestureRecognizer(tapGesture)
+        self.backgroundView.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    private func backgroundTapped() {
+        self.dismiss(animated: false)
     }
 }
 
