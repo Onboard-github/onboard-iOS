@@ -361,10 +361,13 @@ final class GroupInfoDetailViewController: UIViewController, View {
         }), for: .touchUpInside)
         
         self.exitButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let reactor = self?.reactor else { return }
             
-            // 오너이자 멤버가 있는 경우
-            if self?.reactor?.currentState.allPlayer.first?.contents.first?.role == "OWNER" && self?.reactor?.currentState.groupInfoData?.memberCount ?? 0 >= 2 {
-                
+            let me = reactor.currentState.allPlayer.first?.contents.first { $0.userId == LoginSessionManager.meId }
+            
+            switch (me?.role, reactor.currentState.groupInfoData?.memberCount ?? 0) {
+            case ("OWNER", let count) where count >= 2:
+                // 오너이자 멤버가 있는 경우
                 let alert = ConfirmPopupViewController()
                 alert.modalPresentationStyle = .overFullScreen
                 
@@ -393,11 +396,9 @@ final class GroupInfoDetailViewController: UIViewController, View {
                 }
                 
                 self?.present(alert, animated: false)
-            }
-            
-            // 오너이자 멤버가 오너(한 명)만 있는 경우
-            else if self?.reactor?.currentState.allPlayer.first?.contents.first?.role == "OWNER" && self?.reactor?.currentState.groupInfoData!.memberCount == 1 {
                 
+            case ("OWNER", let count) where count == 1:
+                // 오너이자 멤버가 오너(한 명)만 있는 경우
                 let alert = ConfirmPopupViewController()
                 alert.modalPresentationStyle = .overFullScreen
                 
@@ -426,10 +427,9 @@ final class GroupInfoDetailViewController: UIViewController, View {
                 }
                 
                 self?.present(alert, animated: false)
-            }
-            
-            // 멤버인 경우
-            else {
+                
+            default:
+                // 멤버인 경우
                 let alert = ConfirmPopupViewController()
                 alert.modalPresentationStyle = .overFullScreen
                 
