@@ -214,17 +214,17 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
                                                  for: indexPath) as! OwnerManageTableViewCell
         
         let count = reactor?.currentState.allPlayer.first?.contents.count ?? 0
-        if let player = (count == 1 ? nil : reactor?.currentState.allPlayer.first?.contents[indexPath.row]) {
-            let me = reactor?.currentState.allPlayer.first?.contents.first(where: { $0.userId == LoginSessionManager.meId })
-            let hideOwner = me != nil && me?.userId == player.userId
+        if let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row], player.role != "GUEST" {
+            let me = reactor?.currentState.allPlayer.first?.contents.first { $0.userId == LoginSessionManager.meId }
+            let hideOwner = me != nil && me!.userId == player.userId
             let diceImage = player.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
             cell.isHidden = hideOwner
             cell.configure(image: diceImage, title: player.nickname, showMeImage: false)
             
-            self.emptyStateLabel.isHidden = true
+            self.emptyStateLabel.isHidden = false
         } else {
             cell.isHidden = true
-            self.emptyStateLabel.isHidden = false
+            self.emptyStateLabel.isHidden = true
         }
         
         cell.updateButtonState(isSelected: indexPath == selectedIndexPath)
