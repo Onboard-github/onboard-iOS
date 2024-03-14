@@ -37,7 +37,7 @@
                         <constraint firstAttribute="height" constant="20" id="fkF-W2-kO8"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="icon_back"/>
+                    <buttonConfiguration key="configuration" style="plain" image="icon_back_white"/>
                     <connections>
                         <action selector="backButton:" destination="-1" eventType="touchUpInside" id="tCH-bJ-7ib"/>
                     </connections>
@@ -131,7 +131,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="icon_back" width="20" height="20"/>
+        <image name="icon_back_white" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
