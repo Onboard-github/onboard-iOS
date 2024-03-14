@@ -23,6 +23,7 @@ final class GroupReactor: Reactor {
         case assginOwner(groupId: Int, memberId: Int)
         case groupDelete(groupId: Int)
         case memberUnsubscribe(groupId: Int)
+        case getMatchCount(groupId: Int, memberId: Int)
     }
     
     // MARK: - Mutation
@@ -32,6 +33,7 @@ final class GroupReactor: Reactor {
         case setAllPlayerData([GameLeaderboardEntity.Res])
         case setOwner(result: MemberEntity.Res)
         case setMemberUnsubscribe(result: MemberEntity.Res)
+        case setMatchCount(result: MemberEntity.MatchCountRes)
     }
     
     // MARK: - State
@@ -41,6 +43,7 @@ final class GroupReactor: Reactor {
         var allPlayer: [GameLeaderboardEntity.Res] = []
         var assginOwnerResult: MemberEntity.Res?
         var memberUnsubscribeResult: MemberEntity.Res?
+        var memberMatchCount: MemberEntity.MatchCountRes?
     }
     
     // MARK: - Initialize
@@ -73,6 +76,8 @@ final class GroupReactor: Reactor {
             return self.groupDeleteResult(groupId: groupId)
         case let .memberUnsubscribe(groupId):
             return self.memberUnsubscribeResult(groupId: groupId)
+        case let .getMatchCount(groupId, memberId):
+            return self.matchCountResult(groupId: groupId, memberId: memberId)
         }
     }
     
@@ -90,6 +95,8 @@ final class GroupReactor: Reactor {
             state.assginOwnerResult = result
         case .setMemberUnsubscribe(let result):
             state.memberUnsubscribeResult = result
+        case .setMatchCount(let result):
+            state.memberMatchCount = result
         }
         
         return state
@@ -176,6 +183,23 @@ extension GroupReactor {
                 do {
                     try await self.memberUseCase.fetchMemberUnsubscribe(groupId: groupId)
                     
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    private func matchCountResult(groupId: Int, memberId: Int) -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
+            
+            Task {
+                do {
+                    let result = try await self.memberUseCase.fetchMatchCount(groupId: groupId, memberId: memberId)
+                    observer.onNext(.setMatchCount(result: result))
                 } catch {
                     observer.onError(error)
                 }
