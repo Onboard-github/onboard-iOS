@@ -86,3 +86,11 @@ extension MemberDTO {
         return MemberEntity.Res()
     }
 }
+
+extension MatchCountDTO {
+    func toDomain() -> MemberEntity.MatchCountRes {
+        return MemberEntity.MatchCountRes(
+            matchCount: self.matchCount
+        )
+    }
+}
