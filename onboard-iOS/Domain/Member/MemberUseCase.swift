@@ -10,6 +10,7 @@ import Foundation
 protocol MemberUseCase {
     func fetchAssignOwner(groupId: Int, memberId: Int) async throws -> MemberEntity.Res
     func fetchMemberUnsubscribe(groupId: Int) async throws
+    func fetchMatchCount(groupId: Int, memberId: Int) async throws -> MemberEntity.MatchCountRes
 }
 
 final class MemberUseCaseImpl: MemberUseCase {
