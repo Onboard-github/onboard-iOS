@@ -10,3 +10,7 @@ import Foundation
 struct MemberDTO: Decodable {
     
 }
+
+struct MatchCountDTO: Decodable {
+    let matchCount: Int
+}
