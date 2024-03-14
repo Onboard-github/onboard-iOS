@@ -11,7 +11,7 @@ import Kingfisher
 final class GroupSearchCell: UITableViewCell {
     // MARK: - Metric
     private enum Metric {
-        static let titleTop = 18
+        static let titleTop = 24
         static let titleBottom = 4
         static let subTitleBottom = 16
         static let labelLeading = 20
