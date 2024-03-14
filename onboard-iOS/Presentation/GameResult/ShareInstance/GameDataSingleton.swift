@@ -18,6 +18,9 @@ class GameDataSingleton {
     // 그룹 아이디
     var groupId: Int?
     
+    // 멤버 아이디
+    var memberId = BehaviorRelay<Int>(value: 0)
+    
     // 선택한 게임 데이터
     var gameData: GameResultEntity.Res.GameList?
     
