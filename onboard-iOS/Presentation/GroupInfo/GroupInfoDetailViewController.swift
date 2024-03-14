@@ -308,8 +308,10 @@ final class GroupInfoDetailViewController: UIViewController, View {
     func bindAction(reactor: GroupReactor) {
         let groupId = GameDataSingleton.shared.getGroupId() ?? 0
         let gameId = GameDataSingleton.shared.gameData?.id ?? 0
+        let memberId = GameDataSingleton.shared.memberId.value
         self.reactor?.action.onNext(.fetchResult(groupId: groupId))
         self.reactor?.action.onNext(.allPlayerData(groupId: groupId, gameId: gameId))
+        self.reactor?.action.onNext(.getMatchCount(groupId: groupId, memberId: memberId))
     }
     
     func bindState(reactor: GroupReactor) {
