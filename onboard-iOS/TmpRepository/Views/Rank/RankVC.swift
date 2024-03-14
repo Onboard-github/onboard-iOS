@@ -265,6 +265,10 @@ class RankVC: UIViewController {
             } else {
                 self.gameInfo = []
             }
+            
+            let memberId = result.value?.contents.first?.memberId
+            GameDataSingleton.shared.memberId.accept(memberId ?? -1)
+            
             self.state = .loaded
         }
     }
