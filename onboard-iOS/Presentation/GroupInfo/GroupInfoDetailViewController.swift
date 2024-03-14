@@ -315,24 +315,28 @@ final class GroupInfoDetailViewController: UIViewController, View {
     func bindState(reactor: GroupReactor) {
         reactor.state
             .compactMap { $0.groupInfoData }
+            .withLatestFrom(reactor.state.map { $0.memberMatchCount }) { groupInfo, matchCount in
+                (groupInfo, matchCount)
+            }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] data in
+                let (groupInfo, matchCount) = data
                 
                 let me = reactor.currentState.allPlayer.first?.contents.filter({ $0.userId == LoginSessionManager.meId }).first
                 
-                ImageLoader.loadImage(from: data.profileImageUrl) { [weak self] image in
+                ImageLoader.loadImage(from: groupInfo.profileImageUrl) { [weak self] image in
                     DispatchQueue.main.async {
                         guard let image = image else { return }
                         self?.configureGroupInfo(
-                            name: data.name,
+                            name: groupInfo.name,
                             titleImage: image,
-                            description: data.description,
-                            organization: data.organization,
-                            memberCount: data.memberCount,
-                            owner: data.owner.nickname,
-                            accessCode: data.accessCode,
+                            description: groupInfo.description,
+                            organization: groupInfo.organization,
+                            memberCount: groupInfo.memberCount,
+                            owner: groupInfo.owner.nickname,
+                            accessCode: groupInfo.accessCode,
                             nickname: me?.nickname ?? "error",
-                            playCount: me?.matchCount ?? -1
+                            playCount: matchCount?.matchCount ?? -1
                         )
                     }
                     self?.settingButton.isHidden = me?.role == "OWNER" ? false : true
