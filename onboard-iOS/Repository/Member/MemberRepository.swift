@@ -11,6 +11,7 @@ import Alamofire
 protocol MemberRepository {
     func requestAssignOwner(groupId: Int, memberId: Int) async throws -> MemberEntity.Res
     func requestMemberUnsubscribe(groupId: Int) async throws
+    func requestMatchCount(groupId: Int, memberId: Int) async throws -> MemberEntity.MatchCountRes
 }
 
 final class MemberRepositoryImpl: MemberRepository {
@@ -48,6 +49,32 @@ final class MemberRepositoryImpl: MemberRepository {
                     )
                 )
             
+            guard let data = result.value else {
+                throw NetworkError.noExist
+            }
+            
+        } catch {
+            throw error
+        }
+    }
+    
+    func requestMatchCount(groupId: Int, memberId: Int) async throws -> MemberEntity.MatchCountRes {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: MatchCountDTO.self,
+                    router: OBRouter.getMatchCount(
+                        groupId: groupId,
+                        memberId: memberId
+                    )
+                )
+            
+            guard let data = result.value else {
+                throw NetworkError.noExist
+            }
+            
+            return data.toDomain()
         } catch {
             throw error
         }
