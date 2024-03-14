@@ -28,4 +28,8 @@ final class MemberUseCaseImpl: MemberUseCase {
     func fetchMemberUnsubscribe(groupId: Int) async throws {
         try await self.repository.requestMemberUnsubscribe(groupId: groupId)
     }
+    
+    func fetchMatchCount(groupId: Int, memberId: Int) async throws -> MemberEntity.MatchCountRes {
+        try await self.repository.requestMatchCount(groupId: groupId, memberId: memberId)
+    }
 }
