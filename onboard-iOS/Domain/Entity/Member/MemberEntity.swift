@@ -12,4 +12,8 @@ enum MemberEntity {
     struct Res {
         
     }
+    
+    struct MatchCountRes {
+        let matchCount: Int
+    }
 }
