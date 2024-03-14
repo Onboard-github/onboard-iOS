@@ -16,12 +16,23 @@ class GroupJoinVC: UIViewController {
     @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    private let dimmedView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black.withAlphaComponent(0.6)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundImgView.kf.setImage(with: URL(string: group?.profileImageUrl ?? ""))
         affiliationLabel.text = group?.organization
         groupName.text = group?.name
         descriptionLabel.text = group?.description
+        
+        self.backgroundImgView.addSubview(self.dimmedView)
+        self.dimmedView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 
     @IBAction func backButton(_ sender: Any) {
