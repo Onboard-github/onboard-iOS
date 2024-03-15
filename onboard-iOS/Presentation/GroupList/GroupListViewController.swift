@@ -101,6 +101,14 @@ final class GroupListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Life Cycles
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.showMenu()
+    }
+    
     // MARK: - Configure
     
     private func configure() {
