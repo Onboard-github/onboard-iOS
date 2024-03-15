@@ -407,20 +407,36 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
             cell.configure(image: titleImage, title: selectedPlayer.nickname)
         }
         
-        // 삭제 버튼 이벤트
-        cell.didTapDeleteButton = { [weak self, weak cell] in
-            guard let indexPath = collectionView.indexPath(for: cell!) else { return }
+        return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        guard indexPath.item < GameDataSingleton.shared.gamePlayerData.count,
+              let selectedPlayer = GameDataSingleton.shared.gamePlayerData[safe: indexPath.item] else { return }
+        
+        if GameDataSingleton.shared.gamePlayerData.firstIndex(where: { $0.id == selectedPlayer.id }) != nil {
+            GameDataSingleton.shared.removeGamePlayers(player: selectedPlayer)
             
-            guard indexPath.item < GameDataSingleton.shared.gamePlayerData.count else { return }
-            
-            GameDataSingleton.shared.removeGamePlayer(at: indexPath.item)
             collectionView.deleteItems(at: [indexPath])
             
-            self?.toggleLayout()
-            self?.setButtonStatus()
+            if let tableViewCell = self.playerTableView.cellForRow(at: indexPath) as? OwnerManageTableViewCell {
+                tableViewCell.updateButtonState(isSelected: false)
+            }
+            
+            self.toggleLayout()
+            self.setButtonStatus()
         }
         
-        return cell
+        for index in 0..<self.playerTableView.numberOfRows(inSection: 0) {
+            guard let cell = self.playerTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? OwnerManageTableViewCell else { continue }
+            guard let playerData = reactor?.currentState.playerData.first?.contents else { continue }
+            let data = playerData[index]
+            cell.updateButtonState(isSelected: GameDataSingleton.shared.gamePlayerData.contains { $0.id == data.id })
+            
+        }
     }
 }
 
