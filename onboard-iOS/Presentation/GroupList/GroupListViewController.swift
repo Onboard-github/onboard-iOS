@@ -23,7 +23,10 @@ final class GroupListViewController: UIViewController {
     // MARK: - Properties
     
     private var contentViewTopConstraint: NSLayoutConstraint!
-    private var defaultHeight: CGFloat = 300
+    
+    private var defaultHeight: CGFloat {
+        return self.listTableView.numberOfRows(inSection: 0) == 1 ? 250 : 300
+    }
     
     // MARK: - UI
     
