@@ -367,7 +367,7 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
         
         if GameDataSingleton.shared.gamePlayerData.contains(where: { $0.id == data.id }) {
             cell.updateButtonState(isSelected: false)
-            GameDataSingleton.shared.removeGamePlayers(player: data)
+            GameDataSingleton.shared.removeGamePlayer(player: data)
         } else {
             cell.updateButtonState(isSelected: true)
             GameDataSingleton.shared.addGamePlayer(player: data)
@@ -418,7 +418,7 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
               let selectedPlayer = GameDataSingleton.shared.gamePlayerData[safe: indexPath.item] else { return }
         
         if GameDataSingleton.shared.gamePlayerData.firstIndex(where: { $0.id == selectedPlayer.id }) != nil {
-            GameDataSingleton.shared.removeGamePlayers(player: selectedPlayer)
+            GameDataSingleton.shared.removeGamePlayer(player: selectedPlayer)
             
             collectionView.deleteItems(at: [indexPath])
             

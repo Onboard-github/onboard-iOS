@@ -58,9 +58,10 @@ class GameDataSingleton {
     }
     
     // 기록에서 선택한 플레이어 데이터 (제거)
-    func removeGamePlayer(at index: Int) {
-        guard index < self.gamePlayerData.count else { return }
-        self.gamePlayerData.remove(at: index)
+    func removeGamePlayer(player: PlayerEntity.Res.PlayerList) {
+        if let index = self.gamePlayerData.firstIndex(where: { $0.id == player.id }) {
+            self.gamePlayerData.remove(at: index)
+        }
     }
     
     // 그룹 아이디 저장하기
