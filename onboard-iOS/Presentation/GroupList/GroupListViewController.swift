@@ -56,6 +56,8 @@ final class GroupListViewController: UIViewController {
         view.backgroundColor = Colors.White
         view.separatorStyle = .none
         
+        view.delegate = self
+        view.dataSource = self
         view.register(GroupListTableViewCell.self,
                       forCellReuseIdentifier: "GroupListTableViewCell")
         return view
