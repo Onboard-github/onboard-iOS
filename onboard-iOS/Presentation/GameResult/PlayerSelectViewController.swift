@@ -344,22 +344,38 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
                        title: data.nickname,
                        titleColor: titleColor,
                        showMeImage: showMeImage)
+        return cell
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? OwnerManageTableViewCell else { return }
         
-        cell.didTapSelectButton = { [weak self] in
-            guard tableView.indexPath(for: cell) != nil else { return }
-            
-            if let index = GameDataSingleton.shared.gamePlayerData.firstIndex(where: { $0.id == data.id }) {
-                GameDataSingleton.shared.removeGamePlayer(at: index)
-            } else {
-                GameDataSingleton.shared.addGamePlayer(player: data)
-            }
-            
-            self?.setButtonStatus()
-            self?.playerCollectionView.reloadData()
-            self?.toggleLayout()
+        var data: PlayerEntity.Res.PlayerList
+        
+        guard let playerData = reactor?.currentState.playerData.first?.contents else { return }
+        
+        if let searchText = self.textField.text, !searchText.isEmpty {
+            data = filteredData[indexPath.row]
+        } else {
+            data = playerData[indexPath.row]
         }
         
-        return cell
+        let gamePlayerData = GameDataSingleton.shared.gamePlayerData
+        
+        if GameDataSingleton.shared.gamePlayerData.contains(where: { $0.id == data.id }) {
+            cell.updateButtonState(isSelected: false)
+            GameDataSingleton.shared.removeGamePlayers(player: data)
+        } else {
+            cell.updateButtonState(isSelected: true)
+            GameDataSingleton.shared.addGamePlayer(player: data)
+        }
+        
+        self.setButtonStatus()
+        self.playerCollectionView.reloadData()
+        self.toggleLayout()
     }
 }
 
@@ -390,7 +406,7 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
             let titleImage = selectedPlayer.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
             cell.configure(image: titleImage, title: selectedPlayer.nickname)
         }
-
+        
         // 삭제 버튼 이벤트
         cell.didTapDeleteButton = { [weak self, weak cell] in
             guard let indexPath = collectionView.indexPath(for: cell!) else { return }
