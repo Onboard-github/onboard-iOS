@@ -233,6 +233,8 @@ extension GroupListViewController {
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
+        
+        self.listTableView.isScrollEnabled = self.listTableView.numberOfRows(inSection: 0) >= 4
     }
     
     private func hideMenu() {
