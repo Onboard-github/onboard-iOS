@@ -23,6 +23,7 @@ final class GroupListViewController: UIViewController {
     // MARK: - Properties
     
     private var contentViewTopConstraint: NSLayoutConstraint!
+    private var defaultHeight: CGFloat = 300
     
     // MARK: - UI
     
@@ -153,6 +154,35 @@ final class GroupListViewController: UIViewController {
         self.nextStackView.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(Metric.stackViewBottomMargin)
             $0.trailing.equalToSuperview().inset(Metric.basePadding)
+        }
+    }
+}
+
+// MARK: - Menu Animation
+
+extension GroupListViewController {
+    
+    private func showMenu() {
+        let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
+        let bottomPadding: CGFloat = view.safeAreaInsets.bottom
+        
+        self.contentViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - self.defaultHeight
+        
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    private func hideMenu() {
+        let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
+        let bottomPadding = view.safeAreaInsets.bottom
+        self.contentViewTopConstraint.constant = safeAreaHeight + bottomPadding
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            if self.presentingViewController != nil {
+                self.dismiss(animated: false, completion: nil)
+            }
         }
     }
 }
