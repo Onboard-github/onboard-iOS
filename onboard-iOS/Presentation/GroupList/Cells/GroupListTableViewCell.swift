@@ -24,6 +24,13 @@ final class GroupListTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let checkImage: UIImageView = {
+        let imageView = UIImageView()
+        let image = IconImage.check_duotone.image
+        imageView.image = image
+        return imageView
+    }()
+    
     // MARK: - Initialize
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
