@@ -58,6 +58,11 @@ struct TextLabels {
     static let owner_placeholder = "   멤버 검색"
     static let owner_confirm = "선택 완료"
     
+    // MARK: - Group List
+    
+    static let groupList_title = "내 모임"
+    static let groupList_nextGroup = "모임 둘러보기"
+
     // MARK: - Game Result Record
     
     static let game_result_title = "게임 결과 기록"
