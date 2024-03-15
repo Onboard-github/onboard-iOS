@@ -54,10 +54,23 @@ final class GroupListViewController: UIViewController {
     private let nextButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextLabels.groupList_nextGroup, for: .normal)
-        button.setImage(IconImage.nextDefault.image, for: .normal)
         button.setTitleColor(Colors.Gray_7, for: .normal)
         button.titleLabel?.font = Font.Typography.label3_M
         return button
+    }()
+    
+    private let nextImage: UIImageView = {
+        let imageView = UIImageView()
+        let image = IconImage.nextDefault.image
+        imageView.image = image
+        return imageView
+    }()
+    
+    private lazy var nextStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [nextButton, nextImage])
+        view.spacing = 7
+        view.axis = .horizontal
+        return view
     }()
     
     // MARK: - Initialize
