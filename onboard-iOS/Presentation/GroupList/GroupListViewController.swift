@@ -9,6 +9,21 @@ import UIKit
 
 final class GroupListViewController: UIViewController {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let basePadding: CGFloat = 30
+        static let tableViewBottomSpacing: CGFloat = 15
+        static let separatorViewBottomSpacing: CGFloat = 20
+        static let separatorViewHeight: CGFloat = 1
+        static let nextImageSize: CGFloat = 18
+        static let stackViewBottomMargin: CGFloat = 60
+    }
+    
+    // MARK: - Properties
+    
+    private var contentViewTopConstraint: NSLayoutConstraint!
+    
     // MARK: - UI
     
     private let dimmedView: UIView = {
@@ -89,5 +104,55 @@ final class GroupListViewController: UIViewController {
     
     private func configure() {
         self.view.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.view.addSubview(self.dimmedView)
+        self.view.addSubview(self.contentView)
+        self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.listTableView)
+        self.contentView.addSubview(self.separatorView)
+        self.contentView.addSubview(self.nextStackView)
+        
+        self.dimmedView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        let topConstant = view.safeAreaInsets.bottom + view.safeAreaLayoutGuide.layoutFrame.height
+        contentViewTopConstraint = contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstant)
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            contentViewTopConstraint,
+        ])
+        
+        self.titleLabel.snp.makeConstraints {
+            $0.top.leading.equalToSuperview().inset(Metric.basePadding)
+        }
+        
+        self.listTableView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.basePadding)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(separatorView.snp.top).offset(-Metric.tableViewBottomSpacing)
+        }
+        
+        self.separatorView.snp.makeConstraints {
+            $0.bottom.equalTo(nextButton.snp.top).offset(-Metric.separatorViewBottomSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.basePadding)
+            $0.height.equalTo(Metric.separatorViewHeight)
+        }
+        
+        self.nextImage.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.nextImageSize)
+        }
+        
+        self.nextStackView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(Metric.stackViewBottomMargin)
+            $0.trailing.equalToSuperview().inset(Metric.basePadding)
+        }
     }
 }
