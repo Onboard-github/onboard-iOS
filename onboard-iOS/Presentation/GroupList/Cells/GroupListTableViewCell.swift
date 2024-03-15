@@ -66,7 +66,11 @@ final class GroupListTableViewCell: UITableViewCell {
         }
     }
     
-    func configureName(name: String) {
+    func configure(
+        name: String,
+        checkImage: Bool = true
+    ) {
         self.groupNameLabel.text = name
+        self.checkImage.isHidden = checkImage
     }
 }
