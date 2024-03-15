@@ -114,8 +114,19 @@ final class GroupListViewController: UIViewController {
     private func configure() {
         self.view.backgroundColor = Colors.White
         
+        self.addConfigure()
         self.makeConstraints()
         self.setupGestureRecognizer()
+    }
+    
+    private func addConfigure() {
+        self.nextButton.addAction(UIAction(handler: { [weak self] _ in
+            let useCase = GroupSearchUseCaseImpl(groupRepository: GroupRepositoryImpl())
+            let groupList = GroupSearchViewController(reactor: GroupSearchReactor(useCase: useCase))
+            let vc = UINavigationController(rootViewController: groupList)
+            vc.modalPresentationStyle = .fullScreen
+            self?.present(vc, animated: true)
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
