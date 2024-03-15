@@ -83,6 +83,7 @@
 		1CDD02E62B35C58100502C04 /* GroupCreateCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDD02E52B35C58100502C04 /* GroupCreateCompleteViewController.swift */; };
 		1CDF4D2F2AB8A53900CFDFBA /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1CDF4D2E2AB8A53900CFDFBA /* GoogleSignIn */; };
 		1CE5202E2BA489F000417FD8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE5202D2BA489F000417FD8 /* Array.swift */; };
+		1CE520342BA48BDA00417FD8 /* GroupListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE520332BA48BDA00417FD8 /* GroupListTableViewCell.swift */; };
 		1CEBA1522B333D24007AD07C /* GroupCreateCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */; };
 		1CF1A8482B6159810098A6AA /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */; };
 		1CF1A84A2B6159A70098A6AA /* GuestNicknameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */; };
@@ -266,6 +267,7 @@
 		1CD4EB292B7FA3BF001F74EA /* GroupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupReactor.swift; sourceTree = "<group>"; };
 		1CDD02E52B35C58100502C04 /* GroupCreateCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteViewController.swift; sourceTree = "<group>"; };
 		1CE5202D2BA489F000417FD8 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		1CE520332BA48BDA00417FD8 /* GroupListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListTableViewCell.swift; sourceTree = "<group>"; };
 		1CEBA1512B333D24007AD07C /* GroupCreateCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateCompleteView.swift; sourceTree = "<group>"; };
 		1CF1A8492B6159A70098A6AA /* GuestNicknameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNicknameDTO.swift; sourceTree = "<group>"; };
 		1CF1A84D2B615A2A0098A6AA /* GuestNickNameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestNickNameEntity.swift; sourceTree = "<group>"; };
@@ -622,6 +624,22 @@
 			path = Reactor;
 			sourceTree = "<group>";
 		};
+		1CE5202F2BA48BAB00417FD8 /* GroupList */ = {
+			isa = PBXGroup;
+			children = (
+				1CE520322BA48BC200417FD8 /* Cells */,
+			);
+			path = GroupList;
+			sourceTree = "<group>";
+		};
+		1CE520322BA48BC200417FD8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1CE520332BA48BDA00417FD8 /* GroupListTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		1CF1A8532B615CA60098A6AA /* Reactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,6 +812,7 @@
 		61AC7FB52AB6D69D00B0B6B5 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1CE5202F2BA48BAB00417FD8 /* GroupList */,
 				1C9DF4BA2B7F9D2A0034F18A /* GroupInfo */,
 				AA9105602AD9A69300DA2E96 /* GroupSearch */,
 				1C5EAAFE2AEB8E280020D0D1 /* GroupCreate */,
@@ -1306,6 +1325,7 @@
 				1CF1A85D2B618D520098A6AA /* GameScoreViewController.swift in Sources */,
 				AA7035FE2ADB820300B26537 /* GroupSearchUseCase.swift in Sources */,
 				61AC7FC92AB6DB1800B0B6B5 /* OBNetworkManager.swift in Sources */,
+				1CE520342BA48BDA00417FD8 /* GroupListTableViewCell.swift in Sources */,
 				1CAC01E22B83A2140006A8D7 /* MatchEntity.swift in Sources */,
 				1C30170D2B4D718400128E5C /* AlertView.swift in Sources */,
 				61AC7FA12AB6D4A300B0B6B5 /* SceneDelegate.swift in Sources */,
