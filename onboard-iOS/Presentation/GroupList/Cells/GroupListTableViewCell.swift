@@ -9,6 +9,12 @@ import UIKit
 
 final class GroupListTableViewCell: UITableViewCell {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let labelLeading: CGFloat = 30
+    }
+    
     // MARK: - UI
     
     private let groupNameLabel: UILabel = {
@@ -34,5 +40,16 @@ final class GroupListTableViewCell: UITableViewCell {
     
     private func configure() {
         self.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.groupNameLabel)
+        
+        self.groupNameLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(Metric.labelLeading)
+            $0.centerY.equalToSuperview()
+        }
     }
 }
