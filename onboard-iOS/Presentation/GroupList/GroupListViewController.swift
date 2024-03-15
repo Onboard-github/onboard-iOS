@@ -231,6 +231,13 @@ extension GroupListViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.backgroundColor = Colors.Gray_2
         cell.configure(name: tmpText, checkImage: false)
+        
+        tableView.visibleCells.forEach { cells in
+            guard let deselect = cells as? GroupListTableViewCell, 
+                    cells != cell else { return }
+            deselect.backgroundColor = Colors.White
+            deselect.configure(name: tmpText, checkImage: true)
+        }
     }
 }
 
