@@ -216,6 +216,8 @@ extension GroupListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupListTableViewCell",
                                                  for: indexPath) as! GroupListTableViewCell
+        let tmpText = "그룹이름"
+        cell.configure(name: tmpText, checkImage: true)
         return cell
     }
 }
