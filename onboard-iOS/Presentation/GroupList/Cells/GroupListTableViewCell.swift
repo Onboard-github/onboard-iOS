@@ -53,9 +53,15 @@ final class GroupListTableViewCell: UITableViewCell {
     
     private func makeConstraints() {
         self.addSubview(self.groupNameLabel)
+        self.addSubview(self.checkImage)
         
         self.groupNameLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(Metric.labelLeading)
+            $0.centerY.equalToSuperview()
+        }
+        
+        self.checkImage.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(Metric.labelLeading)
             $0.centerY.equalToSuperview()
         }
     }
