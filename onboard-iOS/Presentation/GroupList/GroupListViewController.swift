@@ -195,6 +195,28 @@ final class GroupListViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension GroupListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return 1
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GroupListTableViewCell",
+                                                 for: indexPath) as! GroupListTableViewCell
+        return cell
+    }
+}
+
 // MARK: - Menu Animation
 
 extension GroupListViewController {
