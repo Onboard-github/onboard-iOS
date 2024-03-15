@@ -220,6 +220,18 @@ extension GroupListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(name: tmpText, checkImage: true)
         return cell
     }
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? GroupListTableViewCell else { return }
+        
+        let tmpText = "그룹이름"
+        
+        cell.backgroundColor = Colors.Gray_2
+        cell.configure(name: tmpText, checkImage: false)
+    }
 }
 
 // MARK: - Menu Animation
