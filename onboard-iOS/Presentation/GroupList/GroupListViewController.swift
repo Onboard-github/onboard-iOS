@@ -107,6 +107,7 @@ final class GroupListViewController: UIViewController {
         self.view.backgroundColor = Colors.White
         
         self.makeConstraints()
+        self.setupGestureRecognizer()
     }
     
     private func makeConstraints() {
@@ -155,6 +156,21 @@ final class GroupListViewController: UIViewController {
             $0.bottom.equalToSuperview().inset(Metric.stackViewBottomMargin)
             $0.trailing.equalToSuperview().inset(Metric.basePadding)
         }
+    }
+    
+    private func setupGestureRecognizer() {
+        let dimmedTap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dimmedViewAction(_:))
+        )
+        
+        self.dimmedView.addGestureRecognizer(dimmedTap)
+        self.dimmedView.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    private func dimmedViewAction(_ tapRecognizer: UITapGestureRecognizer)  {
+        self.hideMenu()
     }
 }
 
