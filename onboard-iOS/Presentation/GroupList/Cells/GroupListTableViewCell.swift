@@ -52,4 +52,8 @@ final class GroupListTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
         }
     }
+    
+    func configureName(name: String) {
+        self.groupNameLabel.text = name
+    }
 }
