@@ -13,7 +13,7 @@ final class GroupListViewController: UIViewController {
     
     private enum Metric {
         static let basePadding: CGFloat = 30
-        static let tableViewBottomSpacing: CGFloat = 15
+        static let tableViewBottomSpacing: CGFloat = 5
         static let separatorViewBottomSpacing: CGFloat = 20
         static let separatorViewHeight: CGFloat = 1
         static let nextImageSize: CGFloat = 18
