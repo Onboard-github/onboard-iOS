@@ -84,6 +84,8 @@ enum IconImage {
     
     case requiredInput
     
+    case check_duotone
+    
     var image: UIImage? {
         switch self {
         case .search:
@@ -216,6 +218,9 @@ enum IconImage {
             
         case .requiredInput:
             return UIImage(named: "icon_requiredInput")
+            
+        case .check_duotone:
+            return UIImage(named: "icon_check-duotone")
         }
     }
 }
