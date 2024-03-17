@@ -7,7 +7,15 @@
 
 import UIKit
 
-final class MemberManageViewController: UIViewController {
+import ReactorKit
+
+final class MemberManageViewController: UIViewController, View {
+    
+    typealias Reactor = GroupReactor
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -82,14 +90,39 @@ final class MemberManageViewController: UIViewController {
     
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: GroupReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: GroupReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupReactor) {
+        let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        let gameId = GameDataSingleton.shared.gameData?.id ?? 0
+        self.reactor?.action.onNext(.allPlayerData(groupId: groupId, gameId: gameId))
+    }
+    
+    func bindState(reactor: GroupReactor) {
+        reactor.state
+            .compactMap { $0.allPlayer }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                self?.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Configure
