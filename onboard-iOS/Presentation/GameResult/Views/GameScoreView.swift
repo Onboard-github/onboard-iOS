@@ -197,10 +197,12 @@ final class GameScoreView: UIView {
             $0.leading.equalToSuperview().inset(Metric.leftRightMargin)
         }
         
+        let tableViewHeight = CGFloat(70 * min(max(GameDataSingleton.shared.gamePlayerData.count, 1), 6))
+        
         self.playerTableView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(Metric.tableViewTopSpacing)
-            $0.bottom.equalTo(confirmButton.snp.top).offset(-Metric.tableViewSpacing)
             $0.leading.trailing.equalToSuperview().inset(Metric.leftRightMargin)
+            $0.centerX.centerY.equalToSuperview()
+            $0.height.equalTo(tableViewHeight)
         }
         
         self.confirmButton.snp.makeConstraints {
@@ -266,7 +268,7 @@ extension GameScoreView: UITableViewDelegate, UITableViewDataSource {
     private func textFieldDidEndEditing(_ textField: UITextField, at indexPath: IndexPath) {
         let index = textField.tag
         guard let newScoreText = textField.text,
-                let newScore = Int(newScoreText.replacingOccurrences(of: ",", with: "")) else {
+              let newScore = Int(newScoreText.replacingOccurrences(of: ",", with: "")) else {
             print("유효하지 않은 값")
             return
         }
