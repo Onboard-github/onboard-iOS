@@ -27,8 +27,6 @@ final class GameScoreView: UIView {
         static let leftRightMargin: CGFloat = 20
         static let labelLeading: CGFloat = 5
         static let iconLeading: CGFloat = 10
-        static let tableViewTopSpacing: CGFloat = 30
-        static let tableViewSpacing: CGFloat = 10
         static let buttonBottomMargin: CGFloat = 10
         static let buttonHeight: CGFloat = 48
     }
