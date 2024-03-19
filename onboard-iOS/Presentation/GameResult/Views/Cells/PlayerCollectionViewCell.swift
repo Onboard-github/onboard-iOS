@@ -32,6 +32,12 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    private let meImage: UIImageView = {
+        let imageView = UIImageView()
+        let image = IconImage.me.image
+        return imageView
+    }()
+    
     private let playerLabel: UILabel = {
         let label = UILabel()
         label.textColor = Colors.Gray_14
