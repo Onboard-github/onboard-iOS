@@ -18,6 +18,7 @@ final class OwnerManageViewController: UIViewController, View {
     var disposeBag = DisposeBag()
     
     private var selectedIndexPath: IndexPath?
+    private var searchData: [GameLeaderboardEntity.Res.LeaderboardGame] = []
     
     // MARK: - Metric
     
@@ -135,6 +136,8 @@ final class OwnerManageViewController: UIViewController, View {
         
         self.makeConstraints()
         self.setNavigationBar()
+        
+        self.searchMembers()
     }
     
     private func makeConstraints() {
@@ -288,6 +291,34 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         return (me.userId == player.userId) ? 0 : 52
+    }
+}
+
+extension OwnerManageViewController {
+    
+    private func searchMembers() {
+        
+        self.textField.rx.text
+            .distinctUntilChanged()
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] text in
+                guard let text = text else { return }
+                
+                self?.searchData = text.isEmpty ? self?.reactor?.currentState.allPlayer.first?.contents ?? [] : (self?.reactor?.currentState.allPlayer.first?.contents ?? []).filter { $0.nickname.contains(text) }
+                
+                self?.searchData.isEmpty == true ? self?.showEmptyStateView() : self?.hideEmptyStateView()
+                
+                self?.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showEmptyStateView() {
+        self.tableView.isHidden = true
+    }
+    
+    private func hideEmptyStateView() {
+        self.tableView.isHidden = false
     }
 }
 
