@@ -404,7 +404,8 @@ extension PlayerSelectViewController: UICollectionViewDelegate, UICollectionView
         if GameDataSingleton.shared.gamePlayerData.indices.contains(indexPath.item) {
             let selectedPlayer = GameDataSingleton.shared.gamePlayerData[indexPath.item]
             let titleImage = selectedPlayer.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
-            cell.configure(image: titleImage, title: selectedPlayer.nickname)
+            let showMeImage = selectedPlayer.id == LoginSessionManager.meMemberId! ? true : false
+            cell.configure(image: titleImage, showMeImage: showMeImage, title: selectedPlayer.nickname)
         }
         
         return cell
