@@ -35,6 +35,7 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
     private let meImage: UIImageView = {
         let imageView = UIImageView()
         let image = IconImage.me.image
+        imageView.image = image
         return imageView
     }()
     
@@ -43,6 +44,13 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
         label.textColor = Colors.Gray_14
         label.font = Font.Typography.label4_B
         return label
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [meImage, playerLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        return stackView
     }()
     
     // MARK: - Properties
