@@ -16,6 +16,7 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
         static let buttonSize: CGFloat = 12
         static let imageSize: CGFloat = 32
         static let labelMargin: CGFloat = 2
+        static let meImageSize: CGFloat = 12
     }
     
     // MARK: - UI
@@ -87,7 +88,7 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
     private func makeConstraints() {
         self.contentView.addSubview(self.deleteButton)
         self.addSubview(self.playerImage)
-        self.addSubview(self.playerLabel)
+        self.addSubview(self.stackView)
         
         self.deleteButton.snp.makeConstraints {
             $0.top.equalTo(Metric.buttonMargin)
@@ -100,9 +101,13 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
             $0.width.height.equalTo(Metric.imageSize)
         }
         
-        self.playerLabel.snp.makeConstraints {
+        self.meImage.snp.makeConstraints {
+            $0.width.height.equalTo(Metric.meImageSize)
+        }
+        
+        self.stackView.snp.makeConstraints {
             $0.top.equalTo(playerImage.snp.bottom).offset(Metric.labelMargin)
-            $0.leading.trailing.equalToSuperview().inset(Metric.labelMargin)
+            $0.leading.equalToSuperview().inset(Metric.labelMargin)
         }
     }
     
