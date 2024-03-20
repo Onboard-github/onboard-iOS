@@ -111,8 +111,13 @@ final class PlayerCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func configure(image: UIImage?, title: String) {
+    func configure(
+        image: UIImage?,
+        showMeImage: Bool = true,
+        title: String
+    ) {
         self.playerImage.image = image
+        self.meImage.isHidden = !showMeImage
         self.playerLabel.text = title
     }
 }
