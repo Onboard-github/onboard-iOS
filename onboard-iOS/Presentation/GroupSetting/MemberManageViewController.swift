@@ -188,9 +188,10 @@ extension MemberManageViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(
         _ tableView: UITableView,
-        numberOfRowsInSection section: Int) -> Int {
-            return tmpData.count
-        }
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return reactor?.currentState.allPlayer.first?.contents.count ?? 0
+    }
     
     func tableView(
         _ tableView: UITableView,
