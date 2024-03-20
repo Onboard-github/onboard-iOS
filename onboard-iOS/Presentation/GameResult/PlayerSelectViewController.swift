@@ -363,8 +363,6 @@ extension PlayerSelectViewController: UITableViewDelegate, UITableViewDataSource
             data = playerData[indexPath.row]
         }
         
-        let gamePlayerData = GameDataSingleton.shared.gamePlayerData
-        
         if GameDataSingleton.shared.gamePlayerData.contains(where: { $0.id == data.id }) {
             cell.updateButtonState(isSelected: false)
             GameDataSingleton.shared.removeGamePlayer(player: data)
