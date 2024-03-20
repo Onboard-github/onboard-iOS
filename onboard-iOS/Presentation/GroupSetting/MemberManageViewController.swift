@@ -199,8 +199,15 @@ extension MemberManageViewController: UITableViewDelegate, UITableViewDataSource
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemberManageTableViewCell",
                                                  for: indexPath) as! MemberManageTableViewCell
-        let (image, label) = tmpData[indexPath.row]
-        cell.configure(image: image, title: label)
+        if let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row] {
+            let me = reactor?.currentState.allPlayer.first?.contents.first { $0.userId == LoginSessionManager.meId }
+            let hideOwner = me != nil && me!.userId == player.userId
+            let diceImage = player.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
+            cell.isHidden = hideOwner
+            cell.configure(image: diceImage, title: player.nickname)
+        } else {
+            cell.isHidden = true
+        }
         return cell
     }
 }
