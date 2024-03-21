@@ -70,7 +70,6 @@ final class AccessCodeView: UIView {
         text.layer.borderColor = Colors.Gray_7.cgColor
         text.backgroundColor = Colors.White
         text.keyboardType = .asciiCapable
-        text.delegate = self
         
         let attributes: [NSAttributedString.Key: Any] = [
             .font: Font.Typography.body3_R as Any,
@@ -198,30 +197,9 @@ final class AccessCodeView: UIView {
     }
 }
 
-// MARK: - UITextFieldDelegate
+// MARK: - TextField
 
-extension AccessCodeView: UITextFieldDelegate {
-    
-    func textField(
-        _ textField: UITextField,
-        shouldChangeCharactersIn range: NSRange,
-        replacementString string: String) -> Bool {
-            
-            guard textField === self.textField,
-                  let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string),
-                  newText.rangeOfCharacter(from: CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789").inverted) == nil else {
-                return true
-            }
-            
-            let maxLength = 6
-            
-            if newText.count <= maxLength {
-                countLabel.text = "\(String(format: TextLabels.access_currentCount, newText.count))/\(maxLength)"
-                return true
-            } else {
-                return false
-            }
-        }
+extension AccessCodeView {
     
     private func setupTextField() {
         self.textField.rx.text
