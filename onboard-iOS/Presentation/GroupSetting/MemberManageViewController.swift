@@ -50,6 +50,12 @@ final class MemberManageViewController: UIViewController, View {
         
         textField.textColor = Colors.Gray_15
         textField.font = Font.Typography.body2_M
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Font.Typography.body3_R as Any,
+            .foregroundColor: Colors.Gray_7]
+        textField.attributedPlaceholder = NSAttributedString(string: TextLabels.member_placeholder,
+                                                             attributes: attributes)
         return textField
     }()
     
@@ -108,18 +114,9 @@ final class MemberManageViewController: UIViewController, View {
     private func configure() {
         self.view.backgroundColor = Colors.White
         
-        self.textFieldPlaceHolder()
         self.makeConstraints()
         self.setNavigationBar()
         self.setupGestureRecognizer()
-    }
-    
-    private func textFieldPlaceHolder() {
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: Font.Typography.body3_R as Any,
-            .foregroundColor: Colors.Gray_7]
-        textField.attributedPlaceholder = NSAttributedString(string: TextLabels.member_placeholder,
-                                                             attributes: attributes)
     }
     
     private func makeConstraints() {
