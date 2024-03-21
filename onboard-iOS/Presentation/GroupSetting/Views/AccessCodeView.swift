@@ -26,6 +26,8 @@ final class AccessCodeView: UIView {
         static let textFieldTopSpacing: CGFloat = 5
         static let textFieldHeight: CGFloat = 48
         static let countRightMargin: CGFloat = 30
+        static let buttonBottomMargin: CGFloat = 10
+        static let buttonHeight: CGFloat = 48
     }
     
     // MARK: - UI
@@ -137,6 +139,7 @@ final class AccessCodeView: UIView {
         self.addSubview(self.textField)
         self.addSubview(self.subTitleLabel)
         self.addSubview(self.countLabel)
+        self.addSubview(self.confirmButton)
         
         self.titleLabel.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
@@ -172,6 +175,12 @@ final class AccessCodeView: UIView {
         self.countLabel.snp.makeConstraints {
             $0.top.equalTo(textField.snp.bottom).offset(Metric.textFieldTopSpacing)
             $0.trailing.equalToSuperview().inset(Metric.countRightMargin)
+        }
+        
+        self.confirmButton.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(Metric.buttonBottomMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.leftMagin)
+            $0.height.equalTo(Metric.buttonHeight)
         }
     }
     
