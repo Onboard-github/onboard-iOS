@@ -217,5 +217,11 @@ extension AccessCodeView {
             .map { $0.uppercased() }
             .bind(to: textField.rx.text)
             .disposed(by: disposeBag)
+        
+        self.textField.rx.text
+            .orEmpty
+            .map { $0.count == 6 ? .default : .disabled }
+            .bind(to: confirmButton.rx.status)
+            .disposed(by: disposeBag)
     }
 }
