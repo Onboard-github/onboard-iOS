@@ -119,6 +119,8 @@ final class AccessCodeView: UIView {
         
         self.makeConstraints()
         self.setupGestureRecognizer()
+        
+        self.setupTextField()
     }
     
     private func makeConstraints() {
@@ -205,4 +207,16 @@ extension AccessCodeView: UITextFieldDelegate {
                 return false
             }
         }
+    
+    private func setupTextField() {
+        self.textField.rx.text
+            .orEmpty
+            .subscribe(onNext: { [weak self] text in
+                let maxLength = 6
+                let updatedText = String(text.prefix(maxLength))
+                self?.countLabel.text = "\(String(format: "%d", updatedText.count))/\(maxLength)"
+                self?.textField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+            })
+            .disposed(by: disposeBag)
+    }
 }
