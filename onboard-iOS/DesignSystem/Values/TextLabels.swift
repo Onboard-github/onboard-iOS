@@ -49,6 +49,7 @@ struct TextLabels {
     static let access_count = "0/6"
     static let access_placeholder = " 6자리 참여 코드를 입력하세요."
     static let access_currentCount = "%d"
+    static let access_confirm = "수정 완료"
     
     static let member_title_info = "그룹에 속해있는 멤버와 임시 멤버를 관리할 수 있습니다."
     static let member_placeholder = "   멤버 검색"
