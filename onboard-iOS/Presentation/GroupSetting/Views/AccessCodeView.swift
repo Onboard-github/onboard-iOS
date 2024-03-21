@@ -207,14 +207,13 @@ extension AccessCodeView {
             .subscribe(onNext: { [weak self] text in
                 let maxLength = 6
                 let updatedText = String(text.prefix(maxLength))
-                self?.countLabel.text = "\(String(format: "%d", updatedText.count))/\(maxLength)"
+                self?.countLabel.text = "\(updatedText.count)/\(maxLength)"
                 self?.textField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
             })
             .disposed(by: disposeBag)
         
         self.textField.rx.text.orEmpty
-            .map { $0.filter { $0.isNumber || $0.isLetter } }
-            .map { $0.uppercased() }
+            .map { $0.prefix(6).filter { $0.isNumber || $0.isLetter }.uppercased() }
             .bind(to: textField.rx.text)
             .disposed(by: disposeBag)
         
