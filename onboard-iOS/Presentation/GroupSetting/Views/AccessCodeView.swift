@@ -94,6 +94,12 @@ final class AccessCodeView: UIView {
         return label
     }()
     
+    private let confirmButton: BaseButton = {
+        let button = BaseButton(status: .disabled, style: .rounded)
+        button.setTitle(TextLabels.access_confirm, for: .normal)
+        return button
+    }()
+    
     // MARK: - Initialize
     
     override init(frame: CGRect) {
