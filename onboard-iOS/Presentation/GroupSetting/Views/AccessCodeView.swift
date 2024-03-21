@@ -69,7 +69,7 @@ final class AccessCodeView: UIView {
         text.font = Font.Typography.body3_R
         text.layer.borderColor = Colors.Gray_7.cgColor
         text.backgroundColor = Colors.White
-        text.keyboardType = .default
+        text.keyboardType = .asciiCapable
         text.delegate = self
         
         let attributes: [NSAttributedString.Key: Any] = [
@@ -232,6 +232,12 @@ extension AccessCodeView: UITextFieldDelegate {
                 self?.countLabel.text = "\(String(format: "%d", updatedText.count))/\(maxLength)"
                 self?.textField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
             })
+            .disposed(by: disposeBag)
+        
+        self.textField.rx.text.orEmpty
+            .map { $0.filter { $0.isNumber || $0.isLetter } }
+            .map { $0.uppercased() }
+            .bind(to: textField.rx.text)
             .disposed(by: disposeBag)
     }
 }
