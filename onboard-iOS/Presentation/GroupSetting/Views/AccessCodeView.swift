@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class AccessCodeView: UIView {
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -92,6 +98,12 @@ final class AccessCodeView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    // MARK: - Bind
+    
+    func bind(text: String) {
+        self.codeLabel.text = "\(text)"
     }
     
     // MARK: - Configure
