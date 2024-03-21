@@ -7,9 +7,15 @@
 
 import UIKit
 
-final class AccessCodeViewController: UIViewController {
+import ReactorKit
+
+final class AccessCodeViewController: UIViewController, View {
+    
+    typealias Reactor = GroupReactor
     
     // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     private let accessCodeView = AccessCodeView()
     
@@ -21,12 +27,36 @@ final class AccessCodeViewController: UIViewController {
         self.view = accessCodeView
     }
     
+    // MARK: - Bind
+    
+    func bind(reactor: GroupReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupReactor) {
+        let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        self.reactor?.action.onNext(.fetchResult(groupId: groupId))
+    }
+    
+    func bindState(reactor: GroupReactor) {
+        reactor.state
+            .compactMap { $0.groupInfoData }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                self?.accessCodeView.bind(text: data.accessCode)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: GroupReactor) {
         super.init(nibName: nil, bundle: nil)
         
-        setNavigationBar()
+        self.reactor = reactor
+        
+        self.setNavigationBar()
     }
     
     required init?(coder: NSCoder) {
