@@ -60,7 +60,6 @@ final class GroupSettingViewController: UIViewController, View {
     
     func bindAction(reactor: GroupReactor) {
         let groupId = GameDataSingleton.shared.getGroupId() ?? 0
-        let gameId = GameDataSingleton.shared.gameData?.id ?? 0
         self.reactor?.action.onNext(.fetchResult(groupId: groupId))
     }
     
