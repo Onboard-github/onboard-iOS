@@ -56,7 +56,7 @@ final class AccessCodeViewController: UIViewController, View {
         
         self.reactor = reactor
         
-        self.setNavigationBar()
+        self.configure()
     }
     
     required init?(coder: NSCoder) {
@@ -65,8 +65,13 @@ final class AccessCodeViewController: UIViewController, View {
     
     // MARK: - Configure
     
+    private func configure() {
+        
+        self.setNavigationBar()
+    }
+    
     private func setNavigationBar() {
-        let image = IconImage.back.image?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        let image = IconImage.back.image?.withTintColor(Colors.Black, renderingMode: .alwaysOriginal)
         
         if let navigationBar = navigationController?.navigationBar {
             let titleTextAttributes: [NSAttributedString.Key: Any] = [
@@ -86,6 +91,6 @@ final class AccessCodeViewController: UIViewController, View {
     
     @objc
     private func showPrevious() {
-        navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
