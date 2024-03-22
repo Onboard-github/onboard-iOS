@@ -9,6 +9,10 @@ import UIKit
 
 final class MemberManageTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
+    
+    var didTapButton: (() -> Void)?
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -58,7 +62,14 @@ final class MemberManageTableViewCell: UITableViewCell {
     private func configure() {
         self.selectionStyle = .none
         
+        self.addConfigure()
         self.makeConstraints()
+    }
+    
+    private func addConfigure() {
+        self.deleteButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.didTapButton?()
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
