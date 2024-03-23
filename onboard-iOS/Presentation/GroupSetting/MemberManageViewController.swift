@@ -210,6 +210,15 @@ extension MemberManageViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(
         _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        let alert = ConfirmPopupViewController()
+        alert.modalPresentationStyle = .overFullScreen
+        self.present(alert, animated: false)
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     ) -> CGFloat {
         guard let me = reactor?.currentState.allPlayer.first?.contents.filter({ $0.userId == LoginSessionManager.meId }).first,
