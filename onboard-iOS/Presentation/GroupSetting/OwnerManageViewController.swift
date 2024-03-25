@@ -196,7 +196,12 @@ final class OwnerManageViewController: UIViewController, View {
     
     @objc
     private func showPrevious() {
-        self.navigationController?.popViewController(animated: true)
+        if let navigationController = self.navigationController,
+           navigationController.viewControllers.count > 1 {
+            navigationController.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 
