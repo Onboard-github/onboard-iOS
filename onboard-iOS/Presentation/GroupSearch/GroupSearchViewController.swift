@@ -61,8 +61,8 @@ final class GroupSearchViewController: UIViewController, View {
             let groupCreateViewController = GroupCreateViewController(reactor: reactor)
             
             let navigationController = UINavigationController(rootViewController: groupCreateViewController)
-            navigationController.modalPresentationStyle = .fullScreen
-
+            navigationController.modalPresentationStyle = .overFullScreen
+            navigationController.transitioningDelegate = self
             self?.navigationController?.present(navigationController, animated: true)
         }
         
