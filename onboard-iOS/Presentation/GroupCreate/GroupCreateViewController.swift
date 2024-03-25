@@ -120,6 +120,6 @@ final class GroupCreateViewController: KeyboardHalfHandlingViewController, View 
     
     @objc
     private func showPrevious() {
-        self.dismiss(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 }
