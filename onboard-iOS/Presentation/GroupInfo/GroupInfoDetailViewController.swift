@@ -400,6 +400,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
                     let vc = OwnerManageViewController(reactor: reactor)
                     let navigationController = UINavigationController(rootViewController: vc)
                     navigationController.modalPresentationStyle = .overFullScreen
+                    navigationController.transitioningDelegate = self
                     self?.present(navigationController, animated: false)
                 }
                 
