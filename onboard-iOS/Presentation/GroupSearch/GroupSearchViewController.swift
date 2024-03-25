@@ -95,3 +95,20 @@ extension GroupEntity.Res.Group {
         return GroupSearchView.Group(id: self.id, name: self.name, description: self.description, organization: self.organization, profileImageUrl: self.profileImageUrl)
     }
 }
+
+extension GroupSearchViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        return PresentTransition()
+    }
+    
+    func animationController(
+        forDismissed dismissed: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        return DismissTransition()
+    }
+}
