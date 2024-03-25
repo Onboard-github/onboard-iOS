@@ -484,7 +484,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
             let navigationController = UINavigationController(rootViewController: groupSettingViewController)
             navigationController.modalPresentationStyle = .overFullScreen
             navigationController.transitioningDelegate = self
-            self?.present(navigationController, animated: false)
+            self?.present(navigationController, animated: true)
         }), for: .touchUpInside)
     }
     
