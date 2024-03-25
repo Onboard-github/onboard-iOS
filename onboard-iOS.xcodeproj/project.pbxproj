@@ -31,6 +31,7 @@
 		1C327B222B55721300F02C26 /* GameResultUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C327B212B55721300F02C26 /* GameResultUseCase.swift */; };
 		1C327B242B55747C00F02C26 /* GameResultReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C327B232B55747C00F02C26 /* GameResultReactor.swift */; };
 		1C327B282B5630DC00F02C26 /* PlayerSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C327B272B5630DC00F02C26 /* PlayerSelectViewController.swift */; };
+		1C39CFDB2BB22F77000D0DE9 /* UIViewControllerAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39CFDA2BB22F77000D0DE9 /* UIViewControllerAnimatedTransitioning.swift */; };
 		1C3E9AD52B1B1BC400FCB281 /* TextLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */; };
 		1C47C9942B597D1900D80E9C /* PlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9932B597D1900D80E9C /* PlayerCollectionViewCell.swift */; };
 		1C47C9972B597F7600D80E9C /* GameDataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47C9962B597F7600D80E9C /* GameDataSingleton.swift */; };
@@ -216,6 +217,7 @@
 		1C327B212B55721300F02C26 /* GameResultUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultUseCase.swift; sourceTree = "<group>"; };
 		1C327B232B55747C00F02C26 /* GameResultReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultReactor.swift; sourceTree = "<group>"; };
 		1C327B272B5630DC00F02C26 /* PlayerSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSelectViewController.swift; sourceTree = "<group>"; };
+		1C39CFDA2BB22F77000D0DE9 /* UIViewControllerAnimatedTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerAnimatedTransitioning.swift; sourceTree = "<group>"; };
 		1C3E9AD42B1B1BC400FCB281 /* TextLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabels.swift; sourceTree = "<group>"; };
 		1C47C9932B597D1900D80E9C /* PlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		1C47C9962B597F7600D80E9C /* GameDataSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataSingleton.swift; sourceTree = "<group>"; };
@@ -899,6 +901,7 @@
 				1C7A952A2B6FEA7000F68DA6 /* GoogleLoginManager.swift */,
 				1CD208712B1BB339008E710E /* ImageLoader.swift */,
 				1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */,
+				1C39CFDA2BB22F77000D0DE9 /* UIViewControllerAnimatedTransitioning.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1364,6 +1367,7 @@
 				1CF46D112B9A643200C1130A /* GroupUseCase.swift in Sources */,
 				AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */,
 				AA83D9732AE57AC80068362B /* AuthEntity.swift in Sources */,
+				1C39CFDB2BB22F77000D0DE9 /* UIViewControllerAnimatedTransitioning.swift in Sources */,
 				1C327B1D2B55714800F02C26 /* GameEntity.swift in Sources */,
 				1C6FEAED2B4D5E7700CFC647 /* MemberManageViewController.swift in Sources */,
 				611D8CA82ABECFFC0074A55A /* AuthRepository.swift in Sources */,
