@@ -234,9 +234,12 @@ extension MemberManageViewController: UITableViewDelegate, UITableViewDataSource
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        let alert = ConfirmPopupViewController()
-        alert.modalPresentationStyle = .overFullScreen
-        self.present(alert, animated: false)
+        let cell = tableView.cellForRow(at: indexPath) as? MemberManageTableViewCell
+        
+        if let cell = cell,
+            let didTapButton = cell.didTapButton {
+            didTapButton()
+        }
     }
     
     func tableView(
