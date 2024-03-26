@@ -75,7 +75,7 @@ final class MemberManageTableViewCell: UITableViewCell {
     private func makeConstraints() {
         self.addSubview(self.titleImage)
         self.addSubview(self.titleLabel)
-        self.addSubview(self.deleteButton)
+        self.contentView.addSubview(self.deleteButton)
         
         self.titleImage.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(Metric.leftMargin)
