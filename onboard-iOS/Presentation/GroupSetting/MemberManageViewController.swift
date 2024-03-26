@@ -224,6 +224,16 @@ extension MemberManageViewController: UITableViewDelegate, UITableViewDataSource
             alert.setState(alertState: state)
             alert.setContentViewHeight(height: 216)
             
+            alert.didTapConfirmButtonAction = {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                    sceneDelegate.window?.rootViewController = homeTabController
+                }
+            }
+            
             self?.present(alert, animated: false)
         }
         
