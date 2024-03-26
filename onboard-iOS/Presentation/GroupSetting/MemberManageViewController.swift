@@ -205,7 +205,51 @@ extension MemberManageViewController: UITableViewDelegate, UITableViewDataSource
         } else {
             cell.isHidden = true
         }
+        
+        cell.didTapButton = { [weak self] in
+            let player = self?.reactor?.currentState.allPlayer.first?.contents[indexPath.row]
+            
+            let alert = ConfirmPopupViewController()
+            alert.modalPresentationStyle = .overFullScreen
+            
+            let message = "\(TextLabels.memberManage_message) \(player?.nickname ?? "") \(TextLabels.memberManage_exit_message)"
+            let attributedString = NSMutableAttributedString(string: message)
+            let range = (message as NSString).range(of: player?.nickname ?? "")
+            attributedString.addAttribute(.font, value: Font.Typography.title3 as Any, range: range)
+            
+            let state = AlertState(contentLabel: attributedString,
+                                   leftButtonLabel: TextLabels.groupInfo_button_cancel,
+                                   rightButtonLabel: TextLabels.memberManage_button_exit)
+            
+            alert.setState(alertState: state)
+            alert.setContentViewHeight(height: 216)
+            
+            alert.didTapConfirmButtonAction = {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                    sceneDelegate.window?.rootViewController = homeTabController
+                }
+            }
+            
+            self?.present(alert, animated: false)
+        }
+        
         return cell
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        let cell = tableView.cellForRow(at: indexPath) as? MemberManageTableViewCell
+        
+        if let cell = cell,
+            let didTapButton = cell.didTapButton {
+            didTapButton()
+        }
     }
     
     func tableView(

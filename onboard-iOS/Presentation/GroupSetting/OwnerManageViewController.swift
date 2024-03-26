@@ -196,7 +196,12 @@ final class OwnerManageViewController: UIViewController, View {
     
     @objc
     private func showPrevious() {
-        self.navigationController?.popViewController(animated: true)
+        if let navigationController = self.navigationController,
+           navigationController.viewControllers.count > 1 {
+            navigationController.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 
@@ -216,7 +221,6 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerManageTableViewCell",
                                                  for: indexPath) as! OwnerManageTableViewCell
         
-        let count = reactor?.currentState.allPlayer.first?.contents.count ?? 0
         if let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row], player.role != "GUEST" {
             let me = reactor?.currentState.allPlayer.first?.contents.first { $0.userId == LoginSessionManager.meId }
             let hideOwner = me != nil && me!.userId == player.userId

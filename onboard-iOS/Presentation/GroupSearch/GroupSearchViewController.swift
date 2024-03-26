@@ -61,8 +61,8 @@ final class GroupSearchViewController: UIViewController, View {
             let groupCreateViewController = GroupCreateViewController(reactor: reactor)
             
             let navigationController = UINavigationController(rootViewController: groupCreateViewController)
-            navigationController.modalPresentationStyle = .fullScreen
-
+            navigationController.modalPresentationStyle = .overFullScreen
+            navigationController.transitioningDelegate = self
             self?.navigationController?.present(navigationController, animated: true)
         }
         
@@ -93,5 +93,22 @@ extension GroupSearchViewController: GroupSearchDelegate {
 extension GroupEntity.Res.Group {
     func toPresentation() -> GroupSearchView.Group {
         return GroupSearchView.Group(id: self.id, name: self.name, description: self.description, organization: self.organization, profileImageUrl: self.profileImageUrl)
+    }
+}
+
+extension GroupSearchViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        return PresentTransition()
+    }
+    
+    func animationController(
+        forDismissed dismissed: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        return DismissTransition()
     }
 }

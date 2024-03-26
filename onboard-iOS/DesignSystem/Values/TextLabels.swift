@@ -140,4 +140,8 @@ struct TextLabels {
     static let assginOwner_Message = "관리자 권한을 넘기면 취소가 불가능합니다.\n\n관리자를"
     static let assginOwner_changeMessage = "님으로\n변경하시겠습니까?"
     static let assginOwner_button_assgin = "변경하기"
+    
+    static let memberManage_message = "멤버를 그룹에서 내보내면 해당 멤버의 기록이\n삭제되며, 취소 또는 복구는 불가능합니다.\n\n"
+    static let memberManage_exit_message = "님을 내보내시겠습니까?"
+    static let memberManage_button_exit = "내보내기"
 }

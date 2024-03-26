@@ -400,7 +400,8 @@ final class GroupInfoDetailViewController: UIViewController, View {
                     let vc = OwnerManageViewController(reactor: reactor)
                     let navigationController = UINavigationController(rootViewController: vc)
                     navigationController.modalPresentationStyle = .overFullScreen
-                    self?.present(navigationController, animated: false)
+                    navigationController.transitioningDelegate = self
+                    self?.present(navigationController, animated: true)
                 }
                 
                 self?.present(alert, animated: false)
@@ -483,7 +484,8 @@ final class GroupInfoDetailViewController: UIViewController, View {
             let groupSettingViewController = GroupSettingViewController(reactor: reactor)
             let navigationController = UINavigationController(rootViewController: groupSettingViewController)
             navigationController.modalPresentationStyle = .overFullScreen
-            self?.present(navigationController, animated: false)
+            navigationController.transitioningDelegate = self
+            self?.present(navigationController, animated: true)
         }), for: .touchUpInside)
     }
     
@@ -694,5 +696,22 @@ extension GroupInfoDetailViewController {
         }, completion: { _ in
             self.dismiss(animated: false, completion: nil)
         })
+    }
+}
+
+extension GroupInfoDetailViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController, 
+        source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        return PresentTransition()
+    }
+    
+    func animationController(
+        forDismissed dismissed: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        return DismissTransition()
     }
 }
