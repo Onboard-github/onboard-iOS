@@ -90,6 +90,7 @@ struct TextLabels {
     // MARK: - Profile
     
     static let profile_groupLabel = "모임 이름"
+    static let profile_nickname = "사용 중인 닉네임"
     
     // MARK: - PopupView
     
