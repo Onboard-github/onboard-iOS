@@ -83,4 +83,10 @@ final class MyProfileView: UIView {
         label.font = Font.Typography.body5_R
         return label
     }()
+    
+    private let confirmButton: BaseButton = {
+        let button = BaseButton(status: .disabled, style: .rounded)
+        button.setTitle(TextLabels.profile_confirm, for: .normal)
+        return button
+    }()
 }
