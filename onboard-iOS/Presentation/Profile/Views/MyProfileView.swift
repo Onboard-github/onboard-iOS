@@ -25,4 +25,19 @@ final class MyProfileView: UIView {
         label.font = Font.Typography.title3
         return label
     }()
+    
+    private let nicknameLabel: UILabel = {
+        let label = UILabel()
+        label.text = TextLabels.profile_nickname
+        label.textColor = Colors.Gray_14
+        label.font = Font.Typography.body3_M
+        return label
+    }()
+    
+    private let nickNameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Colors.Gray_15
+        label.font = Font.Typography.title3
+        return label
+    }()
 }
