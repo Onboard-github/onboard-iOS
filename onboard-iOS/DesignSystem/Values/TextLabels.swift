@@ -87,6 +87,10 @@ struct TextLabels {
     static let game_record_register = "기록 확정"
     static let game_record_recording = "모임을 등록하는 중.. "
     
+    // MARK: - Profile
+    
+    static let profile_groupLabel = "모임 이름"
+    
     // MARK: - PopupView
     
     static let image_popup_title = "그룹 대표 이미지"
