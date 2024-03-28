@@ -95,6 +95,7 @@ struct TextLabels {
     static let profile_textField_placeholder = "닉네임을 입력해주세요"
     static let profile_textField_subTitle = "한글, 영문, 숫자를 조합하여 사용 가능합니다."
     static let profile_textField_count = "00/10"
+    static let profile_confirm = "수정 완료"
     
     // MARK: - PopupView
     
