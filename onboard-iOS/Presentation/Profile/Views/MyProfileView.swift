@@ -59,6 +59,8 @@ final class MyProfileView: UIView {
         let textField = TextField()
         textField.textColor = Colors.Gray_15
         textField.font = Font.Typography.body3_R
+        textField.backgroundColor = Colors.White
+        textField.layer.borderColor = Colors.Gray_5.cgColor
         
         let attributes: [NSAttributedString.Key: Any] = [
             .font: Font.Typography.body3_R as Any,
