@@ -112,4 +112,22 @@ final class MyProfileView: UIView {
         stview.spacing = 7
         return stview
     }()
+    
+    // MARK: - Initialize
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.backgroundColor = Colors.White
+    }
 }
