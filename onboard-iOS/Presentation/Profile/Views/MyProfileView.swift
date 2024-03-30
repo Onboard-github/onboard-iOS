@@ -89,4 +89,25 @@ final class MyProfileView: UIView {
         button.setTitle(TextLabels.profile_confirm, for: .normal)
         return button
     }()
+    
+    private lazy var groupStackView: UIStackView = {
+        let stview = UIStackView(arrangedSubviews: [groupLabel, groupNameLabel])
+        stview.axis = .vertical
+        stview.spacing = 10
+        return stview
+    }()
+    
+    private lazy var nicknameStackView: UIStackView = {
+        let stview = UIStackView(arrangedSubviews: [nicknameLabel, nickNameLabel])
+        stview.axis = .vertical
+        stview.spacing = 10
+        return stview
+    }()
+    
+    private lazy var newNicknameStackView: UIStackView = {
+        let stview = UIStackView(arrangedSubviews: [nicknameTextField, textFieldSubTitleLabel])
+        stview.axis = .vertical
+        stview.spacing = 7
+        return stview
+    }()
 }
