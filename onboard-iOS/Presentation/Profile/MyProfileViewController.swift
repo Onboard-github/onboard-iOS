@@ -33,6 +33,10 @@ final class MyProfileViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     // MARK: - Configure
     
     private func configure() {
