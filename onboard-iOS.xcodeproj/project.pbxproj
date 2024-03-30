@@ -19,6 +19,7 @@
 		1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */; };
 		1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */; };
 		1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */; };
+		1C2647DF2BB85D53001E813A /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2647DE2BB85D53001E813A /* MyProfileViewController.swift */; };
 		1C30170D2B4D718400128E5C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170C2B4D718400128E5C /* AlertView.swift */; };
 		1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C30170E2B4EBD1D00128E5C /* AlertState.swift */; };
 		1C3017112B4EC3E100128E5C /* OwnerManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */; };
@@ -206,6 +207,7 @@
 		1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopupView.swift; sourceTree = "<group>"; };
 		1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupViewController.swift; sourceTree = "<group>"; };
 		1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		1C2647DE2BB85D53001E813A /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		1C30170C2B4D718400128E5C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		1C30170E2B4EBD1D00128E5C /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
 		1C3017102B4EC3E100128E5C /* OwnerManageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerManageTableViewCell.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 		1C39CFDE2BB5B956000D0DE9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1C2647DE2BB85D53001E813A /* MyProfileViewController.swift */,
 				1C39CFDF2BB5B95B000D0DE9 /* Views */,
 			);
 			path = Profile;
@@ -1367,6 +1370,7 @@
 				3BB194632B833DD40013FE55 /* gameLeaderboardRes.swift in Sources */,
 				AA9105692ADA32F300DA2E96 /* GroupSearchViewController.swift in Sources */,
 				AAF169892B108B0D00EF82A4 /* AlertManager.swift in Sources */,
+				1C2647DF2BB85D53001E813A /* MyProfileViewController.swift in Sources */,
 				1C30170F2B4EBD1D00128E5C /* AlertState.swift in Sources */,
 				1C327B242B55747C00F02C26 /* GameResultReactor.swift in Sources */,
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
