@@ -7,7 +7,14 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class MyProfileView: UIView {
+    
+    // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Metric
     
@@ -141,6 +148,8 @@ final class MyProfileView: UIView {
         self.backgroundColor = Colors.White
         
         self.makeConstraints()
+        
+        self.setTextField()
     }
     
     private func makeConstraints() {
@@ -184,5 +193,22 @@ final class MyProfileView: UIView {
             $0.centerY.equalTo(self.textFieldSubTitleLabel.snp.centerY)
             $0.trailing.equalToSuperview().inset(Metric.baseMargin)
         }
+    }
+}
+
+// MARK: - TextField
+
+extension MyProfileView {
+    
+    private func setTextField() {
+        self.nicknameTextField.rx.text
+            .orEmpty
+            .subscribe(onNext: { [weak self] text in
+                let maxLength = 10
+                let inputText = String(text.prefix(maxLength))
+                self?.countLabel.text = "\(String(format: "%02d", inputText.count))/\(maxLength)"
+                self?.nicknameTextField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+            })
+            .disposed(by: disposeBag)
     }
 }
