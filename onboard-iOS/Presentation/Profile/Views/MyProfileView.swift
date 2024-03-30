@@ -24,6 +24,7 @@ final class MyProfileView: UIView {
         static let requiredImageLeading: CGFloat = 5
         static let textFieldHeight: CGFloat = 48
         static let stackViewTopSpacing: CGFloat = 10
+        static let buttonHeight: CGFloat = 48
     }
     
     // MARK: - UI
@@ -159,6 +160,7 @@ final class MyProfileView: UIView {
         self.addSubview(self.requiredImage)
         self.addSubview(self.newNicknameStackView)
         self.addSubview(self.countLabel)
+        self.addSubview(self.confirmButton)
         
         self.groupStackView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
@@ -192,6 +194,12 @@ final class MyProfileView: UIView {
         self.countLabel.snp.makeConstraints {
             $0.centerY.equalTo(self.textFieldSubTitleLabel.snp.centerY)
             $0.trailing.equalToSuperview().inset(Metric.baseMargin)
+        }
+        
+        self.confirmButton.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(Metric.baseMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.baseMargin)
+            $0.height.equalTo(Metric.buttonHeight)
         }
     }
 }
