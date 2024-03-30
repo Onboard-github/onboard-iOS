@@ -9,6 +9,16 @@ import UIKit
 
 final class MyProfileView: UIView {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let topMargin: CGFloat = 35
+        static let baseMargin: CGFloat = 24
+        static let requiredImageLeading: CGFloat = 5
+        static let textFieldHeight: CGFloat = 48
+        static let stackViewTopSpacing: CGFloat = 10
+    }
+    
     // MARK: - UI
     
     private let groupLabel: UILabel = {
@@ -129,5 +139,50 @@ final class MyProfileView: UIView {
     
     private func configure() {
         self.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.groupStackView)
+        self.addSubview(self.nicknameStackView)
+        self.addSubview(self.newNicknameLabel)
+        self.addSubview(self.requiredImage)
+        self.addSubview(self.newNicknameStackView)
+        self.addSubview(self.countLabel)
+        
+        self.groupStackView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
+            $0.leading.equalToSuperview().inset(Metric.baseMargin)
+        }
+        
+        self.nicknameStackView.snp.makeConstraints {
+            $0.top.equalTo(self.groupStackView.snp.bottom).offset(Metric.topMargin)
+            $0.leading.equalToSuperview().inset(Metric.baseMargin)
+        }
+        
+        self.newNicknameLabel.snp.makeConstraints {
+            $0.top.equalTo(self.nicknameStackView.snp.bottom).offset(Metric.topMargin)
+            $0.leading.equalToSuperview().inset(Metric.baseMargin)
+        }
+        
+        self.requiredImage.snp.makeConstraints {
+            $0.top.equalTo(self.newNicknameLabel.snp.top)
+            $0.leading.equalTo(self.newNicknameLabel.snp.trailing).offset(Metric.requiredImageLeading)
+        }
+        
+        self.nicknameTextField.snp.makeConstraints {
+            $0.height.equalTo(Metric.textFieldHeight)
+        }
+        
+        self.newNicknameStackView.snp.makeConstraints {
+            $0.top.equalTo(self.newNicknameLabel.snp.bottom).offset(Metric.stackViewTopSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.baseMargin)
+        }
+        
+        self.countLabel.snp.makeConstraints {
+            $0.centerY.equalTo(self.textFieldSubTitleLabel.snp.centerY)
+            $0.trailing.equalToSuperview().inset(Metric.baseMargin)
+        }
     }
 }
