@@ -63,7 +63,7 @@ struct TextLabels {
     
     static let groupList_title = "내 모임"
     static let groupList_nextGroup = "모임 둘러보기"
-
+    
     // MARK: - Game Result Record
     
     static let game_result_title = "게임 결과 기록"
@@ -86,6 +86,17 @@ struct TextLabels {
     static let game_record_guide = "최종 기록 이후 점수 수정이 불가능합니다\n정말로 확정하시겠습니까?"
     static let game_record_register = "기록 확정"
     static let game_record_recording = "모임을 등록하는 중.. "
+    
+    // MARK: - Profile
+    
+    static let profile_title = "프로필 수정"
+    static let profile_groupLabel = "모임 이름"
+    static let profile_nickname = "사용 중인 닉네임"
+    static let profile_newNickname = "새 닉네임"
+    static let profile_textField_placeholder = "닉네임을 입력해주세요"
+    static let profile_textField_subTitle = "한글, 영문, 숫자를 조합하여 사용 가능합니다."
+    static let profile_textField_count = "00/10"
+    static let profile_confirm = "수정 완료"
     
     // MARK: - PopupView
     
