@@ -161,7 +161,10 @@ final class NameInputPopupView: UIViewController, View {
         self.registerButton.addAction(UIAction { [weak self] _ in
             self?.view.endEditing(true)
             self?.contentView.isHidden = true
-            self?.loadingView.setLoadingLabel(TextLabels.game_record_recording)
+            self?.loadingView.showOnlyIndicator()
+            self?.loadingView.setLabel(
+                loadingText: TextLabels.game_record_recording
+            )
             self?.loadingView.isLoading = true
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
