@@ -35,8 +35,6 @@ final class ResultRecordViewController: UIViewController, View {
         super.init(nibName: nil, bundle: nil)
         
         self.reactor = reactor
-        
-        self.configure()
     }
     
     required init?(coder: NSCoder) {
@@ -85,24 +83,5 @@ final class ResultRecordViewController: UIViewController, View {
                 }
             }
         }
-    }
-    
-    // MARK: - Configure
-    
-    private func configure() {
-        self.setupGestureRecognizer()
-    }
-    
-    private func setupGestureRecognizer() {
-        let tapGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(backgroundTapped)
-        )
-        self.view.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc
-    private func backgroundTapped() {
-        self.dismiss(animated: false)
     }
 }
