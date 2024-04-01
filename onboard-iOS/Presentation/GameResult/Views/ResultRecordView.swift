@@ -173,8 +173,8 @@ final class ResultRecordView: UIView {
         return stview
     }()
     
-    private let loadingView: ImageLoadingView = {
-        let view = ImageLoadingView()
+    private let loadingView: LoadingView = {
+        let view = LoadingView()
         return view
     }()
     
@@ -207,10 +207,10 @@ final class ResultRecordView: UIView {
         
         self.registerButton.addAction(UIAction(handler: { [weak self] _ in
             self?.contentView.isHidden = true
-            self?.loadingView.showStatus()
+            self?.loadingView.showLoadingImage()
             self?.loadingView.setLabel(
-                loading: TextLabels.imageLoading_loading,
-                complete: "\(GameDataSingleton.shared.gameData?.name ?? "default")\n\(TextLabels.imageLoading_complete)"
+                loadingImageText: TextLabels.imageLoading_loading,
+                completeText: "\(GameDataSingleton.shared.gameData?.name ?? "default")\n\(TextLabels.imageLoading_complete)"
             )
             self?.didTapRegisterButtonAction?()
         }), for: .touchUpInside)
