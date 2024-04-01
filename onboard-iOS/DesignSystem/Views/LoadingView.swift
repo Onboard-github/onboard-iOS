@@ -22,6 +22,7 @@ final class LoadingView: UIView {
     
     enum Metric {
         static let labelBottomSpacing: CGFloat = 20
+        static let imageSize: CGFloat = 224
     }
     
     // MARK: - UI
@@ -45,67 +46,13 @@ final class LoadingView: UIView {
         return view
     }()
     
-    // MARK: - Initialize
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.configure()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Configure
-    
-    private func configure() {
-        self.addSubview(self.backgroundView)
-        self.addSubview(self.loadingLabel)
-        self.addSubview(self.activityIndicatorView)
-        
-        self.backgroundView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        
-        self.loadingLabel.snp.makeConstraints {
-            $0.bottom.equalTo(activityIndicatorView.snp.top).offset(-Metric.labelBottomSpacing)
-            $0.centerX.equalToSuperview()
-        }
-        
-        self.activityIndicatorView.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-        }
-    }
-    
-    internal func setLoadingLabel(_ text: String) {
-        self.loadingLabel.text = text
-    }
-}
-
-
-final class ImageLoadingView: UIView {
-    
-    // MARK: - Metric
-    
-    enum Metric {
-        static let labelBottomSpacing: CGFloat = 20
-    }
-    
-    // MARK: - UI
-    
-    private let backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .darkGray.withAlphaComponent(0.7)
-        return view
-    }()
-    
     private let loadingImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.kf.setImage(with: URL(string: GifURL.url))
         return imageView
     }()
     
-    private let loadingLabel: UILabel = {
+    private let loadingImageLabel: UILabel = {
         let label = UILabel()
         label.textColor = Colors.Orange_10
         label.font = Font.Typography.body3_R
@@ -137,33 +84,37 @@ final class ImageLoadingView: UIView {
     
     private func configure() {
         
-        self.loadImage()
         self.makeConstraints()
-    }
-    
-    private func loadImage() {
-        if let gifURL = URL(string: GifURL.url) {
-            downloadGif(url: gifURL)
-        }
     }
     
     private func makeConstraints() {
         self.addSubview(self.backgroundView)
-        self.addSubview(self.loadingImage)
         self.addSubview(self.loadingLabel)
+        self.addSubview(self.activityIndicatorView)
+        self.addSubview(self.loadingImage)
+        self.addSubview(self.loadingImageLabel)
         self.addSubview(self.completeLabel)
         
         self.backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
-        self.loadingImage.snp.makeConstraints {
-            $0.bottom.equalTo(loadingLabel.snp.top).offset(Metric.labelBottomSpacing)
+        self.loadingLabel.snp.makeConstraints {
+            $0.bottom.equalTo(activityIndicatorView.snp.top).offset(-Metric.labelBottomSpacing)
             $0.centerX.equalToSuperview()
-            $0.width.height.equalTo(224)
         }
         
-        self.loadingLabel.snp.makeConstraints {
+        self.activityIndicatorView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
+        
+        self.loadingImage.snp.makeConstraints {
+            $0.bottom.equalTo(loadingImageLabel.snp.top).offset(Metric.labelBottomSpacing)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(Metric.imageSize)
+        }
+        
+        self.loadingImageLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
         }
         
@@ -172,36 +123,53 @@ final class ImageLoadingView: UIView {
         }
     }
     
-    private func downloadGif(url: URL) {
-        URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
-            if let error = error {
-                print("Error downloading gif: \(error.localizedDescription)")
-                return
-            }
-            
-            if let data = data,
-                let gifImage = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self?.loadingImage.image = gifImage
-                }
-            }
-        }.resume()
+    func showOnlyIndicator() {
+        self.loadingLabel.isHidden = false
+        self.activityIndicatorView.isHidden = false
+        self.loadingImage.isHidden = true
+        self.loadingImageLabel.isHidden = true
+        self.completeLabel.isHidden = true
     }
     
-    func showStatus() {
-        self.loadingImage.isHidden = false
+    func showIndicator() {
         self.loadingLabel.isHidden = false
+        self.activityIndicatorView.isHidden = false
+        self.loadingImage.isHidden = true
+        self.loadingImageLabel.isHidden = true
         self.completeLabel.isHidden = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
-            self?.loadingImage.isHidden = true
             self?.loadingLabel.isHidden = true
+            self?.activityIndicatorView.isHidden = true
+            self?.loadingImage.isHidden = true
+            self?.loadingImageLabel.isHidden = true
             self?.completeLabel.isHidden = false
         }
     }
     
-    func setLabel(loading: String, complete: String) {
-        self.loadingLabel.text = loading
-        self.completeLabel.text = complete
+    func showLoadingImage() {
+        self.loadingLabel.isHidden = true
+        self.activityIndicatorView.isHidden = true
+        self.loadingImage.isHidden = false
+        self.loadingImageLabel.isHidden = false
+        self.completeLabel.isHidden = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+            self?.loadingLabel.isHidden = true
+            self?.activityIndicatorView.isHidden = true
+            self?.loadingImage.isHidden = true
+            self?.loadingImageLabel.isHidden = true
+            self?.completeLabel.isHidden = false
+        }
+    }
+    
+    func setLabel(
+        loadingText: String? = nil,
+        loadingImageText: String? = nil,
+        completeText: String? = nil
+    ) {
+        self.loadingLabel.text = loadingText
+        self.loadingImageLabel.text = loadingImageText
+        self.completeLabel.text = completeText
     }
 }
