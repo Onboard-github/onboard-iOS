@@ -43,6 +43,7 @@
 		1C6302192B96E6220085106D /* MemberEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6302182B96E6220085106D /* MemberEntity.swift */; };
 		1C63021C2B96E6440085106D /* MemberRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C63021B2B96E6440085106D /* MemberRepository.swift */; };
 		1C63021F2B96E7410085106D /* MemberUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C63021E2B96E7410085106D /* MemberUseCase.swift */; };
+		1C691A662BBDA22B00729D26 /* MyGroupEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C691A652BBDA22B00729D26 /* MyGroupEntity.swift */; };
 		1C6FEAE02B4D467A00CFC647 /* GroupSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */; };
 		1C6FEAE32B4D47B500CFC647 /* SettingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */; };
 		1C6FEAE52B4D482100CFC647 /* GroupSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */; };
@@ -232,6 +233,7 @@
 		1C6302182B96E6220085106D /* MemberEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberEntity.swift; sourceTree = "<group>"; };
 		1C63021B2B96E6440085106D /* MemberRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRepository.swift; sourceTree = "<group>"; };
 		1C63021E2B96E7410085106D /* MemberUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberUseCase.swift; sourceTree = "<group>"; };
+		1C691A652BBDA22B00729D26 /* MyGroupEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupEntity.swift; sourceTree = "<group>"; };
 		1C6FEADF2B4D467A00CFC647 /* GroupSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingTableViewCell.swift; sourceTree = "<group>"; };
 		1C6FEAE22B4D47B500CFC647 /* SettingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOptions.swift; sourceTree = "<group>"; };
 		1C6FEAE42B4D482100CFC647 /* GroupSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingViewController.swift; sourceTree = "<group>"; };
@@ -542,6 +544,14 @@
 				1C63021E2B96E7410085106D /* MemberUseCase.swift */,
 			);
 			path = Member;
+			sourceTree = "<group>";
+		};
+		1C691A642BBDA22000729D26 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				1C691A652BBDA22B00729D26 /* MyGroupEntity.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		1C6FEADC2B4D462900CFC647 /* GroupSetting */ = {
@@ -903,6 +913,7 @@
 		61AC7FCF2AB6DF6300B0B6B5 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				1C691A642BBDA22000729D26 /* User */,
 				1C6302152B96E60E0085106D /* Member */,
 				61AC7FD02AB6DFBF00B0B6B5 /* TestEntity.swift */,
 				611D8CA32AB8874D0074A55A /* AuthEntity.swift */,
@@ -1347,6 +1358,7 @@
 				1CA1BBC72ADABFA3000C5F7E /* LinkButtonState.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
+				1C691A662BBDA22B00729D26 /* MyGroupEntity.swift in Sources */,
 				1CF1A84A2B6159A70098A6AA /* GuestNicknameDTO.swift in Sources */,
 				AAF1698C2B108E3100EF82A4 /* LogManager.swift in Sources */,
 				3BA70CEC2B8BA0F000A14E59 /* ProfileVC.swift in Sources */,
