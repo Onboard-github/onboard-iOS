@@ -82,6 +82,7 @@ final class ConfirmPopupViewController: UIViewController {
         
         self.addConfigure()
         self.makeConstraints()
+        self.setupGestureRecognizer()
     }
     
     private func addConfigure() {
@@ -96,7 +97,7 @@ final class ConfirmPopupViewController: UIViewController {
     
     private func makeConstraints() {
         self.view.addSubview(self.dimmedView)
-        self.dimmedView.addSubview(self.contentView)
+        self.view.addSubview(self.contentView)
         self.contentView.addSubview(self.contentLabel)
         self.contentView.addSubview(self.cancelButton)
         self.contentView.addSubview(self.confirmButton)
@@ -128,6 +129,21 @@ final class ConfirmPopupViewController: UIViewController {
             $0.width.equalToSuperview().multipliedBy(Metric.buttonWidth)
             $0.height.equalTo(Metric.buttonHeight)
         }
+    }
+    
+    private func setupGestureRecognizer() {
+        let dimmedTap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dimmedViewAction(_:))
+        )
+        
+        self.dimmedView.addGestureRecognizer(dimmedTap)
+        self.dimmedView.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    private func dimmedViewAction(_ tapRecognizer: UITapGestureRecognizer)  {
+        self.dismiss(animated: false)
     }
     
     func setState(alertState: AlertState) {
