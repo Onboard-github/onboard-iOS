@@ -134,6 +134,7 @@ final class NameInputPopupView: UIViewController, View {
     
     private let loadingView: LoadingView = {
         let view = LoadingView()
+        view.isHidden = true
         return view
     }()
     
