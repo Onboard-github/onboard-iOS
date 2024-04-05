@@ -131,6 +131,12 @@ final class PlayerSelectViewController: UIViewController, View {
         return view
     }()
     
+    private let refreshControl: UIRefreshControl = {
+        let control = UIRefreshControl()
+        control.tintColor = Colors.Orange_10
+        return control
+    }()
+    
     // MARK: - Initialize
     
     init(reactor: PlayerReactor) {
@@ -534,7 +540,9 @@ extension PlayerSelectViewController {
             self?.playerTableView.reloadData()
             bottom.dismiss(animated: false)
             
+            
             self?.reactor?.action.onNext(.fetchResult(groupId: groupId, size: "20"))
+            self?.playerTableView.reloadData()
         }
     }
 }
