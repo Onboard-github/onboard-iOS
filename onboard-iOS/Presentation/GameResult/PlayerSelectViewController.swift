@@ -184,12 +184,22 @@ final class PlayerSelectViewController: UIViewController, View {
     private func configure() {
         self.view.backgroundColor = Colors.White
         
+        self.setRefresh()
         self.addConfigure()
         self.makeConstraints()
         self.setNavigationBar()
         
         self.searchPlayers()
         self.searchEmptyState()
+    }
+    
+    private func setRefresh() {
+        self.playerTableView.refreshControl = self.refreshControl
+        self.refreshControl.addTarget(
+            self,
+            action: #selector(refreshData(_:)),
+            for: .valueChanged
+        )
     }
     
     private func addConfigure() {
@@ -298,6 +308,16 @@ final class PlayerSelectViewController: UIViewController, View {
         
         if let gameData = GameDataSingleton.shared.gameData {
             confirmButton.status = (gameData.minMember...gameData.maxMember ~= selectedCount) ? .default : .disabled
+        }
+    }
+    
+    @objc
+    private func refreshData(_ sender: Any) {
+        DispatchQueue.main.async {
+            let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+            self.reactor?.action.onNext(.fetchResult(groupId: groupId, size: "20"))
+            self.playerTableView.reloadData()
+            self.playerTableView.refreshControl?.endRefreshing()
         }
     }
     
