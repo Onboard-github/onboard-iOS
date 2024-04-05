@@ -163,10 +163,7 @@ final class PlayerSelectViewController: UIViewController, View {
     }
     
     func bindAction(reactor: PlayerReactor) {
-        let groupId = GameDataSingleton.shared.getGroupId() ?? 0
-        // size 임시로 고정 처리
-        reactor.action.onNext(.fetchResult(groupId: groupId,
-                                           size: "20"))
+        self.fetchList()
     }
     
     func bindState(reactor: PlayerReactor) {
@@ -174,7 +171,7 @@ final class PlayerSelectViewController: UIViewController, View {
             .map { $0.playerData }
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] data in
-                self?.playerTableView.reloadData()
+                self?.refresh()
             })
             .disposed(by: disposeBag)
     }
@@ -314,9 +311,8 @@ final class PlayerSelectViewController: UIViewController, View {
     @objc
     private func refreshData(_ sender: Any) {
         DispatchQueue.main.async {
-            let groupId = GameDataSingleton.shared.getGroupId() ?? 0
-            self.reactor?.action.onNext(.fetchResult(groupId: groupId, size: "20"))
-            self.playerTableView.reloadData()
+            self.fetchList()
+            self.refresh()
             self.playerTableView.refreshControl?.endRefreshing()
         }
     }
@@ -499,7 +495,7 @@ extension PlayerSelectViewController {
                     self?.hideEmptyStateView()
                 }
                 
-                self?.playerTableView.reloadData()
+                self?.refresh()
             })
             .disposed(by: disposeBag)
     }
@@ -557,12 +553,23 @@ extension PlayerSelectViewController {
             guard let nickname = GameDataSingleton.shared.guestNickNameData else { return }
             let groupId = GameDataSingleton.shared.getGroupId() ?? 0
             self?.reactor?.action.onNext(.addPlayer(groupId: groupId, nickName: nickname))
-            self?.playerTableView.reloadData()
+            self?.refresh()
             bottom.dismiss(animated: false)
             
-            
-            self?.reactor?.action.onNext(.fetchResult(groupId: groupId, size: "20"))
-            self?.playerTableView.reloadData()
+            self?.fetchList()
+            self?.refresh()
         }
+    }
+}
+
+extension PlayerSelectViewController {
+    
+    private func fetchList() {
+        let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        self.reactor?.action.onNext(.fetchResult(groupId: groupId, size: "100"))
+    }
+    
+    private func refresh() {
+        self.playerTableView.reloadData()
     }
 }
