@@ -8,7 +8,6 @@
 import UIKit
 
 import ReactorKit
-import Alamofire
 
 final class GroupInfoDetailViewController: UIViewController, View {
     
