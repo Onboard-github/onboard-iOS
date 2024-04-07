@@ -7,9 +7,15 @@
 
 import UIKit
 
-final class MyProfileViewController: UIViewController {
+import ReactorKit
+
+final class MyProfileViewController: UIViewController, View {
+    
+    typealias Reactor = GroupReactor
     
     // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     private let myProfileView = MyProfileView()
     
@@ -23,8 +29,10 @@ final class MyProfileViewController: UIViewController {
     
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: GroupReactor) {
         super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
         
         self.configure()
     }
@@ -35,6 +43,20 @@ final class MyProfileViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: GroupReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupReactor) {
+    }
+    
+    func bindState(reactor: GroupReactor) {
+        
     }
     
     // MARK: - Configure
