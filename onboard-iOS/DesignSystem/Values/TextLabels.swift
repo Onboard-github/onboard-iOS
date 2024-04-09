@@ -59,6 +59,9 @@ struct TextLabels {
     static let owner_placeholder = "   멤버 검색"
     static let owner_confirm = "선택 완료"
     
+    static let group_delete_loading = "잠시만 기다려주세요."
+    static let group_delete_complete = "모임을 삭제했습니다."
+    
     // MARK: - Group List
     
     static let groupList_title = "내 모임"

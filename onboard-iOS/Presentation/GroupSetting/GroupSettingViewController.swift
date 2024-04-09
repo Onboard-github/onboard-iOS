@@ -182,11 +182,18 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
             alert.setContentViewHeight(height: 234)
             
             alert.didTapConfirmButtonAction = { [weak self] in
+                alert.bind(
+                    loadingText: TextLabels.group_delete_loading,
+                    completeText: "\(groupName)\n\(TextLabels.group_delete_complete)"
+                )
+                
                 let groupId = GameDataSingleton.shared.getGroupId() ?? 0
                 Task {
                     self?.reactor?.action.onNext(.groupDelete(groupId: groupId))
                     NotificationCenter.default.post(name: Notification.Name("groupDeleted"), object: nil)
-                    
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
                     
