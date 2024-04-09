@@ -1,8 +1,13 @@
 # 🎲 ONBOARD
 ![Onboard_GraphicImage_1024x500](https://github.com/onboard-github/onboard-iOS/assets/80906004/10ca99ce-1adb-47ab-8f75-7d950649b4ec)
 
+<p align="center">
+<img width="200" src="https://github.com/onboard-github/onboard-iOS/assets/80906004/6bfcc233-0bd3-4a8a-9c93-38fa60177566">
+</p>
+
 </br>
 </br>
+
 
 ## Introduce
 온보드는 보드게임 기록 서비스입니다.
