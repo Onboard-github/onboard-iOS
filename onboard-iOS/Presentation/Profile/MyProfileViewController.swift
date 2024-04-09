@@ -53,6 +53,8 @@ final class MyProfileViewController: UIViewController, View {
     }
     
     func bindAction(reactor: GroupReactor) {
+        let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        self.reactor?.action.onNext(.fetchResult(groupId: groupId))
     }
     
     func bindState(reactor: GroupReactor) {
