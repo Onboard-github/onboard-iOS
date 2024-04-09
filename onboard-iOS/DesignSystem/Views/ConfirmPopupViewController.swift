@@ -108,6 +108,8 @@ final class ConfirmPopupViewController: UIViewController {
         self.contentView.addSubview(self.cancelButton)
         self.contentView.addSubview(self.confirmButton)
         
+        self.dimmedView.addSubview(self.loadingView)
+        
         self.dimmedView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -134,6 +136,10 @@ final class ConfirmPopupViewController: UIViewController {
             $0.bottom.trailing.equalToSuperview()
             $0.width.equalToSuperview().multipliedBy(Metric.buttonWidth)
             $0.height.equalTo(Metric.buttonHeight)
+        }
+        
+        self.loadingView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     
