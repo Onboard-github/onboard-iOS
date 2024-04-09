@@ -82,6 +82,18 @@ final class ConfirmPopupViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Bind
+
+    func bind(
+        loadingText: String,
+        completeText: String
+    ) {
+        self.loadingView.setLabel(
+            loadingText: loadingText,
+            completeText: completeText
+        )
+    }
+    
     // MARK: - Configure
     
     private func configure() {
