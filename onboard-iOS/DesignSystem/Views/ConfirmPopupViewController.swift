@@ -109,6 +109,9 @@ final class ConfirmPopupViewController: UIViewController {
         }), for: .touchUpInside)
         
         self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.contentView.isHidden = true
+            self?.loadingView.showIndicator()
+            self?.loadingView.isLoading = true
             self?.didTapConfirmButtonAction?()
         }), for: .touchUpInside)
     }
