@@ -64,6 +64,12 @@ final class ConfirmPopupViewController: UIViewController {
         return button
     }()
     
+    private let loadingView: LoadingView = {
+        let view = LoadingView()
+        view.isHidden = true
+        return view
+    }()
+    
     // MARK: - Initialize
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
