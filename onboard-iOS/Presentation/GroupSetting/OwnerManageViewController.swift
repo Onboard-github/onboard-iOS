@@ -267,15 +267,25 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
             alert.setContentViewHeight(height: 216)
             
             alert.didTapConfirmButtonAction = {
+                alert.loadingView.showIndicator()
+                alert.loadingView.isLoading = true
+                
+                alert.bind(
+                    loadingText: TextLabels.group_delete_loading,
+                    completeText: "\(player?.nickname ?? "")\n\(TextLabels.owner_loading)"
+                )
+                
                 let groupId = GameDataSingleton.shared.getGroupId() ?? 0
                 self?.reactor?.action.onNext(.assginOwner(groupId: groupId, memberId: player?.memberId ?? 0))
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
-                
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let sceneDelegate = windowScene.delegate as? SceneDelegate {
-                    sceneDelegate.window?.rootViewController = homeTabController
+                DispatchQueue.main.asyncAfter(deadline: .now() + 6.0) {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                    
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                       let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                        sceneDelegate.window?.rootViewController = homeTabController
+                    }
                 }
             }
             
