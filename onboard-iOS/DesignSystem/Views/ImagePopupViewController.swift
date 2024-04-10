@@ -214,22 +214,38 @@ extension ImagePopupViewController: UIImagePickerControllerDelegate, UINavigatio
     
     func imagePickerController(
         _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-            
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
+        
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            if let file = createFile(from: image, withName: "image.png", mimeType: "image/png") {
-
-                reactor?.action.onNext(.fileUpload(file: file, purpose: .GROUP_IMAGE))
+            
+            DispatchQueue.global().async { [weak self] in
+                if let compressedImageData = self?.compressImage(image, quality: 0.5) {
+                    if let file = self?.createFile(from: compressedImageData, withName: "image.jpg", mimeType: "image/jpeg") {
+                        self?.reactor?.action.onNext(.fileUpload(file: file, purpose: .GROUP_IMAGE))
+                    }
+                }
             }
-            imageCompletion?(image)
+            
+            DispatchQueue.main.async {
+                self.imageCompletion?(image)
+            }
         }
-
+        
         picker.dismiss(animated: true, completion: nil)
     }
-
-
+    
     func imagePickerControllerDidCancel(
-        _ picker: UIImagePickerController) {
-            picker.dismiss(animated: true, completion: nil)
-        }
+        _ picker: UIImagePickerController
+    ) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    private func compressImage(_ image: UIImage, quality: CGFloat) -> Data? {
+        return image.jpegData(compressionQuality: quality)
+    }
+    
+    private func createFile(from imageData: Data, withName name: String, mimeType: String) -> File {
+        return File(name: name, data: imageData, mimeType: mimeType)
+    }
 }
