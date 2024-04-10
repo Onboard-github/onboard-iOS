@@ -136,25 +136,25 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
         didSelectRowAt indexPath: IndexPath
     ) {
         
-//        switch indexPath.row {
-//        case 0:
-//            // TODO: - 모임 정보 수정
-//            break
-//        case 1:
-//            let vc = AccessCodeViewController()
-//            navigationController?.pushViewController(vc, animated: true)
-//        case 2:
-//            let vc = MemberManageViewController()
-//            navigationController?.pushViewController(vc, animated: true)
-//        case 3:
-//            let vc = OwnerManageViewController()
-//            navigationController?.pushViewController(vc, animated: true)
-//        case 4:
-//            // TODO: - 모임 삭제
-//            break
-//        default:
-//            break
-//        }
+        //        switch indexPath.row {
+        //        case 0:
+        //            // TODO: - 모임 정보 수정
+        //            break
+        //        case 1:
+        //            let vc = AccessCodeViewController()
+        //            navigationController?.pushViewController(vc, animated: true)
+        //        case 2:
+        //            let vc = MemberManageViewController()
+        //            navigationController?.pushViewController(vc, animated: true)
+        //        case 3:
+        //            let vc = OwnerManageViewController()
+        //            navigationController?.pushViewController(vc, animated: true)
+        //        case 4:
+        //            // TODO: - 모임 삭제
+        //            break
+        //        default:
+        //            break
+        //        }
         
         switch indexPath.row {
         case 0:
@@ -182,6 +182,9 @@ extension GroupSettingViewController: UITableViewDelegate, UITableViewDataSource
             alert.setContentViewHeight(height: 234)
             
             alert.didTapConfirmButtonAction = { [weak self] in
+                alert.loadingView.showIndicator()
+                alert.loadingView.isLoading = true
+                
                 alert.bind(
                     loadingText: TextLabels.group_delete_loading,
                     completeText: "\(groupName)\n\(TextLabels.group_delete_complete)"
