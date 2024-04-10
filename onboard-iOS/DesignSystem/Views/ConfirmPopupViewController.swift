@@ -83,7 +83,7 @@ final class ConfirmPopupViewController: UIViewController {
     }
     
     // MARK: - Bind
-
+    
     func bind(
         loadingText: String,
         completeText: String
@@ -110,8 +110,6 @@ final class ConfirmPopupViewController: UIViewController {
         
         self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
             self?.contentView.isHidden = true
-            self?.loadingView.showIndicator()
-            self?.loadingView.isLoading = true
             self?.didTapConfirmButtonAction?()
         }), for: .touchUpInside)
     }
