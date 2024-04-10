@@ -187,12 +187,6 @@ final class ImagePopupViewController: UIViewController, View {
         self.backgroundView.addGestureRecognizer(tapGesture)
     }
     
-    private func createFile(from image: UIImage, withName name: String, mimeType: String) -> File? {
-        guard let imageData = image.pngData() else { return nil }
-        
-        return File(name: name, data: imageData, mimeType: mimeType)
-    }
-    
     @objc
     private func backgroundTapped() {
         self.dismiss(animated: false)
