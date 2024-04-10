@@ -228,10 +228,10 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
             cell.isHidden = hideOwner
             cell.configure(image: diceImage, title: player.nickname, showMeImage: false)
             
-            self.emptyStateLabel.isHidden = false
+            self.emptyStateLabel.isHidden = true
         } else {
             cell.isHidden = true
-            self.emptyStateLabel.isHidden = true
+            self.emptyStateLabel.isHidden = false
         }
         
         cell.updateButtonState(isSelected: indexPath == selectedIndexPath)
