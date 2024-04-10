@@ -58,6 +58,7 @@ struct TextLabels {
     static let owner_title_info = "관리자 권한을 넘길 멤버를 선택해주세요."
     static let owner_placeholder = "   멤버 검색"
     static let owner_confirm = "선택 완료"
+    static let owner_loading = "관리자 변경이 완료되었습니다."
     
     static let group_delete_loading = "잠시만 기다려주세요."
     static let group_delete_complete = "모임을 삭제했습니다."
