@@ -64,7 +64,7 @@ final class ConfirmPopupViewController: UIViewController {
         return button
     }()
     
-    private let loadingView: LoadingView = {
+    internal let loadingView: LoadingView = {
         let view = LoadingView()
         view.isHidden = true
         return view
