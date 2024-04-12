@@ -224,6 +224,8 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row]
         cell.configure(image: IconImage.dice.image, title: player?.nickname ?? "error", showMeImage: false)
         
+        self.emptyStateLabel.isHidden = reactor?.currentState.allPlayer.first?.contents.contains(where: { $0.role == "HOST" }) ?? true
+        
         cell.updateButtonState(isSelected: indexPath == selectedIndexPath)
         
         self.confirmButton.status = self.selectedIndexPath != nil ? .default : .disabled
