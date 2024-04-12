@@ -224,9 +224,8 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         if let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row], player.role != "GUEST" {
             let me = reactor?.currentState.allPlayer.first?.contents.first { $0.userId == LoginSessionManager.meId }
             let hideOwner = me != nil && me!.userId == player.userId
-            let diceImage = player.role == "GUEST" ? IconImage.emptyDice.image : IconImage.dice.image
             cell.isHidden = hideOwner
-            cell.configure(image: diceImage, title: player.nickname, showMeImage: false)
+            cell.configure(image: IconImage.dice.image, title: player.nickname, showMeImage: false)
             
             self.emptyStateLabel.isHidden = true
         } else {
@@ -247,6 +246,8 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
     ) {
         self.selectedIndexPath = (indexPath == self.selectedIndexPath) ? nil : indexPath
         let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row]
+        
+        tableView.reloadData()
         
         self.confirmButton.removeTarget(nil, action: nil, for: .touchUpInside)
         
@@ -292,7 +293,6 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
             self?.present(alert, animated: false)
         }), for: .touchUpInside)
         
-        tableView.reloadData()
     }
     
     func tableView(
