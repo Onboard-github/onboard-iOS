@@ -211,7 +211,7 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return reactor?.currentState.allPlayer.first?.contents.count ?? 0
+        return reactor?.currentState.allPlayer.first?.contents.filter { $0.role == "HOST" }.count ?? 0
     }
     
     func tableView(
