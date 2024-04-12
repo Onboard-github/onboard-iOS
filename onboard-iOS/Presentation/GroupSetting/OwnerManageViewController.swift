@@ -287,18 +287,6 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         }), for: .touchUpInside)
         
     }
-    
-    func tableView(
-        _ tableView: UITableView,
-        heightForRowAt indexPath: IndexPath
-    ) -> CGFloat {
-        guard let me = reactor?.currentState.allPlayer.first?.contents.filter({ $0.userId == LoginSessionManager.meId }).first,
-              let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row] else {
-            return 0
-        }
-        
-        return (me.userId == player.userId) ? 0 : 52
-    }
 }
 
 extension OwnerManageViewController {
