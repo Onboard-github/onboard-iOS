@@ -676,7 +676,7 @@ final class GroupInfoDetailViewController: UIViewController, View {
 }
 
 extension GroupInfoDetailViewController {
-    func showMenu() {
+    private func showMenu() {
         UIView.animate(withDuration: 0.5) {
             self.infoView.frame = CGRect(x: 0,
                                          y: self.infoView.frame.origin.y,
