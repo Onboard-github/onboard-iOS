@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class GroupListViewController: UIViewController {
+import ReactorKit
+
+final class GroupListViewController: UIViewController, View {
+    
+    typealias Reactor = GroupReactor
     
     // MARK: - Metric
     
@@ -21,6 +25,8 @@ final class GroupListViewController: UIViewController {
     }
     
     // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     private var contentViewTopConstraint: NSLayoutConstraint!
     
@@ -96,7 +102,7 @@ final class GroupListViewController: UIViewController {
     
     // MARK: - Initialize
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init(reactor: GroupReactor) {
         super.init(nibName: nil, bundle: nil)
         
         self.configure()
@@ -112,6 +118,21 @@ final class GroupListViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.showMenu()
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: GroupReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: GroupReactor) {
+        
+    }
+    
+    func bindState(reactor: GroupReactor) {
+        
     }
     
     // MARK: - Configure
@@ -233,7 +254,7 @@ extension GroupListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(name: tmpText, checkImage: false)
         
         tableView.visibleCells.forEach { cells in
-            guard let deselect = cells as? GroupListTableViewCell, 
+            guard let deselect = cells as? GroupListTableViewCell,
                     cells != cell else { return }
             deselect.backgroundColor = Colors.White
             deselect.configure(name: tmpText, checkImage: true)
