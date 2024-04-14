@@ -8,6 +8,8 @@
 import UIKit
 
 import ReactorKit
+import RxSwift
+import RxCocoa
 
 final class OwnerManageViewController: UIViewController, View {
     
@@ -221,8 +223,11 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: "OwnerManageTableViewCell",
                                                  for: indexPath) as! OwnerManageTableViewCell
         
-        let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row]
-        cell.configure(image: IconImage.dice.image, title: player?.nickname ?? "error", showMeImage: false)
+        guard let player = reactor?.currentState.allPlayer.first?.contents.filter({ $0.role == "HOST" })[indexPath.row] else {
+            return cell
+        }
+        
+        cell.configure(image: IconImage.dice.image, title: player.nickname, showMeImage: false)
         
         self.emptyStateLabel.isHidden = reactor?.currentState.allPlayer.first?.contents.contains(where: { $0.role == "HOST" }) ?? true
         
@@ -238,7 +243,7 @@ extension OwnerManageViewController: UITableViewDelegate, UITableViewDataSource 
         didSelectRowAt indexPath: IndexPath
     ) {
         self.selectedIndexPath = (indexPath == self.selectedIndexPath) ? nil : indexPath
-        let player = reactor?.currentState.allPlayer.first?.contents[indexPath.row]
+        let player = reactor?.currentState.allPlayer.first?.contents.filter({ $0.role == "HOST" })[indexPath.row]
         
         tableView.reloadData()
         
