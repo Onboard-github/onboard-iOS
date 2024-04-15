@@ -80,9 +80,9 @@ final class GroupCreateViewController: UIViewController, View {
             let imagePopupVC = ImagePopupViewController(reactor: reactor)
             imagePopupVC.modalPresentationStyle = .overFullScreen
             
-            imagePopupVC.imageCompletion = { [self] selectedImage in
-                groupCreateView.titleImageView.image = selectedImage
-                self.dismiss(animated: false, completion: nil)
+            imagePopupVC.imageCompletion = { [weak self] image in
+                self?.groupCreateView.bind(image: image)
+                self?.dismiss(animated: false, completion: nil)
             }
             
             self.present(imagePopupVC, animated: false, completion: nil)
