@@ -60,7 +60,7 @@ final class GroupCreateViewController: UIViewController, View {
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] data in
                 ImageLoader.loadImage(from: data) { image in
-                    self?.groupCreateView.titleImageView.image = image
+                    self?.groupCreateView.bind(image: image)
                 }
             })
             .disposed(by: disposeBag)
