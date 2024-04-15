@@ -41,7 +41,7 @@ final class GroupCreateView: UIView {
     
     // MARK: - UI
     
-    let titleImageView: UIImageView = {
+    private let titleImageView: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 8
         image.clipsToBounds = true
