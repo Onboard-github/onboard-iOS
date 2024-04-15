@@ -407,7 +407,7 @@ extension GroupCreateView {
 
 // MARK: - TextView
 
-extension GroupCreateView: UITextViewDelegate {
+extension GroupCreateView {
     
     private func setupTextView() {
         self.descriptionTextView.rx.text
