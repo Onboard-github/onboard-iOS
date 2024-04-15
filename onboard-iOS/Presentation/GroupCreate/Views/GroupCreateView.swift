@@ -16,6 +16,8 @@ final class GroupCreateView: UIView {
     
     var disposeBag = DisposeBag()
     
+    private var isKeyboardAdjusted = false
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -201,6 +203,8 @@ final class GroupCreateView: UIView {
         
         self.setupTextField()
         self.setupTextView()
+        
+        self.setGestureRecognizer()
     }
     
     private func addConfigure() {
@@ -420,5 +424,53 @@ extension GroupCreateView: UITextViewDelegate {
     
     private func handleTextViewEditing(_ isEditing: Bool, textView: UITextView?) {
         textView?.layer.borderColor = isEditing ? Colors.Gray_7.cgColor : Colors.Gray_5.cgColor
+    }
+}
+
+extension GroupCreateView {
+    
+    private func setGestureRecognizer() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(textFieldTapped))
+        self.organizationTextField.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func textFieldTapped() {
+        self.organizationTextField.becomeFirstResponder()
+    }
+    
+    @objc 
+    private func keyboardWillShow(_ notification: Notification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+              !self.isKeyboardAdjusted else {
+            return
+        }
+        
+        let labelMaxY = self.organizationCountLabel.frame.maxY
+        let keyboardMinY = keyboardSize.minY
+        
+        guard labelMaxY > keyboardMinY else {
+            return
+        }
+        
+        let offset = labelMaxY - keyboardMinY + 30
+        
+        UIView.animate(withDuration: 0.3) {
+            self.frame.origin.y -= offset
+        }
+        
+        self.isKeyboardAdjusted = true
+    }
+    
+    @objc 
+    private func keyboardWillHide(_ notification: Notification) {
+        UIView.animate(withDuration: 0.3) {
+            self.frame.origin.y = 0
+        }
+        
+        self.isKeyboardAdjusted = false
     }
 }
