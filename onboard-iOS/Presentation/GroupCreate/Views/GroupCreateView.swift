@@ -388,6 +388,20 @@ extension GroupCreateView {
                 self?.nameTextField.layer.borderColor = Colors.Gray_5.cgColor
             })
             .disposed(by: disposeBag)
+        
+        self.organizationTextField.rx.controlEvent(.editingDidBegin)
+            .subscribe(onNext: { [weak self] in
+                guard let text = self?.organizationTextField.text, text.isEmpty else { return }
+                self?.organizationTextField.layer.borderColor = Colors.Gray_7.cgColor
+            })
+            .disposed(by: disposeBag)
+        
+        self.organizationTextField.rx.controlEvent(.editingDidEnd)
+            .subscribe(onNext: { [weak self] in
+                guard let text = self?.organizationTextField.text, text.isEmpty else { return }
+                self?.organizationTextField.layer.borderColor = Colors.Gray_5.cgColor
+            })
+            .disposed(by: disposeBag)
     }
 }
 
