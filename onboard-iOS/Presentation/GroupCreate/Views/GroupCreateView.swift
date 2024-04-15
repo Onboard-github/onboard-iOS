@@ -18,6 +18,9 @@ final class GroupCreateView: UIView {
     
     private var isKeyboardAdjusted = false
     
+    var didImageViewButton: (() -> Void)?
+    var didTapRegisterButton: (() -> Void)?
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -174,11 +177,6 @@ final class GroupCreateView: UIView {
         stackView.spacing = 5
         return stackView
     }()
-    
-    // MARK: - Properties
-    
-    var didImageViewButton: (() -> Void)?
-    var didTapRegisterButton: (() -> Void)?
     
     // MARK: - Initialize
     
