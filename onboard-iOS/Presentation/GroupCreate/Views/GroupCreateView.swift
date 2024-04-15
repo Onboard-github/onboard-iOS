@@ -375,27 +375,19 @@ extension GroupCreateView {
             })
             .disposed(by: disposeBag)
         
-        Observable.merge(
-            self.nameTextField.rx.controlEvent(.editingDidBegin).map { true },
-            self.nameTextField.rx.controlEvent(.editingDidEnd).map { true }
-        )
-        .subscribe(onNext: { [weak self] isEditing in
-            self?.handleTextFieldEditing(isEditing: isEditing, textField: self?.nameTextField)
-        })
-        .disposed(by: disposeBag)
+        self.nameTextField.rx.controlEvent(.editingDidBegin)
+            .subscribe(onNext: { [weak self] in
+                guard let text = self?.nameTextField.text, text.isEmpty else { return }
+                self?.nameTextField.layer.borderColor = Colors.Gray_7.cgColor
+            })
+            .disposed(by: disposeBag)
         
-        Observable.merge(
-            self.organizationTextField.rx.controlEvent(.editingDidBegin).map { true },
-            self.organizationTextField.rx.controlEvent(.editingDidEnd).map { true }
-        )
-        .subscribe(onNext: { [weak self] isEditing in
-            self?.handleTextFieldEditing(isEditing: isEditing, textField: self?.organizationTextField)
-        })
-        .disposed(by: disposeBag)
-    }
-    
-    private func handleTextFieldEditing(isEditing: Bool, textField: UITextField?) {
-        textField?.layer.borderColor = isEditing ? Colors.Gray_7.cgColor : Colors.Gray_5.cgColor
+        self.nameTextField.rx.controlEvent(.editingDidEnd)
+            .subscribe(onNext: { [weak self] in
+                guard let text = self?.nameTextField.text, text.isEmpty else { return }
+                self?.nameTextField.layer.borderColor = Colors.Gray_5.cgColor
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -449,7 +441,7 @@ extension GroupCreateView {
         self.organizationTextField.becomeFirstResponder()
     }
     
-    @objc 
+    @objc
     private func keyboardWillShow(_ notification: Notification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
               !self.isKeyboardAdjusted else {
@@ -472,7 +464,7 @@ extension GroupCreateView {
         self.isKeyboardAdjusted = true
     }
     
-    @objc 
+    @objc
     private func keyboardWillHide(_ notification: Notification) {
         UIView.animate(withDuration: 0.3) {
             self.frame.origin.y = 0
