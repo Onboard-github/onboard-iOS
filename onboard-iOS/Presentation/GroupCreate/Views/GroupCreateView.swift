@@ -410,7 +410,7 @@ extension GroupCreateView {
 extension GroupCreateView: UITextViewDelegate {
     
     private func setupTextView() {
-        descriptionTextView.rx.text
+        self.descriptionTextView.rx.text
             .orEmpty
             .subscribe(onNext: { [weak self] text in
                 let maxLength = 72
@@ -424,19 +424,17 @@ extension GroupCreateView: UITextViewDelegate {
         
         self.descriptionTextView.rx.didBeginEditing
             .subscribe(onNext: { [weak self] in
-                self?.handleTextViewEditing(true, textView: self?.descriptionTextView)
+                guard let text = self?.descriptionTextView.text, text.isEmpty else { return }
+                self?.descriptionTextView.layer.borderColor = Colors.Gray_7.cgColor
             })
             .disposed(by: disposeBag)
         
         self.descriptionTextView.rx.didEndEditing
             .subscribe(onNext: { [weak self] in
-                self?.handleTextViewEditing(true, textView: self?.descriptionTextView)
+                guard let text = self?.descriptionTextView.text, text.isEmpty else { return }
+                self?.descriptionTextView.layer.borderColor = Colors.Gray_5.cgColor
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func handleTextViewEditing(_ isEditing: Bool, textView: UITextView?) {
-        textView?.layer.borderColor = isEditing ? Colors.Gray_7.cgColor : Colors.Gray_5.cgColor
     }
 }
 
