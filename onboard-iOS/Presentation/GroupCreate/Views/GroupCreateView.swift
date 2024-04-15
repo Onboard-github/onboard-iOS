@@ -192,6 +192,13 @@ final class GroupCreateView: UIView {
         super.init(coder: coder)
     }
     
+    // MARK: - Bind
+    
+    func bind(image: UIImage?) {
+        guard let image = image else { return }
+        self.titleImageView.image = image
+    }
+    
     // MARK: - Configure
     
     private func configure() {
