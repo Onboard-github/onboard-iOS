@@ -436,6 +436,8 @@ extension GroupCreateView {
     }
 }
 
+// MARK: - GestureRecognizer
+
 extension GroupCreateView {
     
     private func setGestureRecognizer() {
