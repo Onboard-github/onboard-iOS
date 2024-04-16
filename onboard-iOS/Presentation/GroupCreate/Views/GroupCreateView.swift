@@ -44,6 +44,11 @@ final class GroupCreateView: UIView {
     
     // MARK: - UI
     
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        return scrollView
+    }()
+    
     private let titleImageView: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 8
