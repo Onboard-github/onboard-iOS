@@ -228,6 +228,7 @@ final class GroupCreateView: UIView {
     }
     
     private func makeConstraints() {
+        self.addSubview(self.scrollView)
         self.addSubview(self.titleImageView)
         self.titleImageView.addSubview(self.titleImageViewButton)
         
@@ -245,6 +246,10 @@ final class GroupCreateView: UIView {
         self.addSubview(self.organizationCountLabel)
         
         self.addSubview(self.registerButton)
+        
+        self.scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
         self.titleImageView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(Metric.topMargin)
