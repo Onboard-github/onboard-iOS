@@ -37,7 +37,6 @@ enum OBRouter: URLRequestConvertible {
     case groupInfo(groupId: Int)                                 // 단일 그룹 상세 정보 보기
     case groupAccessCodeCheck(groupId: Int, accessCode: String)  // 그룹 id 가지고 액세스 코드 확인
     case gameLeaderboard(groupId: Int, gameId: Int)              // 게임 별 리더보드 보기
-    case groupMemeberPatch(groupId: Int, userId: Int)
     
     // Game
     case gameResult(groupId: Int, sort: String) // 게임 목록 가져오기
@@ -49,6 +48,7 @@ enum OBRouter: URLRequestConvertible {
     case myGroupUnsubscribe(groupId: Int)                                                     // 멤버 탈퇴
     case groupMembers(groupId: Int)                                                           // 멤버 목록 가져오기
     case validateNickname(groupId: Int, nickname: String)                                     // 닉네임 유효성 체크, 멤버 닉네임 검사
+    case groupMemeberPatch(groupId: Int, userId: Int)                                         // 멤버 정보 변경
     case assignOwner(groupId: Int, memberId: Int)                                             // 그룹장 임명 (onwer에서 host로)
     case getMatchCount(groupId: Int, memberId: Int)                                           // 매치 카운트 가져오기
     
