@@ -259,7 +259,6 @@ class RankVC: UIViewController {
                     object: GameLeaderboardRes.self,
                     router: OBRouter.gameLeaderboard(groupId: selectedGroupInfo?.id ?? -1, gameId: gameId)
                 )
-            print("gameInfo: \(result)")
             if let gameInfo = result.value?.contents {
                 self.gameInfo = gameInfo
             } else {
@@ -548,6 +547,7 @@ struct IconItem: PagingItem, Hashable {
         self.title = title
         self.index = index
         self.gameId = gameId
+        print("gameId: \(gameId)")
     }
 
     func isBefore(item: PagingItem) -> Bool {
