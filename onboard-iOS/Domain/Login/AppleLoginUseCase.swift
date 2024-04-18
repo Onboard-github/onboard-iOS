@@ -17,6 +17,7 @@ protocol AppleLoginUseCase {
 protocol AppleLoginDelegate: AnyObject {
     // 애플로그인 토큰 발급
     func success(token: String)
+    func userName(nickname: String)
 }
 
 protocol AuthRepository {
@@ -65,5 +66,9 @@ extension AppleLoginUseCaseImpl: AppleLoginDelegate {
 
             self._result.onNext(isExisted)
         }
+    }
+    
+    func userName(nickname: String) {
+        
     }
 }

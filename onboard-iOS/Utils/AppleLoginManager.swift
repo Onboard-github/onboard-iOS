@@ -20,6 +20,12 @@ final class AppleLoginManagerImpl: NSObject, AppleLoginManager {
             self.delegate?.success(token: self.token)
         }
     }
+    
+    private var userName: String = "" {
+        didSet {
+            self.delegate?.userName(nickname: self.userName)
+        }
+    }
 
     weak var delegate: AppleLoginDelegate?
 
@@ -47,5 +53,11 @@ extension AppleLoginManagerImpl: ASAuthorizationControllerDelegate {
               let tokenString = String(data: identityToken, encoding: .utf8) else { return }
 
         self.token = tokenString
+        
+        guard let userName = appleIdCredential.fullName?.givenName else {
+            return
+        }
+        self.userName = userName
+        LoginSessionManager.setNickname(nickname: userName)
     }
 }
