@@ -104,7 +104,23 @@ extension AgreeVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? TermCell {
             cell.checked.toggle()
+            if isAllChecked() {
+                allCheckButton.checked = true
+                agreeButton.isEnabled = true
+            } else {
+                allCheckButton.checked = false
+                agreeButton.isEnabled = false
+            }
         }
     }
     
+    private func isAllChecked() -> Bool {
+        for index in 0..<terms.count {
+            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? TermCell else { return false }
+            if cell.checked == false {
+                return false
+            }
+        }
+        return true
+    }
 }
