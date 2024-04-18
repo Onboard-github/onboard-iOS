@@ -547,7 +547,6 @@ struct IconItem: PagingItem, Hashable {
         self.title = title
         self.index = index
         self.gameId = gameId
-        print("gameId: \(gameId)")
     }
 
     func isBefore(item: PagingItem) -> Bool {
