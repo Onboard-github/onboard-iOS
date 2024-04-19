@@ -51,9 +51,25 @@ class LoginSelectVC: UIViewController {
             
             let meInfoResult = try await OBNetworkManager.shared.asyncRequest(object: GetMeRes.self, router: .getMe)
             
+            let userName = LoginSessionManager.getNickname()
+            let setUserResult = try await OBNetworkManager.shared.asyncRequest(
+                    object: Empty.self,
+                    router: OBRouter.setUser(
+                        body: ["nickname": userName ?? ""]
+                    )
+                )
+            
+            if setUserResult.response?.statusCode == 200 {
+                LoginSessionManager.setNickname(nickname: userName ?? "")
+                LoginSessionManager.setState(state: .needJoinGroup)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                homeTabController.modalPresentationStyle = .fullScreen
+                navigationController?.present(homeTabController, animated: true)
+            }
+            
             if let result = meInfoResult.value {
                 // 이미 닉네임이 있음 - 가입 완료 상태이므로 닉네임 설정화면 스킵
-                self.appleLoginManager.delegate?.userName(nickname: result.nickname)
                 LoginSessionManager.setNickname(nickname: result.nickname)
                 LoginSessionManager.setState(state: .needJoinGroup)
             }
@@ -135,27 +151,6 @@ extension LoginSelectVC: AppleLoginDelegate {
             )
             
             acceptTokenHandler(authEntity: result, type: .apple)
-        }
-    }
-    
-    func userName(nickname: String) {
-        Task {
-            let result = try await OBNetworkManager
-                .shared
-                .asyncRequest(
-                    object: Empty.self,
-                    router: .setUser(
-                        body: ["nickname": nickname ]
-                    )
-                )
-            if result.response?.statusCode == 200 {
-                LoginSessionManager.setNickname(nickname: nickname)
-                LoginSessionManager.setState(state: .login)
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
-                homeTabController.modalPresentationStyle = .fullScreen
-                navigationController?.present(homeTabController, animated: true)
-            }
         }
     }
 }
