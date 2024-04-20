@@ -16,6 +16,7 @@
 		1C09D1E12B1A2941001B7B36 /* GroupCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */; };
 		1C1048FC2B8748860042E0D3 /* SearchEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1048FB2B8748860042E0D3 /* SearchEmptyStateView.swift */; };
 		1C105F652B92986B00016545 /* ConfirmPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C105F642B92986B00016545 /* ConfirmPopupViewController.swift */; };
+		1C1333102BD40E5200B5A616 /* UpdateUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13330F2BD40E5200B5A616 /* UpdateUserInfoView.swift */; };
 		1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */; };
 		1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */; };
 		1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */; };
@@ -205,6 +206,7 @@
 		1C09D1E02B1A2941001B7B36 /* GroupCreateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateEntity.swift; sourceTree = "<group>"; };
 		1C1048FB2B8748860042E0D3 /* SearchEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyStateView.swift; sourceTree = "<group>"; };
 		1C105F642B92986B00016545 /* ConfirmPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPopupViewController.swift; sourceTree = "<group>"; };
+		1C13330F2BD40E5200B5A616 /* UpdateUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoView.swift; sourceTree = "<group>"; };
 		1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopupView.swift; sourceTree = "<group>"; };
 		1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupViewController.swift; sourceTree = "<group>"; };
 		1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
@@ -724,6 +726,7 @@
 				3B9E2CC62B8BBB2200C25147 /* SettingSeparatorCell.swift */,
 				3B9E2CC72B8BBB2200C25147 /* SettingSeparatorCell.xib */,
 				3BADB8812B8CFE9A00FA3588 /* RemoveIDVC.swift */,
+				1C13330F2BD40E5200B5A616 /* UpdateUserInfoView.swift */,
 				3BADB8822B8CFE9A00FA3588 /* RemoveIDVC.xib */,
 			);
 			path = Profile;
@@ -1343,6 +1346,7 @@
 				1C6FEAE52B4D482100CFC647 /* GroupSettingViewController.swift in Sources */,
 				1C6FEAEB2B4D5D7E00CFC647 /* MemberManageTableViewCell.swift in Sources */,
 				1CD2086C2B1BAC28008E710E /* GroupCreateDTO.swift in Sources */,
+				1C1333102BD40E5200B5A616 /* UpdateUserInfoView.swift in Sources */,
 				1C7E8DB52B0D586300BA00F7 /* TextView.swift in Sources */,
 				1CA1BBD02AE00704000C5F7E /* TextFieldLabelState.swift in Sources */,
 				611D8CAA2ABED03D0074A55A /* AuthDTO.swift in Sources */,
