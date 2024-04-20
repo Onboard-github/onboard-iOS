@@ -119,6 +119,8 @@ final class UpdateUserInfoView: UIView {
         self.backgroundColor = Colors.White
         
         self.makeConstraints()
+        
+        self.setTextField()
     }
     
     private func makeConstraints() {
@@ -187,7 +189,21 @@ extension UpdateUserInfoView {
                 let maxLength = 10
                 self?.countLabel.text = "\(String(format: "%02d", String(text.prefix(maxLength)).count))/\(maxLength)"
                 self?.textField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+                
             })
             .disposed(by: disposeBag)
+        
+        self.textField.rx
+            .controlEvent(.editingChanged)
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.confirmButton.status = !(self.textField.text?.isEmpty ?? true) && !(self.isValidInput(self.textField.text)) ? .default : .disabled
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func isValidInput(_ text: String?) -> Bool {
+        let excludeCharacter = CharacterSet(charactersIn: "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅐㅜㅠㅡㅣㅔㅐㅟㅚㅢㅝㅖㅒㅙ")
+        return text?.rangeOfCharacter(from: excludeCharacter) != nil
     }
 }
