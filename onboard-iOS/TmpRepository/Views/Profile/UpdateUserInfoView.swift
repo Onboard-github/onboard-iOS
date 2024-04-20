@@ -78,4 +78,22 @@ final class UpdateUserInfoView: UIView {
         button.setTitle("수정 완료", for: .normal)
         return button
     }()
+    
+    // MARK: - Initialize
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Configure
+    
+    private func configure() {
+        self.backgroundColor = Colors.White
+    }
 }
