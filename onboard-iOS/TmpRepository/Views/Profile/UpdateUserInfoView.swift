@@ -174,3 +174,20 @@ final class UpdateUserInfoView: UIView {
         }
     }
 }
+
+// MARK: - TextField
+
+extension UpdateUserInfoView {
+    
+    private func setTextField() {
+        
+        self.textField.rx.text
+            .orEmpty
+            .subscribe(onNext: { [weak self] text in
+                let maxLength = 10
+                self?.countLabel.text = "\(String(format: "%02d", String(text.prefix(maxLength)).count))/\(maxLength)"
+                self?.textField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+            })
+            .disposed(by: disposeBag)
+    }
+}
