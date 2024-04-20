@@ -9,6 +9,21 @@ import UIKit
 
 final class UpdateUserInfoView: UIView {
     
+    // MARK: - Metric
+    
+    private enum Metric {
+        static let topMargin: CGFloat = 35
+        static let basePadding: CGFloat = 20
+        static let nicknameTopSpacing: CGFloat = 10
+        static let itemSpacing: CGFloat = 30
+        static let requiredLeftSpacing: CGFloat = 2
+        static let textFieldTopSpacing: CGFloat = 5
+        static let textFieldHeight: CGFloat = 48
+        static let countRightMargin: CGFloat = 30
+        static let buttonBottomMargin: CGFloat = 10
+        static let buttonHeight: CGFloat = 48
+    }
+    
     // MARK: - UI
     
     private let textInputTitleLabel: UILabel = {
@@ -95,5 +110,60 @@ final class UpdateUserInfoView: UIView {
     
     private func configure() {
         self.backgroundColor = Colors.White
+        
+        self.makeConstraints()
+    }
+    
+    private func makeConstraints() {
+        self.addSubview(self.textInputTitleLabel)
+        self.addSubview(self.myNicknameLabel)
+        self.addSubview(self.newTextInputTitleLabel)
+        self.addSubview(self.requiredImage)
+        self.addSubview(self.textField)
+        self.addSubview(self.textFieldSubTitleLabel)
+        self.addSubview(self.countLabel)
+        self.addSubview(self.confirmButton)
+        
+        self.textInputTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
+            $0.leading.equalToSuperview().inset(Metric.basePadding)
+        }
+        
+        self.myNicknameLabel.snp.makeConstraints {
+            $0.top.equalTo(self.textInputTitleLabel.snp.bottom).offset(Metric.nicknameTopSpacing)
+            $0.leading.equalToSuperview().inset(Metric.basePadding)
+        }
+        
+        self.newTextInputTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(self.myNicknameLabel.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.equalToSuperview().inset(Metric.basePadding)
+        }
+        
+        self.requiredImage.snp.makeConstraints {
+            $0.top.equalTo(myNicknameLabel.snp.bottom).offset(Metric.itemSpacing)
+            $0.leading.equalTo(self.newTextInputTitleLabel.snp.trailing).offset(Metric.requiredLeftSpacing)
+        }
+        
+        self.textField.snp.makeConstraints {
+            $0.top.equalTo(self.newTextInputTitleLabel.snp.bottom).offset(Metric.textFieldTopSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.basePadding)
+            $0.height.equalTo(Metric.textFieldHeight)
+        }
+        
+        self.textFieldSubTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(self.textField.snp.bottom).offset(Metric.textFieldTopSpacing)
+            $0.leading.trailing.equalToSuperview().inset(Metric.basePadding)
+        }
+        
+        self.countLabel.snp.makeConstraints {
+            $0.top.equalTo(self.textField.snp.bottom).offset(Metric.textFieldTopSpacing)
+            $0.trailing.equalToSuperview().inset(Metric.countRightMargin)
+        }
+        
+        self.confirmButton.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).inset(Metric.buttonBottomMargin)
+            $0.leading.trailing.equalToSuperview().inset(Metric.basePadding)
+            $0.height.equalTo(Metric.buttonHeight)
+        }
     }
 }
