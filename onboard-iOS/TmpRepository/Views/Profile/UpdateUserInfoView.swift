@@ -201,6 +201,7 @@ extension UpdateUserInfoView {
                 self?.countLabel.text = "\(String(format: "%02d", String(text.prefix(maxLength)).count))/\(maxLength)"
                 self?.textField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
                 
+                OnBoardSingleton.shared.newUserNameText.accept(text)
             })
             .disposed(by: disposeBag)
         
