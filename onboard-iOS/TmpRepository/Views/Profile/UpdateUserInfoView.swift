@@ -44,7 +44,7 @@ final class UpdateUserInfoView: UIView {
     
     private let myNicknameLabel: UILabel = {
         let label = UILabel()
-        label.text = LoginSessionManager.getNickname()
+        label.text = ProfileManager.profileName
         label.textColor = Colors.Gray_15
         label.font = Font.Typography.title3
         return label
@@ -202,6 +202,8 @@ extension UpdateUserInfoView {
                 self?.textField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
                 
                 OnBoardSingleton.shared.newUserNameText.accept(text)
+                
+                self?.textFieldSubTitleLabel.textColor = self?.isValidInput(text) == false ? Colors.Gray_8 : Colors.Red
             })
             .disposed(by: disposeBag)
         
