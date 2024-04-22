@@ -10,9 +10,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class GroupCreateSingleton {
+final class OnBoardSingleton {
     
-    static let shared = GroupCreateSingleton()
+    static let shared = OnBoardSingleton()
     
     var groupImageUuid = BehaviorRelay<String>(value: "")
     var groupImageUrl = BehaviorRelay<String>(value: "")
@@ -21,4 +21,6 @@ final class GroupCreateSingleton {
     var organizationText = BehaviorRelay<String>(value: "")
     var ownerText = BehaviorRelay<String>(value: "")
     var accessCodeText = BehaviorRelay<String>(value: "")
+    
+    var newUserNameText = BehaviorRelay<String>(value: "")
 }
