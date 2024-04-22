@@ -84,7 +84,7 @@ final class UpdateUserInfoView: UIView {
     
     private let textFieldSubTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = TextLabels.userInfo_subTitle
+        label.text = TextLabels.userInfo_textField_subTitle
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
