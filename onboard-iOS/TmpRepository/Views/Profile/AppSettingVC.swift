@@ -22,16 +22,25 @@ class AppSettingVC: UIViewController {
     }
     
     let contents: [SettingItem] = [
-//        SettingItem("회원 정보 수정", { _ in }),
+        
+        SettingItem("회원 정보 수정", { vc in
+            let useCase = UserUseCaseImpl(repository: UserRepositoryImpl())
+            let reactor = UserReactor(userUseCase: useCase)
+            let userInfoVC = UpdateUserInfoViewController(reactor: reactor)
+            vc?.navigationController?.pushViewController(userInfoVC, animated: true)
+        }),
+        
         SettingItem("문의", { _ in
             AlertManager.show(title: "문의", message: "help.onboardgame@gmail.com\n문의는 이메일로 부탁드립니다.")
         }),
+        
         SettingItem("개인정보 처리방침", { vc in
             if let url = URL(string: "http://api.onboardgame.co.kr/privacy.html") {
                 let safariViewController = SFSafariViewController(url: url)
                 vc?.present(safariViewController, animated: true)
             }
         }),
+        
         SettingItem("서비스 이용 약관", { vc in
             if let url = URL(string: "http://api.onboardgame.co.kr/terms.html") {
                 let safariViewController = SFSafariViewController(url: url)
@@ -40,6 +49,7 @@ class AppSettingVC: UIViewController {
         }),
 //        SettingItem("오픈소스 라이선스", { _ in }),
         SettingItem("", { _ in }, true),
+        
         SettingItem("회원 탈퇴", { vc in
             let removeVC = RemoveIDVC(nibName: "RemoveIDVC", bundle: .main)
             vc?.navigationController?.pushViewController(removeVC, animated: true)
