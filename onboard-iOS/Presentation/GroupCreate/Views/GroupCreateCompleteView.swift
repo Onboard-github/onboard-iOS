@@ -285,7 +285,7 @@ final class GroupCreateCompleteView: UIView {
     }
     
     private func getCreateData() {
-        GroupCreateSingleton.shared.groupImageUrl
+        OnBoardSingleton.shared.groupImageUrl
             .subscribe(onNext: { [weak self] imgUrl in
                 ImageLoader.loadImage(from: imgUrl) { [weak self] image in
                     DispatchQueue.main.async {
@@ -295,31 +295,31 @@ final class GroupCreateCompleteView: UIView {
             })
             .disposed(by: disposeBag)
         
-        GroupCreateSingleton.shared.organizationText
+        OnBoardSingleton.shared.organizationText
             .subscribe(onNext: { [weak self] text in
                 self?.organizationLabel.text = text
             })
             .disposed(by: disposeBag)
         
-        GroupCreateSingleton.shared.nameText
+        OnBoardSingleton.shared.nameText
             .subscribe(onNext: { [weak self] text in
                 self?.nameLabel.text = text
             })
             .disposed(by: disposeBag)
         
-        GroupCreateSingleton.shared.descriptionText
+        OnBoardSingleton.shared.descriptionText
             .subscribe(onNext: { [weak self] text in
                 self?.descriptionLabel.text = text
             })
             .disposed(by: disposeBag)
         
-        GroupCreateSingleton.shared.ownerText
+        OnBoardSingleton.shared.ownerText
             .subscribe(onNext: { [weak self] text in
                 self?.ownerNameLabel.text = text
             })
             .disposed(by: disposeBag)
         
-        GroupCreateSingleton.shared.accessCodeText
+        OnBoardSingleton.shared.accessCodeText
             .subscribe(onNext: { [weak self] text in
                 self?.accessCodeLabel.text = text
             })

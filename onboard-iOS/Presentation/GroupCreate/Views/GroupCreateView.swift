@@ -367,7 +367,7 @@ extension GroupCreateView {
                 self?.nameCountLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
                 self?.nameTextField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
                 
-                GroupCreateSingleton.shared.nameText.accept(text)
+                OnBoardSingleton.shared.nameText.accept(text)
             })
             .disposed(by: disposeBag)
         
@@ -379,7 +379,7 @@ extension GroupCreateView {
                 self?.organizationCountLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
                 self?.organizationTextField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
                 
-                GroupCreateSingleton.shared.organizationText.accept(text)
+                OnBoardSingleton.shared.organizationText.accept(text)
             })
             .disposed(by: disposeBag)
         
@@ -426,7 +426,7 @@ extension GroupCreateView {
                 self?.descriptionCountLabel.text = "\(String(format: "%02d", updatedText.count))/\(maxLength)"
                 self?.descriptionTextView.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
                 
-                GroupCreateSingleton.shared.descriptionText.accept(text)
+                OnBoardSingleton.shared.descriptionText.accept(text)
             })
             .disposed(by: disposeBag)
         

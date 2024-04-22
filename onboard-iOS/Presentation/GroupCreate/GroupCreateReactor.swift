@@ -88,8 +88,8 @@ extension GroupCreateReactor {
                     DispatchQueue.main.async {
                         let url = result.url
                         let uuid = result.uuid
-                        GroupCreateSingleton.shared.groupImageUrl.accept(url)
-                        GroupCreateSingleton.shared.groupImageUuid.accept(uuid)
+                        OnBoardSingleton.shared.groupImageUrl.accept(url)
+                        OnBoardSingleton.shared.groupImageUuid.accept(uuid)
                     }
                     
                 } catch {
@@ -112,8 +112,8 @@ extension GroupCreateReactor {
                     DispatchQueue.main.async {
                         let url = result.url
                         let uuid = result.uuid
-                        GroupCreateSingleton.shared.groupImageUrl.accept(url)
-                        GroupCreateSingleton.shared.groupImageUuid.accept(uuid)
+                        OnBoardSingleton.shared.groupImageUrl.accept(url)
+                        OnBoardSingleton.shared.groupImageUuid.accept(uuid)
                     }
                     
                     observer.onNext(.setRandomImage(result: result.url))
@@ -136,7 +136,7 @@ extension GroupCreateReactor {
                     observer.onNext(.setGroupCreation(result: result))
                     
                     DispatchQueue.main.async {
-                        GroupCreateSingleton.shared.accessCodeText.accept(result.accessCode)
+                        OnBoardSingleton.shared.accessCodeText.accept(result.accessCode)
                     }
                 } catch {
                     observer.onError(error)

@@ -172,11 +172,11 @@ final class NameInputPopupView: UIViewController, View {
                 self?.loadingView.isLoading = false
                 
                 let req = GroupCreateCompleteEntity.Req(
-                    name: GroupCreateSingleton.shared.nameText.value,
-                    description: GroupCreateSingleton.shared.descriptionText.value,
-                    organization: GroupCreateSingleton.shared.organizationText.value,
+                    name: OnBoardSingleton.shared.nameText.value,
+                    description: OnBoardSingleton.shared.descriptionText.value,
+                    organization: OnBoardSingleton.shared.organizationText.value,
                     profileImageUrl: nil,
-                    profileImageUuid: GroupCreateSingleton.shared.groupImageUuid.value,
+                    profileImageUuid: OnBoardSingleton.shared.groupImageUuid.value,
                     nickname: LoginSessionManager.getNickname() ?? ""
                 )
                 
@@ -272,7 +272,7 @@ extension NameInputPopupView: UITextViewDelegate {
                 
                 self?.setButtonStatus(text: updatedText)
                 
-                GroupCreateSingleton.shared.ownerText.accept(text)
+                OnBoardSingleton.shared.ownerText.accept(text)
             })
             .disposed(by: disposeBag)
     }
