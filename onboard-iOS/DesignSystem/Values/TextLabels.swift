@@ -9,6 +9,19 @@ import Foundation
 
 struct TextLabels {
     
+    // MARK: - String to exclude from textField
+    
+    static let exclude_string = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅐㅜㅠㅡㅣㅔㅐㅟㅚㅢㅝㅖㅒㅙ~`!@#$%^&*()_-+=[]{};:'<,>.?/"
+    
+    // MARK: - App Setting - UserInfo
+    
+    static let userInfo_textTitle = "사용 중인 닉네임"
+    static let userInfo_newTextInputTitle = "새 이름"
+    static let userInfo_textField_placeholder = "이름을 입력해주세요"
+    static let userInfo_textField_subTitle = "한글, 영문, 숫자를 조합하여 사용 가능합니다."
+    static let userInfo_textField_count = "00/10"
+    static let userInfo_confirm = "수정 완료"
+    
     // MARK: - Group Create
     
     static let group_title = "모임 등록"

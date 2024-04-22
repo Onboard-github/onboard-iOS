@@ -35,7 +35,7 @@ final class UpdateUserInfoView: UIView {
     
     private let textInputTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "사용 중인 닉네임"
+        label.text = TextLabels.userInfo_textTitle
         label.textColor = Colors.Gray_14
         label.font = Font.Typography.body3_M
         return label
@@ -51,7 +51,7 @@ final class UpdateUserInfoView: UIView {
     
     private let newTextInputTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "새 이름"
+        label.text = TextLabels.userInfo_newTextInputTitle
         label.textColor = Colors.Gray_14
         label.font = Font.Typography.body3_M
         return label
@@ -73,15 +73,18 @@ final class UpdateUserInfoView: UIView {
         
         let attributes: [NSAttributedString.Key: Any] = [
             .font: Font.Typography.body3_R as Any,
-            .foregroundColor: Colors.Gray_7]
-        textField.attributedPlaceholder = NSAttributedString(string: "이름을 입력해주세요",
-                                                             attributes: attributes)
+            .foregroundColor: Colors.Gray_7
+        ]
+        textField.attributedPlaceholder = NSAttributedString(
+            string: TextLabels.userInfo_textField_placeholder,
+            attributes: attributes
+        )
         return textField
     }()
     
     private let textFieldSubTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "한글, 영문, 숫자를 조합하여 사용 가능합니다."
+        label.text = TextLabels.userInfo_subTitle
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
@@ -89,7 +92,7 @@ final class UpdateUserInfoView: UIView {
     
     private let countLabel: UILabel = {
         let label = UILabel()
-        label.text = "00/10"
+        label.text = TextLabels.userInfo_textField_count
         label.textColor = Colors.Gray_8
         label.font = Font.Typography.body5_R
         return label
@@ -97,7 +100,7 @@ final class UpdateUserInfoView: UIView {
     
     private let confirmButton: BaseButton = {
         let button = BaseButton(status: .disabled, style: .rounded)
-        button.setTitle("수정 완료", for: .normal)
+        button.setTitle(TextLabels.userInfo_confirm, for: .normal)
         return button
     }()
     
@@ -203,7 +206,7 @@ extension UpdateUserInfoView {
     }
     
     private func isValidInput(_ text: String?) -> Bool {
-        let excludeCharacter = CharacterSet(charactersIn: "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎㅏㅑㅓㅕㅗㅛㅐㅜㅠㅡㅣㅔㅐㅟㅚㅢㅝㅖㅒㅙ")
+        let excludeCharacter = CharacterSet(charactersIn: TextLabels.exclude_string)
         return text?.rangeOfCharacter(from: excludeCharacter) != nil
     }
 }
