@@ -69,7 +69,7 @@ final class UpdateUserInfoViewController: UIViewController, View {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
             homeTabController.modalPresentationStyle = .fullScreen
-            navigationController?.present(homeTabController, animated: true)
+            self.navigationController?.present(homeTabController, animated: true)
         }
     }
     
