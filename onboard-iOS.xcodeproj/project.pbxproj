@@ -19,6 +19,7 @@
 		1C1333102BD40E5200B5A616 /* UpdateUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13330F2BD40E5200B5A616 /* UpdateUserInfoView.swift */; };
 		1C1333122BD427A800B5A616 /* UpdateUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1333112BD427A800B5A616 /* UpdateUserInfoViewController.swift */; };
 		1C13332F2BD7D0ED00B5A616 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13332E2BD7D0ED00B5A616 /* UserDTO.swift */; };
+		1C1333312BD7D26900B5A616 /* UpdateMyNicknameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1333302BD7D26900B5A616 /* UpdateMyNicknameEntity.swift */; };
 		1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */; };
 		1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */; };
 		1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */; };
@@ -211,6 +212,7 @@
 		1C13330F2BD40E5200B5A616 /* UpdateUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoView.swift; sourceTree = "<group>"; };
 		1C1333112BD427A800B5A616 /* UpdateUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoViewController.swift; sourceTree = "<group>"; };
 		1C13332E2BD7D0ED00B5A616 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		1C1333302BD7D26900B5A616 /* UpdateMyNicknameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyNicknameEntity.swift; sourceTree = "<group>"; };
 		1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopupView.swift; sourceTree = "<group>"; };
 		1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupViewController.swift; sourceTree = "<group>"; };
 		1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				1C691A652BBDA22B00729D26 /* MyGroupEntity.swift */,
+				1C1333302BD7D26900B5A616 /* UpdateMyNicknameEntity.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1326,6 +1329,7 @@
 				3B9E2CC02B8BB2D900C25147 /* AppSettingVC.swift in Sources */,
 				AA31AFB22B3D624A00E91C91 /* TermsResponse.swift in Sources */,
 				1CD208722B1BB339008E710E /* ImageLoader.swift in Sources */,
+				1C1333312BD7D26900B5A616 /* UpdateMyNicknameEntity.swift in Sources */,
 				3BDAA8E72B6FE1540038BE4B /* JoinCodeVC.swift in Sources */,
 				AA7035FB2ADB81C700B26537 /* GroupRepository.swift in Sources */,
 				1CAC01E62B83A2DE0006A8D7 /* MatchUseCase.swift in Sources */,
