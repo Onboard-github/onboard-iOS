@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum UpdateMyNicknameRequest {
+    struct Body: Encodable {
+        let nickname: String
+    }
+}
+
 struct UserDTO: Decodable {
     
 }
