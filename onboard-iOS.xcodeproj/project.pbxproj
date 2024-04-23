@@ -22,6 +22,7 @@
 		1C1333312BD7D26900B5A616 /* UpdateMyNicknameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1333302BD7D26900B5A616 /* UpdateMyNicknameEntity.swift */; };
 		1C1333342BD7D2D000B5A616 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1333332BD7D2D000B5A616 /* UserRepository.swift */; };
 		1C1333372BD7D40700B5A616 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1333362BD7D40700B5A616 /* UserUseCase.swift */; };
+		1C13333A2BD7D50100B5A616 /* UserReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1333392BD7D50100B5A616 /* UserReactor.swift */; };
 		1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */; };
 		1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */; };
 		1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */; };
@@ -217,6 +218,7 @@
 		1C1333302BD7D26900B5A616 /* UpdateMyNicknameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyNicknameEntity.swift; sourceTree = "<group>"; };
 		1C1333332BD7D2D000B5A616 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		1C1333362BD7D40700B5A616 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		1C1333392BD7D50100B5A616 /* UserReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReactor.swift; sourceTree = "<group>"; };
 		1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopupView.swift; sourceTree = "<group>"; };
 		1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupViewController.swift; sourceTree = "<group>"; };
 		1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
@@ -434,6 +436,14 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		1C1333382BD7D4F700B5A616 /* Reactor */ = {
+			isa = PBXGroup;
+			children = (
+				1C1333392BD7D50100B5A616 /* UserReactor.swift */,
+			);
+			path = Reactor;
+			sourceTree = "<group>";
+		};
 		1C1F51A92AE12DF50020AA71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				1C2647DE2BB85D53001E813A /* MyProfileViewController.swift */,
+				1C1333382BD7D4F700B5A616 /* Reactor */,
 				1C39CFDF2BB5B95B000D0DE9 /* Views */,
 			);
 			path = Profile;
@@ -1362,6 +1373,7 @@
 				1CA1BBD82AE0337E000C5F7E /* BaseButton.swift in Sources */,
 				1C3017132B4EC4D000128E5C /* OwnerManageViewController.swift in Sources */,
 				AA31AFB52B3D662E00E91C91 /* TermCell.swift in Sources */,
+				1C13333A2BD7D50100B5A616 /* UserReactor.swift in Sources */,
 				1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */,
 				1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */,
 				1C327B222B55721300F02C26 /* GameResultUseCase.swift in Sources */,
