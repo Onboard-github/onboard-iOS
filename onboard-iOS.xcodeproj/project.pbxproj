@@ -79,7 +79,7 @@
 		1CAC01E42B83A25C0006A8D7 /* MatchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC01E32B83A25C0006A8D7 /* MatchRepository.swift */; };
 		1CAC01E62B83A2DE0006A8D7 /* MatchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC01E52B83A2DE0006A8D7 /* MatchUseCase.swift */; };
 		1CAC01E82B83A3210006A8D7 /* MatchReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAC01E72B83A3210006A8D7 /* MatchReactor.swift */; };
-		1CCBDB3D2B2EB9820097DEE6 /* GroupCreateSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */; };
+		1CCBDB3D2B2EB9820097DEE6 /* OnBoardSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCBDB3C2B2EB9820097DEE6 /* OnBoardSingleton.swift */; };
 		1CD2086A2B1BAB91008E710E /* GroupCreateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD208692B1BAB91008E710E /* GroupCreateRepository.swift */; };
 		1CD2086C2B1BAC28008E710E /* GroupCreateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */; };
 		1CD2086E2B1BADB2008E710E /* GroupCreateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD2086D2B1BADB2008E710E /* GroupCreateUseCase.swift */; };
@@ -271,7 +271,7 @@
 		1CAC01E32B83A25C0006A8D7 /* MatchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRepository.swift; sourceTree = "<group>"; };
 		1CAC01E52B83A2DE0006A8D7 /* MatchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchUseCase.swift; sourceTree = "<group>"; };
 		1CAC01E72B83A3210006A8D7 /* MatchReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchReactor.swift; sourceTree = "<group>"; };
-		1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateSingleton.swift; sourceTree = "<group>"; };
+		1CCBDB3C2B2EB9820097DEE6 /* OnBoardSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardSingleton.swift; sourceTree = "<group>"; };
 		1CD208692B1BAB91008E710E /* GroupCreateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateRepository.swift; sourceTree = "<group>"; };
 		1CD2086B2B1BAC28008E710E /* GroupCreateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateDTO.swift; sourceTree = "<group>"; };
 		1CD2086D2B1BADB2008E710E /* GroupCreateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateUseCase.swift; sourceTree = "<group>"; };
@@ -939,7 +939,7 @@
 				AA09C2812ACBF18C00F51A96 /* KakaoLoginManager.swift */,
 				1C7A952A2B6FEA7000F68DA6 /* GoogleLoginManager.swift */,
 				1CD208712B1BB339008E710E /* ImageLoader.swift */,
-				1CCBDB3C2B2EB9820097DEE6 /* GroupCreateSingleton.swift */,
+				1CCBDB3C2B2EB9820097DEE6 /* OnBoardSingleton.swift */,
 				1C39CFDA2BB22F77000D0DE9 /* UIViewControllerAnimatedTransitioning.swift */,
 			);
 			path = Utils;
