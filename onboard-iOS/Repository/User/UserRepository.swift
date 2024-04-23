@@ -36,3 +36,9 @@ final class UserRepositoryImpl: UserRepository {
         }
     }
 }
+
+extension UserDTO {
+    func toDomain() -> UpdateMyNicknameEntity.Res {
+        return UpdateMyNicknameEntity.Res()
+    }
+}
