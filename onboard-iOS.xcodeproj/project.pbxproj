@@ -18,6 +18,7 @@
 		1C105F652B92986B00016545 /* ConfirmPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C105F642B92986B00016545 /* ConfirmPopupViewController.swift */; };
 		1C1333102BD40E5200B5A616 /* UpdateUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13330F2BD40E5200B5A616 /* UpdateUserInfoView.swift */; };
 		1C1333122BD427A800B5A616 /* UpdateUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1333112BD427A800B5A616 /* UpdateUserInfoViewController.swift */; };
+		1C13332F2BD7D0ED00B5A616 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13332E2BD7D0ED00B5A616 /* UserDTO.swift */; };
 		1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */; };
 		1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */; };
 		1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */; };
@@ -209,6 +210,7 @@
 		1C105F642B92986B00016545 /* ConfirmPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPopupViewController.swift; sourceTree = "<group>"; };
 		1C13330F2BD40E5200B5A616 /* UpdateUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoView.swift; sourceTree = "<group>"; };
 		1C1333112BD427A800B5A616 /* UpdateUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoViewController.swift; sourceTree = "<group>"; };
+		1C13332E2BD7D0ED00B5A616 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopupView.swift; sourceTree = "<group>"; };
 		1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupViewController.swift; sourceTree = "<group>"; };
 		1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
@@ -402,6 +404,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C13332D2BD7D0E600B5A616 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				1C13332E2BD7D0ED00B5A616 /* UserDTO.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		1C1F51A92AE12DF50020AA71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -903,6 +913,7 @@
 		61AC7FCC2AB6DDD900B0B6B5 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				1C13332D2BD7D0E600B5A616 /* User */,
 				1C6302102B96E5B50085106D /* Member */,
 				61AC7FCD2AB6DDE300B0B6B5 /* TestDTO.swift */,
 				1C5369432AC69C9600AC9AF0 /* AuthDTO.swift */,
@@ -1366,6 +1377,7 @@
 				1CA1BBC72ADABFA3000C5F7E /* LinkButtonState.swift in Sources */,
 				61AC80052AB73A2800B0B6B5 /* Reactive+Extension.swift in Sources */,
 				611D8CA02AB884C10074A55A /* AppleLoginManager.swift in Sources */,
+				1C13332F2BD7D0ED00B5A616 /* UserDTO.swift in Sources */,
 				1C691A662BBDA22B00729D26 /* MyGroupEntity.swift in Sources */,
 				1CF1A84A2B6159A70098A6AA /* GuestNicknameDTO.swift in Sources */,
 				AAF1698C2B108E3100EF82A4 /* LogManager.swift in Sources */,
@@ -1398,7 +1410,7 @@
 				3B282DF82B5381F900483A2A /* GroupInfoRes.swift in Sources */,
 				1C0319FD2B71DCE800BD3D44 /* Toast.swift in Sources */,
 				AAF169992B1092F100EF82A4 /* UIView+Util.swift in Sources */,
-				1CCBDB3D2B2EB9820097DEE6 /* GroupCreateSingleton.swift in Sources */,
+				1CCBDB3D2B2EB9820097DEE6 /* OnBoardSingleton.swift in Sources */,
 				1CF1A85B2B618AFC0098A6AA /* GameScoreView.swift in Sources */,
 				3BDFDDA12B9D9A6E00ABFDFC /* EmptyMatchedCell.swift in Sources */,
 				3B9E2CC82B8BBB2200C25147 /* SettingSeparatorCell.swift in Sources */,
