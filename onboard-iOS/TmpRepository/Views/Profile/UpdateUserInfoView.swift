@@ -34,7 +34,7 @@ final class UpdateUserInfoView: UIView {
     
     // MARK: - UI
     
-    private let textInputTitleLabel: UILabel = {
+    private let textTitleLabel: UILabel = {
         let label = UILabel()
         label.text = TextLabels.userInfo_textTitle
         label.textColor = Colors.Gray_14
@@ -135,7 +135,7 @@ final class UpdateUserInfoView: UIView {
     }
     
     private func makeConstraints() {
-        self.addSubview(self.textInputTitleLabel)
+        self.addSubview(self.textTitleLabel)
         self.addSubview(self.myNicknameLabel)
         self.addSubview(self.newTextInputTitleLabel)
         self.addSubview(self.requiredImage)
@@ -144,13 +144,13 @@ final class UpdateUserInfoView: UIView {
         self.addSubview(self.countLabel)
         self.addSubview(self.confirmButton)
         
-        self.textInputTitleLabel.snp.makeConstraints {
+        self.textTitleLabel.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(Metric.topMargin)
             $0.leading.equalToSuperview().inset(Metric.basePadding)
         }
         
         self.myNicknameLabel.snp.makeConstraints {
-            $0.top.equalTo(self.textInputTitleLabel.snp.bottom).offset(Metric.nicknameTopSpacing)
+            $0.top.equalTo(self.textTitleLabel.snp.bottom).offset(Metric.nicknameTopSpacing)
             $0.leading.equalToSuperview().inset(Metric.basePadding)
         }
         
