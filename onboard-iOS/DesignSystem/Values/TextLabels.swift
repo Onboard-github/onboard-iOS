@@ -15,6 +15,7 @@ struct TextLabels {
     
     // MARK: - App Setting - UserInfo
     
+    static let userInfo_title = "회원 정보 수정"
     static let userInfo_textTitle = "사용 중인 닉네임"
     static let userInfo_newTextInputTitle = "새 이름"
     static let userInfo_textField_placeholder = "이름을 입력해주세요"
