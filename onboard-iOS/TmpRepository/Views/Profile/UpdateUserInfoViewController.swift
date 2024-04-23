@@ -21,6 +21,17 @@ final class UpdateUserInfoViewController: UIViewController {
         self.view = updateUserInfoView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.title = TextLabels.userInfo_title
+        
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
