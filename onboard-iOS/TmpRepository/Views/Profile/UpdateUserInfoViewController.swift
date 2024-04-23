@@ -7,9 +7,15 @@
 
 import UIKit
 
-final class UpdateUserInfoViewController: UIViewController {
+import ReactorKit
+
+final class UpdateUserInfoViewController: UIViewController, View {
+    
+    typealias Reactor = UserReactor
     
     // MARK: - Properties
+    
+    var disposeBag = DisposeBag()
     
     private let updateUserInfoView = UpdateUserInfoView()
     
@@ -34,5 +40,35 @@ final class UpdateUserInfoViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    // MARK: - Initialize
+    
+    init(reactor: UserReactor) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.reactor = reactor
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Bind
+    
+    func bind(reactor: UserReactor) {
+        self.bindAction(reactor: reactor)
+        self.bindState(reactor: reactor)
+    }
+    
+    func bindAction(reactor: UserReactor) {
+        self.updateUserInfoView.didTapButtonAction = {
+            let req = UpdateMyNicknameEntity.Req(nickname: OnBoardSingleton.shared.newUserNameText.value)
+            reactor.action.onNext(.updateMe(req: req))
+        }
+    }
+    
+    func bindState(reactor: UserReactor) {
+        
     }
 }
