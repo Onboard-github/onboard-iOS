@@ -21,6 +21,7 @@
 		1C13332F2BD7D0ED00B5A616 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C13332E2BD7D0ED00B5A616 /* UserDTO.swift */; };
 		1C1333312BD7D26900B5A616 /* UpdateMyNicknameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1333302BD7D26900B5A616 /* UpdateMyNicknameEntity.swift */; };
 		1C1333342BD7D2D000B5A616 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1333332BD7D2D000B5A616 /* UserRepository.swift */; };
+		1C1333372BD7D40700B5A616 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1333362BD7D40700B5A616 /* UserUseCase.swift */; };
 		1C1F51AD2AE1640B0020AA71 /* JoinPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */; };
 		1C1F51AF2AE16B600020AA71 /* ImagePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */; };
 		1C1F51B52AE2B7960020AA71 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */; };
@@ -215,6 +216,7 @@
 		1C13332E2BD7D0ED00B5A616 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		1C1333302BD7D26900B5A616 /* UpdateMyNicknameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMyNicknameEntity.swift; sourceTree = "<group>"; };
 		1C1333332BD7D2D000B5A616 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		1C1333362BD7D40700B5A616 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		1C1F51AC2AE1640B0020AA71 /* JoinPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopupView.swift; sourceTree = "<group>"; };
 		1C1F51AE2AE16B600020AA71 /* ImagePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupViewController.swift; sourceTree = "<group>"; };
 		1C1F51B42AE2B7960020AA71 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
@@ -420,6 +422,14 @@
 			isa = PBXGroup;
 			children = (
 				1C1333332BD7D2D000B5A616 /* UserRepository.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		1C1333352BD7D40200B5A616 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				1C1333362BD7D40700B5A616 /* UserUseCase.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -864,6 +874,7 @@
 		61AC7FB42AB6D68B00B0B6B5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				1C1333352BD7D40200B5A616 /* User */,
 				1C63021D2B96E7240085106D /* Member */,
 				1C327B202B55720F00F02C26 /* Game */,
 				AA7035FC2ADB81E800B26537 /* Group */,
@@ -1437,6 +1448,7 @@
 				61AC7FC22AB6D75400B0B6B5 /* TestRepository.swift in Sources */,
 				3BE4B8C62B67B2E9006679DC /* EmptyGroupCell.swift in Sources */,
 				1CF46D112B9A643200C1130A /* GroupUseCase.swift in Sources */,
+				1C1333372BD7D40700B5A616 /* UserUseCase.swift in Sources */,
 				AA09C2802ACBEB0100F51A96 /* KakaoLoginUseCase.swift in Sources */,
 				AA83D9732AE57AC80068362B /* AuthEntity.swift in Sources */,
 				1C39CFDB2BB22F77000D0DE9 /* UIViewControllerAnimatedTransitioning.swift in Sources */,
