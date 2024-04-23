@@ -65,6 +65,11 @@ final class UpdateUserInfoViewController: UIViewController, View {
         self.updateUserInfoView.didTapButtonAction = {
             let req = UpdateMyNicknameEntity.Req(nickname: OnBoardSingleton.shared.newUserNameText.value)
             reactor.action.onNext(.updateMe(req: req))
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+            homeTabController.modalPresentationStyle = .fullScreen
+            navigationController?.present(homeTabController, animated: true)
         }
     }
     
