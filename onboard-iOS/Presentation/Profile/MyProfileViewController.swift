@@ -11,7 +11,7 @@ import ReactorKit
 
 final class MyProfileViewController: UIViewController, View {
     
-    typealias Reactor = GroupReactor
+    typealias Reactor = UserReactor
     
     // MARK: - Properties
     
@@ -29,7 +29,7 @@ final class MyProfileViewController: UIViewController, View {
     
     // MARK: - Initialize
     
-    init(reactor: GroupReactor) {
+    init(reactor: UserReactor) {
         super.init(nibName: nil, bundle: nil)
         
         self.reactor = reactor
@@ -47,17 +47,16 @@ final class MyProfileViewController: UIViewController, View {
     
     // MARK: - Bind
     
-    func bind(reactor: GroupReactor) {
+    func bind(reactor: UserReactor) {
         self.bindAction(reactor: reactor)
         self.bindState(reactor: reactor)
     }
     
-    func bindAction(reactor: GroupReactor) {
+    func bindAction(reactor: UserReactor) {
         let groupId = GameDataSingleton.shared.getGroupId() ?? 0
-        self.reactor?.action.onNext(.fetchResult(groupId: groupId))
     }
     
-    func bindState(reactor: GroupReactor) {
+    func bindState(reactor: UserReactor) {
         
     }
     
