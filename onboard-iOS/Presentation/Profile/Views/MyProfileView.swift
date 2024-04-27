@@ -143,6 +143,16 @@ final class MyProfileView: UIView {
         super.init(coder: coder)
     }
     
+    // MARK: - Bind
+    
+    func bind(
+        group: String,
+        nickname: String
+    ) {
+        self.groupNameLabel.text = group
+        self.nickNameLabel.text = nickname
+    }
+    
     // MARK: - Configure
     
     private func configure() {
