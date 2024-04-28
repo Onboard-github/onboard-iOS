@@ -367,6 +367,18 @@ final class GroupInfoDetailViewController: UIViewController, View {
                               message: TextLabels.group_clipboard_message)
         }), for: .touchUpInside)
         
+        self.modifyButton.addAction(UIAction(handler: { [weak self] _ in
+            let userUseCase = UserUseCaseImpl(repository: UserRepositoryImpl())
+            let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+            let groupUseCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
+            let reactor = UserReactor(userUseCase: userUseCase, playerUseCase: playerUseCase, groupUseCase: groupUseCase)
+            let myProfileViewController = MyProfileViewController(reactor: reactor)
+            let navigationController = UINavigationController(rootViewController: myProfileViewController)
+            navigationController.modalPresentationStyle = .overFullScreen
+            navigationController.transitioningDelegate = self
+            self?.present(navigationController, animated: true)
+        }), for: .touchUpInside)
+        
         self.exitButton.addAction(UIAction(handler: { [weak self] _ in
             guard let reactor = self?.reactor else { return }
             
@@ -702,7 +714,7 @@ extension GroupInfoDetailViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(
         forPresented presented: UIViewController,
-        presenting: UIViewController, 
+        presenting: UIViewController,
         source: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
         return PresentTransition()
