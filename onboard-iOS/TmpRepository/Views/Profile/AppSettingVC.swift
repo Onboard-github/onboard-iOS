@@ -25,7 +25,9 @@ class AppSettingVC: UIViewController {
         
         SettingItem("회원 정보 수정", { vc in
             let useCase = UserUseCaseImpl(repository: UserRepositoryImpl())
-            let reactor = UserReactor(userUseCase: useCase)
+            let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
+            let groupUseCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
+            let reactor = UserReactor(userUseCase: useCase, playerUseCase: playerUseCase, groupUseCase: groupUseCase)
             let userInfoVC = UpdateUserInfoViewController(reactor: reactor)
             vc?.navigationController?.pushViewController(userInfoVC, animated: true)
         }),
