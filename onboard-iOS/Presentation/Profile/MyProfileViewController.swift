@@ -88,6 +88,25 @@ final class MyProfileViewController: UIViewController, View {
     
     @objc
     private func showPrevious() {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true)
+    }
+}
+
+// MARK: - UIViewControllerTransitioningDelegate
+
+extension MyProfileViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        return PresentTransition()
+    }
+    
+    func animationController(
+        forDismissed dismissed: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        return DismissTransition()
     }
 }
