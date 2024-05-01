@@ -23,4 +23,5 @@ final class OnBoardSingleton {
     var accessCodeText = BehaviorRelay<String>(value: "")
     
     var newUserNameText = BehaviorRelay<String>(value: "")
+    var newGroupUserNameText = BehaviorRelay<String>(value: "")
 }
