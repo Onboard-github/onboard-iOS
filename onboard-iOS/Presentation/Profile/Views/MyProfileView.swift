@@ -226,6 +226,8 @@ extension MyProfileView {
                 let inputText = String(text.prefix(maxLength))
                 self?.countLabel.text = "\(String(format: "%02d", inputText.count))/\(maxLength)"
                 self?.nicknameTextField.text = (text.count > maxLength) ? String(text.prefix(maxLength)) : text
+                
+                OnBoardSingleton.shared.newGroupUserNameText.accept(text)
             })
             .disposed(by: disposeBag)
     }
