@@ -158,9 +158,16 @@ final class MyProfileView: UIView {
     private func configure() {
         self.backgroundColor = Colors.White
         
+        self.addConfigure()
         self.makeConstraints()
         
         self.setTextField()
+    }
+    
+    private func addConfigure() {
+        self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
+            
+        }), for: .touchUpInside)
     }
     
     private func makeConstraints() {
