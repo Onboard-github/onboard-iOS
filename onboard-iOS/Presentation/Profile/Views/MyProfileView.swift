@@ -16,6 +16,8 @@ final class MyProfileView: UIView {
     
     var disposeBag = DisposeBag()
     
+    var didTapConfirmButton: (() -> Void)?
+    
     // MARK: - Metric
     
     private enum Metric {
@@ -166,7 +168,7 @@ final class MyProfileView: UIView {
     
     private func addConfigure() {
         self.confirmButton.addAction(UIAction(handler: { [weak self] _ in
-            
+            self?.didTapConfirmButton?()
         }), for: .touchUpInside)
     }
     
