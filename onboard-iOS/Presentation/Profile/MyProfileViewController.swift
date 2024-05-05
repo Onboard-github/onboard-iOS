@@ -54,6 +54,9 @@ final class MyProfileViewController: UIViewController, View {
     
     func bindAction(reactor: UserReactor) {
         let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        self.myProfileView.didTapConfirmButton = { [weak self] in
+            
+        }
     }
     
     func bindState(reactor: UserReactor) {
