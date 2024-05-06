@@ -16,4 +16,11 @@ enum MemberEntity {
     struct MatchCountRes {
         let matchCount: Int
     }
+    
+    struct GroupMemberPatchRes {
+        let id: Int
+        let level: Int
+        let nickname: String
+        let role: String
+    }
 }
