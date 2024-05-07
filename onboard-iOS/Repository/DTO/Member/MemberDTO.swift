@@ -14,3 +14,10 @@ struct MemberDTO: Decodable {
 struct MatchCountDTO: Decodable {
     let matchCount: Int
 }
+
+struct GroupMemberPatchDTO: Decodable {
+    let id: Int
+    let level: Int
+    let nickname: String
+    let role: String
+}
