@@ -196,6 +196,11 @@ extension MyProfileViewController {
                     groupId: groupId,
                     memberId: memberId)
                 )
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let homeTabController = storyboard.instantiateViewController(identifier: "homeTabController")
+                homeTabController.modalPresentationStyle = .fullScreen
+                self?.navigationController?.present(homeTabController, animated: true)
             }
         }
     }
