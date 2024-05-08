@@ -49,11 +49,6 @@ final class MemberRepositoryImpl: MemberRepository {
                         groupId: groupId
                     )
                 )
-            
-            guard let data = result.value else {
-                throw NetworkError.noExist
-            }
-            
         } catch {
             throw error
         }
