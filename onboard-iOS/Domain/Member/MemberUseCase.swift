@@ -11,6 +11,7 @@ protocol MemberUseCase {
     func fetchAssignOwner(groupId: Int, memberId: Int) async throws -> MemberEntity.Res
     func fetchMemberUnsubscribe(groupId: Int) async throws
     func fetchMatchCount(groupId: Int, memberId: Int) async throws -> MemberEntity.MatchCountRes
+    func fetchGroupMemberPatch(req: MemberEntity.GroupMemberPatchReq, groupId: Int, memberId: Int) async throws -> MemberEntity.GroupMemberPatchRes
 }
 
 final class MemberUseCaseImpl: MemberUseCase {
@@ -31,5 +32,9 @@ final class MemberUseCaseImpl: MemberUseCase {
     
     func fetchMatchCount(groupId: Int, memberId: Int) async throws -> MemberEntity.MatchCountRes {
         try await self.repository.requestMatchCount(groupId: groupId, memberId: memberId)
+    }
+    
+    func fetchGroupMemberPatch(req: MemberEntity.GroupMemberPatchReq, groupId: Int, memberId: Int) async throws -> MemberEntity.GroupMemberPatchRes {
+        try await self.repository.requestGroupMemberPatch(req: req, groupId: groupId, memberId: memberId)
     }
 }
