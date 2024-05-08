@@ -374,7 +374,8 @@ final class GroupInfoDetailViewController: UIViewController, View {
             let userUseCase = UserUseCaseImpl(repository: UserRepositoryImpl())
             let playerUseCase = PlayerUseCasempl(repository: PlayerRepositoryImpl())
             let groupUseCase = GroupUseCaseImpl(repository: GroupRepositoryImpl())
-            let reactor = UserReactor(userUseCase: userUseCase, playerUseCase: playerUseCase, groupUseCase: groupUseCase)
+            let memberUseCase = MemberUseCaseImpl(repository: MemberRepositoryImpl())
+            let reactor = UserReactor(userUseCase: userUseCase, playerUseCase: playerUseCase, groupUseCase: groupUseCase, memberUseCase: memberUseCase)
             let myProfileViewController = MyProfileViewController(reactor: reactor)
             let navigationController = UINavigationController(rootViewController: myProfileViewController)
             navigationController.modalPresentationStyle = .overFullScreen
