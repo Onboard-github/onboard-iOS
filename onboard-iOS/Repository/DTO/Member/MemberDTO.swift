@@ -21,3 +21,9 @@ struct GroupMemberPatchDTO: Decodable {
     let nickname: String
     let role: String
 }
+
+enum GroupMemberPatchRequest {
+    struct Body: Encodable {
+        let nickname: String
+    }
+}
