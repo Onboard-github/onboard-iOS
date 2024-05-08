@@ -210,7 +210,6 @@ final class GroupInfoDetailViewController: UIViewController, View {
     private let modifyButton: UIButton = {
         let button = UIButton()
         button.setImage(IconImage.pencil.image, for: .normal)
-        button.isHidden = true // TODO: 미완성 기능 숨겨두고 추후 작업
         return button
     }()
     
