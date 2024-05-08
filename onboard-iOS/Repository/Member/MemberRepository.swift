@@ -12,6 +12,7 @@ protocol MemberRepository {
     func requestAssignOwner(groupId: Int, memberId: Int) async throws -> MemberEntity.Res
     func requestMemberUnsubscribe(groupId: Int) async throws
     func requestMatchCount(groupId: Int, memberId: Int) async throws -> MemberEntity.MatchCountRes
+    func requestGroupMemberPatch(req: MemberEntity.GroupMemberPatchReq, groupId: Int, memberId: Int) async throws -> MemberEntity.GroupMemberPatchRes
 }
 
 final class MemberRepositoryImpl: MemberRepository {
@@ -79,6 +80,31 @@ final class MemberRepositoryImpl: MemberRepository {
             throw error
         }
     }
+    
+    func requestGroupMemberPatch(req: MemberEntity.GroupMemberPatchReq, groupId: Int, memberId: Int) async throws -> MemberEntity.GroupMemberPatchRes {
+        do {
+            let result = try await OBNetworkManager
+                .shared
+                .asyncRequest(
+                    object: GroupMemberPatchDTO.self,
+                    router: OBRouter.groupMemeberPatch(
+                        groupId: groupId,
+                        memberId: memberId,
+                        body: GroupMemberPatchRequest.Body(
+                            nickname: req.nickname
+                        ).encode()
+                    )
+                )
+            
+            guard let data = result.value else {
+                throw NetworkError.noExist
+            }
+            
+            return data.toDomain()
+        } catch {
+            throw error
+        }
+    }
 }
 
 extension MemberDTO {
@@ -91,6 +117,17 @@ extension MatchCountDTO {
     func toDomain() -> MemberEntity.MatchCountRes {
         return MemberEntity.MatchCountRes(
             matchCount: self.matchCount
+        )
+    }
+}
+
+extension GroupMemberPatchDTO {
+    func toDomain() -> MemberEntity.GroupMemberPatchRes {
+        return MemberEntity.GroupMemberPatchRes(
+            id: self.id,
+            level: self.level,
+            nickname: self.nickname,
+            role: self.role
         )
     }
 }
