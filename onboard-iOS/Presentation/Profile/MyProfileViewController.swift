@@ -8,6 +8,8 @@
 import UIKit
 
 import ReactorKit
+import RxSwift
+import RxCocoa
 
 final class MyProfileViewController: UIViewController, View {
     
@@ -55,9 +57,6 @@ final class MyProfileViewController: UIViewController, View {
     func bindAction(reactor: UserReactor) {
         let groupId = GameDataSingleton.shared.getGroupId() ?? 0
         self.reactor?.action.onNext(.myGroupInfoData(groupId: groupId))
-        self.myProfileView.didTapConfirmButton = { [weak self] in
-            
-        }
     }
     
     func bindState(reactor: UserReactor) {
@@ -69,6 +68,26 @@ final class MyProfileViewController: UIViewController, View {
                                          nickname: OnBoardSingleton.shared.myGroupNicknameText.value)
             })
             .disposed(by: disposeBag)
+        
+        reactor.state
+            .compactMap { $0.nicknameResult?.reason }
+            .map { reason -> TextFieldState in
+                switch reason {
+                case "DUPLICATED_NICKNAME":
+                    return .overLap
+                case "INVALID_NICKNAME":
+                    return .invalid
+                default:
+                    return .normal
+                }
+            }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] state in
+                DispatchQueue.main.async {
+                    self?.updateTextFieldState(for: state)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Configure
@@ -76,6 +95,8 @@ final class MyProfileViewController: UIViewController, View {
     private func configure() {
         
         self.setNavigationBar()
+        
+        self.setTextField()
     }
     
     private func setNavigationBar() {
@@ -100,6 +121,70 @@ final class MyProfileViewController: UIViewController, View {
     @objc
     private func showPrevious() {
         self.dismiss(animated: true)
+    }
+}
+
+// MARK: - TextField
+
+extension MyProfileViewController {
+    
+    private func setTextField() {
+        self.myProfileView.nicknameTextField.rx.text.orEmpty
+            .distinctUntilChanged()
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] text in
+                let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+                let nickname = OnBoardSingleton.shared.newGroupUserNameText.value
+                self?.reactor?.action.onNext(.validateNickname(groupId: groupId,
+                                                               nickname: nickname))
+            })
+            .disposed(by: disposeBag)
+        
+        self.myProfileView.nicknameTextField.rx.text.orEmpty
+            .distinctUntilChanged()
+            .map(inputText(_:))
+            .subscribe(onNext: { [weak self] result in
+                self?.updateTextFieldState(for: result)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func inputText(_ text: String) -> TextFieldState {
+        if text.count >= 10 {
+            let index = text.index(text.startIndex, offsetBy: 10)
+            self.myProfileView.nicknameTextField.text = String(text[..<index])
+            return .over
+        }
+        
+        return .normal
+    }
+    
+    private func updateTextFieldState(for state: TextFieldState) {
+        switch state {
+        case .over:
+            self.myProfileView.textFieldSubTitleLabel.text = TextLabels.userInfo_textField_subTitle
+            self.myProfileView.textFieldSubTitleLabel.textColor = Colors.Gray_8
+            self.myProfileView.countLabel.textColor = Colors.Red
+            self.myProfileView.confirmButton.status = .disabled
+            
+        case .overLap:
+            self.myProfileView.textFieldSubTitleLabel.text = TextLabels.bottom_textField_already
+            self.myProfileView.textFieldSubTitleLabel.textColor = Colors.Red
+            self.myProfileView.countLabel.textColor = Colors.Gray_8
+            self.myProfileView.confirmButton.status = .disabled
+            
+        case .invalid:
+            self.myProfileView.textFieldSubTitleLabel.text = TextLabels.userInfo_textField_subTitle
+            self.myProfileView.textFieldSubTitleLabel.textColor = Colors.Gray_8
+            self.myProfileView.countLabel.textColor = Colors.Gray_8
+            self.myProfileView.confirmButton.status = .disabled
+            
+        case .normal:
+            self.myProfileView.textFieldSubTitleLabel.text = TextLabels.userInfo_textField_subTitle
+            self.myProfileView.textFieldSubTitleLabel.textColor = Colors.Gray_8
+            self.myProfileView.countLabel.textColor = Colors.Gray_8
+            self.myProfileView.confirmButton.status = .default
+        }
     }
 }
 
