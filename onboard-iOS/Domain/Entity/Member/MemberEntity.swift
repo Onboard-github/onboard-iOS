@@ -23,4 +23,8 @@ enum MemberEntity {
         let nickname: String
         let role: String
     }
+    
+    struct GroupMemberPatchReq {
+        let nickname: String
+    }
 }
