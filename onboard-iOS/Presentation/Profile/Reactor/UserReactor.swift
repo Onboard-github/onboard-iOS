@@ -21,6 +21,7 @@ final class UserReactor: Reactor {
         case updateMe(req: UpdateMyNicknameEntity.Req)
         case validateNickname(groupId: Int, nickname: String)
         case myGroupInfoData(groupId: Int)
+        case groupMemberPatch(req: MemberEntity.GroupMemberPatchReq, groupId: Int, memberId: Int)
     }
     
     // MARK: - Mutation
@@ -29,6 +30,7 @@ final class UserReactor: Reactor {
         case updateMyNickname(result: String)
         case setValidateNickname(GuestNickNameEntity.Res)
         case setGroupData(GroupInfoEntity.Res)
+        case setMemberPatch(MemberEntity.GroupMemberPatchRes)
     }
     
     // MARK: - State
@@ -37,6 +39,7 @@ final class UserReactor: Reactor {
         var newNickname: String
         var nicknameResult: GuestNickNameEntity.Res?
         var groupInfoData: GroupInfoEntity.Res?
+        var groupMemberPatchResult: MemberEntity.GroupMemberPatchRes?
     }
     
     // MARK: - Initialize
@@ -44,15 +47,18 @@ final class UserReactor: Reactor {
     private let userUseCase: UserUseCase
     private let playerUseCase: PlayerUseCase
     private let groupUseCase: GroupUseCase
+    private let memberUseCase: MemberUseCase
     
     init(
         userUseCase: UserUseCase,
         playerUseCase: PlayerUseCase,
-        groupUseCase: GroupUseCase
+        groupUseCase: GroupUseCase,
+        memberUseCase: MemberUseCase
     ) {
         self.userUseCase = userUseCase
         self.playerUseCase = playerUseCase
         self.groupUseCase = groupUseCase
+        self.memberUseCase = memberUseCase
     }
     
     // MARK: - Mutate
@@ -65,6 +71,8 @@ final class UserReactor: Reactor {
             return self.validateResult(groupId: groupId, nickname: nickname)
         case let .myGroupInfoData(groupId):
             return self.groupInfoResult(groupId: groupId)
+        case let .groupMemberPatch(req, groupId, memberId):
+            return self.memberPatchResult(req: req, groupId: groupId, memberId: memberId)
         }
     }
     
@@ -80,6 +88,8 @@ final class UserReactor: Reactor {
             state.nicknameResult = result
         case .setGroupData(let result):
             state.groupInfoData = result
+        case .setMemberPatch(let result):
+            state.groupMemberPatchResult = result
         }
         
         return state
@@ -131,6 +141,23 @@ extension UserReactor {
                 do {
                     let result = try await self.groupUseCase.fetchInfo(groupId: groupId)
                     observer.onNext(.setGroupData(result))
+                } catch {
+                    observer.onError(error)
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    private func memberPatchResult(req: MemberEntity.GroupMemberPatchReq, groupId: Int, memberId: Int) -> Observable<Mutation> {
+        return Observable.create { [weak self] observer in
+            guard let self = self else { return Disposables.create() }
+            
+            Task {
+                do {
+                    let result = try await self.memberUseCase.fetchGroupMemberPatch(req: req, groupId: groupId, memberId: memberId)
+                    observer.onNext(.setMemberPatch(result))
                 } catch {
                     observer.onError(error)
                 }
