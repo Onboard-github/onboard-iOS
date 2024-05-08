@@ -342,6 +342,9 @@ final class GroupInfoDetailViewController: UIViewController, View {
                             playCount: matchCount?.matchCount ?? -1
                         )
                     }
+                    
+                    OnBoardSingleton.shared.myGroupNicknameText.accept(me?.nickname ?? "error")
+                    
                     self?.settingButton.isHidden = me?.role == "OWNER" ? false : true
                 }
             })
