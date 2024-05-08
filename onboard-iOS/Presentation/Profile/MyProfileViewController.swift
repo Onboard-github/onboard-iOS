@@ -184,6 +184,19 @@ extension MyProfileViewController {
             self.myProfileView.textFieldSubTitleLabel.textColor = Colors.Gray_8
             self.myProfileView.countLabel.textColor = Colors.Gray_8
             self.myProfileView.confirmButton.status = .default
+            
+            let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+            let memberId = GameDataSingleton.shared.memberId.value
+            let nickname = OnBoardSingleton.shared.newGroupUserNameText.value
+            self.myProfileView.didTapConfirmButton = { [weak self] in
+                self?.reactor?.action.onNext(.groupMemberPatch(
+                    req: MemberEntity.GroupMemberPatchReq(
+                        nickname: nickname
+                    ),
+                    groupId: groupId,
+                    memberId: memberId)
+                )
+            }
         }
     }
 }
