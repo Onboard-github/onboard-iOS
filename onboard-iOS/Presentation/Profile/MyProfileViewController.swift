@@ -54,13 +54,21 @@ final class MyProfileViewController: UIViewController, View {
     
     func bindAction(reactor: UserReactor) {
         let groupId = GameDataSingleton.shared.getGroupId() ?? 0
+        self.reactor?.action.onNext(.myGroupInfoData(groupId: groupId))
         self.myProfileView.didTapConfirmButton = { [weak self] in
             
         }
     }
     
     func bindState(reactor: UserReactor) {
-        
+        reactor.state
+            .compactMap { $0.groupInfoData }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                self?.myProfileView.bind(group: data?.name ?? "error",
+                                         nickname: OnBoardSingleton.shared.myGroupNicknameText.value)
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Configure
