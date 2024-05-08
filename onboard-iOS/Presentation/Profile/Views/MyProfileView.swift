@@ -75,7 +75,7 @@ final class MyProfileView: UIView {
         return imageView
     }()
     
-    private let nicknameTextField: TextField = {
+    internal let nicknameTextField: TextField = {
         let textField = TextField()
         textField.textColor = Colors.Gray_15
         textField.font = Font.Typography.body3_R
@@ -90,7 +90,7 @@ final class MyProfileView: UIView {
         return textField
     }()
     
-    private let textFieldSubTitleLabel: UILabel = {
+    internal let textFieldSubTitleLabel: UILabel = {
         let label = UILabel()
         label.text = TextLabels.owner_popup_textFieldSubTitle
         label.textColor = Colors.Gray_8
@@ -98,7 +98,7 @@ final class MyProfileView: UIView {
         return label
     }()
     
-    private let countLabel: UILabel = {
+    internal let countLabel: UILabel = {
         let label = UILabel()
         label.text = TextLabels.profile_textField_count
         label.textColor = Colors.Gray_8
@@ -106,7 +106,7 @@ final class MyProfileView: UIView {
         return label
     }()
     
-    private let confirmButton: BaseButton = {
+    internal let confirmButton: BaseButton = {
         let button = BaseButton(status: .disabled, style: .rounded)
         button.setTitle(TextLabels.profile_confirm, for: .normal)
         return button
